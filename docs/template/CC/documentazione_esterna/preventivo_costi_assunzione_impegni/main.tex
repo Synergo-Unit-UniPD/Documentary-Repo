@@ -1,0 +1,238 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage[top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{booktabs} 
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage{eurosym}
+
+% === PERCORSO IMMAGINI ===
+\graphicspath{{../../../shared/}}
+
+% === CONFIGURAZIONE COLORI E LINK ===
+\definecolor{primarycolor}{RGB}{20, 40, 75}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=primarycolor,
+	urlcolor=primarycolor, 
+	pdftitle={Preventivo e Impegni - Synergo Unit},
+	pdfauthor={Synergo Unit}
+}
+
+% === CONFIGURAZIONE INTESTAZIONE E PIÈ DI PAGINA ===
+\pagestyle{fancy}
+\fancyhf{} 
+\fancyhead[L]{\textcolor{primarycolor}{\textbf{Synergo Unit}}}
+\fancyhead[R]{Preventivo Costi e Impegni vX.X.X - YYYY-MM-DD}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\setlength{\headheight}{15pt}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+
+% =========================================================
+% INIZIO DOCUMENTO
+% =========================================================
+\begin{document}
+	
+	% --- FRONTESPIZIO ---
+	\begin{titlepage}
+		\begin{center}
+			\includegraphics[height=3cm]{logo_unipd.png}
+			\hspace{3.5cm}
+			\includegraphics[height=3cm]{logo_gruppo.png}
+		\end{center}
+		
+		\vspace{2.5cm}
+		
+		\begin{center}
+			{\Large \textsc{Università degli Studi di Padova}} \\
+			\vspace{0.2cm}
+			{\large Corso di Laurea in Informatica} \\
+			{\large Insegnamento di Ingegneria del Software} \\
+			\vspace{0.2cm}
+			{\normalsize Anno Accademico 2025/2026}
+			
+			\vspace{3.5cm}
+			
+			{\Huge \textbf{\textcolor{primarycolor}{Preventivo Costi e}} \\ \vspace{0.2cm} \textbf{\textcolor{primarycolor}{Assunzione Impegni}}} \\
+			\vspace{0.5cm}
+			{\Large \textbf{Dichiarazione formale di impegno}}
+			
+			\vspace{3.5cm}
+		\end{center}
+		
+		\begin{flushleft}
+			\textbf{Gruppo:} Synergo Unit \\
+			\textbf{Email:} \href{mailto:synergounit@gmail.com}{synergounit@gmail.com}
+		\end{flushleft}
+		
+		\vfill
+		\begin{center}
+			{\large Versione: \textbf{vX.X.X}} \\
+			{\large Data: \textbf{YYYY-MM-DD}}
+		\end{center}
+	\end{titlepage}
+	
+	\newpage
+	
+	% --- REGISTRO DELLE MODIFICHE ---
+	\section*{Registro delle Modifiche}
+	\begin{table}[ht]
+		\centering
+		\renewcommand{\arraystretch}{1.5}
+		\begin{tabularx}{\textwidth}{c c l X}
+			\toprule
+			\textbf{Versione} & \textbf{Data} & \textbf{Autore/Verificatore} & \textbf{Descrizione} \\
+			\midrule
+			v1.0.0 & YYYY-MM-DD & {[Nome] / [Nome]} & Approvazione e firma del documento \\
+			v0.2.0 & YYYY-MM-DD & {[Nome] / [Nome]} & Stesura calcolo preventivo per i 6 membri \\
+			v0.1.0 & YYYY-MM-DD & {[Nome] / [Nome]} & Prima stesura struttura e analisi disponibilità \\
+			\bottomrule
+		\end{tabularx}
+	\end{table}
+	
+	\newpage
+	
+	% --- INDICE ---
+	\tableofcontents
+	\newpage
+	
+	% --- 1. INTRODUZIONE ---
+	\section{Introduzione}
+	
+	\subsection{Capitolato selezionato}
+	[-]
+	
+	\subsection{Periodo progetto stimato}
+	[-]
+	
+	% --- 2. RIPARTIZIONE RUOLI PREVENTIVATA ---
+	\section{Ripartizione Ruoli Preventivata}
+	
+	\subsection{Distribuzione ore per ruolo}
+	[-]
+	
+	\begin{table}[ht]
+		\centering
+		\renewcommand{\arraystretch}{1.3}
+		\begin{tabularx}{\textwidth}{X c c}
+			\toprule
+			\textbf{Ruolo} & \textbf{Costo Orario (\euro)} & \textbf{Ore Totali Preventivate} \\
+			\midrule
+			Responsabile & 30 €/h & - \\
+			Amministratore & 20 €/h & - \\
+			Analista & 25 €/h & 120 \\
+			Progettista & 25 €/h & - \\
+			Programmatore & 15 €/h & - \\
+			Verificatore & 15 €/h & - \\
+			\midrule
+			\textbf{Totale} & & \textbf{- ore} \\
+			\bottomrule
+		\end{tabularx}
+	\end{table}
+	
+	\subsection{Rotazione ruoli pianificata}
+	[-]
+	
+	\subsection{Copertura di tutti i ruoli per tutti i membri}
+	[-]
+	
+	\newpage
+	% --- 3. PREVENTIVO ECONOMICO ---
+	\section{Preventivo Economico}
+	
+	\subsection{Costo preventivato per ruolo}
+	In base alla distribuzione oraria definita nella Sezione 2, il costo totale ripartito per i ruoli di progetto è il seguente:
+	
+	\begin{table}[ht]
+		\centering
+		\renewcommand{\arraystretch}{1.3}
+		\begin{tabularx}{\textwidth}{X c c r}
+			\toprule
+			\textbf{Ruolo} & \textbf{Ore Totali} & \textbf{Costo Orario} & \textbf{Costo Totale (\euro)} \\
+			\midrule
+			Responsabile & - & 30 € & - € \\
+			Amministratore & - & 20 € & - € \\
+			Analista & - & 25 € & - € \\
+			Progettista & - & 25 € & - € \\
+			Programmatore & - & 15 € & - € \\
+			Verificatore & - & 15 € & - € \\
+			\midrule
+			\textbf{Costo Totale Preventivato} & \textbf{-} & & \textbf{min 12k €} \\
+			\bottomrule
+		\end{tabularx}
+	\end{table}
+	
+	\subsection{Costo per periodo/fase}
+	[-]
+	
+	\subsection{Costo totale preventivato}
+	[-]
+	
+	% --- 4. ANALISI DISPONIBILITÀ ---
+	\section{Analisi Disponibilità}
+	
+	\subsection{Impegni accademici membri}
+	[-]
+	
+	\subsection{Altri impegni rilevanti}
+	[-]
+	
+	\subsection{Calendario condiviso disponibilità}
+	[-]
+	
+	\subsection{Periodi critici identificati}
+	\begin{itemize}
+		\item \textbf{{[YYYY-MM-DD a YYYY-MM-DD]}:} Sessione d'esame.
+	\end{itemize}
+	
+	\newpage
+	% --- 5. ASSUNZIONE IMPEGNO FORMALE ---
+	\section{Assunzione Impegno Formale}
+	
+	\subsection{Dichiarazione ore garantite per membro}
+	[-]
+	
+	\subsection{Scadenza ultima consegna prevista}
+	Il gruppo assume il formale impegno di consegnare il prodotto finito, completo della relativa documentazione e collaudato, entro e non oltre la data del \textbf{{[YYYY-MM-DD]}}.
+	
+	\vspace{2cm}
+	
+	\subsection{Firme}
+	Con la seguente firma, i rappresentanti assumono l'impegno a nome dell'intero gruppo nei confronti del committente accademico e dell'azienda proponente.
+	
+	\vspace{2cm}
+	
+	\noindent
+	\begin{minipage}[c]{0.45\textwidth}
+		\begin{center}
+			% Linea per la firma
+			\rule{6cm}{0.4pt} \\ 
+			\vspace{0.2cm}
+			\textbf{Per il Gruppo Synergo Unit} \\
+			{[Nome Responsabile Attuale]} \\
+			\textit{Responsabile di Progetto}
+		\end{center}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[c]{0.45\textwidth}
+		\begin{center}
+			\rule{6cm}{0.4pt} \\ 
+			\vspace{0.2cm}
+			\textbf{Per il Committente} \\
+			{[Nome Docente / Committente]} \\
+			\textit{Docente del Corso}
+		\end{center}
+	\end{minipage}
+	
+\end{document}
