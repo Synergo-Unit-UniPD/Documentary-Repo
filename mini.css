@@ -1,0 +1,115 @@
+/* BODY */
+body {
+    padding: 0 1em;
+}
+
+/* HEADER */
+#intestazione {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    padding: 1.2em 1.5em;
+    gap: 1em;
+    border-radius: 2em;
+}
+
+#logo-home {
+    width: 10em;
+    height: 3em;
+    margin-bottom: 0.5em;
+}
+
+.nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.2em;
+}
+
+.nav-links li a {
+    font-size: 1rem;
+}
+
+/* HERO */
+#hero {
+    margin-top: 2em;
+    padding: 0 1em;
+}
+
+#hero p {
+    font-size: 1rem;
+}
+
+#hero .button {
+    padding: 0.6em 1em;
+}
+
+/* SEZIONI DOCUMENTI */
+.doc-section {
+    padding: 0 1em;
+    margin-top: 3em;
+}
+
+.grid {
+    grid-template-columns: 1fr; 
+    gap: 20px;
+}
+
+.box {
+    padding: 20px;
+}
+
+.box h3 {
+    font-size: 1.1rem;
+}
+
+.box ul li a {
+    font-size: 0.95rem;
+    padding: 0.8em 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;  
+    justify-content: center;   
+    text-align: left;           
+}
+
+/* TEAM */
+.cards {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 20px;
+}
+
+.pic {
+    width: 90px;
+    height: 90px;
+}
+
+.cards a p {
+    font-size: 0.9rem;
+}
+
+/* FOOTER */
+footer {
+    padding: 30px 10px;
+    gap: 0.8em;
+}
+
+.circle-arrow {
+    width: 2.8em;
+    height: 2.8em;
+}
+
+.circle-arrow img {
+    width: 1.4em;
+}
+
+.logo-footer {
+    width: 70px;
+}
+
+.footer-text {
+    font-size: 0.85rem;
+    text-align: center;
+    line-height: 1.4;
+}
+

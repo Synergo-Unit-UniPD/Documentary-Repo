@@ -1,0 +1,333 @@
+/* ------------------------------
+   RESET
+------------------------------ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Noto Sans", sans-serif;
+    background: var(--blu-scuro);
+    color: var(--bianco);
+    line-height: 1.6;
+}
+
+:root {
+    --bianco: #fffdf6;
+    --blu-scuro: #1c2838;
+    --viola: #6261d8;
+    --viola-trasp: rgba(98, 97, 216, 0.70);
+    --violetto: #e4e0ff;
+    --azzurro: #cfe5ff;
+}
+
+/* ------------------------------
+   HEADER (VERSIONE CHIARA)
+------------------------------ */
+
+#intestazione {
+    background: var(--bianco);            
+    padding: 1.5em 2.5em;
+    margin: 1em auto;
+    width: 100%;
+    max-width: 1200px;
+
+    border-radius: 3em;              
+    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 7em;
+}
+
+/* LOGO */
+#logo-home {
+    display: block;
+    background-image: url("assets/logo_orizzontale.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left center;
+    width: 7em;                   
+    text-indent: -9999px;
+}
+
+/* NAVBAR */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2em;
+}
+
+.nav-links li a {
+    color: var(--blu-scuro);                  
+    text-decoration: none;
+    font-weight:700;
+    font-size: 1.1rem;
+    position: relative;
+    padding-bottom: 0.1em;
+}
+
+.nav-links li:not(.button) a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0%;
+    height: 2.5px;
+    background: var(--viola);
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+.nav-links li a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* PULSANTE "Repository" */
+.nav-links .button a, #hero .button {
+    padding: 0.5em 0.8em;
+    border: 2px solid var(--viola);
+    background-color: var(--viola);
+    border-radius: 1em;
+    color: var(--bianco);
+    transition: 0.3s ease;
+}
+
+.nav-links .button a:hover {
+    background: var(--bianco);
+    color: var(--viola);
+}
+
+#hero .button:hover {
+    background: var(--blu-scuro);
+    color: var(--viola);
+}
+
+/* ------------------------------
+   HERO
+------------------------------ */
+#hero {
+    text-align: center;
+    margin: 60px auto;
+    max-width: 700px;
+    padding: 0 20px;
+}
+
+#hero p {
+    font-size: 1.1rem;
+    margin-bottom: 0.7em;
+}
+
+#hero .button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.icon-btn {
+    width: 20px;
+    height: 20px;
+}
+
+/* ------------------------------
+   SEZIONI DOCUMENTI
+------------------------------ */
+.doc-section {
+    max-width: 1100px;
+    margin: 60px auto;
+    padding: 0 20px;
+    border-top: 2px solid var(--bianco);
+}
+
+.doc-section h2 {
+    font-size: 1.8rem;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    color: var(--bianco);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 35px;
+}
+
+.box {
+    background: var(--bianco);
+    color: var(--blu-scuro);
+    padding: 25px;
+    border-radius: 1em;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+.box h3 {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+/* ------------------------------
+   LINK DOCUMENTI (doc-link)
+------------------------------ */
+
+.box ul {
+    list-style: none;
+    padding: 0;
+}
+
+.box ul li, #lettera_presentazione{
+    margin: 0.7em 0;
+    justify-content: space-between;
+}
+
+.box ul li a, #lettera_presentazione {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: var(--azzurro); 
+    color: var(--blu-scuro);
+    padding: 0.9em 1.1em;
+    border-radius: 1em;
+    text-decoration: none;
+    font-weight: 600;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5em;
+
+    border-left: 4px solid transparent;
+    transition: 0.25s ease;
+}
+
+.box ul li a:hover, #lettera_presentazione:hover {
+    background-color: var(--violetto); 
+    border-left: 4px solid var(--viola);
+    color: var(--blu-scuro);
+    transform: translateX(4px);
+}
+
+.etichette-container {
+    display: flex;
+    align-items: center;   /* allinea verticalmente tutte le etichette */
+    gap: 0.5em;
+}
+
+.etichettaCategoria {
+    display: inline-flex;         
+    align-items: center;          
+    gap: 0.35em;                  
+
+    padding: 0.3em 0.7em;
+    border-radius: 1.5em;
+
+    color: var(--viola);
+    background-color: transparent;
+    border: 2px solid var(--viola);
+
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;        
+}
+
+.etichettaCategoria.modifica::before {
+    content: "";
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin-right: 0.1em;
+
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    background-image: url("assets/modifica.svg");
+}
+
+/* ------------------------------
+   TEAM CARDS
+------------------------------ */
+.cards {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.cards li {
+    text-align: center;
+}
+
+.cards a {
+    text-decoration: none;
+    color: var(--bianco);
+    transition: 0.3s ease;
+}
+
+.cards a:hover {
+    transform: translateY(-4px);
+}
+
+.pic {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    border: 3px solid var(--viola);
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+/* ------------------------------
+   FOOTER
+------------------------------ */
+footer {
+    margin-top: 80px;
+    padding: 40px 20px;
+    text-align: center;
+    background: var(--bianco);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+}
+
+/* Cerchio bianco con freccia */
+.circle-arrow {
+    background: var(--blu-scuro);
+    width: 3.2em;
+    height: 3.2em;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    transition: 0.3s ease;
+}
+
+.circle-arrow img {
+    width: 1.6em;
+    height: auto;
+}
+
+#freccia-su:hover .circle-arrow {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+}
+
+/* Logo */
+.logo-footer {
+    width: 80px;
+    margin-top: 10px;
+}
+
+/* Testo istituzionale */
+.footer-text {
+    color: var(--blu-scuro);
+    font-size: 0.95rem;
+    opacity: 0.85;
+}
+
