@@ -1,0 +1,39 @@
+\documentclass[11pt, a4paper]{article}
+
+% 0. Carica la root del progetto (/docs)
+\input{../../root.tex}
+
+% 1. Configurazione condivisa
+\input{\rootpath/template/shared/configurazione.tex}
+
+% 2. Loghi
+\graphicspath{{\rootpath/template/shared/loghi/}}
+
+\hypersetup{
+    pdftitle={Verbale di Riunione - Synergo Unit},
+    pdfauthor={Synergo Unit}
+}
+
+\pagestyle{fancy}
+\fancyhf{} 
+\fancyhead[L]{\textcolor{primarycolor}{\textbf{Synergo Unit}}}
+\fancyhead[R]{Verbale Interno N. 1 - 2026-03-09}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\setlength{\headheight}{15pt}
+
+\begin{document}
+
+    \input{frontespizio.tex}
+    \newpage
+
+    \input{registro_modifiche.tex}
+    \newpage
+
+    \tableofcontents
+    \newpage
+
+    \input{contenuto.tex}
+
+\end{document}
