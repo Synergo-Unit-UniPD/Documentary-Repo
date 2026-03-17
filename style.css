@@ -153,6 +153,13 @@ body {
     color: var(--bianco);
 }
 
+.doc-section h3 {
+    font-size: 1.4rem;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    color: var(--bianco);
+}
+
 .grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -167,9 +174,9 @@ body {
     box-shadow: 0 4px 12px rgba(0,0,0,0.25);
 }
 
-.box h3 {
+.box h4 {
     margin-bottom: 15px;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 
 /* ------------------------------

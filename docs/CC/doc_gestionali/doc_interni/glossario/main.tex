@@ -1,20 +1,20 @@
 \documentclass[11pt, a4paper]{article}
 
-% 1. RICHIAMA LA CONFIGURAZIONE CONDIVISA
-\input{../../../shared/configurazione.tex}
+% 1. Configurazione condivisa
+\input{../../../../template/shared/configurazione.tex}
 
-% 2. CONFIGURAZIONI LOGHI
-\graphicspath{{../../../shared/loghi/}}
+% 2. Loghi
+\graphicspath{{../../../../template/shared/loghi/}}
 
 \hypersetup{
-	pdftitle={Verbale Esterno - Synergo Unit},
+	pdftitle={Glossario - Synergo Unit},
 	pdfauthor={Synergo Unit}
 }
 
 \pagestyle{fancy}
 \fancyhf{} 
 \fancyhead[L]{\textcolor{primarycolor}{\textbf{Synergo Unit}}}
-\fancyhead[R]{Verbale Esterno N. X - YYYY-MM-DD}
+\fancyhead[R]{Glossario v0.4.0 - 2026-03-16}
 \fancyfoot[C]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
@@ -30,14 +30,17 @@
 	\newpage
 	
 	% Registro delle modifiche
-	%\input{registro_modifiche.tex}
-	%\newpage
+	\input{registro_modifiche.tex}
+	\newpage
 	
 	% Indice 
 	\tableofcontents
 	\newpage
 	
-	% Contenuto del verbale
-	\input{contenuto.tex}
+	% Moduli del documento
+	\input{introduzione.tex}
+	\newpage
+	
+	\input{termini.tex}
 	
 \end{document}
