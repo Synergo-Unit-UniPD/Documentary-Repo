@@ -28,5 +28,5 @@ for parola in glossario:
         flags=re.IGNORECASE
     )
 
-with open("./tex_example/termini.tex", "w", encoding="utf-8") as f:
+with open(argv[1], "w", encoding="utf-8") as f:
     f.write(text)
