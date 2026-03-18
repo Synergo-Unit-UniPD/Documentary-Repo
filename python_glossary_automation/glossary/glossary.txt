@@ -1,0 +1,26 @@
+baseline
+branch
+candidatura
+GitHub Pages
+GitHub Project
+Google Form
+ISO/IEC 12207:1995
+issue
+misurazione
+norme di progetto
+Pedice G
+Preventivo dei Costi
+OdG preliminare
+repository
+rtb
+ruolo
+struttura documentale
+task
+tempo previsto
+tempo effettivo
+t-y.z
+valutazione dei capitolati
+verbale interno
+verbale esterno
+VI-y.x
+way of working
