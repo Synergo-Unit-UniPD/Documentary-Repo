@@ -8,7 +8,7 @@ coerenza, tracciabilità e accessibilità. Essa è suddivisa in documentazione g
 documentazione tecnica, secondo la classificazione prevista dal regolamento del progetto
 didattico.
 
-\subsection{Template e convenzioni}
+\subsection{Template\textsubscript{G} e convenzioni}
 
 Per garantire uniformità, il gruppo adotta le seguenti convenzioni:
 
@@ -16,17 +16,17 @@ Per garantire uniformità, il gruppo adotta le seguenti convenzioni:
     \item \textbf{Nomi dei file}: tutti in minuscolo, con ``\_'' come separatore
     (es.: \texttt{verbale\_interno\_2026\_03\_13.tex}).
 
-    \item \textbf{Titoli di sezioni e sotto-sezioni}: stile \textit{Title Case} per ogni livello
+    \item \textbf{Titoli di sezioni e sotto-sezioni}: stile Title Case\textsubscript{G} per ogni livello
     (es.: ``Lettera Di Presentazione'').
 
-    \item \textbf{Pedice G}: applicato solo alla prima occorrenza di un termine presente nel
+    \item \textbf{Pedice G\textsubscript{G}}: applicato solo alla prima occorrenza di un termine presente nel
     glossario
     (es.: Termine\textsubscript{G}).
 
-    \item \textbf{Decisioni}: identificate tramite codice \texttt{VI-y.x}, dove \texttt{y} è il numero del
+    \item \textbf{Decisioni}: identificate tramite codice \texttt{VI-y.x\textsubscript{G}}, dove \texttt{y} è il numero del
     verbale e \texttt{x} il numero progressivo della decisione.
 
-    \item \textbf{Task}: identificati tramite codice \texttt{T-y.z}, dove \texttt{y} è il numero del
+    \item \textbf{Task\textsubscript{G}}: identificati tramite codice \texttt{T-y.z\textsubscript{G}}, dove \texttt{y} è il numero del
     verbale di origine e \texttt{z} il numero progressivo del task. I task sono ordinati per:
     scadenza, decisione di riferimento, codice incrementale.
 \end{itemize}
@@ -38,7 +38,7 @@ La documentazione è suddivisa nelle seguenti categorie.
 \subsubsection{Documentazione gestionale interna}
 
 \begin{itemize}
-    \item \textbf{Norme Di Progetto}: definiscono processi, convenzioni e
+    \item \textbf{Norme Di Progetto\textsubscript{G}}: definiscono processi, convenzioni e
     strumenti adottati dal gruppo.
 
     \item \textbf{Verbali Interni}: documentano discussioni, decisioni e attività operative. Non
@@ -52,30 +52,30 @@ La documentazione è suddivisa nelle seguenti categorie.
 \begin{itemize}
     \item \textbf{Verbali Esterni}: documentano incontri o comunicazioni con aziende o docenti.
 
-    \item \textbf{Valutazione Dei Capitolati}: documento comparativo che motiva la scelta del
+    \item \textbf{Valutazione Dei Capitolati\textsubscript{G}}: documento comparativo che motiva la scelta del
     capitolato.
 
-    \item \textbf{Dichiarazione Degli Impegni}: contiene scadenza prevista, preventivo dei costi,
+    \item \textbf{Dichiarazione Degli Impegni\textsubscript{G}}: contiene scadenza prevista, preventivo dei costi\textsubscript{G},
     assegnazione ore e ruoli, rischi attesi e impegni formali del gruppo.
 \end{itemize}
 
 \subsubsection{Documentazione tecnica}
 
-Nella fase pre-candidatura non è presente documentazione tecnica, né interna né esterna.
+Nella fase pre-candidatura\textsubscript{G} non è presente documentazione tecnica, né interna né esterna.
 Essa verrà introdotta solo dopo l’aggiudicazione del capitolato (es.: Analisi Dei Requisiti,
 Specifica Architetturale, Manuale Utente).
 
-\subsection{Ciclo di vita documentale}
+\subsection{Ciclo di vita documentale\textsubscript{G}}
 
 Il ciclo di vita dei documenti adottato dal gruppo è il seguente:
 
 \begin{enumerate}
     \item \textbf{Stesura}: il redattore compila il contenuto utilizzando il template approvato.
-    \item \textbf{Revisione}: il verificatore controlla struttura, coerenza e correttezza.
-    \item \textbf{Pubblicazione}: il documento viene caricato nella repository con la versione
+    \item \textbf{Revisione\textsubscript{G}}: il verificatore controlla struttura, coerenza e correttezza.
+    \item \textbf{Pubblicazione}: il documento viene caricato nella repository\textsubscript{G} con la versione
     aggiornata secondo il sistema di versionamento.
     \item \textbf{Approvazione}: la versione pubblicata viene approvata dal Responsabile.
-    \item \textbf{Ingresso in baseline}: la versione approvata diventa stabile. 
+    \item \textbf{Ingresso in baseline\textsubscript{G}}: la versione approvata diventa stabile. 
 \end{enumerate}
 
 I verbali non prevedono versionamento incrementale: viene pubblicata direttamente la
@@ -83,23 +83,28 @@ versione approvata.
 
 \subsection{Strumenti di documentazione}
 
-La documentazione è redatta in \LaTeX{} tramite Overleaf e organizzata in cartelle logiche
-all’interno della repository GitHub, secondo la suddivisione interna/esterna e gestionale/tecnica.
+\subsection{Strumenti di documentazione}
+
+La documentazione è redatta in \LaTeX{} e gestita tramite Visual Studio Code,
+quest’ultimo configurato con l’estensione LaTeX Workshop per la compilazione automatica
+dei PDF e il controllo immediato delle modifiche. I documenti sono organizzati in cartelle
+logiche all’interno della repository GitHub, secondo la suddivisione interna/esterna e
+gestionale/tecnica.
 
 \subsection{Gestione della Configurazione}
 
 La gestione della configurazione documentale avviene tramite GitHub:
 
 \begin{itemize}
-    \item ogni membro utilizza un branch personale;
-    \item le modifiche vengono integrate tramite pull request;
+    \item ogni membro utilizza un branch\textsubscript{G} personale;
+    \item le modifiche vengono integrate tramite pull request\textsubscript{G};
     \item la struttura delle cartelle riflette la classificazione dei documenti;
     \item la versione approvata di ogni documento è quella presente nel branch \texttt{main}.
 \end{itemize}
 
 \subsection{Versionamento}
 
-Il gruppo adotta il Semantic Versioning a tre cifre: \textbf{vX.Y.Z}.
+Il gruppo adotta il Semantic Versioning\textsubscript{G} a tre cifre: \textbf{vX.Y.Z}.
 
 \begin{itemize}
     \item \textbf{X (Major)}: rilasci ufficiali o cambiamenti strutturali profondi.

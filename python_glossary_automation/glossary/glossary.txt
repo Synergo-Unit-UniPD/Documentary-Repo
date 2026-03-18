@@ -1,6 +1,8 @@
 baseline
 branch
 candidatura
+ciclo di vita documentale
+dichiarazione degli impegni
 GitHub Pages
 GitHub Project
 Google Form
@@ -10,12 +12,17 @@ misurazione
 norme di progetto
 Pedice G
 Preventivo dei Costi
+pull request
 OdG preliminare
 repository
+revisione
 rtb
 ruolo
+semantic versioning
 struttura documentale
 task
+title case
+template
 tempo previsto
 tempo effettivo
 t-y.z
