@@ -1,15 +1,16 @@
 % --- 1. INFORMAZIONI GENERALI ---
 \section{Informazioni Generali}
 \begin{itemize}
-	\item \textbf{Azienda Coinvolta:} {[Nome Azienda]}
-	\item \textbf{Luogo/Piattaforma:} {[Google Meet / Sede Aziendale]}
-	\item \textbf{Data:} YYYY-MM-DD
-	\item \textbf{Orario di inizio - fine:} hh:mm - hh:mm
-	\item \textbf{Scriba Synergo Unit:} {[Inserisci Nome Scriba]}
+	\item \textbf{Azienda Coinvolta:} {Zucchetti}
+	\item \textbf{Mezzo di Comunicazione:} {Email}
+	\item \textbf{Data:} 2026-03-16
 \end{itemize}
 
+Il presente verbale documenta una prima comunicazione conoscitiva avvenuta via email tra il team SynergoUnit e i referenti dell’azienda Zucchetti. \\
+L’obiettivo della comunicazione è stato duplice: da un lato manifestare interesse per il capitolato “Second Brain”, dall’altro richiedere chiarimenti tecnici e organizzativi utili allo svolgimento dello studio di fattibilità ed allo sviluppo del MVP.
+
 \vspace{0.5cm}
-\textbf{Partecipanti Azienda:}
+\textbf{Referenti Azienda:}
 \begin{table}[ht]
 	\centering
 	\renewcommand{\arraystretch}{1.2}
@@ -17,107 +18,111 @@
 		\toprule
 		\textbf{Nome e Cognome} & \textbf{Ruolo} \\
 		\midrule
-		{[Nome Referente 1]} & {[-]} \\
-		{[Nome Referente 2]} & {[-]} \\
+		{Gregorio Piccoli} & {Referente Principale} \\
 		\bottomrule
 	\end{tabularx}
 \end{table}
 
-\vspace{0.5cm}
-\textbf{Partecipanti Gruppo (Synergo Unit):}
-\begin{table}[ht]
-	\centering
-	\renewcommand{\arraystretch}{1.2}
-	\begin{tabularx}{\textwidth}{X l l}
-		\toprule
-		\textbf{Nome e Cognome} & \textbf{Matricola} & \textbf{Ruolo} \\
-		\midrule
-		Sofia De Blasi & 2111014 & {[-]} \\
-		Roberto Mariano Doroftei & 2111031 & {[-]} \\
-		Filippo Idiometri & 2035617 & {[-]} \\
-		Francesco Marcon & 2110990 & {[-]} \\
-		Armando Moda Scarati & 2082864 & {[-]} \\
-		Anton Ricardo Rupi & 2054304 & {[-]} \\
-		\bottomrule
-	\end{tabularx}
-\end{table}
-
-% --- 2. ORDINE DEL GIORNO ---
-\section{Ordine del Giorno}
-Gli argomenti previsti per la riunione sono:
+% --- 2. CHIARIMENTI TECNICI RICHIESTI ---
+\section{Chiarimenti Tecnici Richiesti}
+Il gruppo ha richiesto chiarimenti sui seguenti aspetti:
 \begin{enumerate}
-	\item {[Inserire primo argomento]}
-	\item {[Inserire secondo argomento]}
+	\item Modelli LLM e accesso alle API.
+	\begin{itemize}
+		\item Preferenze sui modelli da utilizzare (tra quelli citati nel capitolato).
+		\item Modalità di accesso alle API per modelli non open source.
+	\end{itemize}
+	\item Valutazione secondo il modello dei “Sei cappelli per pensare”.
+	\begin{itemize}
+		\item Presenza di linee guida, prompt o criteri specifici.
+		\item Possibilità di definire autonomamente l’approccio.
+	\end{itemize}
+	\item Ambito del Proof of Concept (PoC).
+	\begin{itemize}
+		\item Priorità tra interazione con LLM e integrazione con editor Markdown.
+		\item Livello di completezza richiesto nella prima fase.
+	\end{itemize}
+	\item Persistenza dei dati.
+	\begin{itemize}
+		\item Eventuali preferenze su architettura e tecnologie lato server.
+		\item Indicazioni sull’uso di database remoto.
+	\end{itemize}
+	\item Supporto e modalità di interazione con l’azienda.
+	\begin{itemize}
+		\item Strumenti di comunicazione utilizzati.
+		\item Frequenza e modalità degli incontri (remoti o in presenza).
+		\item Disponibilità di canali diretti per supporto tecnico.
+	\end{itemize}
 \end{enumerate}
 
 % --- 3. RESOCONTO ---
 \section{Resoconto}
+Dalla risposta dell'azienda sono emersi i seguenti punti.
 
-\subsection{{[Titolo Argomento 1]}}
-\textbf{Discussione:} \\
-{[Sintesi professionale della discussione, richieste del proponente, chiarimenti forniti, dubbi emersi]}
-
-\vspace{0.3cm}
-\textbf{Accordi con il proponente:}
+\subsection{Modelli LLM e API}
 \begin{itemize}
-	\item {[punto di accordo x]}
+	\item Verranno fornite chiavi di accesso per i modelli: Gemma, ChatGPT-OSS e Qwen.
+	\item L’utilizzo di altri modelli non open source sarà valutato successivamente.
 \end{itemize}
 
-\vspace{0.1cm}
-\textbf{Richieste del proponente:}
+\subsection{Sei Cappelli per Pensare}
 \begin{itemize}
-	\item {[richiesta x]}
+	\item Non sono fornite linee guida specifiche.
+	\item È richiesto di sperimentare autonomamente tramite prompt.
 \end{itemize}
 
-\vspace{0.1cm}
-\textbf{Impegni del gruppo:}
+\subsection{Ambito del Proof of Concept}
 \begin{itemize}
-	\item {[Impegno x]} \textbf{(Scadenza: YYYY-MM-DD)}
+	\item È richiesta sia una prima interazione con gli LLM, sia una prima implementazione dell’editor Markdown.
 \end{itemize}
+
+\subsection{Persistenza dei Dati}
+\begin{itemize}
+	\item Preferenza per database Postgres.
+	\item Libertà di scelta lasciata al gruppo.
+\end{itemize}
+
+\subsection{Interazione con l'Azienda}
+\begin{itemize}
+	\item Strumenti: Zoom o Meet.
+	\item Possibilità di incontri in presenza (non obbligatori).
+	\item Frequenza: almeno due incontri per ciascuna consegna (3 consegne totali).
+	\item Maggiore frequenza in caso di difficoltà tecniche.
+\end{itemize}
+
 
 % --- 4. DECISIONI FORMALI ---
 \section{Decisioni Formali}
-Nella seguente tabella sono tracciate le decisioni ufficiali e le azioni conseguenti approvate congiuntamente all'azienda.
+Nel caso in cui il gruppo selezionasse il presente capitolato, si intendono adottare le seguenti linee guida progettuali.
 
-\begin{table}[ht]
-	\centering
-	\renewcommand{\arraystretch}{1.4}
-	\begin{tabularx}{\textwidth}{c X c c l}
-		\toprule
-		\textbf{Cod.} & \textbf{Decisione e Azione} & \textbf{Impatto} & \textbf{Resp.} & \textbf{Scadenza} \\
-		\midrule
-		
-		\textbf{VE-X.1} & 
-		\textbf{Decisione:} {[-]} \newline 
-		\textbf{Azione:} {[-]} & 
-		{[Requisiti / Tempi / Costi]} & 
-		{[Nome]} & 
-		{[YYYY-MM-DD]} \\
-		
-		\midrule
-		
-		\textbf{VE-X.2} & 
-		\textbf{Decisione:} {[-]} \newline 
-		\textbf{Azione:} {[-]} & 
-		{[Requisiti / Tempi / Costi]} & 
-		{[Nome]} & 
-		{[YYYY-MM-DD]} \\
-		
-		\bottomrule
-	\end{tabularx}
-\end{table}
+\renewcommand{\arraystretch}{1.3}
+\vspace{-0.3cm}
+\noindent
+\begin{longtable}{c p{12cm}}
+    \toprule
+    \textbf{Codice} & \textbf{Decisione} \\
+    \midrule
+    \endfirsthead
 
-% --- 5. PROSSIMO INCONTRO ---
-\section{Prossimo Incontro}
-\begin{itemize}
-	\item \textbf{Data e Ora:} {[YYYY-MM-DD hh:mm oppure "Da concordare"]}
-	\item \textbf{Modalità/Luogo:} {[Presenza / Google Meet / Discord]}
-	\item \textbf{Argomenti Previsti:}
-	\begin{itemize}
-		\item {[Preview OdG 1]}
-		\item {[Preview OdG 2]}
-	\end{itemize}
-\end{itemize}
+    \toprule
+    \textbf{Codice} & \textbf{Decisione} \\
+    \midrule
+    \endhead
+
+    \midrule
+    \multicolumn{2}{r}{\textit{Continua nella pagina successiva}} \\
+    \midrule
+    \endfoot
+
+    \bottomrule
+    \endlastfoot
+
+    \textbf{VE-1.1} & Utilizzare inizialmente i modelli LLM messi a disposizione dall’azienda (Gemma, ChatGPT-OSS, Qwen), evitando integrazioni esterne nella fase iniziale. \\
+    \textbf{VE-1.2} & Adottare un approccio sperimentale per l’implementazione del modello dei “Sei cappelli”, basato su prompt engineering \\
+    \textbf{VE-1.3} & Pianificare il PoC includendo sia l’interazione con LLM sia una versione base dell’editor Markdown. \\
+    \textbf{VE-1.4} & Valutare l’adozione di Postgres come soluzione per la persistenza, mantenendo comunque flessibilità tecnologica. \\
+    \textbf{VE-1.5} & Organizzare la comunicazione con l’azienda principalmente da remoto (Meet/Zoom), pianificando incontri in linea con le consegne e attivando contatti più frequenti in caso di necessità. \\
+\end{longtable}
 
 \newpage
 % --- 6. FIRME ---
@@ -132,7 +137,7 @@ Con le seguenti firme, i rappresentanti approvano formalmente il contenuto del p
 		\rule{6cm}{0.4pt} \\ 
 		\vspace{0.2cm}
 		\textbf{Per il Gruppo Synergo Unit} \\
-		{[Nome Responsabile Gruppo]} \\
+		Sofia De Blasi \\
 		\textit{Responsabile di Progetto}
 	\end{center}
 \end{minipage}
@@ -141,20 +146,10 @@ Con le seguenti firme, i rappresentanti approvano formalmente il contenuto del p
 	\begin{center}
 		\rule{6cm}{0.4pt} \\ 
 		\vspace{0.2cm}
-		\textbf{Per l'Azienda {[Nome Azienda]}} \\
-		{[Nome Referente Azienda]} \\
+		\textbf{Per l'Azienda Zucchetti} \\
+		{Gregorio Piccoli} \\
 		\textit{Referente Aziendale}
 	\end{center}
 \end{minipage}
 
 \vspace{2cm}
-
-% --- 7. ALLEGATI ---
-\rule{\textwidth}{0.4pt}
-\vspace{0.1cm}
-\textbf{Allegati:}
-\begin{itemize}
-	\item {[Lista documenti condivisi durante l'incontro, es. "Documento requisiti v2.pdf"]}
-	\item {[Presentazioni mostrate, es. "Slide architettura iniziale.pptx"]}
-	\item {[Screenshot o link a demo visionate]}
-\end{itemize}
