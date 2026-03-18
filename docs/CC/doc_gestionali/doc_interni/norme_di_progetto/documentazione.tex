@@ -3,62 +3,111 @@
 % =======================================================
 \section{Documentazione}
 
-\subsection{Template e convenzioni}
-[-]
+La documentazione prodotta dal gruppo \textit{Synergo Unit} è organizzata in modo da garantire
+coerenza, tracciabilità e accessibilità. Essa è suddivisa in documentazione gestionale e
+documentazione tecnica, secondo la classificazione prevista dal regolamento del progetto
+didattico.
+
+\subsection{Template\textsubscript{G} e convenzioni}
+
+Per garantire uniformità, il gruppo adotta le seguenti convenzioni:
+
+\begin{itemize}
+    \item \textbf{Nomi dei file}: tutti in minuscolo, con ``\_'' come separatore
+    (es.: \texttt{verbale\_interno\_2026\_03\_13.tex}).
+
+    \item \textbf{Titoli di sezioni e sotto-sezioni}: stile Title Case\textsubscript{G} per ogni livello
+    (es.: ``Lettera Di Presentazione'').
+
+    \item \textbf{Pedice G\textsubscript{G}}: applicato solo alla prima occorrenza di un termine presente nel
+    glossario
+    (es.: Termine\textsubscript{G}).
+
+    \item \textbf{Decisioni}: identificate tramite codice \texttt{VI-y.x\textsubscript{G}}, dove \texttt{y} è il numero del
+    verbale e \texttt{x} il numero progressivo della decisione.
+
+    \item \textbf{Task\textsubscript{G}}: identificati tramite codice \texttt{T-y.z\textsubscript{G}}, dove \texttt{y} è il numero del
+    verbale di origine e \texttt{z} il numero progressivo del task. I task sono ordinati per:
+    scadenza, decisione di riferimento, codice incrementale.
+\end{itemize}
 
 \subsection{Struttura documenti}
-[-]
 
-\subsection{Ciclo di vita documentale}
+La documentazione è suddivisa nelle seguenti categorie.
+
+\subsubsection{Documentazione gestionale interna}
+
+\begin{itemize}
+    \item \textbf{Norme Di Progetto\textsubscript{G}}: definiscono processi, convenzioni e
+    strumenti adottati dal gruppo.
+
+    \item \textbf{Verbali Interni}: documentano discussioni, decisioni e attività operative. Non
+    includono changelog: viene pubblicata solo la versione approvata.
+
+    \item \textbf{Glossario}: raccoglie i termini specialistici utilizzati nella documentazione.
+\end{itemize}
+
+\subsubsection{Documentazione gestionale esterna}
+
+\begin{itemize}
+    \item \textbf{Verbali Esterni}: documentano incontri o comunicazioni con aziende o docenti.
+
+    \item \textbf{Valutazione Dei Capitolati\textsubscript{G}}: documento comparativo che motiva la scelta del
+    capitolato.
+
+    \item \textbf{Dichiarazione Degli Impegni\textsubscript{G}}: contiene scadenza prevista, preventivo dei costi\textsubscript{G},
+    assegnazione ore e ruoli, rischi attesi e impegni formali del gruppo.
+\end{itemize}
+
+\subsubsection{Documentazione tecnica}
+
+Nella fase pre-candidatura\textsubscript{G} non è presente documentazione tecnica, né interna né esterna.
+Essa verrà introdotta solo dopo l’aggiudicazione del capitolato (es.: Analisi Dei Requisiti,
+Specifica Architetturale, Manuale Utente).
+
+\subsection{Ciclo di vita documentale\textsubscript{G}}
+
+Il ciclo di vita dei documenti adottato dal gruppo è il seguente:
+
 \begin{enumerate}
-	\item \textbf{Redazione}: stesura del documento da parte di un membro;
-	\item \textbf{Verifica}: controllo incrociato da parte di un verificatore (diverso dal redattore);
-	\item \textbf{Approvazione}: rilascio ufficiale autorizzato dal Responsabile.
+    \item \textbf{Stesura}: il redattore compila il contenuto utilizzando il template approvato.
+    \item \textbf{Revisione\textsubscript{G}}: il verificatore controlla struttura, coerenza e correttezza.
+    \item \textbf{Pubblicazione}: il documento viene caricato nella repository\textsubscript{G} con la versione
+    aggiornata secondo il sistema di versionamento.
+    \item \textbf{Approvazione}: la versione pubblicata viene approvata dal Responsabile.
+    \item \textbf{Ingresso in baseline\textsubscript{G}}: la versione approvata diventa stabile. 
 \end{enumerate}
 
+I verbali non prevedono versionamento incrementale: viene pubblicata direttamente la
+versione approvata.
+
 \subsection{Strumenti di documentazione}
-Il gruppo utilizza LaTeX (tramite TeXstudio/Overleaf) per la stesura dei documenti, strutturati in cartelle logiche.
+
+\subsection{Strumenti di documentazione}
+
+La documentazione è redatta in \LaTeX{} e gestita tramite Visual Studio Code,
+quest’ultimo configurato con l’estensione LaTeX Workshop per la compilazione automatica
+dei PDF e il controllo immediato delle modifiche. I documenti sono organizzati in cartelle
+logiche all’interno della repository GitHub, secondo la suddivisione interna/esterna e
+gestionale/tecnica.
 
 \subsection{Gestione della Configurazione}
-[-]
+
+La gestione della configurazione documentale avviene tramite GitHub:
+
+\begin{itemize}
+    \item ogni membro utilizza un branch\textsubscript{G} personale;
+    \item le modifiche vengono integrate tramite pull request\textsubscript{G};
+    \item la struttura delle cartelle riflette la classificazione dei documenti;
+    \item la versione approvata di ogni documento è quella presente nel branch \texttt{main}.
+\end{itemize}
 
 \subsection{Versionamento}
-Viene adottato un sistema basato sul Semantic Versioning a tre cifre: \textbf{vX.Y.Z}
+
+Il gruppo adotta il Semantic Versioning\textsubscript{G} a tre cifre: \textbf{vX.Y.Z}.
+
 \begin{itemize}
-	\item \textbf{X (Major)}: rilasci ufficiali per le baseline o cambiamenti strutturali profondi;
-	\item \textbf{Y (Minor)}: aggiunta di nuovi capitoli o funzionalità corpose;
-	\item \textbf{Z (Patch)}: correzioni ortografiche o piccoli bug fix.
+    \item \textbf{X (Major)}: rilasci ufficiali o cambiamenti strutturali profondi.
+    \item \textbf{Y (Minor)}: aggiunta o modifica significativa di contenuti.
+    \item \textbf{Z (Patch)}: correzioni ortografiche o modifiche non semantiche.
 \end{itemize}
-
-\subsection{Nomenclatura file e branch}
-[-]
-
-\subsection{Repository e struttura}
-[-]
-
-\subsection{Gestione della Qualità}
-[-]
-
-\subsection{Obiettivi di qualità}
-[-]
-
-\subsection{Metriche}
-[-]
-
-\subsection{Verifica}
-[-]
-
-\subsection{Analisi statica}
-[-]
-
-\subsection{Analisi dinamica}
-[-]
-
-\subsection{Walkthrough e inspection}
-\begin{itemize}
-	\item \textbf{Walkthrough}: [-]
-	\item \textbf{Inspection}: [-]
-\end{itemize}
-
-\subsection{Validazione}
-[-]
