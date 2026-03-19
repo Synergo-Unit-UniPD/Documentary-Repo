@@ -3,14 +3,15 @@
 % =======================================================
 \section{Documentazione}
 
-La documentazione prodotta dal gruppo \textit{Synergo Unit} è organizzata in modo da garantire
+La documentazione prodotta dal gruppo \textit{Synergo Unit} è organizzata per garantire
 coerenza, tracciabilità e accessibilità. Essa è suddivisa in documentazione gestionale e
 documentazione tecnica, secondo la classificazione prevista dal regolamento del progetto
 didattico.
 
 \subsection{Template\textsubscript{G} e convenzioni}
 
-Per garantire uniformità, il gruppo adotta le seguenti convenzioni:
+Per assicurare uniformità nella produzione documentale, il gruppo adotta le seguenti
+convenzioni:
 
 \begin{itemize}
     \item \textbf{Nomi dei file}: tutti in minuscolo, con ``\_'' come separatore
@@ -20,30 +21,24 @@ Per garantire uniformità, il gruppo adotta le seguenti convenzioni:
     (es.: ``Lettera Di Presentazione'').
 
     \item \textbf{Pedice G\textsubscript{G}}: applicato solo alla prima occorrenza di un termine presente nel
-    glossario
-    (es.: Termine\textsubscript{G}).
+    glossario (es.: Termine\textsubscript{G}).
 
     \item \textbf{Decisioni}: identificate tramite codice \texttt{VI-y.x\textsubscript{G}}, dove \texttt{y} è il numero del
     verbale e \texttt{x} il numero progressivo della decisione.
 
     \item \textbf{Task\textsubscript{G}}: identificati tramite codice \texttt{T-y.z\textsubscript{G}}, dove \texttt{y} è il numero del
-    verbale di origine e \texttt{z} il numero progressivo del task. I task sono ordinati per:
+    verbale di origine e \texttt{z} il numero progressivo del task. L’ordinamento segue:
     scadenza, decisione di riferimento, codice incrementale.
 \end{itemize}
 
 \subsection{Struttura documenti}
 
-La documentazione è suddivisa nelle seguenti categorie.
-
 \subsubsection{Documentazione gestionale interna}
 
 \begin{itemize}
-    \item \textbf{Norme Di Progetto\textsubscript{G}}: definiscono processi, convenzioni e
-    strumenti adottati dal gruppo.
-
+    \item \textbf{Norme Di Progetto\textsubscript{G}}: definiscono processi, convenzioni e strumenti adottati dal gruppo.
     \item \textbf{Verbali Interni}: documentano discussioni, decisioni e attività operative. Non
     includono changelog: viene pubblicata solo la versione approvata.
-
     \item \textbf{Glossario}: raccoglie i termini specialistici utilizzati nella documentazione.
 \end{itemize}
 
@@ -51,10 +46,7 @@ La documentazione è suddivisa nelle seguenti categorie.
 
 \begin{itemize}
     \item \textbf{Verbali Esterni}: documentano incontri o comunicazioni con aziende o docenti.
-
-    \item \textbf{Valutazione Dei Capitolati\textsubscript{G}}: documento comparativo che motiva la scelta del
-    capitolato.
-
+    \item \textbf{Valutazione Dei Capitolati\textsubscript{G}}: documento comparativo che motiva la scelta del capitolato.
     \item \textbf{Dichiarazione Degli Impegni\textsubscript{G}}: contiene scadenza prevista, preventivo dei costi\textsubscript{G},
     assegnazione ore e ruoli, rischi attesi e impegni formali del gruppo.
 \end{itemize}
@@ -67,31 +59,32 @@ Specifica Architetturale, Manuale Utente).
 
 \subsection{Ciclo di vita documentale\textsubscript{G}}
 
-Il ciclo di vita dei documenti adottato dal gruppo è il seguente:
-
 \begin{enumerate}
     \item \textbf{Stesura}: il redattore compila il contenuto utilizzando il template approvato.
     \item \textbf{Revisione\textsubscript{G}}: il verificatore controlla struttura, coerenza e correttezza.
-    \item \textbf{Pubblicazione}: il documento viene caricato nella repository\textsubscript{G} con la versione
-    aggiornata secondo il sistema di versionamento.
+    \item \textbf{Pubblicazione}: il documento viene caricato nella repository\textsubscript{G} con la versione aggiornata.
     \item \textbf{Approvazione}: la versione pubblicata viene approvata dal Responsabile.
-    \item \textbf{Ingresso in baseline\textsubscript{G}}: la versione approvata diventa stabile. 
+    \item \textbf{Ingresso in baseline\textsubscript{G}}: la versione approvata diventa stabile.
 \end{enumerate}
 
-I verbali non prevedono versionamento incrementale: viene pubblicata direttamente la
+\textbf{Nota:} I verbali non prevedono versionamento incrementale: viene pubblicata direttamente la
 versione approvata.
 
 \subsection{Strumenti di documentazione}
 
-\subsection{Strumenti di documentazione}
+La documentazione è redatta in \LaTeX{} e gestita tramite Visual Studio Code, configurato con
+l’estensione LaTeX Workshop per la compilazione automatica dei PDF. 
 
-La documentazione è redatta in \LaTeX{} e gestita tramite Visual Studio Code,
-quest’ultimo configurato con l’estensione LaTeX Workshop per la compilazione automatica
-dei PDF e il controllo immediato delle modifiche. I documenti sono organizzati in cartelle
-logiche all’interno della repository GitHub, secondo la suddivisione interna/esterna e
-gestionale/tecnica.
+La struttura dei documenti segue un template condiviso composto da:
 
-\subsection{Gestione della Configurazione}
+\begin{itemize}
+    \item una cartella principale con il nome del documento;
+    \item file separati per le sezioni (frontespizio, registro modifiche, contenuti);
+    \item una cartella \texttt{shared/} contenente loghi e configurazioni comuni;
+    \item uno script Python  contenuto in \texttt{python\_glossary\_automation/} che applica automaticamente il pedice G\textsubscript{G} alla prima occorrenza dei termini del glossario.
+\end{itemize}
+
+\subsection{Gestione della Configurazione Documentale}
 
 La gestione della configurazione documentale avviene tramite GitHub:
 
