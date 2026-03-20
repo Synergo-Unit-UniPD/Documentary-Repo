@@ -31,3 +31,13 @@ verbale interno
 verbale esterno
 VI-y.x
 way of working
+dichiarazione degli impegni
+llm
+large language model
+mvp
+minimum viable product
+prompt
+proof of concept
+pof
+postgres
+postgresql
