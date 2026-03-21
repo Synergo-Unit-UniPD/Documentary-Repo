@@ -1,0 +1,271 @@
+% ================================================================
+% SUPPORTO
+% ================================================================
+\section{Processi Di Supporto}
+ 
+\subsection{Processo Di Documentazione}
+\label{sec:documentazione}
+ 
+\subsubsection{Descrizione}
+ 
+Il processo di documentazione definisce regole, strumenti e ciclo di vita per la
+produzione, la revisione\textsubscript{G} e la pubblicazione di tutta la documentazione del gruppo.
+Esso si applica a ogni documento gestionale o tecnico, sia interno che esterno, e
+costituisce prerequisito per l'attivazione di qualsiasi altro processo.
+ 
+\subsubsection{Tipologia Dei Documenti}
+ 
+\paragraph{Documentazione Gestionale Interna}
+\begin{itemize}
+  \item \textbf{Norme Di Progetto\textsubscript{G}}: il presente documento;
+        definisce processi, convenzioni e strumenti adottati dal gruppo.
+        Redatto e mantenuto dall'Amministratore\textsubscript{G}.
+  \item \textbf{Verbali Interni}: documentano le discussioni, le decisioni adottate
+        e i task\textsubscript{G} assegnati nel corso delle riunioni interne.
+        Prevedono registro delle modifiche; viene pubblicata la versione approvata.
+  \item \textbf{Glossario}: raccoglie i termini specialistici utilizzati nella
+        documentazione, con la relativa definizione. Aggiornato in modo incrementale
+        a ogni introduzione di nuovi termini.
+\end{itemize}
+ 
+\paragraph{Documentazione Gestionale Esterna}
+\begin{itemize}
+  \item \textbf{Verbali Esterni}: documentano gli incontri o le comunicazioni formali
+        con aziende e docenti. Prevedono registro delle modifiche.
+  \item \textbf{Valutazione Dei Capitolati\textsubscript{G}}: documento comparativo
+        che motiva la scelta del capitolato.
+  \item \textbf{Dichiarazione Degli Impegni\textsubscript{G}}: contiene scadenza
+        prevista, preventivo dei costi\textsubscript{G}, assegnazione di ore per ruolo\textsubscript{G}, rischi attesi
+        e impegni formali del gruppo.
+\end{itemize}
+ 
+\paragraph{Documentazione Tecnica}
+La documentazione tecnica è introdotta esclusivamente dopo l'aggiudicazione del
+capitolato. Comprenderà, a titolo esemplificativo: Analisi Dei Requisiti,
+Specifica Architetturale, Manuale Utente.
+ 
+\subsubsection{Convenzioni Redazionali}
+\label{sec:convenzioni}
+ 
+Al fine di garantire uniformità e coerenza tra i documenti prodotti, il gruppo adotta
+le seguenti convenzioni, la cui applicazione è vincolante per tutti i redattori.
+ 
+\begin{itemize}
+  \item \textbf{Nomi dei file}: tutti in minuscolo, con il carattere \texttt{\_}
+        come separatore di parola. \\
+        \textit{Esempio}: \texttt{verbale\_interno\_2026\_03\_21.tex}
+ 
+  \item \textbf{Titoli di sezioni e sotto-sezioni}: stile Title~Case
+        per ogni livello di intestazione. \\
+        \textit{Esempio}: \texttt{Lettera Di Presentazione}
+ 
+  \item \textbf{Pedice G\textsubscript{G}}: applicato alla prima occorrenza, in
+        ciascun documento, di ogni termine presente nel Glossario. \\
+        \textit{Esempio}: \texttt{Termine\textsubscript{G}}
+ 
+  \item \textbf{Codice decisione da verbale interno}: le decisioni adottate in
+        riunione interna sono identificate dal codice \texttt{VI-y.x\textsubscript{G}}, dove
+        \texttt{y} è il numero progressivo del verbale e \texttt{x} il numero
+        progressivo della decisione al suo interno.
+ 
+  \item \textbf{Codice decisione da verbale esterno}: le decisioni adottate in
+        incontri esterni sono identificate dal codice \texttt{VE-y.x\textsubscript{G}},
+        con la stessa logica.
+ 
+  \item \textbf{Codice task}: i task sono identificati dal codice \texttt{T-y.z\textsubscript{G}},
+        dove \texttt{y} è il numero del verbale di origine e \texttt{z} il numero
+        progressivo del task. L'ordinamento dei task segue i criteri: scadenza,
+        decisione di riferimento, codice incrementale.
+ 
+  \item \textbf{Nome del file principale \LaTeX{}}: il file \texttt{main.tex} di
+        ogni documento deve essere rinominato con il nome che assumerà il PDF
+        finale secondo la convenzione dei nomi file, al fine di garantire la
+        corretta nominazione dell'output di compilazione.
+\end{itemize}
+ 
+\subsubsection{Struttura Del Template\textsubscript{G}}
+ 
+La struttura di ogni documento segue un template condiviso, composto da:
+ 
+\begin{itemize}
+  \item una cartella principale denominata con il nome del documento;
+  \item file \texttt{.tex} separati per le sezioni principali (frontespizio,
+        registro delle modifiche, contenuti);
+  \item una cartella \texttt{shared/} contenente loghi e configurazioni comuni
+        a tutti i documenti;
+  \item uno script Python contenuto in \texttt{python\_glossary\_automation/}
+        che applica automaticamente il pedice G alla prima
+        occorrenza di ciascun termine del Glossario.
+\end{itemize}
+ 
+\subsubsection{Ciclo Di Vita Documentale\textsubscript{G}}
+\label{sec:ciclo-vita}
+ 
+Il ciclo di vita di ogni documento si articola nelle seguenti fasi sequenziali:
+ 
+\begin{enumerate}
+  \item \textbf{Stesura}: il Redattore\textsubscript{G} produce il contenuto
+        utilizzando il template approvato e nel rispetto delle convenzioni
+        redazionali descritte nella Sezione~\ref{sec:convenzioni}.
+ 
+  \item \textbf{Revisione}: il Verificatore\textsubscript{G},
+        che deve essere un membro diverso dal Redattore, controlla struttura,
+        coerenza, correttezza e conformità del documento alle presenti norme.
+        In caso di non conformità, il documento viene restituito al Redattore
+        con le indicazioni necessarie.
+ 
+  \item \textbf{Pubblicazione}: superata la revisione, il documento viene
+        integrato nel branch\textsubscript{G} \texttt{main} del
+        repository\textsubscript{G} tramite pull~request,
+        con il numero di versione aggiornato.
+ 
+  \item \textbf{Ingresso In Baseline\textsubscript{G}}: la versione pubblicata
+        nel branch \texttt{main} costituisce la versione ufficiale e stabile del
+        documento e funge da riferimento per tutte le attività successive.
+\end{enumerate}
+ 
+\subsubsection{Versionamento Documentale}
+ 
+Il gruppo adotta il \textit{Semantic Versioning\textsubscript{G}} a tre cifre nel
+formato \textbf{vX.Y.Z}, con le seguenti regole di incremento:
+ 
+\bigskip
+\begin{tabularx}{\textwidth}{l l X}
+  \toprule
+  \textbf{Campo} & \textbf{Incremento} & \textbf{Quando applicarlo} \\
+  \midrule
+  X (Major) & + 1.0.0 & Rilascio ufficiale per ingresso in baseline o cambiamento
+                        strutturale profondo del documento. \\[4pt]
+  Y (Minor) & + 0.1.0 & Aggiunta o modifica significativa di contenuti. \\[4pt]
+  Z (Patch) & + 0.0.1 & Correzioni ortografiche, tipografiche o modifiche
+                        non semantiche. \\
+  \bottomrule
+\end{tabularx}
+ 
+\subsubsection{Strumenti Di Documentazione}
+\label{sec:strumenti-doc}
+ 
+\begin{itemize}
+  \item \textbf{\LaTeX{} con Visual Studio Code}: ambiente principale per la
+        redazione dei documenti; la compilazione automatica in PDF è gestita
+        tramite l'estensione \textit{LaTeX Workshop}. Il file principale è
+        nominato secondo la convenzione descritta nella
+        Sezione~\ref{sec:convenzioni}.
+  \item \textbf{Script Python} (\texttt{python\_glossary\_automation/}):
+        automatizza l'applicazione del pedice G alla prima
+        occorrenza di ogni termine del Glossario, riducendo gli errori manuali.
+  \item \textbf{GitHub Pages\textsubscript{G}}: pubblica il sito documentale del
+        gruppo, sviluppato in HTML5 e CSS3, come punto di accesso unico alla
+        documentazione prodotta.
+\end{itemize}
+ 
+% ---------------------------------------------------------------
+\subsection{Processo Di Gestione Della Configurazione}
+\label{sec:configurazione}
+ 
+\subsubsection{Descrizione}
+ 
+Il processo di gestione della configurazione garantisce il controllo delle versioni
+di tutti i documenti prodotti, la tracciabilità delle modifiche e la disponibilità
+della versione ufficiale approvata. Il processo è implementato tramite un
+repository GitHub centralizzato.
+ 
+\subsubsection{Struttura Del Repository}
+ 
+Il repository è organizzato secondo la classificazione documentale adottata:
+ 
+\begin{itemize}
+  \item \texttt{docs/<[CC|RTB\textsubscript{G}|PB]>/doc\_gestionali/verb\_interni/} — verbali interni;
+  \item \texttt{docs/<[CC|RTB|PB]>/doc\_gestionali/doc\_interni/} — norme di progetto,
+        glossario;
+  \item \texttt{docs/<[CC|RTB|PB]>/doc\_gestionali/verb\_esterni/} — verbali esterni;
+  \item \texttt{docs/<[CC|RTB|PB]>/doc\_gestionali/doc\_esterni/} — valutazione dei
+        capitolati, dichiarazione degli impegni, piano di progetto, piano di
+        qualifica;
+  \item \texttt{docs/<[CC|RTB|PB]>/doc\_tecnici/} — documentazione tecnica (attivata
+        dopo l'aggiudicazione);
+  \item \texttt{docs/template/shared/} — loghi, template e configurazioni comuni.
+\end{itemize}
+ 
+La versione approvata e stabile di ogni documento è quella presente nel branch
+\texttt{main}; qualsiasi altra versione intermedia è da considerarsi non ufficiale.
+ 
+\subsubsection{Strategia Di Branching}
+ 
+Il gruppo adotta il modello \textit{trunk-based development\textsubscript{G}}.
+Ogni membro apre un branch dedicato per lavorare su un singolo
+documento; il branch è nominato secondo la convenzione:
+ 
+\begin{center}
+  \texttt{<idTask>\_<[gestionale|tecnico]>\_<categoria>\_<nomeDoc>}
+\end{center}
+ 
+\textit{Esempio}: \texttt{T-3.2\_gestionale\_doc\_interno\_norme\_progetto}
+ 
+Al termine del lavoro, le modifiche sono integrate nel branch \texttt{main} tramite
+pull request\textsubscript{G}; dopo l'integrazione il branch viene eliminato.
+ 
+\subsubsection{Procedura Di Modifica}
+ 
+Ogni modifica a un documento già pubblicato segue obbligatoriamente la procedura
+seguente:
+ 
+\begin{enumerate}
+  \item Apertura di un branch dedicato con nome conforme alla convenzione.
+  \item Redazione delle modifiche nel rispetto delle convenzioni redazionali.
+  \item Aggiornamento del numero di versione secondo il
+        Semantic~Versioning.
+  \item Aggiornamento del registro delle modifiche con autore, verificatore,
+        data e descrizione.
+  \item Revisione da parte del Verificatore assegnato.
+  \item Integrazione nel branch \texttt{main} tramite pull~request.
+  \item Eliminazione del branch di lavoro.
+\end{enumerate}
+ 
+% ---------------------------------------------------------------
+\subsection{Processo Di Verifica}
+\label{sec:verifica}
+ 
+\subsubsection{Descrizione}
+ 
+Il processo di verifica assicura che ogni documento prodotto soddisfi i requisiti
+di qualità definiti nelle presenti norme prima di essere pubblicato. Esso viene
+attivato al termine di ogni stesura e prima di ogni pull~request.
+ 
+\subsubsection{Responsabilità}
+ 
+\begin{itemize}
+  \item Il Verificatore è sempre un membro del gruppo \textbf{diverso} dal Redattore
+        del documento oggetto di revisione.
+  \item L'assegnazione del Verificatore avviene in fase di pianificazione del task,
+        contestualmente all'assegnazione del Redattore.
+  \item Nessun membro può verificare e approvare il proprio lavoro.
+\end{itemize}
+ 
+\subsubsection{Attività Di Verifica}
+ 
+Il Verificatore controlla, per ciascun documento:
+ 
+\begin{itemize}
+  \item \textbf{Conformità formale}: rispetto delle convenzioni redazionali
+        (nome file, Title~Case, pedice G, codici decisione e task).
+  \item \textbf{Correttezza linguistica}: assenza di errori ortografici,
+        grammaticali e sintattici.
+  \item \textbf{Coerenza interna}: consistenza tra sezioni, assenza di
+        contraddizioni, correttezza dei riferimenti incrociati.
+  \item \textbf{Correttezza del versionamento}: numero di versione aggiornato
+        correttamente e registro delle modifiche compilato con tutti i campi.
+  \item \textbf{Completezza}: tutti i campi obbligatori del template sono compilati;
+        le sezioni non applicabili sono esplicitamente marcate.
+\end{itemize}
+ 
+\subsubsection{Esito Della Verifica}
+ 
+\begin{itemize}
+  \item \textbf{Esito positivo}: il Verificatore approva la
+        pull~request; il documento è integrato nel branch
+        \texttt{main}.
+  \item \textbf{Esito negativo}: il Verificatore lascia commenti analitici sulla
+        pull~request e la chiude senza merge. Il Redattore è tenuto
+        ad apportare le correzioni richieste e a richiedere una nuova verifica.
+\end{itemize}
