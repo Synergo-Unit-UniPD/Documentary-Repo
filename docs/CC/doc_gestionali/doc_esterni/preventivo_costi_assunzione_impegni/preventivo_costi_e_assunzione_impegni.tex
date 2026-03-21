@@ -1,0 +1,326 @@
+\documentclass[11pt, a4paper]{article}
+
+% 1. RICHIAMA LA CONFIGURAZIONE CONDIVISA
+\input{../../../../template/shared/configurazione.tex}
+
+% === PERCORSO IMMAGINI ===
+\graphicspath{{../../../../template/shared/loghi/}}
+
+% === CONFIGURAZIONE METADATI ===
+\hypersetup{
+	pdftitle={Preventivo e Impegni - Synergo Unit},
+	pdfauthor={Synergo Unit}
+}
+
+% === CONFIGURAZIONE INTESTAZIONE E PIÈ DI PAGINA ===
+\pagestyle{fancy}
+\fancyhf{} 
+\fancyhead[L]{\textcolor{primarycolor}{\textbf{Synergo Unit}}}
+\fancyhead[R]{Preventivo Costi e Impegni v0.4.0 - 2026-03-21}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\setlength{\headheight}{15pt}
+
+% =========================================================
+% INIZIO DOCUMENTO
+% =========================================================
+\begin{document}
+	
+	% --- FRONTESPIZIO ---
+	\begin{titlepage}
+		\begin{center}
+			\includegraphics[height=3cm]{logo_unipd.png}
+			\hspace{3.5cm}
+			\includegraphics[height=3cm]{logo_gruppo.png}
+		\end{center}
+		
+		\vspace{2.5cm}
+		
+		\begin{center}
+			{\Large \textsc{Università degli Studi di Padova}} \\
+			\vspace{0.2cm}
+			{\large Corso di Laurea in Informatica} \\
+			{\large Insegnamento di Ingegneria del Software} \\
+			\vspace{0.2cm}
+			{\normalsize Anno Accademico 2025/2026}
+			
+			\vspace{3.5cm}
+			
+			{\Huge \textbf{\textcolor{primarycolor}{Preventivo Costi e}} \\ \vspace{0.2cm} \textbf{\textcolor{primarycolor}{Assunzione Impegni}}} \\
+			\vspace{0.5cm}
+			{\Large \textbf{Dichiarazione formale di impegno}}
+			
+			\vspace{3.5cm}
+		\end{center}
+		
+		\begin{flushleft}
+			\textbf{Gruppo:} Synergo Unit \\
+			\textbf{Email:} \href{mailto:synergounit.20@gmail.com}{synergounit.20@gmail.com}
+		\end{flushleft}
+		
+		\vfill
+		\begin{center}
+			{\large Versione: \textbf{v0.4.0}} \\
+			{\large Data: \textbf{2026-03-21}}
+		\end{center}
+	\end{titlepage}
+	
+	\newpage
+	
+	% --- REGISTRO DELLE MODIFICHE ---
+    \section*{Registro delle Modifiche}
+    \begin{table}[ht]
+        \centering
+        \renewcommand{\arraystretch}{1.5}
+        \begin{tabularx}{\textwidth}{c c l X}
+            \toprule
+            \textbf{Versione} & \textbf{Data} & \textbf{Autore/Verificatore} & \textbf{Descrizione} \\
+            \midrule
+            v1.0.0 & YYYY-MM-DD & {[Nome]} / {[Nome]} & Approvazione e firma del documento per il rilascio \\
+            v0.4.0 & 2026-03-21 & Armando / Tutti & Ottimizzazione finale della distribuzione ore e ricalcolo preventivo \\
+            v0.3.1 & 2026-03-21 & Armando / {[Nome]} & Riordinamento sezioni Rischi e Firme, e correzioni di impaginazione \\
+            v0.3.0 & 2026-03-20 & Armando / Tutti & Aumento monte ore a 90 per membro, calcolo costi e assegnazione individuale \\
+            v0.2.0 & 2026-03-19 & Armando / Tutti & Ripartizione ore per ruolo e definizione costo ore per ruolo \\
+            v0.1.0 & 2026-03-16 & Armando / {[Nome]} & Prima stesura del documento e analisi delle disponibilità \\
+            v0.0.0 & 2026-03-13 & Armando / {[Nome]} & Creazione struttura base del documento \\
+            \bottomrule
+        \end{tabularx}
+    \end{table}
+	
+	\newpage
+	
+	% --- INDICE ---
+	\tableofcontents
+	\newpage
+	
+	% --- 1. INTRODUZIONE ---
+	\section{Introduzione}
+	
+	\subsection{Capitolato selezionato}
+	Il gruppo Synergo Unit, a seguito delle valutazioni riportate nel documento \textit{Valutazione Capitolati}, comunica formalmente la scelta di impegnarsi nella realizzazione del capitolato \textbf{{Second Brain}}, proposto dall'azienda \textbf{{Zucchetti}}.
+	
+	\subsection{Periodo progetto stimato}
+	Le attività rendicontate nel presente documento avranno inizio in data \textbf{{27 marzo 2026}} e si concluderanno entro e non oltre la data prevista per la consegna finale, fissata al \textbf{{28 agosto 2026}}.
+	
+	\newpage
+	% --- 2. RIPARTIZIONE RUOLI PREVENTIVATA ---
+	\section{Ripartizione Ruoli Preventivata}
+	
+	\subsection{Distribuzione ore per ruolo}
+	Il gruppo è composto da 6 membri. Al fine di garantire il corretto svolgimento del progetto e rispettare i vincoli imposti dal regolamento, è stato stabilito un monte ore individuale di \textbf{90 ore produttive} per persona, per un totale di \textbf{540 ore} complessive.
+	
+	\begin{table}[H]
+		\centering
+		\renewcommand{\arraystretch}{1.3}
+		\begin{tabularx}{0.9\textwidth}{|X|c|c|}
+			\hline
+			\rowcolor{primarycolor!10}
+			\textbf{Ruolo} & \textbf{Costo Orario} & \textbf{Ore Totali Preventivate} \\
+			\hline
+			Responsabile & 30 \euro/h & 58 \\
+			\hline
+			Amministratore & 20 \euro/h & 48 \\
+			\hline
+			Analista & 25 \euro/h & 125 \\
+			\hline
+			Progettista & 25 \euro/h & 128 \\
+			\hline
+			Programmatore & 15 \euro/h & 88 \\
+			\hline
+			Verificatore & 15 \euro/h & 93 \\
+			\hline
+			\rowcolor{lightgray}
+			\textbf{Totale} & & \textbf{540} \\
+			\hline
+		\end{tabularx}
+	\end{table}
+	
+	\subsection{Descrizione dei ruoli}
+	Per garantire una chiara divisione dei compiti, il team fa riferimento alle seguenti definizioni per i ruoli di progetto:
+	\begin{itemize}
+		\item \textbf{Responsabile (o Project Manager):} Governa il team e rappresenta l'intero progetto verso l'esterno, fungendo da intermediario con il committente e gli stakeholder. Le sue mansioni includono pianificare e stimare i costi, il calendario e le risorse del progetto. Inoltre, coordina le attività, assegnando i compiti ai membri del gruppo. Si occupa anche di gestire i rischi, amministrare il personale e comunicare esternamente lo stato di avanzamento. Deve infine approvare i documenti e il rilascio dei prodotti parziali o finali. Accentrando le responsabilità decisionali, il responsabile partecipa per tutta la durata del progetto e deve possedere competenze tecniche e lungimiranza per valutare scelte e alternative.
+		
+		\item \textbf{Amministratore:} Si occupa di gestire e controllare l'ambiente di lavoro e l'infrastruttura IT, affinché le procedure siano efficienti ed automatizzate. I suoi compiti principali consistono nel definire e manutenere l'ambiente IT, gli strumenti e le tecnologie a supporto del metodo di lavoro del team. Deve garantire la gestione della documentazione e supervisionare gli strumenti di versionamento e la configurazione del software. Tra le altre mansioni, deve gestire in modo proattivo le segnalazioni (ticket) sui problemi dell'infrastruttura tecnica. Infine, è incaricato di redigere e far rispettare norme e procedure interne.
+		
+		\item \textbf{Analista:} È la figura che collega gli utenti finali agli sviluppatori, traducendo i bisogni del cliente in requisiti tecnici. Nello specifico deve raccogliere, analizzare e documentare i requisiti e le specifiche del sistema, lavorando a stretto contatto con gli stakeholder per comprenderne le reali esigenze. Per svolgere questo ruolo è fondamentale conoscere a fondo il dominio del problema che il software deve risolvere. Normalmente, è una figura chiave e numericamente ristretta nelle fasi iniziali dell'attività e non segue il progetto fino alla sua conclusione.
+		
+		\item \textbf{Progettista:} Definisce la struttura e l'architettura della soluzione software a partire dalle specifiche e dal problema individuato dall'analista. Le sue responsabilità includono il progettare l'architettura del software, stabilendo come le varie componenti del sistema si comporranno e interagiranno tra loro. Deve inoltre effettuare le scelte realizzative e tecnologiche possedendo competenze tecniche aggiornate. Egli sintetizza una soluzione realizzabile che verrà poi codificata; pertanto, segue attivamente la fase di sviluppo ma solitamente non quella di manutenzione.
+		
+		\item \textbf{Programmatore:} Si occupa della realizzazione concreta del software svolgendo le attività di codifica. Nello specifico implementa la soluzione ideata dal progettista, scrivendo il codice e rispettando rigorosamente lo schema e l'architettura prevista. Ha una visione, delle deleghe e delle responsabilità strettamente limitate ai propri compiti circoscritti, il che consente di lavorare in isolamento raggiungendo il massimo parallelismo e velocità di sviluppo del team. Partecipa attivamente alla fase di realizzazione, forma la categoria di lavoratori più numerosa, e permane a lungo nel progetto per occuparsi dell'eventuale manutenzione.
+		
+		\item \textbf{Verificatore:} Garantisce la qualità e la correttezza dei prodotti generati eseguendo le relative attività di verifica continua. Il suo ruolo prevede di controllare in modo sistematico, disciplinato e misurabile i prodotti di ogni singola attività, come documenti e codice, per accertarsi che i membri non abbiano introdotto errori nel lavoro. Deve utilizzare test funzionali e checklist procedurali prestabilite per assicurare che il prodotto risponda alle aspettative. Essendo presente per l'intera durata del progetto, deve possedere competenze tecniche, forte capacità di giudizio, esperienza progettuale e assoluta familiarità con il metodo di lavoro adottato.
+	\end{itemize}
+	
+	\subsection{Rotazione ruoli pianificata}
+	Il gruppo ha stabilito di adottare un sistema di rotazione dei ruoli con cadenza bisettimanale, allineando i cambi di ruolo all'inizio di ogni nuovo sprint di progetto. L'assegnazione dei ruoli verrà definita durante i meeting di Sprint Planning, tenendo in considerazione i seguenti criteri:
+	\begin{itemize}
+		\item Le ore produttive che ciascun membro ha a disposizione per quello specifico periodo.
+		\item Le competenze individuali rispetto ai task previsti per lo sprint.
+		\item Il bilanciamento storico dei ruoli, per assicurare che tutti maturino esperienza in ogni ambito.
+	\end{itemize}
+	
+	\textbf{Gestione del Conflitto di Interessi:}\\
+	Al fine di garantire l'obiettività e la qualità del lavoro, il gruppo applicherà rigorosamente il principio di indipendenza della verifica. È fatto assoluto divieto a qualsiasi membro di ricoprire il ruolo di Verificatore per validare artefatti (documentazione o codice) di cui è stato l'autore (in veste di Analista, Progettista o Programmatore). La pianificazione degli sprint terrà conto di questo vincolo per evitare colli di bottiglia.
+	
+	\subsection{Copertura di tutti i ruoli per tutti i membri}
+	Il gruppo si impegna formalmente a garantire che ciascun membro svolga, durante l'intero ciclo di vita del progetto, ore produttive in ciascuno dei sei ruoli previsti dal corso, seppur con un bilanciamento diverso in base alle competenze personali.
+	
+	\newpage
+	% --- 3. PREVENTIVO ECONOMICO ---
+	\section{Preventivo Economico}
+	
+	\subsection{Costo preventivato per ruolo}
+	In base alla distribuzione oraria definita nella Sezione 2, il costo totale ripartito per i ruoli di progetto è il seguente:
+	
+	\begin{table}[H]
+		\centering
+		\renewcommand{\arraystretch}{1.3}
+		\begin{tabularx}{\textwidth}{|X|c|c|r|}
+			\hline
+			\rowcolor{primarycolor!10}
+			\textbf{Ruolo} & \textbf{Ore Totali} & \textbf{Costo Orario} & \textbf{Costo Totale (\euro)} \\
+			\hline
+			Responsabile & 55 & 30 \euro & 1.650,00 \euro \\
+			\hline
+			Amministratore & 48 & 20 \euro & 960,00 \euro \\
+			\hline
+			Analista & 125 & 25 \euro & 3.125,00 \euro \\
+			\hline
+			Progettista & 125 & 25 \euro & 3.125,00 \euro \\
+			\hline
+			Programmatore & 91 & 15 \euro & 1.365,00 \euro \\
+			\hline
+			Verificatore & 96 & 15 \euro & 1.440,00 \euro \\
+			\hline
+			\rowcolor{lightgray}
+			\textbf{Costo Totale Preventivato} & \textbf{540} & & \textbf{11.665,00 \euro} \\
+			\hline
+		\end{tabularx}
+	\end{table}
+	
+	\subsection{Ore di ciascun componente per ruolo}
+	Di seguito viene illustrata la suddivisione esatta delle ore per ruolo per ogni componente del team. La distribuzione è stata bilanciata per assicurare che ciascun membro raggiunga esattamente le 90 ore previste dal preventivo.
+	
+	\begin{table}[H]
+		\centering
+		\renewcommand{\arraystretch}{1.3}
+		\begin{tabularx}{\textwidth}{|X|c|c|c|c|c|c|c|}
+			\hline
+			\rowcolor{primarycolor!10}
+			\textbf{Membro} & \textbf{Re} & \textbf{Am} & \textbf{An} & \textbf{Pj} & \textbf{Pr} & \textbf{Ve} & \textbf{Totale} \\
+			\hline
+			{Sofia De Blasi} & 9 & 8 & 21 & 20 & 16 & 16 & \textbf{90} \\
+			\hline
+			{Roberto Mariano Doroftei} & 9 & 8 & 21 & 20 & 16 & 16 & \textbf{90} \\
+			\hline
+			{Filippo Idiometri} & 9 & 8 & 21 & 20 & 15 & 17 & \textbf{90} \\
+			\hline
+			{Francesco Marcon} & 10 & 8 & 21 & 22 & 14 & 15 & \textbf{90} \\
+			\hline
+			{Armando Moda Scarati} & 9 & 8 & 21 & 21 & 15 & 16 & \textbf{90} \\
+			\hline
+			{Anton Ricardo Rupi} & 9 & 8 & 20 & 22 & 15 & 16 & \textbf{90} \\
+			\hline
+			\rowcolor{lightgray}
+			\textbf{Totale} & \textbf{55} & \textbf{48} & \textbf{125} & \textbf{125} & \textbf{91} & \textbf{96} & \textbf{540} \\
+			\hline
+		\end{tabularx}
+		\caption*{*Legenda: Re=Responsabile, Am=Amministratore, An=Analista, Pj=Progettista, Pr=Programmatore, Ve=Verificatore}
+	\end{table}
+	
+	\subsection{Costo totale preventivato}
+	Il preventivo finale stimato per la realizzazione del prodotto software è pari a \textbf{11.665,00 \euro}. Tale importo supera la soglia minima richiesta per i gruppi da 6 componenti (pari a 10.285,71 \euro) e costituisce il limite superiore invalicabile ("costo accettato") per il completamento dei lavori.
+	
+	\newpage
+	% --- 4. ANALISI DISPONIBILITÀ ---
+	\section{Analisi Disponibilità}
+	
+	\subsection{Impegni accademici membri}
+	Poiché tutti i membri del team sono studenti universitari, la disponibilità lavorativa subirà delle naturali flessioni durante le sessioni d'esame. I periodi in cui si prevede una riduzione fisiologica del monte ore da dedicare al progetto sono i seguenti:
+	\begin{itemize}
+		\item Dal 15 giugno 2026 al 30 giugno 2026;
+		\item Dal 6 luglio 2026 al 17 luglio 2026;
+		\item Dal 21 agosto 2026 al 31 agosto 2026;
+		\item Dal 1 settembre 2026 al 17 settembre 2026.
+	\end{itemize}
+	
+	\subsection{Altri impegni rilevanti}
+	Al momento non sono stati segnalati ulteriori impegni personali o lavorativi (es. part-time) di rilievo che possano impattare significativamente sul monte ore complessivo preventivato. Eventuali variazioni verranno gestite internamente e comunicate con preavviso.
+	
+	\subsection{Calendario condiviso disponibilità}
+	Al fine di garantire una corretta pianificazione degli sprint e un'assegnazione realistica dei task, il gruppo ha istituito un \textit{Google Calendar} condiviso. Questo strumento permette al Responsabile di tracciare in tempo reale le fasce orarie e le giornate di disponibilità/indisponibilità di ciascun membro, facilitando enormemente l'organizzazione dei meeting sincroni e la distribuzione del carico di lavoro.
+	
+	\subsection{Periodi critici identificati}
+	Dall'analisi incrociata del calendario accademico e lavorativo, sono stati identificati i seguenti periodi potenzialmente critici, per i quali il team ha già predisposto opportune strategie di mitigazione:
+	\begin{itemize}
+		\item \textbf{Sessioni d'esame (Giugno-Settembre 2026):} Come indicato nella Sezione 4.1, in questi periodi si registrerà un rallentamento nello sviluppo. Il team bilancerà il lavoro concentrando i task più impegnativi nei periodi di maggiore disponibilità.
+		\item \textbf{Festività e ferie estive aziendali:} Si prevede un potenziale rallentamento nelle comunicazioni a causa della chiusura estiva degli uffici dell'azienda proponente o delle ferie del nostro supervisore di riferimento (presumibilmente ad agosto). Il gruppo si impegna a mitigare il rischio pianificando i SAL (Stato Avanzamento Lavori) e le richieste di chiarimento sui requisiti con largo anticipo rispetto alle chiusure aziendali.
+	\end{itemize}
+	
+	\newpage
+	% --- 5. RISCHI ATTESI E LORO MITIGAZIONE ---
+	\section{Rischi attesi e loro mitigazione}
+	Durante la fase di analisi e pianificazione, il gruppo ha individuato alcune criticità potenziali che potrebbero presentarsi durante lo svolgimento del progetto. Per ognuna di esse è stata definita una strategia di mitigazione:
+	
+	\begin{itemize}
+		\item \textbf{Complessità del capitolato}\\
+		\textbf{Rischio:} Poiché nessun membro ha mai affrontato un progetto di questa portata, esiste la possibilità di sottostimare o sovrastimare il tempo necessario per completare specifici task.\\
+		\textbf{Mitigazione:} Ottimizzazione continua del nostro \textit{Way of Working} e una scelta accurata delle milestone di progetto per monitorare costantemente l'avanzamento.
+		
+		\vspace{0.3cm}
+		\item \textbf{Uso di nuove tecnologie}\\
+		\textbf{Rischio:} L'inesperienza con i framework, le librerie e le tecnologie richieste dall'azienda proponente potrebbe causare rallentamenti o fasi di stallo durante lo sviluppo.\\
+		\textbf{Mitigazione:} Prevedere un periodo di studio, sia individuale che collettivo, sfruttando la documentazione e i materiali consigliati dall'azienda proponente.
+		
+		\vspace{0.3cm}
+		\item \textbf{Tempo e impegni personali}\\
+		\textbf{Rischio:} La sovrapposizione con altre sessioni d'esame, lavori part-time o impegni personali dei vari membri potrebbe ostacolare il raggiungimento delle ore produttive settimanali previste.\\
+		\textbf{Mitigazione:} Pianificare un carico settimanale realistico e sostenibile. Inoltre, chi prevede di non riuscire a completare un task entro la scadenza si impegna a comunicarlo tempestivamente al team.
+		
+		\vspace{0.3cm}
+		\item \textbf{Distribuzione ed esecuzione dei ruoli}\\
+		\textbf{Rischio:} Dato l'obbligo di rotazione, i membri si troveranno a ricoprire ruoli in cui hanno meno esperienza o competenza, incontrando inevitabili difficoltà.\\
+		\textbf{Mitigazione:} Pianificare regolarmente incontri sincroni per favorire il supporto reciproco, permettendo a chi ha più esperienza in un determinato ruolo di assistere i colleghi.
+	\end{itemize}
+	
+	\newpage
+	% --- 6. ASSUNZIONE IMPEGNO FORMALE ---
+	\section{Assunzione Impegno Formale}
+	
+	\subsection{Dichiarazione ore garantite per membro}
+	I sottoscritti membri del gruppo Synergo Unit dichiarano di impegnarsi a svolgere un totale di \textbf{90 ore individuali} di lavoro produttivo per la realizzazione del progetto assegnato, rispettando la turnazione dei ruoli descritta nel presente documento.
+	
+	\subsection{Scadenza ultima consegna prevista}
+	Il gruppo assume il formale impegno di consegnare il prodotto finito, completo della relativa documentazione e collaudato, entro e non oltre la data del \textbf{{28 agosto 2026}}.
+	
+	\vspace{2cm}
+	
+	\subsection{Firme}
+	Con la seguente firma, i rappresentanti assumono l'impegno a nome dell'intero gruppo nei confronti del committente accademico e dell'azienda proponente.
+	
+	\vspace{2cm}
+	
+	\noindent
+	\begin{minipage}[c]{0.45\textwidth}
+		\begin{center}
+			% Linea per la firma
+			\rule{6cm}{0.4pt} \\ 
+			\vspace{0.2cm}
+			\textbf{Per il Gruppo Synergo Unit} \\
+			{[Nome Responsabile Attuale]} \\
+			\textit{Responsabile di Progetto}
+		\end{center}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[c]{0.45\textwidth}
+		\begin{center}
+			\rule{6cm}{0.4pt} \\ 
+			\vspace{0.2cm}
+			\textbf{Per il Committente} \\
+			{[Nome Docente / Committente]} \\
+			\textit{Docente del Corso}
+		\end{center}
+	\end{minipage}
+	
+\end{document}
