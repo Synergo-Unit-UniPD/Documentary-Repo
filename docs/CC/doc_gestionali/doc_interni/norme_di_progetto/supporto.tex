@@ -1,5 +1,5 @@
 % ================================================================
-% 4. PROCESSI DI SUPPORTO
+% SUPPORTO
 % ================================================================
 \section{Processi Di Supporto}
  
@@ -9,7 +9,7 @@
 \subsubsection{Descrizione}
  
 Il processo di documentazione definisce regole, strumenti e ciclo di vita per la
-produzione, la revisione e la pubblicazione di tutta la documentazione del gruppo.
+produzione, la revisione\textsubscript{G} e la pubblicazione di tutta la documentazione del gruppo.
 Esso si applica a ogni documento gestionale o tecnico, sia interno che esterno, e
 costituisce prerequisito per l'attivazione di qualsiasi altro processo.
  
@@ -17,11 +17,11 @@ costituisce prerequisito per l'attivazione di qualsiasi altro processo.
  
 \paragraph{Documentazione Gestionale Interna}
 \begin{itemize}
-  \item \textbf{Norme Di Progetto}: il presente documento;
+  \item \textbf{Norme Di Progetto\textsubscript{G}}: il presente documento;
         definisce processi, convenzioni e strumenti adottati dal gruppo.
-        Redatto e mantenuto dall'Amministratore.
+        Redatto e mantenuto dall'Amministratore\textsubscript{G}.
   \item \textbf{Verbali Interni}: documentano le discussioni, le decisioni adottate
-        e i task assegnati nel corso delle riunioni interne.
+        e i task\textsubscript{G} assegnati nel corso delle riunioni interne.
         Prevedono registro delle modifiche; viene pubblicata la versione approvata.
   \item \textbf{Glossario}: raccoglie i termini specialistici utilizzati nella
         documentazione, con la relativa definizione. Aggiornato in modo incrementale
@@ -32,10 +32,10 @@ costituisce prerequisito per l'attivazione di qualsiasi altro processo.
 \begin{itemize}
   \item \textbf{Verbali Esterni}: documentano gli incontri o le comunicazioni formali
         con aziende e docenti. Prevedono registro delle modifiche.
-  \item \textbf{Valutazione Dei Capitolati}: documento comparativo
+  \item \textbf{Valutazione Dei Capitolati\textsubscript{G}}: documento comparativo
         che motiva la scelta del capitolato.
-  \item \textbf{Dichiarazione Degli Impegni}: contiene scadenza
-        prevista, preventivo dei costi, assegnazione di ore per ruolo, rischi attesi
+  \item \textbf{Dichiarazione Degli Impegni\textsubscript{G}}: contiene scadenza
+        prevista, preventivo dei costi\textsubscript{G}, assegnazione di ore per ruolo\textsubscript{G}, rischi attesi
         e impegni formali del gruppo.
 \end{itemize}
  
@@ -59,20 +59,20 @@ le seguenti convenzioni, la cui applicazione è vincolante per tutti i redattori
         per ogni livello di intestazione. \\
         \textit{Esempio}: \texttt{Lettera Di Presentazione}
  
-  \item \textbf{Pedice G}: applicato alla prima occorrenza, in
+  \item \textbf{Pedice G\textsubscript{G}}: applicato alla prima occorrenza, in
         ciascun documento, di ogni termine presente nel Glossario. \\
         \textit{Esempio}: \texttt{Termine\textsubscript{G}}
  
   \item \textbf{Codice decisione da verbale interno}: le decisioni adottate in
-        riunione interna sono identificate dal codice \texttt{VI-y.x}, dove
+        riunione interna sono identificate dal codice \texttt{VI-y.x\textsubscript{G}}, dove
         \texttt{y} è il numero progressivo del verbale e \texttt{x} il numero
         progressivo della decisione al suo interno.
  
   \item \textbf{Codice decisione da verbale esterno}: le decisioni adottate in
-        incontri esterni sono identificate dal codice \texttt{VE-y.x},
+        incontri esterni sono identificate dal codice \texttt{VE-y.x\textsubscript{G}},
         con la stessa logica.
  
-  \item \textbf{Codice task}: i task sono identificati dal codice \texttt{T-y.z},
+  \item \textbf{Codice task}: i task sono identificati dal codice \texttt{T-y.z\textsubscript{G}},
         dove \texttt{y} è il numero del verbale di origine e \texttt{z} il numero
         progressivo del task. L'ordinamento dei task segue i criteri: scadenza,
         decisione di riferimento, codice incrementale.
@@ -83,7 +83,7 @@ le seguenti convenzioni, la cui applicazione è vincolante per tutti i redattori
         corretta nominazione dell'output di compilazione.
 \end{itemize}
  
-\subsubsection{Struttura Del Template}
+\subsubsection{Struttura Del Template\textsubscript{G}}
  
 La struttura di ogni documento segue un template condiviso, composto da:
  
@@ -98,35 +98,35 @@ La struttura di ogni documento segue un template condiviso, composto da:
         occorrenza di ciascun termine del Glossario.
 \end{itemize}
  
-\subsubsection{Ciclo Di Vita Documentale}
+\subsubsection{Ciclo Di Vita Documentale\textsubscript{G}}
 \label{sec:ciclo-vita}
  
 Il ciclo di vita di ogni documento si articola nelle seguenti fasi sequenziali:
  
 \begin{enumerate}
-  \item \textbf{Stesura}: il Redattore produce il contenuto
+  \item \textbf{Stesura}: il Redattore\textsubscript{G} produce il contenuto
         utilizzando il template approvato e nel rispetto delle convenzioni
         redazionali descritte nella Sezione~\ref{sec:convenzioni}.
  
-  \item \textbf{Revisione}: il Verificatore,
+  \item \textbf{Revisione}: il Verificatore\textsubscript{G},
         che deve essere un membro diverso dal Redattore, controlla struttura,
         coerenza, correttezza e conformità del documento alle presenti norme.
         In caso di non conformità, il documento viene restituito al Redattore
         con le indicazioni necessarie.
  
   \item \textbf{Pubblicazione}: superata la revisione, il documento viene
-        integrato nel branch \texttt{main} del
-        repository tramite pull~request,
+        integrato nel branch\textsubscript{G} \texttt{main} del
+        repository\textsubscript{G} tramite pull~request,
         con il numero di versione aggiornato.
  
-  \item \textbf{Ingresso In Baseline}: la versione pubblicata
+  \item \textbf{Ingresso In Baseline\textsubscript{G}}: la versione pubblicata
         nel branch \texttt{main} costituisce la versione ufficiale e stabile del
         documento e funge da riferimento per tutte le attività successive.
 \end{enumerate}
  
 \subsubsection{Versionamento Documentale}
  
-Il gruppo adotta il \textit{Semantic Versioning} a tre cifre nel
+Il gruppo adotta il \textit{Semantic Versioning\textsubscript{G}} a tre cifre nel
 formato \textbf{vX.Y.Z}, con le seguenti regole di incremento:
  
 \bigskip
@@ -154,7 +154,7 @@ formato \textbf{vX.Y.Z}, con le seguenti regole di incremento:
   \item \textbf{Script Python} (\texttt{python\_glossary\_automation/}):
         automatizza l'applicazione del pedice G alla prima
         occorrenza di ogni termine del Glossario, riducendo gli errori manuali.
-  \item \textbf{GitHub Pages}: pubblica il sito documentale del
+  \item \textbf{GitHub Pages\textsubscript{G}}: pubblica il sito documentale del
         gruppo, sviluppato in HTML5 e CSS3, come punto di accesso unico alla
         documentazione prodotta.
 \end{itemize}
@@ -175,7 +175,7 @@ repository GitHub centralizzato.
 Il repository è organizzato secondo la classificazione documentale adottata:
  
 \begin{itemize}
-  \item \texttt{docs/<[CC|RTB|PB]>/doc\_gestionali/verb\_interni/} — verbali interni;
+  \item \texttt{docs/<[CC|RTB\textsubscript{G}|PB]>/doc\_gestionali/verb\_interni/} — verbali interni;
   \item \texttt{docs/<[CC|RTB|PB]>/doc\_gestionali/doc\_interni/} — norme di progetto,
         glossario;
   \item \texttt{docs/<[CC|RTB|PB]>/doc\_gestionali/verb\_esterni/} — verbali esterni;
@@ -192,7 +192,7 @@ La versione approvata e stabile di ogni documento è quella presente nel branch
  
 \subsubsection{Strategia Di Branching}
  
-Il gruppo adotta il modello \textit{trunk-based development}.
+Il gruppo adotta il modello \textit{trunk-based development\textsubscript{G}}.
 Ogni membro apre un branch dedicato per lavorare su un singolo
 documento; il branch è nominato secondo la convenzione:
  
@@ -203,7 +203,7 @@ documento; il branch è nominato secondo la convenzione:
 \textit{Esempio}: \texttt{T-3.2\_gestionale\_doc\_interno\_norme\_progetto}
  
 Al termine del lavoro, le modifiche sono integrate nel branch \texttt{main} tramite
-pull request; dopo l'integrazione il branch viene eliminato.
+pull request\textsubscript{G}; dopo l'integrazione il branch viene eliminato.
  
 \subsubsection{Procedura Di Modifica}
  
