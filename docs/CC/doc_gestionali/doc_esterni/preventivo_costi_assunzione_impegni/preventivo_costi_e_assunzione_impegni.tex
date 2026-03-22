@@ -16,7 +16,7 @@
 \pagestyle{fancy}
 \fancyhf{} 
 \fancyhead[L]{\textcolor{primarycolor}{\textbf{Synergo Unit}}}
-\fancyhead[R]{Preventivo Costi e Impegni v0.4.0 - 2026-03-21}
+\fancyhead[R]{Preventivo Costi e Impegni v0.5.0 - 2026-03-22}
 \fancyfoot[C]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
@@ -61,32 +61,49 @@
 		
 		\vfill
 		\begin{center}
-			{\large Versione: \textbf{v0.4.0}} \\
-			{\large Data: \textbf{2026-03-21}}
+			{\large Versione: \textbf{v0.5.0}} \\
+			{\large Data: \textbf{2026-03-22}}
 		\end{center}
 	\end{titlepage}
 	
 	\newpage
 	
 	% --- REGISTRO DELLE MODIFICHE ---
-    \section*{Registro delle Modifiche}
-    \begin{table}[ht]
-        \centering
-        \renewcommand{\arraystretch}{1.5}
-        \begin{tabularx}{\textwidth}{c c l X}
-            \toprule
-            \textbf{Versione} & \textbf{Data} & \textbf{Autore/Verificatore} & \textbf{Descrizione} \\
-            \midrule
-            v1.0.0 & YYYY-MM-DD & {[Nome]} / {[Nome]} & Approvazione e firma del documento per il rilascio \\
-            v0.4.0 & 2026-03-21 & Armando / Tutti & Ottimizzazione finale della distribuzione ore e ricalcolo preventivo \\
-            v0.3.1 & 2026-03-21 & Armando / {[Nome]} & Riordinamento sezioni Rischi e Firme, e correzioni di impaginazione \\
-            v0.3.0 & 2026-03-20 & Armando / Tutti & Aumento monte ore a 90 per membro, calcolo costi e assegnazione individuale \\
-            v0.2.0 & 2026-03-19 & Armando / Tutti & Ripartizione ore per ruolo e definizione costo ore per ruolo \\
-            v0.1.0 & 2026-03-16 & Armando / {[Nome]} & Prima stesura del documento e analisi delle disponibilità \\
-            v0.0.0 & 2026-03-13 & Armando / {[Nome]} & Creazione struttura base del documento \\
-            \bottomrule
-        \end{tabularx}
-    \end{table}
+	\section*{Registro delle Modifiche}
+	\addcontentsline{toc}{section}{Registro delle Modifiche}
+
+	\renewcommand{\arraystretch}{1.5}
+	\begin{longtable}{>{\ttfamily\small}l l l l p{5cm}}
+		\toprule
+		\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione} \\
+		\midrule
+		\endhead
+		
+		1.0.0 & YYYY-MM-DD & \multicolumn{2}{c}{Responsabile: {[Nome]}} 
+		& Approvazione e firma del documento per il rilascio. \\[4pt]
+		
+		0.5.0 & 2026-03-22 & Armando Moda Scarati & Sofia De Blasi 
+		& Unificazione dello stile del registro delle modifiche a quello degli altri documenti. \\[4pt]
+		
+		0.4.0 & 2026-03-21 & Armando Moda Scarati & Tutti i membri 
+		& Ottimizzazione finale della distribuzione ore e ricalcolo preventivo. \\[4pt]
+		
+		0.3.1 & 2026-03-21 & Armando Moda Scarati & {[Nome]} 
+		& Riordinamento sezioni Rischi e Firme, e correzioni di impaginazione. \\[4pt]
+		
+		0.3.0 & 2026-03-20 & Armando Moda Scarati & Tutti i membri 
+		& Aumento monte ore a 90 per membro, calcolo costi e assegnazione individuale. \\[4pt]
+		
+		0.2.0 & 2026-03-19 & Armando Moda Scarati & Tutti i membri 
+		& Ripartizione ore per ruolo e definizione costo ore per ruolo. \\[4pt]
+		
+		0.1.0 & 2026-03-16 & Armando Moda Scarati & {[Nome]} 
+		& Prima stesura del documento e analisi delle disponibilità. \\[4pt]
+		
+		0.0.0 & 2026-03-13 & Armando Moda Scarati & {[Nome]} 
+		& Creazione struttura base del documento. \\
+		\bottomrule
+	\end{longtable}
 	
 	\newpage
 	
