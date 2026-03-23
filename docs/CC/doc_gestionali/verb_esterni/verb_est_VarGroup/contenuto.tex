@@ -7,7 +7,20 @@
 \end{itemize}
 Il presente verbale documenta un tentativo di comunicazione informativa via email tra il team SynergoUnit e i referenti dell’azienda VarGroup.
 L’obiettivo della comunicazione era quello di manifestare interesse per il capitolato “VarGroup” e di richiedere chiarimenti, sia tecnici sia organizzativi, utili allo svolgimento dello studio di fattibilità e allo sviluppo dell’MVP\textsubscript{G}.
+
 \vspace{0.5cm}
+\textbf{Referenti Azienda:}
+\begin{table}[ht]
+	\centering
+	\renewcommand{\arraystretch}{1.2}
+	\begin{tabularx}{\textwidth}{X l}
+		\toprule
+		\textbf{Nome e Cognome} & \textbf{Ruolo} \\
+		\midrule
+		{Stefano Dindo} & {Referente Principale} \\
+		\bottomrule
+	\end{tabularx}
+\end{table}
 
 % --- 2. CHIARIMENTI TECNICI RICHIESTI ---
 \section{Chiarimenti Tecnici Richiesti}
@@ -35,7 +48,76 @@ Il gruppo ha richiesto chiarimenti sui seguenti aspetti:
 
 % --- 3. RESOCONTO ---
 \section{Resoconto}
-Al momento non abbiamo ricevuto risposta dall'azienda VarGroup
+Dalla risposta dell'azienda sono emersi i seguenti punti.
+
+\subsection{Modelli IA e Costi}
+\begin{itemize}
+	\item Potenzialmente verranno fornite le chiavi API oppure verrà usato qualche SLM open source, dipende dalla data di inizio del progetto e dal tipo di agenti da sviluppare
+\end{itemize}
+
+\subsection{Testing e Coverage}
+\begin{itemize}
+	\item Il testing può prendere diverse forme:
+		\begin{itemize}
+			\item test per verificare che la logica delle risposte sia deterministica:
+				\begin{itemize}
+					\item Il routing tra agenti sia corretto: dato input X che venga invocato l'agente giusto
+					\item Il parsing e la validazione delle risposte LLM: se l'LLM restituisce un JSON malformato, il sistema gestisce l'errore?
+					\item Le trasformazioni di dati prima e dopo le chiamate
+					\item Le policy di retry e fallback
+					\item L'integrazione con strumenti esterni (es. AST parser, linter)
+				\end{itemize}
+			\item testare la qualità dell'output:
+				\begin{itemize}
+					\item Evaluation set: un campione di codice con output atteso, valutato manualmente o con un secondo LLM come "judge" (ovviamente usando SLM o LLM diversi)
+					\item Assertion su struttura, non su contenuto, andremo a valutare non solo se il commento è corretto ma anche che la risposta contenga almeno un'issue con severity e line number
+					\item Snapshot testing: per rilevare regressioni quando si cambia prompt o modello
+				\end{itemize}
+		\end{itemize}
+\end{itemize}
+
+\subsection{Ambito della "Remediation"}
+\begin{itemize}
+	\item È preferibile che l'agente apra direttamente la pull request sul repository di Github, ma dipende da cosa verrà richiesto
+\end{itemize}
+
+\subsection{Mentoring e Supporto}
+\begin{itemize}
+	\item Con gli altri gruppi è stata prevista una serie di sessioni di formazione sui temi necessari ad avere le basi per poi progettare, ricercare, studiare e fare delle proposte di soluzioni in autonomia. L'azienda rimane sempre disponibile per confronti se necessario.
+\end{itemize}
+
+% --- 4. DECISIONI FORMALI ---
+\section{Decisioni Formali}
+Nel caso in cui il gruppo selezionasse il presente capitolato, si intendono adottare le seguenti linee guida progettuali.
+
+\renewcommand{\arraystretch}{1.3}
+\vspace{-0.3cm}
+\noindent
+\begin{longtable}{c p{12cm}}
+    \toprule
+    \textbf{Codice} & \textbf{Decisione} \\
+    \midrule
+    \endfirsthead
+
+    \toprule
+    \textbf{Codice} & \textbf{Decisione} \\
+    \midrule
+    \endhead
+
+    \midrule
+    \multicolumn{2}{r}{\textit{Continua nella pagina successiva}} \\
+    \midrule
+    \endfoot
+
+    \bottomrule
+    \endlastfoot
+
+    \textbf{VE-1.1} & Utilizzare le chiavi API oppure SLM open source fornito dall'azienda \\
+    \textbf{VE-1.2} & Testing per verificare che la logica delle risposte sia deterministica e della qualità dell'output \\
+    \textbf{VE-1.3} & Raggiungere il livello di automazione richiesto dall'azienda \\
+    \textbf{VE-1.4} & Seguire una serie di sessioni di formazione sui temi necessari per progettazione, ricerca, studio e proposte di soluzioni in autonomia \\
+\end{longtable}
+
 
 \newpage
 % --- 6. FIRME ---
@@ -60,7 +142,7 @@ Con le seguenti firme, i rappresentanti approvano formalmente il contenuto del p
 		\rule{6cm}{0.4pt} \\ 
 		\vspace{0.2cm}
 		\textbf{Per l'Azienda {VarGroup}} \\
-		{[Nome Referente Azienda]} \\
+		{Stefano Dindo} \\
 		\textit{Referente Aziendale}
 	\end{center}
 \end{minipage}
