@@ -46,54 +46,210 @@
 \section{Ordine del Giorno}
 Gli argomenti previsti per la riunione odierna sono:
 \begin{enumerate}
-	\item {[Inserire primo argomento]}
-	\item {[Inserire secondo argomento]}
+	\item Revisione e approvazione verbale esterno per comunicazione mail con l'azienda Zucchetti, invio mail con richiesta di firma e proposta di riunione da remoto
+	\item Comunicazione via mail con azienda Var Group.
+	\item Riorganizzazione delle norme di progetto secondo lo standard ISO/IEC 12207:1995
+	\item Standard interni di gestione e nomenclatura di branch, task e versionamento.
+	\item Aggiornamento sito e documentazione.
+	\item Ordinamento documenti.
+	\item Protezione del branch main sulla repository GitHub.
+	\item Revisione del preventivo costi e delle ore di progetto.
+	\item Allineamento di strumenti di sviluppo interni, e workflow Latex.
 \end{enumerate}
 
 % --- 3. RESOCONTO E DISCUSSIONE ---
 \section{Resoconto della Riunione}
-[Sintesi della discussione: problemi emersi, alternative valutate, opinioni espresse. Max 3-5 righe per argomento semplice]
+Durante la riunione il gruppo ha discusso principalmente aspetti legati alla gestione della documentazione, alla comunicazione con le aziende proponenti (in particolare Zucchetti e VarGroup), all’organizzazione della repository e del sito, oltre che alla definizione di alcune convenzioni operative e alla revisione dei costi di progetto.
 
-\subsection{{[Titolo Argomento 1]}}
-{[Dettagli discussione Argomento 1]}.
+Sono state inoltre definite diverse convenzioni operative su versionamento, gestione dei branch, aggiornamento del sito e struttura delle Norme di Progetto, con l’obiettivo di allinearsi agli standard richiesti e ridurre il rischio di errori in fase di valutazione.
 
-\subsection{{[Titolo Argomento 2]}}
-{[Dettagli discussione Argomento 2]}.
+Infine, il gruppo ha rivisto la distribuzione delle ore e dei costi del progetto, trovando un compromesso più adeguato.
+
+\subsection{Organizzazione Riunioni con Zucchetti}
+Il gruppo ha ritenuto necessario proporre all'azienda Zucchetti una riunione conoscitiva da remoto, per chiarire alcuni aspetti tecnici che la comunicazione via mail non ha sufficientemente chiarito.
+
+\textbf{Motivazione:} ricevere ulteriori specifiche tecniche sul progetto e conoscere di persona i referenti dell'azienda Zucchetti.
+
+Azioni operative:
+\begin{itemize}
+	\item Invio di un'ulteriore mail a Zucchetti con:
+	\begin{itemize}
+		\item Richiesta di firma del verbale precedente.
+		\item Proposta di riunione (da remoto) entro la settimana.
+		\item Includere una serie di domande preparate dal gruppo.
+	\end{itemize}
+\end{itemize}
+
+\subsection{Comunicazione con Var Group}
+È stato evidenziato che VarGroup risponde lentamente alle mail o non risponde affatto.
+
+\textbf{Motivazione:} necessità di ottenere risposte per valutare più approfonditamente anche la fattibilità del secondo capitolato scelto dal gruppo.
+
+Azioni operative:
+\begin{itemize}
+	\item Reinvio della mail già preparata per sollecitare una risposta.
+\end{itemize}
+
+
+\subsection{Riorganizzazione Norme di Progetto Secondo Standard ISO}
+Il gruppo ha discusso la struttura delle Norme di Progetto, attualmente non allineata allo standard ISO.
+
+\textbf{Motivazione:} allineamento effettivo secondo lo standard definito dall'ISO/IEC 12207:1995.
+
+Azioni operative:
+\begin{itemize}
+	\item Riorganizzazione della struttura secondo le categorie previste dallo standard ISO, mantenendo i contenuti già prodotti ma redistribuendoli in macro-sezioni corrette.
+\end{itemize}
+
+\subsection{Gestione Branch e Versionamento}
+È stata affrontata la gestione dei branch nella repository GitHub.
+
+\textbf{Motivazione:} garantire un flusso di lavoro ordinato e coerente.
+
+Azioni Operative e Convenzioni Stabilite:
+\begin{itemize}
+	\item Eliminazione dei branch personali.
+	\item Creazione di un branch per ogni task.
+	\item Utilizzo della seguente convenzione di nomenclatura:
+	\begin{itemize}
+		\item \textbf{t-xy}: identificativo della task.
+		\item \textbf{gestionale} o \textbf{tecnico}: tipo del documento.
+		\item \textbf{categoria}: categoria della task (esempio: aggiornamento, creazione, rimozione).
+		\item \textbf{nomeDocumento}: nome del documento trattato.
+	\end{itemize}
+\end{itemize}
+
+\subsection{Aggiornamento Sito e Documentazione}
+Il gruppo ha definito le modalità di aggiornamento del sito.
+
+\textbf{Motivazione:} evitare incoerenze tra documentazione e sito web.
+
+Convenzioni stabilite:
+\begin{itemize}
+	\item Aggiornamento obbligatorio di versione e data di modifica sul sito a ogni modifica di documento
+	\item Verifica dell’ordinamento corretto dei documenti
+\end{itemize}
+
+\subsection{Ordinamento Documenti nel Sito}
+Sono state definite le regole di ordinamento nel sito.
+
+\textbf{Motivazione:} garantire coerenza e facilità di consultazione.
+
+Convenzioni stabilite:
+\begin{itemize}
+	\item Verbali ordinati in LIFO per data della riunione.
+	\item Altri documenti ordinati in LIFO per data di ultima modifica.
+\end{itemize}
+
+\subsection{Protezione del Branch Main}
+È stata discussa la gestione del branch principale sulla repository GitHub.
+
+\textbf{Motivazione:} garantire controllo e qualità del codice/documentazione.
+
+Convenzioni stabilite:
+\begin{itemize}
+	\item Divieto di push diretto su main.
+	\item Aggiornamento solo tramite pull request.
+	\item Obbligo di almeno una revisione approvata.
+\end{itemize}
+
+\subsection{Revisione Costi e Ore di Progetto}
+Il gruppo ha rivisto la distribuzione delle ore e dei costi.
+
+\textbf{Motivazione:} il costo risultava troppo elevato rispetto ai riferimenti.
+
+Azioni operative:
+\begin{itemize}
+	\item Ridefinizione delle ore per ruolo per ottenere un compromesso tra costo e distribuzione equilibrata del lavoro.
+\end{itemize}
+
+\subsection{Allineamento strumenti e workflow Latex}
+È stato fatto un allineamento sugli strumenti per la gestione dei documenti.
+
+\textbf{Motivazione:} uniformare il workflow e semplificare la collaborazione.
+
+Azioni operative:
+\begin{itemize}
+	\item Utilizzo di Latex con compilazione automatica (Latex Workshop) e condivisione di linee guida comuni.
+\end{itemize}
 
 % --- 4. DECISIONI PRESE ---
 \section{Decisioni Prese}
-\begin{table}[ht]
-	\centering
-	\renewcommand{\arraystretch}{1.3}
-	\begin{tabularx}{\textwidth}{c X}
-		\toprule
-		\textbf{Codice} & \textbf{Decisione} \\
-		\midrule
-		\textbf{VI-X.1} & {[Inserire la prima decisione presa]} \\
-		\textbf{VI-X.2} & {[Inserire la seconda decisione presa]} \\
-		\bottomrule
-	\end{tabularx}
-\end{table}
+\renewcommand{\arraystretch}{1.3}
+\vspace{-0.3cm}
+\noindent
+\begin{longtable}{c p{12cm}}
+	\toprule
+	\textbf{Codice} & \textbf{Decisione} \\
+	\midrule
+	\endfirsthead
+
+	\toprule
+	\textbf{Codice} & \textbf{Decisione} \\
+	\midrule
+	\endhead
+
+	\midrule
+	\multicolumn{2}{r}{\textit{Continua nella pagina successiva}} \\
+	\midrule
+	\endfoot
+
+	\bottomrule
+	\endlastfoot
+
+	\textbf{VI-4.1} & Inviare mail a Zucchetti per firma verbale e richiesta nuova riunione. \\
+	\textbf{VI-4.2} & Reinvio mail a VarGroup per sollecito risposta. \\
+	\textbf{VI-4.3} & Riorganizzare le Norme di Progetto secondo standard ISO. \\
+	\textbf{VI-4.4} & Eliminare branch personali e usare branch per task. \\
+	\textbf{VI-4.5} & Aggiornare sempre sito (versione e data) dopo modifiche ai documenti. \\
+	\textbf{VI-4.6} & Definire ordinamento LIFO per documenti e verbali. \\
+	\textbf{VI-4.7} & Proteggere branch main con pull request e revisione obbligatoria. \\
+	\textbf{VI-4.8} & Ricalibrare ore e costi del progetto. \\
+	\textbf{VI-4.9} & Standardizzare utilizzo strumenti Latex. \\
+	\textbf{VI-4.10} & Impostare date progetto: inizio 2026-03-27, fine 2026-08-28. \\
+\end{longtable}
 
 % --- 5. AZIONI (TODO) ---
 \section{Azioni da Svolgere (To-Do)}
-\begin{table}[ht]
-	\centering
-	\renewcommand{\arraystretch}{1.3}
-	\begin{tabularx}{\textwidth}{c c X l l}
-		\toprule
-		\textbf{Codice} & \textbf{Rif. Decisione} & \textbf{Descrizione Task} & \textbf{Assegnatario} & \textbf{Scadenza} \\
-		\midrule
-		\textbf{T-X.1} & VI-X.1 & {[Inserire cosa fare in base alla decisione]} & {[Nome]} & {[YYYY-MM-DD]} \\
-		\textbf{T-X.2} & - & {[Inserire un task generico]} & {[Nome]} & {[YYYY-MM-DD]} \\
-		\bottomrule
-	\end{tabularx}
-\end{table}
+\begin{longtable}{c c p{4.5cm} l l}
+	\toprule
+	\textbf{Codice} & \textbf{Rif.} & \textbf{Descrizione Task} & \textbf{Assegnatario} & \textbf{Scadenza} \\
+	\midrule
+	\endfirsthead
+
+	\toprule
+	\textbf{Codice} & \textbf{Rif.} & \textbf{Descrizione Task} & \textbf{Assegnatario} & \textbf{Scadenza} \\
+	\midrule
+	\endhead
+
+	\midrule
+	\multicolumn{5}{r}{\textit{Continua nella pagina successiva}} \\
+	\midrule
+	\endfoot
+
+	\bottomrule
+	\endlastfoot
+	
+	\textbf{T-4.1} & VI-4.1 & Invio mail a Zucchetti (firma verbale + richiesta riunione) & Francesco & 2026-03-23 \\
+	\textbf{T-4.2} & VI-4.1 & Preparazione e divisione domande per riunione & Sofia, Ricardo, Francesco & 2026-03-24 \\
+	\textbf{T-4.3} & VI.4.2 & Reinvio mail a VarGroup & Ricardo & 2026-03-23 \\
+	\textbf{T-4.4} & VI-4.3 & Riorganizzazione Norme di Progetto & Sofia & 2026-03-25 \\
+	\textbf{T-4.5} & VI.4.3 & Revisione Norme di Progetto & Filippo & 2026-03-26 \\
+	\textbf{T-4.6} & VI.4.5 & Aggiornamento sito per documenti modificati & Tutti & - \\
+	\textbf{T-4.7} & VI.4.4 & Applicazione nuova gestione branch & Tutti & - \\
+	\textbf{T-4.8} & VI.4.7 & Applicazione revisione obbligatoria Pull Request & Tutti & - \\
+	\textbf{T-4.9} & VI.4.8 & Aggiornamento documento dichiarazione impegni & Armando & 2026-03-25 \\
+	\textbf{T-4.10} & VI.4.8 & Revisione dichiarazione impegni & Sofia & 2026-03-26 \\
+	\textbf{T-4.11} & VI.4.5 & Pubblicazione valutazione capitolati & Filippo & 2026-03-25 \\
+	\textbf{T-4.12} & VI.4.5 & Revisione valutazione capitolati & Armando & 2026-03-26 \\
+	\textbf{T-4.13} & VI.4.5 & Redazione verbale esterno VarGroup (parziale, in attesa di risposta) & Ricardo & 2026-03-25 \\
+	\textbf{T-4.14} & VI.4.8 & Redazione lettera di presentazione & Roberto & 2026-03-25 \\
+\end{longtable}
 
 % --- 6. PROSSIMA RIUNIONE ---
 \section{Prossima Riunione}
 \begin{itemize}
 	\item \textbf{Data:} {2026-03-24}
 	\item \textbf{Ora:} {14:30}
-	\item \textbf{OdG preliminare:} {[Inserire argomenti principali per la prossima riunione]}
+	\item \textbf{OdG preliminare:} Revisione generale dei documenti per la candidatura, verifica di eventuale risposta da parte delle aziende Zucchetti e Var Group.
 \end{itemize}
