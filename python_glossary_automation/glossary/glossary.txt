@@ -1,43 +1,55 @@
-baseline
-branch
-candidatura
-ciclo di vita documentale
-dichiarazione degli impegni
+Amministratore
+Analista
+Baseline
+Branch
+Candidatura
+Ciclo Di Vita Documentale
+Dichiarazione Degli Impegni
+Discord
 GitHub Pages
 GitHub Project
+Google Calendar
 Google Form
 ISO/IEC 12207:1995
-issue
-misurazione
-norme di progetto
+Issue
+Just-in-time
+LLM
+Large Language Model
+Misurazione
+MVP
+Minimum Viable Product
+Norme Di Progetto
+OdG Preliminare
 Pedice G
-Preventivo dei Costi
-pull request
-OdG preliminare
-repository
-revisione
-rtb
-ruolo
-semantic versioning
-struttura documentale
-task
-title case
-template
-tempo previsto
-tempo effettivo
-t-y.z
-valutazione dei capitolati
-verbale interno
-verbale esterno
+PoC
+Proof of Concept
+Postgres
+PostgreSQL
+Preventivo Dei Costi
+Progettista
+Programmatore
+Prompt
+Pull Request
+Redattore
+Repository
+Responsabile
+Revisione
+RTB
+Requirements and Technology Baseline
+Ruolo
+Semantic Versioning
+Tailoring
+Task
+Template
+Tempo Effettivo
+Tempo Previsto
+Title Case
+T-y.z
+Trunk-based Development
+Valutazione Dei Capitolati
+VE-y.x
+Verificatore
 VI-y.x
-way of working
-dichiarazione degli impegni
-llm
-large language model
-mvp
-minimum viable product
-prompt
-proof of concept
-pof
-postgres
-postgresql
+Way of Working
+WoW
+WhatsApp
