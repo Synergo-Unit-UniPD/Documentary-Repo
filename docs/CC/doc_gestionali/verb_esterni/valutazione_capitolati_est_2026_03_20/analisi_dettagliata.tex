@@ -1,0 +1,262 @@
+% --- 3. ANALISI DETTAGLIATA PER CAPITOLATO ---
+\section{Analisi Dettagliata per Capitolato}
+
+\subsection{Capitolato C1: {Automated EN18031 Compliance Verification} }
+
+\textbf{Dominio applicativo:} \\
+{Sistemi software per la verifica automatizzata della conformità normativa e della sicurezza informatica di dispositivi radio e IoT.}
+
+\vspace{0.3cm}
+\textbf{Requisiti principali:}
+\begin{itemize}
+	\item {Importazione di documenti in formati standard (es. CSV, XML, JSON).}
+	\item {Esecuzione automatizzata dei decision tree per ciascun requisito EN18031.}
+    \item Rispetto delle dipendenze gerarchiche tra requisiti.
+    \item Output chiaro (Not applicable / Pass / Fail) per ciascun requisito.
+    \item Dashboard di visualizzazione con accesso ai risultati aggregati.
+    \item Traduzione dei decision tree da una rappresentazione testuale o grafica in
+un formato facilmente modificabile con file esterni che ne descrivo i
+percorsi e i nodi (es. XML, JSON).
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Tecnologie:}
+\begin{itemize}
+	\item {Si predilige l’uso di Python 3.x, gestito con un
+Python Packaging (es. file pyproject.toml), per la parte di Backend.}
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Pro e contro:}
+\begin{itemize}
+	\item \textbf{Pro:}
+        \begin{itemize}
+            \item contesto reale e attuale visto che affronta una necessità concreta legata all'entrata in vigore della norma EN18031,
+            \item tecnologie aperte in quanto l'unico vincolo è dato dall'uso di python nel backend,
+            \item approccio Agile. 
+        \end{itemize}
+	\item \textbf{Contro:} 
+        \begin{itemize}
+            \item ambito complesso visto che si parla di norme legislative,
+            \item dipendenza da documenti esterni come la descrizione delle componenti di rete.
+        \end{itemize}
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Valutazione sintetica:} \\
+Il progetto risponde a un esigenza industriale attuale e presenta un buon livello di definizione con requisiti chiari, nonostante ciò il suo
+essere strettamente legato all'ambito legislativo ha diminuito la volontà del gruppo a perseguirlo.
+
+\vspace{0.5cm}
+
+\vspace{0.5cm}
+
+\subsection{Capitolato C2: {Code Guardian} }
+
+\textbf{Dominio applicativo:} \\
+{piattaforme software per l’analisi automatizzata, il monitoraggio della qualità e la sicurezza del codice sorgente, basate su architetture multi-agente.}
+
+\vspace{0.3cm}
+\textbf{Requisiti principali:}
+\begin{itemize}
+	\item {Sistema ad agenti con orchestratore: architettura a più agenti coordinati da un orchestratore centrale.}
+	\item {Analisi repository GitHub: identificare linguaggio, framework, librerie e versioni}
+    \item {Copertura test: valutare presenza e qualità dei test unitari rispetto a standard minimi.}
+    \item {Analisi sicurezza OWASP: audit completo tramite strumenti e regole OWASP.}
+    \item {Analisi documentazione: verifica della presenza e qualità di README, API docs e guide.}
+    \item {Report dashboard web: interfaccia React che mostri lo stato del progetto (aggiornato, documentato, sicuro, con test).}
+    \item {Proposte di remediation: segnalazioni con suggerimenti concreti su come migliorare codice, sicurezza e test.}
+    \item {Demo finale funzionante + documentazione tecnica e di progetto.}
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Tecnologie:}
+\begin{itemize}
+	\item {Backend / orchestratore: Node.js, Python}
+    \item {Frontend: React.js}
+    \item {Database: MongoDB o PostgreSQL}
+    \item {CI/CD `I\&' integrazioni: GitHub Actions}
+    \item {Architettura cloud: AWS}
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Pro e contro:}
+\begin{itemize}
+	\item \textbf{Pro:} 
+        \begin{itemize}
+            \item l'uso di sistemi multi-agente e LLM è un ambito all'avanguardia e molto richiesto dal mercato,
+            \item VarGroup propone di offrire un supporto costante del progetto sia sul design thinking che sulle tecnologie.
+        \end{itemize}
+	\item \textbf{Contro:}
+        \begin{itemize}
+            \item l'orchestrazione di agenti autonomi è complessa e il rischio che gli agenti forniscano "allucinazioni" è alto,
+            \item generare codice per correggere vulnerabilità senza alterare il funzionamento originale del software target è un task estremamente delicato,
+            \item raggiungere il 70\% di code coverage su un'architettura distribuita e basata su agenti IA richiede uno sforzo notevole.
+        \end{itemize}
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Valutazione sintetica:} \\
+Il progetto è in linea con le tendenze attuali di automazione e architetture ad agenti. Tuttavia, l'orchestrazione di un sistema a più agenti, risulta essere un obiettivo complesso e che potrebbe portare ad un incremento significativo di tempo per la realizzazione del progetto.
+
+\vspace{0.5cm}
+
+\vspace{0.5cm}
+
+\subsection{Capitolato C4: {L'app che Protegge e Trasforma} }
+
+\textbf{Dominio applicativo:} \\
+{applicazioni mobili intelligenti per la prevenzione della violenza di genere e il supporto alla sicurezza e al benessere delle persone.}
+
+\vspace{0.3cm}
+\textbf{Requisiti principali:}
+\begin{itemize}
+	\item {Rilevamento e Alert}
+	\item {Risorse e Supporto}
+    \item {Funzionalità di Sicurezza Personalizzate}
+    \item {Formazione e Prevenzione}
+    \item {Community di Supporto}
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Tecnologie:}
+\begin{itemize}
+	\item {AWS Lambda - Microservizi}
+    \item {Database (DynamoDB, RDS)}
+    \item {Amazon S3 }
+    \item {Code di Messaggi (Kinesis/SQS)}
+    \item {Lambda - Elaborazione Asincrona}
+    \item {Amazon SageMaker e Amazon Bedrock}
+    \item {Amazon Cognito}
+    \item {AWS Step Functions}
+    \item {CloudWatch}
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Pro e contro:}
+\begin{itemize}
+	\item \textbf{Pro:} 
+        \begin{itemize}
+            \item vengono esplicitati requisiti di sicurezza e privacy che sono fondamentali per un'app che gestisce dati sensibili,
+            \item l'architettura che viene proposta è moderna ed in linea con le necessità del mercato,
+            \item l'azienda mette a disposizione referenti per il supporto tecnico specifici rispetto alle varie tecnologie.
+        \end{itemize}
+	\item \textbf{Contro:}
+        \begin{itemize}
+            \item l'ambito del progetto è estremamente ampio e complesso,
+            \item l'implementazione dei requisiti di sicurezza è complessa e stringente parlandosi di dati sensibili,
+            \item l'utilizzo di modelli di IA sopratutto negli ambiti proposti dal progetto ("Detective delle relazioni" e "Specchio intelligente") potrebbe rivelarsi complesso data la specificità e accuratezza di cui necessitano.
+        \end{itemize}
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Valutazione sintetica:} \\
+Il progetto nonostante il supporto proposto dall'azienda è comunque molto complesso ed ampio il che potrebbe potrebbe rivelarsi problematico dati i 
+tempi stretti di cui il gruppo dispone.
+
+\vspace{0.5cm}
+
+\vspace{0.5cm}
+
+\subsection{Capitolato C5: {NEXUM} }
+
+\textbf{Dominio applicativo:} \\
+{Il progetto mira a potenziare la piattaforma NEXUM, già esistente ed utilizzata da EGGON, con due nuove funzionalità:}
+\begin{itemize}
+    \item AI Assistant Generativo ovvero uno strumento sulla dashboard amministrativa per aiutare HR e amministratori a creare comunicazioni aziendali (composte da testo, titolo, immagine) partendo da un prompt e scegliendo un tono ed uno stile;
+    \item AI Co-Pilot per Consulenti del Lavoro (CdL) cioè un modulo per la gestione documentale che permette l’automatizzazione (grazie al riconoscimento OCR e classificazione AI) di riconoscimento del documento, estrazione dei destinatari, generazione lista di distribuzione, invio tracciato e conservazione dei documenti.
+\end{itemize}
+\vspace{0.3cm}
+
+\textbf{Requisiti principali:}
+\begin{itemize}
+	\item I nuovi moduli dovranno essere interagibili con l’infrastruttura esistente di NEXUM,
+	\item Ai Assistant deve permettere la creazione di contenuti completi (titolo, testo, immagine di copertina) a partire da un prompt con adattamento automatico del tono dello stile rispetto a quelli selezionati, salvataggio del prompt, sistema di rating e possibilità di revisione.
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Tecnologie:}
+\begin{itemize}
+	\item {Frontend(Angular, Next.js)}
+    \item {Backend(Ruby on Rails,AWS ECS, Sidekiq)}
+    \item {Database e Storage(Amazon RDS for PostgreSQL per database,Elasticache for Redis per cache/sessioni,AWS S3 per storage documenti)}
+    \item {Servizi AWS Core(Amazon Cognito per l’autenticazione,Amazon SES per email,AWS WAF, Shield, KMS, Secrets Manager per la sicurezza,CloudWatch, X-Ray per il monitoraggio)}
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Pro e contro:}
+\begin{itemize}
+	\item \textbf{Pro:}
+        \begin{itemize}
+            \item i requisiti funzionali sono ben dettagliati,
+            \item lo schema architetturale proposto è in linea con il mercato del lavoro,
+            \item la presenza della tabella con rischi, impatti e mitigazioni è molto utile per avere già un'idea dei problemi che porteanno presentarsi e di come affrontarli.
+        \end{itemize}
+	\item \textbf{Contro:}
+        \begin{itemize}
+            \item i requisiti del progetto sono molti e sono tutti obbligatori,
+            \item i criteri di accettazione sono molto stringenti ed in particolare essendo legati all'IA questi potrebbero essere difficili da raggiungere indipendentemente dal lavoro del gruppo,
+            \item l'integrazione del codice con un core già esistente potrebbe risultare complesso sia da un punto di vista di apprendimento che di scrittura del codice conforme a quello già presente.
+        \end{itemize}
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Valutazione sintetica:} \\
+NEXUM è un progetto che permette l'apprendimento di tecnologie rilevanti al mondo del lavoro, inoltre l'interazione con un core già presente sarà ulteriormente utile all'apprendimento. Il problema più grande del progetto è la sua ampiezza data dal fatto che tutti i requisiti proposti sono obbligatori e dall'ampio uso di tecnologie nuove per il gruppo.
+
+\vspace{0.5cm}
+
+\vspace{0.5cm}
+
+\subsection{Capitolato C6: {Second Brain} }
+
+\textbf{Dominio applicativo:} \\
+{Il progetto “Second Brain”, dell’azienda Zucchetti, propone la realizzazione di un’applicazione che permetta la verifica della potenzialità degli LLM nell’aiutare una persona nei compiti legati alla creazione di testi, allo sviluppo di idee e brainstorming. La realizzazione concreta del progetto consiste in un editor di testo online, con la semplicità come obiettivo primario, basato sul linguaggio MarkDown. Protagonista dell’applicazione sarà un LLM: questo permetterà infatti, tramite delle istruzioni scritte in linguaggio naturale, di migliorare, correggere, tradurre o riscrivere da zero il testo su cui l’utente sta lavorando.}
+
+\vspace{0.3cm}
+\textbf{Requisiti principali:}
+\begin{itemize}
+	\item {creazione di un editor di testo markdown basato su pagina web}
+	\item {creazione di una sezione di presentazione grafica applicando lo stile markdown sotteso dai marcatori presenti nel testo}
+    \item possibilità di modifica layout (solo editor di testo, solo presentazione grafica, entrambe)
+    \item accesso ad un LLM in modo che possa operare sull’intero testo o parti di testo
+    \item impartire comandi base al LLM per:
+        \begin{itemize}
+            \item Riassunto del testo.
+            \item correzione grammaticale.
+            \item riscrittura con modifica
+            \item riscrittura con traduzione in altra lingua
+            \item riscrittura da zero del testo (tramite prompt specifico)
+        \end{itemize}
+\item Implementazione di comandi di critica del testo secondo il modello dei “sei cappelli per pensare” di Edward De Bono.
+\item salvataggio e lettura delle note markdown in un file di testo (tramite download).
+\item OPZIONALE: gestire il salvataggio delle note di testo in un database remoto salvataggio di nuovo testo recupero e modifica di testo salvato in precedenza possibilità di associazione di più file di testo tramite link markdown utilizzo dei testi collegati in fase di creazione/modifica da parte del LLM
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Tecnologie:}
+\begin{itemize}
+	\item HTML e CSS (pagina web con edit-area)
+    \item Markdown (linguaggio di markup per l'editor)
+    \item API LLM compatibili con le specifiche OpenAI
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Pro e contro:}
+\begin{itemize}
+	\item \textbf{Pro:}
+        \begin{itemize}
+            \item i vincoli del progetto sono in linea con i tempi a disposizione del gruppo,
+            \item le tecnologie richieste sono perlopiù già conosciute dal gruppo.
+        \end{itemize}
+	\item \textbf{Contro:}
+        \begin{itemize}
+            \item la completa riuscita del progetto si basa sull'interazione con un LLM e quindi dalla qualità dei prompt che vengono ad esso forniti in particolare per l’implementazione della critica secondo il modello di pensiero dei sei cappelli per pensare
+        \end{itemize}
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Valutazione sintetica:} \\
+Il progetto sembra essere il più fattibile tra quelli proposti sia da un punto di vista di requisiti minimi che per le richieste tecnologiche.
+Il gruppo ha già una conoscenza di parte delle tecnologie richieste il che permette di non dover partire da zero, la novità starà nella capacità di saper implementare ed utilizzare un modello IA per delle richieste specifiche.
+\newpage
