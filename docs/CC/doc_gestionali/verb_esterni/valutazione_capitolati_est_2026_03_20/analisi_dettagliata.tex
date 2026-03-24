@@ -15,7 +15,7 @@
     \item Output chiaro (Not applicable / Pass / Fail) per ciascun requisito.
     \item Dashboard di visualizzazione con accesso ai risultati aggregati.
     \item Traduzione dei decision tree da una rappresentazione testuale o grafica in
-un formato facilmente modificabile con file esterni che ne descrivo i
+un formato facilmente modificabile con file esterni che ne descrivono i
 percorsi e i nodi (es. XML, JSON).
 \end{itemize}
 
@@ -60,7 +60,7 @@ essere strettamente legato all'ambito legislativo ha diminuito la volontà del g
 \textbf{Requisiti principali:}
 \begin{itemize}
 	\item {Sistema ad agenti con orchestratore: architettura a più agenti coordinati da un orchestratore centrale.}
-	\item {Analisi repository GitHub: identificare linguaggio, framework, librerie e versioni}
+	\item {Analisi repository\textsubscript{G} GitHub: identificare linguaggio, framework, librerie e versioni}
     \item {Copertura test: valutare presenza e qualità dei test unitari rispetto a standard minimi.}
     \item {Analisi sicurezza OWASP: audit completo tramite strumenti e regole OWASP.}
     \item {Analisi documentazione: verifica della presenza e qualità di README, API docs e guide.}
@@ -74,7 +74,7 @@ essere strettamente legato all'ambito legislativo ha diminuito la volontà del g
 \begin{itemize}
 	\item {Backend / orchestratore: Node.js, Python}
     \item {Frontend: React.js}
-    \item {Database: MongoDB o PostgreSQL}
+    \item {Database: MongoDB o PostgreSQL\textsubscript{G}}
     \item {CI/CD `I\&' integrazioni: GitHub Actions}
     \item {Architettura cloud: AWS}
 \end{itemize}
@@ -84,13 +84,13 @@ essere strettamente legato all'ambito legislativo ha diminuito la volontà del g
 \begin{itemize}
 	\item \textbf{Pro:} 
         \begin{itemize}
-            \item l'uso di sistemi multi-agente e LLM è un ambito all'avanguardia e molto richiesto dal mercato,
+            \item l'uso di sistemi multi-agente e LLM\textsubscript{G} è un ambito all'avanguardia e molto richiesto dal mercato,
             \item VarGroup propone di offrire un supporto costante del progetto sia sul design thinking che sulle tecnologie.
         \end{itemize}
 	\item \textbf{Contro:}
         \begin{itemize}
             \item l'orchestrazione di agenti autonomi è complessa e il rischio che gli agenti forniscano "allucinazioni" è alto,
-            \item generare codice per correggere vulnerabilità senza alterare il funzionamento originale del software target è un task estremamente delicato,
+            \item generare codice per correggere vulnerabilità senza alterare il funzionamento originale del software target è un task\textsubscript{G} estremamente delicato,
             \item raggiungere il 70\% di code coverage su un'architettura distribuita e basata su agenti IA richiede uno sforzo notevole.
         \end{itemize}
 \end{itemize}
@@ -163,15 +163,15 @@ tempi stretti di cui il gruppo dispone.
 \textbf{Dominio applicativo:} \\
 {Il progetto mira a potenziare la piattaforma NEXUM, già esistente ed utilizzata da EGGON, con due nuove funzionalità:}
 \begin{itemize}
-    \item AI Assistant Generativo ovvero uno strumento sulla dashboard amministrativa per aiutare HR e amministratori a creare comunicazioni aziendali (composte da testo, titolo, immagine) partendo da un prompt e scegliendo un tono ed uno stile;
+    \item AI Assistant Generativo ovvero uno strumento sulla dashboard amministrativa per aiutare HR e amministratori a creare comunicazioni aziendali (composte da testo, titolo, immagine) partendo da un prompt\textsubscript{G} e scegliendo un tono ed uno stile;
     \item AI Co-Pilot per Consulenti del Lavoro (CdL) cioè un modulo per la gestione documentale che permette l’automatizzazione (grazie al riconoscimento OCR e classificazione AI) di riconoscimento del documento, estrazione dei destinatari, generazione lista di distribuzione, invio tracciato e conservazione dei documenti.
 \end{itemize}
 \vspace{0.3cm}
 
 \textbf{Requisiti principali:}
 \begin{itemize}
-	\item I nuovi moduli dovranno essere interagibili con l’infrastruttura esistente di NEXUM,
-	\item Ai Assistant deve permettere la creazione di contenuti completi (titolo, testo, immagine di copertina) a partire da un prompt con adattamento automatico del tono dello stile rispetto a quelli selezionati, salvataggio del prompt, sistema di rating e possibilità di revisione.
+	\item I nuovi moduli dovranno essere integrabili con l’infrastruttura esistente di NEXUM,
+	\item Ai Assistant deve permettere la creazione di contenuti completi (titolo, testo, immagine di copertina) a partire da un prompt con adattamento automatico del tono dello stile rispetto a quelli selezionati, salvataggio del prompt, sistema di rating e possibilità di revisione\textsubscript{G}.
 \end{itemize}
 
 \vspace{0.3cm}
@@ -190,7 +190,7 @@ tempi stretti di cui il gruppo dispone.
         \begin{itemize}
             \item i requisiti funzionali sono ben dettagliati,
             \item lo schema architetturale proposto è in linea con il mercato del lavoro,
-            \item la presenza della tabella con rischi, impatti e mitigazioni è molto utile per avere già un'idea dei problemi che porteanno presentarsi e di come affrontarli.
+            \item la presenza della tabella con rischi, impatti e mitigazioni è molto utile per avere già un'idea dei problemi che porteranno presentarsi e di come affrontarli.
         \end{itemize}
 	\item \textbf{Contro:}
         \begin{itemize}
@@ -230,7 +230,7 @@ NEXUM è un progetto che permette l'apprendimento di tecnologie rilevanti al mon
         \end{itemize}
 \item Implementazione di comandi di critica del testo secondo il modello dei “sei cappelli per pensare” di Edward De Bono.
 \item salvataggio e lettura delle note markdown in un file di testo (tramite download).
-\item OPZIONALE: gestire il salvataggio delle note di testo in un database remoto salvataggio di nuovo testo recupero e modifica di testo salvato in precedenza possibilità di associazione di più file di testo tramite link markdown utilizzo dei testi collegati in fase di creazione/modifica da parte del LLM
+\item OPZIONALE: gestire il salvataggio delle note di testo in un database remoto, salvataggio di nuovo testo, recupero e modifica di testo salvato in precedenza, possibilità di associazione di più file di testo tramite link markdown, utilizzo dei testi collegati in fase di creazione/modifica da parte del LLM.
 \end{itemize}
 
 \vspace{0.3cm}
