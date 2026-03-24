@@ -1,0 +1,152 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage[top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{booktabs} 
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{eurosym}
+
+% === PERCORSO IMMAGINI ===
+\graphicspath{{../../../../template/shared/loghi/}}
+
+% === CONFIGURAZIONE COLORI E LINK ===
+\definecolor{primarycolor}{RGB}{20, 40, 75}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=primarycolor,
+	urlcolor=primarycolor, 
+	pdftitle={Lettera di Presentazione - Synergo Unit},
+	pdfauthor={Synergo Unit}
+}
+
+% === CONFIGURAZIONE INTESTAZIONE E PIÈ DI PAGINA ===
+\pagestyle{fancy}
+\fancyhf{} 
+\fancyhead[L]{\textcolor{primarycolor}{\textbf{Synergo Unit}}}
+\fancyhead[R]{Lettera di Presentazione - YYYY-MM-DD}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\setlength{\headheight}{15pt}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+
+% =========================================================
+% INIZIO DOCUMENTO
+% =========================================================
+\begin{document}
+	
+	% --- CARTA INTESTATA ---
+	\begin{center}
+		\includegraphics[height=2.5cm]{logo_unipd.png}
+		\hspace{3.5cm}
+		\includegraphics[height=2.5cm]{logo_gruppo.png}
+	\end{center}
+	
+	\vspace{1cm}
+	
+	% --- INFORMAZIONI MITTENTE E DATA ---
+	\begin{flushleft}
+		\textbf{Gruppo:} Synergo Unit \\
+		\textbf{Email:} \href{mailto:synergounit.20@gmail.com}{synergounit.20@gmail.com} \\
+		\textbf{Data:} YYYY-MM-DD
+	\end{flushleft}
+	
+	\vspace{0.5cm}
+	
+	% --- OGGETTO ---
+	\textbf{Oggetto:} Candidatura per l'aggiudicazione del capitolato C6 - Second Brain
+	
+	\vspace{1cm}
+	
+	% --- CORPO DELLA LETTERA ---
+	Spettabile Prof. Tullio Vardanega,
+	
+	\vspace{0.3cm}
+	con la presente, il gruppo \textbf{Synergo Unit} comunica formalmente la propria candidatura per l'aggiudicazione del capitolato \textbf{C6} intitolato "\textbf{Second Brain}", proposto dall'azienda \textbf{Zucchetti}.
+	
+	\vspace{0.5cm}
+	\textbf{\textcolor{primarycolor}{DOCUMENTAZIONE PRESENTATA}} \\
+	La documentazione completa relativa alla candidatura è disponibile presso il nostro repository pubblico al seguente indirizzo: \\
+	\url{{[https://github.com/Synergo-Unit-UniPD/Documentary-Repo]}}
+	
+	\vspace{0.2cm}
+	Di seguito i collegamenti diretti ai documenti specifici:
+	\begin{itemize}
+		\item \textbf{Studio di Fattibilità:} \href{{[URL]}}{{[Link diretto al PDF]}}
+		\item \textbf{Valutazione Capitolati:} \href{{[URL]}}{{[Link diretto al PDF]}}
+		\item \textbf{Preventivo Costi e Impegni:} \href{{https://github.com/Synergo-Unit-UniPD/Documentary-Repo/blob/main/docs/CC/doc_gestionali/doc_esterni/preventivo_costi_assunzione_impegni/preventivo_costi_e_assunzione_impegni.pdf}}{{[Link diretto al PDF]}}
+		\item \textbf{Verbali incontri con proponente:} \href{{https://github.com/Synergo-Unit-UniPD/Documentary-Repo/tree/main/docs/CC/doc_gestionali/verb_esterni}}{{[Link alla cartella dei verbali]}}
+	\end{itemize}
+	
+	\vspace{0.5cm}
+	\textbf{\textcolor{primarycolor}{SINTESI MOTIVAZIONI}} \\
+	Il gruppo ha selezionato il capitolato {Second Brain} per le seguenti motivazioni principali:
+	\begin{enumerate}
+		\item \textbf{Tecnica:} {Il progetto usa tecnologie che il gruppo conosce già, quindi possiamo concentrarci sull’integrazione con il modello linguistico senza dover imparare tutto da zero.
+		I requisiti richiesti sono alla nostra portata e compatibili con il tempo e la complessità del lavoro.}
+		\item \textbf{Organizzativa:} {La struttura del progetto è chiara e modulare:
+		editor, presentazione grafica, interazione con LLM, salvataggio delle note.
+		Questo rende facile distribuire il lavoro nel gruppo e organizzare le attività.
+		Le funzionalità opzionali permettono di ampliare il progetto senza rischiare di ritardare la consegna.}
+		\item \textbf{Professionale:} {Il progetto permette di sviluppare competenze molto richieste oggi, soprattutto nell’uso pratico degli LLM e nella creazione di interfacce intelligenti.
+		Lavorare con modelli IA e imparare a gestire i prompt rappresenta un’esperienza utile e di valore per il percorso professionale del gruppo.}
+	\end{enumerate}
+	
+	\vspace{0.5cm}
+	\textbf{\textcolor{primarycolor}{PREVENTIVO ECONOMICO}} \\
+	Come dettagliato nel documento \textit{Preventivo Costi e Impegni}, si dichiara quanto segue:
+	\begin{itemize}
+		\item \textbf{Costo totale preventivato:} \euro\ 11.665,00
+		\item \textbf{Monte ore produttive:} 540 (90 ore per membro)
+		\item \textbf{Scadenza ultima prevista:} 2026-08-28
+	\end{itemize}
+	
+	\vspace{0.5cm}
+	\textbf{\textcolor{primarycolor}{IMPEGNO DEL GRUPPO}} \\
+	Il gruppo Synergo Unit si impegna formalmente a:
+	\begin{itemize}
+		\item Rispettare il preventivo economico e temporale presentato;
+		\item Garantire il monte ore dichiarato da ciascun membro attraverso una turnazione equa dei ruoli;
+		\item Seguire le direttive e il \textit{Way of Working} che verranno definiti nelle future Norme di Progetto;
+		\item Mantenere una comunicazione costante, trasparente e proattiva con il proponente aziendale e il committente accademico.
+	\end{itemize}
+	
+	\vspace{0.5cm}
+	Restiamo a completa disposizione per eventuali chiarimenti e colloqui.
+	
+	\vspace{0.5cm}
+	Distinti saluti,
+	
+	\vspace{1.5cm}
+	\noindent
+	\begin{minipage}[c]{0.5\textwidth}
+		\begin{flushleft}
+			\rule{6cm}{0.4pt} \\ 
+			\vspace{0.1cm}
+			\textbf{{[Nome Cognome]}} \\
+			\textit{Responsabile del gruppo Synergo Unit}
+		\end{flushleft}
+	\end{minipage}
+	
+	\vspace{1.5cm}
+	
+	% --- ALLEGATI ---
+	\rule{\textwidth}{0.4pt}
+	\vspace{0.1cm}
+	\textbf{Allegati:}
+	\begin{itemize}
+		\item Studio di Fattibilità v1.0.0
+		\item Valutazione Capitolati v1.0.0
+		\item Preventivo Costi e Impegni v1.0.0
+		\item Verbali esterni (n. 2026-03-17)
+	\end{itemize}
+	
+\end{document}
