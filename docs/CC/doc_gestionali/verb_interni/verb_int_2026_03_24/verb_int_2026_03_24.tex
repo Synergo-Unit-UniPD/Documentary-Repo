@@ -1,24 +1,20 @@
 \documentclass[11pt, a4paper]{article}
 
-% Numerare le sezioni fino al 4° livello
-\setcounter{secnumdepth}{4}
-\setcounter{tocdepth}{4}
-
-% 1. Configurazione condivisa
+% 1. RICHIAMA LA CONFIGURAZIONE CONDIVISA
 \input{../../../../template/shared/configurazione.tex}
 
-% 2. Loghi
+% 2. CONFIGURAZIONI LOGHI
 \graphicspath{{../../../../template/shared/loghi/}}
 
 \hypersetup{
-	pdftitle={Norme di Progetto - Synergo Unit},
+	pdftitle={Verbale di Riunione - Synergo Unit},
 	pdfauthor={Synergo Unit}
 }
 
 \pagestyle{fancy}
 \fancyhf{} 
 \fancyhead[L]{\textcolor{primarycolor}{\textbf{Synergo Unit}}}
-\fancyhead[R]{Norme di Progetto v1.1.2 - 2026-03-25}
+\fancyhead[R]{Verbale Interno N. 5 - 2026-03-24}
 \fancyfoot[C]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
@@ -41,23 +37,7 @@
 	\tableofcontents
 	\newpage
 	
-	% Contenuto diviso in moduli
-	\input{introduzione.tex}
-	\newpage
-
-	\input{tailoring.tex}
-	\newpage
-	
-	\input{primari.tex}
-	\newpage
-	
-	\input{supporto.tex}
-	\newpage
-	
-	\input{organizzativi.tex}
-	\newpage
-	
-	% Appendici
-	\input{appendici.tex}
+	% Contenuto del verbale
+	\input{contenuto.tex}
 	
 \end{document}
