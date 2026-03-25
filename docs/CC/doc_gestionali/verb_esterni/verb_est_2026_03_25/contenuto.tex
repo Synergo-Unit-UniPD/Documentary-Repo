@@ -1,0 +1,261 @@
+% --- 1. INFORMAZIONI GENERALI ---
+\section{Informazioni Generali}
+\begin{itemize}
+	\item \textbf{Azienda Coinvolta:} {Zucchetti}
+	\item \textbf{Mezzo di Comunicazione:} {Google Meet}
+	\item \textbf{Data:} 2026-03-25
+	\item \textbf{Orario di inizio -- fine:} 17:00 -- 17:25
+\end{itemize}
+
+
+\vspace{0.5cm}
+\textbf{Referenti Azienda:}
+\begin{table}[ht]
+	\centering
+	\renewcommand{\arraystretch}{1.2}
+	\begin{tabularx}{\textwidth}{X l}
+		\toprule
+		\textbf{Nome e Cognome} & \textbf{Ruolo} \\
+		\midrule
+		{Gregorio Piccoli} & {Referente Principale} \\
+		\bottomrule
+	\end{tabularx}
+\end{table}
+
+\vspace{0.5cm}
+\textbf{Partecipanti Gruppo (Synergo Unit):}
+\begin{table}[ht]
+	\centering
+	\renewcommand{\arraystretch}{1.2}
+	\begin{tabularx}{\textwidth}{X c}
+		\toprule
+		\textbf{Nome e Cognome} & \textbf{Matricola}\\
+		\midrule
+		Sofia De Blasi & 2111014 \\
+		Roberto Mariano Doroftei & 2111031 \\
+		Filippo Idiometri & 2035617 \\
+		Francesco Marcon & 2110990 \\
+		Armando Moda Scarati & 2082864 \\
+		Anton Ricardo Rupi & 2054304 \\
+		\bottomrule
+	\end{tabularx}
+\end{table}
+
+% --- 2. ORDINE DEL GIORNO ---
+Gli argomenti previsti per la riunione sono:
+\begin{enumerate}[leftmargin=1.8em, itemsep=3pt]
+    \item Formazione e supporto tecnico da parte dell'azienda
+    \item Disponibilità di esempi o test esistenti per i ``Sei Cappelli per Pensare\textsubscript{G}''
+    \item Separazione tra funzionalità base e applicazione dei Sei Cappelli
+    \item Struttura e obiettivo dell'output dei Sei Cappelli
+    \item Requisiti di interfaccia e usabilità\textsubscript{G}
+    \item Chatbot\textsubscript{G} con messaggi precompilati\textsubscript{G} e accessibilità
+\end{enumerate}
+
+% --- 3. RESOCONTO ---
+\section{Resoconto}
+
+\subsection{Formazione e Supporto Tecnico da Parte dell'Azienda}
+
+\textbf{Discussione:}\\
+Il gruppo ha chiesto se siano previsti incontri strutturati di formazione su tematiche come le metodologie di project design: definizione degli obiettivi, scelta degli strumenti e delle tecnologie.
+
+\vspace{0.3cm}
+\textbf{Risposta e accordi con il proponente:}
+\begin{itemize}[leftmargin=1.5em, itemsep=3pt]
+    \item Il proponente ha confermato disponibilità a fornire supporto \textit{su richiesta} laddove necessario, in particolare riguardo all'invocazione di LLM\textsubscript{G} (chiamate API\textsubscript{G}, struttura dei messaggi, parametri principali).
+    \item Per le tecnologie da adottare, l'azienda concede \textbf{piena libertà} al gruppo: è possibile esplorare strumenti già noti o nuovi, senza vincoli imposti.
+\end{itemize}
+
+\vspace{0.1cm}
+\textbf{Impegni del gruppo:}
+\begin{itemize}[leftmargin=1.5em, itemsep=3pt]
+    \item Segnalare al proponente eventuali necessità formative.
+\end{itemize}
+
+\vspace{0.4cm}
+
+\subsection{Disponibilità di Esempi o Test Esistenti — ``Sei Cappelli per Pensare''}
+
+\textbf{Discussione:}\\
+Il gruppo ha chiesto se il proponente disponga di esempi o casi di test già esistenti da utilizzare come riferimento per migliorare e valutare i prompt\textsubscript{G} relativi all'implementazione dei ``Sei Cappelli per Pensare''.
+
+\vspace{0.3cm}
+\textbf{Risposta e accordi con il proponente:}
+\begin{itemize}[leftmargin=1.5em, itemsep=3pt]
+    \item Non sono disponibili esempi o test predefiniti.
+    \item L'approccio atteso è quello dell'esplorazione sperimentale del \textbf{prompt engineering\textsubscript{G}}, verificando autonomamente fino a che punto il modello linguistico sia in grado di applicare la metodologia dei cappelli in modo efficace.
+    \item La valutazione è qualitativa e iterativa, basata sull'osservazione diretta dei risultati prodotti durante i test.
+\end{itemize}
+
+\vspace{0.4cm}
+
+\subsection{Separazione tra Funzionalità Base e Applicazione dei "Sei Cappelli"}
+
+\textbf{Discussione:}\\
+Il gruppo ha chiesto se i "Sei Cappelli" debbano essere applicati internamente alle funzionalità base (per esempio, eseguire un riassunto già filtrato attraverso il cappello nero (critico)) oppure se debbano costituire un insieme separato di prompt.
+
+\vspace{0.3cm}
+\textbf{Risposta e accordi con il proponente:}
+\begin{itemize}[leftmargin=1.5em, itemsep=3pt]
+    \item Il proponente ha chiarito che i due ambiti devono essere \textbf{distinti}:
+    \begin{enumerate}[leftmargin=1.8em, itemsep=2pt]
+        \item \textit{Funzionalità base}: generazione di testo, riassunto, traduzione, riscrittura di porzioni di testo gestite con prompt propri.
+        \item \textit{Sei Cappelli}: applicabili \textbf{esclusivamente alla generazione autonoma} di una parte del testo, tramite prompt separati e dedicati.
+    \end{enumerate}
+    \item Combinare i cappelli con ciascuna funzionalità base richiederebbe una matrice $5 \times 6$ di prompt, rendendo il sistema molto più complesso.
+    \item Il flusso corretto è \textbf{sequenziale}: prima si applica una funzionalità base (es.\ riassunto), poi, separatamente e su richiesta, si applicano i cappelli.
+\end{itemize}
+
+\vspace{0.1cm}
+\textbf{Impegni del gruppo:}
+\begin{itemize}[leftmargin=1.5em, itemsep=3pt]
+    \item Progettare l'architettura dei prompt in due blocchi indipendenti, mantenendo separati i casi d'uso base dai Sei Cappelli.
+\end{itemize}
+
+\vspace{0.4cm}
+
+\subsection{Struttura e Obiettivo dell'Output dei Sei Cappelli}
+
+\textbf{Discussione:}\\
+Il gruppo ha chiesto se uno degli output attesi fosse quello di generazione di un report finale in PDF contenente le sei analisi corrispondenti ai cappelli, chiedendo conferma sull'approccio e sullo sviluppo dei prompt correlati.
+
+\vspace{0.3cm}
+\textbf{Risposta e accordi con il proponente:}
+\begin{itemize}[leftmargin=1.5em, itemsep=3pt]
+    \item Il proponente ha \textbf{sconsigliato} la generazione di un report PDF: l'obiettivo è fornire un'analisi \textit{contestuale e immediata} del testo in fase di scrittura, non un documento separato.
+    \item Il meccanismo preferito è: \textbf{selezione del testo} → bottone corrispondente al cappello desiderato → risposta visualizzata in un \textit{pop-up\textsubscript{G}} o pannello laterale.
+    \item In alternativa, è valutabile un approccio \textit{chatbot} che analizza su richiesta l'intero testo o una parte selezionata, ma rimane un requisito opzionale.
+    \item L'idea base rimane: \textbf{un bottone per cappello}, con risposta immediata e non persistente sotto forma di report.
+    \item Durante la riunione il proponente ha mostrato una presentazione che distingue chiaramente due concetti:
+    \begin{itemize}[leftmargin=1.5em, itemsep=2pt]
+        \item \textit{Bottone/azione}: esegue una funzionalità specifica e ben definita.
+        \item \textit{Chatbot}: l'utente esprime liberamente un'intenzione/un \textbf{compito\textsubscript{G}}  (es.\ ``voglio applicare il cappello critico'') e il chatbot individua la funzionalità corrispondente, agendo da \textbf{mediatore tra linguaggio naturale e funzionalità}.
+    \end{itemize}
+\end{itemize}
+
+\vspace{0.1cm}
+\textbf{Impegni del gruppo:}
+\begin{itemize}[leftmargin=1.5em, itemsep=3pt]
+    \item Valutare il chatbot come requisito opzionale aggiuntivo, senza sostituire l'interfaccia base a bottoni.
+\end{itemize}
+
+\vspace{0.4cm}
+
+\subsection{Requisiti di Interfaccia e Usabilità}
+
+\textbf{Discussione:}\\
+Il gruppo ha chiesto conferma che la semplicità e l'intuitività dell'interfaccia siano i requisiti prioritari, e come il chatbot si inserisca in questo contesto.
+
+\vspace{0.3cm}
+\textbf{Risposta e accordi con il proponente:}
+\begin{itemize}[leftmargin=1.5em, itemsep=3pt]
+    \item Il proponente ha confermato che \textbf{semplicità e immediatezza} sono requisiti fondamentali dell'interfaccia.
+    \item Il chatbot, se implementato, deve essere un elemento \textit{complementare}: non deve sovrapporsi o complicare l'interfaccia base.
+    \item L'interfaccia principale deve rimanere funzionale e comprensibile anche senza il chatbot.
+\end{itemize}
+
+\vspace{0.4cm}
+
+\subsection{Chatbot con Messaggi Precompilati e Accessibilità}
+
+\textbf{Discussione:}\\
+Il gruppo ha proposto di rendere il chatbot più deterministico tramite l'uso di \textbf{messaggi precompilati}: una volta che il chatbot individua l'intenzione dell'utente, propone bottoni con azioni già scelte (es.\ ``Vuoi applicare la critica?'', ``Vuoi un riassunto?''), riducendo l'ambiguità e guidando la conversazione.
+
+\vspace{0.3cm}
+\textbf{Risposta e accordi con il proponente:}
+\begin{itemize}[leftmargin=1.5em, itemsep=3pt]
+    \item Il proponente ha \textbf{approvato} l'approccio: i messaggi precompilati rendono il flusso più prevedibile e controllabile.
+    \item È stato sottolineato il valore aggiunto in termini di \textbf{accessibilità}: bottoni contestuali all'interno della chat riducono il carico cognitivo e facilitano l'uso da parte di utenti con difficoltà nell'interazione testuale libera.
+\end{itemize}
+
+\vspace{0.1cm}
+\textbf{Impegni del gruppo:}
+\begin{itemize}[leftmargin=1.5em, itemsep=3pt]
+    \item Includere i messaggi precompilati nell'eventuale progettazione del chatbot come pattern di interazione principale.
+\end{itemize}
+
+% --- 4. DECISIONI FORMALI ---
+\section{Decisioni Formali}
+Nella seguente tabella sono tracciate le decisioni ufficiali e le azioni conseguenti approvate congiuntamente all'azienda.
+
+\renewcommand{\arraystretch}{1.4}
+
+\begin{longtable}{c p{10.5cm} c l}
+\toprule
+\textbf{Cod.} & \textbf{Decisione e Azione} & \textbf{Impatto} & \textbf{Scadenza} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Cod.} & \textbf{Decisione e Azione} & \textbf{Impatto} & \textbf{Scadenza} \\
+\midrule
+\endhead
+
+\midrule
+\multicolumn{4}{r}{\textit{Continua nella pagina successiva}} \\
+\midrule
+\endfoot
+
+\bottomrule
+\endlastfoot
+
+\textbf{VE-3.1} &
+\textbf{Decisione:} Le funzionalità base (riassunto, traduzione, riscrittura) e i Sei Cappelli sono implementati come insiemi di prompt separati e indipendenti.\newline
+\textbf{Azione:} Progettare l'architettura dei prompt in due blocchi distinti. &
+Requisiti & Da concordare \\
+
+\textbf{VE-3.2} &
+\textbf{Decisione:} L'output dei Sei Cappelli sarà visualizzato in pop-up contestuale, non in report PDF.\newline
+\textbf{Azione:} Implementare meccanismo di selezione testo + bottone per cappello. &
+Requisiti & Da concordare \\
+
+\textbf{VE-3.3} &
+\textbf{Decisione:} Il chatbot è un requisito opzionale; se implementato, utilizza messaggi precompilati per guidare l'utente.\newline
+\textbf{Azione:} Inserire il chatbot con bottoni contestuali come feature opzionale nel backlog. &
+Requisiti & Da concordare \\
+
+\end{longtable}
+
+% --- 5. PROSSIMO INCONTRO ---
+\section{Prossimo Incontro}
+\begin{itemize}
+	\item \textbf{Data e Ora:} {Da concordare}
+	\item \textbf{Modalità/Luogo:} {Google Meet}
+	\item \textbf{Argomenti Previsti (in caso di aggiudicazione):}
+	\begin{itemize}
+		\item Presentazione della proposta architetturale e dello stack tecnologico\textsubscript{G} scelto
+        \item Revisione\textsubscript{G} del backlog iniziale e delle priorità di sviluppo del PoC\textsubscript{G}
+        \item Eventuali chiarimenti emersi dalla progettazione dei prompt
+	\end{itemize}
+\end{itemize}
+
+\newpage
+% --- 6. FIRME ---
+\section*{Approvazione e Firme}
+Con le seguenti firme, i rappresentanti approvano formalmente il contenuto del presente verbale, i requisiti concordati e le decisioni prese.
+
+\vspace{2.5cm}
+
+\noindent
+\begin{minipage}[c]{0.45\textwidth}
+	\begin{center}
+		\rule{6cm}{0.4pt} \\ 
+		\vspace{0.2cm}
+		\textbf{Per il Gruppo Synergo Unit} \\
+		{[Sofia De Blasi]} \\
+		\textit{Responsabile di Progetto}
+	\end{center}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.45\textwidth}
+	\begin{center}
+		\rule{6cm}{0.4pt} \\ 
+		\vspace{0.2cm}
+		\textbf{Per l'Azienda Zucchetti} \\
+		{[Gregorio Piccoli]} \\
+		\textit{Referente Aziendale}
+	\end{center}
+\end{minipage}
+
+\vspace{2cm}
