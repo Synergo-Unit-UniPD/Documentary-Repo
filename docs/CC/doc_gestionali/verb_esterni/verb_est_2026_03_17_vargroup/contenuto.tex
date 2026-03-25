@@ -41,7 +41,7 @@ Il gruppo ha richiesto chiarimenti sui seguenti aspetti:
 	\end{itemize}
 	\item Mentoring e Supporto
 	\begin{itemize}
-		\item Come sarà strutturato il supporto per l'aquisizione di competenze sullo stack tecnologico dell'azienda
+		\item Come sarà strutturato il supporto per l'acquisizione di competenze sullo stack tecnologico dell'azienda
 	\end{itemize}
 \end{enumerate}
 
@@ -50,9 +50,14 @@ Il gruppo ha richiesto chiarimenti sui seguenti aspetti:
 \section{Resoconto}
 Dalla risposta dell'azienda sono emersi i seguenti punti.
 
+\subsection{Perimetro del progetto}
+\begin{itemize}
+	\item L'azienda ha precisato che la piattaforma e l'orchestratore sono già in fase di sviluppo interno. Pertanto, non sarà richiesto al gruppo di sviluppare l'intera piattaforma, bensì esclusivamente di progettare e sviluppare alcuni agenti specifici da integrare nell'ecosistema esistente.
+\end{itemize}
+
 \subsection{Modelli IA e Costi}
 \begin{itemize}
-	\item Potenzialmente verranno fornite le chiavi API oppure verrà usato qualche SLM open source, dipende dalla data di inizio del progetto e dal tipo di agenti da sviluppare
+	\item Gli agenti useranno LLM o SLM a seconda di cosa sarà deciso di sviluppare
 \end{itemize}
 
 \subsection{Testing e Coverage}
@@ -112,7 +117,8 @@ Nel caso in cui il gruppo selezionasse il presente capitolato, si intendono adot
     \bottomrule
     \endlastfoot
 
-    \textbf{VE-2.1} & Utilizzare le chiavi API oppure SLM open source fornito dall'azienda \\
+	\textbf{VE-2.0} & Il gruppo si limiterà allo sviluppo e all'integrazione di agenti IA specifici, escludendo lo sviluppo dell'orchestratore e dell'infrastruttura di base della piattaforma. \\
+    \textbf{VE-2.1} & Gli agenti useranno LLM o SLM a seconda di cosa sarà deciso di sviluppare \\
     \textbf{VE-2.2} & Testing per verificare che la logica delle risposte sia deterministica e della qualità dell'output \\
     \textbf{VE-2.3} & Raggiungere il livello di automazione richiesto dall'azienda \\
     \textbf{VE-2.4} & Seguire una serie di sessioni di formazione sui temi necessari per progettazione, ricerca, studio e proposte di soluzioni in autonomia \\
