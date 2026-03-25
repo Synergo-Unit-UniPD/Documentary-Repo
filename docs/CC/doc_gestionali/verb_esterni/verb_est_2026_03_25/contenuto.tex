@@ -55,7 +55,7 @@ Gli argomenti previsti per la riunione sono:
 % --- 3. RESOCONTO ---
 \section{Resoconto}
 
-\subsection{Formazione e supporto tecnico da parte dell'azienda}
+\subsection{Formazione e Supporto Tecnico da Parte dell'Azienda}
 
 \textbf{Discussione:}\\
 Il gruppo ha chiesto se siano previsti incontri strutturati di formazione su tematiche come le metodologie di project design: definizione degli obiettivi, scelta degli strumenti e delle tecnologie.
@@ -75,8 +75,7 @@ Il gruppo ha chiesto se siano previsti incontri strutturati di formazione su tem
 
 \vspace{0.4cm}
 
-% ---- 3.2 ----
-\subsection{Disponibilità di esempi o test esistenti — ``Sei Cappelli per Pensare''}
+\subsection{Disponibilità di Esempi o Test Esistenti — ``Sei Cappelli per Pensare''}
 
 \textbf{Discussione:}\\
 Il gruppo ha chiesto se il proponente disponga di esempi o casi di test già esistenti da utilizzare come riferimento per migliorare e valutare i prompt relativi all'implementazione dei ``Sei Cappelli per Pensare''.
@@ -91,8 +90,7 @@ Il gruppo ha chiesto se il proponente disponga di esempi o casi di test già esi
 
 \vspace{0.4cm}
 
-% ---- 3.3 ----
-\subsection{Separazione tra funzionalità base e applicazione dei "Sei Cappelli"}
+\subsection{Separazione tra Funzionalità Base e Applicazione dei "Sei Cappelli"}
 
 \textbf{Discussione:}\\
 Il gruppo ha chiesto se i "Sei Cappelli" debbano essere applicati internamente alle funzionalità base (per esempio, eseguire un riassunto già filtrato attraverso il cappello nero (critico)) oppure se debbano costituire un insieme separato di prompt.
@@ -117,8 +115,7 @@ Il gruppo ha chiesto se i "Sei Cappelli" debbano essere applicati internamente a
 
 \vspace{0.4cm}
 
-% ---- 3.4 ----
-\subsection{Struttura e obiettivo dell'output dei Sei Cappelli}
+\subsection{Struttura e Obiettivo dell'Output dei Sei Cappelli}
 
 \textbf{Discussione:}\\
 Il gruppo ha chiesto se uno degli output attesi fosse quello di generazione di un report finale in PDF contenente le sei analisi corrispondenti ai cappelli, chiedendo conferma sull'approccio e sullo sviluppo dei prompt correlati.
@@ -145,8 +142,7 @@ Il gruppo ha chiesto se uno degli output attesi fosse quello di generazione di u
 
 \vspace{0.4cm}
 
-% ---- 3.5 ----
-\subsection{Requisiti di interfaccia e usabilità}
+\subsection{Requisiti di Interfaccia e Usabilità}
 
 \textbf{Discussione:}\\
 Il gruppo ha chiesto conferma che la semplicità e l'intuitività dell'interfaccia siano i requisiti prioritari, e come il chatbot si inserisca in questo contesto.
@@ -161,8 +157,7 @@ Il gruppo ha chiesto conferma che la semplicità e l'intuitività dell'interfacc
 
 \vspace{0.4cm}
 
-% ---- 3.6 ----
-\subsection{Chatbot con messaggi precompilati e accessibilità}
+\subsection{Chatbot con Messaggi Precompilati e Accessibilità}
 
 \textbf{Discussione:}\\
 Il gruppo ha proposto di rendere il chatbot più deterministico tramite l'uso di \textbf{messaggi precompilati}: una volta che il chatbot individua l'intenzione dell'utente, propone bottoni con azioni già scelte (es.\ ``Vuoi applicare la critica?'', ``Vuoi un riassunto?''), riducendo l'ambiguità e guidando la conversazione.
@@ -184,36 +179,43 @@ Il gruppo ha proposto di rendere il chatbot più deterministico tramite l'uso di
 \section{Decisioni Formali}
 Nella seguente tabella sono tracciate le decisioni ufficiali e le azioni conseguenti approvate congiuntamente all'azienda.
 
-\begin{table}[ht]
-	\centering
-	\renewcommand{\arraystretch}{1.4}
-	\begin{tabularx}{\textwidth}{c X c l}
-		\toprule
-		\textbf{Cod.} & \textbf{Decisione e Azione} & \textbf{Impatto} & \textbf{Scadenza} \\
-		\midrule
-		
-		\textbf{VE-3.1} &
-        \textbf{Decisione:} Le funzionalità base (riassunto, traduzione, riscrittura) e i Sei Cappelli sono implementati come insiemi di prompt separati e indipendenti.\newline
-        \textbf{Azione:} Progettare l'architettura dei prompt in due blocchi distinti. &
-        Requisiti & Da concordare \\
+\renewcommand{\arraystretch}{1.4}
 
-        \midrule
+\begin{longtable}{c p{10.5cm} c l}
+\toprule
+\textbf{Cod.} & \textbf{Decisione e Azione} & \textbf{Impatto} & \textbf{Scadenza} \\
+\midrule
+\endfirsthead
 
-        \textbf{VE-3.2} &
-        \textbf{Decisione:} L'output dei Sei Cappelli sarà visualizzato in pop-up contestuale, non in report PDF.\newline
-        \textbf{Azione:} Implementare meccanismo di selezione testo + bottone per cappello. &
-        Requisiti & Da concordare \\
+\toprule
+\textbf{Cod.} & \textbf{Decisione e Azione} & \textbf{Impatto} & \textbf{Scadenza} \\
+\midrule
+\endhead
 
-        \midrule
+\midrule
+\multicolumn{4}{r}{\textit{Continua nella pagina successiva}} \\
+\midrule
+\endfoot
 
-        \textbf{VE-3.3} &
-        \textbf{Decisione:} Il chatbot è un requisito opzionale; se implementato, utilizza messaggi precompilati per guidare l'utente.\newline
-        \textbf{Azione:} Inserire il chatbot con bottoni contestuali come feature opzionale nel backlog. &
-        Requisiti & Da concordare \\
-		
-		\bottomrule
-	\end{tabularx}
-\end{table}
+\bottomrule
+\endlastfoot
+
+\textbf{VE-3.1} &
+\textbf{Decisione:} Le funzionalità base (riassunto, traduzione, riscrittura) e i Sei Cappelli sono implementati come insiemi di prompt separati e indipendenti.\newline
+\textbf{Azione:} Progettare l'architettura dei prompt in due blocchi distinti. &
+Requisiti & Da concordare \\
+
+\textbf{VE-3.2} &
+\textbf{Decisione:} L'output dei Sei Cappelli sarà visualizzato in pop-up contestuale, non in report PDF.\newline
+\textbf{Azione:} Implementare meccanismo di selezione testo + bottone per cappello. &
+Requisiti & Da concordare \\
+
+\textbf{VE-3.3} &
+\textbf{Decisione:} Il chatbot è un requisito opzionale; se implementato, utilizza messaggi precompilati per guidare l'utente.\newline
+\textbf{Azione:} Inserire il chatbot con bottoni contestuali come feature opzionale nel backlog. &
+Requisiti & Da concordare \\
+
+\end{longtable}
 
 % --- 5. PROSSIMO INCONTRO ---
 \section{Prossimo Incontro}
