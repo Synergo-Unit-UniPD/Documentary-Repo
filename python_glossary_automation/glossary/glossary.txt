@@ -1,27 +1,45 @@
 Amministratore
+API
 Analista
+AWS
 Baseline
 Branch
 Candidatura
+CI/CD
+Continuous Integration / Continuous Deployment
+Chatbot
+Code Coverage
+Compito
 Ciclo Di Vita Documentale
+Decision Tree
+Albero Di Decisione
 Dichiarazione Degli Impegni
 Discord
 GitHub Pages
 GitHub Project
 Google Calendar
 Google Form
+Interfaccia Utente
 ISO/IEC 12207:1995
 Issue
 Just-in-time
 LLM
 Large Language Model
+Messaggi Precompilati
 Misurazione
+MongoDB
 MVP
 Minimum Viable Product
 Norme Di Progetto
+OCR
+Optical Character Recognition
 OdG Preliminare
+OWASP
+Open Web Application Security Project
 Pedice G
 PoC
+Pop-up
+Prompt engineering
 Proof of Concept
 Postgres
 PostgreSQL
@@ -37,7 +55,9 @@ Revisione
 RTB
 Requirements and Technology Baseline
 Ruolo
+Sei Cappelli per Pensare
 Semantic Versioning
+Stack tecnologico
 Tailoring
 Task
 Template
@@ -46,6 +66,7 @@ Tempo Previsto
 Title Case
 T-y.z
 Trunk-based Development
+Usabilità
 Valutazione Dei Capitolati
 VE-y.x
 Verificatore
