@@ -1,12 +1,18 @@
 Amministratore
 API
 Analista
+AWS
 Baseline
 Branch
 Candidatura
+CI/CD
+Continuous Integration / Continuous Deployment
 Chatbot
+Code Coverage
 Compito
 Ciclo Di Vita Documentale
+Decision Tree
+Albero Di Decisione
 Dichiarazione Degli Impegni
 Discord
 GitHub Pages
@@ -21,10 +27,15 @@ LLM
 Large Language Model
 Messaggi Precompilati
 Misurazione
+MongoDB
 MVP
 Minimum Viable Product
 Norme Di Progetto
+OCR
+Optical Character Recognition
 OdG Preliminare
+OWASP
+Open Web Application Security Project
 Pedice G
 PoC
 Pop-up
