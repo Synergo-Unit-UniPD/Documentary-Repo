@@ -10,7 +10,7 @@
 \textbf{Requisiti principali:}
 \begin{itemize}
 	\item {Importazione di documenti in formati standard (es. CSV, XML, JSON).}
-	\item {Esecuzione automatizzata dei decision tree per ciascun requisito EN18031.}
+	\item {Esecuzione automatizzata dei decision tree\textsubscript{G} per ciascun requisito EN18031.}
     \item Rispetto delle dipendenze gerarchiche tra requisiti.
     \item Output chiaro (Not applicable / Pass / Fail) per ciascun requisito.
     \item Dashboard di visualizzazione con accesso ai risultati aggregati.
@@ -62,8 +62,8 @@ essere strettamente legato all'ambito legislativo ha diminuito la volontà del g
 	\item {Sistema ad agenti con orchestratore: architettura a più agenti coordinati da un orchestratore centrale.}
 	\item {Analisi repository\textsubscript{G} GitHub: identificare linguaggio, framework, librerie e versioni}
     \item {Copertura test: valutare presenza e qualità dei test unitari rispetto a standard minimi.}
-    \item {Analisi sicurezza OWASP: audit completo tramite strumenti e regole OWASP.}
-    \item {Analisi documentazione: verifica della presenza e qualità di README, API docs e guide.}
+    \item {Analisi sicurezza OWASP\textsubscript{G}: audit completo tramite strumenti e regole OWASP.}
+    \item {Analisi documentazione: verifica della presenza e qualità di README, API\textsubscript{G} docs e guide.}
     \item {Report dashboard web: interfaccia React che mostri lo stato del progetto (aggiornato, documentato, sicuro, con test).}
     \item {Proposte di remediation: segnalazioni con suggerimenti concreti su come migliorare codice, sicurezza e test.}
     \item {Demo finale funzionante + documentazione tecnica e di progetto.}
@@ -74,9 +74,9 @@ essere strettamente legato all'ambito legislativo ha diminuito la volontà del g
 \begin{itemize}
 	\item {Backend / orchestratore: Node.js, Python}
     \item {Frontend: React.js}
-    \item {Database: MongoDB o PostgreSQL\textsubscript{G}}
-    \item {CI/CD e integrazioni: GitHub Actions}
-    \item {Architettura cloud: AWS}
+    \item {Database: MongoDB\textsubscript{G} o PostgreSQL\textsubscript{G}}
+    \item {CI/CD\textsubscript{G} e integrazioni: GitHub Actions}
+    \item {Architettura cloud: AWS\textsubscript{G}}
 \end{itemize}
 
 \vspace{0.3cm}
@@ -91,7 +91,7 @@ essere strettamente legato all'ambito legislativo ha diminuito la volontà del g
         \begin{itemize}
             \item l'orchestrazione di agenti autonomi è complessa e il rischio che gli agenti forniscano "allucinazioni" è alto,
             \item generare codice per correggere vulnerabilità senza alterare il funzionamento originale del software target è un task\textsubscript{G} estremamente delicato,
-            \item raggiungere il 70\% di code coverage su un'architettura distribuita e basata su agenti IA richiede uno sforzo notevole.
+            \item raggiungere il 70\% di code coverage\textsubscript{G} su un'architettura distribuita e basata su agenti IA richiede uno sforzo notevole.
         \end{itemize}
 \end{itemize}
 
@@ -164,7 +164,7 @@ tempi stretti di cui il gruppo dispone.
 {Il progetto mira a potenziare la piattaforma NEXUM, già esistente ed utilizzata da EGGON, con due nuove funzionalità:}
 \begin{itemize}
     \item AI Assistant Generativo ovvero uno strumento sulla dashboard amministrativa per aiutare HR e amministratori a creare comunicazioni aziendali (composte da testo, titolo, immagine) partendo da un prompt\textsubscript{G} e scegliendo un tono ed uno stile;
-    \item AI Co-pilot per Consulenti del Lavoro (CdL) cioè un modulo per la gestione documentale che permette l’automatizzazione (grazie al riconoscimento OCR e classificazione AI) di riconoscimento del documento, estrazione dei destinatari, generazione lista di distribuzione, invio tracciato e conservazione dei documenti.
+    \item AI Co-pilot per Consulenti del Lavoro (CdL) cioè un modulo per la gestione documentale che permette l’automatizzazione (grazie al riconoscimento OCR\textsubscript{G} e classificazione AI) di riconoscimento del documento, estrazione dei destinatari, generazione lista di distribuzione, invio tracciato e conservazione dei documenti.
 \end{itemize}
 \vspace{0.3cm}
 
@@ -228,7 +228,7 @@ NEXUM è un progetto che permette l'apprendimento di tecnologie rilevanti al mon
             \item riscrittura con traduzione in altra lingua
             \item riscrittura da zero del testo (tramite prompt specifico)
         \end{itemize}
-\item Implementazione di comandi di critica del testo secondo il modello dei “sei cappelli per pensare” di Edward De Bono.
+\item Implementazione di comandi di critica del testo secondo il modello dei “sei cappelli per pensare\textsubscript{G}” di Edward De Bono.
 \item salvataggio e lettura delle note Markdown in un file di testo (tramite download).
 \item OPZIONALE: gestire il salvataggio delle note di testo in un database remoto, salvataggio di nuovo testo, recupero e modifica di testo salvato in precedenza, possibilità di associazione di più file di testo tramite link Markdown, utilizzo dei testi collegati in fase di creazione/modifica da parte del LLM.
 \end{itemize}
