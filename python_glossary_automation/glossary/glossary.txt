@@ -18,7 +18,9 @@ ISO/IEC 12207:1995
 Issue
 Just-in-time
 LLM
+Lettera di presentazione
 Large Language Model
+Main
 Messaggi Precompilati
 Misurazione
 MVP
@@ -57,9 +59,11 @@ T-y.z
 Trunk-based Development
 Usabilità
 Valutazione Dei Capitolati
+VarGroup
 VE-y.x
 Verificatore
 VI-y.x
 Way of Working
 WoW
 WhatsApp
+Zucchetti
