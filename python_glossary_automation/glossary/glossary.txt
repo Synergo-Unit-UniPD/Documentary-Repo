@@ -10,11 +10,13 @@ Continuous Integration / Continuous Deployment
 Chatbot
 Code Coverage
 Compito
+Colli di bottiglia
 Ciclo Di Vita Documentale
 Decision Tree
 Albero Di Decisione
 Dichiarazione Degli Impegni
 Discord
+Framework
 GitHub Pages
 GitHub Project
 Google Calendar
@@ -26,6 +28,7 @@ Just-in-time
 LLM
 Large Language Model
 Messaggi Precompilati
+Milestone
 Misurazione
 MongoDB
 MVP
@@ -55,12 +58,17 @@ Revisione
 RTB
 Requirements and Technology Baseline
 Ruolo
+SAL
 Sei Cappelli per Pensare
+Second Brain
 Semantic Versioning
+Sprint
 Stack tecnologico
+Stakeholder
 Tailoring
 Task
 Template
+Ticket
 Tempo Effettivo
 Tempo Previsto
 Title Case
