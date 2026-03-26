@@ -1,13 +1,19 @@
 Amministratore
 API
 Analista
+AWS
 Baseline
 Branch
 Candidatura
+CI/CD
+Continuous Integration / Continuous Deployment
 Chatbot
+Code Coverage
 Compito
 Colli di bottiglia
 Ciclo Di Vita Documentale
+Decision Tree
+Albero Di Decisione
 Dichiarazione Degli Impegni
 Discord
 Framework
@@ -24,10 +30,15 @@ Large Language Model
 Messaggi Precompilati
 Milestone
 Misurazione
+MongoDB
 MVP
 Minimum Viable Product
 Norme Di Progetto
+OCR
+Optical Character Recognition
 OdG Preliminare
+OWASP
+Open Web Application Security Project
 Pedice G
 PoC
 Pop-up
