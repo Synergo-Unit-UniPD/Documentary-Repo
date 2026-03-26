@@ -286,7 +286,15 @@ body {
     border: 3px solid var(--viola);
     object-fit: cover;
     margin-bottom: 10px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
+
+.cards a:hover .pic,
+.cards a:focus .pic {
+    transform: scale(1.07);
+    box-shadow: 0 0 12px rgba(98, 97, 216, 0.45);
+}
+
 
 /* ------------------------------
    FOOTER
