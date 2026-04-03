@@ -1,10 +1,12 @@
 Amministratore
 API
 Analista
+Analisi dei Requisiti
 AWS
 Baseline
 Branch
 Candidatura
+Casi d'uso
 CI/CD
 Continuous Integration / Continuous Deployment
 Chatbot
@@ -42,6 +44,7 @@ OdG Preliminare
 OWASP
 Open Web Application Security Project
 Pedice G
+Piano di Progetto
 PoC
 Pop-up
 Prompt engineering
