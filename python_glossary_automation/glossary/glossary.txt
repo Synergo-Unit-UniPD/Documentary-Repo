@@ -31,6 +31,7 @@ LLM
 Lettera di presentazione
 Large Language Model
 Main
+Merge
 Messaggi Precompilati
 Milestone
 Misurazione
@@ -45,6 +46,7 @@ OWASP
 Open Web Application Security Project
 Pedice G
 Piano di Progetto
+Piano di Qualifica
 PoC
 Pop-up
 Prompt engineering
@@ -68,10 +70,14 @@ Sei Cappelli per Pensare
 Second Brain
 Semantic Versioning
 Sprint
+Sprint Planning
+Sprint Retrospective
+Sprint Review
 Stack tecnologico
 Stakeholder
 Tailoring
 Task
+Technology Baseline
 Template
 Ticket
 Tempo Effettivo
@@ -79,6 +85,8 @@ Tempo Previsto
 Title Case
 T-y.z
 Trunk-based Development
+UML
+Unified Modeling Language
 Usabilità
 Valutazione Dei Capitolati
 VarGroup
