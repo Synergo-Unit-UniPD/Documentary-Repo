@@ -2,18 +2,24 @@ import re
 from sys import argv
 from os.path import exists
 
-if not exists(argv[1]):
-    print("errore: path inserita non valida")
-    exit()
+text = ""
 
-with open(argv[1], "r", encoding="utf-8") as f:
-    text = f.read()
+# leggo tutti i file in ordine
+for i in range(1, len(argv)):
+    if not exists(argv[i]):
+        print(f"errore: {i} path inserita non valida")
+        exit()
 
+    with open(argv[i], "r", encoding="utf-8") as f:
+        text += f.read() + "%%%%%SEPARATORE%%%%%"
+
+# leggo le parole del glossario
 glossario = []
 with open("./glossary/glossary.txt", "r", encoding="utf-8") as f:
     for t in f.readlines():
         glossario.append(t.strip().lower().replace("\n", ""))
 
+# per ogni parola, sostituisco la prima occorrenza in tutti i testi
 for parola in glossario:
     pattern = r'\b' + re.escape(parola) + r'\b'
 
@@ -28,5 +34,8 @@ for parola in glossario:
         flags=re.IGNORECASE
     )
 
-with open(argv[1], "w", encoding="utf-8") as f:
-    f.write(text)
+# separo i testi e riscrivo su file originale
+separated = text.split("%%%%%SEPARATORE%%%%%")
+for i in range(1, len(argv)):
+    with open(argv[i], "w", encoding="utf-8") as f:
+        f.write(separated[i-1])
