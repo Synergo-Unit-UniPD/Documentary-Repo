@@ -11,6 +11,7 @@ CI/CD
 Continuous Integration / Continuous Deployment
 Chatbot
 Code Coverage
+Commit
 Compito
 Colli di bottiglia
 Ciclo Di Vita Documentale
