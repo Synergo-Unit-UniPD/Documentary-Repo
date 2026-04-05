@@ -1,0 +1,287 @@
+% --- 1. INFORMAZIONI GENERALI ---
+\section{Informazioni Generali}
+\begin{itemize}
+	\item \textbf{Luogo/Piattaforma:} Server Discord\textsubscript{G}
+	\item \textbf{Data:} 2026-04-03
+	\item \textbf{Orario di inizio:} 14:30
+	\item \textbf{Orario di fine:} 16:00
+	\item \textbf{Responsabile\textsubscript{G}:} Sofia De Blasi
+	\item \textbf{Scriba:} Sofia De Blasi
+\end{itemize}
+
+\vspace{0.5cm}
+\textbf{Partecipanti presenti:}
+\begin{table}[ht]
+	\centering
+	\renewcommand{\arraystretch}{1.2}
+	\begin{tabularx}{\textwidth}{X l}
+		\toprule
+		\textbf{Nome e Cognome} & \textbf{Matricola} \\
+		\midrule
+		Sofia De Blasi & 2111014 \\
+		Roberto Mariano Doroftei & 2111031 \\
+		Filippo Idiometri & 2035617 \\
+		Francesco Marcon & 2110990 \\
+		Armando Moda Scarati & 2082864 \\
+		Anton Ricardo Rupi & 2054304 \\
+		\bottomrule
+	\end{tabularx}
+\end{table}
+
+\vspace{0.5cm}
+\textbf{Partecipanti assenti:}
+\begin{table}[ht]
+	\centering
+	\renewcommand{\arraystretch}{1.2}
+	\begin{tabularx}{\textwidth}{X l}
+		\toprule
+		\textbf{Nome e Cognome} & \textbf{Matricola} \\
+		\midrule
+		Nessuno & - \\
+		\bottomrule
+	\end{tabularx}
+\end{table}
+
+% --- 2. ORDINE DEL GIORNO ---
+\section{Ordine del Giorno}
+Gli argomenti previsti per la riunione odierna sono:
+\begin{enumerate}
+	\item Pianificazione della documentazione da produrre nella fase RTB\textsubscript{G}:
+	      Analisi dei Requisiti\textsubscript{G}, Piano di Progetto\textsubscript{G}, Piano di Qualifica\textsubscript{G},
+	      Norme di Progetto\textsubscript{G}.
+	\item Scelta delle tecnologie per il progetto.
+	\item Aggiornamento delle convenzioni operative: gestione di task\textsubscript{G},
+	      branch\textsubscript{G}, commit\textsubscript{G} e pull request\textsubscript{G}.
+	\item Revisione\textsubscript{G} e aggiornamento del template\textsubscript{G} documentale.
+\end{enumerate}
+
+\newpage
+% --- 3. RESOCONTO ---
+\section{Resoconto della Riunione}
+
+\subsection{Pianificazione della Documentazione RTB}
+
+Il gruppo ha identificato i principali documenti da produrre nella fase RTB
+e, dopo una panoramica generale del loro scopo e contenuto, ha definito le
+modalità di avvio per ciascuno.
+
+\paragraph{Analisi dei Requisiti} 
+Il documento costituisce la base della fase RTB e include la definizione dei casi d'uso\textsubscript{G}, con relativa
+rappresentazione tramite diagrammi UML\textsubscript{G}. Il gruppo ha stabilito di studiare
+preventivamente il materiale del corso prima di avviare la stesura.
+
+\paragraph{Piano di Progetto}
+Il documento regolerà la gestione del progetto tramite sprint\textsubscript{G}, includendo
+le attività di sprint planning\textsubscript{G}, sprint review\textsubscript{G} e sprint retrospective\textsubscript{G},
+la rotazione dei ruoli e il tracciamento delle attività. Il gruppo ha
+stabilito di avviarne la stesura parallelamente all'Analisi dei Requisiti.
+
+\paragraph{Piano di Qualifica}
+Il documento definirà le metriche quantitative per la qualità di processo
+e di prodotto. Il gruppo ha stabilito di rimandarne la stesura a una
+comprensione più approfondita delle lezioni di riferimento.
+
+\paragraph{Norme di Progetto}
+Il documento continuerà a essere aggiornato in modo incrementale secondo
+il principio just-in-time\textsubscript{G} già adottato. In questa sessione sono state
+definite le nuove convenzioni operative descritte nella
+Sezione~\ref{sec:convenzioni}.
+
+\subsection{Scelta delle Tecnologie}
+\label{sec:tecnologie}
+
+Il gruppo ha preso atto delle tecnologie obbligatorie indicate dal capitolato
+(HTML, CSS, Markdown e API\textsubscript{G} compatibili con le specifiche OpenAI) e ha
+stabilito di rimandare la scelta delle tecnologie complementari a una fase
+successiva, da svolgere contestualmente all'avanzamento dell'Analisi dei
+Requisiti. La definizione della technology baseline\textsubscript{G}\textsubscript{G} — obiettivo della
+revisione RTB — sarà avviata dopo il completamento del 20--30\% dell'Analisi
+dei Requisiti.
+ 
+\subsection{Aggiornamento delle Convenzioni Operative}\label{sec:convenzioni}
+ 
+Il gruppo ha ridefinito il flusso di lavoro per la gestione di task, branch,
+commit e pull request, introducendo le seguenti convenzioni aggiornate.
+ 
+\paragraph{Versionamento Documentale.}
+Tutti i documenti partono dalla versione \texttt{0.0.0}.
+ 
+\paragraph{Nomenclatura dei Task e dei Branch.}
+Il nome del task, e il nome del branch corrispondente, seguono la convenzione:
+ 
+\begin{center}
+	\texttt{<id>-<[gestionale|tecnico]>\_<[esterno|interno]>\_<nomeDoc>}
+\end{center}
+ 
+Il branch viene creato direttamente dalla pagina della issue\textsubscript{G} su GitHub
+(sezione \textit{Development}) e recuperato in locale con:
+ 
+\begin{center}
+	\texttt{git checkout -b <nome-branch> origin/<nome-branch>}
+\end{center}
+ 
+\paragraph{Collegamento Commit -- Issue.}
+Ogni commit relativo a una issue deve includere il riferimento all'identificativo
+della issue nel messaggio:
+ 
+\begin{center}
+	\texttt{git commit -m "\#<id> <messaggio>"}
+\end{center}
+ 
+\paragraph{Flusso di Lavoro Aggiornato.}
+Il flusso operativo da seguire per ogni task è il seguente:
+ 
+\begin{enumerate}
+	\item Il Responsabile crea il task tramite Google Form\textsubscript{G} durante la riunione.
+	\item Il Redattore\textsubscript{G} del verbale di riunione inserisce il riferimento alla issue nel verbale
+	      (tabella delle azioni).
+	\item L'Assegnatario di una task crea il branch direttamente dalla issue su GitHub e
+	      lo recupera in locale.
+	\item Ad ogni commit significativo, l'Assegnatario include il riferimento
+	      alla issue nel messaggio di commit.
+	\item Al termine del lavoro, l'Assegnatario apre la pull request e collega
+	      la issue corrispondente.
+	\item Il Verificatore\textsubscript{G} effettua la revisione; l'Assegnatario (non il Verificatore)
+	      esegue il merge\textsubscript{G} dopo l'approvazione.
+	\item Il branch viene eliminato dopo il merge.
+\end{enumerate}
+ 
+\paragraph{Automazione Google Form.}
+È stato discusso di configurare il Google Form per la creazione dei task con
+campi precompilati che rispettino automaticamente la convenzione di nomenclatura
+(es.\ tipologia gestionale/tecnico, categoria esterno/interno, nome documento).
+Questo consentirà di ridurre gli errori manuali nella creazione dei task.
+ 
+\subsection{Revisione del Template Documentale}
+ 
+Il gruppo ha identificato le seguenti necessità di aggiornamento del template
+condiviso:
+ 
+\begin{itemize}
+	\item Aggiornamento della configurazione dei link (\verb|\href{url}{\underline{text}}|)
+	      per garantire coerenza visiva tra i documenti.
+	\item Revisione della struttura delle tabelle (divisione con "Continua nella pagina successiva", font registro modifiche,
+	      allineamento colonne) per uniformità e corretto comportamento in
+	      caso di contenuto lungo.
+	\item Aggiornamento della tabella delle azioni (sezione To-Do dei verbali)
+	      per includere il codice identificativo della issue GitHub come link
+	      cliccabile, con la sintassi: 		  
+	      \verb|\href{url}{\underline{\#id}}|.
+	\item Configurazione dell'account \textit{Synergo Unit} come token per
+	      le chiamate API delle automazioni del Google Form.
+\end{itemize}
+
+\newpage
+
+% --- 4. DECISIONI PRESE ---
+\section{Decisioni Prese}
+
+\renewcommand{\arraystretch}{1.3}
+\vspace{-0.3cm}
+\noindent
+\begin{longtable}{c p{12cm}}
+	\toprule
+	\textbf{Codice} & \textbf{Decisione} \\
+	\midrule
+	\endfirsthead
+
+    \toprule
+    \textbf{Codice} & \textbf{Decisione} \\
+    \midrule
+    \endhead
+
+    \midrule
+    \multicolumn{2}{r}{\textit{Continua nella pagina successiva}} \\
+    \midrule
+    \endfoot
+
+	\bottomrule
+    \endlastfoot
+
+	\textbf{VI-7.1} & Tutti i documenti partono dalla versione \texttt{0.0.0}. \\[4pt]
+	\textbf{VI-7.2} & I branch assumono il nome dal task corrispondente secondo
+					la convenzione \texttt{<id>-<gestionale|tecnico>\_<esterno|interno>\_<nomeDoc>}
+					e vengono creati direttamente dalla issue su GitHub. \\[4pt]
+	\textbf{VI-7.3} & Ogni commit relativo a una issue include il riferimento
+					\texttt{\#id} nel messaggio. \\[4pt]
+	\textbf{VI-7.4} & La pull request viene aperta dal Redattore con collegamento
+					alla issue; il merge è eseguito dal Redattore dopo
+					l'approvazione del Verificatore. \\[4pt]
+	\textbf{VI-7.5} & Il Google Form per la creazione dei task sarà configurato
+					con campi precompilati per la nomenclatura dei branch. \\[4pt]
+	\textbf{VI-7.6} & La technology baseline sarà avviata dopo il completamento
+					del 20--30\% dell'Analisi dei Requisiti. \\[4pt]
+	\textbf{VI-7.7} & Il template documentale sarà aggiornato per coerenza
+					di tabelle, link e versionamento. \\
+\end{longtable}
+ 
+% --- 5. AZIONI DA SVOLGERE ---
+\section{Azioni da Svolgere (To-Do)}
+
+\renewcommand{\arraystretch}{1.3}
+\begin{longtable}{c c p{4.5cm} p{3cm} l}
+    \toprule
+    \textbf{Codice} & \textbf{Rif.} & \textbf{Descrizione Task} & \textbf{Assegnatario} & \textbf{Scadenza} \\
+    \midrule
+    \endfirsthead
+
+    \toprule
+    \textbf{Codice} & \textbf{Rif.} & \textbf{Descrizione Task} & \textbf{Assegnatario} & \textbf{Scadenza} \\
+    \midrule
+    \endhead
+
+    \midrule
+    \multicolumn{5}{r}{\textit{Continua nella pagina successiva}} \\
+    \midrule
+    \endfoot
+
+    \bottomrule
+    \endlastfoot
+
+    \href{https://github.com/Synergo-Unit-UniPD/Documentary-Repo/issues/93}{\underline{\#93}} & VI-9.7
+        & {Aggiornamento configurazione template: tabelle (divisione,
+           versionamento, allineamento), href e coerenza visiva.
+           (Revisore: Filippo)}
+        & Armando Moda Scarati & 2026-04-07 \\[4pt]
+
+    \href{https://github.com/Synergo-Unit-UniPD/Documentary-Repo/issues/94}{\underline{\#94}} & VI-9.1
+        & {Stesura verbale interno della riunione odierna.
+           (Revisore: Ricardo)}
+        & Sofia De Blasi & 2026-04-07 \\[4pt]
+
+    \href{https://github.com/Synergo-Unit-UniPD/Documentary-Repo/issues/95}{\underline{\#95}} & VI-9.5
+        & {Configurazione campi precompilati Google Form per nomenclatura
+           task e branch.}
+        & Francesco Marcon & 2026-04-07 \\[4pt]
+
+    \href{https://github.com/Synergo-Unit-UniPD/Documentary-Repo/issues/96}{\underline{\#96}} & --
+        & {Studio struttura e contenuto dell'Analisi dei Requisiti
+           (casi d'uso, pattern Cardin, UML).}
+        & Filippo Idiometri, Roberto M.\ Doroftei, Armando M.\ Scarati & 2026-04-07 \\[4pt]
+
+    \href{https://github.com/Synergo-Unit-UniPD/Documentary-Repo/issues/97}{\underline{\#97}} & --
+        & {Studio struttura e contenuto del Piano di Progetto.}
+        & Anton Ricardo Rupi, Francesco Marcon, Sofia De Blasi & 2026-04-07 \\[4pt]
+	
+	\href{https://github.com/Synergo-Unit-UniPD/Documentary-Repo/issues/99}{\underline{\#99}} & --
+	& {Aggiornamento sito web con nuova sezione RTB.
+		(Revisore: Ricardo)}
+	& Sofia De Blasi & 2026-04-07 \\
+\end{longtable}
+
+ 
+% --- 6. PROSSIMA RIUNIONE ---
+\section{Prossima Riunione}
+\begin{itemize}
+	\item \textbf{Data:} 2026-04-07
+	\item \textbf{Ora:} 14:30
+	\item \textbf{OdG preliminare\textsubscript{G}:}
+	\begin{itemize}
+		\item Ragionare sulla gestione di task non strettamente legate
+		      alla repository\textsubscript{G} e con più assegnatari (es.\ studio individuale (tempo di palestra),
+		      attività di formazione, task che non producono cambiamenti nella repo).
+		\item Discussione sulla possibilità di automatizzare l'apertura
+		      dei branch con checkbox sì/no.
+		\item Aggiornamento sull'avanzamento delle attività assegnate.
+	\end{itemize}
+\end{itemize}
