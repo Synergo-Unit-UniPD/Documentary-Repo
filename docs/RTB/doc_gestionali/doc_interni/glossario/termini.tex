@@ -68,16 +68,17 @@
 \addcontentsline{toc}{subsection}{D}
 \subsection*{D}
 \begin{itemize}[leftmargin=*]
-    \item \textbf{Decision Tree (Albero Di Decisione):} Modello strutturato ad albero utilizzato per rappresentare decisioni e le loro possibili conseguenze.
-    \item \textbf{Dichiarazione Degli Impegni:} Documento gestionale esterno redatto
-          in fase di candidatura che specifica: scadenza ultima di consegna prevista,
-          preventivo dei costi finali calcolato secondo il regolamento, totale delle
-          ore produttive assegnate a persona (nell'intervallo 80--95 ore), distribuzione
-          delle ore per ruolo, rischi attesi e impegni formali assunti verso il
-          committente.
-    \item \textbf{Discord:} Piattaforma di comunicazione vocale e testuale utilizzata
-          dal gruppo come ambiente principale per le riunioni interne e il coordinamento
-          quotidiano.
+      \item \textbf{Decision Tree (Albero Di Decisione):} Modello strutturato ad albero utilizzato per rappresentare decisioni e le loro possibili conseguenze.
+      \item \textbf{Dichiarazione Degli Impegni:} Documento gestionale esterno redatto
+            in fase di candidatura che specifica: scadenza ultima di consegna prevista,
+            preventivo dei costi finali calcolato secondo il regolamento, totale delle
+            ore produttive assegnate a persona (nell'intervallo 80--95 ore), distribuzione
+            delle ore per ruolo, rischi attesi e impegni formali assunti verso il
+            committente.
+      \item \textbf{Discord:} Piattaforma di comunicazione vocale e testuale utilizzata
+            dal gruppo come ambiente principale per le riunioni interne e il coordinamento
+            quotidiano.
+      \item \textbf{Distant Writing:} Funzionalità di generazione automatica del testo tramite prompt, in cui l’LLM produce contenuti estesi a partire da istruzioni concise fornite dall’utente.
 \end{itemize}
  
 % ------------- E -------------
@@ -91,7 +92,8 @@
 \addcontentsline{toc}{subsection}{F}
 \subsection*{F}
 \begin{itemize}[leftmargin=*]
-    \item \textbf{Framework:} Struttura software di base o piattaforma che fornisce librerie e strumenti per facilitare e standardizzare lo sviluppo di applicazioni.
+      \item \textbf{File System:} Componente del sistema operativo responsabile della gestione dei file locali. Nel progetto può fungere da attore secondario per operazioni di upload e download delle note.
+      \item \textbf{Framework:} Struttura software di base o piattaforma che fornisce librerie e strumenti per facilitare e standardizzare lo sviluppo di applicazioni.
 \end{itemize}
  
 % ------------- G -------------
@@ -139,6 +141,7 @@
             utilizzata per tracciare attività, problemi o richieste. Nel flusso del
             gruppo ogni issue corrisponde a un task e viene generata automaticamente
             tramite Google Form.
+      \item \textbf{Issue Tracking:} Processo di monitoraggio delle attività tramite issue GitHub, includendo stati progressivi, assegnatari, tempi previsti ed effettivi, e collegamento con il sistema di misurazione ore.
 \end{itemize}
  
 % ------------- J -------------
@@ -164,10 +167,11 @@
 \addcontentsline{toc}{subsection}{L}
 \subsection*{L}
 \begin{itemize}[leftmargin=*]
-    \item \textbf{LLM (Large Language Model):} Modello avanzato di intelligenza
+      \item \textbf{LLM (Large Language Model):} Modello avanzato di intelligenza
           artificiale addestrato su grandi quantità di testo per la comprensione,
           elaborazione e generazione di linguaggio umano in modo contestuale.
       \item \textbf{Lettera di presentazione:} Documento formale redatto dal gruppo per accompagnare la candidatura, contenente la motivazione della scelta del capitolato e i collegamenti ai documenti prodotti.
+      \item \textbf{Lucidspark:} Strumento online per la creazione collaborativa di diagrammi, utilizzato dal gruppo per la modellazione UML e la rappresentazione dei Casi d'Uso.
 \end{itemize}
  
 % ------------- M -------------
@@ -313,6 +317,9 @@
 \addcontentsline{toc}{subsection}{S}
 \subsection*{S}
 \begin{itemize}[leftmargin=*]
+      \item \textbf{Scenario Principale:} Sequenza di passi che descrive il flusso standard di un Caso d'Uso, dal punto di vista dell'attore.
+      \item \textbf{Scenari Alternativi:} Varianti del flusso principale che descrivono eccezioni, estensioni o condizioni particolari del Caso d'Uso.
+      \item \textbf{Scrum:} Modello di sviluppo agile basato su iterazioni brevi (sprint), ruoli definiti e revisione incrementale del prodotto. Nel progetto è adottato con rotazione settimanale dei ruoli.
       \item \textbf{Sei Cappelli per Pensare:} Metodologia ideata da Edward de Bono che struttura il pensiero in sei prospettive distinte (logica, emotiva, critica, creativa, organizzativa e informativa). Nel progetto viene applicata tramite prompt dedicati per analizzare un testo secondo diverse angolazioni.
       \item \textbf{Semantic Versioning:} Convenzione di versionamento adottata dal
           gruppo basata sul formato \texttt{vX.Y.Z}, dove \texttt{X} (Major)
@@ -323,6 +330,9 @@
       \item \textbf{Stack Tecnologico:} Insieme delle tecnologie, strumenti e framework utilizzati per sviluppare un sistema software.
       \item \textbf{SAL (Stato Avanzamento Lavori):} Momento di verifica periodica o documento che attesta lo stato di completamento delle attività di progetto rispetto alla pianificazione.
       \item \textbf{Second Brain:} Nome del capitolato d'appalto scelto dal gruppo, proposto dall'azienda Zucchetti.
+      \item \textbf{Solo Editor:} Modalità che mostra esclusivamente l’area di editing.
+      \item \textbf{Solo Render:} Modalità che mostra esclusivamente la versione renderizzata del documento.
+      \item \textbf{Split View:} Modalità dell’editor che mostra simultaneamente la vista di editing e la vista renderizzata del documento.
       \item \textbf{Sprint:} Iterazione di lavoro breve e limitata nel tempo tipica delle metodologie agili, in cui il team si impegna a completare un set predefinito di task.
       \item \textbf{Sprint Planning:} Cerimonia agile svolta all'inizio di ogni
             sprint in cui il gruppo seleziona le attività da completare nel periodo
@@ -367,6 +377,7 @@
             completare un task, espressa in minuti. Definita al momento della
             creazione del task e utilizzata come riferimento per il monitoraggio
             dell'avanzamento.
+      \item \textbf{Timeout LLM:} Errore generato quando il modello linguistico non risponde entro il tempo massimo previsto, gestito tramite messaggi di errore e retry.
       \item \textbf{Title Case:} Convenzione tipografica adottata dal gruppo per i
             titoli di sezioni e sotto-sezioni, che prevede l'iniziale maiuscola per
             ogni parola. \textit{Esempio}: ``Ciclo Di Vita Documentale''.
