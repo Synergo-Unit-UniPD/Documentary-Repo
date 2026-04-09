@@ -1,0 +1,69 @@
+\section{Casi d'Uso}
+
+\subsection{Attori}
+\subsubsection{Utente}
+Attore primario. Rappresenta l'utilizzatore finale che interagisce con l'interfaccia dell'editor.
+
+\subsubsection{LLM (Large Language Model)}
+Attore secondario (sistema esterno). Fornisce i servizi di analisi e generazione testo.
+
+\subsection{Elenco dei casi d'uso}
+
+\subsubsection{UC1 - Creazione di una nuova nota vuota}
+\begin{table}[ht]
+	\centering
+	\renewcommand{\arraystretch}{1.4}
+	\begin{tabularx}{\textwidth}{|l|X|}
+		\hline
+		\textbf{Codice} & \textbf{UC1} \\
+		\hline
+		\textbf{Titolo} & Creazione di una nuova nota vuota \\
+		\hline
+		\textbf{Attori} & Utente (primario) \\
+		\hline
+		\textbf{Descrizione} & L'utente avvia una nuova sessione di scrittura pulendo l'area di lavoro. \\
+		\hline
+		\textbf{Precondizioni} & Il sistema è avviato e l'interfaccia è correttamente caricata. \\
+		\hline
+		\textbf{Postcondizioni} & L'editor e l'anteprima di rendering sono vuoti. \\
+		\hline
+		\textbf{Scenario Principale} & 
+		\vspace{-0.4cm}
+		\begin{enumerate}[leftmargin=*]
+			\item L'utente attiva il comando "Nuova Nota";
+			\item Il sistema svuota l'area di input testo;
+			\item Il sistema aggiorna l'anteprima mostrando una pagina bianca.
+		\end{enumerate} \\
+		\hline
+	\end{tabularx}
+	\caption{UC1 - Creazione di una nuova nota vuota}
+\end{table}
+
+\subsubsection{UC2 - Scrittura di testo nell'editor}
+\begin{table}[ht]
+	\centering
+	\renewcommand{\arraystretch}{1.4}
+	\begin{tabularx}{\textwidth}{|l|X|}
+		\hline
+		\textbf{Codice} & \textbf{UC2} \\
+		\hline
+		\textbf{Titolo} & Scrittura di testo nell'editor \\
+		\hline
+		\textbf{Attori} & Utente (primario) \\
+		\hline
+		\textbf{Descrizione} & L'utente inserisce caratteri per comporre il documento. \\
+		\hline
+		\textbf{Precondizioni} & L'editor è attivo e pronto a ricevere input. \\
+		\hline
+		\textbf{Postcondizioni} & Il testo inserito è visibile nell'area di input. \\
+		\hline
+		\textbf{Scenario Principale} & 
+		\vspace{-0.4cm}
+		\begin{enumerate}[leftmargin=*]
+			\item L'utente digita caratteri tramite tastiera;
+			\item Il sistema visualizza i caratteri nell'area di testo.
+		\end{enumerate} \\
+		\hline
+	\end{tabularx}
+	\caption{UC2 - Scrittura di testo nell'editor}
+\end{table}
