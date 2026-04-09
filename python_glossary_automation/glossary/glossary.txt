@@ -19,6 +19,8 @@ Decision Tree
 Albero Di Decisione
 Dichiarazione Degli Impegni
 Discord
+Distant Writing
+File System
 Framework
 GitHub Pages
 GitHub Project
@@ -27,10 +29,12 @@ Google Form
 Interfaccia Utente
 ISO/IEC 12207:1995
 Issue
+Issue Tracking
 Just-in-time
 LLM
 Lettera di presentazione
 Large Language Model
+Lucidspark
 Main
 Merge
 Messaggi Precompilati
@@ -66,10 +70,15 @@ Revisione
 RTB
 Requirements and Technology Baseline
 Ruolo
+Scenario Principale
+Scenari Alternativi
 SAL
 Sei Cappelli per Pensare
 Second Brain
 Semantic Versioning
+Split View 
+Solo Editor 
+Solo Render
 Sprint
 Sprint Planning
 Sprint Retrospective
@@ -83,6 +92,7 @@ Template
 Ticket
 Tempo Effettivo
 Tempo Previsto
+Timeout LLM
 Title Case
 T-y.z
 Trunk-based Development
