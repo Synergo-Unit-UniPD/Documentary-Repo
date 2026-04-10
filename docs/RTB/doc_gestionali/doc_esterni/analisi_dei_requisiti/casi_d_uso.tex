@@ -11,8 +11,13 @@
 \end{itemize}
 
 
+
+% 1. Macroarea 1: Gestione Editor e Markdown
 \subsection{Macroarea 1: Gestione Editor e Markdown}
 
+
+
+% UC1 - Creazione di una nuova nota vuota
 \subsubsection{UC1 - Creazione di una nuova nota vuota}
 \renewcommand{\arraystretch}{1.4}
 \begin{tabularx}{\textwidth}{|l|X|}
@@ -43,14 +48,16 @@
 \textbf{Tabella 1: UC1 – Creazione di una nuova nota vuota}
 \end{center}
 
+% use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{creazione_nota.png}
-    \caption{Creazione di una nuova nota}
+    \caption{UC1 – Creazione di una nuova nota}
 \end{figure}
 
 
 
+% UC2 - Scrittura di testo nell'editor
 \subsubsection{UC2 - Scrittura di testo nell'editor}
 
 \renewcommand{\arraystretch}{1.4}
@@ -81,14 +88,16 @@
 \textbf{Tabella 2: UC2 – Scrittura di testo nell’editor}
 \end{center}
 
+% use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{scrittura_nota.png}
-    \caption{Scrittura di testo nell'editor}
+    \caption{UC2 – Scrittura di testo nell'editor}
 \end{figure}
 
 
 
+% UC3 - Formattazione del testo
 \subsubsection{UC3 - Formattazione del testo}
 
 \renewcommand{\arraystretch}{1.4}
@@ -102,7 +111,8 @@
     \hline
     \textbf{Descrizione} & L'utente applica formattazioni al testo per migliorarne l'aspetto. \\
     \hline
-    \textbf{Precondizioni} & L'editor è attivo e pronto a ricevere input. \\
+    \textbf{Precondizioni} & L'editor è attivo ed una porzione 
+    di testo è selezionabile. \\
     \hline
     \textbf{Postcondizioni} & Il testo formattato è visibile nell'area di input. \\
     \hline
@@ -120,14 +130,16 @@
 \textbf{Tabella 3: UC3 – Formattazione del testo}
 \end{center}
 
+% use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{formattazione_testo.png}
-    \caption{Formattazione del testo}
+    \caption{UC3 – Formattazione del testo}
 \end{figure}
 
 
 
+% UC3.1 - Formattazione del testo: grassetto
 \paragraph{UC3.1 – Formattazione del testo in grassetto}\mbox{}\
 
 \renewcommand{\arraystretch}{1.4}
@@ -143,7 +155,7 @@
     \hline
     \textbf{Precondizioni} & L'editor è attivo e presenta del testo selezionabile. \\
     \hline
-    \textbf{Postcondizioni} & Il testo formattato in grassetto è visualizzato correttamente. \\
+    \textbf{Postcondizioni} & Il testo formattato in grassetto è visualizzato nell'area di input. \\
     \hline
     \textbf{Scenario Principale} &
     \parbox[t]{\hsize}{
@@ -158,3 +170,134 @@
 \begin{center}
 \textbf{Tabella 4: UC3.1 – Formattazione del testo in grassetto}
 \end{center}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{formattazione_testo_grassetto.png}
+    \caption{UC3.1 – Formattazione del testo in grassetto}
+\end{figure}
+
+
+
+% UC3.2 - Formattazione del testo: corsivo
+\paragraph{UC3.2 – Formattazione del testo in Corsivo}\mbox{}\
+
+\renewcommand{\arraystretch}{1.4}
+\begin{tabularx}{\textwidth}{|l|X|}
+    \hline
+    \textbf{Codice} & UC3.2 \\
+    \hline
+    \textbf{Titolo} & Formattazione del testo in Corsivo \\
+    \hline
+    \textbf{Attori} & Utente (primario) \\
+    \hline
+    \textbf{Descrizione} & L'utente applica la formattazione in corsivo al testo selezionato. \\
+    \hline
+    \textbf{Precondizioni} & L'editor è attivo e presenta del testo selezionabile. \\
+    \hline
+    \textbf{Postcondizioni} & Il testo formattato in corsivo è visualizzato nell'area di input. \\
+    \hline
+    \textbf{Scenario Principale} &
+    \parbox[t]{\hsize}{
+        \begin{enumerate}[leftmargin=*]
+            \item L'utente seleziona il testo da formattare;
+            \item L'utente applica la formattazione in corsivo.
+        \end{enumerate}
+    } \\
+    \hline
+\end{tabularx}
+
+\begin{center}
+\textbf{Tabella 5: UC3.2 – Formattazione del testo in corsivo}
+\end{center}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{formattazione_testo_corsivo.png}
+    \caption{UC3.2 – Formattazione del testo in corsivo}
+\end{figure}
+
+
+
+% UC3.3 - Formattazione del testo: sottolineato
+\paragraph{UC3.3 – Formattazione del testo in sottolineato}\mbox{}\
+
+\renewcommand{\arraystretch}{1.4}
+\begin{tabularx}{\textwidth}{|l|X|}
+    \hline
+    \textbf{Codice} & UC3.3 \\
+    \hline
+    \textbf{Titolo} & Formattazione del testo sottolineato \\
+    \hline
+    \textbf{Attori} & Utente (primario) \\
+    \hline
+    \textbf{Descrizione} & L'utente applica la formattazione di sottolineato al testo selezionato. \\
+    \hline
+    \textbf{Precondizioni} & L'editor è attivo e presenta del testo selezionabile. \\
+    \hline
+    \textbf{Postcondizioni} & Il testo formattato in sottolineato è visualizzato nell'area di input. \\
+    \hline
+    \textbf{Scenario Principale} &
+    \parbox[t]{\hsize}{
+        \begin{enumerate}[leftmargin=*]
+            \item L'utente seleziona il testo da formattare;
+            \item L'utente applica la formattazione di sottolineato.
+        \end{enumerate}
+    } \\
+    \hline
+\end{tabularx}
+
+\begin{center}
+\textbf{Tabella 6: UC3.3 – Formattazione del testo in sottolineato}
+\end{center}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{formattazione_testo_sottolineato.png}
+    \caption{UC3.3 – Formattazione del testo in sottolineato}
+\end{figure}
+
+
+
+
+% UC3.4 - Formattazione del testo: barrato
+\paragraph{UC3.4 – Formattazione del testo in barrato}\mbox{}\
+
+\renewcommand{\arraystretch}{1.4}
+\begin{tabularx}{\textwidth}{|l|X|}
+    \hline
+    \textbf{Codice} & UC3.4 \\
+    \hline
+    \textbf{Titolo} & Formattazione del testo barrato \\
+    \hline
+    \textbf{Attori} & Utente (primario) \\
+    \hline
+    \textbf{Descrizione} & L'utente applica la formattazione barrato al testo selezionato. \\
+    \hline
+    \textbf{Precondizioni} & L'editor è attivo e presenta del testo selezionabile. \\
+    \hline
+    \textbf{Postcondizioni} & Il testo formattato in barrato è visualizzato nell'area di input. \\
+    \hline
+    \textbf{Scenario Principale} &
+    \parbox[t]{\hsize}{
+        \begin{enumerate}[leftmargin=*]
+            \item L'utente seleziona il testo da formattare;
+            \item L'utente applica la formattazione barrato.
+        \end{enumerate}
+    } \\
+    \hline
+\end{tabularx}
+
+\begin{center}
+\textbf{Tabella 6: UC3.4 – Formattazione del testo barrato}
+\end{center}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{formattazione_testo_barrato.png}
+    \caption{UC3.4 – Formattazione del testo barrato}
+\end{figure}
