@@ -77,14 +77,7 @@
 \end{itemize}
 
 % UC3.1 - Formattazione del testo: grassetto
-\paragraph{UC 3.1: Applicazione grassetto}
-
-\begin{itemize}
-    \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente applica lo stile grassetto al testo selezionato.
-    \item \textbf{Precondizioni}: L'editor è attivo e presenta del testo selezionabile.
-    \item \textbf{Postcondizioni}: Il testo formattato in grassetto è visualizzato nell'area di input.
-\end{itemize}
+\paragraph{UC 3.1: Applicazione grassetto}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
@@ -93,14 +86,15 @@
     \caption{UC3.1 – Formattazione del testo in grassetto}
 \end{figure}
 
-% UC3.2 - Formattazione del testo: corsivo
-\paragraph{UC 3.2: Applicazione corsivo}
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente applica lo stile corsivo al testo selezionato.
+    \item \textbf{Scenario Principale}: L'utente applica lo stile grassetto al testo selezionato.
     \item \textbf{Precondizioni}: L'editor è attivo e presenta del testo selezionabile.
-    \item \textbf{Postcondizioni}: Il testo formattato in corsivo è visualizzato nell'area di input.
+    \item \textbf{Postcondizioni}: Il testo formattato in grassetto è visualizzato nell'area di input.
 \end{itemize}
+
+% UC3.2 - Formattazione del testo: corsivo
+\paragraph{UC 3.2: Applicazione corsivo}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
@@ -109,14 +103,15 @@
     \caption{UC3.2 – Formattazione del testo in corsivo}
 \end{figure}
 
-% UC3.3 - Formattazione del testo: sottolineato
-\paragraph{UC 3.3: Applicazione sottolineato}
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente applica lo stile sottolineato al testo selezionato.
+    \item \textbf{Scenario Principale}: L'utente applica lo stile corsivo al testo selezionato.
     \item \textbf{Precondizioni}: L'editor è attivo e presenta del testo selezionabile.
-    \item \textbf{Postcondizioni}: Il testo formattato in sottolineato è visualizzato nell'area di input.
+    \item \textbf{Postcondizioni}: Il testo formattato in corsivo è visualizzato nell'area di input.
 \end{itemize}
+
+% UC3.3 - Formattazione del testo: sottolineato
+\paragraph{UC 3.3: Applicazione sottolineato}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
@@ -125,14 +120,15 @@
     \caption{UC3.3 – Formattazione del testo in sottolineato}
 \end{figure}
 
-% UC3.4 - Formattazione del testo: barrato
-\paragraph{UC 3.4: Applicazione barrato}
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente applica lo stile barrato al testo selezionato.
+    \item \textbf{Scenario Principale}: L'utente applica lo stile sottolineato al testo selezionato.
     \item \textbf{Precondizioni}: L'editor è attivo e presenta del testo selezionabile.
-    \item \textbf{Postcondizioni}: Il testo formattato in barrato è visualizzato nell'area di input.
+    \item \textbf{Postcondizioni}: Il testo formattato in sottolineato è visualizzato nell'area di input.
 \end{itemize}
+
+% UC3.4 - Formattazione del testo: barrato
+\paragraph{UC 3.4: Applicazione barrato}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
@@ -141,11 +137,54 @@
     \caption{UC3.4 – Formattazione del testo barrato}
 \end{figure}
 
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: L'utente applica lo stile barrato al testo selezionato.
+    \item \textbf{Precondizioni}: L'editor è attivo e presenta del testo selezionabile.
+    \item \textbf{Postcondizioni}: Il testo formattato in barrato è visualizzato nell'area di input.
+\end{itemize}
+
 % UC4 - Inserimento elementi Markdown
 \subsubsection{UC 4: Inserimento elementi Markdown}
 
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{inserimento_markdown.png}
+    \caption{UC4 – Inserimento elementi Markdown}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente seleziona la funzione di markdown.
+        \item L'utente applica la formattazione desiderata.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: Viene selezionata una funzione di markdown.
+    \item \textbf{Postcondizioni}: Il testo viene formattato con quella funzione.
+\end{itemize}
+
 % UC4.1 - Inserimento titoli/intestazioni
-\paragraph{UC 4.1: Inserimento titoli/intestazioni}
+\paragraph{UC 4.1: Inserimento titoli/intestazioni}\mbox{}\
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{inserimento_markdown_intestazioni.png}
+    \caption{UC4 – Inserimento elementi Markdown}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente seleziona la funzione di intestazione.
+        \item L'utente applica l'intestazione desiderata secondo la sintassi di Markdown.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: Viene selezionata la formattazione per le intestazioni.
+    \item \textbf{Postcondizioni}: Il testo presenta le intestazioni.
+\end{itemize}
 
 % UC4.2 - Inserimento link ipertestuale
 \paragraph{UC 4.2: Inserimento link ipertestuale}
