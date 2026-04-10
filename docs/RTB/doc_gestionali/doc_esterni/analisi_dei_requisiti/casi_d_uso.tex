@@ -2,51 +2,19 @@
 
 \subsection{Attori}
 \begin{itemize}
-	\item \textbf{Utente}: Attore primario. Rappresenta 
-	l'utilizzatore finale che interagisce con 
-	l'interfaccia dell'editor.
-	\item \textbf{LLM (Large Language Model)}: Attore 
-	secondario (sistema esterno). 
-	Fornisce i servizi di analisi e generazione testo.
+	\item \textbf{Utente}: Attore primario. Rappresenta l'utilizzatore finale che interagisce con l'interfaccia dell'editor.
+	\item \textbf{LLM (Large Language Model)}: Attore secondario (sistema esterno). Fornisce i servizi di analisi e generazione testo.
 \end{itemize}
 
-
-
+% --------------------------------------------------------------------------
 % 1. Macroarea 1: Gestione Editor e Markdown
-\subsection{Macroarea 1: Gestione Editor e Markdown}
-
-
+% --------------------------------------------------------------------------
+\newpage
+\subsection{Macroarea 1 — Gestione Editor e Markdown}
+\textit{Funzionalità core per la manipolazione e visualizzazione del testo.}
 
 % UC1 - Creazione di una nuova nota vuota
-\subsubsection{UC1 - Creazione di una nuova nota vuota}
-\renewcommand{\arraystretch}{1.4}
-\begin{tabularx}{\textwidth}{|l|X|}
-    \hline
-    \textbf{Codice} & UC1 \\
-    \hline
-    \textbf{Titolo} & Creazione di una nuova nota vuota \\
-    \hline
-    \textbf{Attori} & Utente (primario) \\
-    \hline
-    \textbf{Descrizione} & L'utente avvia una nuova sessione di scrittura pulendo l'area di lavoro. \\
-    \hline
-    \textbf{Precondizioni} & Il sistema è avviato e l'interfaccia è correttamente caricata. \\
-    \hline
-    \textbf{Postcondizioni} & Viene creata una nota vuota. \\
-    \hline
-    \textbf{Scenario Principale} &
-    \parbox[t]{\hsize}{
-        \begin{enumerate}[leftmargin=*]
-            \item L'utente attiva il comando "Nuova Nota";
-            \item Il sistema crea una nuova nota vuota.
-        \end{enumerate}
-    } \\
-    \hline
-\end{tabularx}
-
-\begin{center}
-\textbf{Tabella 1: UC1 – Creazione di una nuova nota vuota}
-\end{center}
+\subsubsection{UC 1: Creazione di una nuova nota vuota}
 
 % use case diagram
 \begin{figure}[H]
@@ -55,38 +23,20 @@
     \caption{UC1 – Creazione di una nuova nota}
 \end{figure}
 
-
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente attiva il comando "Nuova Nota";
+        \item Il sistema crea una nuova nota vuota.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: Il sistema è avviato e l'interfaccia è correttamente caricata.
+    \item \textbf{Postcondizioni}: Viene creata una nota vuota.
+    \item \textbf{Trigger}: L'utente desidera iniziare una nuova sessione di scrittura.
+\end{itemize}
 
 % UC2 - Scrittura di testo nell'editor
-\subsubsection{UC2 - Scrittura di testo nell'editor}
-
-\renewcommand{\arraystretch}{1.4}
-\begin{tabularx}{\textwidth}{|l|X|}
-    \hline
-    \textbf{Codice} & UC2 \\
-    \hline
-    \textbf{Titolo} & Scrittura di testo nell'editor \\
-    \hline
-    \textbf{Attori} & Utente (primario) \\
-    \hline
-    \textbf{Descrizione} & L'utente inserisce caratteri per comporre il documento. \\
-    \hline
-    \textbf{Precondizioni} & L'editor è attivo e pronto a ricevere input. \\
-    \hline
-    \textbf{Postcondizioni} & Il testo inserito è visibile nell'area di input. \\
-    \hline
-    \textbf{Scenario Principale} &
-    \parbox[t]{\hsize}{
-        \begin{enumerate}[leftmargin=*]
-            \item L'utente inserisce testo nell'area di input con la sintassi appropriata (Markdown).
-        \end{enumerate}
-    } \\
-    \hline
-\end{tabularx}
-
-\begin{center}
-\textbf{Tabella 2: UC2 – Scrittura di testo nell’editor}
-\end{center}
+\subsubsection{UC 2: Scrittura testo nell'editor}
 
 % use case diagram
 \begin{figure}[H]
@@ -95,40 +45,18 @@
     \caption{UC2 – Scrittura di testo nell'editor}
 \end{figure}
 
-
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente inserisce testo nell'area di input tramite tastiera.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: L'editor è attivo e pronto a ricevere input.
+    \item \textbf{Postcondizioni}: Il testo inserito è visibile nell'area di input.
+\end{itemize}
 
 % UC3 - Formattazione del testo
-\subsubsection{UC3 - Formattazione del testo}
-
-\renewcommand{\arraystretch}{1.4}
-\begin{tabularx}{\textwidth}{|l|X|}
-    \hline
-    \textbf{Codice} & UC3 \\
-    \hline
-    \textbf{Titolo} & Formattazione del testo \\
-    \hline
-    \textbf{Attori} & Utente (primario) \\
-    \hline
-    \textbf{Descrizione} & L'utente applica formattazioni al testo per migliorarne l'aspetto. \\
-    \hline
-    \textbf{Precondizioni} & L'editor è attivo ed una porzione 
-    di testo è selezionabile. \\
-    \hline
-    \textbf{Postcondizioni} & Il testo formattato è visibile nell'area di input. \\
-    \hline
-    \textbf{Scenario Principale} &
-    \parbox[t]{\hsize}{
-        \begin{enumerate}[leftmargin=*]
-            \item L'utente seleziona il testo da formattare;
-            \item L'utente applica la formattazione desiderata.
-        \end{enumerate}
-    } \\
-    \hline
-\end{tabularx}
-
-\begin{center}
-\textbf{Tabella 3: UC3 – Formattazione del testo}
-\end{center}
+\subsubsection{UC 3: Formattazione del testo}
 
 % use case diagram
 \begin{figure}[H]
@@ -137,39 +65,26 @@
     \caption{UC3 – Formattazione del testo}
 \end{figure}
 
-
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente seleziona il testo da formattare.
+        \item L'utente applica la formattazione desiderata.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: L'editor è attivo ed una porzione di testo è selezionabile.
+    \item \textbf{Postcondizioni}: Il testo formattato è visibile nell'area di input.
+\end{itemize}
 
 % UC3.1 - Formattazione del testo: grassetto
-\paragraph{UC3.1 – Formattazione del testo in grassetto}\mbox{}\
+\paragraph{UC 3.1: Applicazione grassetto}
 
-\renewcommand{\arraystretch}{1.4}
-\begin{tabularx}{\textwidth}{|l|X|}
-    \hline
-    \textbf{Codice} & UC3.1 \\
-    \hline
-    \textbf{Titolo} & Formattazione del testo in grassetto \\
-    \hline
-    \textbf{Attori} & Utente (primario) \\
-    \hline
-    \textbf{Descrizione} & L'utente applica la formattazione in grassetto al testo selezionato. \\
-    \hline
-    \textbf{Precondizioni} & L'editor è attivo e presenta del testo selezionabile. \\
-    \hline
-    \textbf{Postcondizioni} & Il testo formattato in grassetto è visualizzato nell'area di input. \\
-    \hline
-    \textbf{Scenario Principale} &
-    \parbox[t]{\hsize}{
-        \begin{enumerate}[leftmargin=*]
-            \item L'utente seleziona il testo da formattare;
-            \item L'utente applica la formattazione in grassetto.
-        \end{enumerate}
-    } \\
-    \hline
-\end{tabularx}
-
-\begin{center}
-\textbf{Tabella 4: UC3.1 – Formattazione del testo in grassetto}
-\end{center}
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: L'utente applica lo stile grassetto al testo selezionato.
+    \item \textbf{Precondizioni}: L'editor è attivo e presenta del testo selezionabile.
+    \item \textbf{Postcondizioni}: Il testo formattato in grassetto è visualizzato nell'area di input.
+\end{itemize}
 
 % use case diagram
 \begin{figure}[H]
@@ -178,39 +93,14 @@
     \caption{UC3.1 – Formattazione del testo in grassetto}
 \end{figure}
 
-
-
 % UC3.2 - Formattazione del testo: corsivo
-\paragraph{UC3.2 – Formattazione del testo in Corsivo}\mbox{}\
-
-\renewcommand{\arraystretch}{1.4}
-\begin{tabularx}{\textwidth}{|l|X|}
-    \hline
-    \textbf{Codice} & UC3.2 \\
-    \hline
-    \textbf{Titolo} & Formattazione del testo in Corsivo \\
-    \hline
-    \textbf{Attori} & Utente (primario) \\
-    \hline
-    \textbf{Descrizione} & L'utente applica la formattazione in corsivo al testo selezionato. \\
-    \hline
-    \textbf{Precondizioni} & L'editor è attivo e presenta del testo selezionabile. \\
-    \hline
-    \textbf{Postcondizioni} & Il testo formattato in corsivo è visualizzato nell'area di input. \\
-    \hline
-    \textbf{Scenario Principale} &
-    \parbox[t]{\hsize}{
-        \begin{enumerate}[leftmargin=*]
-            \item L'utente seleziona il testo da formattare;
-            \item L'utente applica la formattazione in corsivo.
-        \end{enumerate}
-    } \\
-    \hline
-\end{tabularx}
-
-\begin{center}
-\textbf{Tabella 5: UC3.2 – Formattazione del testo in corsivo}
-\end{center}
+\paragraph{UC 3.2: Applicazione corsivo}
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: L'utente applica lo stile corsivo al testo selezionato.
+    \item \textbf{Precondizioni}: L'editor è attivo e presenta del testo selezionabile.
+    \item \textbf{Postcondizioni}: Il testo formattato in corsivo è visualizzato nell'area di input.
+\end{itemize}
 
 % use case diagram
 \begin{figure}[H]
@@ -219,39 +109,14 @@
     \caption{UC3.2 – Formattazione del testo in corsivo}
 \end{figure}
 
-
-
 % UC3.3 - Formattazione del testo: sottolineato
-\paragraph{UC3.3 – Formattazione del testo in sottolineato}\mbox{}\
-
-\renewcommand{\arraystretch}{1.4}
-\begin{tabularx}{\textwidth}{|l|X|}
-    \hline
-    \textbf{Codice} & UC3.3 \\
-    \hline
-    \textbf{Titolo} & Formattazione del testo sottolineato \\
-    \hline
-    \textbf{Attori} & Utente (primario) \\
-    \hline
-    \textbf{Descrizione} & L'utente applica la formattazione di sottolineato al testo selezionato. \\
-    \hline
-    \textbf{Precondizioni} & L'editor è attivo e presenta del testo selezionabile. \\
-    \hline
-    \textbf{Postcondizioni} & Il testo formattato in sottolineato è visualizzato nell'area di input. \\
-    \hline
-    \textbf{Scenario Principale} &
-    \parbox[t]{\hsize}{
-        \begin{enumerate}[leftmargin=*]
-            \item L'utente seleziona il testo da formattare;
-            \item L'utente applica la formattazione di sottolineato.
-        \end{enumerate}
-    } \\
-    \hline
-\end{tabularx}
-
-\begin{center}
-\textbf{Tabella 6: UC3.3 – Formattazione del testo in sottolineato}
-\end{center}
+\paragraph{UC 3.3: Applicazione sottolineato}
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: L'utente applica lo stile sottolineato al testo selezionato.
+    \item \textbf{Precondizioni}: L'editor è attivo e presenta del testo selezionabile.
+    \item \textbf{Postcondizioni}: Il testo formattato in sottolineato è visualizzato nell'area di input.
+\end{itemize}
 
 % use case diagram
 \begin{figure}[H]
@@ -260,40 +125,14 @@
     \caption{UC3.3 – Formattazione del testo in sottolineato}
 \end{figure}
 
-
-
-
 % UC3.4 - Formattazione del testo: barrato
-\paragraph{UC3.4 – Formattazione del testo in barrato}\mbox{}\
-
-\renewcommand{\arraystretch}{1.4}
-\begin{tabularx}{\textwidth}{|l|X|}
-    \hline
-    \textbf{Codice} & UC3.4 \\
-    \hline
-    \textbf{Titolo} & Formattazione del testo barrato \\
-    \hline
-    \textbf{Attori} & Utente (primario) \\
-    \hline
-    \textbf{Descrizione} & L'utente applica la formattazione barrato al testo selezionato. \\
-    \hline
-    \textbf{Precondizioni} & L'editor è attivo e presenta del testo selezionabile. \\
-    \hline
-    \textbf{Postcondizioni} & Il testo formattato in barrato è visualizzato nell'area di input. \\
-    \hline
-    \textbf{Scenario Principale} &
-    \parbox[t]{\hsize}{
-        \begin{enumerate}[leftmargin=*]
-            \item L'utente seleziona il testo da formattare;
-            \item L'utente applica la formattazione barrato.
-        \end{enumerate}
-    } \\
-    \hline
-\end{tabularx}
-
-\begin{center}
-\textbf{Tabella 6: UC3.4 – Formattazione del testo barrato}
-\end{center}
+\paragraph{UC 3.4: Applicazione barrato}
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: L'utente applica lo stile barrato al testo selezionato.
+    \item \textbf{Precondizioni}: L'editor è attivo e presenta del testo selezionabile.
+    \item \textbf{Postcondizioni}: Il testo formattato in barrato è visualizzato nell'area di input.
+\end{itemize}
 
 % use case diagram
 \begin{figure}[H]
@@ -301,3 +140,121 @@
     \includegraphics[width=0.6\textwidth]{formattazione_testo_barrato.png}
     \caption{UC3.4 – Formattazione del testo barrato}
 \end{figure}
+
+% UC4 - Inserimento elementi Markdown
+\subsubsection{UC 4: Inserimento elementi Markdown}
+
+% UC4.1 - Inserimento titoli/intestazioni
+\paragraph{UC 4.1: Inserimento titoli/intestazioni}
+
+% UC4.2 - Inserimento link ipertestuale
+\paragraph{UC 4.2: Inserimento link ipertestuale}
+
+% UC4.3 - Inserimento elenchi puntati e numerati
+\paragraph{UC 4.3: Inserimento elenchi puntati e numerati}
+
+% UC5 - Gestione delle modifiche
+\subsubsection{UC 5: Gestione delle modifiche}
+
+% UC5.1 - Annullamento dell'ultima modifica (Undo)
+\paragraph{UC 5.1: Annullamento dell'ultima modifica (Undo)}
+
+% UC5.2 - Ripristino della modifica annullata (Redo)
+\paragraph{UC 5.2: Ripristino della modifica annullata (Redo)}
+
+% UC6 - Modifica modalità di visualizzazione
+\subsubsection{UC 6: Modifica modalità di visualizzazione}
+
+% UC6.1 - Visualizzazione solo Editor
+\paragraph{UC 6.1: Visualizzazione solo Editor}
+
+% UC6.2 - Visualizzazione solo Render
+\paragraph{UC 6.2: Visualizzazione solo Render}
+
+% UC6.3 - Visualizzazione Split View
+\paragraph{UC 6.3: Visualizzazione Split View}
+
+
+% --------------------------------------------------------------------------
+% 2. Macroarea 2: Interazione AI (LLM)
+% --------------------------------------------------------------------------
+\newpage
+\subsection{Macroarea 2 — Interazione AI (LLM)}
+\textit{Elaborazione del testo tramite modelli linguistici e gestione degli output.}
+
+% UC7 - Generazione riassunto del testo
+\subsubsection{UC 7: Generazione riassunto del testo}
+
+% UC8 - Traduzione del testo
+\subsubsection{UC 8: Traduzione del testo}
+
+% UC9 - Riscrittura del testo
+\subsubsection{UC 9: Riscrittura del testo}
+
+% UC10 - Generazione automatica da prompt (Distant Writing)
+\subsubsection{UC 10: Generazione automatica da prompt (Distant Writing)}
+
+% UC11 - Critica del testo (Sei Cappelli per Pensare)
+\subsubsection{UC 11: Critica del testo (Sei Cappelli per Pensare)}
+
+% UC11.1 - Analisi Cappello Bianco (Dati e fatti)
+\paragraph{UC 11.1: Analisi Cappello Bianco (Dati e fatti)}
+
+% UC11.2 - Analisi Cappello Rosso (Emozioni)
+\paragraph{UC 11.2: Analisi Cappello Rosso (Emozioni)}
+
+% UC11.3 - Analisi Cappello Nero (Rischi)
+\paragraph{UC 11.3: Analisi Cappello Nero (Rischi)}
+
+% UC11.4 - Analisi Cappello Giallo (Opportunità)
+\paragraph{UC 11.4: Analisi Cappello Giallo (Opportunità)}
+
+% UC11.5 - Analisi Cappello Verde (Creatività)
+\paragraph{UC 11.5: Analisi Cappello Verde (Creatività)}
+
+% UC11.6 - Analisi Cappello Blu (Logica/Controllo)
+\paragraph{UC 11.6: Analisi Cappello Blu (Logica/Controllo)}
+
+% UC12 - Gestione proposta AI
+\subsubsection{UC 12: Gestione proposta AI}
+
+% UC12.1 - Inserimento proposta nel documento
+\paragraph{UC 12.1: Inserimento proposta nel documento}
+
+% UC12.2 - Rifiuto della proposta AI
+\paragraph{UC 12.2: Rifiuto della proposta AI}
+
+% UC13 - Gestione errori di sistema LLM
+\subsubsection{UC 13: Gestione errori di sistema LLM}
+
+% UC14 - Interazione con ChatBot
+\subsubsection{UC 14: (Opzionale) Interazione con ChatBot}
+
+
+% --------------------------------------------------------------------------
+% 3. Macroarea 3: Gestione I/O e Persistenza
+% --------------------------------------------------------------------------
+\newpage
+\subsection{Macroarea 3 — Gestione I/O e Persistenza}
+\textit{Salvataggio, caricamento ed esportazione.}
+
+% UC15 - Download della nota in formato Markdown
+\subsubsection{UC 15: Download della nota in formato Markdown}
+
+% UC16 - Upload di una nota locale
+\subsubsection{UC 16: Upload di una nota locale}
+
+% UC17 - Esportazione della nota (PDF, HTML, JSON)
+\subsubsection{UC 17: Esportazione della nota (PDF, HTML, JSON)}
+
+% UC18 - Gestione Persistenza su Database remoto
+\subsubsection{UC 18: (Opzionale) Gestione Persistenza su Database remoto}
+
+% UC18.1 - Salvataggio nota su database
+\paragraph{UC 18.1: Salvataggio nota su database}
+
+% UC18.2 - Caricamento nota da database
+\paragraph{UC 18.2: Caricamento nota da database}
+
+% UC18.3 - Creazione collegamento tra note nel database
+\paragraph{UC 18.3: Creazione collegamento tra note nel database}
