@@ -2,6 +2,7 @@ Amministratore
 API
 Analista
 Analisi dei Requisiti
+Attore
 AWS
 Baseline
 Branch
@@ -16,6 +17,7 @@ Compito
 Colli di bottiglia
 Ciclo Di Vita Documentale
 Decision Tree
+Distant Writing
 Albero Di Decisione
 Dichiarazione Degli Impegni
 Discord
@@ -24,14 +26,18 @@ GitHub Pages
 GitHub Project
 Google Calendar
 Google Form
+HTML
 Interfaccia Utente
 ISO/IEC 12207:1995
 Issue
+JSON
 Just-in-time
 LLM
 Lettera di presentazione
 Large Language Model
+Lucidchart
 Main
+Markdown
 Merge
 Messaggi Precompilati
 Milestone
@@ -60,6 +66,7 @@ Programmatore
 Prompt
 Pull Request
 Redattore
+Render
 Repository
 Responsabile
 Revisione
@@ -74,6 +81,7 @@ Sprint
 Sprint Planning
 Sprint Retrospective
 Sprint Review
+Split View
 Stack tecnologico
 Stakeholder
 Tailoring
