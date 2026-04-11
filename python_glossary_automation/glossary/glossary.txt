@@ -17,10 +17,11 @@ Compito
 Colli di bottiglia
 Ciclo Di Vita Documentale
 Decision Tree
-Distant Writing
 Albero Di Decisione
 Dichiarazione Degli Impegni
 Discord
+Distant Writing
+File System
 Framework
 GitHub Pages
 GitHub Project
@@ -31,11 +32,12 @@ Interfaccia Utente
 ISO/IEC 12207:1995
 Issue
 JSON
+Issue Tracking
 Just-in-time
 LLM
 Lettera di presentazione
 Large Language Model
-Lucidchart
+Lucidspark
 Main
 Markdown
 Merge
@@ -73,15 +75,19 @@ Revisione
 RTB
 Requirements and Technology Baseline
 Ruolo
+Scenario Principale
+Scenari Alternativi
 SAL
 Sei Cappelli per Pensare
 Second Brain
 Semantic Versioning
+Split View 
+Solo Editor 
+Solo Render
 Sprint
 Sprint Planning
 Sprint Retrospective
 Sprint Review
-Split View
 Stack tecnologico
 Stakeholder
 Tailoring
@@ -91,6 +97,7 @@ Template
 Ticket
 Tempo Effettivo
 Tempo Previsto
+Timeout LLM
 Title Case
 T-y.z
 Trunk-based Development
