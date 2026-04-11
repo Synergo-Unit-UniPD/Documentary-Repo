@@ -172,7 +172,7 @@
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{inserimento_markdown_intestazioni.png}
-    \caption{UC4 – Inserimento elementi Markdown}
+    \caption{UC4.1 – Inserimento titoli/intestazioni}
 \end{figure}
 
 \begin{itemize}
@@ -187,31 +187,108 @@
 \end{itemize}
 
 % UC4.2 - Inserimento link ipertestuale
-\paragraph{UC 4.2: Inserimento link ipertestuale}
+\paragraph{UC 4.2: Inserimento link ipertestuale}\mbox{}\
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{inserimento_markdown_link.png}
+    \caption{UC4.2 – Inserimento link ipertestuale}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente seleziona la funzione di link.
+        \item L'utente inserisce l'URL e il testo del link.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: Viene selezionata la formattazione per i link.
+    \item \textbf{Postcondizioni}: Il testo presenta i link.
+\end{itemize}
 
 % UC4.3 - Inserimento elenchi puntati e numerati
-\paragraph{UC 4.3: Inserimento elenchi puntati e numerati}
+\paragraph{UC 4.3: Inserimento elenchi puntati e numerati}\mbox{}\
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{inserimento_markdown_elenchi.png}
+    \caption{UC4.3 – Inserimento elenchi puntati e numerati}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente seleziona la funzione per inserire elenchi.
+        \item L'utente inserisce un elenco.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: Viene selezionata la formattazione per gli elenchi.
+    \item \textbf{Postcondizioni}: Il testo presenta gli elenchi.
+\end{itemize}
 
 % UC5 - Gestione delle modifiche
 \subsubsection{UC 5: Gestione delle modifiche}
 
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{gestione_modifiche.png}
+    \caption{UC5 – Gestione delle modifiche}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente seleziona la funzione di modifica.
+        \item Viene applicata la modifica.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: Viene selezionata la funzione di modifica.
+    \item \textbf{Postcondizioni}: Il testo presenta le modifiche.
+\end{itemize}
+
 % UC5.1 - Annullamento dell'ultima modifica (Undo)
-\paragraph{UC 5.1: Annullamento dell'ultima modifica (Undo)}
+\paragraph{UC 5.1: Annullamento dell'ultima modifica (Undo)}\mbox{}\
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{gestione_modifiche_undo.png}
+    \caption{UC5.1 – Annullamento dell'ultima modifica (Undo)}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item Esiste almeno una modifica annullabile.
+        \item L'utente seleziona la funzione di undo.
+        \item Viene annullata l'ultima modifica.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: 
+        \begin{itemize}
+            \item Esiste almeno una modifica annullabile.
+            \item Viene selezionata la funzione di undo.
+        \end{itemize}
+    \item \textbf{Postcondizioni}: L'ultima modifica viene annullata e il contenuto dell'editor viene aggiornato.
+\end{itemize}
 
 % UC5.2 - Ripristino della modifica annullata (Redo)
-\paragraph{UC 5.2: Ripristino della modifica annullata (Redo)}
+\paragraph{UC 5.2: Ripristino della modifica annullata (Redo)}\mbox{}\
 
 % UC6 - Modifica modalità di visualizzazione
 \subsubsection{UC 6: Modifica modalità di visualizzazione}
 
 % UC6.1 - Visualizzazione solo Editor
-\paragraph{UC 6.1: Visualizzazione solo Editor}
+\paragraph{UC 6.1: Visualizzazione solo Editor}\mbox{}\
 
 % UC6.2 - Visualizzazione solo Render
-\paragraph{UC 6.2: Visualizzazione solo Render}
+\paragraph{UC 6.2: Visualizzazione solo Render}\mbox{}\
 
 % UC6.3 - Visualizzazione Split View
-\paragraph{UC 6.3: Visualizzazione Split View}
+\paragraph{UC 6.3: Visualizzazione Split View}\mbox{}\
 
 
 % --------------------------------------------------------------------------
