@@ -278,17 +278,109 @@
 % UC5.2 - Ripristino della modifica annullata (Redo)
 \paragraph{UC 5.2: Ripristino della modifica annullata (Redo)}\mbox{}\
 
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{gestione_modifiche_redo.png}
+    \caption{UC5.2 – Ripristino della modifica annullata (Redo)}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente seleziona la funzione di ripristino (Redo).
+        \item Il sistema riapplica l'ultima modifica che era stata annullata.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: 
+        \begin{itemize}
+            \item Esiste almeno una modifica annullata precedentemente (tramite funzione Undo) che può essere ripristinata.
+            \item L'utente attiva il comando di ripristino.
+        \end{itemize}
+    \item \textbf{Postcondizioni}: L'ultima modifica annullata viene ripristinata e il testo nell'editor viene aggiornato di conseguenza.
+\end{itemize}
+
 % UC6 - Modifica modalità di visualizzazione
 \subsubsection{UC 6: Modifica modalità di visualizzazione}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{modifica_visualizzazione.png}
+    \caption{UC6 – Modifica modalità di visualizzazione}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente accede ai comandi per cambiare la modalità di visualizzazione dell'interfaccia.
+        \item L'utente seleziona la modalità di visualizzazione desiderata.
+        \item Il sistema riconfigura i pannelli dell'interfaccia in base alla scelta effettuata.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: L'applicazione è avviata e l'editor è visualizzato a schermo.
+    \item \textbf{Postcondizioni}: L'interfaccia utente si adatta mostrando i pannelli in base alla nuova modalità scelta.
+\end{itemize}
 
 % UC6.1 - Visualizzazione solo Editor
 \paragraph{UC 6.1: Visualizzazione solo Editor}\mbox{}\
 
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{visualizzazione_solo_editor.png}
+    \caption{UC6.1 – Visualizzazione solo Editor}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente seleziona la modalità di visualizzazione "Solo Editor".
+    \end{enumerate}
+    \item \textbf{Precondizioni}: L'utente accede ai comandi di modifica della visualizzazione.
+    \item \textbf{Postcondizioni}: L'interfaccia mostra esclusivamente l'area di scrittura del codice Markdown.
+\end{itemize}
+
 % UC6.2 - Visualizzazione solo Render
 \paragraph{UC 6.2: Visualizzazione solo Render}\mbox{}\
 
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{visualizzazione_solo_render.png}
+    \caption{UC6.2 – Visualizzazione solo Render}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente seleziona la modalità di visualizzazione "Solo Render".
+    \end{enumerate}
+    \item \textbf{Precondizioni}: L'utente accede ai comandi di modifica della visualizzazione.
+    \item \textbf{Postcondizioni}: L'interfaccia mostra esclusivamente l'anteprima formattata (render) del documento.
+\end{itemize}
+
 % UC6.3 - Visualizzazione Split View
 \paragraph{UC 6.3: Visualizzazione Split View}\mbox{}\
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{visualizzazione_split_view.png}
+    \caption{UC6.3 – Visualizzazione Split View}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente seleziona la modalità di visualizzazione "Split View".
+    \end{enumerate}
+    \item \textbf{Precondizioni}: L'utente accede ai comandi di modifica della visualizzazione.
+    \item \textbf{Postcondizioni}: L'interfaccia si divide in due e mostra contemporaneamente e affiancati sia l'editor Markdown sia il render formattato.
+\end{itemize}
 
 
 % --------------------------------------------------------------------------
