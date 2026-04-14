@@ -3,15 +3,16 @@
 % 1. RICHIAMA LA CONFIGURAZIONE CONDIVISA
 \input{../../../../template/shared/configurazione.tex}
 
-% 2. CONFIGURAZIONI LOGHI
-\graphicspath{{../../../shared/loghi/}}
+% 2. CONFIGURAZIONI LOGHI E IMMAGINI
+\graphicspath{
+    {./use_case_diagram/} % diagrammi UC
+    {../../../../template/shared/loghi/}
+}
 
 \hypersetup{
-	pdftitle={Piano di Progetto - Synergo Unit},
 	pdfauthor={Synergo Unit}
 }
 
-% 3. INTESTAZIONE SPECIFICA PER QUESTO DOCUMENTO
 \pagestyle{fancy}
 \fancyhf{} 
 \fancyhead[L]{\textcolor{primarycolor}{\textbf{Synergo Unit}}}
@@ -21,24 +22,18 @@
 \renewcommand{\footrulewidth}{0.4pt}
 \setlength{\headheight}{15pt}
 
-% =========================================================
-% INIZIO DOCUMENTO
-% =========================================================
 \begin{document}
 	
-	% Frontespizio
+
 	\input{frontespizio.tex}
 	\newpage
 	
-	% Registro delle modifiche
 	\input{registro_modifiche.tex}
 	\newpage
-	
-	% Indice 
+
 	\tableofcontents
 	\newpage
-	
-	% Moduli del documento
+
 	\input{introduzione.tex}
 	\newpage
 	
