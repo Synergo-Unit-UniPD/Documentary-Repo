@@ -1,0 +1,256 @@
+% =======================================================
+% 2. ANALISI DEI RISCHI
+% =======================================================
+\section{Analisi dei Rischi}
+L'analisi dei rischi è strutturata in tre macrocategorie, in linea con le fonti di rischio tipiche dei progetti software: rischi tecnologici, rischi individuali/organizzativi e rischi relativi al prodotto. Per ciascun rischio vengono indicati:
+\begin{itemize}
+    \item Codice
+    \item Descrizione sintetica
+    \item Probabilità di occorrenza (Alta / Media / Bassa)
+    \item Pericolosità / impatto (Alta / Media / Bassa)
+    \item Misura di mitigazione
+    \item Misura di prevenzione
+\end{itemize}
+
+\subsection{Rischi legati ai requisiti}
+
+\begin{table}[H]
+	\centering
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabularx}{\textwidth}{|c|X|}
+		\hline
+		\textbf{Codice} & \textbf{RR1} \\
+		\hline
+		\textbf{Descrizione} & Requisiti ambigui o cambiamenti frequenti da parte del committente \\
+		\hline
+		\textbf{Probabilità / Impatto} & Media/Alta \\
+		\hline
+		\textbf{Piano di Mitigazione} & Gestione del change request formale; rinegoziazione dei tempi con il committente \\
+		\hline
+		\textbf{Piano di Contingenza} & Versionare i requisiti nel VCS; ottenere approvazione scritta a ogni baseline \\
+		\hline
+	\end{tabularx}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabularx}{\textwidth}{|c|X|}
+		\hline
+		\textbf{Codice} & \textbf{RR2} \\
+		\hline
+		\textbf{Descrizione} & Scope creep: aggiunta incontrollata di funzionalità \\
+		\hline
+		\textbf{Probabilità / Impatto} & Alta/Alta \\
+		\hline
+		\textbf{Piano di Mitigazione} & Congelamento dello scope per la RTB; rinvio delle feature non essenziali alla PB \\
+		\hline
+		\textbf{Piano di Contingenza} & Product backlog rigoroso; ogni nuova feature richiede approvazione del Product Owner \\
+		\hline
+	\end{tabularx}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabularx}{\textwidth}{|c|X|}
+		\hline
+		\textbf{Codice} & \textbf{RR3} \\
+		\hline
+		\textbf{Descrizione} & Qualità insufficiente del prodotto (bug, mancanza di test) \\
+		\hline
+		\textbf{Probabilità / Impatto} & Media/Alta \\
+		\hline
+		\textbf{Piano di Mitigazione} & Sprint di bug fixing dedicato; revisione della DoD; incremento delle code review \\
+		\hline
+		\textbf{Piano di Contingenza} & Definition of Done con criteri di qualità espliciti; copertura minima di test definita \\
+		\hline
+	\end{tabularx}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabularx}{\textwidth}{|c|X|}
+		\hline
+		\textbf{Codice} & \textbf{RR4} \\
+		\hline
+		\textbf{Descrizione} & Mancato rispetto delle scadenze (RTB o PB) \\
+		\hline
+		\textbf{Probabilità / Impatto} & Media/Alta \\
+		\hline
+		\textbf{Piano di Mitigazione} & Riduzione dello scope MVP; rinegoziazione della milestone con il docente \\
+		\hline
+		\textbf{Piano di Contingenza} & Pianificazione conservativa con buffer; monitoraggio settimanale della burndown chart \\
+		\hline
+	\end{tabularx}
+\end{table}
+
+\subsection{Rischi tecnici}
+
+\begin{table}[H]
+	\centering
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabularx}{\textwidth}{|c|X|}
+		\hline
+		\textbf{Codice} & \textbf{RT1} \\
+		\hline
+		\textbf{Descrizione} & Inesperienza con le tecnologie scelte (framework, librerie, API) \\
+		\hline
+		\textbf{Probabilità / Impatto} & Media/Alta \\
+		\hline
+		\textbf{Piano di Mitigazione} & Riduzione dello scope; pair programming; riassegnazione task a membri con competenze più vicine \\
+		\hline
+		\textbf{Piano di Contingenza} & Dedicare le prime 2 settimane a spike tecnici e formazione; definire una lista di tecnologie core concordata \\
+		\hline
+	\end{tabularx}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabularx}{\textwidth}{|c|X|}
+		\hline
+		\textbf{Codice} & \textbf{RT2} \\
+		\hline
+		\textbf{Descrizione} & Problemi di integrazione tra componenti (frontend/backend, API esterne) \\
+		\hline
+		\textbf{Probabilità / Impatto} & Media/Media \\
+		\hline
+		\textbf{Piano di Mitigazione} & Aumentare il numero di sessioni di integrazione; introdurre test di integrazione automatizzati \\
+		\hline
+		\textbf{Piano di Contingenza} & Definire interfacce e contratti API prima dell'implementazione; mock dei servizi durante lo sviluppo \\
+		\hline
+	\end{tabularx}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabularx}{\textwidth}{|c|X|}
+		\hline
+		\textbf{Codice} & \textbf{RT3} \\
+		\hline
+		\textbf{Descrizione} & Indisponibilità o instabilità di strumenti/servizi esterni (GitHub, CI/CD, cloud) \\
+		\hline
+		\textbf{Probabilità / Impatto} & Bassa/Media \\
+		\hline
+		\textbf{Piano di Mitigazione} & Passare temporaneamente ad ambienti locali; notificare il team e aggiornare la pianificazione \\
+		\hline
+		\textbf{Piano di Contingenza} & Documentare alternative di fallback; utilizzare versioni locali dove possibile \\
+		\hline
+	\end{tabularx}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabularx}{\textwidth}{|c|X|}
+		\hline
+		\textbf{Codice} & \textbf{RT4} \\
+		\hline
+		\textbf{Descrizione} & Debito tecnico accumulato che rallenta gli sprint successivi \\
+		\hline
+		\textbf{Probabilità / Impatto} & Media/Media \\
+		\hline
+		\textbf{Piano di Mitigazione} & Sprint dedicato al rimborso del debito tecnico; rivalutare le priorità del backlog \\
+		\hline
+		\textbf{Piano di Contingenza} & Dedicare almeno il 10\% di ogni sprint al refactoring; code review sistematiche \\
+		\hline
+	\end{tabularx}
+\end{table}
+
+\subsection{Rischi organizzativi}
+
+\begin{table}[H]
+	\centering
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabularx}{\textwidth}{|c|X|}
+		\hline
+		\textbf{Codice} & \textbf{RO1} \\
+		\hline
+		\textbf{Descrizione} & Membro del team non disponibile per malattia o impegni accademici \\
+		\hline
+		\textbf{Probabilità / Impatto} & Media/Alta \\
+		\hline
+		\textbf{Piano di Mitigazione} & Ridistribuzione del carico; riduzione dello scope dello sprint; comunicazione tempestiva allo stakeholder \\
+		\hline
+		\textbf{Piano di Contingenza} & Documentare il lavoro in modo continuativo; nessun task assegnato a una sola persona (no single point of failure) \\
+		\hline
+	\end{tabularx}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabularx}{\textwidth}{|c|X|}
+		\hline
+		\textbf{Codice} & \textbf{RO2} \\
+		\hline
+		\textbf{Descrizione} & Conflitti interni al team o scarsa comunicazione \\
+		\hline
+		\textbf{Probabilità / Impatto} & Bassa/Alta \\
+		\hline
+		\textbf{Piano di Mitigazione} & Mediazione da parte del responsabile; escalation al docente/committente se necessario \\
+		\hline
+		\textbf{Piano di Contingenza} & Daily standup regolari; retrospettive aperte; definire un codice di condotta interno \\
+		\hline
+	\end{tabularx}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabularx}{\textwidth}{|c|X|}
+		\hline
+		\textbf{Codice} & \textbf{RO3} \\
+		\hline
+		\textbf{Descrizione} & Distribuzione sbilanciata del carico di lavoro \\
+		\hline
+		\textbf{Probabilità / Impatto} & Media/Media \\
+		\hline
+		\textbf{Piano di Mitigazione} & Ribilanciamento immediato dei task; revisione della velocity del team \\
+		\hline
+		\textbf{Piano di Contingenza} & Rotazione bisettimanale dei ruoli Scrum; monitoraggio delle ore nel backlog \\
+		\hline
+	\end{tabularx}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabularx}{\textwidth}{|c|X|}
+		\hline
+		\textbf{Codice} & \textbf{RO4} \\
+		\hline
+		\textbf{Descrizione} & Perdita di motivazione o disimpegno di uno o più membri \\
+		\hline
+		\textbf{Probabilità / Impatto} & Bassa/Media \\
+		\hline
+		\textbf{Piano di Mitigazione} & Colloquio individuale; riassegnazione dei task; coinvolgimento del docente \\
+		\hline
+		\textbf{Piano di Contingenza} & Obiettivi chiari e misurabili per ogni sprint; celebrare i traguardi raggiunti \\
+		\hline
+	\end{tabularx}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabularx}{\textwidth}{|c|X|}
+		\hline
+		\textbf{Codice} & \textbf{RO5} \\
+		\hline
+		\textbf{Descrizione} & Scarsa comprensione dei requisiti o della visione di progetto \\
+		\hline
+		\textbf{Probabilità / Impatto} & Media/Alta \\
+		\hline
+		\textbf{Piano di Mitigazione} & Riunione straordinaria con il committente; revisione del backlog e prioritizzazione \\
+		\hline
+		\textbf{Piano di Contingenza} & Workshop iniziale di analisi dei requisiti; aggiornamento continuo del glossario e dei casi d'uso \\
+		\hline
+	\end{tabularx}
+\end{table}
+
+\subsection{Monitoraggio dei rischi}
+I rischi vengono rivalutati ad ogni Sprint Review. Il Responsabile di Progetto aggiorna il registro dei rischi e notifica eventuali nuovi rischi emersi durante il ciclo di sviluppo.
