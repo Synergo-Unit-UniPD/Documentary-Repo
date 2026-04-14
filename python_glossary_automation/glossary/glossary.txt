@@ -2,6 +2,7 @@ Amministratore
 API
 Analista
 Analisi dei Requisiti
+Attore
 AWS
 Baseline
 Branch
@@ -26,9 +27,11 @@ GitHub Pages
 GitHub Project
 Google Calendar
 Google Form
+HTML
 Interfaccia Utente
 ISO/IEC 12207:1995
 Issue
+JSON
 Issue Tracking
 Just-in-time
 LLM
@@ -36,6 +39,7 @@ Lettera di presentazione
 Large Language Model
 Lucidspark
 Main
+Markdown
 Merge
 Messaggi Precompilati
 Milestone
@@ -64,6 +68,7 @@ Programmatore
 Prompt
 Pull Request
 Redattore
+Render
 Repository
 Responsabile
 Revisione
