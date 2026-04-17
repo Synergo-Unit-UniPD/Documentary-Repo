@@ -2,18 +2,25 @@
 % 2. ANALISI DEI RISCHI
 % =======================================================
 \section{Analisi dei Rischi}
-L'analisi dei rischi è strutturata in tre macrocategorie, in linea con le fonti di rischio tipiche dei progetti software: rischi tecnologici, rischi individuali/organizzativi e rischi relativi al prodotto. Per ciascun rischio vengono indicati:
+\subsection{Nomenclatura e lettura della tabella}
+Ogni rischio è identificato da un codice composto da due lettere indicanti la categoria e un numero progressivo:
 \begin{itemize}
-    \item Codice
-    \item Descrizione sintetica
-    \item Probabilità di occorrenza (Alta / Media / Bassa)
-    \item Pericolosità / impatto (Alta / Media / Bassa)
-    \item Misura di mitigazione
-    \item Misura di prevenzione
+	\item RR : Rischi legati ai Requisiti (ambiguità, scope creep, qualità, scadenze)
+	\item RT: Rischi Tecnici (tecnologie, integrazione, strumenti, debito tecnico)
+	\item RO: Rischi Organizzativi (disponibilità, comunicazione, carico, motivazione, comprensione)
 \end{itemize}
 
-\subsection{Rischi legati ai requisiti}
-RRX: Rischi Requisiti Numero
+Per ciascun rischio vengono indicati:
+\begin{itemize}
+    \item \textbf{Codice:}  Identificativo univoco del rischio (es. RR1, RT2, RO5).
+    \item \textbf{Descrizione:}  Descrizione sintetica del rischio.
+    \item \textbf{Probabilità di occorrenza:}  Valutazione della probabilità che il rischio si manifesti (Alta / Media / Bassa).
+    \item \textbf{Impatto:}  Valutazione dell'impatto che il rischio avrebbe sul progetto (Alta / Media / Bassa).
+    \item \textbf{Misura di mitigazione:}  Azioni da intraprendere per ridurre la probabilità o l'impatto del rischio.
+    \item \textbf{Misura di prevenzione:}  Azioni da intraprendere per prevenire l'occurrence del rischio.
+\end{itemize}
+
+\subsection{RR - Rischi Legati ai Requisiti}
 
 \begin{table}[H]
 	\centering
@@ -87,8 +94,7 @@ RRX: Rischi Requisiti Numero
 	\end{tabularx}
 \end{table}
 
-\subsection{Rischi tecnici}
-RTX: Rischi Tecnici Numero
+\subsection{RT -Rischi Tecnici}
 \begin{table}[H]
 	\centering
 	\renewcommand{\arraystretch}{1.3}
@@ -161,8 +167,7 @@ RTX: Rischi Tecnici Numero
 	\end{tabularx}
 \end{table}
 
-\subsection{Rischi organizzativi}
-ROX: Rischi Organizzativi Numero
+\subsection{RO - Rischi Organizzativi}
 
 \begin{table}[H]
 	\centering
@@ -255,4 +260,4 @@ ROX: Rischi Organizzativi Numero
 \end{table}
 
 \subsection{Monitoraggio dei rischi}
-I rischi vengono rivalutati ad ogni Sprint Review. Il Responsabile di Progetto aggiorna il registro dei rischi e notifica eventuali nuovi rischi emersi durante il ciclo di sviluppo.
+I rischi vengono rivalutati ad ogni Sprint Review del martedì. Il Responsabile aggiorna il registro dei rischi, notifica eventuali nuovi rischi emersi durante il ciclo di sviluppo e verifica lo stato delle azioni di contingenza in corso.
