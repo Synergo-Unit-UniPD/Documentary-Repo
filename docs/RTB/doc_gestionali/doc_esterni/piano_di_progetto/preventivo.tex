@@ -1,5 +1,5 @@
 % =======================================================
-% 5. PREVENTIVO
+% 6. PREVENTIVO
 % =======================================================
 \section{Preventivo}
 
@@ -20,89 +20,44 @@ Il calcolo dei costi si basa sulle tariffe orarie imposte dal regolamento didatt
 		\renewcommand{\arraystretch}{1.3}
 		\begin{tabularx}{\textwidth}{|X|c|c|r|}
 			\hline
-			\rowcolor{primarycolor!10}
-			\textbf{Ruolo} & \textbf{Ore Totali} & \textbf{Costo Orario} & \textbf{Costo Totale (\euro)} \\
++			\textbf{Ruolo} & \textbf{Ore Totali} & \textbf{Costo Orario} & \textbf{Costo Totale (\euro)} \\
 			\hline
 			Responsabile & 55 & 30 \euro & 1.650,00 \euro \\
-			\hline
 			Amministratore & 48 & 20 \euro & 960,00 \euro \\
-			\hline
 			Analista & 125 & 25 \euro & 3.125,00 \euro \\
-			\hline
 			Progettista & 125 & 25 \euro & 3.125,00 \euro \\
-			\hline
 			Programmatore & 91 & 15 \euro & 1.365,00 \euro \\
-			\hline
 			Verificatore & 96 & 15 \euro & 1.440,00 \euro \\
 			\hline
-			\rowcolor{lightgray}
 			\textbf{Costo Totale Preventivato} & \textbf{540} & & \textbf{11.665,00 \euro} \\
 			\hline
 		\end{tabularx}
 	\end{table}
 
-\subsection{Prospetto economico per periodo}
-\subsubsection{Periodo: 7 Aprile 2026 - 14 Aprile 2026}
-Obiettivi:
-\begin{itemize}
-	\item Iniziare redazione adr e pdp
-	\item Studiare casi d'uso
-\end{itemize}
-Ruoli assegnati:
-\begin{itemize}
-	\item Sofia De Blasi: Responsabile 
-	\item Francesco Marcon: Amministratore
-    \item Filippo Idiometri: Verificatore
-    \item Roberto Mariano Doroftei: Analista
-    \item Armando Moda Scarati: Analista
-    \item Anton Ricardo Rupi: Analista
-\end{itemize}
-
-\begin{table}[ht]
-	\centering
-	\renewcommand{\arraystretch}{1.3}
-	\begin{tabularx}{\textwidth}{X c c}
-		\toprule
-		\textbf{Ruolo} & \textbf{Ore Preventivate} & \textbf{Costo (\euro)} \\
-		\midrule
-		Responsabile & 1 & 30 \\
-		Amministratore & 1 & 20 \\
-		Analista & 2 & 50 \\
-		Analista & 3 & 150 \\
-		Analista & 3 & 150 \\
-		Verificatore & [-] & [-] \\
-		\midrule
-		\textbf{Totale} & \textbf{[-]} & \textbf{[-]} \\
-		\bottomrule
-	\end{tabularx}
+	\subsection{Ore di ciascun componente per ruolo preventivate}
+	Di seguito viene illustrata la suddivisione esatta delle ore per ruolo per ogni componente del team. La distribuzione è stata bilanciata per assicurare che ciascun membro raggiunga esattamente le 90 ore previste dal preventivo.
+	
+	\begin{table}[H]
+		\centering
+		\renewcommand{\arraystretch}{1.3}
+		\begin{tabularx}{\textwidth}{|X|c|c|c|c|c|c|c|}
+			\hline
+			\textbf{Membro} & \textbf{Re} & \textbf{Am} & \textbf{An} & \textbf{Pj} & \textbf{Pr} & \textbf{Ve} & \textbf{Totale} \\
+			\hline
+			{Sofia De Blasi} & 9 & 8 & 21 & 20 & 16 & 16 & \textbf{90} \\
+			{Roberto Mariano Doroftei} & 9 & 8 & 21 & 20 & 16 & 16 & \textbf{90} \\
+			{Filippo Idiometri} & 9 & 8 & 21 & 20 & 15 & 17 & \textbf{90} \\
+			{Francesco Marcon} & 10 & 8 & 21 & 22 & 14 & 15 & \textbf{90} \\
+			{Armando Moda Scarati} & 9 & 8 & 21 & 21 & 15 & 16 & \textbf{90} \\
+			{Anton Ricardo Rupi} & 9 & 8 & 20 & 22 & 15 & 16 & \textbf{90} \\
+			\hline
+			\textbf{Totale} & \textbf{55} & \textbf{48} & \textbf{125} & \textbf{125} & \textbf{91} & \textbf{96} & \textbf{540} \\
+			\hline
+		\end{tabularx}
+	\begin{minipage}{\textwidth}
+		\smallskip
+		\footnotesize\textit{Legenda: RE=Responsabile, AM=Amministratore,
+		AN=Analista, PJ=Progettista, PR=Programmatore, VE=Verificatore.}
+    \end{minipage}	
 \end{table}
-
-\subsubsection{Periodo 2}
-{[Inserire tabella preventivo Periodo 2, ecc...]}
-
-\vspace{1cm}
-\subsection{Prospetto orario per componente}
-[-]
-
-\begin{table}[ht]
-	\centering
-	\renewcommand{\arraystretch}{1.3}
-	\begin{tabularx}{\textwidth}{X c c c c c c | c}
-		\toprule
-		\textbf{Membro} & \textbf{Resp.} & \textbf{Amm.} & \textbf{Anal.} & \textbf{Prog.} & \textbf{Prgr.} & \textbf{Verif.} & \textbf{Totale} \\
-		\midrule
-		{[Membro 1]} & [-] & [-] & [-] & [-] & [-] & [-] & \textbf{[-]} \\
-		{[Membro 2]} & [-] & [-] & [-] & [-] & [-] & [-] & \textbf{[-]} \\
-		{[...]} & ... & ... & ... & ... & ... & ... & \textbf{...} \\
-		\bottomrule
-	\end{tabularx}
-\end{table}
-
-\subsection{Totale ore rendicontate}
-{[-]}
-
-\subsection{Totale ore non rendicontate}
-{[-]}
-
-\subsection{Totale complessivo}
-Il costo preventivato totale per l'intera durata del progetto è fissato a \textbf{\euro\ {[Inserire Totale min 12k]}}.
+	

@@ -29,29 +29,29 @@ tiene il \textbf{martedì alle 14:30} e segue un ordine fisso:
     \item \textbf{Sprint Retrospective} dello sprint precedente: cosa ha funzionato,
           cosa no, azioni correttive da applicare subito.
     \item \textbf{Sprint Review} dello sprint precedente: verifica di ciò che è stato
-          prodotto rispetto alla Definition of Done, chiusura formale dei task.
+          prodotto rispetto alla Definition of Done (Sez.~\ref{sec:dod}), chiusura formale dei task.
     \item \textbf{Sprint Planning}: aggiornamento del backlog prioritario, stima del
           tempo previsto, assegnazione dei task tramite Google Form.
           Output: Sprint Backlog della settimana.
 \end{enumerate}
 
-\begin{longtable}{p{2.5cm} p{2cm} c p{2cm} p{6cm}}
-    \toprule
+\begin{longtable}{|p{2.5cm}|p{2.2cm}|c| p{2cm} |p{6cm}|}
+    \hline
     \textbf{Momento} & \textbf{Giorno/Ora} & \textbf{Tipo} & \textbf{Durata} & \textbf{Descrizione} \\
-    \midrule
+    \hline
     \endfirsthead
 
-    \toprule
+    \hline
     \textbf{Momento} & \textbf{Giorno/Ora} & \textbf{Tipo} & \textbf{Durata} & \textbf{Descrizione} \\
-    \midrule
+    \hline
     \endhead
 
-    \midrule
+    \hline
     \multicolumn{5}{r}{\textit{Continua nella pagina successiva}} \\
-    \midrule
+    \hline
     \endfoot
 
-    \bottomrule
+    \hline
     \endlastfoot
     Sprint Retrospective & Martedì, 14:30 & Sincrono & $\sim$ 30min & Riflessione interna del team per individuare punti di forza, criticità e possibili miglioramenti da applicare nello sprint successivo tramite azioni correttive. \\
 
@@ -59,21 +59,9 @@ tiene il \textbf{martedì alle 14:30} e segue un ordine fisso:
 
     Sprint Planning & Martedì, 15:20 & Sincrono & $\sim$ 2h & Definizione degli obiettivi dello sprint, aggiornamento del backlog, assegnazione dei task tramite Google Forms e stima dei tempi previsti. \\
     
-    Daily Stand-up & Ogni giorno, 14:30 & Asincrono & $\sim$ 2min per persona & Ogni membro aggiorna il canale con: (1) cosa ho fatto, (2) cosa farò, (3) blocchi o dubbi (non obbligatorio nei giorni in cui c'è riunione sincrona). \\
+    Daily Stand-up & Ogni giorno, 10:30 & Asincrono & $\sim$ 2min per persona & Ogni membro aggiorna il canale con: (1) cosa ho fatto, (2) cosa farò, (3) blocchi o dubbi (non obbligatorio nei giorni in cui c'è riunione sincrona). \\
     
 \end{longtable}
 
 \subsection{Risorse Umane}
 Il team è composto da 6 membri, con ruoli rotativi secondo il modello Scrum. Ogni membro dedica in media dalle 10 alle 20 ore settimanali al progetto.
-
-\subsection{Strumenti e tecnologie}
-\begin{itemize}
-    \item \textbf{Codice sorgente:} GitHub 
-    \item \textbf{Task management:} GitHub Projects + Google Form (creazione e chiusura task) 
-    \item \textbf{Comunicazione sincrona:} Riunioni settimanali (martedì + venerdì) 
-    \item \textbf{Comunicazione asincrona:} WhatsApp (daily asincrono) 
-    \item \textbf{Documentazione:} {\LaTeX} su VS Code con estensione per autocompilazione PDF + repository GitHub 
-    \item \textbf{CI/CD:} GitHub Actions 
-    \item \textbf{Pianificazione visiva:} \link{https://www.onlinegantt.com/\#/gantt}{OnlineGantt}
-    \item \textbf{Tecnologie applicative}: Da definire
-\end{itemize}
