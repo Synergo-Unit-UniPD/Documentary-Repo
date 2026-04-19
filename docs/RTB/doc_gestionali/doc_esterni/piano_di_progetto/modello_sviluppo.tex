@@ -4,35 +4,76 @@
 \section{Modello di Sviluppo}
 
 \subsection{Scelta del modello}
-Il gruppo ha deciso di adottare il modello di sviluppo agile basato su iterazioni brevi (sprint), ruoli definiti e revisione
-incrementale del prodotto. Nel progetto è adottato con rotazione settimanale dei ruoli.
+Il gruppo adotta un modello di sviluppo agile ispirato a Scrum, con
+sprint settimanali da martedì a martedì e rotazione settimanale dei
+ruoli. La scelta è motivata dalla natura incrementale del progetto e dalla necessità di
+adattarsi rapidamente ai feedback del committente. 
 
 \subsection{Motivazioni}
 \begin{itemize}
-	\item \textbf{Adattabilità:} consente di modificare facilmente il piano di lavoro sulla base dei feedback ottenuti durante lo sviluppo;
-	\item \textbf{Chiarezza:} gli incontri regolari (Daily, Sprint Review, Retrospective) assicurano una visione costante dello stato di avanzamento;
-	\item \textbf{Miglioramento della qualità:} controlli frequenti e attività di testing continuo contribuiscono a rendere il prodotto più affidabile;
-    \item \textbf{Coinvolgimento del team:} la condivisione delle responsabilità e l’autonomia operativa aumentano la partecipazione e l’impegno dei membri del gruppo.
+    \item \textbf{Adattabilità:} il piano di lavoro può essere revisionato sprint per
+          sprint in base ai risultati e ai feedback ottenuti.
+    \item \textbf{Visibilità continua:} le cerimonie strutturate garantiscono che tutto
+          il team abbia sempre un quadro aggiornato dello stato di avanzamento.
+    \item \textbf{Qualità incrementale:} la Definition of Done (Sez.~\ref{sec:dod}) e
+          le code review sistematiche riducono il rischio di accumulare debito tecnico.
+    \item \textbf{Sviluppo competenze trasversali:} la rotazione settimanale dei ruoli
+          garantisce che ogni membro acquisisca esperienza su tutti gli aspetti del
+          progetto.
 \end{itemize}
 
-\subsection{Applicazione al progetto}
-Il lavoro del team è suddiviso in sprint della durata di due settimane, al termine dei quali i ruoli vengono alternati. Ogni sprint è articolato nelle seguenti fasi:
-\begin{itemize}
-	\item \textbf{Sprint Planning:} all’inizio dello sprint, il team stabilisce gli obiettivi, individua le attività da svolgere e ne valuta l’impegno richiesto.
-	\item \textbf{Sprint Review:} alla fine dello sprint, ciascun membro condivide con il gruppo i risultati ottenuti e raccoglie eventuali osservazioni;
-	\item \textbf{Sprint Retrospective:} momento di riflessione interna volto a individuare punti di forza, criticità e possibili miglioramenti da applicare nello sprint successivo.
-\end{itemize}
+\subsection{Cerimonie e cadenza settimanale}
+Ogni sprint ha durata di una settimana (martedì → martedì). La riunione principale si
+tiene il \textbf{martedì alle 14:30} e segue un ordine fisso:
+\begin{enumerate}
+    \item \textbf{Sprint Retrospective} dello sprint precedente: cosa ha funzionato,
+          cosa no, azioni correttive da applicare subito.
+    \item \textbf{Sprint Review} dello sprint precedente: verifica di ciò che è stato
+          prodotto rispetto alla Definition of Done, chiusura formale dei task.
+    \item \textbf{Sprint Planning}: aggiornamento del backlog prioritario, stima del
+          tempo previsto, assegnazione dei task tramite Google Form.
+          Output: Sprint Backlog della settimana.
+\end{enumerate}
+
+\begin{longtable}{p{2.5cm} p{2cm} c p{2cm} p{6cm}}
+    \toprule
+    \textbf{Momento} & \textbf{Giorno/Ora} & \textbf{Tipo} & \textbf{Durata} & \textbf{Descrizione} \\
+    \midrule
+    \endfirsthead
+
+    \toprule
+    \textbf{Momento} & \textbf{Giorno/Ora} & \textbf{Tipo} & \textbf{Durata} & \textbf{Descrizione} \\
+    \midrule
+    \endhead
+
+    \midrule
+    \multicolumn{5}{r}{\textit{Continua nella pagina successiva}} \\
+    \midrule
+    \endfoot
+
+    \bottomrule
+    \endlastfoot
+    Sprint Retrospective & Martedì, 14:30 & Sincrono & $\sim$ 30min & Riflessione interna del team per individuare punti di forza, criticità e possibili miglioramenti da applicare nello sprint successivo tramite azioni correttive. \\
+
+    Sprint Review & Martedì, 15:00 & Sincrono & $\sim$ 20min & Condivisione dei risultati ottenuti durante lo sprint, verifica di ciò che è stato prodotto rispetto alla Definition of Done e chiusura formale dello sprint precedente.\\
+
+    Sprint Planning & Martedì, 15:20 & Sincrono & $\sim$ 2h & Definizione degli obiettivi dello sprint, aggiornamento del backlog, assegnazione dei task tramite Google Forms e stima dei tempi previsti. \\
+    
+    Daily Stand-up & Ogni giorno, 14:30 & Asincrono & $\sim$ 2min per persona & Ogni membro aggiorna il canale con: (1) cosa ho fatto, (2) cosa farò, (3) blocchi o dubbi (non obbligatorio nei giorni in cui c'è riunione sincrona). \\
+    
+\end{longtable}
 
 \subsection{Risorse Umane}
 Il team è composto da 6 membri, con ruoli rotativi secondo il modello Scrum. Ogni membro dedica in media dalle 10 alle 20 ore settimanali al progetto.
-I ruoli coperti includono: Responsabile, Amministratore, Analista, Progettista, Programmatore e Verificatore.
 
 \subsection{Strumenti e tecnologie}
 \begin{itemize}
-	\item \textbf{Gestione del codice sorgente:} GitHub;
-	\item \textbf{Gestione del progetto / backlog:} [es. GitHub Projects, Jira, Trello];
-	\item \textbf{Comunicazione:} [es. Slack, Discord, Teams];
-    \item \textbf{Documentazione:} [es. Confluence, Google Docs, Overleaf];
-    \item \textbf{CI/CD:} [es. GitHub Actions];
-    \item \textbf{Tecnologie applicative:} [da definire in base allo stack]
+    \item \textbf{Codice sorgente:} GitHub 
+    \item \textbf{Task management:} GitHub Projects + Google Form (creazione e chiusura task) 
+    \item \textbf{Comunicazione sincrona:} Riunioni settimanali (martedì + venerdì) 
+    \item \textbf{Comunicazione asincrona:} WhatsApp (daily asincrono) 
+    \item \textbf{Documentazione:} {\LaTeX} su VS Code con estensione per autocompilazione PDF + repository GitHub 
+    \item \textbf{CI/CD:} GitHub Actions 
+    \item \textbf{Pianificazione visiva:} \link{https://www.onlinegantt.com/\#/gantt}{OnlineGantt}
+    \item \textbf{Tecnologie applicative}: Da definire
 \end{itemize}
