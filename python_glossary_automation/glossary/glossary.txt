@@ -1,14 +1,19 @@
+Albero Di Decisione
 Amministratore
 API
 Analista
 Analisi dei Requisiti
 Attore
 AWS
+Backlog
 Baseline
 Branch
+Burndown Chart
 Candidatura
 Casi d'uso
+Cerimonie
 CI/CD
+Consuntivo
 Continuous Integration / Continuous Deployment
 Chatbot
 Code Coverage
@@ -16,8 +21,11 @@ Commit
 Compito
 Colli di bottiglia
 Ciclo Di Vita Documentale
+Daily Stand-up
 Decision Tree
-Albero Di Decisione
+Definition of Done
+DoD
+Debito Tecnico
 Dichiarazione Degli Impegni
 Discord
 Distant Writing
@@ -54,6 +62,7 @@ OdG Preliminare
 OWASP
 Open Web Application Security Project
 Pedice G
+Pair Programming
 Piano di Progetto
 Piano di Qualifica
 PoC
@@ -68,20 +77,25 @@ Programmatore
 Prompt
 Pull Request
 Redattore
+Refactoring
 Render
 Repository
 Responsabile
 Revisione
+Risorse Residue
 RTB
 Requirements and Technology Baseline
 Ruolo
 Scenario Principale
 Scenari Alternativi
 SAL
+Scope Creep
 Sei Cappelli per Pensare
 Second Brain
 Semantic Versioning
+Single Point of Failure
 Split View 
+Spike Tecnico
 Solo Editor 
 Solo Render
 Sprint
@@ -106,6 +120,7 @@ Unified Modeling Language
 Usabilità
 Valutazione Dei Capitolati
 VarGroup
+Velocity
 VE-y.x
 Verificatore
 VI-y.x

@@ -25,14 +25,22 @@
 \addcontentsline{toc}{subsection}{B}
 \subsection*{B}
 \begin{itemize}[leftmargin=*]
-    \item \textbf{Baseline:} Versione stabile e approvata di un insieme di
+      \item \textbf{Backlog:} Lista ordinata per priorità di tutte le attività, funzionalità
+      e requisiti da realizzare nel corso del progetto. Nel contesto del gruppo viene
+      gestita tramite GitHub Project e aggiornata ad ogni Sprint
+      Planning.
+      \item \textbf{Baseline:} Versione stabile e approvata di un insieme di
           documenti o artefatti, fissata in un determinato momento del progetto
           e utilizzata come riferimento ufficiale per le fasi successive. Nel
           contesto del progetto didattico le baseline principali sono: candidatura
           (CC), Requirements and Technology Baseline (RTB) e Product Baseline (PB).
-    \item \textbf{Branch:} Linea di sviluppo indipendente all'interno di un
+      \item \textbf{Branch:} Linea di sviluppo indipendente all'interno di un
           repository Git, utilizzata per lavorare su modifiche isolate senza
           influenzare il ramo principale (\texttt{main}).
+      \item \textbf{Burndown Chart:} Grafico che mostra l'andamento del lavoro residuo nel
+      corso di uno sprint o dell'intero progetto, confrontando il ritmo di avanzamento
+      effettivo con quello pianificato. Utilizzata per monitorare il rischio di ritardo
+      rispetto alle milestone.
 \end{itemize}
  
 % ------------- C -------------
@@ -44,6 +52,10 @@
           all'aggiudicazione del capitolato, in cui il gruppo si propone come
           fornitore producendo la Valutazione dei Capitolati e la Dichiarazione degli
           Impegni. Non è un documento ma una baseline di fase.
+      \item \textbf{Cerimonie:} Insieme degli incontri strutturati previsti dal
+      framework Scrum: Sprint Planning, Sprint Review, Sprint
+      Retrospective e Daily Stand-up. Nel gruppo le prime tre si svolgono il martedì
+      in sequenza fissa; il Daily Stand-up è gestito in modo asincrono.
       \item \textbf{Chatbot:} Sistema software che consente l'interazione con l'utente tramite linguaggio naturale. Nel progetto può fungere da mediatore tra le richieste dell'utente e le funzionalità disponibili, traducendo intenzioni espresse liberamente in azioni eseguibili.
       \item \textbf{Casi d'uso:} Tecnica di modellazione che descrive le funzionalità del sistema tramite una "visione esterna" (come percepite dall'attore), ignorandone l'implementazione. A livello tecnico è definito come un insieme di scenari (sequenze di azioni che includono uno scenario principale e possibili scenari alternativi o di errore) che condividono lo stesso scopo finale per l'utente.
       \item  \textbf{CI/CD (Continuous Integration / Continuous Deployment):} Pratica di sviluppo software che prevede l’integrazione frequente del codice in un repository condiviso e la sua automazione di build, test e distribuzione.
@@ -54,6 +66,7 @@
           nel branch \texttt{main} tramite pull request) e Ingresso in Baseline
           (la versione diventa riferimento ufficiale).
       \item \textbf{Code Coverage:} Metrica che misura la percentuale di codice sorgente eseguita durante l’esecuzione dei test automatici.
+      \item \textbf{Colli di bottiglia:} Fase o componente di un processo che rallenta l'efficienza complessiva, limitando la capacità operativa del team o del sistema.
       \item \textbf{Commit:} Operazione Git che registra un insieme di modifiche
       nel repository locale, associandovi un messaggio descrittivo. Nel flusso
       del gruppo ogni commit relativo a una issue include il riferimento
@@ -61,7 +74,10 @@
       \texttt{git commit -m "\#<id> <messaggio>"}, garantendo la tracciabilità
       delle modifiche rispetto alle attività pianificate.
       \item \textbf{Compito:} Obiettivo espresso dall'utente in linguaggio naturale (es.\ ``applicare il cappello critico''), che il sistema interpreta per determinare la funzionalità da eseguire.
-      \item \textbf{Colli di bottiglia:} Fase o componente di un processo che rallenta l'efficienza complessiva, limitando la capacità operativa del team o del sistema.
+      \item \item \textbf{Consuntivo:} Documento o sezione del Piano di Progetto
+      che riporta, al termine di ogni sprint, le ore effettivamente
+      impiegate da ciascun membro per ciascun ruolo, il relativo costo
+      effettivo e lo scostamento rispetto al preventivo.
 \end{itemize}
  
 % ------------- D -------------
@@ -69,8 +85,24 @@
 \addcontentsline{toc}{subsection}{D}
 \subsection*{D}
 \begin{itemize}[leftmargin=*]
-    \item \textbf{Decision Tree (Albero Di Decisione):} Modello strutturato ad albero utilizzato per rappresentare decisioni e le loro possibili conseguenze.
-    \item \textbf{Dichiarazione Degli Impegni:} Documento gestionale esterno redatto
+      \item \textbf{Daily Stand-up:} Cerimonia agile breve e quotidiana in cui ciascun
+      membro del team condivide: (1)~cosa ha fatto, (2)~cosa farà, (3)~eventuali
+      blocchi o dubbi. Nel gruppo viene gestita in modo asincrono tramite
+      WhatsApp, salvo i giorni in cui è prevista una riunione
+      sincrona.
+      \item \textbf{Debito Tecnico:} Insieme di scelte progettuali o implementative
+      sub-ottimali accumulate durante lo sviluppo per ragioni di tempo o priorità,
+      che richiedono interventi correttivi futuri (refactoring) e che, se non gestite,
+      rallentano la velocity degli sprint successivi.
+      \item \textbf{Decision Tree (Albero Di Decisione):} Modello strutturato ad albero utilizzato per rappresentare decisioni e le loro possibili conseguenze.
+      \item \textbf{Definition of Done (DoD):} Lista esplicita di criteri che un
+      task deve soddisfare per essere considerato completato a tutti
+      gli effetti. Si articola in due livelli: livello task (criteri tecnici e
+      procedurali sul singolo deliverable) e livello sprint (criteri di processo
+      sull'intero sprint). Si espande al crescere del progetto: nella fase documentale
+      copre redazione, revisione e tracciabilità; nella fase di sviluppo includerà
+      anche criteri su test e copertura del codice.
+      \item \textbf{Dichiarazione Degli Impegni:} Documento gestionale esterno redatto
           in fase di candidatura che specifica: scadenza ultima di consegna prevista,
           preventivo dei costi finali calcolato secondo il regolamento, totale delle
           ore produttive assegnate a persona (nell'intervallo 80--95 ore), distribuzione
@@ -188,6 +220,10 @@
       il merge viene eseguito dall'Assegnatario del task (non dal Verificatore)
       dopo che la pull request ha ricevuto l'approvazione del Verificatore.
       \item \textbf{Messaggi Precompilati:} Elementi interattivi (es.\ bottoni) che rappresentano azioni o richieste già definite, proposte all'utente per guidare l'interazione e ridurre l'ambiguità del linguaggio naturale.
+      \item \textbf{Milestone:} Punto di controllo formale nel calendario di progetto che
+      segna il completamento di una fase o il raggiungimento di un obiettivo
+      significativo. Nel progetto le milestone principali sono la consegna RTB
+      (giugno--luglio 2026) e la consegna PB (agosto 2026).
       \item \textbf{Misurazione:} Raccolta strutturata di dati quantitativi relativi
           allo svolgimento delle attività del gruppo, comprensiva di: ruolo
           ricoperto, tempo previsto e tempo effettivo impiegato. I dati sono
@@ -235,7 +271,12 @@
 \addcontentsline{toc}{subsection}{P}
 \subsection*{P}
 \begin{itemize}[leftmargin=*]
-    \item \textbf{Pedice G:} Convenzione tipografica adottata nelle norme di progetto
+      \item \textbf{Pair Programming:} Tecnica di sviluppo software in cui due membri del
+      team lavorano insieme sullo stesso task, condividendo lo stesso
+      strumento di lavoro: uno scrive (driver) e l'altro revisiona in tempo reale
+      (navigator). Utilizzata come misura di mitigazione per i rischi legati
+      all'inesperienza tecnologica.
+      \item \textbf{Pedice G:} Convenzione tipografica adottata nelle norme di progetto
           per segnalare che un termine è definito nel Glossario. Viene applicato
           alla prima occorrenza del termine in ciascun documento tramite lo script
           Python di automazione (\texttt{python\_glossary\_automation/}).
@@ -289,28 +330,36 @@
 \addcontentsline{toc}{subsection}{R}
 \subsection*{R}
 \begin{itemize}[leftmargin=*]
-    \item \textbf{Redattore:} Ruolo del gruppo responsabile della produzione del
+      \item \textbf{Redattore:} Ruolo del gruppo responsabile della produzione del
           contenuto di un documento, nel rispetto del template approvato e delle
           convenzioni redazionali definite nelle Norme di Progetto. Non può
           verificare il proprio lavoro.
-    \item \textbf{Repository:} Archivio Git centralizzato che contiene documenti,
+      \item \textbf{Refactoring:} Attività di ristrutturazione del codice sorgente
+      finalizzata a migliorarne la leggibilità, la manutenibilità e la qualità
+      interna, senza modificarne il comportamento esterno. Utilizzata per ridurre
+      il debito tecnico accumulato.
+      \item \textbf{Repository:} Archivio Git centralizzato che contiene documenti,
           codice sorgente e cronologia completa delle versioni del progetto.
           Ospitato su GitHub; il branch \texttt{main} contiene esclusivamente le
           versioni approvate e stabili.
-    \item \textbf{Responsabile:} Ruolo del gruppo responsabile del coordinamento
+      \item \textbf{Responsabile:} Ruolo del gruppo responsabile del coordinamento
           delle attività, dell'elaborazione di piani e scadenze, dell'approvazione
           del rilascio di prodotti parziali o finali e della rappresentanza del
           gruppo verso committente e proponente.
-    \item \textbf{Revisione:} Fase del ciclo di vita documentale in cui il
+      \item \textbf{Revisione:} Fase del ciclo di vita documentale in cui il
           Verificatore controlla struttura, coerenza, correttezza linguistica e
           conformità del documento alle Norme di Progetto, prima che esso venga
           pubblicato nel branch \texttt{main}.
-    \item \textbf{RTB (Requirements and Technology Baseline):} Prima revisione
+      \item \textbf{Risorse Residue:} Ore e budget ancora disponibili per ciascun ruolo
+      e per ciascun membro del team, calcolati sottraendo le ore effettivamente
+      rendicontate da quelle preventivate. Monitorate al termine di ogni sprint
+      tramite le tabelle di prospetto nel Piano di Progetto.
+      \item \textbf{RTB (Requirements and Technology Baseline):} Prima revisione
           formale di avanzamento del progetto. Fissa i requisiti da soddisfare
           (Analisi dei Requisiti) e le tecnologie adottate, dimostrate tramite
           Proof of Concept. Si articola in due parti: valutazione del docente
           Cardin e presentazione al docente Vardanega.
-    \item \textbf{Ruolo:} Funzione formalmente assegnata a un membro del gruppo
+      \item \textbf{Ruolo:} Funzione formalmente assegnata a un membro del gruppo
           per lo svolgimento di specifiche attività. I ruoli previsti sono:
           Responsabile, Amministratore, Analista, Progettista, Programmatore,
           Verificatore. Ogni membro deve ricoprire un solo ruolo alla volta e
@@ -323,9 +372,17 @@
 \addcontentsline{toc}{subsection}{S}
 \subsection*{S}
 \begin{itemize}[leftmargin=*]
+      \item \textbf{SAL (Stato Avanzamento Lavori):} Momento di verifica periodica o documento che attesta lo stato di completamento delle attività di progetto rispetto alla pianificazione.
       \item \textbf{Scenario Principale:} Sequenza di passi che descrive il flusso standard di un Caso d'Uso, dal punto di vista dell'attore.
       \item \textbf{Scenari Alternativi:} Varianti del flusso principale che descrivono eccezioni, estensioni o condizioni particolari del Caso d'Uso.
+      \item \textbf{Scope Creep:} Fenomeno per cui l'ambito di un progetto si espande
+      in modo incontrollato durante lo sviluppo, a causa dell'aggiunta di
+      funzionalità non pianificate o non approvate formalmente. Costituisce uno
+      dei rischi principali del progetto (RR2) e viene contrastato tramite un
+      backlog rigoroso e l'approvazione obbligatoria del
+      Responsabile per ogni nuova feature.
       \item \textbf{Scrum:} Modello di sviluppo agile basato su iterazioni brevi (sprint), ruoli definiti e revisione incrementale del prodotto. Nel progetto è adottato con rotazione settimanale dei ruoli.
+      \item \textbf{Second Brain:} Nome del capitolato d'appalto scelto dal gruppo, proposto dall'azienda Zucchetti.
       \item \textbf{Sei Cappelli per Pensare:} Metodologia ideata da Edward de Bono che struttura il pensiero in sei prospettive distinte (logica, emotiva, critica, creativa, organizzativa e informativa). Nel progetto viene applicata tramite prompt dedicati per analizzare un testo secondo diverse angolazioni.
       \item \textbf{Semantic Versioning:} Convenzione di versionamento adottata dal
           gruppo basata sul formato \texttt{vX.Y.Z}, dove \texttt{X} (Major)
@@ -333,11 +390,17 @@
           \texttt{Y} (Minor) indica aggiunte o modifiche significative di contenuto
           e \texttt{Z} (Patch) segnala correzioni ortografiche o modifiche non
           semantiche.
-      \item \textbf{Stack Tecnologico:} Insieme delle tecnologie, strumenti e framework utilizzati per sviluppare un sistema software.
-      \item \textbf{SAL (Stato Avanzamento Lavori):} Momento di verifica periodica o documento che attesta lo stato di completamento delle attività di progetto rispetto alla pianificazione.
-      \item \textbf{Second Brain:} Nome del capitolato d'appalto scelto dal gruppo, proposto dall'azienda Zucchetti.
+      \item \textbf{Single Point of Failure:} Componente o risorsa del progetto la cui
+      indisponibilità causa il blocco dell'intera attività correlata. Nel contesto
+      del gruppo si riferisce alla situazione in cui un task
+      è assegnato a un unico membro senza documentazione condivisa, esponendo il
+      team al rischio RO1.
       \item \textbf{Solo Editor:} Modalità che mostra esclusivamente l’area di editing.
       \item \textbf{Solo Render:} Modalità che mostra esclusivamente la versione renderizzata del documento.
+      \item \textbf{Spike Tecnico:} Attività esplorativa a tempo limitato svolta dal team
+      per valutare la fattibilità o stimare la complessità di una tecnologia o di
+      una funzionalità, prima di inserirla nel backlog come task
+      pianificabile. Produce conoscenza, non deliverable.
       \item \textbf{Split View:} Modalità dell’editor che mostra simultaneamente la vista di editing e la vista renderizzata del documento.
       \item \textbf{Sprint:} Iterazione di lavoro breve e limitata nel tempo tipica delle metodologie agili, in cui il team si impegna a completare un set predefinito di task.
       \item \textbf{Sprint Planning:} Cerimonia agile svolta all'inizio di ogni
@@ -350,6 +413,7 @@
       \item \textbf{Sprint Review:} Cerimonia agile svolta al termine di ogni sprint
             in cui il gruppo valuta i risultati ottenuti rispetto agli obiettivi
             pianificati, confrontando avanzamento atteso e avanzamento conseguito.
+      \item \textbf{Stack Tecnologico:} Insieme delle tecnologie, strumenti e framework utilizzati per sviluppare un sistema software.
       \item \textbf{Stakeholder:} Individuo, gruppo o organizzazione che ha un interesse attivo nel progetto e può influenzarne (o esserne influenzato da) i risultati, come il proponente o il committente.
 \end{itemize}
  
@@ -383,6 +447,7 @@
             completare un task, espressa in minuti. Definita al momento della
             creazione del task e utilizzata come riferimento per il monitoraggio
             dell'avanzamento.
+      \item \textbf{Ticket:} Segnalazione o richiesta di lavoro tecnica tracciata all'interno di un sistema di gestione. Nel flusso del gruppo, equivale a una Issue.
       \item \textbf{Timeout LLM:} Errore generato quando il modello linguistico non risponde entro il tempo massimo previsto, gestito tramite messaggi di errore e retry.
       \item \textbf{Title Case:} Convenzione tipografica adottata dal gruppo per i
             titoli di sezioni e sotto-sezioni, che prevede l'iniziale maiuscola per
@@ -391,7 +456,6 @@
           membro lavora su un branch dedicato a un singolo documento o attività e
           integra le modifiche nel branch principale (\texttt{main}) tramite pull
           request al termine del lavoro, eliminando poi il branch.
-      \item \textbf{Ticket:} Segnalazione o richiesta di lavoro tecnica tracciata all'interno di un sistema di gestione. Nel flusso del gruppo, equivale a una Issue.
 \end{itemize}
  
 % ------------- U -------------
@@ -411,24 +475,28 @@
 \addcontentsline{toc}{subsection}{V}
 \subsection*{V}
 \begin{itemize}[leftmargin=*]
-    \item \textbf{Valutazione Dei Capitolati:} Documento gestionale esterno prodotto
+      \item \textbf{Valutazione Dei Capitolati:} Documento gestionale esterno prodotto
           in fase di candidatura che analizza e confronta i capitolati proposti
           dalle aziende proponenti, includendo il resoconto degli incontri
           esplorativi, i criteri di valutazione, i vantaggi e gli svantaggi di
           ciascuna proposta e la motivazione della scelta finale.
-    \item \textbf{VE-y.x:} Codice identificativo univoco di una decisione adottata
+      \item \textbf{VarGroup:} Azienda proponente di uno dei capitolati d'appalto analizzati dal gruppo durante la fase di candidatura.
+      \item \textbf{VE-y.x:} Codice identificativo univoco di una decisione adottata
           in un incontro esterno (con proponente o docente), registrata nel relativo
           verbale esterno. \texttt{y} è il numero progressivo del verbale esterno
           e \texttt{x} il numero progressivo della decisione al suo interno.
-    \item \textbf{Verificatore:} Ruolo del gruppo responsabile del controllo di
+      \item \textbf{Velocity:} Misura della quantità di lavoro completata dal team in uno
+      sprint, espressa in ore o story point. Viene monitorata sprint
+      per sprint per rilevare andamenti anomali e per affinare le stime dei sprint
+      successivi.
+      \item \textbf{Verificatore:} Ruolo del gruppo responsabile del controllo di
           conformità di documenti e codice prodotti dagli altri membri. Deve essere
           sempre un membro diverso dal Redattore dell'elaborato in esame; non può
           verificare il proprio lavoro.
-    \item \textbf{VI-y.x:} Codice identificativo univoco di una decisione adottata
+      \item \textbf{VI-y.x:} Codice identificativo univoco di una decisione adottata
           in una riunione interna, registrata nel relativo verbale interno.
           \texttt{y} è il numero progressivo del verbale interno e \texttt{x} il
           numero progressivo della decisione al suo interno.
-      \item \textbf{VarGroup:} Azienda proponente di uno dei capitolati d'appalto analizzati dal gruppo durante la fase di candidatura.
 \end{itemize}
  
 % ------------- W -------------
