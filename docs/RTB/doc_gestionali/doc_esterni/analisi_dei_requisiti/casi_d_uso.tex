@@ -402,38 +402,274 @@
 % UC10 - Generazione automatica da prompt (Distant Writing)
 \subsubsection{UC 10: Generazione automatica da prompt (Distant Writing)}
 
+% use case diagram
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=0.6\textwidth]{modifica_visualizzazione.png}
+    \caption{UC10 – Generazione automatica da prompt (Distant Writing)}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente inserisce un'istruzione testuale (prompt) in un apposito campo.
+        \item Il sistema invia il prompt all'LLM.
+        \item L'LLM genera il testo e lo restituisce al sistema.
+        \item Il sistema fornisce il testo generato all'utente (gestito tramite UC 12).
+    \end{enumerate}
+    \item \textbf{Precondizioni}: L'applicazione è avviata e la connessione ai servizi AI è stabilita.
+    \item \textbf{Postcondizioni}: Viene generata una proposta di testo basata sul prompt fornito.
+\end{itemize}
+
 % UC11 - Critica del testo (Sei Cappelli per Pensare)
 \subsubsection{UC 11: Critica del testo (Sei Cappelli per Pensare)}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=0.6\textwidth]{modifica_visualizzazione.png}
+    \caption{UC11 – Critica del testo (Sei Cappelli per Pensare)}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente richiede un'analisi critica del testo selezionato.
+        \item L'utente sceglie una delle sei modalità (Cappelli).
+        \item Il sistema invia la richiesta specifica all'LLM.
+        \item L'LLM restituisce il feedback critico.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: L'applicazione è avviata, la connessione ai servizi AI è stabilita, una porzione di testo è selezionata nell'editor.
+    \item \textbf{Postcondizioni}: Viene generata una proposta di analisi che viene mostrata all'utente.
+\end{itemize}
 
 % UC11.1 - Analisi Cappello Bianco (Dati e fatti)
 \paragraph{UC 11.1: Analisi Cappello Bianco (Dati e fatti)}
 
+% use case diagram
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=0.6\textwidth]{modifica_visualizzazione.png}
+    \caption{UC11.1 – Analisi Cappello Bianco (Dati e fatti)}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente richiede un'analisi oggettiva.
+        \item Il sistema istruisce l'LLM a evidenziare solo informazioni certe, dati e lacune informative nel testo selezionato.
+        \item L'LLM restituisce il feedback critico.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: L'applicazione è avviata, la connessione ai servizi AI è stabilita, una porzione di testo è selezionata nell'editor.
+    \item \textbf{Postcondizioni}: Viene visualizzata un'analisi critica basata su fatti e dati oggettivi.
+\end{itemize}
+
 % UC11.2 - Analisi Cappello Rosso (Emozioni)
 \paragraph{UC 11.2: Analisi Cappello Rosso (Emozioni)}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=0.6\textwidth]{modifica_visualizzazione.png}
+    \caption{UC11.2 – Analisi Cappello Rosso (Emozioni)}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente richiede un'analisi emotiva.
+        \item L'LLM analizza i sentimenti, le intuizioni e le reazioni viscerali trasmesse dal testo.
+        \item L'LLM restituisce il feedback critico.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: L'applicazione è avviata, la connessione ai servizi AI è stabilita, una porzione di testo è selezionata nell'editor.
+    \item \textbf{Postcondizioni}: Viene visualizzata un'analisi del tono emotivo del testo.
+\end{itemize}
 
 % UC11.3 - Analisi Cappello Nero (Rischi)
 \paragraph{UC 11.3: Analisi Cappello Nero (Rischi)}
 
+% use case diagram
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=0.6\textwidth]{modifica_visualizzazione.png}
+    \caption{UC11.3 – Analisi Cappello Nero (Rischi)}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente richiede una valutazione critica negativa.
+        \item L'LLM individua potenziali punti deboli, rischi o incongruenze logiche.
+        \item L'LLM restituisce il feedback critico.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: L'applicazione è avviata, la connessione ai servizi AI è stabilita, una porzione di testo è selezionata nell'editor.
+    \item \textbf{Postcondizioni}: Viene visualizzata un'analisi delle criticità del testo.
+\end{itemize}
+
 % UC11.4 - Analisi Cappello Giallo (Opportunità)
 \paragraph{UC 11.4: Analisi Cappello Giallo (Opportunità)}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=0.6\textwidth]{modifica_visualizzazione.png}
+    \caption{UC11.4 – Analisi Cappello Giallo (Opportunità)}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente richiede una valutazione ottimistica.
+        \item L'LLM mette in luce i benefici, i punti di forza e il valore aggiunto del testo.
+        \item L'LLM restituisce il feedback critico.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: L'applicazione è avviata, la connessione ai servizi AI è stabilita, una porzione di testo è selezionata nell'editor.
+    \item \textbf{Postcondizioni}: Viene visualizzata un'analisi dei vantaggi e delle opportunità.
+\end{itemize}
 
 % UC11.5 - Analisi Cappello Verde (Creatività)
 \paragraph{UC 11.5: Analisi Cappello Verde (Creatività)}
 
+% use case diagram
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=0.6\textwidth]{modifica_visualizzazione.png}
+    \caption{UC11.5 – Analisi Cappello Verde (Creatività)}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente richiede alternative creative.
+        \item L'LLM propone nuove idee, approcci originali o variazioni fantasiose sul tema trattato.
+        \item L'LLM restituisce il feedback critico.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: L'applicazione è avviata, la connessione ai servizi AI è stabilita, una porzione di testo è selezionata nell'editor.
+    \item \textbf{Postcondizioni}: Vengono visualizzati suggerimenti creativi e alternative al testo.
+\end{itemize}
+
 % UC11.6 - Analisi Cappello Blu (Logica/Controllo)
 \paragraph{UC 11.6: Analisi Cappello Blu (Logica/Controllo)}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=0.6\textwidth]{modifica_visualizzazione.png}
+    \caption{UC11.6 – Analisi Cappello Blu (Logica/Controllo)}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente richiede un'analisi strutturale.
+        \item L'LLM valuta l'organizzazione del pensiero, la coerenza complessiva e il processo logico seguito.
+        \item L'LLM restituisce il feedback critico.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: L'applicazione è avviata, la connessione ai servizi AI è stabilita, una porzione di testo è selezionata nell'editor.
+    \item \textbf{Postcondizioni}: Viene visualizzata una sintesi del processo logico e della struttura del testo.
+\end{itemize}
 
 % UC12 - Gestione proposta AI
 \subsubsection{UC 12: Gestione proposta AI}
 
+% use case diagram
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=0.6\textwidth]{modifica_visualizzazione.png}
+    \caption{UC12 – Gestione proposta AI}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente valuta la proposta fornita dal sistema.
+        \item L'utente decide se accettare (UC 12.1) o rifiutare (UC 12.2) la proposta.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: L'LLM ha restituito una proposta (testo generato, traduzione o analisi) che è visualizzata a schermo.
+    \item \textbf{Postcondizioni}: La visualizzazione della proposta viene chiusa e l'editor viene aggiornato o resta invariato.
+\end{itemize}
+
 % UC12.1 - Inserimento proposta nel documento
 \paragraph{UC 12.1: Inserimento proposta nel documento}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=0.6\textwidth]{modifica_visualizzazione.png}
+    \caption{UC12.1 – Inserimento proposta nel documento}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente accetta tramite bottone l'inserimento della proposta fornita.
+        \item Il sistema inserisce nel testo l'output dell'AI.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: Una proposta AI è visibile a schermo.
+    \item \textbf{Postcondizioni}: Il contenuto dell'editor è aggiornato con il nuovo testo.
+\end{itemize}
 
 % UC12.2 - Rifiuto della proposta AI
 \paragraph{UC 12.2: Rifiuto della proposta AI}
 
+% use case diagram
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=0.6\textwidth]{modifica_visualizzazione.png}
+    \caption{UC12.2 – Rifiuto della proposta AI}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente rifiuta tramite bottone l'inserimento della proposta fornita.
+        \item Il sistema scarta l'output dell'AI senza modificare il documento originale.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: Una proposta AI è visibile a schermo.
+    \item \textbf{Postcondizioni}: La proposta viene eliminata e il testo nell'editor rimane inalterato.
+\end{itemize}
+
 % UC13 - Gestione errori di sistema LLM
 \subsubsection{UC 13: Gestione errori di sistema LLM}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=0.6\textwidth]{modifica_visualizzazione.png}
+    \caption{UC13 – Gestione errori di sistema LLM}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item Il sistema invia una richiesta all'LLM.
+        \item L'LLM restituisce un errore (es: timeout, superamento limiti API, assenza di rete).
+        \item Il sistema intercetta l'errore e mostra un messaggio informativo all'utente.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: È stata avviata un'interazione che richiede l'uso dell'AI.
+    \item \textbf{Postcondizioni}: L'utente è informato del fallimento e il sistema ripristina lo stato precedente all'operazione.
+\end{itemize}
 
 % UC14 - Interazione con ChatBot
 \subsubsection{UC 14: (Opzionale) Interazione con ChatBot}
