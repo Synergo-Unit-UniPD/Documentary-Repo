@@ -2,18 +2,25 @@
 % 2. ANALISI DEI RISCHI
 % =======================================================
 \section{Analisi dei Rischi}
-L'analisi dei rischi è strutturata in tre macrocategorie, in linea con le fonti di rischio tipiche dei progetti software: rischi tecnologici, rischi individuali/organizzativi e rischi relativi al prodotto. Per ciascun rischio vengono indicati:
+\subsection{Nomenclatura e lettura della tabella}
+Ogni rischio è identificato da un codice composto da due lettere indicanti la categoria e un numero progressivo:
 \begin{itemize}
-    \item Codice
-    \item Descrizione sintetica
-    \item Probabilità di occorrenza (Alta / Media / Bassa)
-    \item Pericolosità / impatto (Alta / Media / Bassa)
-    \item Misura di mitigazione
-    \item Misura di prevenzione
+	\item \textbf{RR}: Rischi legati ai Requisiti (ambiguità, scope creep\textsubscript{G}, qualità, scadenze)
+	\item \textbf{RT}: Rischi Tecnici (tecnologie, integrazione, strumenti, debito tecnico\textsubscript{G})
+	\item \textbf{RO}: Rischi Organizzativi (disponibilità, comunicazione, carico, motivazione, comprensione)
 \end{itemize}
 
-\subsection{Rischi legati ai requisiti}
-RRX: Rischi Requisiti Numero
+Per ciascun rischio vengono indicati:
+\begin{itemize}
+    \item \textbf{Codice:}  Identificativo univoco del rischio (es. RR1, RT2, RO5).
+    \item \textbf{Descrizione:}  Descrizione sintetica del rischio.
+    \item \textbf{Probabilità di occorrenza:}  Valutazione della probabilità che il rischio si manifesti (Alta / Media / Bassa).
+    \item \textbf{Impatto:}  Valutazione dell'impatto che il rischio avrebbe sul progetto (Alta / Media / Bassa).
+    \item \textbf{Piano di mitigazione:}  Azioni da intraprendere per ridurre la probabilità o l'impatto del rischio.
+    \item \textbf{Piano di prevenzione:}  Azioni da intraprendere per prevenire l'occurrence del rischio.
+\end{itemize}
+
+\subsection{RR - Rischi Legati ai Requisiti}
 
 \begin{table}[H]
 	\centering
@@ -31,6 +38,7 @@ RRX: Rischi Requisiti Numero
 		\textbf{Piano di Contingenza} & Versionare i requisiti nel VCS; ottenere approvazione scritta a ogni baseline \\
 		\hline
 	\end{tabularx}
+	\caption{Scheda rischio RR1}
 \end{table}
 
 \begin{table}[H]
@@ -46,9 +54,10 @@ RRX: Rischi Requisiti Numero
 		\hline
 		\textbf{Piano di Mitigazione} & Congelamento dello scope per la RTB; rinvio delle feature non essenziali alla PB \\
 		\hline
-		\textbf{Piano di Contingenza} & Product backlog rigoroso; ogni nuova feature richiede approvazione del Product Owner \\
+		\textbf{Piano di Contingenza} & Product backlog\textsubscript{G} rigoroso; ogni nuova feature richiede approvazione del Product Owner \\
 		\hline
 	\end{tabularx}
+	\caption{Scheda rischio RR2}
 \end{table}
 
 \begin{table}[H]
@@ -62,11 +71,12 @@ RRX: Rischi Requisiti Numero
 		\hline
 		\textbf{Probabilità / Impatto} & Media/Alta \\
 		\hline
-		\textbf{Piano di Mitigazione} & Sprint di bug fixing dedicato; revisione della DoD; incremento delle code review \\
+		\textbf{Piano di Mitigazione} & Sprint\textsubscript{G} di bug fixing dedicato; revisione della DoD; incremento delle code review \\
 		\hline
-		\textbf{Piano di Contingenza} & Definition of Done con criteri di qualità espliciti; copertura minima di test definita \\
+		\textbf{Piano di Contingenza} & Definition of Done\textsubscript{G} con criteri di qualità espliciti; copertura minima di test definita \\
 		\hline
 	\end{tabularx}
+	\caption{Scheda rischio RR3}
 \end{table}
 
 \begin{table}[H]
@@ -80,15 +90,15 @@ RRX: Rischi Requisiti Numero
 		\hline
 		\textbf{Probabilità / Impatto} & Media/Alta \\
 		\hline
-		\textbf{Piano di Mitigazione} & Riduzione dello scope MVP; rinegoziazione della milestone con il docente \\
+		\textbf{Piano di Mitigazione} & Riduzione dello scope MVP\textsubscript{G}; rinegoziazione della milestone con il docente \\
 		\hline
-		\textbf{Piano di Contingenza} & Pianificazione conservativa con buffer; monitoraggio settimanale della burndown chart \\
+		\textbf{Piano di Contingenza} & Pianificazione conservativa con buffer; monitoraggio settimanale della burndown chart\textsubscript{G}. \\
 		\hline
 	\end{tabularx}
+	\caption{Scheda rischio RR4}
 \end{table}
 
-\subsection{Rischi tecnici}
-RTX: Rischi Tecnici Numero
+\subsection{RT -Rischi Tecnici}
 \begin{table}[H]
 	\centering
 	\renewcommand{\arraystretch}{1.3}
@@ -96,15 +106,16 @@ RTX: Rischi Tecnici Numero
 		\hline
 		\textbf{Codice} & \textbf{RT1} \\
 		\hline
-		\textbf{Descrizione} & Inesperienza con le tecnologie scelte (framework, librerie, API) \\
+		\textbf{Descrizione} & Inesperienza con le tecnologie scelte (framework\textsubscript{G}, librerie, API\textsubscript{G}) \\
 		\hline
 		\textbf{Probabilità / Impatto} & Media/Alta \\
 		\hline
-		\textbf{Piano di Mitigazione} & Riduzione dello scope; pair programming; riassegnazione task a membri con competenze più vicine \\
+		\textbf{Piano di Mitigazione} & Riduzione dello scope; pair programming\textsubscript{G}; riassegnazione task\textsubscript{G} a membri con competenze più vicine \\
 		\hline
-		\textbf{Piano di Contingenza} & Dedicare le prime 2 settimane a spike tecnici e formazione; definire una lista di tecnologie core concordata \\
+		\textbf{Piano di Contingenza} & Dedicare le prime 2 settimane a spike tecnici\textsubscript{G} e formazione; definire una lista di tecnologie core concordata \\
 		\hline
 	\end{tabularx}
+	\caption{Scheda rischio RT1}
 \end{table}
 
 \begin{table}[H]
@@ -123,6 +134,7 @@ RTX: Rischi Tecnici Numero
 		\textbf{Piano di Contingenza} & Definire interfacce e contratti API prima dell'implementazione; mock dei servizi durante lo sviluppo \\
 		\hline
 	\end{tabularx}
+	\caption{Scheda rischio RT2}
 \end{table}
 
 \begin{table}[H]
@@ -132,7 +144,7 @@ RTX: Rischi Tecnici Numero
 		\hline
 		\textbf{Codice} & \textbf{RT3} \\
 		\hline
-		\textbf{Descrizione} & Indisponibilità o instabilità di strumenti/servizi esterni (GitHub, CI/CD, cloud) \\
+		\textbf{Descrizione} & Indisponibilità o instabilità di strumenti/servizi esterni (GitHub, CI/CD\textsubscript{G}, cloud) \\
 		\hline
 		\textbf{Probabilità / Impatto} & Bassa/Media \\
 		\hline
@@ -141,6 +153,7 @@ RTX: Rischi Tecnici Numero
 		\textbf{Piano di Contingenza} & Documentare alternative di fallback; utilizzare versioni locali dove possibile \\
 		\hline
 	\end{tabularx}
+	\caption{Scheda rischio RT3}
 \end{table}
 
 \begin{table}[H]
@@ -156,13 +169,13 @@ RTX: Rischi Tecnici Numero
 		\hline
 		\textbf{Piano di Mitigazione} & Sprint dedicato al rimborso del debito tecnico; rivalutare le priorità del backlog \\
 		\hline
-		\textbf{Piano di Contingenza} & Dedicare almeno il 10\% di ogni sprint al refactoring; code review sistematiche \\
+		\textbf{Piano di Contingenza} & Dedicare almeno il 10\% di ogni sprint al refactoring\textsubscript{G}; code review sistematiche \\
 		\hline
 	\end{tabularx}
+	\caption{Scheda rischio RT4}
 \end{table}
 
-\subsection{Rischi organizzativi}
-ROX: Rischi Organizzativi Numero
+\subsection{RO - Rischi Organizzativi}
 
 \begin{table}[H]
 	\centering
@@ -175,11 +188,12 @@ ROX: Rischi Organizzativi Numero
 		\hline
 		\textbf{Probabilità / Impatto} & Media/Alta \\
 		\hline
-		\textbf{Piano di Mitigazione} & Ridistribuzione del carico; riduzione dello scope dello sprint; comunicazione tempestiva allo stakeholder \\
+		\textbf{Piano di Mitigazione} & Ridistribuzione del carico; riduzione dello scope dello sprint; comunicazione tempestiva allo stakeholder\textsubscript{G} \\
 		\hline
-		\textbf{Piano di Contingenza} & Documentare il lavoro in modo continuativo; nessun task assegnato a una sola persona (no single point of failure) \\
+		\textbf{Piano di Contingenza} & Documentare il lavoro in modo continuativo; nessun task assegnato a una sola persona (no single point of failure\textsubscript{G}) \\
 		\hline
 	\end{tabularx}
+	\caption{Scheda rischio RO1}
 \end{table}
 
 \begin{table}[H]
@@ -193,11 +207,12 @@ ROX: Rischi Organizzativi Numero
 		\hline
 		\textbf{Probabilità / Impatto} & Bassa/Alta \\
 		\hline
-		\textbf{Piano di Mitigazione} & Mediazione da parte del responsabile; escalation al docente/committente se necessario \\
+		\textbf{Piano di Mitigazione} & Mediazione da parte del responsabile\textsubscript{G}; escalation al docente/committente se necessario \\
 		\hline
-		\textbf{Piano di Contingenza} & Daily standup regolari; retrospettive aperte; definire un codice di condotta interno \\
+		\textbf{Piano di Contingenza} & Daily standup\textsubscript{G} regolari; retrospettive aperte; definire un codice di condotta interno \\
 		\hline
 	\end{tabularx}
+	\caption{Scheda rischio RO2}
 \end{table}
 
 \begin{table}[H]
@@ -211,11 +226,12 @@ ROX: Rischi Organizzativi Numero
 		\hline
 		\textbf{Probabilità / Impatto} & Media/Media \\
 		\hline
-		\textbf{Piano di Mitigazione} & Ribilanciamento immediato dei task; revisione della velocity del team \\
+		\textbf{Piano di Mitigazione} & Ribilanciamento immediato dei task; revisione della velocity\textsubscript{G} del team \\
 		\hline
 		\textbf{Piano di Contingenza} & Rotazione bisettimanale dei ruoli Scrum; monitoraggio delle ore nel backlog \\
 		\hline
 	\end{tabularx}
+	\caption{Scheda rischio RO3}
 \end{table}
 
 \begin{table}[H]
@@ -234,6 +250,7 @@ ROX: Rischi Organizzativi Numero
 		\textbf{Piano di Contingenza} & Obiettivi chiari e misurabili per ogni sprint; celebrare i traguardi raggiunti \\
 		\hline
 	\end{tabularx}
+	\caption{Scheda rischio RO4}
 \end{table}
 
 \begin{table}[H]
@@ -249,10 +266,11 @@ ROX: Rischi Organizzativi Numero
 		\hline
 		\textbf{Piano di Mitigazione} & Riunione straordinaria con il committente; revisione del backlog e prioritizzazione \\
 		\hline
-		\textbf{Piano di Contingenza} & Workshop iniziale di analisi dei requisiti; aggiornamento continuo del glossario e dei casi d'uso \\
+		\textbf{Piano di Contingenza} & Workshop iniziale di analisi dei requisiti; aggiornamento continuo del glossario e dei casi d'uso\textsubscript{G} \\
 		\hline
 	\end{tabularx}
+	\caption{Scheda rischio RO5}
 \end{table}
 
 \subsection{Monitoraggio dei rischi}
-I rischi vengono rivalutati ad ogni Sprint Review. Il Responsabile di Progetto aggiorna il registro dei rischi e notifica eventuali nuovi rischi emersi durante il ciclo di sviluppo.
+I rischi vengono rivalutati ad ogni Sprint Review\textsubscript{G} del martedì. Il Responsabile aggiorna il registro dei rischi, notifica eventuali nuovi rischi emersi durante il ciclo di sviluppo e verifica lo stato delle azioni di contingenza in corso.

@@ -16,7 +16,7 @@
 \pagestyle{fancy}
 \fancyhf{} 
 \fancyhead[L]{\textcolor{primarycolor}{\textbf{Synergo Unit}}}
-\fancyhead[R]{Piano di Progetto v0.0.0 - 2026-04-09}
+\fancyhead[R]{Piano di Progetto v0.6.1 - 2026-04-19}
 \fancyfoot[C]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
@@ -33,6 +33,8 @@
 
 	\tableofcontents
 	\newpage
+	\listoftables
+	\newpage
 
 	\input{introduzione.tex}
 	\newpage
@@ -42,14 +44,17 @@
 	
 	\input{modello_sviluppo.tex}
 	\newpage
+
+	\input{definition_of_done.tex}
+	\newpage
 	
 	\input{pianificazione.tex}
 	\newpage
 	
 	\input{preventivo.tex}
 	\newpage
-	
-	\input{consuntivo.tex}
+
+	\input{sprint.tex}
 	\newpage
 	
 	\input{preventivo_a_finire.tex}

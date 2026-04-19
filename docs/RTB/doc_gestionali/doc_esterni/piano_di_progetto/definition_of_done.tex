@@ -1,0 +1,123 @@
+% =======================================================
+% 4. DEFINITION OF DONE
+% =======================================================
+\section{Definition of Done (DoD)}
+\label{sec:dod}
+
+La Definition of Done è la lista di criteri che un task deve soddisfare per essere
+considerato completato.
+Si applica a due livelli distinti e si \textbf{espande} al crescere del progetto: la
+Sez.~\ref{sec:dod-doc} è attiva fin dal primo sprint, mentre, la Sez.~\ref{sec:dod-codice} dall'inizio dello sviluppo del PoC\textsubscript{G}.
+
+% ── 4.1 Livello task — fase documentale ─────────────────────────────────────
+\subsection{Livello task -- Fase documentale}
+\label{sec:dod-doc}
+\textit{Attiva da: Sprint 1. Applicabile a: tutti i task documentali.}
+
+\subsubsection*{Creazione e tracciabilità}
+\begin{itemize}
+    \item Il task è stato creato tramite Google Form dal Responsabile durante la
+          riunione del martedì.
+    \item Il task è linkato nel verbale della riunione dal Redattore\textsubscript{G}.
+    \item È stato creato un branch\textsubscript{G} da \texttt{development} direttamente dalla issue\textsubscript{G},
+          con naming: \\
+          \texttt{id-gestionale|tecnico\_esterno|interno\_nomeDoc}
+    \item Il branch è stato pushato entro la fine del giorno in cui si inizia a
+          lavorare (anche se il documento è vuoto), così la issue risulta
+          \textit{In Progress} nel board.
+\end{itemize}
+
+\subsubsection*{Redazione}
+\begin{itemize}
+    \item Il documento rispetta il template\textsubscript{G} e la struttura concordata nelle Norme di
+          Progetto.
+    \item Il contenuto è completo rispetto allo scope definito nel task.
+    \item Nessun segnaposto \texttt{[da compilare]} lasciato senza motivazione
+          esplicita.
+    \item Ortografia e grammatica verificate.
+    \item Terminologia coerente con il Glossario di progetto.
+\end{itemize}
+
+\subsubsection*{Commit\textsubscript{G} e Pull Request\textsubscript{G}}
+\begin{itemize}
+    \item Ogni commit fa riferimento alla issue con \texttt{\#id} nel messaggio.
+    \item I messaggi di commit sono concisi e fanno riferimento al documento di
+          riunione se pertinente.
+    \item La PR è aperta \textbf{entro domenica} per dare tempo al Verificatore\textsubscript{G} di
+          revisionare prima del martedì successivo.
+    \item La PR linka la issue corrispondente.
+    \item La PR descrive brevemente le modifiche apportate.
+\end{itemize}
+
+\subsubsection*{Revisione}
+\begin{itemize}
+    \item Almeno un membro del team (il Verificatore assegnato) ha revisionato il
+          documento.
+    \item Tutti i commenti della review sono stati risolti o discussi prima del merge\textsubscript{G}.
+    \item È \textbf{il Redattore} a fare il merge, non il Verificatore.
+\end{itemize}
+
+\subsubsection*{Chiusura}
+\begin{itemize}
+    \item Merge effettuato su \texttt{main\textsubscript{G}}.
+    \item Issue chiusa nel board.
+    \item Ore effettive aggiornate su Google Form.
+\end{itemize}
+
+% ── 4.2 Livello task — fase sviluppo/PoC ────────────────────────────────────
+\subsection{Livello task -- Fase sviluppo / PoC}
+\label{sec:dod-codice}
+\textit{Attiva da: Sprint N [da definire all'avvio dello sviluppo].
+Applicabile a: task di sviluppo software.}
+
+\medskip
+\textbf{[Da compilare]}
+\textit{Questa sezione verrà completata quando il team avvierà lo sviluppo del
+Proof of Concept\textsubscript{G}. I criteri includeranno almeno:}
+\begin{itemize}
+    \item codice funzionante in locale senza errori;
+    \item test unitari e/o di integrazione scritti e superati;
+    \item copertura dei test non inferiore alla soglia concordata (es.\ $\geq 70\%$);
+    \item nessun bug bloccante aperto;
+    \item linting superato secondo la configurazione del repository\textsubscript{G};
+    \item PR revisionata e approvata da almeno un membro del team;
+    \item documentazione tecnica (commenti, Swagger/JSDoc) aggiornata;
+    \item task chiuso nel board e ore rendicontate.
+\end{itemize}
+\textit{I criteri definitivi verranno concordati dal team prima dell'avvio dello
+sprint di sviluppo e aggiunti qui.}
+
+% ── 4.3 Livello sprint ───────────────────────────────────────────────────────
+\subsection{Livello sprint}
+\label{sec:dod-sprint}
+Uno sprint è \textbf{Done} se:
+\begin{itemize}
+    \item tutti i task pianificati sono Done (Livello task), oppure esplicitamente
+          rimandati al backlog con motivazione scritta nel verbale;
+    \item il verbale della riunione del martedì è redatto e approvato;
+    \item il registro dei rischi è stato rivalutato nella Sprint Review;
+    \item la Retrospettiva ha prodotto almeno un'azione correttiva concreta per il
+          prossimo sprint;
+    \item le ore effettive di tutti i membri sono rendicontate su Google Form.
+\end{itemize}
+
+% ── 4.4 Checklist PR ────────────────────────────────────────────────────────
+\subsection{Checklist PR -- Template GitHub}
+\label{sec:dod-pr}
+Il file \texttt{.github/pull\_request\_template.md} nel repository contiene la
+seguente checklist, inserita automaticamente in ogni Pull Request:
+
+\begin{verbatim}
+Checklist DoD
+- [ ] Documento completo e conforme al template (Norme di Progetto)
+- [ ] Nessun [da compilare] senza motivazione esplicita
+- [ ] Terminologia coerente con il Glossario
+- [ ] Ogni commit ha #id nel messaggio
+- [ ] PR aperta entro domenica
+- [ ] PR linka la issue
+- [ ] Revisione effettuata dal Verificatore assegnato
+- [ ] Tutti i commenti della review risolti
+- [ ] Merge fatto dal Redattore (non dal Revisore)
+- [ ] Issue chiusa nel board
+- [ ] Ore effettive rendicontate su Google Form
+\end{verbatim}
