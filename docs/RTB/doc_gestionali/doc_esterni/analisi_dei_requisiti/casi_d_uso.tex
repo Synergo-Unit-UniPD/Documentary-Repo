@@ -424,12 +424,70 @@
 % UC8 - Generazione riassunto del testo
 \subsubsection{UC 8: Generazione riassunto del testo}
 
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{riassunto_testo.png}
+    \caption{UC8 – Riassunto del testo}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente richiede un riassunto del testo selezionato.
+        \item Il sistema invia la richiesta specifica all'LLM.
+        \item L'LLM restituisce il riassunto richiesto.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: L'applicazione è avviata, la connessione ai servizi AI è stabilita, una porzione di testo è selezionata nell'editor.
+    \item \textbf{Postcondizioni}: Viene generato un riassunto che viene mostrato all'utente.
+\end{itemize}
+
 % UC9 - Traduzione del testo
 \subsubsection{UC 9: Traduzione del testo}
 
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{traduzione_testo.png}
+    \caption{UC9 – Traduzione del testo}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente richiede la traduzione del testo selezionato nella lingua scelta.
+        \item Il sistema invia la richiesta specifica all'LLM.
+        \item L'LLM restituisce il testo tradotto richiesto.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: L'applicazione è avviata, la connessione ai servizi AI è stabilita, una porzione di testo è selezionata nell'editor.
+    \item \textbf{Postcondizioni}: Viene generato una traduzione che viene mostrato all'utente.
+\end{itemize}
 % UC10 - Riscrittura del testo
 \subsubsection{UC 10: Riscrittura del testo}
 
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{riscrittura_testo.png}
+    \caption{UC10 – Riscrittura del testo}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente richiede una riscrittura del testo selezionato.
+        \item Il sistema invia la richiesta specifica all'LLM.
+        \item L'LLM restituisce la riscrittura richiesta.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: L'applicazione è avviata, la connessione ai servizi AI è stabilita, una porzione di testo è selezionata nell'editor.
+    \item \textbf{Postcondizioni}: Viene generato una rielaborazione del testo che viene mostrata all'utente.
+\end{itemize}
 % UC11 - Generazione automatica da prompt (Distant Writing)
 \subsubsection{UC 11: Generazione automatica da prompt (Distant Writing)}
 
