@@ -35,14 +35,30 @@
     \item \textbf{Trigger}: L'utente desidera iniziare una nuova sessione di scrittura.
 \end{itemize}
 
+\subsubsection{UC 2: Eliminazione di una nota}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{eliminazione_nota.png}
+    \caption{UC2 – Eliminazione di una nota}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: L'utente elimina la nota selezionata.
+    \item \textbf{Precondizioni}: Il sistema è avviato ed è presente una nota.
+    \item \textbf{Postcondizioni}: La nota è stata elimintata.
+\end{itemize}
+
 % UC2 - Scrittura di testo nell'editor
-\subsubsection{UC 2: Scrittura testo nell'editor}
+\subsubsection{UC 3: Scrittura testo nell'editor}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{scrittura_nota.png}
-    \caption{UC2 – Scrittura di testo nell'editor}
+    \caption{UC3 – Scrittura di testo nell'editor}
 \end{figure}
 
 \begin{itemize}
@@ -55,14 +71,14 @@
     \item \textbf{Postcondizioni}: Il testo inserito è visibile nell'area di input.
 \end{itemize}
 
-% UC3 - Formattazione del testo
-\subsubsection{UC 3: Formattazione del testo}
+% UC4 - Formattazione del testo
+\subsubsection{UC 4: Formattazione del testo}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{formattazione_testo.png}
-    \caption{UC3 – Formattazione del testo}
+    \caption{UC4 – Formattazione del testo}
 \end{figure}
 
 \begin{itemize}
@@ -76,14 +92,14 @@
     \item \textbf{Postcondizioni}: Il testo formattato è visibile nell'area di input.
 \end{itemize}
 
-% UC3.1 - Formattazione del testo: grassetto
-\paragraph{UC 3.1: Applicazione grassetto}\mbox{}\
+% UC4.1 - Formattazione del testo: grassetto
+\paragraph{UC 4.1: Applicazione grassetto}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{formattazione_testo_grassetto.png}
-    \caption{UC3.1 – Formattazione del testo in grassetto}
+    \caption{UC4.1 – Formattazione del testo in grassetto}
 \end{figure}
 
 \begin{itemize}
@@ -93,14 +109,14 @@
     \item \textbf{Postcondizioni}: Il testo formattato in grassetto è visualizzato nell'area di input.
 \end{itemize}
 
-% UC3.2 - Formattazione del testo: corsivo
-\paragraph{UC 3.2: Applicazione corsivo}\mbox{}\
+% UC4.2 - Formattazione del testo: corsivo
+\paragraph{UC 4.2: Applicazione corsivo}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{formattazione_testo_corsivo.png}
-    \caption{UC3.2 – Formattazione del testo in corsivo}
+    \caption{UC4.2 – Formattazione del testo in corsivo}
 \end{figure}
 
 \begin{itemize}
@@ -110,14 +126,14 @@
     \item \textbf{Postcondizioni}: Il testo formattato in corsivo è visualizzato nell'area di input.
 \end{itemize}
 
-% UC3.3 - Formattazione del testo: sottolineato
-\paragraph{UC 3.3: Applicazione sottolineato}\mbox{}\
+% UC4.3 - Formattazione del testo: sottolineato
+\paragraph{UC 4.3: Applicazione sottolineato}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{formattazione_testo_sottolineato.png}
-    \caption{UC3.3 – Formattazione del testo in sottolineato}
+    \caption{UC4.3 – Formattazione del testo in sottolineato}
 \end{figure}
 
 \begin{itemize}
@@ -127,14 +143,14 @@
     \item \textbf{Postcondizioni}: Il testo formattato in sottolineato è visualizzato nell'area di input.
 \end{itemize}
 
-% UC3.4 - Formattazione del testo: barrato
-\paragraph{UC 3.4: Applicazione barrato}\mbox{}\
+% UC4.4 - Formattazione del testo: barrato
+\paragraph{UC 4.4: Applicazione barrato}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{formattazione_testo_barrato.png}
-    \caption{UC3.4 – Formattazione del testo barrato}
+    \caption{UC4.4 – Formattazione del testo barrato}
 \end{figure}
 
 \begin{itemize}
@@ -144,14 +160,29 @@
     \item \textbf{Postcondizioni}: Il testo formattato in barrato è visualizzato nell'area di input.
 \end{itemize}
 
-% UC4 - Inserimento elementi Markdown
-\subsubsection{UC 4: Inserimento elementi Markdown}
+\paragraph{UC 4.5: Applicazione citazione}\mbox{}\
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{formattazione_testo_citazione.png}
+    \caption{UC4.5 – Formattazione del testo come citazione}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: L'utente applica lo stile citazione al testo selezionato.
+    \item \textbf{Precondizioni}: L'editor è attivo e presenta del testo selezionabile.
+    \item \textbf{Postcondizioni}: Il testo formattato come citazione è visualizzato nell'area di input.
+\end{itemize}
+
+% UC5 - Inserimento elementi Markdown
+\subsubsection{UC 5: Inserimento elementi Markdown}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{inserimento_markdown.png}
-    \caption{UC4 – Inserimento elementi Markdown}
+    \caption{UC5 – Inserimento elementi Markdown}
 \end{figure}
 
 \begin{itemize}
@@ -165,14 +196,14 @@
     \item \textbf{Postcondizioni}: Il testo viene formattato con quella funzione.
 \end{itemize}
 
-% UC4.1 - Inserimento titoli/intestazioni
-\paragraph{UC 4.1: Inserimento titoli/intestazioni}\mbox{}\
+% UC5.1 - Inserimento titoli/intestazioni
+\paragraph{UC 5.1: Inserimento titoli/intestazioni}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{inserimento_markdown_intestazioni.png}
-    \caption{UC4.1 – Inserimento titoli/intestazioni}
+    \caption{UC5.1 – Inserimento titoli/intestazioni}
 \end{figure}
 
 \begin{itemize}
@@ -186,14 +217,14 @@
     \item \textbf{Postcondizioni}: Il testo presenta le intestazioni.
 \end{itemize}
 
-% UC4.2 - Inserimento link ipertestuale
-\paragraph{UC 4.2: Inserimento link ipertestuale}\mbox{}\
+% UC5.2 - Inserimento link ipertestuale
+\paragraph{UC 5.2: Inserimento link ipertestuale}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{inserimento_markdown_link.png}
-    \caption{UC4.2 – Inserimento link ipertestuale}
+    \caption{UC5.2 – Inserimento link ipertestuale}
 \end{figure}
 
 \begin{itemize}
@@ -207,14 +238,14 @@
     \item \textbf{Postcondizioni}: Il testo presenta i link.
 \end{itemize}
 
-% UC4.3 - Inserimento elenchi puntati e numerati
-\paragraph{UC 4.3: Inserimento elenchi puntati e numerati}\mbox{}\
+% UC5.3 - Inserimento elenchi puntati e numerati
+\paragraph{UC 5.3: Inserimento elenchi puntati e numerati}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{inserimento_markdown_elenchi.png}
-    \caption{UC4.3 – Inserimento elenchi puntati e numerati}
+    \caption{UC5.3 – Inserimento elenchi puntati e numerati}
 \end{figure}
 
 \begin{itemize}
@@ -228,14 +259,14 @@
     \item \textbf{Postcondizioni}: Il testo presenta gli elenchi.
 \end{itemize}
 
-% UC5 - Gestione delle modifiche
-\subsubsection{UC 5: Gestione delle modifiche}
+% UC6 - Gestione delle modifiche
+\subsubsection{UC 6: Gestione delle modifiche}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{gestione_modifiche.png}
-    \caption{UC5 – Gestione delle modifiche}
+    \caption{UC6 – Gestione delle modifiche}
 \end{figure}
 
 \begin{itemize}
@@ -249,14 +280,14 @@
     \item \textbf{Postcondizioni}: Il testo presenta le modifiche.
 \end{itemize}
 
-% UC5.1 - Annullamento dell'ultima modifica (Undo)
-\paragraph{UC 5.1: Annullamento dell'ultima modifica (Undo)}\mbox{}\
+% UC6.1 - Annullamento dell'ultima modifica (Undo)
+\paragraph{UC 6.1: Annullamento dell'ultima modifica (Undo)}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{gestione_modifiche_undo.png}
-    \caption{UC5.1 – Annullamento dell'ultima modifica (Undo)}
+    \caption{UC6.1 – Annullamento dell'ultima modifica (Undo)}
 \end{figure}
 
 \begin{itemize}
@@ -275,14 +306,14 @@
     \item \textbf{Postcondizioni}: L'ultima modifica viene annullata e il contenuto dell'editor viene aggiornato.
 \end{itemize}
 
-% UC5.2 - Ripristino della modifica annullata (Redo)
-\paragraph{UC 5.2: Ripristino della modifica annullata (Redo)}\mbox{}\
+% UC6.2 - Ripristino della modifica annullata (Redo)
+\paragraph{UC 6.2: Ripristino della modifica annullata (Redo)}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{gestione_modifiche_redo.png}
-    \caption{UC5.2 – Ripristino della modifica annullata (Redo)}
+    \caption{UC6.2 – Ripristino della modifica annullata (Redo)}
 \end{figure}
 
 \begin{itemize}
@@ -300,14 +331,14 @@
     \item \textbf{Postcondizioni}: L'ultima modifica annullata viene ripristinata e il testo nell'editor viene aggiornato di conseguenza.
 \end{itemize}
 
-% UC6 - Modifica modalità di visualizzazione
-\subsubsection{UC 6: Modifica modalità di visualizzazione}
+% UC7 - Modifica modalità di visualizzazione
+\subsubsection{UC 7: Modifica modalità di visualizzazione}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{modifica_visualizzazione.png}
-    \caption{UC6 – Modifica modalità di visualizzazione}
+    \caption{UC7 – Modifica modalità di visualizzazione}
 \end{figure}
 
 \begin{itemize}
@@ -322,14 +353,14 @@
     \item \textbf{Postcondizioni}: L'interfaccia utente si adatta mostrando i pannelli in base alla nuova modalità scelta.
 \end{itemize}
 
-% UC6.1 - Visualizzazione solo Editor
-\paragraph{UC 6.1: Visualizzazione solo Editor}\mbox{}\
+% UC7.1 - Visualizzazione solo Editor
+\paragraph{UC 7.1: Visualizzazione solo Editor}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{visualizzazione_solo_editor.png}
-    \caption{UC6.1 – Visualizzazione solo Editor}
+    \caption{UC7.1 – Visualizzazione solo Editor}
 \end{figure}
 
 \begin{itemize}
@@ -342,14 +373,14 @@
     \item \textbf{Postcondizioni}: L'interfaccia mostra esclusivamente l'area di scrittura del codice Markdown.
 \end{itemize}
 
-% UC6.2 - Visualizzazione solo Render
-\paragraph{UC 6.2: Visualizzazione solo Render}\mbox{}\
+% UC7.2 - Visualizzazione solo Render
+\paragraph{UC 7.2: Visualizzazione solo Render}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{visualizzazione_solo_render.png}
-    \caption{UC6.2 – Visualizzazione solo Render}
+    \caption{UC7.2 – Visualizzazione solo Render}
 \end{figure}
 
 \begin{itemize}
@@ -362,14 +393,14 @@
     \item \textbf{Postcondizioni}: L'interfaccia mostra esclusivamente l'anteprima formattata (render) del documento.
 \end{itemize}
 
-% UC6.3 - Visualizzazione Split View
-\paragraph{UC 6.3: Visualizzazione Split View}\mbox{}\
+% UC7.3 - Visualizzazione Split View
+\paragraph{UC 7.3: Visualizzazione Split View}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{visualizzazione_split_view.png}
-    \caption{UC6.3 – Visualizzazione Split View}
+    \caption{UC7.3 – Visualizzazione Split View}
 \end{figure}
 
 \begin{itemize}
@@ -390,53 +421,347 @@
 \subsection{Macroarea 2 — Interazione AI (LLM)}
 \textit{Elaborazione del testo tramite modelli linguistici e gestione degli output.}
 
-% UC7 - Generazione riassunto del testo
-\subsubsection{UC 7: Generazione riassunto del testo}
+% UC8 - Generazione riassunto del testo
+\subsubsection{UC 8: Generazione riassunto del testo}
 
-% UC8 - Traduzione del testo
-\subsubsection{UC 8: Traduzione del testo}
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{riassunto_testo.png}
+    \caption{UC8 – Riassunto del testo}
+\end{figure}
 
-% UC9 - Riscrittura del testo
-\subsubsection{UC 9: Riscrittura del testo}
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente richiede un riassunto del testo selezionato.
+        \item Il sistema invia la richiesta specifica all'LLM.
+        \item L'LLM restituisce il riassunto richiesto.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: L'applicazione è avviata, la connessione ai servizi AI è stabilita, una porzione di testo è selezionata nell'editor.
+    \item \textbf{Postcondizioni}: Viene generato un riassunto che viene mostrato all'utente.
+\end{itemize}
 
-% UC10 - Generazione automatica da prompt (Distant Writing)
-\subsubsection{UC 10: Generazione automatica da prompt (Distant Writing)}
+% UC9 - Traduzione del testo
+\subsubsection{UC 9: Traduzione del testo}
 
-% UC11 - Critica del testo (Sei Cappelli per Pensare)
-\subsubsection{UC 11: Critica del testo (Sei Cappelli per Pensare)}
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{traduzione_testo.png}
+    \caption{UC9 – Traduzione del testo}
+\end{figure}
 
-% UC11.1 - Analisi Cappello Bianco (Dati e fatti)
-\paragraph{UC 11.1: Analisi Cappello Bianco (Dati e fatti)}
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente richiede la traduzione del testo selezionato nella lingua scelta.
+        \item Il sistema invia la richiesta specifica all'LLM.
+        \item L'LLM restituisce il testo tradotto richiesto.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: L'applicazione è avviata, la connessione ai servizi AI è stabilita, una porzione di testo è selezionata nell'editor.
+    \item \textbf{Postcondizioni}: Viene generato una traduzione che viene mostrato all'utente.
+\end{itemize}
+% UC10 - Riscrittura del testo
+\subsubsection{UC 10: Riscrittura del testo}
 
-% UC11.2 - Analisi Cappello Rosso (Emozioni)
-\paragraph{UC 11.2: Analisi Cappello Rosso (Emozioni)}
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{riscrittura_testo.png}
+    \caption{UC10 – Riscrittura del testo}
+\end{figure}
 
-% UC11.3 - Analisi Cappello Nero (Rischi)
-\paragraph{UC 11.3: Analisi Cappello Nero (Rischi)}
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente richiede una riscrittura del testo selezionato.
+        \item Il sistema invia la richiesta specifica all'LLM.
+        \item L'LLM restituisce la riscrittura richiesta.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: L'applicazione è avviata, la connessione ai servizi AI è stabilita, una porzione di testo è selezionata nell'editor.
+    \item \textbf{Postcondizioni}: Viene generato una rielaborazione del testo che viene mostrata all'utente.
+\end{itemize}
+% UC11 - Generazione automatica da prompt (Distant Writing)
+\subsubsection{UC 11: Generazione automatica da prompt (Distant Writing)}
 
-% UC11.4 - Analisi Cappello Giallo (Opportunità)
-\paragraph{UC 11.4: Analisi Cappello Giallo (Opportunità)}
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{11_generazione_automatica_da_prompt_distant_writing.png}
+    \caption{UC11 – Generazione automatica da prompt (Distant Writing)}
+\end{figure}
 
-% UC11.5 - Analisi Cappello Verde (Creatività)
-\paragraph{UC 11.5: Analisi Cappello Verde (Creatività)}
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente inserisce un'istruzione testuale (prompt) in un apposito campo.
+        \item Il sistema invia il prompt all'LLM.
+        \item L'LLM genera il testo e lo restituisce al sistema.
+        \item Il sistema fornisce il testo generato all'utente (gestito tramite UC 12).
+    \end{enumerate}
+    \item \textbf{Precondizioni}: L'applicazione è avviata e la connessione ai servizi AI è stabilita.
+    \item \textbf{Postcondizioni}: Viene generata una proposta di testo basata sul prompt fornito.
+\end{itemize}
 
-% UC11.6 - Analisi Cappello Blu (Logica/Controllo)
-\paragraph{UC 11.6: Analisi Cappello Blu (Logica/Controllo)}
+% UC12 - Critica del testo (Sei Cappelli per Pensare)
+\subsubsection{UC 12: Critica del testo (Sei Cappelli per Pensare)}
 
-% UC12 - Gestione proposta AI
-\subsubsection{UC 12: Gestione proposta AI}
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{12_critica_del_testo_sei_cappelli_per_pensare.png}
+    \caption{UC12 – Critica del testo (Sei Cappelli per Pensare)}
+\end{figure}
 
-% UC12.1 - Inserimento proposta nel documento
-\paragraph{UC 12.1: Inserimento proposta nel documento}
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente richiede un'analisi critica del testo selezionato.
+        \item L'utente sceglie una delle sei modalità (Cappelli).
+        \item Il sistema invia la richiesta specifica all'LLM.
+        \item L'LLM restituisce il feedback critico.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: L'applicazione è avviata, la connessione ai servizi AI è stabilita, una porzione di testo è selezionata nell'editor.
+    \item \textbf{Postcondizioni}: Viene generata una proposta di analisi che viene mostrata all'utente.
+\end{itemize}
 
-% UC12.2 - Rifiuto della proposta AI
-\paragraph{UC 12.2: Rifiuto della proposta AI}
+% UC12.1 - Analisi Cappello Bianco (Dati e fatti)
+\paragraph{UC 12.1: Analisi Cappello Bianco (Dati e fatti)}
 
-% UC13 - Gestione errori di sistema LLM
-\subsubsection{UC 13: Gestione errori di sistema LLM}
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{12-1_analisi_cappello_bianco_dati_e_fatti.png}
+    \caption{UC12.1 – Analisi Cappello Bianco (Dati e fatti)}
+\end{figure}
 
-% UC14 - Interazione con ChatBot
-\subsubsection{UC 14: (Opzionale) Interazione con ChatBot}
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente richiede un'analisi oggettiva.
+        \item Il sistema istruisce l'LLM a evidenziare solo informazioni certe, dati e lacune informative nel testo selezionato.
+        \item L'LLM restituisce il feedback critico.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: L'applicazione è avviata, la connessione ai servizi AI è stabilita, una porzione di testo è selezionata nell'editor.
+    \item \textbf{Postcondizioni}: Viene visualizzata un'analisi critica basata su fatti e dati oggettivi.
+\end{itemize}
+
+% UC12.2 - Analisi Cappello Rosso (Emozioni)
+\paragraph{UC 12.2: Analisi Cappello Rosso (Emozioni)}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{12-2_analisi_cappello_rosso_emozioni.png}
+    \caption{UC12.2 – Analisi Cappello Rosso (Emozioni)}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente richiede un'analisi emotiva.
+        \item L'LLM analizza i sentimenti, le intuizioni e le reazioni viscerali trasmesse dal testo.
+        \item L'LLM restituisce il feedback critico.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: L'applicazione è avviata, la connessione ai servizi AI è stabilita, una porzione di testo è selezionata nell'editor.
+    \item \textbf{Postcondizioni}: Viene visualizzata un'analisi del tono emotivo del testo.
+\end{itemize}
+
+% UC12.3 - Analisi Cappello Nero (Rischi)
+\paragraph{UC 12.3: Analisi Cappello Nero (Rischi)}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{12-3_analisi_cappello_nero_rischi.png}
+    \caption{UC12.3 – Analisi Cappello Nero (Rischi)}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente richiede una valutazione critica negativa.
+        \item L'LLM individua potenziali punti deboli, rischi o incongruenze logiche.
+        \item L'LLM restituisce il feedback critico.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: L'applicazione è avviata, la connessione ai servizi AI è stabilita, una porzione di testo è selezionata nell'editor.
+    \item \textbf{Postcondizioni}: Viene visualizzata un'analisi delle criticità del testo.
+\end{itemize}
+
+% UC12.4 - Analisi Cappello Giallo (Opportunità)
+\paragraph{UC 12.4: Analisi Cappello Giallo (Opportunità)}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{12-4_analisi_cappello_giallo_opportunita.png}
+    \caption{UC12.4 – Analisi Cappello Giallo (Opportunità)}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente richiede una valutazione ottimistica.
+        \item L'LLM mette in luce i benefici, i punti di forza e il valore aggiunto del testo.
+        \item L'LLM restituisce il feedback critico.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: L'applicazione è avviata, la connessione ai servizi AI è stabilita, una porzione di testo è selezionata nell'editor.
+    \item \textbf{Postcondizioni}: Viene visualizzata un'analisi dei vantaggi e delle opportunità.
+\end{itemize}
+
+% UC12.5 - Analisi Cappello Verde (Creatività)
+\paragraph{UC 12.5: Analisi Cappello Verde (Creatività)}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{12-5_analisi_cappello_verde_creativita.png}
+    \caption{UC12.5 – Analisi Cappello Verde (Creatività)}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente richiede alternative creative.
+        \item L'LLM propone nuove idee, approcci originali o variazioni fantasiose sul tema trattato.
+        \item L'LLM restituisce il feedback critico.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: L'applicazione è avviata, la connessione ai servizi AI è stabilita, una porzione di testo è selezionata nell'editor.
+    \item \textbf{Postcondizioni}: Vengono visualizzati suggerimenti creativi e alternative al testo.
+\end{itemize}
+
+% UC12.6 - Analisi Cappello Blu (Logica/Controllo)
+\paragraph{UC 12.6: Analisi Cappello Blu (Logica/Controllo)}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{12-6_analisi_cappello_blu_logica_controllo.png}
+    \caption{UC12.6 – Analisi Cappello Blu (Logica/Controllo)}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente richiede un'analisi strutturale.
+        \item L'LLM valuta l'organizzazione del pensiero, la coerenza complessiva e il processo logico seguito.
+        \item L'LLM restituisce il feedback critico.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: L'applicazione è avviata, la connessione ai servizi AI è stabilita, una porzione di testo è selezionata nell'editor.
+    \item \textbf{Postcondizioni}: Viene visualizzata una sintesi del processo logico e della struttura del testo.
+\end{itemize}
+
+% UC13 - Gestione proposta AI
+\subsubsection{UC 13: Gestione proposta AI}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{13_gestione_proposta_ai.png}
+    \caption{UC13 – Gestione proposta AI}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente valuta la proposta fornita dal sistema.
+        \item L'utente decide se accettare (UC 12.1) o rifiutare (UC 12.2) la proposta.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: L'LLM ha restituito una proposta (testo generato, traduzione o analisi) che è visualizzata a schermo.
+    \item \textbf{Postcondizioni}: La visualizzazione della proposta viene chiusa e l'editor viene aggiornato o resta invariato.
+\end{itemize}
+
+% UC13.1 - Inserimento proposta nel documento
+\paragraph{UC 13.1: Inserimento proposta nel documento}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{13-1_inserimento_proposta_nel_documento.png}
+    \caption{UC13.1 – Inserimento proposta nel documento}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente accetta tramite bottone l'inserimento della proposta fornita.
+        \item Il sistema inserisce nel testo l'output dell'AI.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: Una proposta AI è visibile a schermo.
+    \item \textbf{Postcondizioni}: Il contenuto dell'editor è aggiornato con il nuovo testo.
+\end{itemize}
+
+% UC13.2 - Rifiuto della proposta AI
+\paragraph{UC 13.2: Rifiuto della proposta AI}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{13-2_rifiuto_della_proposta_ai.png}
+    \caption{UC13.2 – Rifiuto della proposta AI}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente rifiuta tramite bottone l'inserimento della proposta fornita.
+        \item Il sistema scarta l'output dell'AI senza modificare il documento originale.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: Una proposta AI è visibile a schermo.
+    \item \textbf{Postcondizioni}: La proposta viene eliminata e il testo nell'editor rimane inalterato.
+\end{itemize}
+
+% UC14 - Gestione errori di sistema LLM
+\subsubsection{UC 14: Gestione errori di sistema LLM}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{14_gestione_errori_di_sistema_llm.png}
+    \caption{UC14 – Gestione errori di sistema LLM}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item Il sistema invia una richiesta all'LLM.
+        \item L'LLM restituisce un errore (es: timeout, superamento limiti API, assenza di rete).
+        \item Il sistema intercetta l'errore e mostra un messaggio informativo all'utente.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: È stata avviata un'interazione che richiede l'uso dell'AI.
+    \item \textbf{Postcondizioni}: L'utente è informato del fallimento e il sistema ripristina lo stato precedente all'operazione.
+\end{itemize}
+
+% UC15 - Interazione con ChatBot
+\subsubsection{UC 15: (Opzionale) Interazione con ChatBot}
 
 
 % --------------------------------------------------------------------------
@@ -446,23 +771,23 @@
 \subsection{Macroarea 3 — Gestione I/O e Persistenza}
 \textit{Salvataggio, caricamento ed esportazione.}
 
-% UC15 - Download della nota in formato Markdown
-\subsubsection{UC 15: Download della nota in formato Markdown}
+% UC16 - Download della nota in formato Markdown
+\subsubsection{UC 16: Download della nota in formato Markdown}
 
-% UC16 - Upload di una nota locale
-\subsubsection{UC 16: Upload di una nota locale}
+% UC17 - Upload di una nota locale
+\subsubsection{UC 17: Upload di una nota locale}
 
-% UC17 - Esportazione della nota (PDF, HTML, JSON)
-\subsubsection{UC 17: Esportazione della nota (PDF, HTML, JSON)}
+% UC18 - Esportazione della nota (PDF, HTML, JSON)
+\subsubsection{UC 18: Esportazione della nota (PDF, HTML, JSON)}
 
-% UC18 - Gestione Persistenza su Database remoto
-\subsubsection{UC 18: (Opzionale) Gestione Persistenza su Database remoto}
+% UC19 - Gestione Persistenza su Database remoto
+\subsubsection{UC 19: (Opzionale) Gestione Persistenza su Database remoto}
 
-% UC18.1 - Salvataggio nota su database
-\paragraph{UC 18.1: Salvataggio nota su database}
+% UC19.1 - Salvataggio nota su database
+\paragraph{UC 19.1: Salvataggio nota su database}
 
-% UC18.2 - Caricamento nota da database
-\paragraph{UC 18.2: Caricamento nota da database}
+% UC19.2 - Caricamento nota da database
+\paragraph{UC 19.2: Caricamento nota da database}
 
-% UC18.3 - Creazione collegamento tra note nel database
-\paragraph{UC 18.3: Creazione collegamento tra note nel database}
+% UC19.3 - Creazione collegamento tra note nel database
+\paragraph{UC 19.3: Creazione collegamento tra note nel database}
