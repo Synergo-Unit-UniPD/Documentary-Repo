@@ -120,7 +120,7 @@ Trunk-based Development
 UML
 Unified Modeling Language
 Usabilità
-Utente Target
+Utenza Target
 Valutazione Dei Capitolati
 VarGroup
 Velocity
