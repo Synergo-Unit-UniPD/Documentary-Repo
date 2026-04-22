@@ -30,6 +30,7 @@ Dichiarazione Degli Impegni
 Discord
 Distant Writing
 File System
+Formattazione
 Framework
 GitHub Pages
 GitHub Project
@@ -114,10 +115,12 @@ Tempo Previsto
 Timeout LLM
 Title Case
 T-y.z
+Traduzione
 Trunk-based Development
 UML
 Unified Modeling Language
 Usabilità
+Utenza Target
 Valutazione Dei Capitolati
 VarGroup
 Velocity
