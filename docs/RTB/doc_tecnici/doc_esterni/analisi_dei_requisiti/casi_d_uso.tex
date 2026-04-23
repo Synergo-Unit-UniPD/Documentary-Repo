@@ -829,14 +829,48 @@
 % UC18 - Esportazione della nota (PDF, HTML, JSON)
 \subsubsection{UC 18: Esportazione della nota (PDF, HTML, JSON)}
 
+% use case diagram
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente seleziona la funzione di esportazione.
+        \item L'utente sceglie il formato desiderato (PDF, HTML o JSON).
+        \item Il sistema converte il contenuto Markdown nel formato scelto e avvia il download.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: Il sistema è in grado di eseguire la conversione del formato.
+    \item \textbf{Postcondizioni}: L'utente ottiene una copia del documento nel formato non-Markdown selezionato.
+\end{itemize}
+
 % UC19 - Gestione Persistenza su Database remoto
 \subsubsection{UC 19: (Opzionale) Gestione Persistenza su Database remoto}
 
+% use case diagram riassuntivo per la persistenza
+
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: Database (Sistema esterno)
+    \item \textbf{Descrizione}: Il sistema permette all'utente autenticato di gestire le proprie note su uno spazio di archiviazione remoto, garantendo la disponibilità dei dati su diversi dispositivi.
+    \item \textbf{Precondizioni}: L'utente deve aver effettuato l'accesso (Login) al sistema.
+    \item \textbf{Postcondizioni}: I cambiamenti effettuati (salvataggio, caricamento o collegamento) sono sincronizzati con il database.
+\end{itemize}
+
 % UC19.1 - Salvataggio nota su database
 \paragraph{UC 19.1: Salvataggio nota su database}
+\begin{itemize}
+    \item \textbf{Scenario Principale}: L'utente attiva il comando di salvataggio remoto; il sistema invia il contenuto dell'editor al database associandolo al profilo dell'utente.
+\end{itemize}
 
 % UC19.2 - Caricamento nota da database
 \paragraph{UC 19.2: Caricamento nota da database}
+\begin{itemize}
+    \item \textbf{Scenario Principale}: L'utente richiede la lista delle note salvate; il sistema recupera i metadati dal database e, dopo la selezione, scarica il testo nell'editor.
+\end{itemize}
 
 % UC19.3 - Creazione collegamento tra note nel database
 \paragraph{UC 19.3: Creazione collegamento tra note nel database}
+\begin{itemize}
+    \item \textbf{Scenario Principale}: L'utente inserisce un riferimento (ID o Link) a una nota già presente nel database per creare una connessione logica tra i documenti.
+\end{itemize}
