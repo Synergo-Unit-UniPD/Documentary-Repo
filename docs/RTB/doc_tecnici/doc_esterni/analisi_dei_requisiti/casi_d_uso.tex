@@ -763,6 +763,24 @@
 % UC15 - Interazione con ChatBot
 \subsubsection{UC 15: (Opzionale) Interazione con ChatBot}
 
+% use case diagram
+
+
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente apre l'interfaccia del ChatBot.
+        \item L'utente invia un messaggio di testo o seleziona un comando predefinito.
+        \item Il sistema inoltra la richiesta al modello linguistico (LLM).
+        \item Il sistema visualizza la risposta generata dall'AI nella chat.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: Il sistema è connesso a internet e il servizio LLM è disponibile.
+    \item \textbf{Postcondizioni}: L'utente riceve una risposta coerente con il messaggio inviato.
+\end{itemize}
+
 
 % --------------------------------------------------------------------------
 % 3. Macroarea 3: Gestione I/O e Persistenza
@@ -774,8 +792,39 @@
 % UC16 - Download della nota in formato Markdown
 \subsubsection{UC 16: Download della nota in formato Markdown}
 
+% use case diagram
+
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente seleziona la funzione di download/salvataggio locale.
+        \item Il sistema genera un file con estensione .md contenente il testo dell'editor.
+        \item Il sistema permette all'utente di scegliere la destinazione sul proprio dispositivo.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: L'editor contiene del testo (anche vuoto).
+    \item \textbf{Postcondizioni}: Il file Markdown viene salvato nel file system locale dell'utente.
+\end{itemize}
+
 % UC17 - Upload di una nota locale
 \subsubsection{UC 17: Upload di una nota locale}
+
+% use case diagram
+
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente attiva la funzione di caricamento file.
+        \item L'utente seleziona un file .md dal proprio dispositivo.
+        \item Il sistema legge il contenuto del file e lo carica nell'editor, sovrascrivendo o aggiungendo al testo presente.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: L'utente possiede un file Markdown compatibile.
+    \item \textbf{Postcondizioni}: Il contenuto del file selezionato è visibile e modificabile nell'editor.
+\end{itemize}
+
 
 % UC18 - Esportazione della nota (PDF, HTML, JSON)
 \subsubsection{UC 18: Esportazione della nota (PDF, HTML, JSON)}
