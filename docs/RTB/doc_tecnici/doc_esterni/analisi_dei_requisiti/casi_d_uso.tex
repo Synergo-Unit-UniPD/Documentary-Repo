@@ -322,253 +322,508 @@
     \item \textbf{Trigger}: L'utente vuole disattivare lo stile corsivo.
 \end{itemize}
 
-% UC5 - Inserimento elementi Markdown
-\subsubsection{UC 5: Inserimento elementi Markdown}
+% UC11 -  Attivazione sottolineato
+\subsubsection{UC 11: Attivazione sottolineato}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{inserimento_markdown.png}
-    \caption{UC5 – Inserimento elementi Markdown}
+    \includegraphics[width=0.6\textwidth]{attivazione_sottolineato.png}
+    \caption{UC11 – Attivazione sottolineato}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: 
-    \begin{enumerate}
-        \item L'utente seleziona la funzione di markdown.
-        \item L'utente applica la formattazione desiderata.
-    \end{enumerate}
-    \item \textbf{Precondizioni}: Viene selezionata una funzione di markdown.
-    \item \textbf{Postcondizioni}: Il testo viene formattato con quella funzione.
-    \item \textbf{Trigger}: L'utente vuole strutturare il documento aggiungendo blocchi specifici del Markdown.
+    \item \textbf{Scenario Principale}: L'utente attiva lo stile sottolineato nella scrittura del testo.
+    \item \textbf{Precondizioni}: L'editor è attivo.
+    \item \textbf{Postcondizioni}: Il testo inserito sarà in sottolineato.
+    \item \textbf{Trigger}: L'utente vuole applicare lo stile sottolineato al testo successivo.
 \end{itemize}
 
-% UC5.1 - Inserimento titoli/intestazioni
-\paragraph{UC 5.1: Inserimento titoli/intestazioni}\mbox{}\
+% UC11.1 - Attivazione sottolineato su testo selezionato
+\paragraph{UC 11.1: Attivazione sottolineato su testo selezionato}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{inserimento_markdown_intestazioni.png}
-    \caption{UC5.1 – Inserimento titoli/intestazioni}
+    \includegraphics[width=0.6\textwidth]{attivazione_sottolineato_testo_selezionato.png}
+    \caption{UC11.1 – Attivazione sottolineato su testo selezionato}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: 
-    \begin{enumerate}
-        \item L'utente seleziona la funzione di intestazione.
-        \item L'utente applica l'intestazione desiderata secondo la sintassi di Markdown.
-    \end{enumerate}
-    \item \textbf{Precondizioni}: Viene selezionata la formattazione per le intestazioni.
-    \item \textbf{Postcondizioni}: Il testo presenta le intestazioni.
-    \item \textbf{Trigger}: L'utente vuole creare una nuova sezione o gerarchia nel testo inserendo un'intestazione.
+    \item \textbf{Scenario Principale}: L'utente seleziona del testo e applica lo stile sottolineato.
+    \item \textbf{Precondizioni}: L'editor è attivo e una porzione di testo è selezionata.
+    \item \textbf{Postcondizioni}: Il testo selezionato sarà in sottolineato.
+    \item \textbf{Trigger}: L'utente vuole applicare lo stile sottolineato al testo selezionato.
 \end{itemize}
 
-% UC5.2 - Inserimento link ipertestuale
-\paragraph{UC 5.2: Inserimento link ipertestuale}\mbox{}\
+% UC12 -  Disattivazione sottolineato
+\subsubsection{UC 12: Disattivazione sottolineato}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{inserimento_markdown_link.png}
-    \caption{UC5.2 – Inserimento link ipertestuale}
+    \includegraphics[width=0.6\textwidth]{disattivazione_sottolineato.png}
+    \caption{UC12 – Disattivazione sottolineato}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: 
-    \begin{enumerate}
-        \item L'utente seleziona la funzione di link.
-        \item L'utente inserisce l'URL e il testo del link.
-    \end{enumerate}
-    \item \textbf{Precondizioni}: Viene selezionata la formattazione per i link.
-    \item \textbf{Postcondizioni}: Il testo presenta i link.
-    \item \textbf{Trigger}: L'utente vuole inserire un collegamento verso una pagina web o una risorsa esterna.
+    \item \textbf{Scenario Principale}: L'utente disattiva lo stile sottolineato nella scrittura del testo.
+    \item \textbf{Precondizioni}: L'editor è attivo.
+    \item \textbf{Postcondizioni}: Il testo inserito non sarà in sottolineato.
+    \item \textbf{Trigger}: L'utente vuole disattivare lo stile sottolineato.
 \end{itemize}
 
-% UC5.3 - Inserimento elenchi puntati e numerati
-\paragraph{UC 5.3: Inserimento elenchi puntati e numerati}\mbox{}\
+% UC12.1 - Disattivazione sottolineato su testo selezionato
+\paragraph{UC 12.1: Disattivazione sottolineato su testo selezionato}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{inserimento_markdown_elenchi.png}
-    \caption{UC5.3 – Inserimento elenchi puntati e numerati}
+    \includegraphics[width=0.6\textwidth]{disattivazione_sottolineato_testo_selezionato.png}
+    \caption{UC12.1 – Disattivazione sottolineato su testo selezionato}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: 
-    \begin{enumerate}
-        \item L'utente seleziona la funzione per inserire elenchi.
-        \item L'utente inserisce un elenco.
-    \end{enumerate}
-    \item \textbf{Precondizioni}: Viene selezionata la formattazione per gli elenchi.
-    \item \textbf{Postcondizioni}: Il testo presenta gli elenchi.
-    \item \textbf{Trigger}: L'utente vuole raggruppare una serie di informazioni sotto forma di lista.
+    \item \textbf{Scenario Principale}: L'utente seleziona del testo e disattiva lo stile sottolineato.
+    \item \textbf{Precondizioni}: L'editor è attivo e una porzione di testo è selezionata.
+    \item \textbf{Postcondizioni}: Il testo selezionato non sarà in sottolineato.
+    \item \textbf{Trigger}: L'utente vuole disattivare lo stile sottolineato.
 \end{itemize}
 
-% UC6 - Gestione delle modifiche
-\subsubsection{UC 6: Gestione delle modifiche}
+% UC13 -  Attivazione barrato
+\subsubsection{UC 13: Attivazione barrato}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{gestione_modifiche.png}
-    \caption{UC6 – Gestione delle modifiche}
+    \includegraphics[width=0.6\textwidth]{attivazione_barrato.png}
+    \caption{UC13 – Attivazione barrato}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: 
-    \begin{enumerate}
-        \item L'utente seleziona la funzione di modifica.
-        \item Viene applicata la modifica.
-    \end{enumerate}
-    \item \textbf{Precondizioni}: Viene selezionata la funzione di modifica.
-    \item \textbf{Postcondizioni}: Il testo presenta le modifiche.
-    \item \textbf{Trigger}: L'utente si accorge di aver commesso un errore o vuole recuperare un'azione scartata.
+    \item \textbf{Scenario Principale}: L'utente attiva lo stile barrato nella scrittura del testo.
+    \item \textbf{Precondizioni}: L'editor è attivo.
+    \item \textbf{Postcondizioni}: Il testo inserito sarà in barrato.
+    \item \textbf{Trigger}: L'utente vuole applicare lo stile barrato al testo successivo.
 \end{itemize}
 
-% UC6.1 - Annullamento dell'ultima modifica (Undo)
-\paragraph{UC 6.1: Annullamento dell'ultima modifica (Undo)}\mbox{}\
+% UC13.1 - Attivazione barrato su testo selezionato
+\paragraph{UC 13.1: Attivazione barrato su testo selezionato}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{gestione_modifiche_undo.png}
-    \caption{UC6.1 – Annullamento dell'ultima modifica (Undo)}
+    \includegraphics[width=0.6\textwidth]{attivazione_barrato_testo_selezionato.png}
+    \caption{UC13.1 – Attivazione barrato su testo selezionato}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: 
-    \begin{enumerate}
-        \item Esiste almeno una modifica annullabile.
-        \item L'utente seleziona la funzione di undo.
-        \item Viene annullata l'ultima modifica.
-    \end{enumerate}
-    \item \textbf{Precondizioni}: 
-        \begin{itemize}
-            \item Esiste almeno una modifica annullabile.
-            \item Viene selezionata la funzione di undo.
-        \end{itemize}
-    \item \textbf{Postcondizioni}: L'ultima modifica viene annullata e il contenuto dell'editor viene aggiornato.
-    \item \textbf{Trigger}: L'utente attiva il comando "Undo" per annullare l'ultima modifica apportata al testo.
+    \item \textbf{Scenario Principale}: L'utente seleziona del testo e applica lo stile barrato.
+    \item \textbf{Precondizioni}: L'editor è attivo e una porzione di testo è selezionata.
+    \item \textbf{Postcondizioni}: Il testo selezionato sarà in barrato.
+    \item \textbf{Trigger}: L'utente vuole applicare lo stile barrato al testo selezionato.
 \end{itemize}
 
-% UC6.2 - Ripristino della modifica annullata (Redo)
-\paragraph{UC 6.2: Ripristino della modifica annullata (Redo)}\mbox{}\
+% UC14 -  Disattivazione barrato
+\subsubsection{UC 14: Disattivazione barrato}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{gestione_modifiche_redo.png}
-    \caption{UC6.2 – Ripristino della modifica annullata (Redo)}
+    \includegraphics[width=0.6\textwidth]{disattivazione_barrato.png}
+    \caption{UC14 – Disattivazione barrato}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: 
-    \begin{enumerate}
-        \item L'utente seleziona la funzione di ripristino (Redo).
-        \item Il sistema riapplica l'ultima modifica che era stata annullata.
-    \end{enumerate}
-    \item \textbf{Precondizioni}: 
-        \begin{itemize}
-            \item Esiste almeno una modifica annullata precedentemente (tramite funzione Undo) che può essere ripristinata.
-            \item L'utente attiva il comando di ripristino.
-        \end{itemize}
-    \item \textbf{Postcondizioni}: L'ultima modifica annullata viene ripristinata e il testo nell'editor viene aggiornato di conseguenza.
-    \item \textbf{Trigger}: L'utente attiva il comando "Redo" per ripristinare una modifica precedentemente annullata.
+    \item \textbf{Scenario Principale}: L'utente disattiva lo stile barrato nella scrittura del testo.
+    \item \textbf{Precondizioni}: L'editor è attivo.
+    \item \textbf{Postcondizioni}: Il testo inserito non sarà in barrato.
+    \item \textbf{Trigger}: L'utente vuole disattivare lo stile barrato.
 \end{itemize}
 
-% UC7 - Modifica modalità di visualizzazione
-\subsubsection{UC 7: Modifica modalità di visualizzazione}
+% UC14.1 - Disattivazione barrato su testo selezionato
+\paragraph{UC 14.1: Disattivazione barrato su testo selezionato}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{modifica_visualizzazione.png}
-    \caption{UC7 – Modifica modalità di visualizzazione}
+    \includegraphics[width=0.6\textwidth]{disattivazione_barrato_testo_selezionato.png}
+    \caption{UC14.1 – Disattivazione barrato su testo selezionato}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: 
-    \begin{enumerate}
-        \item L'utente accede ai comandi per cambiare la modalità di visualizzazione dell'interfaccia.
-        \item L'utente seleziona la modalità di visualizzazione desiderata.
-        \item Il sistema riconfigura i pannelli dell'interfaccia in base alla scelta effettuata.
-    \end{enumerate}
-    \item \textbf{Precondizioni}: L'applicazione è avviata e l'editor è visualizzato a schermo.
-    \item \textbf{Postcondizioni}: L'interfaccia utente si adatta mostrando i pannelli in base alla nuova modalità scelta.
-    \item \textbf{Trigger}: L'utente vuole adattare l'interfaccia dell'editor alle proprie esigenze visive.
+    \item \textbf{Scenario Principale}: L'utente seleziona del testo e disattiva lo stile barrato.
+    \item \textbf{Precondizioni}: L'editor è attivo e una porzione di testo è selezionata.
+    \item \textbf{Postcondizioni}: Il testo selezionato non sarà in barrato.
+    \item \textbf{Trigger}: L'utente vuole disattivare lo stile barrato.
 \end{itemize}
 
-% UC7.1 - Visualizzazione solo Editor
-\paragraph{UC 7.1: Visualizzazione solo Editor}\mbox{}\
+% UC15 -  Attivazione citazione
+\subsubsection{UC 15: Attivazione citazione}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{visualizzazione_solo_editor.png}
-    \caption{UC7.1 – Visualizzazione solo Editor}
+    \includegraphics[width=0.6\textwidth]{attivazione_citazione.png}
+    \caption{UC15 – Attivazione citazione}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: 
-    \begin{enumerate}
-        \item L'utente seleziona la modalità di visualizzazione "Solo Editor".
-    \end{enumerate}
-    \item \textbf{Precondizioni}: L'utente accede ai comandi di modifica della visualizzazione.
-    \item \textbf{Postcondizioni}: L'interfaccia mostra esclusivamente l'area di scrittura del codice Markdown.
-    \item \textbf{Trigger}: L'utente vuole massimizzare lo spazio dedicato alla scrittura nascondendo l'anteprima.
+    \item \textbf{Scenario Principale}: L'utente attiva lo stile citazione nella scrittura del testo.
+    \item \textbf{Precondizioni}: L'editor è attivo.
+    \item \textbf{Postcondizioni}: Il testo inserito sarà in citazione.
+    \item \textbf{Trigger}: L'utente vuole applicare lo stile citazione al testo successivo.
 \end{itemize}
 
-% UC7.2 - Visualizzazione solo Render
-\paragraph{UC 7.2: Visualizzazione solo Render}\mbox{}\
+% UC15.1 - Attivazione citazione su testo selezionato
+\paragraph{UC 15.1: Attivazione citazione su testo selezionato}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{visualizzazione_solo_render.png}
-    \caption{UC7.2 – Visualizzazione solo Render}
+    \includegraphics[width=0.6\textwidth]{attivazione_citazione_testo_selezionato.png}
+    \caption{UC15.1 – Attivazione citazione su testo selezionato}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: 
-    \begin{enumerate}
-        \item L'utente seleziona la modalità di visualizzazione "Solo Render".
-    \end{enumerate}
-    \item \textbf{Precondizioni}: L'utente accede ai comandi di modifica della visualizzazione.
-    \item \textbf{Postcondizioni}: L'interfaccia mostra esclusivamente l'anteprima formattata (render) del documento.
-    \item \textbf{Trigger}: L'utente vuole leggere il documento finale senza distrazioni dal codice Markdown.
+    \item \textbf{Scenario Principale}: L'utente seleziona del testo e applica lo stile citazione.
+    \item \textbf{Precondizioni}: L'editor è attivo e una porzione di testo è selezionata.
+    \item \textbf{Postcondizioni}: Il testo selezionato sarà in citazione.
+    \item \textbf{Trigger}: L'utente vuole applicare lo stile citazione al testo selezionato.
 \end{itemize}
 
-% UC7.3 - Visualizzazione Split View
-\paragraph{UC 7.3: Visualizzazione Split View}\mbox{}\
+% UC16 -  Disattivazione citazione
+\subsubsection{UC 16: Disattivazione citazione}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{disattivazione_citazione.png}
+    \caption{UC16 – Disattivazione citazione}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: L'utente disattiva lo stile citazione nella scrittura del testo.
+    \item \textbf{Precondizioni}: L'editor è attivo.
+    \item \textbf{Postcondizioni}: Il testo inserito non sarà in citazione.
+    \item \textbf{Trigger}: L'utente vuole disattivare lo stile citazione.
+\end{itemize}
+
+% UC16.1 - Disattivazione citazione su testo selezionato
+\paragraph{UC 16.1: Disattivazione citazione su testo selezionato}\mbox{}\
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{disattivazione_citazione_testo_selezionato.png}
+    \caption{UC16.1 – Disattivazione citazione su testo selezionato}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: L'utente seleziona del testo e disattiva lo stile citazione.
+    \item \textbf{Precondizioni}: L'editor è attivo e una porzione di testo è selezionata.
+    \item \textbf{Postcondizioni}: Il testo selezionato non sarà in citazione.
+    \item \textbf{Trigger}: L'utente vuole disattivare lo stile citazione.
+\end{itemize}
+
+% UC 17 - Inserimento titolo
+\subsubsection{UC 17: Inserimento titolo}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{inserimento_titolo.png}
+    \caption{UC 17 – Inserimento titolo}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: L'utente attiva il comando per l'intestazione e inizia a digitare il titolo.
+    \item \textbf{Precondizioni}: L'editor è attivo e nessuna porzione di testo è selezionata.
+    \item \textbf{Postcondizioni}: Il nuovo testo inserito sarà formattato come titolo.
+    \item \textbf{Trigger}: L'utente vuole creare una nuova intestazione nel documento.
+\end{itemize}
+
+% UC 17.1 - Inserimento titolo su testo selezionato
+\paragraph{UC 17.1: Inserimento titolo su testo selezionato}\mbox{}\
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{inserimento_titolo_selezionato.png}
+    \caption{UC 17.1 – Inserimento titolo su testo selezionato}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: L'utente seleziona del testo normale e applica il formato titolo.
+    \item \textbf{Precondizioni}: L'editor è attivo e una porzione di testo è selezionata.
+    \item \textbf{Postcondizioni}: Il testo selezionato sarà formattato come titolo.
+    \item \textbf{Trigger}: L'utente vuole trasformare un paragrafo esistente in un'intestazione.
+\end{itemize}
+
+% UC 18 - Disattivazione titolo
+\subsubsection{UC 18: Disattivazione titolo}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{disattivazione_titolo.png}
+    \caption{UC 18 – Disattivazione titolo}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: L'utente preme "Invio" o disattiva il comando titolo per continuare a scrivere normalmente.
+    \item \textbf{Precondizioni}: Il cursore si trova alla fine di un titolo.
+    \item \textbf{Postcondizioni}: Il comando viene disattivato e il nuovo testo sarà un paragrafo normale.
+    \item \textbf{Trigger}: L'utente ha terminato l'intestazione e vuole scrivere il contenuto normale.
+\end{itemize}
+
+% UC 18.1 - Disattivazione titolo su testo selezionato
+\paragraph{UC 18.1: Disattivazione titolo su testo selezionato}\mbox{}\
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{disattivazione_titolo_selezionato.png}
+    \caption{UC 18.1 – Disattivazione titolo su testo selezionato}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: L'utente seleziona un'intestazione e disattiva il comando titolo.
+    \item \textbf{Precondizioni}: Un'intestazione è selezionata.
+    \item \textbf{Postcondizioni}: Il testo selezionato non sarà più un titolo e tornerà testo normale.
+    \item \textbf{Trigger}: L'utente vuole annullare la formattazione di un'intestazione esistente.
+\end{itemize}
+
+% UC 19 - Inserimento link ipertestuale
+\subsubsection{UC 19: Inserimento link ipertestuale}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{inserimento_link.png}
+    \caption{UC 19 – Inserimento link ipertestuale}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: L'utente inserisce l'URL e il testo di visualizzazione per creare un nuovo link.
+    \item \textbf{Precondizioni}: L'editor è attivo.
+    \item \textbf{Postcondizioni}: Il link ipertestuale appare nel documento.
+    \item \textbf{Trigger}: L'utente vuole inserire un collegamento a una risorsa esterna o interna.
+\end{itemize}
+
+% UC 19.1 - Modifica link
+\paragraph{UC 19.1: Modifica link}\mbox{}\
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{modifica_link.png}
+    \caption{UC 19.1 – Modifica link}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: L'utente seleziona un link esistente e ne modifica l'URL o il testo.
+    \item \textbf{Precondizioni}: È presente almeno un link nel documento.
+    \item \textbf{Postcondizioni}: Il link viene aggiornato con i nuovi parametri scelti dall'utente.
+    \item \textbf{Trigger}: L'utente deve correggere o aggiornare un collegamento.
+\end{itemize}
+
+% UC 20 - Rimozione link
+\subsubsection{UC 20: Rimozione link}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{rimozione_link.png}
+    \caption{UC 20 – Rimozione link}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: L'utente seleziona un link ipertestuale e lo rimuove.
+    \item \textbf{Precondizioni}: Un link è presente e viene selezionato.
+    \item \textbf{Postcondizioni}: Il collegamento viene eliminato dal documento.
+    \item \textbf{Trigger}: L'utente non vuole più che la parola sia cliccabile.
+\end{itemize}
+
+% UC 21 - Inserimento elenco
+\subsubsection{UC 21: Inserimento elenco}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{inserimento_elenco.png}
+    \caption{UC 21 – Inserimento elenco}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: L'utente attiva la funzione elenco e inizia a digitare il primo punto.
+    \item \textbf{Precondizioni}: L'editor è attivo e nessuna porzione di testo è selezionata.
+    \item \textbf{Postcondizioni}: Viene creato un nuovo elenco nel documento in cui l'utente digita.
+    \item \textbf{Trigger}: L'utente vuole raggruppare nuove informazioni in forma di lista.
+\end{itemize}
+
+% UC 21.1 - Modifica elenco
+\paragraph{UC 21.1: Modifica elenco}\mbox{}\
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{modifica_elenco.png}
+    \caption{UC 21.1 – Modifica elenco}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: L'utente modifica la struttura dell'elenco (es. trasformandolo da puntato a numerato, o modificando i rientri).
+    \item \textbf{Precondizioni}: Un elenco è già presente e il cursore è posizionato su di esso.
+    \item \textbf{Postcondizioni}: La formattazione o il tipo di elenco viene aggiornato.
+    \item \textbf{Trigger}: L'utente vuole cambiare la tipologia della lista esistente.
+\end{itemize}
+
+% UC 22 - Disattivazione elenco
+\subsubsection{UC 22: Disattivazione elenco}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{disattivazione_elenco.png}
+    \caption{UC 22 – Disattivazione elenco}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: L'utente preme due volte "Invio" alla fine di un punto per interrompere la formattazione a elenco.
+    \item \textbf{Precondizioni}: Il cursore si trova su un punto elenco vuoto.
+    \item \textbf{Postcondizioni}: Il comando viene disattivato e il cursore si posiziona su un nuovo paragrafo normale.
+    \item \textbf{Trigger}: L'utente ha finito di compilare la lista e vuole riprendere a scrivere testo normale.
+\end{itemize}
+
+% UC 22.1 - Disattivazione elenco su testo selezionato
+\paragraph{UC 22.1: Disattivazione elenco su testo selezionato}\mbox{}\
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{disattivazione_elenco_selezionato.png}
+    \caption{UC 22.1 – Disattivazione elenco su testo selezionato}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: L'utente seleziona l'intero elenco (o parte di esso) e disattiva il comando lista.
+    \item \textbf{Precondizioni}: Un elenco è interamente o parzialmente selezionato.
+    \item \textbf{Postcondizioni}: Tutti i punti dell'elenco selezionato diventano paragrafi normali.
+    \item \textbf{Trigger}: L'utente vuole convertire i punti della lista in testo standard.
+\end{itemize}
+
+% UC 23 - Azione di Undo
+\subsubsection{UC 23: Azione di Undo}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{azione_undo.png}
+    \caption{UC 23 – Azione di Undo}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: L'utente annulla l'ultima modifica apportata al documento.
+    \item \textbf{Precondizioni}: Esiste almeno un'azione annullabile nella cronologia.
+    \item \textbf{Postcondizioni}: Il documento torna allo stato precedente all'ultima modifica.
+    \item \textbf{Trigger}: L'utente si accorge di aver commesso un errore e attiva "Undo".
+\end{itemize}
+
+% UC 24 - Azione di Redo
+\subsubsection{UC 24: Azione di Redo}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{azione_redo.png}
+    \caption{UC 24 – Azione di Redo}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: L'utente ripristina l'ultima modifica annullata.
+    \item \textbf{Precondizioni}: È stata eseguita almeno un'operazione di "Undo" ripristinabile.
+    \item \textbf{Postcondizioni}: La modifica precedentemente annullata viene riapplicata.
+    \item \textbf{Trigger}: L'utente cambia idea e attiva "Redo" per ripristinare il testo.
+\end{itemize}
+
+% UC 25 - Visualizzazione esclusiva Editor
+\subsubsection{UC 25: Visualizzazione esclusiva Editor}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{visualizzazione_editor.png}
+    \caption{UC 25 – Visualizzazione esclusiva Editor}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: L'utente seleziona la modalità di visualizzazione "Solo Editor".
+    \item \textbf{Precondizioni}: L'interfaccia è attiva.
+    \item \textbf{Postcondizioni}: A schermo viene mostrata esclusivamente l'area di scrittura del codice sorgente.
+    \item \textbf{Trigger}: L'utente vuole massimizzare lo spazio dedicato alla digitazione.
+\end{itemize}
+
+% UC 26 - Visualizzazione esclusiva Render
+\subsubsection{UC 26: Visualizzazione esclusiva Render}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{visualizzazione_render.png}
+    \caption{UC 26 – Visualizzazione esclusiva Render}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: L'utente seleziona la modalità di visualizzazione "Solo Render".
+    \item \textbf{Precondizioni}: L'interfaccia è attiva.
+    \item \textbf{Postcondizioni}: A schermo viene mostrata esclusivamente l'anteprima formattata del documento.
+    \item \textbf{Trigger}: L'utente vuole leggere il documento finale senza visualizzare il Markdown.
+\end{itemize}
+
+% UC 27 - Visualizzazione Split View
+\subsubsection{UC 27: Visualizzazione Split View}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{visualizzazione_split_view.png}
-    \caption{UC7.3 – Visualizzazione Split View}
+    \caption{UC 27 – Visualizzazione Split View}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: 
-    \begin{enumerate}
-        \item L'utente seleziona la modalità di visualizzazione "Split View".
-    \end{enumerate}
-    \item \textbf{Precondizioni}: L'utente accede ai comandi di modifica della visualizzazione.
-    \item \textbf{Postcondizioni}: L'interfaccia si divide in due e mostra contemporaneamente e affiancati sia l'editor Markdown sia il render formattato.
-    \item \textbf{Trigger}: L'utente vuole scrivere e contemporaneamente controllare in tempo reale l'anteprima grafica.
+    \item \textbf{Scenario Principale}: L'utente seleziona la modalità "Split View".
+    \item \textbf{Precondizioni}: L'interfaccia è attiva.
+    \item \textbf{Postcondizioni}: L'interfaccia mostra contemporaneamente l'editor e l'anteprima formattata affiancati.
+    \item \textbf{Trigger}: L'utente vuole verificare il rendering in tempo reale mentre digita.
 \end{itemize}
 
 
