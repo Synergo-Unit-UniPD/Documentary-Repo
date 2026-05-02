@@ -178,22 +178,148 @@
     \item \textbf{Trigger}: L'utente vuole incollare una porzione di testo.
 \end{itemize}
 
-% UC7 - Incolla testo
-\subsubsection{UC 7: Gestione grassetto}
+% UC7 - Attivazione grassetto
+\subsubsection{UC 7: Attivazione grassetto}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{gestione_grassetto.png}
-    \caption{UC7 – Gestione grassetto}
+    \includegraphics[width=0.6\textwidth]{attivazione_grassetto.png}
+    \caption{UC7 – Attivazione grassetto}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente seleziona lo stile grassetto per il testo.
+    \item \textbf{Scenario Principale}: L'utente seleziona lo stile grassetto per scrivere il testo.
     \item \textbf{Precondizioni}: L'editor è attivo.
-    \item \textbf{Postcondizioni}: Il testo è stato reso in grassetto.
-    \item \textbf{Trigger}: L'utente vuole applicare lo stile grassetto ad una porzione di testo.
+    \item \textbf{Postcondizioni}: Il testo inserito sarà in grassetto.
+    \item \textbf{Trigger}: L'utente vuole applicare lo stile grassetto al testo successivo.
+\end{itemize}
+
+% UC7.1 - Grassetto su testo selezionato
+\paragraph{UC 7.1: Grassetto su testo selezionato}\mbox{}\
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{grassetto_testo_selezionato.png}
+    \caption{UC7.1 – Grassetto su testo selezionato}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: L'utente seleziona del testo e applica lo stile grassetto.
+    \item \textbf{Precondizioni}: L'editor è attivo e una porzione di testo è selezionata.
+    \item \textbf{Postcondizioni}: Il testo selezionato sarà in grassetto.
+    \item \textbf{Trigger}: L'utente vuole applicare lo stile grassetto al testo selezionato.
+\end{itemize}
+
+% UC8 -  Disattivazione grassetto
+\subsubsection{UC 8: Disattivazione grassetto}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{disattivazione_grassetto.png}
+    \caption{UC8 – Disattivazione grassetto}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: L'utente disattiva lo stile grassetto nella scrittura del testo.
+    \item \textbf{Precondizioni}: L'editor è attivo.
+    \item \textbf{Postcondizioni}: Il testo inserito non sarà in grassetto.
+    \item \textbf{Trigger}: L'utente vuole disattivare lo stile grassetto.
+\end{itemize}
+
+% UC8.1 - Disattivazione grassetto su testo selezionato
+\paragraph{UC 8.1: Disattivazione grassetto su testo selezionato}\mbox{}\
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{disattivazione_grassetto_testo_selezionato.png}
+    \caption{UC8.1 – Disattivazione grassetto su testo selezionato}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: L'utente seleziona del testo e applica lo stile grassetto.
+    \item \textbf{Precondizioni}: L'editor è attivo e una porzione di testo è selezionata.
+    \item \textbf{Postcondizioni}: Il testo selezionato sarà in grassetto.
+    \item \textbf{Trigger}: L'utente vuole applicare lo stile grassetto al testo selezionato.
+\end{itemize}
+
+% UC9 -  Attivazione corsivo
+\subsubsection{UC 9: Attivazione corsivo}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{attivazione_corsivo.png}
+    \caption{UC9 – Attivazione corsivo}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: L'utente attiva lo stile corsivo nella scrittura del testo.
+    \item \textbf{Precondizioni}: L'editor è attivo.
+    \item \textbf{Postcondizioni}: Il testo inserito sarà in corsivo.
+    \item \textbf{Trigger}: L'utente vuole applicare lo stile corsivo al testo successivo.
+\end{itemize}
+
+% UC9.1 - Attivazione corsivo su testo selezionato
+\paragraph{UC 9.1: Attivazione corsivo su testo selezionato}\mbox{}\
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{attivazione_corsivo_testo_selezionato.png}
+    \caption{UC9.1 – Attivazione corsivo su testo selezionato}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: L'utente seleziona del testo e applica lo stile corsivo.
+    \item \textbf{Precondizioni}: L'editor è attivo e una porzione di testo è selezionata.
+    \item \textbf{Postcondizioni}: Il testo selezionato sarà in corsivo.
+    \item \textbf{Trigger}: L'utente vuole applicare lo stile corsivo al testo selezionato.
+\end{itemize}
+
+% UC10 -  Disattivazione corsivo
+\subsubsection{UC 10: Disattivazione corsivo}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{disattivazione_corsivo.png}
+    \caption{UC10 – Disattivazione corsivo}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: L'utente disattiva lo stile corsivo nella scrittura del testo.
+    \item \textbf{Precondizioni}: L'editor è attivo.
+    \item \textbf{Postcondizioni}: Il testo inserito non sarà in corsivo.
+    \item \textbf{Trigger}: L'utente vuole disattivare lo stile corsivo.
+\end{itemize}
+
+% UC10.1 - Disattivazione corsivo su testo selezionato
+\paragraph{UC 10.1: Disattivazione corsivo su testo selezionato}\mbox{}\
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{disattivazione_corsivo_testo_selezionato.png}
+    \caption{UC10.1 – Disattivazione corsivo su testo selezionato}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: L'utente seleziona del testo e disattiva lo stile corsivo.
+    \item \textbf{Precondizioni}: L'editor è attivo e una porzione di testo è selezionata.
+    \item \textbf{Postcondizioni}: Il testo selezionato non sarà in corsivo.
+    \item \textbf{Trigger}: L'utente vuole disattivare lo stile corsivo.
 \end{itemize}
 
 % UC5 - Inserimento elementi Markdown
