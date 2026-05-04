@@ -40,9 +40,9 @@ costituisce prerequisito per l'attivazione di qualsiasi altro processo.
 \end{itemize}
  
 \paragraph{Documentazione Tecnica}
-La documentazione tecnica è introdotta esclusivamente dopo l'aggiudicazione del
-capitolato. Comprenderà, a titolo esemplificativo: Analisi Dei Requisiti,
-Specifica Architetturale, Manuale Utente.
+La documentazione tecnica è attiva a partire dalla baseline RTB. Comprende,
+a titolo esemplificativo: Analisi Dei Requisiti, Specifica Architetturale,
+Manuale Utente.
  
 \subsubsection{Convenzioni Redazionali}
 \label{sec:convenzioni}
@@ -66,17 +66,35 @@ le seguenti convenzioni, la cui applicazione è vincolante per tutti i redattori
   \item \textbf{Codice decisione da verbale interno}: le decisioni adottate in
         riunione interna sono identificate dal codice \texttt{VI-y.x}\textsubscript{G}, dove
         \texttt{y} è il numero progressivo del verbale e \texttt{x} il numero
-        progressivo della decisione al suo interno.
+        progressivo della decisione al suo interno. La numerazione dei verbali
+        è \textbf{crescente e continua} dall'inizio del progetto, senza azzerarsi
+        al cambio di baseline.
  
   \item \textbf{Codice decisione da verbale esterno}: le decisioni adottate in
         incontri esterni sono identificate dal codice \texttt{VE-y.x}\textsubscript{G},
         con la stessa logica.
- 
-  \item \textbf{Codice task}: i task sono identificati dal codice \texttt{T-y.z}\textsubscript{G},
-        dove \texttt{y} è il numero del verbale di origine e \texttt{z} il numero
-        progressivo del task. L'ordinamento dei task segue i criteri: scadenza,
-        decisione di riferimento, codice incrementale.
- 
+
+  \item \textbf{Identificativo task}: ogni task corrisponde a una issue GitHub
+        il cui identificativo numerico funge da codice univoco. Le issue sono
+        referenziate nei verbali tramite il comando \verb|\ghissue{id}|
+        (es.\ \verb|\ghissue{116}| produce \underline{\#116}).
+
+  \item \textbf{Descrizione dei task}: la descrizione di ogni task nel verbale
+        è sintetica; il dettaglio del lavoro da svolgere è riportato nel documento
+        di riunione condiviso a cui il verbale fa riferimento.
+
+  \item \textbf{Collegamento commit -- issue}: ogni commit relativo a una issue
+        include il riferimento all'identificativo della issue nel messaggio, con
+        la sintassi \texttt{git commit -m "\#id messaggio"}.
+
+  \item \textbf{Formattazione dei link}: tutti i link nel testo sono prodotti
+        tramite il comando \verb|\link{url}{testo descrittivo}| definito nel
+        template, senza mostrare l'URL in chiaro nel documento.
+
+  \item \textbf{Nomenclatura dei casi d'uso}: i casi d'uso sono denominati nel
+        formato \texttt{UC X: Testo Del Titolo}, dove \texttt{X} è il numero
+        progressivo.
+
   \item \textbf{Nome del file principale \LaTeX{}}: il file \texttt{main.tex} di
         ogni documento deve essere rinominato con il nome che assumerà il PDF
         finale secondo la convenzione dei nomi file, al fine di garantire la
@@ -97,6 +115,51 @@ La struttura di ogni documento segue un template condiviso, composto da:
         che applica automaticamente il pedice G alla prima
         occorrenza di ciascun termine del Glossario.
 \end{itemize}
+
+\paragraph{Configurazione Del Preambolo}
+
+Il file di configurazione condiviso (\texttt{shared/}) include i seguenti package
+e impostazioni, obbligatori per tutti i documenti:
+
+\begin{itemize}
+  \item \textbf{Package di base}: \texttt{inputenc} (UTF-8), \texttt{babel}
+        (italiano), \texttt{geometry} (margini 2,5\,cm su tutti i lati),
+        \texttt{graphicx}, \texttt{tabularx}, \texttt{booktabs}, \texttt{xcolor},
+        \texttt{fancyhdr}, \texttt{hyperref}, \texttt{eurosym}, \texttt{textcomp}.
+  \item \textbf{Package aggiuntivi}: \texttt{longtable}, \texttt{colortbl},
+        \texttt{enumitem}, \texttt{float}, \texttt{array}, \texttt{multirow}.
+  \item \textbf{Tipo di colonna personalizzato}: \texttt{M\{larghezza\}} per
+        celle centrate verticalmente e orizzontalmente.
+  \item \textbf{Profondità indice}: sezioni numerate e incluse nell'indice fino
+        al livello 4 (\texttt{secnumdepth} e \texttt{tocdepth} impostati a~4).
+  \item \textbf{Colori e link}: colore primario \texttt{primarycolor}
+        (RGB 20, 40, 75) applicato a tutti i link interni e URL tramite
+        \texttt{hypersetup}.
+  \item \textbf{Impostazioni paragrafo}: indentazione assente
+        (\texttt{parindent} = 0pt), spaziatura verticale tra paragrafi di
+        0,5\,em (\texttt{parskip}).
+\end{itemize}
+
+\paragraph{Comandi Personalizzati}
+
+Il template definisce i seguenti comandi personalizzati, il cui utilizzo è
+\textbf{obbligatorio} per garantire uniformità e coerenza in tutta la
+documentazione:
+
+\begin{itemize}
+  \item \verb|\link{url}{testo}|: genera un link cliccabile con testo
+        sottolineato, senza mostrare l'URL in chiaro. Da usare per tutti i
+        collegamenti ipertestuali generici nel testo.
+
+  \item \verb|\ghissue{id}|: genera un link diretto alla issue GitHub del
+        repository \textit{Documentary-Repo} con il numero preceduto da
+        \texttt{\#} e sottolineato. Da usare nelle tabelle delle azioni dei
+        verbali per referenziare le issue.
+\end{itemize}
+
+L'uso diretto di \verb|\href{url}{\underline{testo}}| è deprecato in favore
+di \verb|\link{}{}|; \verb|\ghissue{}| sostituisce la sintassi manuale
+\verb|\href{url}{\underline{\#id}}| per le issue.
  
 \subsubsection{Ciclo Di Vita Documentale\textsubscript{G}}
 \label{sec:ciclo-vita}
@@ -182,8 +245,8 @@ Il repository è organizzato secondo la classificazione documentale adottata:
   \item \texttt{docs/<[CC|RTB|PB]>/doc\_gestionali/doc\_esterni/} — valutazione dei
         capitolati, dichiarazione degli impegni, piano di progetto, piano di
         qualifica;
-  \item \texttt{docs/<[CC|RTB|PB]>/doc\_tecnici/} — documentazione tecnica (attivata
-        dopo l'aggiudicazione);
+  \item \texttt{docs/<[CC|RTB|PB]>/doc\_tecnici/doc\_esterni/} —
+        Analisi dei Requisiti e documentazione tecnica esterna;
   \item \texttt{docs/template/shared/} — loghi, template e configurazioni comuni.
 \end{itemize}
  
@@ -197,13 +260,28 @@ Ogni membro apre un branch dedicato per lavorare su un singolo
 documento; il branch è nominato secondo la convenzione:
  
 \begin{center}
-  \texttt{<idTask>\_<[gestionale|tecnico]>\_<categoria>\_<nomeDoc>}
+  \texttt{<id>-<[gestionale|tecnico]>\_<[esterno|interno]>\_<nomeDoc>}
 \end{center}
  
-\textit{Esempio}: \texttt{T-3.2\_gestionale\_doc\_interno\_norme\_progetto}
- 
-Al termine del lavoro, le modifiche sono integrate nel branch \texttt{main} tramite
-pull request\textsubscript{G}; dopo l'integrazione il branch viene eliminato.
+\textit{Esempio}: \texttt{116-gestionale\_interno\_norme-di-progetto}
+
+Il nome del documento nel branch corrisponde al campo \textbf{Nome Documento}
+inserito nel Google Form (es.\ \texttt{norme-di-progetto},
+\texttt{verb-int-2026-04-14}, \texttt{analisi-dei-requisiti}).
+
+Il branch viene creato direttamente dalla sezione \textit{Development} della issue
+su GitHub e recuperato in locale con:
+
+\begin{center}
+  \texttt{git checkout -b <nome-branch> origin/<nome-branch>}
+\end{center}
+
+Al termine del lavoro le modifiche sono integrate nel branch \texttt{main} tramite
+pull~request\textsubscript{G}. La pull~request deve essere aperta \textbf{entro la domenica}
+precedente la riunione del martedì, in modo da permettere al Verificatore di
+completare la revisione prima dell'inizio dello sprint successivo.
+Il merge è eseguito dal \textbf{Redattore} dopo l'approvazione del Verificatore;
+dopo il merge il branch viene eliminato.
  
 \subsubsection{Procedura Di Modifica}
  
@@ -211,15 +289,27 @@ Ogni modifica a un documento già pubblicato segue obbligatoriamente la procedur
 seguente:
  
 \begin{enumerate}
-  \item Apertura di un branch dedicato con nome conforme alla convenzione.
-  \item Redazione delle modifiche nel rispetto delle convenzioni redazionali.
-  \item Aggiornamento del numero di versione secondo il
-        Semantic~Versioning.
-  \item Aggiornamento del registro delle modifiche con autore, verificatore,
-        data e descrizione.
-  \item Revisione da parte del Verificatore assegnato.
-  \item Integrazione nel branch \texttt{main} tramite pull~request.
-  \item Eliminazione del branch di lavoro.
+  \item Il Responsabile crea il task tramite Google Form durante la riunione; il
+        form genera automaticamente una issue su GitHub con il proprio identificativo
+        numerico.
+  \item Il Responsabile linka la issue nella tabella delle azioni del verbale
+        tramite \verb|\ghissue{id}|.
+  \item Il Redattore assegnato crea il branch direttamente dalla sezione
+        \textit{Development} della issue su GitHub e lo recupera in locale.
+  \item A ogni commit significativo il Redattore include il riferimento alla issue
+        nel messaggio: \texttt{git commit -m "\#id messaggio"}.
+  \item Al termine del lavoro il Redattore apre la pull~request, collega la issue
+        corrispondente e ne descrive brevemente il contenuto aggiunto o modificato.
+        La pull~request deve essere aperta \textbf{entro la domenica} precedente
+        la riunione del martedì.
+  \item Il Redattore aggiorna il numero di versione secondo il Semantic~Versioning
+        e il registro delle modifiche con autore, verificatore, data e descrizione.
+  \item Il Verificatore effettua la revisione e approva la pull~request.
+  \item Il \textbf{Redattore} (non il Verificatore) esegue il merge nel branch
+        \texttt{main}.
+  \item Il Redattore chiude la issue e aggiorna il proprio tempo effettivo nel
+        foglio di calcolo.
+  \item Il branch di lavoro viene eliminato.
 \end{enumerate}
  
 % ---------------------------------------------------------------
@@ -248,7 +338,7 @@ Il Verificatore controlla, per ciascun documento:
  
 \begin{itemize}
   \item \textbf{Conformità formale}: rispetto delle convenzioni redazionali
-        (nome file, Title~Case, pedice G, codici decisione e task).
+        (nome file, Title~Case, pedice G, codici decisione, identificativi issue).
   \item \textbf{Correttezza linguistica}: assenza di errori ortografici,
         grammaticali e sintattici.
   \item \textbf{Coerenza interna}: consistenza tra sezioni, assenza di
@@ -258,14 +348,73 @@ Il Verificatore controlla, per ciascun documento:
   \item \textbf{Completezza}: tutti i campi obbligatori del template sono compilati;
         le sezioni non applicabili sono esplicitamente marcate.
 \end{itemize}
- 
+
+\subsubsection{Definition Of Done}
+\label{sec:dod}
+
+Un task documentale è considerato \textit{Done} solo se soddisfa tutti i criteri
+seguenti.
+
+\paragraph{Creazione E Tracciabilità}
+\begin{itemize}
+  \item Il task è stato creato tramite Google Form dal Responsabile durante la
+        riunione.
+  \item La issue è linkata nel verbale della riunione tramite \verb|\ghissue{id}|.
+  \item Il branch è stato creato direttamente dalla issue, con naming conforme
+        alla convenzione \texttt{id-gestionale|tecnico\_esterno|interno\_nomeDoc}.
+\end{itemize}
+
+\paragraph{Redazione}
+\begin{itemize}
+  \item Il documento rispetta il template e la struttura concordata dal gruppo.
+  \item Il contenuto è completo rispetto allo scope definito nel task.
+  \item Nessun segnaposto \texttt{[da compilare]} è rimasto senza motivazione
+        esplicita.
+  \item Ortografia e grammatica sono state verificate.
+  \item La terminologia è coerente con il Glossario di progetto.
+\end{itemize}
+
+\paragraph{Commit E Pull Request}
+\begin{itemize}
+  \item Ogni commit è riferito alla issue con \texttt{\#id} nel messaggio.
+  \item È stata aperta una pull~request che linka la issue corrispondente e ne
+        descrive brevemente il contenuto aggiunto o modificato.
+  \item La pull~request è stata aperta entro la domenica precedente la riunione
+        del martedì.
+\end{itemize}
+
+\paragraph{Revisione}
+\begin{itemize}
+  \item Almeno un membro del gruppo diverso dal Redattore ha revisionato il
+        documento.
+  \item Tutti i commenti della revisione sono stati risolti o discussi.
+  \item È il Redattore a eseguire il merge, non il Verificatore.
+\end{itemize}
+
+\paragraph{Chiusura}
+\begin{itemize}
+  \item Il merge è stato effettuato su \texttt{main}.
+  \item La issue è stata chiusa.
+  \item Il tempo effettivo è stato aggiornato nel foglio di calcolo.
+\end{itemize}
+
+\paragraph{Chiusura Sprint}
+Lo sprint è considerato \textit{Done} se:
+\begin{itemize}
+  \item tutti i task pianificati sono \textit{Done} (criteri sopra), oppure
+        rimandati al backlog con motivazione scritta nel verbale;
+  \item il diario di bordo è compilato per martedì e venerdì;
+  \item il registro dei rischi è stato rivalutato;
+  \item la retrospettiva ha prodotto almeno un'azione correttiva concreta.
+\end{itemize}
+
 \subsubsection{Esito Della Verifica}
  
 \begin{itemize}
   \item \textbf{Esito positivo}: il Verificatore approva la
-        pull~request; il documento è integrato nel branch
+        pull~request; il Redattore esegue il merge e il documento è integrato nel branch
         \texttt{main}.
   \item \textbf{Esito negativo}: il Verificatore lascia commenti analitici sulla
-        pull~request e la chiude senza merge. Il Redattore è tenuto
+        pull~request e richiede modifiche. Il Redattore è tenuto
         ad apportare le correzioni richieste e a richiedere una nuova verifica.
 \end{itemize}
