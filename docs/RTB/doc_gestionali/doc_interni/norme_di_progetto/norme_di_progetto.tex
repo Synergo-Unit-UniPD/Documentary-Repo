@@ -1,5 +1,8 @@
 \documentclass[11pt, a4paper]{article}
 
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
 % 1. Configurazione condivisa
 \input{../../../../template/shared/configurazione.tex}
 
@@ -7,14 +10,14 @@
 \graphicspath{{../../../../template/shared/loghi/}}
 
 \hypersetup{
-	pdftitle={Glossario - Synergo Unit},
+	pdftitle={Norme di Progetto - Synergo Unit},
 	pdfauthor={Synergo Unit}
 }
 
 \pagestyle{fancy}
 \fancyhf{} 
 \fancyhead[L]{\textcolor{primarycolor}{\textbf{Synergo Unit}}}
-\fancyhead[R]{Glossario v2.6.0 - 2026-05-07}
+\fancyhead[R]{Norme di Progetto v2.4.0 - 2026-05-07}
 \fancyfoot[C]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
@@ -37,10 +40,23 @@
 	\tableofcontents
 	\newpage
 	
-	% Moduli del documento
+	% Contenuto diviso in moduli
 	\input{introduzione.tex}
 	\newpage
+
+	\input{tailoring.tex}
+	\newpage
 	
-	\input{termini.tex}
+	\input{primari.tex}
+	\newpage
+	
+	\input{supporto.tex}
+	\newpage
+	
+	\input{organizzativi.tex}
+	\newpage
+	
+	% Appendici
+	\input{appendici.tex}
 	
 \end{document}

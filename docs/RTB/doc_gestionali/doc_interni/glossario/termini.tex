@@ -8,12 +8,14 @@
 \addcontentsline{toc}{subsection}{A}
 \subsection*{A}
 \begin{itemize}[leftmargin=*]
-    \item \textbf{Amministratore:} Ruolo del gruppo responsabile di assicurare
-          l'efficienza di procedure, strumenti e tecnologie a supporto del
-          \textit{way of working}; redige e mantiene aggiornate le Norme di
-          Progetto.
-    \item \textbf{Analista:} Ruolo del gruppo responsabile delle attività di
-          analisi dei requisiti; attivato dopo l'aggiudicazione del capitolato.
+      \item \textbf{Amministratore:} Ruolo del gruppo responsabile di assicurare
+      l'efficienza di procedure, strumenti e tecnologie a supporto del
+      \textit{way of working}; redige e mantiene aggiornate le Norme di
+      Progetto e il Piano di Progetto; gestisce la creazione delle issue tramite Google Form; verifica,
+      prima della chiusura di ogni sprint, che i tempi effettivi nel foglio di
+      calcolo siano stati compilati correttamente.
+      \item \textbf{Analista:} Ruolo del gruppo responsabile delle attività di
+      analisi dei requisiti. Attivo dalla baseline RTB.     
       \item \textbf{Attore:} In ambito UML, rappresenta un'entità esterna (un utente umano o un altro sistema) che interagisce direttamente con il sistema software per raggiungere uno specifico obiettivo.
       \item \textbf{Analisi dei Requisiti:} Documento essenziale che fissa i requisiti che il fornitore si impegna a soddisfare in accordo con il proponente. Traduce i bisogni dell'utente descrivendo esclusivamente \textit{cosa} il sistema deve fare, senza entrare in alcun dettaglio implementativo (il \textit{come}). Costituisce la base contrattuale e il documento fondamentale per l'accesso e il superamento della revisione RTB.
       \item \textbf{API (Application Programming Interface):} Insieme di regole e strumenti che permettono a diversi sistemi software di comunicare tra loro. Nel contesto del progetto, consente l'invocazione di servizi esterni di LLM tramite chiamate strutturate.
@@ -34,6 +36,11 @@
           e utilizzata come riferimento ufficiale per le fasi successive. Nel
           contesto del progetto didattico le baseline principali sono: candidatura
           (CC), Requirements and Technology Baseline (RTB) e Product Baseline (PB).
+      \item \textbf{Brainstorming:} Tecnica di generazione collettiva delle idee adottata
+      dal gruppo come metodo decisionale principale. Si articola in tre fasi:
+      raccolta libera delle proposte senza valutazione immediata, confronto
+      strutturato con analisi di vantaggi e svantaggi, scelta collegiale della
+      soluzione ritenuta più adeguata con registrazione nel verbale.
       \item \textbf{Branch:} Linea di sviluppo indipendente all'interno di un
           repository Git, utilizzata per lavorare su modifiche isolate senza
           influenzare il ramo principale (\texttt{main}).
@@ -102,6 +109,10 @@
       sull'intero sprint). Si espande al crescere del progetto: nella fase documentale
       copre redazione, revisione e tracciabilità; nella fase di sviluppo includerà
       anche criteri su test e copertura del codice.
+      \item \textbf{Diario Di Bordo:} Momento di rendicontazione periodica al committente
+      in cui il gruppo espone il rapporto tra costi sostenuti e avanzamento
+      conseguito, comunicando le difficoltà riscontrate. Si svolge secondo il
+      calendario stabilito dai docenti.
       \item \textbf{Dichiarazione Degli Impegni:} Documento gestionale esterno redatto
           in fase di candidatura che specifica: scadenza ultima di consegna prevista,
           preventivo dei costi finali calcolato secondo il regolamento, totale delle
@@ -126,6 +137,12 @@
 \subsection*{F}
 \begin{itemize}[leftmargin=*]
       \item \textbf{File System:} Componente del sistema operativo responsabile della gestione dei file locali. Nel progetto può fungere da attore secondario per operazioni di upload e download delle note.
+      \item \textbf{Foglio Di Calcolo:} Strumento condiviso del gruppo utilizzato per
+      il monitoraggio aggregato delle misurazioni. Raccoglie i dati delle task
+      registrati tramite Google Form e calcola automaticamente, per ogni sprint,
+      preventivo e consuntivo di ore e costi per membro e per ruolo, oltre alle
+      risorse residue. Le formule applicate sono: $\text{ore} = \text{minuti} / 60$
+      e $\text{costo} = \text{ore} \times \text{costo orario del ruolo}$.
       \item \textbf{Formattazione:} Insieme delle funzionalità dell'editor che
             consentono di applicare stili e struttura al testo in Markdown.
             Nel progetto include: grassetto, corsivo, sottolineato, barrato,
@@ -282,6 +299,10 @@
       strumento di lavoro: uno scrive (driver) e l'altro revisiona in tempo reale
       (navigator). Utilizzata come misura di mitigazione per i rischi legati
       all'inesperienza tecnologica.
+      \item \textbf{PB (Product Baseline):} Seconda revisione formale di avanzamento
+      del progetto, successiva alla RTB. Fissa il prodotto software completo,
+      includendo architettura, codice e documentazione tecnica finale. Nel
+      calendario del gruppo è prevista per agosto 2026.
       \item \textbf{Pedice G:} Convenzione tipografica adottata nelle norme di progetto
           per segnalare che un termine è definito nel Glossario. Viene applicato
           alla prima occorrenza del termine in ciascun documento tramite lo script
@@ -301,23 +322,27 @@
           requisiti dal lato della soluzione.
       \item \textbf{Pop-up:} Finestra grafica temporanea che appare in sovrapposizione all'interfaccia principale per mostrare informazioni o risultati contestuali senza interrompere il flusso di lavoro dell'utente.
       \item \textbf{Prompt Engineering:} Attività di progettazione e ottimizzazione dei prompt forniti a un LLM per ottenere risposte coerenti, accurate e aderenti agli obiettivi del sistema.
-          \item \textbf{Postgres (PostgreSQL):} Sistema avanzato di gestione di database
+      \item \textbf{Postgres (PostgreSQL):} Sistema avanzato di gestione di database
           relazionali e ad oggetti, open source. Utilizzato come tecnologia di
           persistenza dei dati nel capitolato di riferimento.
-    \item \textbf{Preventivo Dei Costi:} Stima dell'impegno economico complessivo
-          del progetto, calcolata moltiplicando le ore previste per ciascun ruolo
-          per il relativo costo orario ufficiale. Presentato nella Dichiarazione
-          degli Impegni; il valore accettato all'aggiudicazione diventa limite
-          superiore invalicabile durante lo svolgimento del progetto.
-    \item \textbf{Progettista:} Ruolo del gruppo responsabile delle attività di
-          progettazione architetturale (\textit{design}); attivato dopo
-          l'aggiudicazione del capitolato.
-    \item \textbf{Programmatore:} Ruolo del gruppo responsabile delle attività di
-          codifica del prodotto software; attivato durante la fase di sviluppo.
-    \item \textbf{Prompt:} Input testuale in linguaggio naturale fornito da un
-          utente a un sistema di intelligenza artificiale per guidarne la
-          generazione di contenuto.
-    \item \textbf{Pull Request:} Meccanismo di GitHub utilizzato per proporre
+      \item \textbf{Preventivo:} Stima delle ore e dei costi per ogni membro e ruolo
+            per uno sprint, calcolata a partire dai tempi previsti delle task assegnate.
+            Distinto dal \textit{Preventivo Dei Costi} della Dichiarazione degli Impegni,
+            che è il preventivo globale di progetto; il preventivo di sprint è prodotto
+            automaticamente dal foglio di calcolo condiviso.
+      \item \textbf{Preventivo Dei Costi:} Stima dell'impegno economico complessivo
+            del progetto, calcolata moltiplicando le ore previste per ciascun ruolo
+            per il relativo costo orario ufficiale. Presentato nella Dichiarazione
+            degli Impegni; il valore accettato all'aggiudicazione diventa limite
+            superiore invalicabile durante lo svolgimento del progetto.
+      \item \textbf{Progettista:} Ruolo del gruppo responsabile delle attività di
+            progettazione architetturale (\textit{design}). Attivo dalla baseline RTB.
+      \item \textbf{Programmatore:} Ruolo del gruppo responsabile delle attività di
+            codifica del prodotto software; attivato durante la fase di sviluppo.
+      \item \textbf{Prompt:} Input testuale in linguaggio naturale fornito da un
+            utente a un sistema di intelligenza artificiale per guidarne la
+            generazione di contenuto.
+      \item \textbf{Pull Request:} Meccanismo di GitHub utilizzato per proporre
           l'integrazione di modifiche da un branch di lavoro al branch
           \texttt{main}. Nel flusso documentale del gruppo costituisce il punto
           di ingresso obbligatorio per la verifica: il Verificatore esamina le
@@ -349,9 +374,10 @@
           Ospitato su GitHub; il branch \texttt{main} contiene esclusivamente le
           versioni approvate e stabili.
       \item \textbf{Responsabile:} Ruolo del gruppo responsabile del coordinamento
-          delle attività, dell'elaborazione di piani e scadenze, dell'approvazione
-          del rilascio di prodotti parziali o finali e della rappresentanza del
-          gruppo verso committente e proponente.
+      delle attività, dell'elaborazione di piani e scadenze, dell'approvazione
+      del rilascio di prodotti parziali o finali e della rappresentanza del
+      gruppo verso committente e proponente. Redige il verbale interno di ogni
+      riunione e il Diario di Bordo.
       \item \textbf{Revisione:} Fase del ciclo di vita documentale in cui il
           Verificatore controlla struttura, coerenza, correttezza linguistica e
           conformità del documento alle Norme di Progetto, prima che esso venga
@@ -409,6 +435,10 @@
       pianificabile. Produce conoscenza, non deliverable.
       \item \textbf{Split View:} Modalità dell’editor che mostra simultaneamente la vista di editing e la vista renderizzata del documento.
       \item \textbf{Sprint:} Iterazione di lavoro breve e limitata nel tempo tipica delle metodologie agili, in cui il team si impegna a completare un set predefinito di task.
+      \item \textbf{Sprint Backlog:} Sottoinsieme del backlog generale selezionato
+      durante lo Sprint Planning, contenente le task che il gruppo si impegna
+      a completare entro lo sprint corrente. Definisce l'obiettivo dello sprint
+      e viene monitorato durante la Sprint Review.
       \item \textbf{Sprint Planning:} Cerimonia agile svolta all'inizio di ogni
             sprint in cui il gruppo seleziona le attività da completare nel periodo
             e le assegna ai membri, definendo scadenze e priorità.
