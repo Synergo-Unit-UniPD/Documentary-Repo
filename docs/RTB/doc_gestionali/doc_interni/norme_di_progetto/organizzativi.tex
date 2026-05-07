@@ -33,33 +33,32 @@ garantendo verifica indipendente per ogni attività.
   \toprule
   \textbf{Ruolo} & \textbf{Costo orario} & \textbf{Responsabilità} \\
   \midrule
-  Responsabile\textsubscript{G}
+  Responsabile
     & 30\,€/h
     & Coordina l'elaborazione di piani e scadenze; approva il rilascio di
       prodotti parziali o finali (SW, documenti); coordina le attività del
       gruppo; rappresenta \textit{Synergo Unit} verso committente e
-      proponente; redige il verbale interno di ogni riunione; crea i task
-      tramite Google Form durante la riunione. \\[6pt]
-  Amministratore\textsubscript{G}
+      proponente; redige il verbale interno di ogni riunione; redige e presenta il Diario di Borgo settimanale. \\[6pt]
+  Amministratore
     & 20\,€/h
     & Assicura l'efficienza di procedure, strumenti e tecnologie a supporto
-      del \textit{way of working\textsubscript{G}}; redige e mantiene aggiornate le Norme di
-      Progetto; gestisce la creazione delle issue tramite Google Form; verifica,
+      del \textit{way of working}; redige e mantiene aggiornate le Norme di
+      Progetto e il Piano di Progetto; gestisce la creazione delle issue tramite Google Form; verifica,
       prima della chiusura di ogni sprint, che i tempi effettivi nel foglio di
       calcolo siano stati compilati correttamente. \\[6pt]
-  Analista\textsubscript{G}
+  Analista
     & 25\,€/h
-    & Svolge le attività di analisi. \\[6pt]
-  Progettista\textsubscript{G}
+    & Svolge le attività di analisi dei requisiti. \\[6pt]
+  Progettista
     & 25\,€/h
     & Svolge le attività di progettazione (\textit{design}). \\[6pt]
-  Programmatore\textsubscript{G}
+  Programmatore
     & 15\,€/h
     & Svolge le attività di codifica; attivato nella fase PB. \\[6pt]
-  Verificatore\textsubscript{G}
+  Verificatore
     & 15\,€/h
     & Svolge le attività di verifica di documenti e codice prodotti dagli
-      altri membri; redige i relativi esiti di verifica. \\
+      altri membri; redige i relativi esiti di verifica e il Piano di Qualifica. \\
   \bottomrule
 \end{tabularx}
  
@@ -68,25 +67,76 @@ Le assegnazioni di ruolo sono tracciate nei verbali interni di ogni sprint e
 nei task su GitHub Project.
  
 \subsubsection{Pianificazione E Tracciamento Delle Attività}
- 
+
 Le attività sono tracciate tramite \textbf{GitHub Project}.
-Ogni task corrisponde a una issue GitHub il cui identificativo numerico funge da codice univoco e riporta
-obbligatoriamente i seguenti attributi:
- 
+Ogni task corrisponde a una issue GitHub il cui identificativo numerico funge da
+codice univoco. Ogni task riporta obbligatoriamente i seguenti attributi, compilati
+tramite il Google Form di creazione task:
+
 \begin{itemize}
-  \item assegnatario e ruolo;
-  \item decisione di riferimento (codice \texttt{VI-y.x} o \texttt{VE-y.x});
-  \item data di scadenza;
-  \item stima del tempo previsto\textsubscript{G} (in minuti);
-  \item tempo effettivo\textsubscript{G} consuntivato (in minuti);
-  \item stato di avanzamento (\textit{Backlog}, \textit{In Progress},
-        \textit{Done}).
+  \item \textbf{Tipo}: \textit{doc.\ gestionale}, \textit{doc.\ tecnico}, o
+        \textit{altro} (per task non legati a un documento, es.\ aggiornamento sito,
+        invio email);
+  \item \textbf{Categoria}: \textit{interno}, \textit{esterno}, o \textit{altro};
+  \item \textbf{Nome documento}: per i verbali nel formato
+        \texttt{verb-int/est-AAAA-MM-GG}; per task non documentali, parole
+        identificative senza spazi (es.\ \texttt{campi-google-form},
+        \texttt{aggiornamento-sito}). Il nome documento coincide con la parte
+        finale del nome del branch;
+  \item \textbf{Descrizione}: sintetica; il dettaglio è nel documento di riunione
+        condiviso;
+  \item \textbf{Priorità}: \textit{Bassa}, \textit{Media}, \textit{Alta},
+        \textit{Critica};
+  \item \textbf{Assegnazione}: uno o più membri del gruppo;
+  \item \textbf{Ruolo}: ruolo dell'assegnatario per quel task;
+  \item \textbf{Scadenza};
+  \item \textbf{Tempo previsto} per il Redattore (in minuti);
+  \item \textbf{Tempo previsto per il Responsabile e l'Amministratore}: se sono i diretti assegnatari, il campo
+        è pari a 0;
+  \item \textbf{Tempo previsto per il Verificatore};
+  \item \textbf{Tempo effettivo} per ciascun ruolo coinvolto (in minuti),
+        compilato \textbf{dopo il merge e la chiusura della issue};
+  \item \textbf{Stato di avanzamento}: \textit{Backlog}, \textit{In Progress},
+        \textit{Done}.
 \end{itemize}
- 
-La creazione di un task avviene tramite \textbf{Google Form\textsubscript{G}}, che genera
-automaticamente una issue\textsubscript{G} su GitHub e registra i dati in un
-foglio di calcolo condiviso, utilizzato per il monitoraggio aggregato delle
-misurazioni.
+
+La creazione di un task avviene tramite \textbf{Google Form}, che genera
+automaticamente una issue su GitHub e registra i dati in un
+foglio di calcolo condiviso. Il form è configurato con campi precompilati che
+rispettano automaticamente le convenzioni di nomenclatura di task e branch.
+
+I task non relativi a modifiche della repository
+vengono classificati come tipo \textit{altro}.
+
+\subsubsection{Calcolo Ore E Costi Sprint}
+\label{sec:calcolo-ore}
+
+Il foglio di calcolo condiviso calcola automaticamente, selezionando la data di
+inizio sprint, preventivo e consuntivo per lo sprint corrente e le risorse residue.
+Le formule di conversione applicate sono:
+
+\begin{align*}
+  \text{ore} &= \frac{\text{minuti}}{60} \\
+  \text{costo} &= \frac{\text{minuti}}{60} \times \text{costo orario del ruolo}
+\end{align*}
+
+Il foglio produce le seguenti tabelle:
+
+\paragraph{Preventivo}
+Per ogni membro: ruolo nello sprint (recuperato dalle task), ore preventivate e
+costo preventivato, con totali di colonna.
+
+\paragraph{Consuntivo}
+Per ogni membro: ruolo, ore preventivate, ore effettive, delta ore, costo
+preventivato, costo effettivo, delta costo, con totali di colonna.
+
+\paragraph{Risorse Residue Per Ruolo}
+Per ogni ruolo: ore residue, costo orario (fisso per ruolo, cfr.\
+Sezione~\ref{sec:ruoli}), costo totale residuo.
+
+\paragraph{Ore Residue Per Membro}
+Per ogni membro: ore residue suddivise per ruolo (Responsabile, Amministratore,
+Analista, Progettista, Programmatore, Verificatore) e totale complessivo.
  
 \subsubsection{Riunioni Interne}
  
@@ -99,26 +149,38 @@ Responsabile:
   \item \textbf{Venerdì} alle \textbf{14:30}.
 \end{itemize}
  
-Le riunioni si svolgono in modalità remota sulla piattaforma Discord\textsubscript{G}.
+Le riunioni si svolgono in modalità remota sulla piattaforma Discord.
 Il Responsabile può convocare riunioni straordinarie tramite il gruppo
-WhatsApp\textsubscript{G}.
+WhatsApp.
  
-\paragraph{Struttura Della Riunione}
-Ogni riunione segue la struttura seguente:
- 
+\paragraph{Struttura Della Riunione Del Martedì}
+La riunione del martedì segue la struttura seguente, nell'ordine indicato:
+
 \begin{enumerate}
-  \item \textbf{Predisposizione dell'ordine del giorno}: il Responsabile pubblica
-        i punti da discutere su un documento Google condiviso, nel quale vengono
-        anche registrate le decisioni prese; tale documento costituisce la base
-        per la successiva redazione del verbale.
-  \item \textbf{Discussione dei punti all'ordine del giorno}: ogni membro può
-        contribuire; le decisioni vengono adottate collegialmente.
-  \item \textbf{Assegnazione dei task}: al termine della discussione vengono
-        definiti e assegnati i task conseguenti, con scadenza e ruolo.
-  \item \textbf{Redazione del verbale}: il Redattore incaricato compila il verbale
-        interno al termine della riunione; il verbale è verificato e pubblicato
-        entro la riunione successiva.
+      \item \textbf{Sprint Retrospective}: il team identifica criticità nel processo
+            di lavoro e definisce almeno un'azione correttiva concreta da applicare
+            allo sprint successivo.
+      \item \textbf{Sprint Review}: il team verifica
+            l'avanzamento rispetto alle attività pianificate nello sprint appena
+            concluso, analizza le eventuali difficoltà e confronta le ore previste
+            con quelle effettive per ciascun task.
+      \item \textbf{Sprint Planning}: il Responsabile aggiorna il backlog prioritario,
+            stima il tempo previsto per i task completabili nello sprint corrente e
+            l'Amministratore assegna i task tramite Google Form. Output: sprint backlog.
+      \item \textbf{Predisposizione del documento di riunione}: lo Scriba
+            registra le decisioni prese nel documento Google condiviso, che costituisce
+            la base per la redazione del verbale.
+      \item \textbf{Redazione del verbale}: il Responsabile redige il verbale interno
+            al termine della riunione; il verbale è verificato e pubblicato entro la
+            riunione successiva.
 \end{enumerate}
+
+\paragraph{Aggiornamento Asincrono E Riunione Del Venerdì}
+Il daily stand-up è gestito in modalità asincrona tramite il gruppo WhatsApp:
+ogni membro aggiorna il gruppo su ciò che ha svolto, ciò che prevede di fare e
+gli eventuali impedimenti. La riunione del venerdì alle 14:30 funge da punto di
+sincronizzazione intermedio per affrontare dubbi o criticità emerse durante la
+settimana.
  
 \paragraph{Modalità Decisionale}
 Il gruppo adotta il \textbf{brainstorming} come tecnica principale per la generazione
@@ -129,7 +191,7 @@ e il confronto delle idee. Il processo si articola in tre fasi:
         immediata;
   \item confronto strutturato delle idee emerse, con analisi di vantaggi e
         svantaggi;
-  \item scelta collegiale della soluzione ritenuta più adeguata, con registrazione
+  \item scelta della soluzione ritenuta più adeguata, con registrazione
         della decisione nel verbale.
 \end{enumerate}
  
@@ -140,7 +202,7 @@ delibera in una riunione successiva.
 \subsubsection{Gestione Delle Disponibilità}
  
 Le disponibilità dei membri e la pianificazione delle riunioni ricorrenti sono
-gestite tramite \textbf{Google Calendar\textsubscript{G}}. I calendari condivisi
+gestite tramite \textbf{Google Calendar}. I calendari condivisi
 sono aggiornati dal Responsabile o dall'Amministratore. Le comunicazioni urgenti
 e le notifiche rapide avvengono tramite il gruppo \textbf{WhatsApp}.
  
@@ -166,7 +228,8 @@ di conseguenza.
         genera automaticamente la issue corrispondente su GitHub
         e registra i dati nel foglio di calcolo condiviso.
   \item \textbf{Foglio Di Calcolo}: aggregazione e monitoraggio delle misurazioni
-        relative ai task (tempo previsto, tempo effettivo, stato di avanzamento).
+        relative ai task; calcola automaticamente preventivo, consuntivo e risorse
+        residue per sprint (cfr.\ Sezione~\ref{sec:calcolo-ore}).
   \item \textbf{Google Calendar}: gestione delle disponibilità
         dei membri e pianificazione delle riunioni ricorrenti e straordinarie.
 \end{itemize}
@@ -181,7 +244,7 @@ di conseguenza.
         automatizza l'applicazione del pedice G ai termini del
         Glossario, riducendo il rischio di omissioni.
   \item \textbf{GitHub}: sistema di controllo versione centralizzato per tutti i
-        documenti del progetto; gestisce branch\textsubscript{G}, pull
+        documenti del progetto; gestisce branch, pull
         request e baseline.
   \item \textbf{GitHub Pages}: piattaforma di pubblicazione del
         sito documentale del gruppo, sviluppato in HTML5 e CSS3.

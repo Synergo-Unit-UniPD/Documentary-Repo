@@ -17,11 +17,11 @@ costituisce prerequisito per l'attivazione di qualsiasi altro processo.
  
 \paragraph{Documentazione Gestionale Interna}
 \begin{itemize}
-  \item \textbf{Norme Di Progetto\textsubscript{G}}: il presente documento;
+  \item \textbf{Norme Di Progetto}: il presente documento;
         definisce processi, convenzioni e strumenti adottati dal gruppo.
-        Redatto e mantenuto dall'Amministratore\textsubscript{G}.
+        Redatto e mantenuto dall'Amministratore.
   \item \textbf{Verbali Interni}: documentano le discussioni, le decisioni adottate
-        e i task\textsubscript{G} assegnati nel corso delle riunioni interne.
+        e i task assegnati nel corso delle riunioni interne.
         Prevedono registro delle modifiche; viene pubblicata la versione approvata.
   \item \textbf{Glossario}: raccoglie i termini specialistici utilizzati nella
         documentazione, con la relativa definizione. Aggiornato in modo incrementale
@@ -35,7 +35,7 @@ costituisce prerequisito per l'attivazione di qualsiasi altro processo.
   \item \textbf{Valutazione Dei Capitolati}: documento comparativo
         che motiva la scelta del capitolato.
   \item \textbf{Dichiarazione Degli Impegni}: contiene scadenza
-        prevista, preventivo dei costi\textsubscript{G}, assegnazione di ore per ruolo, rischi attesi
+        prevista, preventivo dei costi, assegnazione di ore per ruolo, rischi attesi
         e impegni formali del gruppo.
 \end{itemize}
  
@@ -55,23 +55,23 @@ le seguenti convenzioni, la cui applicazione è vincolante per tutti i redattori
         come separatore di parola. \\
         \textit{Esempio}: \texttt{verbale\_interno\_2026\_03\_21.tex}
  
-  \item \textbf{Titoli di sezioni e sotto-sezioni}: stile Title Case\textsubscript{G}
+  \item \textbf{Titoli di sezioni e sotto-sezioni}: stile Title Case
         per ogni livello di intestazione. \\
         \textit{Esempio}: \texttt{Lettera Di Presentazione}
  
-  \item \textbf{Pedice G\textsubscript{G}}: applicato alla prima occorrenza, in
+  \item \textbf{Pedice G}: applicato alla prima occorrenza, in
         ciascun documento, di ogni termine presente nel Glossario. \\
-        \textit{Esempio}: \texttt{Termine}\textsubscript{G}
+        \textit{Esempio}: \texttt{Termine}
  
   \item \textbf{Codice decisione da verbale interno}: le decisioni adottate in
-        riunione interna sono identificate dal codice \texttt{VI-y.x}\textsubscript{G}, dove
+        riunione interna sono identificate dal codice \texttt{VI-y.x}, dove
         \texttt{y} è il numero progressivo del verbale e \texttt{x} il numero
         progressivo della decisione al suo interno. La numerazione dei verbali
         è \textbf{crescente e continua} dall'inizio del progetto, senza azzerarsi
         al cambio di baseline.
  
   \item \textbf{Codice decisione da verbale esterno}: le decisioni adottate in
-        incontri esterni sono identificate dal codice \texttt{VE-y.x}\textsubscript{G},
+        incontri esterni sono identificate dal codice \texttt{VE-y.x},
         con la stessa logica.
 
   \item \textbf{Identificativo task}: ogni task corrisponde a una issue GitHub
@@ -101,7 +101,7 @@ le seguenti convenzioni, la cui applicazione è vincolante per tutti i redattori
         corretta nominazione dell'output di compilazione.
 \end{itemize}
  
-\subsubsection{Struttura Del Template\textsubscript{G}}
+\subsubsection{Struttura Del Template}
  
 La struttura di ogni documento segue un template condiviso, composto da:
  
@@ -161,24 +161,24 @@ L'uso diretto di \verb|\href{url}{\underline{testo}}| è deprecato in favore
 di \verb|\link{}{}|; \verb|\ghissue{}| sostituisce la sintassi manuale
 \verb|\href{url}{\underline{\#id}}| per le issue.
  
-\subsubsection{Ciclo Di Vita Documentale\textsubscript{G}}
+\subsubsection{Ciclo Di Vita Documentale}
 \label{sec:ciclo-vita}
  
 Il ciclo di vita di ogni documento si articola nelle seguenti fasi sequenziali:
  
 \begin{enumerate}
-  \item \textbf{Stesura}: il Redattore\textsubscript{G} produce il contenuto
+  \item \textbf{Stesura}: il Redattore produce il contenuto
         utilizzando il template approvato e nel rispetto delle convenzioni
         redazionali descritte nella Sezione~\ref{sec:convenzioni}.
  
-  \item \textbf{Revisione}: il Verificatore\textsubscript{G},
+  \item \textbf{Revisione}: il Verificatore,
         che deve essere un membro diverso dal Redattore, controlla struttura,
         coerenza, correttezza e conformità del documento alle presenti norme.
         In caso di non conformità, il documento viene restituito al Redattore
         con le indicazioni necessarie.
  
   \item \textbf{Pubblicazione}: superata la revisione, il documento viene
-        integrato nel branch\textsubscript{G} \texttt{main} del
+        integrato nel branch \texttt{main} del
         repository tramite pull~request,
         con il numero di versione aggiornato.
  
@@ -189,7 +189,7 @@ Il ciclo di vita di ogni documento si articola nelle seguenti fasi sequenziali:
  
 \subsubsection{Versionamento Documentale}
  
-Il gruppo adotta il \textit{Semantic Versioning\textsubscript{G}} a tre cifre nel
+Il gruppo adotta il \textit{Semantic Versioning} a tre cifre nel
 formato \textbf{vX.Y.Z}, con le seguenti regole di incremento:
  
 \bigskip
@@ -217,7 +217,7 @@ formato \textbf{vX.Y.Z}, con le seguenti regole di incremento:
   \item \textbf{Script Python} (\texttt{python\_glossary\_automation/}):
         automatizza l'applicazione del pedice G alla prima
         occorrenza di ogni termine del Glossario, riducendo gli errori manuali.
-  \item \textbf{GitHub Pages\textsubscript{G}}: pubblica il sito documentale del
+  \item \textbf{GitHub Pages}: pubblica il sito documentale del
         gruppo, sviluppato in HTML5 e CSS3, come punto di accesso unico alla
         documentazione prodotta.
 \end{itemize}
@@ -238,7 +238,7 @@ repository GitHub centralizzato.
 Il repository è organizzato secondo la classificazione documentale adottata:
  
 \begin{itemize}
-  \item \texttt{docs/<[CC|RTB\textsubscript{G}|PB]>/doc\_gestionali/verb\_interni/} — verbali interni;
+  \item \texttt{docs/<[CC|RTB|PB]>/doc\_gestionali/verb\_interni/} — verbali interni;
   \item \texttt{docs/<[CC|RTB|PB]>/doc\_gestionali/doc\_interni/} — norme di progetto,
         glossario;
   \item \texttt{docs/<[CC|RTB|PB]>/doc\_gestionali/verb\_esterni/} — verbali esterni;
@@ -255,7 +255,7 @@ La versione approvata e stabile di ogni documento è quella presente nel branch
  
 \subsubsection{Strategia Di Branching}
  
-Il gruppo adotta il modello \textit{trunk-based development\textsubscript{G}}.
+Il gruppo adotta il modello \textit{trunk-based development}.
 Ogni membro apre un branch dedicato per lavorare su un singolo
 documento; il branch è nominato secondo la convenzione:
  
@@ -277,7 +277,7 @@ su GitHub e recuperato in locale con:
 \end{center}
 
 Al termine del lavoro le modifiche sono integrate nel branch \texttt{main} tramite
-pull~request\textsubscript{G}. La pull~request deve essere aperta \textbf{entro la domenica}
+pull~request. La pull~request deve essere aperta \textbf{entro la domenica}
 precedente la riunione del martedì, in modo da permettere al Verificatore di
 completare la revisione prima dell'inizio dello sprint successivo.
 Il merge è eseguito dal \textbf{Redattore} dopo l'approvazione del Verificatore;
