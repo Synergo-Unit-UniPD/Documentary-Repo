@@ -17,11 +17,11 @@ costituisce prerequisito per l'attivazione di qualsiasi altro processo.
  
 \paragraph{Documentazione Gestionale Interna}
 \begin{itemize}
-  \item \textbf{Norme Di Progetto}: il presente documento;
+  \item \textbf{Norme Di Progetto\textsubscript{G}}: il presente documento;
         definisce processi, convenzioni e strumenti adottati dal gruppo.
-        Redatto e mantenuto dall'Amministratore.
+        Redatto e mantenuto dall'Amministratore\textsubscript{G}.
   \item \textbf{Verbali Interni}: documentano le discussioni, le decisioni adottate
-        e i task assegnati nel corso delle riunioni interne.
+        e i task\textsubscript{G} assegnati nel corso delle riunioni interne.
         Prevedono registro delle modifiche; viene pubblicata la versione approvata.
   \item \textbf{Glossario}: raccoglie i termini specialistici utilizzati nella
         documentazione, con la relativa definizione. Aggiornato in modo incrementale
@@ -55,26 +55,26 @@ le seguenti convenzioni, la cui applicazione è vincolante per tutti i redattori
         come separatore di parola. \\
         \textit{Esempio}: \texttt{verbale\_interno\_2026\_03\_21.tex}
  
-  \item \textbf{Titoli di sezioni e sotto-sezioni}: stile Title Case
+  \item \textbf{Titoli di sezioni e sotto-sezioni}: stile Title Case\textsubscript{G}
         per ogni livello di intestazione. \\
-        \textit{Esempio}: \texttt{Lettera Di Presentazione}
+        \textit{Esempio}: \texttt{Lettera Di Presentazione\textsubscript{G}}
  
-  \item \textbf{Pedice G}: applicato alla prima occorrenza, in
+  \item \textbf{Pedice G\textsubscript{G}}: applicato alla prima occorrenza, in
         ciascun documento, di ogni termine presente nel Glossario. \\
         \textit{Esempio}: \texttt{Termine}
  
   \item \textbf{Codice decisione da verbale interno}: le decisioni adottate in
-        riunione interna sono identificate dal codice \texttt{VI-y.x}, dove
+        riunione interna sono identificate dal codice \texttt{VI-y.x\textsubscript{G}}, dove
         \texttt{y} è il numero progressivo del verbale e \texttt{x} il numero
         progressivo della decisione al suo interno. La numerazione dei verbali
         è \textbf{crescente e continua} dall'inizio del progetto, senza azzerarsi
         al cambio di baseline.
  
   \item \textbf{Codice decisione da verbale esterno}: le decisioni adottate in
-        incontri esterni sono identificate dal codice \texttt{VE-y.x},
+        incontri esterni sono identificate dal codice \texttt{VE-y.x\textsubscript{G}},
         con la stessa logica.
 
-  \item \textbf{Identificativo task}: ogni task corrisponde a una issue GitHub
+  \item \textbf{Identificativo task}: ogni task corrisponde a una issue\textsubscript{G} GitHub
         il cui identificativo numerico funge da codice univoco. Le issue sono
         referenziate nei verbali tramite il comando \verb|\ghissue{id}|
         (es.\ \verb|\ghissue{116}| produce \underline{\#116}).
@@ -83,19 +83,19 @@ le seguenti convenzioni, la cui applicazione è vincolante per tutti i redattori
         è sintetica; il dettaglio del lavoro da svolgere è riportato nel documento
         di riunione condiviso a cui il verbale fa riferimento.
 
-  \item \textbf{Collegamento commit -- issue}: ogni commit relativo a una issue
+  \item \textbf{Collegamento commit\textsubscript{G} -- issue}: ogni commit relativo a una issue
         include il riferimento all'identificativo della issue nel messaggio, con
         la sintassi \texttt{git commit -m "\#id messaggio"}.
 
   \item \textbf{Formattazione dei link}: tutti i link nel testo sono prodotti
         tramite il comando \verb|\link{url}{testo descrittivo}| definito nel
-        template, senza mostrare l'URL in chiaro nel documento.
+        template\textsubscript{G}, senza mostrare l'URL in chiaro nel documento.
 
   \item \textbf{Nomenclatura dei casi d'uso}: i casi d'uso sono denominati nel
         formato \texttt{UC X: Testo Del Titolo}, dove \texttt{X} è il numero
         progressivo.
 
-  \item \textbf{Nome del file principale \LaTeX{}}: il file \texttt{main.tex} di
+  \item \textbf{Nome del file principale \LaTeX{}}: il file \texttt{main\textsubscript{G}.tex} di
         ogni documento deve essere rinominato con il nome che assumerà il PDF
         finale secondo la convenzione dei nomi file, al fine di garantire la
         corretta nominazione dell'output di compilazione.
@@ -161,24 +161,24 @@ L'uso diretto di \verb|\href{url}{\underline{testo}}| è deprecato in favore
 di \verb|\link{}{}|; \verb|\ghissue{}| sostituisce la sintassi manuale
 \verb|\href{url}{\underline{\#id}}| per le issue.
  
-\subsubsection{Ciclo Di Vita Documentale}
+\subsubsection{Ciclo Di Vita Documentale\textsubscript{G}}
 \label{sec:ciclo-vita}
  
 Il ciclo di vita di ogni documento si articola nelle seguenti fasi sequenziali:
  
 \begin{enumerate}
-  \item \textbf{Stesura}: il Redattore produce il contenuto
+  \item \textbf{Stesura}: il Redattore\textsubscript{G} produce il contenuto
         utilizzando il template approvato e nel rispetto delle convenzioni
         redazionali descritte nella Sezione~\ref{sec:convenzioni}.
  
-  \item \textbf{Revisione}: il Verificatore,
+  \item \textbf{Revisione}: il Verificatore\textsubscript{G},
         che deve essere un membro diverso dal Redattore, controlla struttura,
         coerenza, correttezza e conformità del documento alle presenti norme.
         In caso di non conformità, il documento viene restituito al Redattore
         con le indicazioni necessarie.
  
   \item \textbf{Pubblicazione}: superata la revisione, il documento viene
-        integrato nel branch \texttt{main} del
+        integrato nel branch\textsubscript{G} \texttt{main} del
         repository tramite pull~request,
         con il numero di versione aggiornato.
  
@@ -189,7 +189,7 @@ Il ciclo di vita di ogni documento si articola nelle seguenti fasi sequenziali:
  
 \subsubsection{Versionamento Documentale}
  
-Il gruppo adotta il \textit{Semantic Versioning} a tre cifre nel
+Il gruppo adotta il \textit{Semantic Versioning\textsubscript{G}} a tre cifre nel
 formato \textbf{vX.Y.Z}, con le seguenti regole di incremento:
  
 \bigskip
@@ -217,7 +217,7 @@ formato \textbf{vX.Y.Z}, con le seguenti regole di incremento:
   \item \textbf{Script Python} (\texttt{python\_glossary\_automation/}):
         automatizza l'applicazione del pedice G alla prima
         occorrenza di ogni termine del Glossario, riducendo gli errori manuali.
-  \item \textbf{GitHub Pages}: pubblica il sito documentale del
+  \item \textbf{GitHub Pages\textsubscript{G}}: pubblica il sito documentale del
         gruppo, sviluppato in HTML5 e CSS3, come punto di accesso unico alla
         documentazione prodotta.
 \end{itemize}
@@ -255,7 +255,7 @@ La versione approvata e stabile di ogni documento è quella presente nel branch
  
 \subsubsection{Strategia Di Branching}
  
-Il gruppo adotta il modello \textit{trunk-based development}.
+Il gruppo adotta il modello \textit{trunk-based development\textsubscript{G}}.
 Ogni membro apre un branch dedicato per lavorare su un singolo
 documento; il branch è nominato secondo la convenzione:
  
@@ -266,7 +266,7 @@ documento; il branch è nominato secondo la convenzione:
 \textit{Esempio}: \texttt{116-gestionale\_interno\_norme-di-progetto}
 
 Il nome del documento nel branch corrisponde al campo \textbf{Nome Documento}
-inserito nel Google Form (es.\ \texttt{norme-di-progetto},
+inserito nel Google Form\textsubscript{G} (es.\ \texttt{norme-di-progetto},
 \texttt{verb-int-2026-04-14}, \texttt{analisi-dei-requisiti}).
 
 Il branch viene creato direttamente dalla sezione \textit{Development} della issue
@@ -280,7 +280,7 @@ Al termine del lavoro le modifiche sono integrate nel branch \texttt{main} trami
 pull~request. La pull~request deve essere aperta \textbf{entro la domenica}
 precedente la riunione del martedì, in modo da permettere al Verificatore di
 completare la revisione prima dell'inizio dello sprint successivo.
-Il merge è eseguito dal \textbf{Redattore} dopo l'approvazione del Verificatore;
+Il merge\textsubscript{G} è eseguito dal \textbf{Redattore} dopo l'approvazione del Verificatore;
 dopo il merge il branch viene eliminato.
  
 \subsubsection{Procedura Di Modifica}
@@ -289,7 +289,7 @@ Ogni modifica a un documento già pubblicato segue obbligatoriamente la procedur
 seguente:
  
 \begin{enumerate}
-  \item Il Responsabile crea il task tramite Google Form durante la riunione; il
+  \item Il Responsabile\textsubscript{G} crea il task tramite Google Form durante la riunione; il
         form genera automaticamente una issue su GitHub con il proprio identificativo
         numerico.
   \item Il Responsabile linka la issue nella tabella delle azioni del verbale
@@ -307,8 +307,8 @@ seguente:
   \item Il Verificatore effettua la revisione e approva la pull~request.
   \item Il \textbf{Redattore} (non il Verificatore) esegue il merge nel branch
         \texttt{main}.
-  \item Il Redattore chiude la issue e aggiorna il proprio tempo effettivo nel
-        foglio di calcolo.
+  \item Il Redattore chiude la issue e aggiorna il proprio tempo effettivo\textsubscript{G} nel
+        foglio di calcolo\textsubscript{G}.
   \item Il branch di lavoro viene eliminato.
 \end{enumerate}
  
@@ -349,8 +349,8 @@ Il Verificatore controlla, per ciascun documento:
         le sezioni non applicabili sono esplicitamente marcate.
 \end{itemize}
 
-\subsubsection{Definition Of Done}
-\label{sec:dod}
+\subsubsection{Definition Of Done\textsubscript{G}}
+\label{sec:dod\textsubscript{G}}
 
 Un task documentale è considerato \textit{Done} solo se soddisfa tutti i criteri
 seguenti.
@@ -374,7 +374,7 @@ seguenti.
   \item La terminologia è coerente con il Glossario di progetto.
 \end{itemize}
 
-\paragraph{Commit E Pull Request}
+\paragraph{Commit E Pull Request\textsubscript{G}}
 \begin{itemize}
   \item Ogni commit è riferito alla issue con \texttt{\#id} nel messaggio.
   \item È stata aperta una pull~request che linka la issue corrispondente e ne
@@ -402,7 +402,7 @@ seguenti.
 Lo sprint è considerato \textit{Done} se:
 \begin{itemize}
   \item tutti i task pianificati sono \textit{Done} (criteri sopra), oppure
-        rimandati al backlog con motivazione scritta nel verbale;
+        rimandati al backlog\textsubscript{G} con motivazione scritta nel verbale;
   \item il diario di bordo è compilato per martedì e venerdì;
   \item il registro dei rischi è stato rivalutato;
   \item la retrospettiva ha prodotto almeno un'azione correttiva concreta.
