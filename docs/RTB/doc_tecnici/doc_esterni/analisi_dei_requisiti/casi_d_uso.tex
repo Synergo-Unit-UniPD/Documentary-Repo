@@ -834,14 +834,14 @@
 \subsection{Macroarea 2 — Interazione AI (LLM)}
 \textit{Elaborazione del testo tramite modelli linguistici e gestione degli output.}
 
-% UC8 - Generazione riassunto del testo
-\subsubsection{UC 8: Generazione riassunto del testo}
+% UC30 - Generazione riassunto del testo
+\subsubsection{UC 30: Generazione riassunto del testo}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{riassunto_testo.png}
-    \caption{UC8 – Riassunto del testo}
+    \includegraphics[width=0.6\textwidth]{generazione_riassunto_testo.png}
+    \caption{UC30 – Riassunto del testo}
 \end{figure}
 
 \begin{itemize}
@@ -858,14 +858,32 @@
     \item \textbf{Trigger}: L'utente necessita di una sintesi rapida di un testo troppo lungo.
 \end{itemize}
 
-% UC9 - Traduzione del testo
-\subsubsection{UC 9: Traduzione del testo}
+% UC30.1 - Visualizzazione errore servizi AI (Timeout, API error, ecc.)
+\paragraph{UC 30.1: Visualizzazione errore servizi AI}\mbox{}\
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{errore_ai_UC30.png}
+    \caption{UC30.1 – Visualizzazione errore servizi AI}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: L'utente viene informato che  il processo UC 30 ha fallito a causa di un errore del servizio AI.
+    \item \textbf{Precondizioni}: È in corso l’esecuzione di UC 30.
+    \item \textbf{Postcondizioni}: L’utente è informato dell’errore.
+    \item \textbf{Trigger}: Si verifica un errore nella comunicazione con il servizio AI.
+\end{itemize}
+
+% UC31 - Traduzione del testo
+\subsubsection{UC 31: Traduzione del testo}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{traduzione_testo.png}
-    \caption{UC9 – Traduzione del testo}
+    \caption{UC31 – Traduzione del testo}
 \end{figure}
 
 \begin{itemize}
@@ -881,14 +899,33 @@
     \item \textbf{Postcondizioni}: Viene generato una traduzione che viene mostrato all'utente.
     \item \textbf{Trigger}: L'utente ha bisogno di convertire una porzione di testo in una lingua differente.
 \end{itemize}
-% UC10 - Riscrittura del testo
-\subsubsection{UC 10: Riscrittura del testo}
+
+% UC31.1 - Visualizzazione errore servizi AI (Timeout, API error, ecc.)
+\paragraph{UC 31.1: Visualizzazione errore servizi AI}\mbox{}\
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{errore_ai_UC31.png}
+    \caption{UC31.1 – Visualizzazione errore servizi AI}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: L'utente viene informato che  il processo UC 31 ha fallito a causa di un errore del servizio AI.
+    \item \textbf{Precondizioni}: È in corso l’esecuzione di UC 31.
+    \item \textbf{Postcondizioni}: L’utente è informato dell’errore.
+    \item \textbf{Trigger}: Si verifica un errore nella comunicazione con il servizio AI.
+\end{itemize}
+
+% UC32 - Riscrittura del testo
+\subsubsection{UC 32: Riscrittura del testo}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{riscrittura_testo.png}
-    \caption{UC10 – Riscrittura del testo}
+    \caption{UC32 – Riscrittura del testo}
 \end{figure}
 
 \begin{itemize}
@@ -904,14 +941,33 @@
     \item \textbf{Postcondizioni}: Viene generato una rielaborazione del testo che viene mostrata all'utente.
     \item \textbf{Trigger}: L'utente non è soddisfatto della forma del testo e vuole che l'AI lo rielabori.
 \end{itemize}
-% UC11 - Generazione automatica da prompt (Distant Writing)
-\subsubsection{UC 11: Generazione automatica da prompt (Distant Writing)}
+
+% UC32.1 - Visualizzazione errore servizi AI (Timeout, API error, ecc.)
+\paragraph{UC 32.1: Visualizzazione errore servizi AI}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{11_generazione_automatica_da_prompt_distant_writing.png}
-    \caption{UC11 – Generazione automatica da prompt (Distant Writing)}
+    \includegraphics[width=0.6\textwidth]{errore_ai_UC32.png}
+    \caption{UC32.1 – Visualizzazione errore servizi AI}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: L'utente viene informato che  il processo UC 32 ha fallito a causa di un errore del servizio AI.
+    \item \textbf{Precondizioni}: È in corso l’esecuzione di UC 32.
+    \item \textbf{Postcondizioni}: L’utente è informato dell’errore.
+    \item \textbf{Trigger}: Si verifica un errore nella comunicazione con il servizio AI.
+\end{itemize}
+
+% UC33 - Generazione automatica da prompt (Distant Writing)
+\subsubsection{UC 33: Generazione automatica da prompt (Distant Writing)}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{generazione_automatica_prompt.png}
+    \caption{UC33 – Generazione automatica da prompt (Distant Writing)}
 \end{figure}
 
 \begin{itemize}
@@ -929,14 +985,32 @@
     \item \textbf{Trigger}: L'utente vuole che l'AI generi nuovi contenuti testuali a partire da una sua istruzione diretta.
 \end{itemize}
 
-% UC12 - Critica del testo (Sei Cappelli per Pensare)
-\subsubsection{UC 12: Critica del testo (Sei Cappelli per Pensare)}
+% UC33.1 - Visualizzazione errore servizi AI (Timeout, API error, ecc.)
+\paragraph{UC 33.1: Visualizzazione errore servizi AI}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{12_critica_del_testo_sei_cappelli_per_pensare.png}
-    \caption{UC12 – Critica del testo (Sei Cappelli per Pensare)}
+    \includegraphics[width=0.6\textwidth]{errore_ai_UC33.png}
+    \caption{UC33.1 – Visualizzazione errore servizi AI}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: L'utente viene informato che  il processo UC 33 ha fallito a causa di un errore del servizio AI.
+    \item \textbf{Precondizioni}: È in corso l’esecuzione di UC 33.
+    \item \textbf{Postcondizioni}: L’utente è informato dell’errore.
+    \item \textbf{Trigger}: Si verifica un errore nella comunicazione con il servizio AI.
+\end{itemize}
+
+% UC34 - Critica del testo (Sei Cappelli per Pensare)
+\subsubsection{UC 34: Critica del testo (Sei Cappelli per Pensare)}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{critica_testo_sei_cappelli_pensare.png}
+    \caption{UC34 – Critica del testo (Sei Cappelli per Pensare)}
 \end{figure}
 
 \begin{itemize}
@@ -954,14 +1028,14 @@
     \item \textbf{Trigger}: L'utente desidera che il testo venga analizzato criticamente adottando una specifica prospettiva.
 \end{itemize}
 
-% UC12.1 - Analisi Cappello Bianco (Dati e fatti)
-\paragraph{UC 12.1: Analisi Cappello Bianco (Dati e fatti)}\mbox{}\
+% UC34.1 - Analisi Cappello Bianco (Dati e fatti)
+\paragraph{UC 34.1: Analisi Cappello Bianco (Dati e fatti)}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{12-1_analisi_cappello_bianco_dati_e_fatti.png}
-    \caption{UC12.1 – Analisi Cappello Bianco (Dati e fatti)}
+    \includegraphics[width=0.6\textwidth]{critica_testo_sei_cappelli_pensare_bianco.png}
+    \caption{UC34.1 – Analisi Cappello Bianco (Dati e fatti)}
 \end{figure}
 
 \begin{itemize}
@@ -978,14 +1052,14 @@
     \item \textbf{Trigger}: L'utente seleziona il Cappello Bianco per verificare i fatti, i dati e l'oggettività del testo.
 \end{itemize}
 
-% UC12.2 - Analisi Cappello Rosso (Emozioni)
-\paragraph{UC 12.2: Analisi Cappello Rosso (Emozioni)}\mbox{}\
+% UC34.2 - Analisi Cappello Rosso (Emozioni)
+\paragraph{UC 34.2: Analisi Cappello Rosso (Emozioni)}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{12-2_analisi_cappello_rosso_emozioni.png}
-    \caption{UC12.2 – Analisi Cappello Rosso (Emozioni)}
+    \includegraphics[width=0.6\textwidth]{critica_testo_sei_cappelli_pensare_rosso.png}
+    \caption{UC34.2 – Analisi Cappello Rosso (Emozioni)}
 \end{figure}
 
 \begin{itemize}
@@ -1002,14 +1076,14 @@
     \item \textbf{Trigger}: L'utente seleziona il Cappello Rosso per valutare l'impatto emotivo e viscerale del testo.
 \end{itemize}
 
-% UC12.3 - Analisi Cappello Nero (Rischi)
-\paragraph{UC 12.3: Analisi Cappello Nero (Rischi)}\mbox{}\
+% UC34.3 - Analisi Cappello Nero (Rischi)
+\paragraph{UC 34.3: Analisi Cappello Nero (Rischi)}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{12-3_analisi_cappello_nero_rischi.png}
-    \caption{UC12.3 – Analisi Cappello Nero (Rischi)}
+    \includegraphics[width=0.6\textwidth]{critica_testo_sei_cappelli_pensare_nero.png}
+    \caption{UC34.3 – Analisi Cappello Nero (Rischi)}
 \end{figure}
 
 \begin{itemize}
@@ -1026,14 +1100,14 @@
     \item \textbf{Trigger}: L'utente seleziona il Cappello Nero per individuare criticità, rischi e punti deboli.
 \end{itemize}
 
-% UC12.4 - Analisi Cappello Giallo (Opportunità)
-\paragraph{UC 12.4: Analisi Cappello Giallo (Opportunità)}\mbox{}\
+% UC34.4 - Analisi Cappello Giallo (Opportunità)
+\paragraph{UC 34.4: Analisi Cappello Giallo (Opportunità)}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{12-4_analisi_cappello_giallo_opportunita.png}
-    \caption{UC12.4 – Analisi Cappello Giallo (Opportunità)}
+    \includegraphics[width=0.6\textwidth]{critica_testo_sei_cappelli_pensare_giallo.png}
+    \caption{UC34.4 – Analisi Cappello Giallo (Opportunità)}
 \end{figure}
 
 \begin{itemize}
@@ -1050,14 +1124,14 @@
     \item \textbf{Trigger}: L'utente seleziona il Cappello Giallo per scoprire i vantaggi, i benefici e le opportunità espresse.
 \end{itemize}
 
-% UC12.5 - Analisi Cappello Verde (Creatività)
-\paragraph{UC 12.5: Analisi Cappello Verde (Creatività)}\mbox{}\
+% UC34.5 - Analisi Cappello Verde (Creatività)
+\paragraph{UC 34.5: Analisi Cappello Verde (Creatività)}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{12-5_analisi_cappello_verde_creativita.png}
-    \caption{UC12.5 – Analisi Cappello Verde (Creatività)}
+    \includegraphics[width=0.6\textwidth]{critica_testo_sei_cappelli_pensare_verde.png}
+    \caption{UC34.5 – Analisi Cappello Verde (Creatività)}
 \end{figure}
 
 \begin{itemize}
@@ -1074,14 +1148,14 @@
     \item \textbf{Trigger}: L'utente seleziona il Cappello Verde per cercare idee alternative, spunti creativi e innovazioni.
 \end{itemize}
 
-% UC12.6 - Analisi Cappello Blu (Logica/Controllo)
-\paragraph{UC 12.6: Analisi Cappello Blu (Logica/Controllo)}\mbox{}\
+% UC34.6 - Analisi Cappello Blu (Logica/Controllo)
+\paragraph{UC 34.6: Analisi Cappello Blu (Logica/Controllo)}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{12-6_analisi_cappello_blu_logica_controllo.png}
-    \caption{UC12.6 – Analisi Cappello Blu (Logica/Controllo)}
+    \includegraphics[width=0.6\textwidth]{critica_testo_sei_cappelli_pensare_blu.png}
+    \caption{UC34.6 – Analisi Cappello Blu (Logica/Controllo)}
 \end{figure}
 
 \begin{itemize}
@@ -1098,36 +1172,32 @@
     \item \textbf{Trigger}: L'utente seleziona il Cappello Blu per analizzare la struttura logica e l'organizzazione del documento.
 \end{itemize}
 
-% UC13 - Gestione proposta AI
-\subsubsection{UC 13: Gestione proposta AI}
+% UC34.7 - Visualizzazione errore servizi AI (Timeout, API error, ecc.)
+\paragraph{UC 34.7: Visualizzazione errore servizi AI}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{13_gestione_proposta_ai.png}
-    \caption{UC13 – Gestione proposta AI}
+    \includegraphics[width=0.6\textwidth]{errore_ai_UC34.png}
+    \caption{UC34.7 – Visualizzazione errore servizi AI}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: 
-    \begin{enumerate}
-        \item L'utente valuta la proposta fornita dal sistema.
-        \item L'utente decide se accettare (UC 12.1) o rifiutare (UC 12.2) la proposta.
-    \end{enumerate}
-    \item \textbf{Precondizioni}: L'LLM ha restituito una proposta (testo generato, traduzione o analisi) che è visualizzata a schermo.
-    \item \textbf{Postcondizioni}: La visualizzazione della proposta viene chiusa e l'editor viene aggiornato o resta invariato.
-    \item \textbf{Trigger}: Il sistema ha terminato l'elaborazione tramite LLM e mostra il risultato all'utente.
+    \item \textbf{Scenario Principale}: L'utente viene informato che  il processo UC 34 ha fallito a causa di un errore del servizio AI.
+    \item \textbf{Precondizioni}: È in corso l’esecuzione di UC 34.
+    \item \textbf{Postcondizioni}: L’utente è informato dell’errore.
+    \item \textbf{Trigger}: Si verifica un errore nella comunicazione con il servizio AI.
 \end{itemize}
 
-% UC13.1 - Inserimento proposta nel documento
-\paragraph{UC 13.1: Inserimento proposta nel documento}\mbox{}\
+% UC35 - Accettazione proposta AI
+\paragraph{UC 35: Accettazione proposta AI}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{13-1_inserimento_proposta_nel_documento.png}
-    \caption{UC13.1 – Inserimento proposta nel documento}
+    \includegraphics[width=0.6\textwidth]{accettazione_proposta_ai.png}
+    \caption{UC35 – Accettazione proposta AI}
 \end{figure}
 
 \begin{itemize}
@@ -1142,14 +1212,14 @@
     \item \textbf{Trigger}: L'utente ritiene valida la proposta dell'AI e preme il tasto di conferma.
 \end{itemize}
 
-% UC13.2 - Rifiuto della proposta AI
-\paragraph{UC 13.2: Rifiuto della proposta AI}\mbox{}\
+% UC36 - Rifiuto proposta AI
+\paragraph{UC 36: Rifiuto proposta AI}\mbox{}\
 
-% use case diagram
+% use case diagram 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{13-2_rifiuto_della_proposta_ai.png}
-    \caption{UC13.2 – Rifiuto della proposta AI}
+    \includegraphics[width=0.6\textwidth]{rifiuto_proposta_ai.png}
+    \caption{UC36 – Rifiuto proposta AI}
 \end{figure}
 
 \begin{itemize}
@@ -1164,38 +1234,14 @@
     \item \textbf{Trigger}: L'utente ritiene la proposta inadeguata e preme il tasto per annullarla e chiuderla.
 \end{itemize}
 
-% UC14 - Gestione errori di sistema LLM
-\subsubsection{UC 14: Gestione errori di sistema LLM}
+% UC37 - (Opzionale) Interazione con ChatBot
+\subsubsection{UC 37: (Opzionale) Interazione con ChatBot}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{14_gestione_errori_di_sistema_llm.png}
-    \caption{UC14 – Gestione errori di sistema LLM}
-\end{figure}
-
-\begin{itemize}
-    \item \textbf{Attore Principale}: Utente
-    \item \textbf{Attore Secondario}: LLM
-    \item \textbf{Scenario Principale}: 
-    \begin{enumerate}
-        \item Il sistema invia una richiesta all'LLM.
-        \item L'LLM restituisce un errore (es: timeout, superamento limiti API, assenza di rete).
-        \item Il sistema intercetta l'errore e mostra un messaggio informativo all'utente.
-    \end{enumerate}
-    \item \textbf{Precondizioni}: È stata avviata un'interazione che richiede l'uso dell'AI.
-    \item \textbf{Postcondizioni}: L'utente è informato del fallimento e il sistema ripristina lo stato precedente all'operazione.
-    \item \textbf{Trigger}: La comunicazione con il servizio AI fallisce, scade per timeout o restituisce un errore.
-\end{itemize}
-
-% UC15 - Interazione con ChatBot
-\subsubsection{UC 15: (Opzionale) Interazione con ChatBot}
-
-% use case diagram
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{Interazione_con_ChatBot.png}
-    \caption{UC15 – Interazione con ChatBot}
+    \includegraphics[width=0.6\textwidth]{interazione_chatbot.png}
+    \caption{UC37 – Interazione con ChatBot}
 \end{figure}
 
 
@@ -1214,6 +1260,23 @@
     \item \textbf{Trigger}: L'utente ha bisogno di dialogare in maniera conversazionale con l'assistente virtuale.
 \end{itemize}
 
+% UC37.1 - Visualizzazione errore servizi AI (Timeout, API error, ecc.)
+\paragraph{UC 37.1: Visualizzazione errore servizi AI}\mbox{}\
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{errore_ai_UC37.png}
+    \caption{UC37.1 – Visualizzazione errore servizi AI}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: L'utente viene informato che  il processo UC 37 ha fallito a causa di un errore del servizio AI.
+    \item \textbf{Precondizioni}: È in corso l’esecuzione di UC 37.
+    \item \textbf{Postcondizioni}: L’utente è informato dell’errore.
+    \item \textbf{Trigger}: Si verifica un errore nella comunicazione con il servizio AI.
+\end{itemize}
 
 % --------------------------------------------------------------------------
 % 3. Macroarea 3: Gestione I/O e Persistenza
