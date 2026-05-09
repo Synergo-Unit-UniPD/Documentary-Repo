@@ -35,6 +35,7 @@
     \item \textbf{Trigger}: L'utente desidera iniziare una nuova sessione di scrittura.
 \end{itemize}
 
+% UC2 - Eliminazione di una nota
 \subsubsection{UC 2: Eliminazione di una nota}
 
 % use case diagram
@@ -86,6 +87,24 @@
     \item \textbf{Precondizioni}: L'utente ha selezionato una nota da eliminare.
     \item \textbf{Postcondizioni}: La nota non è stata eliminata.
     \item \textbf{Trigger}: L'utente decide di annullare l'eliminazione di una nota.
+\end{itemize}
+
+% UC2.3 - Visualizzazione errore eliminazione
+\paragraph{UC 2.3: Visualizzazione errore eliminazione}\mbox{}\
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{errore_eliminazione.png}
+    \caption{UC2.3 – Visualizzazione errore eliminazione}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: Il sistema riscontra un problema tecnico durante la rimozione della nota e mostra un messaggio di avviso all'utente.
+    \item \textbf{Precondizioni}: L'utente ha richiesto l'eliminazione di una nota.
+    \item \textbf{Postcondizioni}: La nota non viene eliminata e l'utente viene informato dell'errore.
+    \item \textbf{Trigger}: Il sistema operativo o il file system impediscono la cancellazione del file (es. file bloccato o permessi insufficienti).
 \end{itemize}
 
 % UC3 - Scrittura di testo nell'editor
@@ -683,7 +702,7 @@
 \end{itemize}
 
 % UC 23 - Modifica elenco
-\paragraph{UC 23: Modifica elenco}\mbox{}\
+\subsubsection{UC 23: Modifica elenco}
 
 % use case diagram
 \begin{figure}[H]
