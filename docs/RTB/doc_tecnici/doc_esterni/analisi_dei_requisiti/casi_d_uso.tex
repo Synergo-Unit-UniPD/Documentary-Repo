@@ -4,6 +4,7 @@
 \begin{itemize}
 	\item \textbf{Utente}: Attore primario. Rappresenta l'utilizzatore finale che interagisce con l'interfaccia dell'editor.
 	\item \textbf{LLM (Large Language Model)}: Attore secondario (sistema esterno). Fornisce i servizi di analisi e generazione testo.
+	\item \textbf{Database remoto}: Attore secondario (sistema esterno). Fornisce i servizi di archiviazione, recupero e sincronizzazione in cloud delle note dell'utente.
 \end{itemize}
 
 % --------------------------------------------------------------------------
@@ -35,6 +36,7 @@
     \item \textbf{Trigger}: L'utente desidera iniziare una nuova sessione di scrittura.
 \end{itemize}
 
+% UC2 - Eliminazione di una nota
 \subsubsection{UC 2: Eliminazione di una nota}
 
 % use case diagram
@@ -86,6 +88,24 @@
     \item \textbf{Precondizioni}: L'utente ha selezionato una nota da eliminare.
     \item \textbf{Postcondizioni}: La nota non è stata eliminata.
     \item \textbf{Trigger}: L'utente decide di annullare l'eliminazione di una nota.
+\end{itemize}
+
+% UC2.3 - Visualizzazione errore eliminazione
+\paragraph{UC 2.3: Visualizzazione errore eliminazione}\mbox{}\
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{errore_eliminazione.png}
+    \caption{UC2.3 – Visualizzazione errore eliminazione}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: Il sistema riscontra un problema tecnico durante la rimozione della nota e mostra un messaggio di avviso all'utente.
+    \item \textbf{Precondizioni}: L'utente ha richiesto l'eliminazione di una nota.
+    \item \textbf{Postcondizioni}: La nota non viene eliminata e l'utente viene informato dell'errore.
+    \item \textbf{Trigger}: Il sistema operativo o il file system impediscono la cancellazione del file (es. file bloccato o permessi insufficienti).
 \end{itemize}
 
 % UC3 - Scrittura di testo nell'editor
@@ -683,7 +703,7 @@
 \end{itemize}
 
 % UC 23 - Modifica elenco
-\paragraph{UC 23: Modifica elenco}\mbox{}\
+\subsubsection{UC 23: Modifica elenco}
 
 % use case diagram
 \begin{figure}[H]
@@ -834,14 +854,14 @@
 \subsection{Macroarea 2 — Interazione AI (LLM)}
 \textit{Elaborazione del testo tramite modelli linguistici e gestione degli output.}
 
-% UC8 - Generazione riassunto del testo
-\subsubsection{UC 8: Generazione riassunto del testo}
+% UC30 - Generazione riassunto del testo
+\subsubsection{UC 30: Generazione riassunto del testo}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{riassunto_testo.png}
-    \caption{UC8 – Riassunto del testo}
+    \includegraphics[width=0.6\textwidth]{generazione_riassunto_testo.png}
+    \caption{UC30 – Riassunto del testo}
 \end{figure}
 
 \begin{itemize}
@@ -858,14 +878,32 @@
     \item \textbf{Trigger}: L'utente necessita di una sintesi rapida di un testo troppo lungo.
 \end{itemize}
 
-% UC9 - Traduzione del testo
-\subsubsection{UC 9: Traduzione del testo}
+% UC30.1 - Visualizzazione errore servizi AI (Timeout, API error, ecc.)
+\paragraph{UC 30.1: Visualizzazione errore servizi AI}\mbox{}\
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{errore_ai_UC30.png}
+    \caption{UC30.1 – Visualizzazione errore servizi AI}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: L'utente viene informato che  il processo UC 30 ha fallito a causa di un errore del servizio AI.
+    \item \textbf{Precondizioni}: È in corso l’esecuzione di UC 30.
+    \item \textbf{Postcondizioni}: L’utente è informato dell’errore.
+    \item \textbf{Trigger}: Si verifica un errore nella comunicazione con il servizio AI.
+\end{itemize}
+
+% UC31 - Traduzione del testo
+\subsubsection{UC 31: Traduzione del testo}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{traduzione_testo.png}
-    \caption{UC9 – Traduzione del testo}
+    \caption{UC31 – Traduzione del testo}
 \end{figure}
 
 \begin{itemize}
@@ -881,14 +919,33 @@
     \item \textbf{Postcondizioni}: Viene generato una traduzione che viene mostrato all'utente.
     \item \textbf{Trigger}: L'utente ha bisogno di convertire una porzione di testo in una lingua differente.
 \end{itemize}
-% UC10 - Riscrittura del testo
-\subsubsection{UC 10: Riscrittura del testo}
+
+% UC31.1 - Visualizzazione errore servizi AI (Timeout, API error, ecc.)
+\paragraph{UC 31.1: Visualizzazione errore servizi AI}\mbox{}\
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{errore_ai_UC31.png}
+    \caption{UC31.1 – Visualizzazione errore servizi AI}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: L'utente viene informato che  il processo UC 31 ha fallito a causa di un errore del servizio AI.
+    \item \textbf{Precondizioni}: È in corso l’esecuzione di UC 31.
+    \item \textbf{Postcondizioni}: L’utente è informato dell’errore.
+    \item \textbf{Trigger}: Si verifica un errore nella comunicazione con il servizio AI.
+\end{itemize}
+
+% UC32 - Riscrittura del testo
+\subsubsection{UC 32: Riscrittura del testo}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{riscrittura_testo.png}
-    \caption{UC10 – Riscrittura del testo}
+    \caption{UC32 – Riscrittura del testo}
 \end{figure}
 
 \begin{itemize}
@@ -904,14 +961,33 @@
     \item \textbf{Postcondizioni}: Viene generato una rielaborazione del testo che viene mostrata all'utente.
     \item \textbf{Trigger}: L'utente non è soddisfatto della forma del testo e vuole che l'AI lo rielabori.
 \end{itemize}
-% UC11 - Generazione automatica da prompt (Distant Writing)
-\subsubsection{UC 11: Generazione automatica da prompt (Distant Writing)}
+
+% UC32.1 - Visualizzazione errore servizi AI (Timeout, API error, ecc.)
+\paragraph{UC 32.1: Visualizzazione errore servizi AI}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{11_generazione_automatica_da_prompt_distant_writing.png}
-    \caption{UC11 – Generazione automatica da prompt (Distant Writing)}
+    \includegraphics[width=0.6\textwidth]{errore_ai_UC32.png}
+    \caption{UC32.1 – Visualizzazione errore servizi AI}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: L'utente viene informato che  il processo UC 32 ha fallito a causa di un errore del servizio AI.
+    \item \textbf{Precondizioni}: È in corso l’esecuzione di UC 32.
+    \item \textbf{Postcondizioni}: L’utente è informato dell’errore.
+    \item \textbf{Trigger}: Si verifica un errore nella comunicazione con il servizio AI.
+\end{itemize}
+
+% UC33 - Generazione automatica da prompt (Distant Writing)
+\subsubsection{UC 33: Generazione automatica da prompt (Distant Writing)}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{generazione_automatica_prompt.png}
+    \caption{UC33 – Generazione automatica da prompt (Distant Writing)}
 \end{figure}
 
 \begin{itemize}
@@ -929,14 +1005,32 @@
     \item \textbf{Trigger}: L'utente vuole che l'AI generi nuovi contenuti testuali a partire da una sua istruzione diretta.
 \end{itemize}
 
-% UC12 - Critica del testo (Sei Cappelli per Pensare)
-\subsubsection{UC 12: Critica del testo (Sei Cappelli per Pensare)}
+% UC33.1 - Visualizzazione errore servizi AI (Timeout, API error, ecc.)
+\paragraph{UC 33.1: Visualizzazione errore servizi AI}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{12_critica_del_testo_sei_cappelli_per_pensare.png}
-    \caption{UC12 – Critica del testo (Sei Cappelli per Pensare)}
+    \includegraphics[width=0.6\textwidth]{errore_ai_UC33.png}
+    \caption{UC33.1 – Visualizzazione errore servizi AI}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: L'utente viene informato che  il processo UC 33 ha fallito a causa di un errore del servizio AI.
+    \item \textbf{Precondizioni}: È in corso l’esecuzione di UC 33.
+    \item \textbf{Postcondizioni}: L’utente è informato dell’errore.
+    \item \textbf{Trigger}: Si verifica un errore nella comunicazione con il servizio AI.
+\end{itemize}
+
+% UC34 - Critica del testo (Sei Cappelli per Pensare)
+\subsubsection{UC 34: Critica del testo (Sei Cappelli per Pensare)}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{critica_testo_sei_cappelli_pensare.png}
+    \caption{UC34 – Critica del testo (Sei Cappelli per Pensare)}
 \end{figure}
 
 \begin{itemize}
@@ -954,14 +1048,14 @@
     \item \textbf{Trigger}: L'utente desidera che il testo venga analizzato criticamente adottando una specifica prospettiva.
 \end{itemize}
 
-% UC12.1 - Analisi Cappello Bianco (Dati e fatti)
-\paragraph{UC 12.1: Analisi Cappello Bianco (Dati e fatti)}\mbox{}\
+% UC34.1 - Analisi Cappello Bianco (Dati e fatti)
+\paragraph{UC 34.1: Analisi Cappello Bianco (Dati e fatti)}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{12-1_analisi_cappello_bianco_dati_e_fatti.png}
-    \caption{UC12.1 – Analisi Cappello Bianco (Dati e fatti)}
+    \includegraphics[width=0.6\textwidth]{critica_testo_sei_cappelli_pensare_bianco.png}
+    \caption{UC34.1 – Analisi Cappello Bianco (Dati e fatti)}
 \end{figure}
 
 \begin{itemize}
@@ -978,14 +1072,14 @@
     \item \textbf{Trigger}: L'utente seleziona il Cappello Bianco per verificare i fatti, i dati e l'oggettività del testo.
 \end{itemize}
 
-% UC12.2 - Analisi Cappello Rosso (Emozioni)
-\paragraph{UC 12.2: Analisi Cappello Rosso (Emozioni)}\mbox{}\
+% UC34.2 - Analisi Cappello Rosso (Emozioni)
+\paragraph{UC 34.2: Analisi Cappello Rosso (Emozioni)}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{12-2_analisi_cappello_rosso_emozioni.png}
-    \caption{UC12.2 – Analisi Cappello Rosso (Emozioni)}
+    \includegraphics[width=0.6\textwidth]{critica_testo_sei_cappelli_pensare_rosso.png}
+    \caption{UC34.2 – Analisi Cappello Rosso (Emozioni)}
 \end{figure}
 
 \begin{itemize}
@@ -1002,14 +1096,14 @@
     \item \textbf{Trigger}: L'utente seleziona il Cappello Rosso per valutare l'impatto emotivo e viscerale del testo.
 \end{itemize}
 
-% UC12.3 - Analisi Cappello Nero (Rischi)
-\paragraph{UC 12.3: Analisi Cappello Nero (Rischi)}\mbox{}\
+% UC34.3 - Analisi Cappello Nero (Rischi)
+\paragraph{UC 34.3: Analisi Cappello Nero (Rischi)}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{12-3_analisi_cappello_nero_rischi.png}
-    \caption{UC12.3 – Analisi Cappello Nero (Rischi)}
+    \includegraphics[width=0.6\textwidth]{critica_testo_sei_cappelli_pensare_nero.png}
+    \caption{UC34.3 – Analisi Cappello Nero (Rischi)}
 \end{figure}
 
 \begin{itemize}
@@ -1026,14 +1120,14 @@
     \item \textbf{Trigger}: L'utente seleziona il Cappello Nero per individuare criticità, rischi e punti deboli.
 \end{itemize}
 
-% UC12.4 - Analisi Cappello Giallo (Opportunità)
-\paragraph{UC 12.4: Analisi Cappello Giallo (Opportunità)}\mbox{}\
+% UC34.4 - Analisi Cappello Giallo (Opportunità)
+\paragraph{UC 34.4: Analisi Cappello Giallo (Opportunità)}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{12-4_analisi_cappello_giallo_opportunita.png}
-    \caption{UC12.4 – Analisi Cappello Giallo (Opportunità)}
+    \includegraphics[width=0.6\textwidth]{critica_testo_sei_cappelli_pensare_giallo.png}
+    \caption{UC34.4 – Analisi Cappello Giallo (Opportunità)}
 \end{figure}
 
 \begin{itemize}
@@ -1050,14 +1144,14 @@
     \item \textbf{Trigger}: L'utente seleziona il Cappello Giallo per scoprire i vantaggi, i benefici e le opportunità espresse.
 \end{itemize}
 
-% UC12.5 - Analisi Cappello Verde (Creatività)
-\paragraph{UC 12.5: Analisi Cappello Verde (Creatività)}\mbox{}\
+% UC34.5 - Analisi Cappello Verde (Creatività)
+\paragraph{UC 34.5: Analisi Cappello Verde (Creatività)}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{12-5_analisi_cappello_verde_creativita.png}
-    \caption{UC12.5 – Analisi Cappello Verde (Creatività)}
+    \includegraphics[width=0.6\textwidth]{critica_testo_sei_cappelli_pensare_verde.png}
+    \caption{UC34.5 – Analisi Cappello Verde (Creatività)}
 \end{figure}
 
 \begin{itemize}
@@ -1074,14 +1168,14 @@
     \item \textbf{Trigger}: L'utente seleziona il Cappello Verde per cercare idee alternative, spunti creativi e innovazioni.
 \end{itemize}
 
-% UC12.6 - Analisi Cappello Blu (Logica/Controllo)
-\paragraph{UC 12.6: Analisi Cappello Blu (Logica/Controllo)}\mbox{}\
+% UC34.6 - Analisi Cappello Blu (Logica/Controllo)
+\paragraph{UC 34.6: Analisi Cappello Blu (Logica/Controllo)}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{12-6_analisi_cappello_blu_logica_controllo.png}
-    \caption{UC12.6 – Analisi Cappello Blu (Logica/Controllo)}
+    \includegraphics[width=0.6\textwidth]{critica_testo_sei_cappelli_pensare_blu.png}
+    \caption{UC34.6 – Analisi Cappello Blu (Logica/Controllo)}
 \end{figure}
 
 \begin{itemize}
@@ -1098,36 +1192,32 @@
     \item \textbf{Trigger}: L'utente seleziona il Cappello Blu per analizzare la struttura logica e l'organizzazione del documento.
 \end{itemize}
 
-% UC13 - Gestione proposta AI
-\subsubsection{UC 13: Gestione proposta AI}
+% UC34.7 - Visualizzazione errore servizi AI (Timeout, API error, ecc.)
+\paragraph{UC 34.7: Visualizzazione errore servizi AI}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{13_gestione_proposta_ai.png}
-    \caption{UC13 – Gestione proposta AI}
+    \includegraphics[width=0.6\textwidth]{errore_ai_UC34.png}
+    \caption{UC34.7 – Visualizzazione errore servizi AI}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: 
-    \begin{enumerate}
-        \item L'utente valuta la proposta fornita dal sistema.
-        \item L'utente decide se accettare (UC 12.1) o rifiutare (UC 12.2) la proposta.
-    \end{enumerate}
-    \item \textbf{Precondizioni}: L'LLM ha restituito una proposta (testo generato, traduzione o analisi) che è visualizzata a schermo.
-    \item \textbf{Postcondizioni}: La visualizzazione della proposta viene chiusa e l'editor viene aggiornato o resta invariato.
-    \item \textbf{Trigger}: Il sistema ha terminato l'elaborazione tramite LLM e mostra il risultato all'utente.
+    \item \textbf{Scenario Principale}: L'utente viene informato che  il processo UC 34 ha fallito a causa di un errore del servizio AI.
+    \item \textbf{Precondizioni}: È in corso l’esecuzione di UC 34.
+    \item \textbf{Postcondizioni}: L’utente è informato dell’errore.
+    \item \textbf{Trigger}: Si verifica un errore nella comunicazione con il servizio AI.
 \end{itemize}
 
-% UC13.1 - Inserimento proposta nel documento
-\paragraph{UC 13.1: Inserimento proposta nel documento}\mbox{}\
+% UC35 - Accettazione proposta AI
+\paragraph{UC 35: Accettazione proposta AI}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{13-1_inserimento_proposta_nel_documento.png}
-    \caption{UC13.1 – Inserimento proposta nel documento}
+    \includegraphics[width=0.6\textwidth]{accettazione_proposta_ai.png}
+    \caption{UC35 – Accettazione proposta AI}
 \end{figure}
 
 \begin{itemize}
@@ -1142,14 +1232,14 @@
     \item \textbf{Trigger}: L'utente ritiene valida la proposta dell'AI e preme il tasto di conferma.
 \end{itemize}
 
-% UC13.2 - Rifiuto della proposta AI
-\paragraph{UC 13.2: Rifiuto della proposta AI}\mbox{}\
+% UC36 - Rifiuto proposta AI
+\paragraph{UC 36: Rifiuto proposta AI}\mbox{}\
 
-% use case diagram
+% use case diagram 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{13-2_rifiuto_della_proposta_ai.png}
-    \caption{UC13.2 – Rifiuto della proposta AI}
+    \includegraphics[width=0.6\textwidth]{rifiuto_proposta_ai.png}
+    \caption{UC36 – Rifiuto proposta AI}
 \end{figure}
 
 \begin{itemize}
@@ -1164,38 +1254,14 @@
     \item \textbf{Trigger}: L'utente ritiene la proposta inadeguata e preme il tasto per annullarla e chiuderla.
 \end{itemize}
 
-% UC14 - Gestione errori di sistema LLM
-\subsubsection{UC 14: Gestione errori di sistema LLM}
+% UC37 - (Opzionale) Interazione con ChatBot
+\subsubsection{UC 37: (Opzionale) Interazione con ChatBot}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{14_gestione_errori_di_sistema_llm.png}
-    \caption{UC14 – Gestione errori di sistema LLM}
-\end{figure}
-
-\begin{itemize}
-    \item \textbf{Attore Principale}: Utente
-    \item \textbf{Attore Secondario}: LLM
-    \item \textbf{Scenario Principale}: 
-    \begin{enumerate}
-        \item Il sistema invia una richiesta all'LLM.
-        \item L'LLM restituisce un errore (es: timeout, superamento limiti API, assenza di rete).
-        \item Il sistema intercetta l'errore e mostra un messaggio informativo all'utente.
-    \end{enumerate}
-    \item \textbf{Precondizioni}: È stata avviata un'interazione che richiede l'uso dell'AI.
-    \item \textbf{Postcondizioni}: L'utente è informato del fallimento e il sistema ripristina lo stato precedente all'operazione.
-    \item \textbf{Trigger}: La comunicazione con il servizio AI fallisce, scade per timeout o restituisce un errore.
-\end{itemize}
-
-% UC15 - Interazione con ChatBot
-\subsubsection{UC 15: (Opzionale) Interazione con ChatBot}
-
-% use case diagram
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{Interazione_con_ChatBot.png}
-    \caption{UC15 – Interazione con ChatBot}
+    \includegraphics[width=0.6\textwidth]{interazione_chatbot.png}
+    \caption{UC37 – Interazione con ChatBot}
 \end{figure}
 
 
@@ -1214,6 +1280,23 @@
     \item \textbf{Trigger}: L'utente ha bisogno di dialogare in maniera conversazionale con l'assistente virtuale.
 \end{itemize}
 
+% UC37.1 - Visualizzazione errore servizi AI (Timeout, API error, ecc.)
+\paragraph{UC 37.1: Visualizzazione errore servizi AI}\mbox{}\
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{errore_ai_UC37.png}
+    \caption{UC37.1 – Visualizzazione errore servizi AI}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: L'utente viene informato che  il processo UC 37 ha fallito a causa di un errore del servizio AI.
+    \item \textbf{Precondizioni}: È in corso l’esecuzione di UC 37.
+    \item \textbf{Postcondizioni}: L’utente è informato dell’errore.
+    \item \textbf{Trigger}: Si verifica un errore nella comunicazione con il servizio AI.
+\end{itemize}
 
 % --------------------------------------------------------------------------
 % 3. Macroarea 3: Gestione I/O e Persistenza
@@ -1222,22 +1305,22 @@
 \subsection{Macroarea 3 — Gestione I/O e Persistenza}
 \textit{Salvataggio, caricamento ed esportazione.}
 
-% UC16 - Download della nota in formato Markdown
-\subsubsection{UC 16: Download della nota in formato Markdown}
+% UC38 - Download della nota in formato Markdown
+\subsubsection{UC 38: Download della nota in formato Markdown}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{Download_nota_formato_Markdown.png}
-    \caption{UC16 – Download della nota in formato Markdown}
+    \caption{UC38 – Download della nota in formato Markdown}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
     \item \textbf{Scenario Principale}: 
     \begin{enumerate}
-        \item L'utente seleziona la funzione di download/salvataggio locale.
-        \item Il sistema genera un file con estensione .md contenente il testo dell'editor.
+        \item L'utente seleziona la funzione di download/salvataggio locale;
+        \item Il sistema genera un file con estensione .md contenente il testo dell'editor;
         \item Il sistema permette all'utente di scegliere la destinazione sul proprio dispositivo.
     \end{enumerate}
     \item \textbf{Precondizioni}: L'editor contiene del testo (anche vuoto).
@@ -1245,89 +1328,232 @@
     \item \textbf{Trigger}: L'utente vuole salvare una copia locale del file sorgente .md.
 \end{itemize}
 
-% UC17 - Upload di una nota locale
-\subsubsection{UC 17: Upload di una nota locale}
+% UC39 - Upload nota locale (.md)
+\subsubsection{UC 39: Upload di una nota locale (.md)}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{Upload_nota_locale.png}
-    \caption{UC17 – Upload di una nota locale}
+    \caption{UC39 – Upload di una nota locale}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
     \item \textbf{Scenario Principale}: 
     \begin{enumerate}
-        \item L'utente attiva la funzione di caricamento file.
-        \item L'utente seleziona un file .md dal proprio dispositivo.
-        \item Il sistema legge il contenuto del file e lo carica nell'editor, sovrascrivendo o aggiungendo al testo presente.
+        \item L'utente attiva la funzione di caricamento file;
+        \item L'utente seleziona un file .md dal proprio dispositivo;
+        \item Il sistema legge il contenuto del file e lo carica nell'editor.
     \end{enumerate}
-    \item \textbf{Precondizioni}: L'utente possiede un file Markdown compatibile.
-    \item \textbf{Postcondizioni}: Il contenuto del file selezionato è visibile e modificabile nell'editor.
-    \item \textbf{Trigger}: L'utente vuole caricare nel sistema un file Markdown già esistente nel proprio computer.
+    \item \textbf{Precondizioni}: L'utente possiede un file Markdown sul proprio dispositivo.
+    \item \textbf{Postcondizioni}: Il contenuto del file selezionato è visibile nell'editor.
+    \item \textbf{Trigger}: L'utente vuole caricare nel sistema un file Markdown esistente.
 \end{itemize}
 
+% UC39.1 - Visualizzazione errore formato file
+\paragraph{UC 39.1: Visualizzazione errore formato file}\mbox{}\
 
-% UC18 - Esportazione della nota (PDF, HTML, JSON)
-\subsubsection{UC 18: Esportazione della nota (PDF, HTML, JSON)}
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{Errore_formato_file.png}
+    \caption{UC39.1 – Visualizzazione errore formato file}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente seleziona un file con estensione diversa da .md o un file corrotto;
+        \item Il sistema rileva l'incompatibilità o il danneggiamento del file;
+        \item Il sistema mostra un messaggio di errore all'utente.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: L'utente ha avviato la procedura di upload.
+    \item \textbf{Postcondizioni}: Il sistema non carica il file e rimane nello stato precedente.
+    \item \textbf{Trigger}: L'utente tenta di caricare un file non supportato o corrotto.
+\end{itemize}
+
+% UC40 - Esportazione della nota (PDF, HTML, JSON)
+\subsubsection{UC 40: Esportazione della nota (PDF, HTML, JSON)}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{esportazione_nota.png}
-    \caption{UC18 – Esportazione della nota}
+    \caption{UC40 – Esportazione della nota}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
     \item \textbf{Scenario Principale}: 
     \begin{enumerate}
-        \item L'utente seleziona la funzione di esportazione.
-        \item L'utente sceglie il formato desiderato (PDF, HTML o JSON).
+        \item L'utente seleziona la funzione di esportazione;
+        \item L'utente sceglie il formato desiderato (PDF, HTML o JSON);
         \item Il sistema converte il contenuto Markdown nel formato scelto e avvia il download.
     \end{enumerate}
-    \item \textbf{Precondizioni}: Il sistema è in grado di eseguire la conversione del formato.
-    \item \textbf{Postcondizioni}: L'utente ottiene una copia del documento nel formato non-Markdown selezionato.
-    \item \textbf{Trigger}: L'utente desidera esportare il documento compilato in un formato idoneo alla distribuzione.
+    \item \textbf{Precondizioni}: L'editor contiene del testo.
+    \item \textbf{Postcondizioni}: L'utente ottiene il documento nel formato non-Markdown selezionato.
+    \item \textbf{Trigger}: L'utente desidera esportare il documento per la distribuzione.
 \end{itemize}
 
-% UC19 - Gestione Persistenza su Database remoto
-\subsubsection{UC 19: (Opzionale) Gestione Persistenza su Database remoto}
+% UC40.1 - Visualizzazione errore esportazione
+\paragraph{UC 40.1: Visualizzazione errore esportazione}\mbox{}\
 
-% use case diagram riassuntivo per la persistenza
+% use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{gestione_persistenza.png}
-    \caption{UC19 – Gestione Persistenza su Database remoto}
+    \includegraphics[width=0.6\textwidth]{Errore_esportazione.png}
+    \caption{UC40.1 – Visualizzazione errore esportazione}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Attore Secondario}: Database (Sistema esterno)
-    \item \textbf{Descrizione}: Il sistema permette all'utente autenticato di gestire le proprie note su uno spazio di archiviazione remoto, garantendo la disponibilità dei dati su diversi dispositivi.
-    \item \textbf{Precondizioni}: L'utente deve aver effettuato l'accesso (Login) al sistema.
-    \item \textbf{Postcondizioni}: I cambiamenti effettuati (salvataggio, caricamento o collegamento) sono sincronizzati con il database.
-    \item \textbf{Trigger}: L'utente vuole gestire i propri file sfruttando l'archiviazione cloud del sistema.
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente richiede l'esportazione in un formato specifico;
+        \item Il sistema fallisce la procedura di conversione o riscontra problemi di scrittura file;
+        \item Il sistema mostra un messaggio di errore informando l'utente del fallimento.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: L'utente ha richiesto l'esportazione.
+    \item \textbf{Postcondizioni}: L'utente non riceve il file e viene avvisato del problema.
+    \item \textbf{Trigger}: Errore interno del sistema durante la fase di conversione.
 \end{itemize}
 
-% UC19.1 - Salvataggio nota su database
-\paragraph{UC 19.1: Salvataggio nota su database}
+% UC41 - Salvataggio nota su database
+\subsubsection{UC 41: (Opzionale) Salvataggio nota su database}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{Salvataggio_nota_database.png}
+    \caption{UC41 – Salvataggio nota su database}
+\end{figure}
+
 \begin{itemize}
-    \item \textbf{Scenario Principale}: L'utente attiva il comando di salvataggio remoto; il sistema invia il contenuto dell'editor al database associandolo al profilo dell'utente.
-    \item \textbf{Trigger}: L'utente attiva il comando per sincronizzare la nota corrente sul server remoto.
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: Database
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente attiva il comando di salvataggio remoto;
+        \item Il sistema invia il contenuto dell'editor al database associandolo al profilo dell'utente.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: L'utente è autenticato e connesso.
+    \item \textbf{Postcondizioni}: La nota viene salvata correttamente sul server remoto.
+    \item \textbf{Trigger}: L'utente vuole sincronizzare la nota corrente sul cloud.
 \end{itemize}
 
-% UC19.2 - Caricamento nota da database
-\paragraph{UC 19.2: Caricamento nota da database}
+% UC41.1 - Visualizzazione errore sincronizzazione Database
+\paragraph{UC 41.1: Visualizzazione errore sincronizzazione Database}\mbox{}\
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{Errore_sincronizzazione_database_salvataggio.png}
+    \caption{UC41.1 – Visualizzazione errore sincronizzazione Database}
+\end{figure}
+
 \begin{itemize}
-    \item \textbf{Scenario Principale}: L'utente richiede la lista delle note salvate; il sistema recupera i metadati dal database e, dopo la selezione, scarica il testo nell'editor.
-    \item \textbf{Trigger}: L'utente decide di aprire una nota precedentemente salvata nel proprio profilo cloud.
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente tenta di salvare la nota sul database;
+        \item Il sistema rileva un errore di connessione o un'indisponibilità del database;
+        \item Il sistema mostra un messaggio di errore di sincronizzazione.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: Richiesta di salvataggio in corso.
+    \item \textbf{Postcondizioni}: La nota non viene salvata e l'utente viene notificato del problema.
+    \item \textbf{Trigger}: Fallimento della comunicazione con il server remoto durante il salvataggio.
 \end{itemize}
 
-% UC19.3 - Creazione collegamento tra note nel database
-\paragraph{UC 19.3: Creazione collegamento tra note nel database}
+% UC42 - Caricamento nota da database
+\subsubsection{UC 42: (Opzionale) Caricamento nota da database}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{Caricamento_nota_database.png}
+    \caption{UC42 – Caricamento nota da database}
+\end{figure}
+
 \begin{itemize}
-    \item \textbf{Scenario Principale}: L'utente inserisce un riferimento (ID o Link) a una nota già presente nel database per creare una connessione logica tra i documenti.
-    \item \textbf{Trigger}: L'utente vuole collegare la nota corrente a un'altra nota nel database creando un link bidirezionale.
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: Database
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente richiede la lista delle note salvate;
+        \item Il sistema recupera i dati e, dopo la selezione, scarica il testo nell'editor.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: L'utente è autenticato e sono presenti note sul database.
+    \item \textbf{Postcondizioni}: La nota remota viene caricata nell'editor.
+    \item \textbf{Trigger}: L'utente vuole aprire un file salvato nel proprio profilo cloud.
+\end{itemize}
+
+% UC42.1 - Visualizzazione errore sincronizzazione Database
+\paragraph{UC 42.1: Visualizzazione errore sincronizzazione Database}\mbox{}\
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{Errore_sincronizzazione_database_caricamento.png}
+    \caption{UC42.1 – Visualizzazione errore sincronizzazione Database}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente tenta di caricare una nota dal database;
+        \item Il sistema fallisce il recupero dei dati per problemi di rete o autenticazione scaduta;
+        \item Il sistema mostra un messaggio di errore di sincronizzazione.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: Richiesta di caricamento in corso.
+    \item \textbf{Postcondizioni}: L'editor rimane invariato e l'utente viene notificato.
+    \item \textbf{Trigger}: Fallimento della comunicazione con il server durante il caricamento.
+\end{itemize}
+
+% UC43 - Creazione collegamento tra note nel database
+\subsubsection{UC 43: (Opzionale) Creazione collegamento tra note nel database}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{Collegamento_note_database.png}
+    \caption{UC43 – Creazione collegamento tra note nel database}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: Database
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente inserisce un riferimento a una nota esistente nel database;
+        \item Il sistema crea una connessione logica tra i documenti nel database.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: L'utente è autenticato e le note sono presenti sul database.
+    \item \textbf{Postcondizioni}: Viene creato un collegamento bidirezionale tra le note.
+    \item \textbf{Trigger}: L'utente vuole connettere logicamente due documenti remoti.
+\end{itemize}
+
+% UC43.1 - Visualizzazione errore sincronizzazione Database
+\paragraph{UC 43.1: Visualizzazione errore sincronizzazione Database}\mbox{}\
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{Errore_sincronizzazione_database_collegamento.png}
+    \caption{UC43.1 – Visualizzazione errore sincronizzazione Database}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Scenario Principale}: 
+    \begin{enumerate}
+        \item L'utente tenta di collegare due note;
+        \item Il sistema non riesce a scrivere il nuovo collegamento sul database;
+        \item Il sistema mostra un messaggio di errore di sincronizzazione.
+    \end{enumerate}
+    \item \textbf{Precondizioni}: Procedura di collegamento avviata.
+    \item \textbf{Postcondizioni}: Il collegamento non viene creato.
+    \item \textbf{Trigger}: Problemi di integrità del database o di rete durante il collegamento.
 \end{itemize}
