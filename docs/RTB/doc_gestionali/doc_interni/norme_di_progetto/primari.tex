@@ -1,0 +1,129 @@
+% ================================================================
+% PRIMARI
+% ================================================================
+\section{Processi Primari}
+
+\subsection{Processo Di Fornitura}
+\label{sec:fornitura}
+
+\subsubsection{Descrizione}
+
+Il processo di fornitura regola le attività con cui \textit{Synergo Unit} si pone
+nella posizione di fornitore nei confronti del committente (Prof.\ Vardanega) e del
+mentore/cliente (Zucchetti S.p.A.). Il Regolamento del Progetto Didattico stabilisce
+le seguenti distinzioni di ruolo\textsubscript{G}:
+
+\begin{itemize}
+  \item il \textbf{proponente} è \textit{cliente} rispetto alle esigenze di prodotto
+        e \textit{mentore} rispetto alle scelte di sviluppo;
+  \item il \textbf{docente} è \textit{committente} di tutte le forniture;
+  \item l'interazione fornitore-committente concerne vincoli contrattuali
+        (scadenze, costi) e questioni regolamentari.
+\end{itemize}
+
+Le attività di valutazione dei capitolati\textsubscript{G}, selezione e candidatura sono state
+completate nella fase CC. Nella fase RTB il processo regola le comunicazioni
+formali con i referenti esterni, la produzione della documentazione richiesta
+per le revisioni di avanzamento e la rendicontazione periodica al committente.
+
+\subsubsection{Attività}
+
+\paragraph{Valutazione Dei Capitolati}
+Il gruppo ha analizzato i capitolati disponibili producendo il documento
+\href{https://synergo-unit-unipd.github.io/Documentary-Repo/docs/CC/doc_gestionali/doc_esterni/valutazione_dei_capitolati/valutazione_dei_capitolati.pdf}
+     {\underline{Valutazione Dei Capitolati}},
+che illustra i criteri di confronto, i vantaggi e gli svantaggi di ciascun
+capitolato, includendo il resoconto degli incontri esplorativi con i proponenti,
+e motiva la scelta finale.
+
+\paragraph{Dichiarazione Degli Impegni\textsubscript{G}}
+A seguito della selezione del capitolato, il gruppo ha redatto la
+\href{https://synergo-unit-unipd.github.io/Documentary-Repo/docs/CC/doc_gestionali/doc_esterni/dichiarazione_degli_impegni/dichiarazione_degli_impegni.pdf}
+     {\underline{Dichiarazione Degli Impegni}},
+che specifica:
+
+\begin{itemize}
+  \item scadenza ultima di consegna prevista;
+  \item preventivo dei costi\textsubscript{G} finali calcolato secondo il
+        regolamento (costo minimo ammesso: 12.000\,€ per gruppi di 7,
+        proporzionalmente ridotto per gruppi di 6);
+  \item totale delle ore produttive assegnate a persona, strettamente compreso
+        nell'intervallo 80\,(min)~--~95\,(max) ore per membro;
+  \item distribuzione delle ore per ruolo (non per persona) secondo i costi orari
+        ufficiali riportati nella Sezione~\ref{sec:ruoli};
+  \item rischi attesi e strategie di mitigazione;
+  \item impegni formali assunti verso il committente.
+\end{itemize}
+
+Il costo accettato all'aggiudicazione costituisce il limite superiore invalicabile
+per l'intero svolgimento del progetto.
+
+\paragraph{Comunicazioni Esterne}
+Le comunicazioni ufficiali con aziende e docenti avvengono tramite l'indirizzo email
+istituzionale del gruppo. Tale indirizzo è configurato con inoltro automatico verso
+gli indirizzi personali dei membri delegati; le risposte vengono inviate mantenendo
+come mittente l'indirizzo ufficiale, garantendo continuità e tracciabilità delle
+comunicazioni formali. 
+
+Le candidature alle revisioni di avanzamento avvengono per
+posta elettronica, senza invio di allegati, esponendo il puntatore alla sezione del
+repository\textsubscript{G} dedicata alla revisione\textsubscript{G}.
+
+\paragraph{Incontri Con Il Proponente}
+Ogni incontro con il proponente viene pianificato con congruo
+anticipo, prevede la predisposizione di un ordine del giorno e si conclude con la
+redazione e approvazione di un verbale esterno secondo le norme descritte nella
+Sezione~\ref{sec:documentazione}.
+
+\paragraph{Diario Di Bordo\textsubscript{G}}
+Il gruppo è tenuto a relazionare al committente negli eventi "Diario di Bordo"
+secondo il calendario stabilito, esponendo il rapporto tra costi sostenuti e
+avanzamento conseguito e comunicando le difficoltà riscontrate.
+
+\subsection{Processo Di Sviluppo}
+\label{sec:sviluppo}
+
+\subsubsection{Descrizione}
+
+Il processo di sviluppo è attivo dalla baseline RTB e regola le attività di
+analisi dei requisiti e progettazione del sistema. Le attività di codifica
+saranno attivate nella fase PB\textsubscript{G}.
+
+\subsubsection{Modello Di Sviluppo}
+
+Il gruppo adotta il framework\textsubscript{G} \textbf{Scrum} con sprint\textsubscript{G} della durata di
+\textbf{una settimana}, con cadenza da martedì a martedì. I ruoli vengono ruotati
+a ogni sprint secondo le regole descritte nella Sezione~\ref{sec:ruoli}.
+
+La pianificazione dettagliata degli sprint, il piano di rotazione dei ruoli e le
+milestone\textsubscript{G} sono definiti nel documento \link{https://synergo-unit-unipd.github.io/Documentary-Repo/docs/RTB/doc_gestionali/doc_esterni/piano_di_progetto/piano_di_progetto.pdf}{Piano di Progetto\textsubscript{G}}.
+
+\subsubsection{Analisi Dei Requisiti}
+
+L'\link{https://synergo-unit-unipd.github.io/Documentary-Repo/docs/RTB/doc_tecnici/doc_esterni/analisi_dei_requisiti/analisi_dei_requisiti.pdf}{Analisi dei Requisiti} è il documento tecnico principale della fase RTB. I casi
+d'uso sono organizzati in tre macroaree funzionali:
+
+\begin{itemize}
+  \item \textbf{Macroarea 1 — Gestione Editor e Markdown\textsubscript{G}}: scrittura, formattazione\textsubscript{G},
+        rendering.
+  \item \textbf{Macroarea 2 — Interazione AI (LLM\textsubscript{G})}: riassunto, riscrittura,
+        traduzione\textsubscript{G}, i "Sei cappelli per pensare\textsubscript{G}", distant writing\textsubscript{G}.
+  \item \textbf{Macroarea 3 — Gestione I/O e Persistenza}: salvataggio, apertura,
+        esportazione note.
+\end{itemize}
+
+Per ogni macroarea i requisiti opzionali sono raggruppati in una sezione dedicata.
+
+\paragraph{Convenzioni Dei Casi D'uso\textsubscript{G}}
+
+I casi d'uso adottano le seguenti convenzioni:
+
+\begin{itemize}
+  \item \textbf{Denominazione}: formato \texttt{UC X: Testo Del Titolo}, dove
+        \texttt{X} è il numero progressivo.
+  \item \textbf{Ordine dei diagrammi}: i casi d'uso, nel foglio condiviso Lucidspark\textsubscript{G}, sono ordinati numericamente
+        dall'alto verso il basso; le sottoclassi da sinistra verso destra.
+  \item \textbf{Strumento}: i diagrammi UML\textsubscript{G} sono gestiti tramite
+        \textbf{LucidSpark} su un foglio condiviso, mantenuto aggiornato
+        in modo incrementale.
+\end{itemize}

@@ -8,6 +8,7 @@ AWS
 Backlog
 Baseline
 Branch
+Brainstorming
 Burndown Chart
 Candidatura
 Casi d'uso
@@ -22,6 +23,7 @@ Compito
 Colli di bottiglia
 Ciclo Di Vita Documentale
 Daily Stand-up
+Diario di Bordo
 Decision Tree
 Definition of Done
 DoD
@@ -31,6 +33,7 @@ Discord
 Distant Writing
 File System
 Formattazione
+Foglio di Calcolo
 Framework
 GitHub Pages
 GitHub Project
@@ -77,6 +80,8 @@ Progettista
 Programmatore
 Prompt
 Pull Request
+PB
+Product Baseline
 Redattore
 Refactoring
 Render
