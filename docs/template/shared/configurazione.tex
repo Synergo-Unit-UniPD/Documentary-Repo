@@ -33,6 +33,25 @@
 	urlcolor=primarycolor
 }
 
+% === LINK INTERNI SOTTOLINEATI E COLORATI ===
+\usepackage{soul}
+
+\makeatletter
+
+% Patch per \hyperref
+\let\oldhyperref\hyperref
+\renewcommand{\hyperref}[2]{%
+  \textcolor{primarycolor}{\oldhyperref[#1]{\ul{#2}}}%
+}
+
+% Patch per \hyperlink 
+\let\oldhyperlink\hyperlink
+\renewcommand{\hyperlink}[2]{%
+  \textcolor{primarycolor}{\oldhyperlink{#1}{\ul{#2}}}%
+}
+
+\makeatother
+
 % === IMPOSTAZIONI PARAGRAFO ===
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.5em}
