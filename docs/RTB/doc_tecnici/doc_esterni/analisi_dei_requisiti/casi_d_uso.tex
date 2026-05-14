@@ -249,7 +249,7 @@
 
 
 % UC8 - Applicazione grassetto a testo selezionato
-\paragraph{UC 8: Applicazione grassetto a testo selezionato}\mbox{}\
+\subsubsection{UC 8: Applicazione grassetto a testo selezionato}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
@@ -337,7 +337,7 @@
     \end{itemize}
 
 % UC12 - Applicazione corsivo a testo selezionato
-\paragraph{UC 12: Applicazione corsivo a testo selezionato}\mbox{}\
+\subsubsection{UC 12: Applicazione corsivo a testo selezionato}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
@@ -381,7 +381,7 @@
 \end{itemize}
 
 % UC14 - Rimozione corsivo da testo selezionato
-\paragraph{UC 14: Rimozione corsivo da testo selezionato}\mbox{}\
+\subsubsection{UC 14: Rimozione corsivo da testo selezionato}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
@@ -402,32 +402,36 @@
     \item \textbf{Trigger}: L'utente desidera rimuovere il formato corsivo da testo esistente.
 \end{itemize}
 
-% UC11 -  Attivazione sottolineato
-\subsubsection{UC 11: Attivazione sottolineato}
+% UC15 -  Attivazione sottolineato durante digitazione
+\subsubsection{UC 15: Attivazione sottolineato durante digitazione}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{attivazione_sottolineato.png}
-    \caption{UC11 – Attivazione sottolineato}
+    \caption{UC15 – Attivazione sottolineato durante digitazione}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente attiva lo stile sottolineato nella scrittura del testo.
     \item \textbf{Precondizioni}: L'editor è attivo.
-    \item \textbf{Postcondizioni}: Il testo inserito sarà in sottolineato.
-    \item \textbf{Trigger}: L'utente vuole applicare lo stile sottolineato al testo successivo.
-\end{itemize}
+    \item \textbf{Scenario Principale}:
+        \begin{enumerate}
+        \item L'utente attiva il comando "Sottolineato".
+        \item Il sistema abilita la modalità di scrittura in sottolineato .
+        \end{enumerate}
+    \item \textbf{Postcondizioni}: Il testo inserito successivamente viene formattato in sottolineato.
+    \item \textbf{Trigger}: L'utente desidera scrivere nuovo testo in sottolineato.
+    \end{itemize}
 
-% UC11.1 - Attivazione sottolineato su testo selezionato
-\paragraph{UC 11.1: Attivazione sottolineato su testo selezionato}\mbox{}\
+% UC16 - Attivazione sottolineato su testo selezionato
+\subsubsection{UC 16: Attivazione sottolineato su testo selezionato}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{attivazione_sottolineato_testo_selezionato.png}
-    \caption{UC11.1 – Attivazione sottolineato su testo selezionato}
+    \caption{UC16 – Attivazione sottolineato su testo selezionato}
 \end{figure}
 
 \begin{itemize}
