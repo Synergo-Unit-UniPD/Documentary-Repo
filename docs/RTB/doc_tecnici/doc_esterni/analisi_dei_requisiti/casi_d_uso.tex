@@ -992,48 +992,59 @@
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente seleziona la modalità di visualizzazione "Solo Editor".
-    \item \textbf{Precondizioni}: L'interfaccia è attiva.
-    \item \textbf{Postcondizioni}: A schermo viene mostrata esclusivamente l'area di scrittura del codice sorgente.
-    \item \textbf{Trigger}: L'utente vuole massimizzare lo spazio dedicato alla digitazione.
+    \item \textbf{Precondizioni}: L'interfaccia dell'applicazione è attiva.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva la modalità "Solo Editor".
+        \item Il sistema mostra esclusivamente l'area di modifica del documento.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'interfaccia mostra unicamente l'editor testuale.
+    \item \textbf{Trigger}: L'utente desidera concentrarsi esclusivamente sulla scrittura del documento.
 \end{itemize}
 
-% UC 38 - Visualizzazione esclusiva Render
-\subsubsection{UC 38: Visualizzazione esclusiva Render}
+% UC 41 - Visualizzazione esclusiva Render
+\subsubsection{UC 41: Visualizzazione esclusiva Render}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{visualizzazione_render.png}
-    \caption{UC 38 – Visualizzazione esclusiva Render}
+    \caption{UC 41 – Visualizzazione esclusiva Render}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente seleziona la modalità di visualizzazione "Solo Render".
-    \item \textbf{Precondizioni}: L'interfaccia è attiva.
-    \item \textbf{Postcondizioni}: A schermo viene mostrata esclusivamente l'anteprima formattata del documento.
-    \item \textbf{Trigger}: L'utente vuole leggere il documento finale senza visualizzare il Markdown.
+    \item \textbf{Precondizioni}: L'interfaccia dell'applicazione è attiva.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva la modalità "Solo Render".
+        \item Il sistema mostra esclusivamente l'anteprima formattata del documento.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'interfaccia mostra unicamente l'anteprima del documento renderizzato.
+    \item \textbf{Trigger}: L'utente desidera visualizzare il risultato finale del documento.
 \end{itemize}
 
-% UC 39 - Visualizzazione Split View
-\subsubsection{UC 39: Visualizzazione Split View}
+% UC 42 - Visualizzazione Split View
+\subsubsection{UC 42: Visualizzazione Split View}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{visualizzazione_split_view.png}
-    \caption{UC 39 – Visualizzazione Split View}
+    \caption{UC 42 – Visualizzazione Split View}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente seleziona la modalità "Split View".
-    \item \textbf{Precondizioni}: L'interfaccia è attiva.
-    \item \textbf{Postcondizioni}: L'interfaccia mostra contemporaneamente l'editor e l'anteprima formattata affiancati.
-    \item \textbf{Trigger}: L'utente vuole verificare il rendering in tempo reale mentre digita.
+    \item \textbf{Precondizioni}: L'interfaccia dell'applicazione è attiva.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva la modalità "Split View".
+        \item Il sistema mostra contemporaneamente l'editor e l'anteprima del documento.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'interfaccia mostra simultaneamente l'editor testuale e l'anteprima renderizzata.
+    \item \textbf{Trigger}: L'utente desidera visualizzare il rendering del documento durante la modifica del contenuto.
 \end{itemize}
-
 
 % --------------------------------------------------------------------------
 % 2. Macroarea 2: Interazione AI (LLM)
