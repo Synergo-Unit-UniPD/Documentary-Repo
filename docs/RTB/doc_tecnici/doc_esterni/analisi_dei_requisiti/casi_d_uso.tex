@@ -841,122 +841,153 @@
 
 %---------------ELENCHI----------------
 
-% UC 32 - Inserimento elenco
-\subsubsection{UC 32: Inserimento elenco}
+% UC 34 - Inserimento elenco
+\subsubsection{UC 34: Inserimento elenco}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{inserimento_elenco.png}
-    \caption{UC 32 – Inserimento elenco}
+    \caption{UC 34 – Inserimento elenco}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente attiva la funzione elenco e inizia a digitare il primo punto.
-    \item \textbf{Precondizioni}: L'editor è attivo e nessuna porzione di testo è selezionata.
-    \item \textbf{Postcondizioni}: Viene creato un nuovo elenco nel documento in cui l'utente digita.
-    \item \textbf{Trigger}: L'utente vuole raggruppare nuove informazioni in forma di lista.
+    \item \textbf{Precondizioni}: L'editor è attivo.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando "Elenco".
+        \item Il sistema abilita la modalità elenco.
+        \item \item L'utente seleziona il tipo di elenco desiderato (puntato o numerato).
+        \item L'utente inserisce il contenuto dell'elenco.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Il testo inserito successivamente viene formattato come elenco del tipo selezionato.
+    \item \textbf{Trigger}: L'utente desidera creare un elenco nel documento.
 \end{itemize}
 
-% UC 33 - Modifica elenco
-\subsubsection{UC 33: Modifica elenco}
+% UC 35 - Modifica elenco
+\subsubsection{UC 35: Modifica elenco}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{modifica_elenco.png}
-    \caption{UC 33 – Modifica elenco}
+    \caption{UC 35 – Modifica elenco}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente modifica la struttura dell'elenco (es. trasformandolo da puntato a numerato, o modificando i rientri).
-    \item \textbf{Precondizioni}: Un elenco è già presente e il cursore è posizionato su di esso.
-    \item \textbf{Postcondizioni}: La formattazione o il tipo di elenco viene aggiornato.
-    \item \textbf{Trigger}: L'utente vuole cambiare la tipologia della lista esistente.
+    \item \textbf{Precondizioni}: È presente almeno un elenco nel documento.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente seleziona un elenco esistente.
+        \item L'utente modifica le proprietà dell'elenco.
+        \item Il sistema aggiorna l'elenco.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'elenco presenta le nuove proprietà impostate.
+    \item \textbf{Trigger}: L'utente desidera modificare un elenco esistente.
 \end{itemize}
 
-% UC 34 - Disattivazione elenco
-\subsubsection{UC 34: Disattivazione elenco}
+% UC 36 - Disattivazione elenco
+\subsubsection{UC 36: Disattivazione elenco}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{disattivazione_elenco.png}
-    \caption{UC 34 – Disattivazione elenco}
+    \caption{UC 36 – Disattivazione elenco}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente preme due volte "Invio" alla fine di un punto per interrompere la formattazione a elenco.
-    \item \textbf{Precondizioni}: Il cursore si trova su un punto elenco vuoto.
-    \item \textbf{Postcondizioni}: Il comando viene disattivato e il cursore si posiziona su un nuovo paragrafo normale.
-    \item \textbf{Trigger}: L'utente ha finito di compilare la lista e vuole riprendere a scrivere testo normale.
+    \item \textbf{Precondizioni}: La modalità elenco è attiva.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente disattiva il comando "Elenco".
+        \item Il sistema disabilita la modalità elenco.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Il testo inserito successivamente non verrà formattato come elenco.
+    \item \textbf{Trigger}: L'utente desidera interrompere la modalità elenco.
 \end{itemize}
 
-% UC 34.1 - Disattivazione elenco su testo selezionato
-\paragraph{UC 34.1: Disattivazione elenco su testo selezionato}\mbox{}\
+% UC 37 - Rimozione formattazione elenco da testo selezionato
+\subsubsection{UC 37: Rimozione formattazione elenco da testo selezionato}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{disattivazione_elenco_selezionato.png}
-    \caption{UC 34.1 – Disattivazione elenco su testo selezionato}
+    \caption{UC 37 – Rimozione formattazione elenco da testo selezionato}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente seleziona l'intero elenco (o parte di esso) e disattiva il comando lista.
-    \item \textbf{Precondizioni}: Un elenco è interamente o parzialmente selezionato.
-    \item \textbf{Postcondizioni}: Tutti i punti dell'elenco selezionato diventano paragrafi normali.
-    \item \textbf{Trigger}: L'utente vuole convertire i punti della lista in testo standard.
+    \item \textbf{Precondizioni}: Una porzione di elenco è selezionata.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente disattiva il comando "Elenco".
+        \item Il sistema rimuove la formattazione elenco dal testo selezionato.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Il testo selezionato non presenta più la formattazione elenco.
+    \item \textbf{Trigger}: L'utente desidera rimuovere la formattazione elenco da testo esistente.
 \end{itemize}
 
-% UC 35 - Azione di Undo
-\subsubsection{UC 35: Azione di Undo}
+%---------------GESTIONE MODIFICHE------------------
+
+% UC 38 - Azione di Undo
+\subsubsection{UC 38: Azione di Undo}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{azione_undo.png}
-    \caption{UC 35 – Azione di Undo}
+    \caption{UC 38 – Azione di Undo}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente annulla l'ultima modifica apportata al documento.
-    \item \textbf{Precondizioni}: Esiste almeno un'azione annullabile nella cronologia.
-    \item \textbf{Postcondizioni}: Il documento torna allo stato precedente all'ultima modifica.
-    \item \textbf{Trigger}: L'utente si accorge di aver commesso un errore e attiva "Undo".
+    \item \textbf{Precondizioni}: Esiste almeno una modifica annullabile.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando "Undo".
+        \item Il sistema annulla l'ultima modifica effettuata.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Il documento viene ripristinato allo stato precedente.
+    \item \textbf{Trigger}: L'utente desidera annullare un'operazione eseguita.
 \end{itemize}
 
-% UC 36 - Azione di Redo
-\subsubsection{UC 36: Azione di Redo}
+% UC 39 - Azione di Redo
+\subsubsection{UC 39: Azione di Redo}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{azione_redo.png}
-    \caption{UC 36 – Azione di Redo}
+    \caption{UC 39 – Azione di Redo}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente ripristina l'ultima modifica annullata.
-    \item \textbf{Precondizioni}: È stata eseguita almeno un'operazione di "Undo" ripristinabile.
+    \item \textbf{Precondizioni}: È stata precedentemente eseguita almeno un'operazione di Undo.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando "Redo".
+        \item Il sistema ripristina l'ultima modifica annullata.
+    \end{enumerate}
     \item \textbf{Postcondizioni}: La modifica precedentemente annullata viene riapplicata.
-    \item \textbf{Trigger}: L'utente cambia idea e attiva "Redo" per ripristinare il testo.
+    \item \textbf{Trigger}: L'utente desidera ripristinare una modifica annullata.
 \end{itemize}
 
-% UC 37 - Visualizzazione esclusiva Editor
-\subsubsection{UC 37: Visualizzazione esclusiva Editor}
+%---------------GESTIONE VISUALIZZAZIONE----------------
+
+% UC 40 - Visualizzazione esclusiva Editor
+\subsubsection{UC 40: Visualizzazione esclusiva Editor}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{visualizzazione_editor.png}
-    \caption{UC 37 – Visualizzazione esclusiva Editor}
+    \caption{UC 40 – Visualizzazione esclusiva Editor}
 \end{figure}
 
 \begin{itemize}
