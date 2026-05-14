@@ -60,6 +60,11 @@
     \end{enumerate}
     \item \textbf{Postcondizioni}: La nota selezionata è rimossa dal sistema.
     \item \textbf{Trigger}: L'utente decide di rimuovere una nota non più necessaria.
+    \item \textbf{Estensioni}: 
+    \begin{itemize}
+        \item \hyperlink{uc2.2}{UC 2.2: Annullamento eliminazione}: punto di estensione: risposta negativa al dialogo di conferma.
+        \item \hyperlink{uc2.3}{UC 2.3: Visualizzazione errore eliminazione}: punto di estensione: errore tecnico durante l'esecuzione dell'eliminazione al passo 4.
+    \end{itemize}
 \end{itemize}
 
 % UC2.1 - Conferma eliminazione
@@ -82,11 +87,6 @@
     \end{enumerate}
     \item \textbf{Postcondizioni}: La richiesta di eliminazione è confermata e il sistema procede.
     \item \textbf{Trigger}: Il sistema richiede una conferma esplicita prima di un'operazione distruttiva.
-    \item \textbf{Estensioni}: 
-    \begin{itemize}
-        \item \hyperlink{uc2.2}{UC 2.2: Annullamento eliminazione}: punto di estensione: risposta negativa al dialogo di conferma.
-        \item \hyperlink{uc2.3}{UC 2.3: Visualizzazione errore eliminazione}: punto di estensione: errore tecnico durante l'esecuzione dell'eliminazione al passo 4 di \hyperlink{uc2}{UC 2: Eliminazione di una nota}.
-    \end{itemize}
 \end{itemize}
 
 % UC2.2 - Annullamento eliminazione
@@ -587,14 +587,14 @@
 
 %---------------CITAZIONE----------------
 
-% UC23 -  Attivazione citazione
-\subsubsection{UC 23: Attivazione citazione}
+% UC23 -  Attivazione formattazione citazione
+\subsubsection{UC 23: Attivazione formattazione citazione}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{attivazione_citazione.png}
-    \caption{UC23 – Attivazione citazione}
+    \caption{UC23 – Attivazione formattazione citazione}
 \end{figure}
 
 \begin{itemize}
@@ -603,20 +603,20 @@
     \item \textbf{Scenario Principale}:
         \begin{enumerate}
         \item L'utente attiva il comando "Citazione".
-        \item Il sistema abilita la modalità di inserimento in citazione.
+        \item Il sistema abilita la modalità di inserimento citazione.
         \end{enumerate}
-    \item \textbf{Postcondizioni}: Il testo inserito successivamente viene formattato in citazione.
-    \item \textbf{Trigger}: L'utente desidera scrivere nuovo testo in citazione.
+    \item \textbf{Postcondizioni}: Il testo inserito successivamente viene formattato come citazione.
+    \item \textbf{Trigger}: L'utente desidera scrivere nuovo testo come citazione.
 \end{itemize}
 
 % UC24 - Applicazione citazione al testo selezionato
-\subsubsection{UC 24: Applicazione citazione al testo selezionato}\mbox{}\
+\subsubsection{UC 24: Applicazione formattazione citazione al testo selezionato}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{applicazione_citazione.png}
-    \caption{UC24 – Applicazione citazione al testo selezionato}
+    \caption{UC24 – Applicazione formattazione citazione al testo selezionato}
 \end{figure}
 
 \begin{itemize}
@@ -628,7 +628,7 @@
         \item Il sistema applica la formattazione citazione al testo selezionato.
         \end{enumerate}
     \item \textbf{Postcondizioni}: La porzione di testo selezionata è convertita in blocco citazione.
-    \item \textbf{Trigger}: L'utente desidera applicare il formato citazione a testo esistente.
+    \item \textbf{Trigger}: L'utente desidera applicare la fomattazione citazione a testo esistente.
 \end{itemize}
 
 % UC25 -  Disattivazione citazione
@@ -643,37 +643,36 @@
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: La modalità di inserimento in citazione è attiva.
+    \item \textbf{Precondizioni}: La modalità di inserimento citazione è attiva.
     \item \textbf{Scenario Principale}:
         \begin{enumerate}
         \item L'utente disattiva il comando "Citazione".
-        \item Il sistema disabilita la modalità di inserimento in citazione.
+        \item Il sistema disabilita la modalità di inserimento citazione.
         \end{enumerate}
-    \item \textbf{Postcondizioni}: Il testo inserito successivamente non verrà formattato in citazione.
-    \item \textbf{Trigger}: L'utente desidera interrompere la scrittura in citazione.
+    \item \textbf{Postcondizioni}: Il testo inserito successivamente non verrà formattato come citazione.
+    \item \textbf{Trigger}: L'utente desidera interrompere la modalità citazione.
 \end{itemize}
 
-
-% UC26 - Rimozionee citazione dal testo selezionato
-\subsubsection{UC 26: Rimozione citazione dal testo selezionato}\mbox{}\
+% UC26 - Rimozione formattazione citazione dal testo selezionato
+\subsubsection{UC 26: Rimozione formattazione citazione dal testo selezionato}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{rimozione_citazione.png}
-    \caption{UC26 – Rimozione citazione dal testo selezionato}
+    \caption{UC26 – Rimozione formattazione citazione dal testo selezionato}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: L'editor è attivo ed una porzione di testo formattata in citazione è selezionata.
+    \item \textbf{Precondizioni}: L'editor è attivo ed una porzione di testo formattata come citazione è selezionata.
     \item \textbf{Scenario Principale}:
     \begin{enumerate}
         \item L'utente disattiva il comando "Citazione".
         \item Il sistema rimuove la formattazione citazione dal testo selezionato.
     \end{enumerate}
     \item \textbf{Postcondizioni}: La porzione di testo selezionata non presenta più la formattazione citazione.
-    \item \textbf{Trigger}: L'utente desidera rimuovere il formato citazione da testo esistente.
+    \item \textbf{Trigger}: L'utente desidera rimuovere la formattazione citazione da testo esistente.
 \end{itemize}
 
 %---------------TITOLO----------------
@@ -717,10 +716,10 @@
     \item \textbf{Scenario Principale}:
         \begin{enumerate}
         \item L'utente attiva il comando "Titolo".
-        \item Il sistema applica il formattazione titolo al testo selezionato.
+        \item Il sistema applica la formattazione titolo al testo selezionato.
         \end{enumerate}
     \item \textbf{Postcondizioni}: La porzione di testo selezionata presenta la formattazione titolo.
-    \item \textbf{Trigger}: L'utente desidera applicare il formattazione titolo a testo esistente.
+    \item \textbf{Trigger}: L'utente desidera applicare la formattazione titolo a testo esistente.
 \end{itemize}
 
 % UC 29 - Disattivazione titolo
