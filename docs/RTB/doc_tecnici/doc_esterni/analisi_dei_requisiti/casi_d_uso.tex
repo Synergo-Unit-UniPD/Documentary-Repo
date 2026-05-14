@@ -225,14 +225,14 @@
     \item \textbf{Trigger}: L'utente vuole inserire testo precedentemente copiato o tagliato.
 \end{itemize}
 
-% UC7 - Attivazione grassetto durante digitazione
-\subsubsection{UC 7: Attivazione grassetto durante digitazione}
+% UC7 - Attivazione grassetto 
+\subsubsection{UC 7: Attivazione grassetto}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{attivazione_grassetto.png}
-    \caption{UC7 – Attivazione grassetto durante digitazione}
+    \caption{UC7 – Attivazione grassetto }
 \end{figure}
 
 \begin{itemize}
@@ -270,14 +270,14 @@
     \item \textbf{Trigger}: L'utente desidera applicare il formato grassetto a testo esistente.
 \end{itemize}
 
-% UC9 -  Disattivazione grassetto durante digitazione
-\subsubsection{UC 9: Disattivazione grassetto durante digitazione}
+% UC9 -  Disattivazione grassetto 
+\subsubsection{UC 9: Disattivazione grassetto }
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{disattivazione_grassetto.png}
-    \caption{UC9 – Disattivazione grassetto durante digitazione}
+    \caption{UC9 – Disattivazione grassetto }
 \end{figure}
 
 \begin{itemize}
@@ -314,14 +314,14 @@
     \item \textbf{Trigger}: L'utente desidera rimuovere il formato grassetto da testo esistente.
 \end{itemize}
 
-% UC11 -  Attivazione corsivo durante digitazione
-\subsubsection{UC 11: Attivazione corsivo durante digitazione}
+% UC11 -  Attivazione corsivo 
+\subsubsection{UC 11: Attivazione corsivo }
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{attivazione_corsivo.png}
-    \caption{UC11 – Attivazione corsivo durante digitazione}
+    \caption{UC11 – Attivazione corsivo }
 \end{figure}
 
 \begin{itemize}
@@ -358,14 +358,14 @@
     \item \textbf{Trigger}: L'utente desidera applicare il formato corsivo a testo esistente.
 \end{itemize}
 
-% UC13 -  Disattivazione corsivo durante digitazione
-\subsubsection{UC 13: Disattivazione corsivo durante digitazione}
+% UC13 -  Disattivazione corsivo 
+\subsubsection{UC 13: Disattivazione corsivo }
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{disattivazione_corsivo.png}
-    \caption{UC13 – Disattivazione corsivo durante digitazione}
+    \caption{UC13 – Disattivazione corsivo }
 \end{figure}
 
 \begin{itemize}
@@ -402,14 +402,14 @@
     \item \textbf{Trigger}: L'utente desidera rimuovere il formato corsivo da testo esistente.
 \end{itemize}
 
-% UC15 -  Attivazione sottolineato durante digitazione
-\subsubsection{UC 15: Attivazione sottolineato durante digitazione}
+% UC15 -  Attivazione sottolineato 
+\subsubsection{UC 15: Attivazione sottolineato }
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{attivazione_sottolineato.png}
-    \caption{UC15 – Attivazione sottolineato durante digitazione}
+    \caption{UC15 – Attivazione sottolineato }
 \end{figure}
 
 \begin{itemize}
@@ -424,58 +424,70 @@
     \item \textbf{Trigger}: L'utente desidera scrivere nuovo testo in sottolineato.
     \end{itemize}
 
-% UC16 - Attivazione sottolineato su testo selezionato
-\subsubsection{UC 16: Attivazione sottolineato su testo selezionato}\mbox{}\
+% UC16 - Applicazione sottolineato a testo selezionato
+\subsubsection{UC 16: Applicazione sottolineato a testo selezionato}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{attivazione_sottolineato_testo_selezionato.png}
-    \caption{UC16 – Attivazione sottolineato su testo selezionato}
+    \caption{UC16 – Applicazione sottolineato a testo selezionato}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente seleziona del testo e applica lo stile sottolineato.
-    \item \textbf{Precondizioni}: L'editor è attivo e una porzione di testo è selezionata.
-    \item \textbf{Postcondizioni}: Il testo selezionato sarà in sottolineato.
-    \item \textbf{Trigger}: L'utente vuole applicare lo stile sottolineato al testo selezionato.
+    \item \textbf{Precondizioni}: L'editor è attivo ed una porzione di testo è selezionata.
+    \item \textbf{Scenario Principale}:
+        \begin{enumerate}
+        \item L'utente attiva il comando "Sottolineato".
+        \item Il sistema applica la formattazione sottolineato al testo selezionato.
+        \end{enumerate}
+    \item \textbf{Postcondizioni}: La porzione di testo selezionata presenta la formattazione sottolineato.
+    \item \textbf{Trigger}: L'utente desidera applicare il formato sottolineato a testo esistente.
 \end{itemize}
 
-% UC12 -  Disattivazione sottolineato
-\subsubsection{UC 12: Disattivazione sottolineato}
+% UC17 -  Disattivazione sottolineato 
+\subsubsection{UC 17: Disattivazione sottolineato}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{disattivazione_sottolineato.png}
-    \caption{UC12 – Disattivazione sottolineato}
+    \caption{UC17 – Disattivazione sottolineato}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente disattiva lo stile sottolineato nella scrittura del testo.
-    \item \textbf{Precondizioni}: L'editor è attivo.
-    \item \textbf{Postcondizioni}: Il testo inserito non sarà in sottolineato.
-    \item \textbf{Trigger}: L'utente vuole disattivare lo stile sottolineato.
+    \item \textbf{Precondizioni}: La modalità di scrittura in sottolineato è attiva.
+    \item \textbf{Scenario Principale}:
+        \begin{enumerate}
+        \item L'utente disattiva il comando "Sottolineato".
+        \item Il sistema disabilita la modalità di scrittura in sottolineato.
+        \end{enumerate}
+    \item \textbf{Postcondizioni}: Il testo inserito successivamente non verrà formattato in sottolineato.
+    \item \textbf{Trigger}: L'utente desidera interrompere la scrittura in sottolineato.
 \end{itemize}
 
-% UC12.1 - Disattivazione sottolineato su testo selezionato
-\paragraph{UC 12.1: Disattivazione sottolineato su testo selezionato}\mbox{}\
+% UC18 - Rimozione sottolineato da testo selezionato
+\subsubsection{UC 18: Rimozione sottolineato da testo selezionato}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{disattivazione_sottolineato_testo_selezionato.png}
-    \caption{UC12.1 – Disattivazione sottolineato su testo selezionato}
+    \caption{UC18 – Rimozione sottolineato da testo selezionato}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente seleziona del testo e disattiva lo stile sottolineato.
-    \item \textbf{Precondizioni}: L'editor è attivo e una porzione di testo è selezionata.
-    \item \textbf{Postcondizioni}: Il testo selezionato non sarà in sottolineato.
-    \item \textbf{Trigger}: L'utente vuole disattivare lo stile sottolineato.
+    \item \textbf{Precondizioni}: L'editor è attivo ed una porzione di testo formattata in sottolineato è selezionata.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente disattiva il comando "Sottolineato".
+        \item Il sistema rimuove la formattazione sottolineato dal testo selezionato.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La porzione di testo selezionata non presenta più la formattazione sottolineato.
+    \item \textbf{Trigger}: L'utente desidera rimuovere il formato sottolineato da testo esistente.
 \end{itemize}
 
 % UC13 -  Attivazione barrato
