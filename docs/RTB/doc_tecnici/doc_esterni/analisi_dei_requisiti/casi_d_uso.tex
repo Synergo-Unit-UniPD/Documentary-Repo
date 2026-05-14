@@ -588,77 +588,96 @@
 
 %---------------CITAZIONE----------------
 
-% UC15 -  Attivazione citazione
-\subsubsection{UC 15: Attivazione citazione}
+% UC23 -  Attivazione citazione
+\subsubsection{UC 23: Attivazione citazione}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{attivazione_citazione.png}
-    \caption{UC15 – Attivazione citazione}
+    \caption{UC23 – Attivazione citazione}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente attiva lo stile citazione nella scrittura del testo.
     \item \textbf{Precondizioni}: L'editor è attivo.
-    \item \textbf{Postcondizioni}: Il testo inserito sarà in citazione.
-    \item \textbf{Trigger}: L'utente vuole applicare lo stile citazione al testo successivo.
+    \item \textbf{Scenario Principale}:
+        \begin{enumerate}
+        \item L'utente attiva il comando "Citazione".
+        \item Il sistema abilita la modalità di scrittura in citazione.
+        \end{enumerate}
+    \item \textbf{Postcondizioni}: Il testo inserito successivamente viene formattato in citazione.
+    \item \textbf{Trigger}: L'utente desidera scrivere nuovo testo in citazione.
 \end{itemize}
 
-% UC15.1 - Attivazione citazione su testo selezionato
-\paragraph{UC 15.1: Attivazione citazione su testo selezionato}\mbox{}\
+% UC24 - Applicazione citazione a testo selezionato
+\subsubsection{UC 24: Applicazione citazione a testo selezionato}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{attivazione_citazione_testo_selezionato.png}
-    \caption{UC15.1 – Attivazione citazione su testo selezionato}
+    \caption{UC24 – Applicazione citazione a testo selezionato}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente seleziona del testo e applica lo stile citazione.
-    \item \textbf{Precondizioni}: L'editor è attivo e una porzione di testo è selezionata.
-    \item \textbf{Postcondizioni}: Il testo selezionato sarà in citazione.
-    \item \textbf{Trigger}: L'utente vuole applicare lo stile citazione al testo selezionato.
+    \item \textbf{Precondizioni}: L'editor è attivo ed una porzione di testo è selezionata.
+    \item \textbf{Scenario Principale}:
+        \begin{enumerate}
+        \item L'utente attiva il comando "Citazione".
+        \item Il sistema applica la formattazione citazione al testo selezionato.
+        \end{enumerate}
+    \item \textbf{Postcondizioni}: La porzione di testo selezionata presenta la formattazione citazione.
+    \item \textbf{Trigger}: L'utente desidera applicare il formato citazione a testo esistente.
 \end{itemize}
 
-% UC16 -  Disattivazione citazione
-\subsubsection{UC 16: Disattivazione citazione}
+% UC25 -  Disattivazione citazione
+\subsubsection{UC 25: Disattivazione citazione}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{disattivazione_citazione.png}
-    \caption{UC16 – Disattivazione citazione}
+    \caption{UC25 – Disattivazione citazione}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente disattiva lo stile citazione nella scrittura del testo.
-    \item \textbf{Precondizioni}: L'editor è attivo.
-    \item \textbf{Postcondizioni}: Il testo inserito non sarà in citazione.
-    \item \textbf{Trigger}: L'utente vuole disattivare lo stile citazione.
+    \item \textbf{Precondizioni}: La modalità di scrittura in citazione è attiva.
+    \item \textbf{Scenario Principale}:
+        \begin{enumerate}
+        \item L'utente disattiva il comando "Citazione".
+        \item Il sistema disabilita la modalità di scrittura in citazione.
+        \end{enumerate}
+    \item \textbf{Postcondizioni}: Il testo inserito successivamente non verrà formattato in citazione.
+    \item \textbf{Trigger}: L'utente desidera interrompere la scrittura in citazione.
 \end{itemize}
 
-% UC16.1 - Disattivazione citazione su testo selezionato
-\paragraph{UC 16.1: Disattivazione citazione su testo selezionato}\mbox{}\
+
+% UC26 - Rimozionee citazione da testo selezionato
+\subsubsection{UC 26: Rimozione citazione da testo selezionato}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{disattivazione_citazione_testo_selezionato.png}
-    \caption{UC16.1 – Disattivazione citazione su testo selezionato}
+    \caption{UC26 – Rimozione citazione da testo selezionato}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente seleziona del testo e disattiva lo stile citazione.
-    \item \textbf{Precondizioni}: L'editor è attivo e una porzione di testo è selezionata.
-    \item \textbf{Postcondizioni}: Il testo selezionato non sarà in citazione.
-    \item \textbf{Trigger}: L'utente vuole disattivare lo stile citazione.
+    \item \textbf{Precondizioni}: L'editor è attivo ed una porzione di testo formattata in citazione è selezionata.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente disattiva il comando "Citazione".
+        \item Il sistema rimuove la formattazione citazione dal testo selezionato.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La porzione di testo selezionata non presenta più la formattazione citazione.
+    \item \textbf{Trigger}: L'utente desidera rimuovere il formato citazione da testo esistente.
 \end{itemize}
+
+%---------------TITOLO----------------
 
 % UC17 - Inserimento titolo
 \subsubsection{UC 17: Inserimento titolo}
