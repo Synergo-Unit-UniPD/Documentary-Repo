@@ -783,51 +783,63 @@
     \item \textbf{Attore Principale}: Utente
     \item \textbf{Precondizioni}: L'editor è attivo.
     \item \textbf{Scenario Principale}:
-        \begin{enumerate}
+    \begin{enumerate}
         \item L'utente attiva il comando "Inserisci link".
-        \item Il sistema richiede URL e testo associato.
+        \item Il sistema richiede l'inserimento dell'URL e del testo associato.
         \item L'utente inserisce i dati richiesti.
         \item Il sistema crea il collegamento.
-        \end{enumerate}
-    \item \textbf{Postcondizioni}: Il link ipertestuale viene inserito nel documento.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Il collegamento ipertestuale è inserito nel documento.
     \item \textbf{Trigger}: L'utente desidera inserire un collegamento nel documento.
 \end{itemize}
 
-% UC 30 - Modifica link
-\subsubsection{UC 30: Modifica link}
+% UC 32 - Modifica link
+\subsubsection{UC 32: Modifica link}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{modifica_link.png}
-    \caption{UC 30 – Modifica link}
+    \caption{UC 32 – Modifica link}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente seleziona un link esistente e ne modifica l'URL o il testo.
-    \item \textbf{Precondizioni}: È presente almeno un link nel documento.
-    \item \textbf{Postcondizioni}: Il link viene aggiornato con i nuovi parametri scelti dall'utente.
-    \item \textbf{Trigger}: L'utente deve correggere o aggiornare un collegamento.
+    \item \textbf{Precondizioni}: È presente almeno un collegamento nel documento.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente seleziona un collegamento esistente.
+        \item L'utente modifica i parametri del collegamento.
+        \item Il sistema aggiorna il collegamento.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Il collegamento presenta i nuovi parametri inseriti.
+    \item \textbf{Trigger}: L'utente desidera modificare un collegamento esistente.
 \end{itemize}
 
-% UC 31 - Rimozione link
-\subsubsection{UC 31: Rimozione link}
+% UC 33 - Rimozione link
+\subsubsection{UC 33: Rimozione link}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{rimozione_link.png}
-    \caption{UC 31 – Rimozione link}
+    \caption{UC 33 – Rimozione link}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente seleziona un link ipertestuale e lo rimuove.
-    \item \textbf{Precondizioni}: Un link è presente e viene selezionato.
-    \item \textbf{Postcondizioni}: Il collegamento viene eliminato dal documento.
-    \item \textbf{Trigger}: L'utente non vuole più che la parola sia cliccabile.
+    \item \textbf{Precondizioni}: Un collegamento è presente nel documento ed è selezionato.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente seleziona un collegamento.
+        \item L'utente attiva il comando di rimozione.
+        \item Il sistema elimina il collegamento.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Il collegamento viene rimosso dal documento.
+    \item \textbf{Trigger}: L'utente desidera rimuovere un collegamento esistente.
 \end{itemize}
+
+%---------------ELENCHI----------------
 
 % UC 32 - Inserimento elenco
 \subsubsection{UC 32: Inserimento elenco}
