@@ -225,6 +225,8 @@
     \item \textbf{Trigger}: L'utente vuole inserire testo precedentemente copiato o tagliato.
 \end{itemize}
 
+%---------------GRASSETTO----------------
+
 % UC7 - Attivazione grassetto 
 \subsubsection{UC 7: Attivazione grassetto}
 
@@ -314,6 +316,8 @@
     \item \textbf{Trigger}: L'utente desidera rimuovere il formato grassetto da testo esistente.
 \end{itemize}
 
+%---------------CORSIVO----------------
+
 % UC11 -  Attivazione corsivo 
 \subsubsection{UC 11: Attivazione corsivo }
 
@@ -401,6 +405,8 @@
     \item \textbf{Postcondizioni}: La porzione di testo selezionata non presenta più la formattazione corsivo.
     \item \textbf{Trigger}: L'utente desidera rimuovere il formato corsivo da testo esistente.
 \end{itemize}
+
+%---------------SOTTOLINEATO----------------
 
 % UC15 -  Attivazione sottolineato 
 \subsubsection{UC 15: Attivazione sottolineato }
@@ -490,77 +496,97 @@
     \item \textbf{Trigger}: L'utente desidera rimuovere il formato sottolineato da testo esistente.
 \end{itemize}
 
-% UC13 -  Attivazione barrato
-\subsubsection{UC 13: Attivazione barrato}
+%---------------BARRATO----------------
+
+% UC19 -  Attivazione barrato
+\subsubsection{UC 19: Attivazione barrato}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{attivazione_barrato.png}
-    \caption{UC13 – Attivazione barrato}
+    \caption{UC19 – Attivazione barrato}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente attiva lo stile barrato nella scrittura del testo.
     \item \textbf{Precondizioni}: L'editor è attivo.
-    \item \textbf{Postcondizioni}: Il testo inserito sarà in barrato.
-    \item \textbf{Trigger}: L'utente vuole applicare lo stile barrato al testo successivo.
+    \item \textbf{Scenario Principale}:
+        \begin{enumerate}
+        \item L'utente attiva il comando "Barrato".
+        \item Il sistema abilita la modalità di scrittura in barrato .
+        \end{enumerate}
+    \item \textbf{Postcondizioni}: Il testo inserito successivamente viene formattato in barrato.
+    \item \textbf{Trigger}: L'utente desidera scrivere nuovo testo in barrato.
 \end{itemize}
 
-% UC13.1 - Attivazione barrato su testo selezionato
-\paragraph{UC 13.1: Attivazione barrato su testo selezionato}\mbox{}\
+% UC20 - Applicazione barrato a testo selezionato
+\subsubsection{UC 20: Applicazione barrato a testo selezionato}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{attivazione_barrato_testo_selezionato.png}
-    \caption{UC13.1 – Attivazione barrato su testo selezionato}
+    \caption{UC20 – Applicazione barrato a testo selezionato}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente seleziona del testo e applica lo stile barrato.
-    \item \textbf{Precondizioni}: L'editor è attivo e una porzione di testo è selezionata.
-    \item \textbf{Postcondizioni}: Il testo selezionato sarà in barrato.
-    \item \textbf{Trigger}: L'utente vuole applicare lo stile barrato al testo selezionato.
+    \item \textbf{Precondizioni}: L'editor è attivo ed una porzione di testo è selezionata.
+    \item \textbf{Scenario Principale}:
+        \begin{enumerate}
+        \item L'utente attiva il comando "Barrato".
+        \item Il sistema applica la formattazione barrato al testo selezionato.
+        \end{enumerate}
+    \item \textbf{Postcondizioni}: La porzione di testo selezionata presenta la formattazione barrato.
+    \item \textbf{Trigger}: L'utente desidera applicare il formato barrato a testo esistente.
 \end{itemize}
 
-% UC14 -  Disattivazione barrato
-\subsubsection{UC 14: Disattivazione barrato}
+% UC21 -  Disattivazione barrato
+\subsubsection{UC 21: Disattivazione barrato}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{disattivazione_barrato.png}
-    \caption{UC14 – Disattivazione barrato}
+    \caption{UC21 – Disattivazione barrato}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente disattiva lo stile barrato nella scrittura del testo.
-    \item \textbf{Precondizioni}: L'editor è attivo.
-    \item \textbf{Postcondizioni}: Il testo inserito non sarà in barrato.
-    \item \textbf{Trigger}: L'utente vuole disattivare lo stile barrato.
+    \item \textbf{Precondizioni}: La modalità di scrittura in barrato è attiva.
+    \item \textbf{Scenario Principale}:
+        \begin{enumerate}
+        \item L'utente disattiva il comando "Barrato".
+        \item Il sistema disabilita la modalità di scrittura in barrato.
+        \end{enumerate}
+    \item \textbf{Postcondizioni}: Il testo inserito successivamente non verrà formattato in barrato.
+    \item \textbf{Trigger}: L'utente desidera interrompere la scrittura in barrato.
 \end{itemize}
 
-% UC14.1 - Disattivazione barrato su testo selezionato
-\paragraph{UC 14.1: Disattivazione barrato su testo selezionato}\mbox{}\
+% UC22 - Rimozione barrato da testo selezionato
+\subsubsection{UC 22: Rimozione barrato da testo selezionato}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{disattivazione_barrato_testo_selezionato.png}
-    \caption{UC14.1 – Disattivazione barrato su testo selezionato}
+    \caption{UC22 – Rimozione barrato da testo selezionato}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente seleziona del testo e disattiva lo stile barrato.
-    \item \textbf{Precondizioni}: L'editor è attivo e una porzione di testo è selezionata.
-    \item \textbf{Postcondizioni}: Il testo selezionato non sarà in barrato.
-    \item \textbf{Trigger}: L'utente vuole disattivare lo stile barrato.
+    \item \textbf{Precondizioni}: L'editor è attivo ed una porzione di testo formattata in barrato è selezionata.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente disattiva il comando "Barrato".
+        \item Il sistema rimuove la formattazione barrato dal testo selezionato.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La porzione di testo selezionata non presenta più la formattazione barrato.
+    \item \textbf{Trigger}: L'utente desidera rimuovere il formato barrato da testo esistente.
 \end{itemize}
+
+%---------------CITAZIONE----------------
 
 % UC15 -  Attivazione citazione
 \subsubsection{UC 15: Attivazione citazione}
