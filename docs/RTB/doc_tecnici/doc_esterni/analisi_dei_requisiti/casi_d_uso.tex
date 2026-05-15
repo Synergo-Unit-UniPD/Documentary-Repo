@@ -1495,7 +1495,7 @@
         \item Il servizio AI valuta la struttura logica, la coerenza del ragionamento e l’organizzazione complessiva del testo.
         \item Il sistema rende disponibile l'analisi generata all'utente.
     \end{enumerate}
-    \item \textbf{Postcondizioni}: Una sintesi della struttura logica e dell’organizzazione del testo è disponibile all'utente.
+    \item \textbf{Postcondizioni}: Una proposta di riorganizzazione logica e strutturale del testo selezionato è disponibile all’utente.
     \item \textbf{Trigger}:  L'utente desidera analizzare la coerenza logica e la struttura del testo selezionato.
 \end{itemize}
 
@@ -1520,92 +1520,97 @@
     \item \textbf{Trigger}: Si verifica un errore durante la comunicazione con il servizio AI.
 \end{itemize}
 
-% UC35 - Accettazione proposta AI
-\paragraph{UC 35: Accettazione proposta AI}\mbox{}\
+%--------------GESTIONE PROPOSTE AI------------------
+
+% UC53 - Accettazione proposta AI
+\subsubsection{UC 53: Accettazione proposta AI}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{accettazione_proposta_ai.png}
-    \caption{UC35 – Accettazione proposta AI}
+    \caption{UC53 – Accettazione proposta AI}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: 
+    \item \textbf{Precondizioni}: Una proposta generata dall'AI è visualizzata.
+    \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente accetta tramite bottone l'inserimento della proposta fornita.
-        \item Il sistema inserisce nel testo l'output dell'AI.
+        \item L'utente accetta la proposta generata.
+        \item Il sistema inserisce il contenuto proposto nell'editor.
     \end{enumerate}
-    \item \textbf{Precondizioni}: Una proposta AI è visibile a schermo.
-    \item \textbf{Postcondizioni}: Il contenuto dell'editor è aggiornato con il nuovo testo.
-    \item \textbf{Trigger}: L'utente ritiene valida la proposta dell'AI e preme il tasto di conferma.
+    \item \textbf{Postcondizioni}: Il contenuto dell'editor viene aggiornato con il testo generato dall'AI.
+    \item \textbf{Trigger}: L'utente ritiene valida la proposta generata dall'AI.
 \end{itemize}
 
-% UC36 - Rifiuto proposta AI
-\paragraph{UC 36: Rifiuto proposta AI}\mbox{}\
+% UC54 - Rifiuto proposta AI
+\subsubsection{UC 54: Rifiuto proposta AI}\mbox{}\
 
 % use case diagram 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{rifiuto_proposta_ai.png}
-    \caption{UC36 – Rifiuto proposta AI}
+    \caption{UC54 – Rifiuto proposta AI}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: 
+    \item \textbf{Precondizioni}: Una proposta generata dall'AI è visualizzata.
+    \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente rifiuta tramite bottone l'inserimento della proposta fornita.
-        \item Il sistema scarta l'output dell'AI senza modificare il documento originale.
+        \item L'utente rifiuta la proposta generata.
+        \item Il sistema elimina la proposta visualizzata.
     \end{enumerate}
-    \item \textbf{Precondizioni}: Una proposta AI è visibile a schermo.
-    \item \textbf{Postcondizioni}: La proposta viene eliminata e il testo nell'editor rimane inalterato.
-    \item \textbf{Trigger}: L'utente ritiene la proposta inadeguata e preme il tasto per annullarla e chiuderla.
+    \item \textbf{Postcondizioni}: Il documento rimane invariato.
+    \item \textbf{Trigger}: L'utente non ritiene valida la proposta generata dall'AI.
 \end{itemize}
 
-% UC37 - (Opzionale) Interazione con ChatBot
-\subsubsection{UC 37: (Opzionale) Interazione con ChatBot}
+% UC55 - Rigenerazione proposta AI
+\subsubsection{UC 55: Rigenerazione proposta AI}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{interazione_chatbot.png}
-    \caption{UC37 – Interazione con ChatBot}
+    %\includegraphics[width=0.6\textwidth]{rigenerazione_proposta_ai.png}
+    \caption{UC55 – Rigenerazione proposta AI}
 \end{figure}
-
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
     \item \textbf{Attore Secondario}: LLM
-    \item \textbf{Scenario Principale}: 
+    \item \textbf{Precondizioni}: Una proposta generata dall'AI è visualizzata.
+    \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente apre l'interfaccia del ChatBot.
-        \item L'utente invia un messaggio di testo o seleziona un comando predefinito.
-        \item Il sistema inoltra la richiesta al modello linguistico (LLM).
-        \item Il sistema visualizza la risposta generata dall'AI nella chat.
+        \item L'utente richiede la rigenerazione della proposta.
+        \item Il sistema invia nuovamente la richiesta all'LLM.
+        \item L'LLM genera una nuova proposta.
+        \item Il sistema sostituisce la proposta precedente con quella nuova.
     \end{enumerate}
-    \item \textbf{Precondizioni}: Il sistema è connesso a internet e il servizio LLM è disponibile.
-    \item \textbf{Postcondizioni}: L'utente riceve una risposta coerente con il messaggio inviato.
-    \item \textbf{Trigger}: L'utente ha bisogno di dialogare in maniera conversazionale con l'assistente virtuale.
+    \item \textbf{Postcondizioni}: Una nuova proposta AI viene visualizzata all'utente.
+    \item \textbf{Trigger}: L'utente desidera ottenere una versione alternativa della proposta generata.
 \end{itemize}
 
-% UC37.1 - Visualizzazione errore servizi AI (Timeout, API error, ecc.)
-\paragraph{UC 37.1: Visualizzazione errore servizi AI}\mbox{}\
+% UC55.1 - Visualizzazione errore rigenerazione proposta AI
+\paragraph{UC 55.1: Visualizzazione errore rigenerazione proposta AI}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{errore_ai_UC37.png}
-    \caption{UC37.1 – Visualizzazione errore servizi AI}
+    %\includegraphics[width=0.6\textwidth]{errore_ai_UC55.png}
+    \caption{UC55.1 – Visualizzazione errore rigenerazione proposta AI}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente viene informato che  il processo UC 37 ha fallito a causa di un errore del servizio AI.
-    \item \textbf{Precondizioni}: È in corso l’esecuzione di UC 37.
-    \item \textbf{Postcondizioni}: L’utente è informato dell’errore.
-    \item \textbf{Trigger}: Si verifica un errore nella comunicazione con il servizio AI.
+    \item \textbf{Precondizioni}: È in corso una richiesta di rigenerazione della proposta AI.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Si verifica un errore durante l'elaborazione della richiesta.
+        \item Il sistema segnala il mancato completamento della richiesta di rigenerazione della proposta AI.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'utente viene informato del mancato completamento della rigenerazione.
+    \item \textbf{Trigger}: Si verifica un errore durante la comunicazione con il servizio AI.
 \end{itemize}
 
 % --------------------------------------------------------------------------
