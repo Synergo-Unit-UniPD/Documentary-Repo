@@ -2,12 +2,26 @@
 \begin{table}[ht]
 	\centering
 	\renewcommand{\arraystretch}{1.5}
-	\begin{tabularx}{\textwidth}{c c l l X}
+	\begin{longtable}{>{\ttfamily\small}l l l l >{\raggedright\arraybackslash}p{5cm}}
 		\toprule
 		\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione} \\
 		\midrule
-		v0.1.0 & 2026-05-14 & {Armando Moda Scarati} & {[Nome]} & Definizione metriche di processo, metriche di prodotto e stesura specifica dei test. \\
-		v0.0.0 & 2026-05-11 & {Francesco Marcon} & {[Nome]} & Creazione struttura del documento. \\
+		\endfirsthead
+
+		\toprule
+		\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione} \\
+		\midrule
+		\endhead
+
+		\midrule
+		\multicolumn{5}{r}{\textit{Continua nella pagina successiva}} \\
+		\midrule
+		\endfoot
+
 		\bottomrule
-	\end{tabularx}
+		\endlastfoot
+		
+		v0.1.0 & 2026-05-14 & {Armando Moda Scarati} & {Anton R. Rupi} & Prima stesura delle metriche di processo, metriche di prodotto e specifica dei test. \\
+		v0.0.0 & 2026-05-11 & {Francesco Marcon} & {Anton R. Rupi} & Creazione struttura del documento. \\
+	\end{longtable}
 \end{table}
