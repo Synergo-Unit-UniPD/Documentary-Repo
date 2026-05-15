@@ -1242,191 +1242,282 @@
     \item \textbf{Trigger}: Si verifica un errore durante la comunicazione con il servizio AI.
 \end{itemize}
 
-% UC34 - Critica del testo (Sei Cappelli per Pensare)
-\subsubsection{UC 34: Critica del testo (Sei Cappelli per Pensare)}
+%---------------SEI CAPPELLI PER PENSARE------------------
 
-% use case diagram
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{critica_testo_sei_cappelli_pensare.png}
-    \caption{UC34 – Critica del testo (Sei Cappelli per Pensare)}
-\end{figure}
-
-\begin{itemize}
-    \item \textbf{Attore Principale}: Utente
-    \item \textbf{Attore Secondario}: LLM
-    \item \textbf{Scenario Principale}: 
-    \begin{enumerate}
-        \item L'utente richiede un'analisi critica del testo selezionato.
-        \item L'utente sceglie una delle sei modalità (Cappelli).
-        \item Il sistema invia la richiesta specifica all'LLM.
-        \item L'LLM restituisce il feedback critico.
-    \end{enumerate}
-    \item \textbf{Precondizioni}: L'applicazione è avviata, la connessione ai servizi AI è stabilita, una porzione di testo è selezionata nell'editor.
-    \item \textbf{Postcondizioni}: Viene generata una proposta di analisi che viene mostrata all'utente.
-    \item \textbf{Trigger}: L'utente desidera che il testo venga analizzato criticamente adottando una specifica prospettiva.
-\end{itemize}
-
-% UC34.1 - Analisi Cappello Bianco (Dati e fatti)
-\paragraph{UC 34.1: Analisi Cappello Bianco (Dati e fatti)}\mbox{}\
+% UC47 - Analisi Cappello Bianco (Dati e fatti)
+\subsubsection{UC 47: Analisi Cappello Bianco (Dati e fatti)}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{critica_testo_sei_cappelli_pensare_bianco.png}
-    \caption{UC34.1 – Analisi Cappello Bianco (Dati e fatti)}
+    \caption{UC47 – Analisi Cappello Bianco (Dati e fatti)}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
     \item \textbf{Attore Secondario}: LLM
-    \item \textbf{Scenario Principale}: 
+    \item \textbf{Precondizioni}: Una porzione di testo è selezionata nell'editor e il servizio AI è disponibile.
+    \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente richiede un'analisi oggettiva.
-        \item Il sistema istruisce l'LLM a evidenziare solo informazioni certe, dati e lacune informative nel testo selezionato.
-        \item L'LLM restituisce il feedback critico.
+        \item L'utente richiede un'analisi del testo secondo il Cappello Bianco.
+        \item Il sistema invia la richiesta al servizio AI.
+        \item Il servizio AI analizza informazioni oggettive, dati e lacune informative presenti nel testo.
+        \item Il sistema rende disponibile l'analisi generata all'utente.
     \end{enumerate}
-    \item \textbf{Precondizioni}: L'applicazione è avviata, la connessione ai servizi AI è stabilita, una porzione di testo è selezionata nell'editor.
-    \item \textbf{Postcondizioni}: Viene visualizzata un'analisi critica basata su fatti e dati oggettivi.
-    \item \textbf{Trigger}: L'utente seleziona il Cappello Bianco per verificare i fatti, i dati e l'oggettività del testo.
+    \item \textbf{Postcondizioni}: Una proposta di analisi oggettiva del testo selezionato è disponibile all'utente.
+    \item \textbf{Trigger}: L'utente desidera verificare dati, fatti e oggettività del testo selezionato.
 \end{itemize}
 
-% UC34.2 - Analisi Cappello Rosso (Emozioni)
-\paragraph{UC 34.2: Analisi Cappello Rosso (Emozioni)}\mbox{}\
+% UC47.1 - Visualizzazione errore analisi Cappello Bianco
+\paragraph{UC 47.1: Visualizzazione errore analisi Cappello Bianco}\mbox{}\
+
+\begin{figure}[H]
+    \centering
+    %\includegraphics[width=0.6\textwidth]{errore_ai_UC47.png}
+    \caption{UC47.1 – Visualizzazione errore analisi Cappello Bianco}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: È in corso una richiesta di analisi secondo il Cappello Bianco.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Si verifica un errore durante l'elaborazione della richiesta.
+        \item Il sistema segnala il mancato completamento della richiesta di analisi.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'utente viene informato del mancato completamento dell'analisi.
+    \item \textbf{Trigger}: Si verifica un errore durante la comunicazione con il servizio AI.
+\end{itemize}
+
+% UC48 - Analisi Cappello Rosso (Emozioni)
+\subsubsection{UC 48: Analisi Cappello Rosso (Emozioni)}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{critica_testo_sei_cappelli_pensare_rosso.png}
-    \caption{UC34.2 – Analisi Cappello Rosso (Emozioni)}
+    \caption{UC48 – Analisi Cappello Rosso (Emozioni)}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
     \item \textbf{Attore Secondario}: LLM
-    \item \textbf{Scenario Principale}: 
+    \item \textbf{Precondizioni}: Una porzione di testo è selezionata nell'editor e il servizio AI è disponibile.
+    \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente richiede un'analisi emotiva.
-        \item L'LLM analizza i sentimenti, le intuizioni e le reazioni viscerali trasmesse dal testo.
-        \item L'LLM restituisce il feedback critico.
+        \item L'utente richiede un'analisi del testo secondo il Cappello Rosso.
+        \item Il sistema invia la richiesta al servizio AI.
+        \item Il servizio AI analizza emozioni, impressioni e reazioni trasmesse dal testo.
+        \item Il sistema rende disponibile l'analisi generata all'utente.
     \end{enumerate}
-    \item \textbf{Precondizioni}: L'applicazione è avviata, la connessione ai servizi AI è stabilita, una porzione di testo è selezionata nell'editor.
-    \item \textbf{Postcondizioni}: Viene visualizzata un'analisi del tono emotivo del testo.
-    \item \textbf{Trigger}: L'utente seleziona il Cappello Rosso per valutare l'impatto emotivo e viscerale del testo.
+    \item \textbf{Postcondizioni}: Una proposta di analisi emotiva del testo selezionato è disponibile all'utente.
+    \item \textbf{Trigger}: L'utente desidera valutare l'impatto emotivo del testo selezionato.
 \end{itemize}
 
-% UC34.3 - Analisi Cappello Nero (Rischi)
-\paragraph{UC 34.3: Analisi Cappello Nero (Rischi)}\mbox{}\
+% UC48.1 - Visualizzazione errore analisi Cappello Rosso
+\paragraph{UC 48.1: Visualizzazione errore analisi Cappello Rosso}\mbox{}\
+
+\begin{figure}[H]
+    \centering
+    %\includegraphics[width=0.6\textwidth]{errore_ai_UC48.png}
+    \caption{UC48.1 – Visualizzazione errore analisi Cappello Rosso}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: È in corso una richiesta di analisi secondo il Cappello Rosso.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Si verifica un errore durante l'elaborazione della richiesta.
+        \item Il sistema segnala il mancato completamento della richiesta di analisi.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'utente viene informato del mancato completamento dell'analisi.
+    \item \textbf{Trigger}: Si verifica un errore durante la comunicazione con il servizio AI.
+\end{itemize}
+
+% UC49 - Analisi Cappello Nero (Rischi)
+\subsubsection{UC 49: Analisi Cappello Nero (Rischi)}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{critica_testo_sei_cappelli_pensare_nero.png}
-    \caption{UC34.3 – Analisi Cappello Nero (Rischi)}
+    \caption{UC49 – Analisi Cappello Nero (Rischi)}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
     \item \textbf{Attore Secondario}: LLM
-    \item \textbf{Scenario Principale}: 
+    \item \textbf{Precondizioni}: Una porzione di testo è selezionata nell'editor e il servizio AI è disponibile.
+    \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente richiede una valutazione critica negativa.
-        \item L'LLM individua potenziali punti deboli, rischi o incongruenze logiche.
-        \item L'LLM restituisce il feedback critico.
+        \item L'utente richiede un'analisi del testo secondo il Cappello Nero.
+        \item Il sistema invia la richiesta al servizio AI.
+        \item Il servizio AI individua criticità, rischi e incongruenze presenti nel testo.
+        \item Il sistema rende disponibile l'analisi generata all'utente.
     \end{enumerate}
-    \item \textbf{Precondizioni}: L'applicazione è avviata, la connessione ai servizi AI è stabilita, una porzione di testo è selezionata nell'editor.
-    \item \textbf{Postcondizioni}: Viene visualizzata un'analisi delle criticità del testo.
-    \item \textbf{Trigger}: L'utente seleziona il Cappello Nero per individuare criticità, rischi e punti deboli.
+    \item \textbf{Postcondizioni}: Una proposta di analisi critica del testo selezionato è disponibile all'utente.
+    \item \textbf{Trigger}: L'utente desidera individuare rischi, criticità e punti deboli del testo selezionato.
 \end{itemize}
 
-% UC34.4 - Analisi Cappello Giallo (Opportunità)
-\paragraph{UC 34.4: Analisi Cappello Giallo (Opportunità)}\mbox{}\
+% UC49.1 - Visualizzazione errore analisi Cappello Nero
+\paragraph{UC 49.1: Visualizzazione errore analisi Cappello Nero}\mbox{}\
+
+\begin{figure}[H]
+    \centering
+    %\includegraphics[width=0.6\textwidth]{errore_ai_UC49.png}
+    \caption{UC49.1 – Visualizzazione errore analisi Cappello Nero}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: È in corso una richiesta di analisi secondo il Cappello Nero.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Si verifica un errore durante l'elaborazione della richiesta.
+        \item Il sistema segnala il mancato completamento della richiesta di analisi.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'utente viene informato del mancato completamento dell'analisi.
+    \item \textbf{Trigger}: Si verifica un errore durante la comunicazione con il servizio AI.
+\end{itemize}
+
+% UC50 - Analisi Cappello Giallo (Opportunità)
+\subsubsection{UC 50: Analisi Cappello Giallo (Opportunità)}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{critica_testo_sei_cappelli_pensare_giallo.png}
-    \caption{UC34.4 – Analisi Cappello Giallo (Opportunità)}
+    \caption{UC50 – Analisi Cappello Giallo (Opportunità)}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
     \item \textbf{Attore Secondario}: LLM
-    \item \textbf{Scenario Principale}: 
+    \item \textbf{Precondizioni}: Una porzione di testo è selezionata nell'editor e il servizio AI è disponibile.
+    \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente richiede una valutazione ottimistica.
-        \item L'LLM mette in luce i benefici, i punti di forza e il valore aggiunto del testo.
-        \item L'LLM restituisce il feedback critico.
+        \item L'utente richiede un'analisi del testo secondo il Cappello Giallo.
+        \item Il sistema invia la richiesta al servizio AI.
+        \item Il servizio AI evidenzia vantaggi, benefici e opportunità presenti nel testo.
+        \item Il sistema rende disponibile l'analisi generata all'utente.
     \end{enumerate}
-    \item \textbf{Precondizioni}: L'applicazione è avviata, la connessione ai servizi AI è stabilita, una porzione di testo è selezionata nell'editor.
-    \item \textbf{Postcondizioni}: Viene visualizzata un'analisi dei vantaggi e delle opportunità.
-    \item \textbf{Trigger}: L'utente seleziona il Cappello Giallo per scoprire i vantaggi, i benefici e le opportunità espresse.
+    \item \textbf{Postcondizioni}: Una proposta di analisi positiva del testo selezionato è disponibile all'utente.
+    \item \textbf{Trigger}: L'utente desidera individuare vantaggi e opportunità del testo selezionato.
 \end{itemize}
 
-% UC34.5 - Analisi Cappello Verde (Creatività)
-\paragraph{UC 34.5: Analisi Cappello Verde (Creatività)}\mbox{}\
+% UC50.1 - Visualizzazione errore analisi Cappello Giallo
+\paragraph{UC 50.1: Visualizzazione errore analisi Cappello Giallo}\mbox{}\
+
+\begin{figure}[H]
+    \centering
+    %\includegraphics[width=0.6\textwidth]{errore_ai_UC50.png}
+    \caption{UC50.1 – Visualizzazione errore analisi Cappello Giallo}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: È in corso una richiesta di analisi secondo il Cappello Giallo.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Si verifica un errore durante l'elaborazione della richiesta.
+        \item Il sistema segnala il mancato completamento della richiesta di analisi.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'utente viene informato del mancato completamento dell'analisi.
+    \item \textbf{Trigger}: Si verifica un errore durante la comunicazione con il servizio AI.
+\end{itemize}
+
+% UC51 - Analisi Cappello Verde (Creatività)
+\subsubsection{UC 51: Analisi Cappello Verde (Creatività)}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{critica_testo_sei_cappelli_pensare_verde.png}
-    \caption{UC34.5 – Analisi Cappello Verde (Creatività)}
+    \caption{UC51 – Analisi Cappello Verde (Creatività)}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
     \item \textbf{Attore Secondario}: LLM
-    \item \textbf{Scenario Principale}: 
+    \item \textbf{Precondizioni}: Una porzione di testo è selezionata nell'editor e il servizio AI è disponibile.
+    \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente richiede alternative creative.
-        \item L'LLM propone nuove idee, approcci originali o variazioni fantasiose sul tema trattato.
-        \item L'LLM restituisce il feedback critico.
+        \item L'utente richiede un'analisi del testo secondo il Cappello Verde.
+        \item Il sistema invia la richiesta al servizio AI.
+        \item Il servizio AI propone idee alternative, spunti creativi e possibili innovazioni relative al contenuto selezionato.
+        \item Il sistema rende disponibile l'analisi generata all'utente.
     \end{enumerate}
-    \item \textbf{Precondizioni}: L'applicazione è avviata, la connessione ai servizi AI è stabilita, una porzione di testo è selezionata nell'editor.
-    \item \textbf{Postcondizioni}: Vengono visualizzati suggerimenti creativi e alternative al testo.
-    \item \textbf{Trigger}: L'utente seleziona il Cappello Verde per cercare idee alternative, spunti creativi e innovazioni.
+    \item \textbf{Postcondizioni}: Una proposta di analisi creativa del testo selezionato è disponibile all'utente.
+    \item \textbf{Trigger}:  L'utente desidera esplorare nuove idee, alternative e prospettive creative sul testo selezionato.
 \end{itemize}
 
-% UC34.6 - Analisi Cappello Blu (Logica/Controllo)
-\paragraph{UC 34.6: Analisi Cappello Blu (Logica/Controllo)}\mbox{}\
+% UC51.1 - Visualizzazione errore analisi Cappello Verde
+\paragraph{UC 51.1: Visualizzazione errore analisi Cappello Verde}\mbox{}\
+
+\begin{figure}[H]
+    \centering
+    %\includegraphics[width=0.6\textwidth]{errore_ai_UC51.png}
+    \caption{UC51.1 – Visualizzazione errore analisi Cappello Verde}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: È in corso una richiesta di analisi secondo il Cappello Verde.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Si verifica un errore durante l'elaborazione della richiesta.
+        \item Il sistema segnala il mancato completamento della richiesta di analisi.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'utente viene informato del mancato completamento dell'analisi.
+    \item \textbf{Trigger}: Si verifica un errore durante la comunicazione con il servizio AI.
+\end{itemize}
+
+% UC52 - Analisi Cappello Blu (Logica/Controllo)
+\subsubsection{UC 52: Analisi Cappello Blu (Logica/Controllo)}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{critica_testo_sei_cappelli_pensare_blu.png}
-    \caption{UC34.6 – Analisi Cappello Blu (Logica/Controllo)}
+    \caption{UC52 – Analisi Cappello Blu (Logica/Controllo)}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
     \item \textbf{Attore Secondario}: LLM
-    \item \textbf{Scenario Principale}: 
+    \item \textbf{Precondizioni}: Una porzione di testo è selezionata nell'editor e il servizio AI è disponibile.
+    \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente richiede un'analisi strutturale.
-        \item L'LLM valuta l'organizzazione del pensiero, la coerenza complessiva e il processo logico seguito.
-        \item L'LLM restituisce il feedback critico.
+        \item L'utente richiede un'analisi del testo secondo il Cappello Blu.
+        \item Il sistema invia la richiesta al servizio AI.
+        \item Il servizio AI valuta la struttura logica, la coerenza del ragionamento e l’organizzazione complessiva del testo.
+        \item Il sistema rende disponibile l'analisi generata all'utente.
     \end{enumerate}
-    \item \textbf{Precondizioni}: L'applicazione è avviata, la connessione ai servizi AI è stabilita, una porzione di testo è selezionata nell'editor.
-    \item \textbf{Postcondizioni}: Viene visualizzata una sintesi del processo logico e della struttura del testo.
-    \item \textbf{Trigger}: L'utente seleziona il Cappello Blu per analizzare la struttura logica e l'organizzazione del documento.
+    \item \textbf{Postcondizioni}: Una sintesi della struttura logica e dell’organizzazione del testo è disponibile all'utente.
+    \item \textbf{Trigger}:  L'utente desidera analizzare la coerenza logica e la struttura del testo selezionato.
 \end{itemize}
 
-% UC34.7 - Visualizzazione errore servizi AI (Timeout, API error, ecc.)
-\paragraph{UC 34.7: Visualizzazione errore servizi AI}\mbox{}\
+% UC52.1 - Visualizzazione errore analisi Cappello Blu
+\paragraph{UC 52.1: Visualizzazione errore analisi Cappello Blu}\mbox{}\
 
-% use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{errore_ai_UC34.png}
-    \caption{UC34.7 – Visualizzazione errore servizi AI}
+    %\includegraphics[width=0.6\textwidth]{errore_ai_UC52.png}
+    \caption{UC52.1 – Visualizzazione errore analisi Cappello Blu}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente viene informato che  il processo UC 34 ha fallito a causa di un errore del servizio AI.
-    \item \textbf{Precondizioni}: È in corso l’esecuzione di UC 34.
-    \item \textbf{Postcondizioni}: L’utente è informato dell’errore.
-    \item \textbf{Trigger}: Si verifica un errore nella comunicazione con il servizio AI.
+    \item \textbf{Precondizioni}: È in corso una richiesta di analisi secondo il Cappello Blu.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Si verifica un errore durante l'elaborazione della richiesta.
+        \item Il sistema segnala il mancato completamento della richiesta di analisi.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'utente viene informato del mancato completamento dell'analisi.
+    \item \textbf{Trigger}: Si verifica un errore durante la comunicazione con il servizio AI.
 \end{itemize}
 
 % UC35 - Accettazione proposta AI
