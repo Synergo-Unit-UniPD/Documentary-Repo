@@ -1050,175 +1050,196 @@
 % --------------------------------------------------------------------------
 \newpage
 \subsection{Macroarea 2 — Interazione AI (LLM)}
-\textit{Elaborazione del testo tramite modelli linguistici e gestione degli output.}
+\textit{Elaborazione del testo tramite modelli linguistici e gestione degli output generati.}
 
-% UC30 - Generazione riassunto del testo
-\subsubsection{UC 30: Generazione riassunto del testo}
+% UC43 - Generazione riassunto del testo
+\subsubsection{UC 43: Generazione riassunto del testo}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{generazione_riassunto_testo.png}
-    \caption{UC30 – Riassunto del testo}
+    \caption{UC43 – Riassunto del testo}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
     \item \textbf{Attore Secondario}: LLM
-    \item \textbf{Scenario Principale}: 
+    \item \textbf{Precondizioni}: Una porzione di testo è selezionata nell'editor e il servizio AI è disponibile.
+    \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente richiede un riassunto del testo selezionato.
-        \item Il sistema invia la richiesta specifica all'LLM.
-        \item L'LLM restituisce il riassunto richiesto.
+        \item L'utente richiede la generazione di un riassunto del testo selezionato.
+        \item Il sistema invia la richiesta al servizio AI.
+        \item Il servizio AI genera il riassunto richiesto.
+        \item Il sistema rende disponibile il riassunto generato all'utente.
     \end{enumerate}
-    \item \textbf{Precondizioni}: L'applicazione è avviata, la connessione ai servizi AI è stabilita, una porzione di testo è selezionata nell'editor.
-    \item \textbf{Postcondizioni}: Viene generato un riassunto che viene mostrato all'utente.
-    \item \textbf{Trigger}: L'utente necessita di una sintesi rapida di un testo troppo lungo.
+    \item \textbf{Postcondizioni}: Una proposta di riassunto del testo selezionato è disponibile all'utente.
+    \item \textbf{Trigger}: L'utente desidera ottenere una sintesi del testo selezionato.
 \end{itemize}
 
-% UC30.1 - Visualizzazione errore servizi AI (Timeout, API error, ecc.)
-\paragraph{UC 30.1: Visualizzazione errore servizi AI}\mbox{}\
+% UC43.1 - Visualizzazione errore generazione riassunto
+\paragraph{UC 43.1: Visualizzazione errore generazione riassunto}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{errore_ai_UC30.png}
-    \caption{UC30.1 – Visualizzazione errore servizi AI}
+    \caption{UC43.1 – Visualizzazione errore generazione riassunto}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente viene informato che  il processo UC 30 ha fallito a causa di un errore del servizio AI.
-    \item \textbf{Precondizioni}: È in corso l’esecuzione di UC 30.
-    \item \textbf{Postcondizioni}: L’utente è informato dell’errore.
-    \item \textbf{Trigger}: Si verifica un errore nella comunicazione con il servizio AI.
+    \item \textbf{Precondizioni}: È in corso una richiesta di generazione del riassunto.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Si verifica un errore durante l'elaborazione della richiesta.
+        \item Il sistema segnala il mancato completamento della richiesta di generazione del riassunto.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'utente viene informato del mancato completamento dell'operazione di generazione del riassunto.
+    \item \textbf{Trigger}: Si verifica un errore durante la comunicazione con il servizio AI.
 \end{itemize}
 
-% UC31 - Traduzione del testo
-\subsubsection{UC 31: Traduzione del testo}
+% UC44 - Traduzione del testo
+\subsubsection{UC 44: Traduzione del testo}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{traduzione_testo.png}
-    \caption{UC31 – Traduzione del testo}
+    \caption{UC44 – Traduzione del testo}
 \end{figure}
+
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
     \item \textbf{Attore Secondario}: LLM
-    \item \textbf{Scenario Principale}: 
+    \item \textbf{Precondizioni}: Una porzione di testo è selezionata nell'editor e il servizio AI è disponibile.
+    \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente richiede la traduzione del testo selezionato nella lingua scelta.
-        \item Il sistema invia la richiesta specifica all'LLM.
-        \item L'LLM restituisce il testo tradotto richiesto.
+        \item L'utente richiede la traduzione del testo selezionato.
+        \item L'utente seleziona la lingua di destinazione.
+        \item Il sistema invia la richiesta al servizio AI.
+        \item Il servizio AI genera la traduzione richiesta.
+        \item Il sistema rende disponibile il testo tradotto all'utente.
     \end{enumerate}
-    \item \textbf{Precondizioni}: L'applicazione è avviata, la connessione ai servizi AI è stabilita, una porzione di testo è selezionata nell'editor.
-    \item \textbf{Postcondizioni}: Viene generato una traduzione che viene mostrato all'utente.
-    \item \textbf{Trigger}: L'utente ha bisogno di convertire una porzione di testo in una lingua differente.
+    \item \textbf{Postcondizioni}: Una proposta di traduzione del testo selezionato è disponibile all'utente.
+    \item \textbf{Trigger}: L'utente desidera tradurre il testo selezionato in un'altra lingua.
 \end{itemize}
 
-% UC31.1 - Visualizzazione errore servizi AI (Timeout, API error, ecc.)
-\paragraph{UC 31.1: Visualizzazione errore servizi AI}\mbox{}\
+% UC44.1 - Visualizzazione errore traduzione testo
+\paragraph{UC 44.1: Visualizzazione errore traduzione testo}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{errore_ai_UC31.png}
-    \caption{UC31.1 – Visualizzazione errore servizi AI}
+    \caption{UC44.1 – Visualizzazione errore traduzione testo}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente viene informato che  il processo UC 31 ha fallito a causa di un errore del servizio AI.
-    \item \textbf{Precondizioni}: È in corso l’esecuzione di UC 31.
-    \item \textbf{Postcondizioni}: L’utente è informato dell’errore.
-    \item \textbf{Trigger}: Si verifica un errore nella comunicazione con il servizio AI.
+    \item \textbf{Precondizioni}: È in corso una richiesta di traduzione del testo.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Si verifica un errore durante l'elaborazione della richiesta.
+        \item Il sistema segnala il mancato completamento della richiesta di traduzione del testo.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'utente viene informato del mancato completamento dell'operazione di traduzione del testo.
+    \item \textbf{Trigger}: Si verifica un errore durante la comunicazione con il servizio AI.
 \end{itemize}
 
-% UC32 - Riscrittura del testo
-\subsubsection{UC 32: Riscrittura del testo}
+% UC45 - Riscrittura del testo
+\subsubsection{UC 45: Riscrittura del testo}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{riscrittura_testo.png}
-    \caption{UC32 – Riscrittura del testo}
+    \caption{UC45 – Riscrittura del testo}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
     \item \textbf{Attore Secondario}: LLM
-    \item \textbf{Scenario Principale}: 
+    \item \textbf{Precondizioni}: Una porzione di testo è selezionata nell'editor e il servizio AI è disponibile.
+    \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente richiede una riscrittura del testo selezionato.
-        \item Il sistema invia la richiesta specifica all'LLM.
-        \item L'LLM restituisce la riscrittura richiesta.
+        \item L'utente richiede la riscrittura del testo selezionato.
+        \item Il sistema invia la richiesta al servizio AI.
+        \item Il servizio AI genera una nuova versione del testo.
+        \item Il sistema rende disponibile il testo rielaborato all'utente.
     \end{enumerate}
-    \item \textbf{Precondizioni}: L'applicazione è avviata, la connessione ai servizi AI è stabilita, una porzione di testo è selezionata nell'editor.
-    \item \textbf{Postcondizioni}: Viene generato una rielaborazione del testo che viene mostrata all'utente.
-    \item \textbf{Trigger}: L'utente non è soddisfatto della forma del testo e vuole che l'AI lo rielabori.
+    \item \textbf{Postcondizioni}: Una proposta di riscrittura del testo selezionato è disponibile all'utente.
+    \item \textbf{Trigger}: L'utente desidera rielaborare il testo selezionato.
 \end{itemize}
 
-% UC32.1 - Visualizzazione errore servizi AI (Timeout, API error, ecc.)
-\paragraph{UC 32.1: Visualizzazione errore servizi AI}\mbox{}\
+% UC45.1 - Visualizzazione errore riscrittura testo
+\paragraph{UC 45.1: Visualizzazione errore riscrittura testo}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{errore_ai_UC32.png}
-    \caption{UC32.1 – Visualizzazione errore servizi AI}
+    \caption{UC45.1 – Visualizzazione errore riscrittura testo}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente viene informato che  il processo UC 32 ha fallito a causa di un errore del servizio AI.
-    \item \textbf{Precondizioni}: È in corso l’esecuzione di UC 32.
-    \item \textbf{Postcondizioni}: L’utente è informato dell’errore.
-    \item \textbf{Trigger}: Si verifica un errore nella comunicazione con il servizio AI.
+    \item \textbf{Precondizioni}: È in corso una richiesta di riscrittura del testo.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Si verifica un errore durante l'elaborazione della richiesta.
+        \item Il sistema segnala il mancato completamento della richiesta di riscrittura del testo.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'utente viene informato del mancato completamento dell'operazione di riscrittura del testo.
+    \item \textbf{Trigger}: Si verifica un errore durante la comunicazione con il servizio AI.
 \end{itemize}
 
-% UC33 - Generazione automatica da prompt (Distant Writing)
-\subsubsection{UC 33: Generazione automatica da prompt (Distant Writing)}
+% UC46 - Generazione automatica da prompt (Distant Writing)
+\subsubsection{UC 46: Generazione automatica da prompt (Distant Writing)}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{generazione_automatica_prompt.png}
-    \caption{UC33 – Generazione automatica da prompt (Distant Writing)}
+    \caption{UC46 – Generazione automatica da prompt (Distant Writing)}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
     \item \textbf{Attore Secondario}: LLM
-    \item \textbf{Scenario Principale}: 
+    \item \textbf{Precondizioni}: Il servizio AI è disponibile.
+    \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente inserisce un'istruzione testuale (prompt) in un apposito campo.
-        \item Il sistema invia il prompt all'LLM.
-        \item L'LLM genera il testo e lo restituisce al sistema.
-        \item Il sistema fornisce il testo generato all'utente (gestito tramite UC 12).
+        \item L'utente inserisce un prompt testuale.
+        \item Il sistema invia il prompt al servizio AI.
+        \item Il servizio AI genera il testo richiesto.
+        \item Il sistema rende disponibile il testo generato all'utente.
     \end{enumerate}
-    \item \textbf{Precondizioni}: L'applicazione è avviata e la connessione ai servizi AI è stabilita.
-    \item \textbf{Postcondizioni}: Viene generata una proposta di testo basata sul prompt fornito.
-    \item \textbf{Trigger}: L'utente vuole che l'AI generi nuovi contenuti testuali a partire da una sua istruzione diretta.
+    \item \textbf{Postcondizioni}: Una proposta di testo generata dal servizio AI è disponibile all'utente.
+    \item \textbf{Trigger}: L'utente desidera generare automaticamente un nuovo contenuto testuale.
 \end{itemize}
 
-% UC33.1 - Visualizzazione errore servizi AI (Timeout, API error, ecc.)
-\paragraph{UC 33.1: Visualizzazione errore servizi AI}\mbox{}\
+% UC46.1 - Visualizzazione errore generazione testo
+\paragraph{UC 46.1: Visualizzazione errore generazione testo}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{errore_ai_UC33.png}
-    \caption{UC33.1 – Visualizzazione errore servizi AI}
+    \caption{UC46.1 – Visualizzazione errore generazione testo}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente viene informato che  il processo UC 33 ha fallito a causa di un errore del servizio AI.
-    \item \textbf{Precondizioni}: È in corso l’esecuzione di UC 33.
-    \item \textbf{Postcondizioni}: L’utente è informato dell’errore.
-    \item \textbf{Trigger}: Si verifica un errore nella comunicazione con il servizio AI.
+    \item \textbf{Precondizioni}: È in corso una richiesta di generazione testo (Distant Writing).
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Si verifica un errore durante l'elaborazione della richiesta.
+        \item Il sistema segnala il mancato completamento della richiesta di generazione testo.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'utente viene informato del mancato completamento dell'operazione di generazione testo.
+    \item \textbf{Trigger}: Si verifica un errore durante la comunicazione con il servizio AI.
 \end{itemize}
 
 % UC34 - Critica del testo (Sei Cappelli per Pensare)
