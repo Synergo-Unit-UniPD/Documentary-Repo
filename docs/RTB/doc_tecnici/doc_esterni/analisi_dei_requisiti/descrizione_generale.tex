@@ -1,13 +1,13 @@
 \section{Descrizione Generale}
 
-\subsection{Obiettivi del prodotto}
+\subsection{Obiettivo del prodotto}
 Il prodotto prevede lo sviluppo incrementale (attraverso le fasi di Proof of Concept, Minimum Viable Product e Prodotto Completo) di un'applicazione web per la redazione di testi in formato Markdown. L'obiettivo principale è superare i limiti dei classici chatbot testuali, fornendo un ambiente editor integrato in cui l'LLM possa attivamente elaborare, criticare e generare parti di testo su richiesta dell'utente, migliorando la produttività. L'obiettivo a lungo termine (vincolato ai requisiti opzionali) prevede la creazione di una knowledge base strutturata in un database server-side, che permetta il collegamento logico delle note per fornire un contesto più accurato e informato alle risposte dell'intelligenza artificiale.
 
 \subsection{Funzioni del prodotto}
 Le funzionalità principali del sistema si dividono nelle seguenti aree:
 \begin{itemize}
     \item \textbf{Gestione Editor visivo}: Area di data entry con supporto al markup Markdown e finestra affiancata per il rendering grafico in tempo reale.
-    \item \textbf{Supporto AI e Manipolazione Testo}: Funzioni di riassunto, traduzione multilingua e riscrittura parametrica (es. correzione grammaticale, cambio del tono in formale o colloquiale, estensione o sintesi del contenuto).
+    \item \textbf{Supporto AI e Manipolazione Testo}: Funzioni di riassunto, traduzione multilingua (Inglese, Francese, Spagnolo; Tedesco come estensione facoltativa) e riscrittura del testo per migliorarne forma e scorrevolezza (VE-5.2, VE-1.1).
     \item \textbf{Analisi Critica ("Sei Cappelli")}: Applicazione di prompt specifici per valutare il testo secondo diverse prospettive (imparziale, emozionale, ottimista, critica negativa, creativa, logica).
     \item \textbf{Distant Writing}: Generazione di interi blocchi di testo da parte dell'LLM a partire da un prompt testuale fornito dall'utente.
     \item \textbf{Gestione Dati}: Salvataggio e lettura delle note in file di testo locali (requisito base), con possibile estensione opzionale per il salvataggio strutturato, la modifica retroattiva e l'interconnessione tramite link.
@@ -18,9 +18,16 @@ Le funzionalità principali del sistema si dividono nelle seguenti aree:
 	\item \textbf{Utente Finale}: Un individuo che necessita di supporto nella stesura di testi, nel brainstorming o nello studio. Non è richiesta alcuna competenza tecnica o informatica pregressa: il sistema deve risultare semplice e di utilizzo intuitivo.
 \end{itemize}
 
+\subsection{Piattaforma di esecuzione}
+Il prodotto è una applicazione web accessibile tramite browser su sistemi operativi desktop (Windows, macOS, Linux). Non è previsto supporto nativo per dispositivi mobile. Non sono richiesti requisiti hardware particolari oltre a quelli necessari per l'esecuzione di un browser moderno e per la connessione ai servizi API esterni.
+
 \subsection{Vincoli generali}
 \begin{itemize}
-	\item \textbf{Vincoli Tecnologici e Architetturali}: L'applicazione deve essere basata su tecnologie web standard (HTML, browser). L'interazione con i modelli LLM (es. Gemini, Mistral, Gemma) deve avvenire tramite chiamate API aderenti allo standard OpenAI. Lo sviluppo richiede l'adozione di pattern architetturali robusti e duttili, atti a supportare continue revisioni incrementali.
+	\item \textbf{Vincoli Tecnologici e Architetturali}: L'applicazione deve essere basata su tecnologie web standard (HTML, CSS, JavaScript), senza vincoli imposti sul framework front-end adottato (VE-3.1).
+        L'interazione con i modelli LLM (Gemma, ChatGPT-OSS e Qwen, forniti dall'azienda proponente) deve avvenire tramite chiamate API aderenti allo standard OpenAI (VE-1.1). Lo sviluppo richiede l'adozione di pattern architetturali robusti e duttili, atti a supportare continue revisioni incrementali.
 	\item \textbf{Vincoli di Qualità}: A partire dalla fase di MVP, è obbligatorio implementare un'adeguata copertura con test automatici per la verifica sistematica dei casi d'uso principali.
-	\item \textbf{Vincoli di Strumento e Rilascio}: Per la modellazione UML e i diagrammi, il team di sviluppo ha scelto di adottare internamente lo strumento \textbf{Lucidspark}. Per quanto riguarda la consegna, costituisce titolo preferenziale per l'azienda proponente la pubblicazione del progetto su repository pubblici in conformità con i relativi requisiti di natura open-source.
+	\item \textbf{Vincoli di Strumento e Rilascio}: Per la modellazione UML e i diagrammi, il team di sviluppo ha scelto di adottare internamente lo strumento \textbf{Lucidchart}. Per quanto riguarda la consegna, costituisce titolo preferenziale per l'azienda proponente la pubblicazione del progetto su repository pubblici in conformità con i relativi requisiti di natura open-source.
 \end{itemize}
+
+\subsection{Assunzioni e dipendenze}
+Il corretto funzionamento delle funzionalità AI (riassunto, traduzione, riscrittura, Sei Cappelli, Distant Writing) dipende dalla disponibilità dei servizi LLM esterni configurati dall'utente tramite endpoint API compatibile con lo standard OpenAI. Il sistema non garantisce il funzionamento di tali funzionalità in assenza di connettività di rete o in caso di indisponibilità del servizio AI configurato.
