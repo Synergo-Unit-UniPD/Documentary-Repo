@@ -75,6 +75,7 @@
 \end{itemize}
 
 % UC2.1 - Conferma eliminazione
+\hypertarget{uc2.1}{}
 \paragraph{UC 2.1: Conferma eliminazione}
 
 % use case diagram
@@ -200,7 +201,6 @@
     \item \textbf{Precondizioni}: L'editor è attivo, è presente una nota aperta nell'editor ed una porzione di testo è selezionata.
     \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente seleziona il testo da tagliare.
         \item L'utente attiva il comando di taglio.
         \item Il sistema rimuove il testo selezionato dall'editor e lo inserisce negli appunti.
     \end{enumerate}
@@ -960,32 +960,6 @@
     \end{enumerate}
     \item \textbf{Postcondizioni}: Il documento viene ripristinato allo stato precedente.
     \item \textbf{Trigger}: L'utente desidera annullare un'operazione eseguita.
-    \item \textbf{Estensioni}:
-    \begin{itemize}
-        \item \hyperlink{uc38.1}{UC 38.1: Visualizzazione errore Undo} $ \rightarrow $ Condizione: non sono presenti modifiche annullabili.  
-    \end{itemize}
-\end{itemize}
-
-% UC38.1 - Visualizzazione errore Undo
-\hypertarget{uc38.1}{}
-\paragraph{UC 38.1: Visualizzazione errore Undo}\
-
-\begin{figure}[H]
-    \centering
-    %\includegraphics[width=0.6\textwidth]{errore_undo.png}
-    \caption{UC38.1 – Visualizzazione errore Undo}
-\end{figure}
-
-\begin{itemize}
-    \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: L'utente ha richiesto un'operazione di Undo.
-    \item \textbf{Scenario Principale}:
-    \begin{enumerate}
-        \item Il sistema verifica che non siano presenti operazioni annullabili.
-        \item Il sistema mostra un messaggio di errore all'utente.
-    \end{enumerate}
-    \item \textbf{Postcondizioni}: Lo stato dell'editor rimane invariato.
-    \item \textbf{Trigger}: Tentativo di eseguire Undo senza operazioni disponibili.
 \end{itemize}
 
 % UC 39 - Azione di Redo
@@ -1008,32 +982,6 @@
     \end{enumerate}
     \item \textbf{Postcondizioni}: La modifica precedentemente annullata viene riapplicata.
     \item \textbf{Trigger}: L'utente desidera ripristinare una modifica annullata.
-    \item \textbf{Estensioni}:
-    \begin{itemize}
-        \item \hyperlink{uc39.1}{UC 39.1: Visualizzazione errore Redo} $ \rightarrow $ Condizione: non sono presenti modifiche ripristinabili.  
-    \end{itemize}
-\end{itemize}
-
-% UC39.1 - Visualizzazione errore Redo
-\hypertarget{uc39.1}{}
-\paragraph{UC 39.1: Visualizzazione errore Redo}\
-
-\begin{figure}[H]
-    \centering
-    %\includegraphics[width=0.6\textwidth]{errore_redo.png}
-    \caption{UC39.1 – Visualizzazione errore Redo}
-\end{figure}
-
-\begin{itemize}
-    \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: L'utente ha richiesto un'operazione di Redo.
-    \item \textbf{Scenario Principale}:
-    \begin{enumerate}
-        \item Il sistema verifica che non siano presenti operazioni ripristinabili.
-        \item Il sistema mostra un messaggio di errore all'utente.
-    \end{enumerate}
-    \item \textbf{Postcondizioni}: Lo stato dell'editor rimane invariato.
-    \item \textbf{Trigger}: Tentativo di eseguire Redo senza operazioni disponibili.
 \end{itemize}
 
 %---------------GESTIONE VISUALIZZAZIONE----------------
