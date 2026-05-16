@@ -110,11 +110,11 @@
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: Il dialogo di conferma di \hyperlink{uc2.1}{UC 2.1} è visualizzato a schermo.
+    \item \textbf{Precondizioni}: Il dialogo di conferma eliminazione è visualizzato a schermo.
     \item \textbf{Scenario Principale}:
     \begin{enumerate}
         \item L'utente preme ``Annulla'' nel dialogo di conferma.
-        \item Il sistema chiude il dialogo senza modificare nulla.
+        \item Il sistema chiude il dialogo senza apportare modifiche.
     \end{enumerate}
     \item \textbf{Postcondizioni}: La nota rimane invariata; nessuna modifica è avvenuta.
     \item \textbf{Trigger}: L'utente decide di non procedere con l'eliminazione.
@@ -158,10 +158,13 @@
     \item \textbf{Precondizioni}: L'editor è attivo ed è presente una nota aperta nell'editor.
     \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente inserisce testo nell'area di input tramite tastiera.
+        \item L'utente posiziona il cursore nell'area di testo.
+        \item L'utente inserisce testo tramite tastiera.
+        \item Il sistema aggiorna in tempo reale l'area di testo con il contenuto inserito.
+        \item Il sistema aggiorna l'anteprima renderizzata, se la modalità di visualizzazione attiva lo prevede.
     \end{enumerate}
-    \item \textbf{Postcondizioni}: Il testo inserito è visibile nell'area di input.
-    \item \textbf{Trigger}: L'utente ha bisogno di inserire o modificare i contenuti testuali del documento.
+    \item \textbf{Postcondizioni}: Il testo inserito è visibile nell'editor e, ove applicabile, nell'anteprima renderizzata.
+    \item \textbf{Trigger}: L'utente vuole inserire o modificare i contenuti testuali della nota.
 \end{itemize}
 
 % UC4 - Copia testo
@@ -1689,7 +1692,7 @@
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{Download_nota_formato_Markdown.png}
-    \caption{UC56 – SAlvataggio della nota in formato Markdown}
+    \caption{UC56 – Salvataggio della nota in formato Markdown}
 \end{figure}
 
 \begin{itemize}
@@ -1798,7 +1801,7 @@
     \item \textbf{Scenario Principale}:
     \begin{enumerate}
         \item L'utente seleziona la funzione di esportazione.
-        \item L'utente sceglie il formato desiderato.
+        \item L'utente sceglie il formato desiderato (PDF, JSON o HTML).
         \item Il sistema converte la nota nel formato selezionato.
         \item Il sistema avvia il download del file esportato.
     \end{enumerate}
@@ -2018,104 +2021,35 @@
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: L'utente è autenticato.
+    \item \textbf{Precondizioni}: L'utente è autenticato e il servizio remoto è disponibile.
     \item \textbf{Scenario Principale}:
     \begin{enumerate}
         \item L'utente accede alla sezione delle note sincronizzate.
         \item Il sistema recupera le note associate all'account dell'utente.
-        \item Il sistema mostra l'elenco delle note salvate con titolo e data di ultima modifica.
+        \item Il sistema mostra l'elenco delle note, presentando per ciascuna:
+        \begin{itemize}
+            \item il titolo della nota;
+            \item la data di ultima modifica;
+            \item un'anteprima del contenuto.
+        \end{itemize}
     \end{enumerate}
-    \item \textbf{Postcondizioni}: L'utente visualizza la lista delle proprie note remote.
+    \item \textbf{Postcondizioni}: L'utente visualizza la lista delle proprie note remote con le relative informazioni.
     \item \textbf{Trigger}: L'utente desidera consultare le note salvate nello spazio remoto.
-    
-    \item \textbf{Inclusioni}:
-    \begin{itemize}
-        \item \hyperlink{uc62.1}{UC 62.1: Visualizzazione titolo nota salvata}
-        \item \hyperlink{uc62.2}{UC 62.2: Visualizzazione data ultima modifica}
-        \item \hyperlink{uc62.3}{UC 62.3: Visualizzazione anteprima nota}
-    \end{itemize}
 
     \item \textbf{Estensioni}:
     \begin{itemize}
-        \item \hyperlink{uc62.4}{UC 62.4: Visualizzazione errore recupero lista note remote} $ \rightarrow $ Condizione: errore durante il recupero delle note al passo 2.
+        \item \hyperlink{uc62.1}{UC 62.1: Visualizzazione errore recupero lista note remote} $ \rightarrow $ Condizione: errore durante il recupero delle note al passo 2.
     \end{itemize}
 \end{itemize}
 
-% UC62.1 - Visualizzazione titolo nota remota
+% UC62.1 - Visualizzazione errore recupero lista note
 \hypertarget{uc62.1}{}
-\paragraph{UC 62.1: Visualizzazione titolo nota remota}\
-
-\begin{figure}[H]
-    \centering
-    %\includegraphics[width=0.6\textwidth]{visualizzazione_titolo_nota_remota.png}
-    \caption{UC62.1 – Visualizzazione titolo nota remota}
-\end{figure}
-
-\begin{itemize}
-    \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: L'utente ha richiesto la visualizzazione della lista delle note salvate.
-    \item \textbf{Scenario Principale}:
-    \begin{enumerate}
-        \item Il sistema recupera le informazioni associate alle note remote.
-        \item Il sistema mostra il titolo di ciascuna nota presente nella lista.
-    \end{enumerate}
-    \item \textbf{Postcondizioni}: I titoli delle note remote risultano visibili all'utente.
-    \item \textbf{Trigger}: Visualizzazione della lista delle note salvate.
-\end{itemize}
-
-% UC62.2 - Visualizzazione data ultima modifica nota remota
-\hypertarget{uc62.2}{}
-\paragraph{UC 62.2: Visualizzazione data ultima modifica nota remota}\
-
-\begin{figure}[H]
-    \centering
-    %\includegraphics[width=0.6\textwidth]{visualizzazione_data_nota_remota.png}
-    \caption{UC62.2 – Visualizzazione data ultima modifica nota remota}
-\end{figure}
-
-\begin{itemize}
-    \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: L'utente ha richiesto la visualizzazione della lista delle note salvate.
-    \item \textbf{Scenario Principale}:
-    \begin{enumerate}
-        \item Il sistema recupera le informazioni temporali associate alle note remote.
-        \item Il sistema mostra la data di ultima modifica per ciascuna nota presente nella lista.
-    \end{enumerate}
-    \item \textbf{Postcondizioni}: Le date di ultima modifica delle note remote risultano visibili all'utente.
-    \item \textbf{Trigger}: Visualizzazione della lista delle note salvate.
-\end{itemize}
-
-% UC62.3 - Visualizzazione anteprima nota remota
-\hypertarget{uc62.3}{}
-\paragraph{UC 62.3: Visualizzazione anteprima nota remota}\
-
-\begin{figure}[H]
-    \centering
-    %\includegraphics[width=0.6\textwidth]{visualizzazione_anteprima_nota_remota.png}
-    \caption{UC62.3 – Visualizzazione anteprima nota remota}
-\end{figure}
-
-\begin{itemize}
-    \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: L'utente ha richiesto la visualizzazione della lista delle note salvate.
-    \item \textbf{Scenario Principale}:
-    \begin{enumerate}
-        \item Il sistema recupera una porzione del contenuto associato a ciascuna nota remota.
-        \item Il sistema mostra un'anteprima testuale delle note presenti nella lista.
-    \end{enumerate}
-    \item \textbf{Postcondizioni}: Le anteprime delle note remote risultano visibili all'utente.
-    \item \textbf{Trigger}: Visualizzazione della lista delle note salvate.
-\end{itemize}
-
-
-% UC62.4 - Visualizzazione errore recupero lista note
-\hypertarget{uc62.4}{}
-\paragraph{UC 62.4: Visualizzazione errore recupero lista note}\
+\paragraph{UC 62.1: Visualizzazione errore recupero lista note}\
 
 \begin{figure}[H]
     \centering
     %\includegraphics[width=0.6\textwidth]{errore_lista_note_remote.png}
-    \caption{UC62.4 – Visualizzazione errore recupero lista note}
+    \caption{UC62.1 – Visualizzazione errore recupero lista note}
 \end{figure}
 
 \begin{itemize}
