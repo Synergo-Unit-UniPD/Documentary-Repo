@@ -1760,141 +1760,275 @@
 % --------------------------------------------------------------------------
 % Funzionalità opzionali di persistenza remota
 % --------------------------------------------------------------------------
+\textit{Le seguenti funzionalità opzionali consentono la sincronizzazione remota delle note tramite autenticazione utente e utilizzo di uno spazio di persistenza remoto.}
 
-% UC41 - Salvataggio nota su database
-\subsubsection{UC 41: (Opzionale) Salvataggio nota su database}
+\bigskip
+\noindent\textbf{Nota sul perimetro del sistema.}
+Le funzionalità descritte in questa sezione permettono all'utente autenticato di salvare, recuperare e gestire le proprie note sincronizzate.
+
+% UC59 - Registrazione utente 
+\subsubsection{UC 59: (Opzionale) Registrazione utente}
+
+\begin{figure}[H]
+    \centering
+    %\includegraphics[width=0.6\textwidth]{registrazione_utente.png}
+    \caption{UC59 – Registrazione utente}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: Il sistema è avviato e il servizio di persistenza remota è disponibile.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente seleziona la funzione di registrazione.
+        \item Il sistema mostra il modulo di registrazione.
+        \item L'utente inserisce le informazioni richieste (es.\ email e password).
+        \item Il sistema valida i dati inseriti.
+        \item Il sistema crea il nuovo account utente.
+        \item Il sistema conferma l'avvenuta registrazione.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'account utente viene creato correttamente.
+    \item \textbf{Trigger}: L'utente desidera accedere alle funzionalità di sincronizzazione remota.
+    \item \textbf{Estensioni}:
+    \begin{itemize}
+        \item \hyperlink{uc59.1}{UC 59.1: Visualizzazione errore email registrazione}: email non valida o già registrata al passo 4.
+        \item \hyperlink{uc59.2}{UC 59.2: Visualizzazione errore password registrazione}: password non conforme ai requisiti al passo 4.
+    \end{itemize}
+\end{itemize}
+
+% UC59.1 - Visualizzazione errore email registrazione
+\hypertarget{uc59.1}{}
+\paragraph{UC 59.1: Visualizzazione errore email registrazione}\mbox{}\\
+
+\begin{figure}[H]
+    \centering
+    %\includegraphics[width=0.6\textwidth]{errore_email_registrazione.png}
+    \caption{UC59.1 – Visualizzazione errore email registrazione}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: È in corso la procedura di registrazione.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema rileva che l'email inserita non è valida oppure è già associata a un account esistente.
+        \item Il sistema mostra un messaggio di errore all'utente.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La registrazione non viene completata.
+    \item \textbf{Trigger}: Inserimento di email non valida o già presente nel sistema.
+\end{itemize}
+
+% UC59.2 - Visualizzazione errore password registrazione
+\hypertarget{uc59.2}{}
+\paragraph{UC 59.2: Visualizzazione errore password registrazione}\mbox{}\\
+
+\begin{figure}[H]
+    \centering
+    %\includegraphics[width=0.6\textwidth]{errore_password_registrazione.png}
+    \caption{UC59.2 – Visualizzazione errore password registrazione}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: È in corso la procedura di registrazione.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema rileva che la password inserita non soddisfa i requisiti minimi previsti.
+        \item Il sistema mostra un messaggio di errore all'utente.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La registrazione non viene completata.
+    \item \textbf{Trigger}: Inserimento di password non conforme ai requisiti di sicurezza.
+\end{itemize}
+
+% UC60 - Autenticazione utente
+\subsubsection{UC 60: (Opzionale) Autenticazione utente}
+
+\begin{figure}[H]
+    \centering
+    %\includegraphics[width=0.6\textwidth]{autenticazione_utente.png}
+    \caption{UC60 – Autenticazione utente}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: L'utente possiede un account registrato.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente seleziona la funzione di accesso.
+        \item Il sistema mostra il modulo di autenticazione.
+        \item L'utente inserisce le proprie credenziali.
+        \item Il sistema verifica le credenziali inserite.
+        \item Il sistema autentica l'utente e abilita le funzionalità di persistenza remota.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'utente risulta autenticato nel sistema.
+    \item \textbf{Trigger}: L'utente desidera accedere alle funzionalità remote.
+    \item \textbf{Estensioni}:
+    \begin{itemize}
+        \item \hyperlink{uc60.1}{UC 60.1: Visualizzazione errore autenticazione}: credenziali non valide al passo 4.
+        \item \hyperlink{uc60.2}{UC 60.2: Visualizzazione errore utente non registrato}: utente non registrato al passo 4.
+    \end{itemize}
+\end{itemize}
+
+% UC60.1 - Visualizzazione errore autenticazione
+\hypertarget{uc60.1}{}
+\paragraph{UC 60.1: Visualizzazione errore autenticazione}\mbox{}\\
+
+\begin{figure}[H]
+    \centering
+    %\includegraphics[width=0.6\textwidth]{errore_autenticazione.png}
+    \caption{UC60.1 – Visualizzazione errore autenticazione}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: È in corso l'autenticazione dell'utente.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema rileva che le credenziali inserite non sono corrette.
+        \item Il sistema mostra un messaggio di errore all'utente.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'utente non viene autenticato.
+    \item \textbf{Trigger}: Inserimento di credenziali non valide.
+\end{itemize}
+
+% UC60.2 - Visualizzazione errore utente non registrato
+\hypertarget{uc60.2}{}
+\paragraph{UC 60.2: Visualizzazione errore utente non registrato}\mbox{}\\
+
+\begin{figure}[H]
+    \centering
+    %\includegraphics[width=0.6\textwidth]{errore_utente_non_registrato.png}
+    \caption{UC60.2 – Visualizzazione errore utente non registrato}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: È in corso l'autenticazione dell'utente.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema verifica che l'utente non possiede un account registrato.
+        \item Il sistema informa l'utente che è necessaria la registrazione.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'accesso non viene consentito.
+    \item \textbf{Trigger}: Tentativo di autenticazione con account inesistente.
+\end{itemize}
+
+% UC61 - Visualizzazione lista note salvate
+\subsubsection{UC 61: (Opzionale) Visualizzazione lista note salvate}
+
+\begin{figure}[H]
+    \centering
+    %\includegraphics[width=0.6\textwidth]{lista_note_salvate.png}
+    \caption{UC61 – Visualizzazione lista note salvate}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: L'utente è autenticato.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente accede alla sezione delle note sincronizzate.
+        \item Il sistema recupera le note associate all'account dell'utente.
+        \item Il sistema mostra l'elenco delle note salvate con titolo e data di ultima modifica.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'utente visualizza la lista delle proprie note remote.
+    \item \textbf{Trigger}: L'utente desidera consultare le note salvate nello spazio remoto.
+\end{itemize}
+
+
+% UC62 - Salvataggio nota su database
+\subsubsection{UC 62: (Opzionale) Salvataggio nota su database}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{Salvataggio_nota_database.png}
-    \caption{UC41 – Salvataggio nota su database}
+    \caption{UC62 – Salvataggio nota su database}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Attore Secondario}: Database
-    \item \textbf{Scenario Principale}: 
+    \item \textbf{Precondizioni}: L'utente è autenticato e una nota è aperta nell'editor.
+    \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente attiva il comando di salvataggio remoto;
-        \item Il sistema invia il contenuto dell'editor al database associandolo al profilo dell'utente.
+        \item L'utente seleziona la funzione di salvataggio remoto.
+        \item Il sistema sincronizza il contenuto della nota con lo spazio remoto associato all'utente.
+        \item Il sistema conferma l'avvenuto salvataggio.
     \end{enumerate}
-    \item \textbf{Precondizioni}: L'utente è autenticato e connesso.
-    \item \textbf{Postcondizioni}: La nota viene salvata correttamente sul server remoto.
-    \item \textbf{Trigger}: L'utente vuole sincronizzare la nota corrente sul cloud.
+    \item \textbf{Postcondizioni}: La nota viene salvata nello spazio remoto dell'utente.
+    \item \textbf{Trigger}: L'utente desidera sincronizzare la nota corrente.
+    \item \textbf{Estensioni}:
+    \begin{itemize}
+        \item \hyperlink{uc62.1}{UC 62.1: Visualizzazione errore sincronizzazione Database}: errore di sincronizzazione al passo 2.
+    \end{itemize}
 \end{itemize}
 
-% UC41.1 - Visualizzazione errore sincronizzazione Database
-\paragraph{UC 41.1: Visualizzazione errore sincronizzazione Database}\mbox{}\
+% UC62.1 - Visualizzazione errore sincronizzazione Database
+\paragraph{UC 62.1: Visualizzazione errore sincronizzazione Database}\mbox{}\
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{Errore_sincronizzazione_database_salvataggio.png}
-    \caption{UC41.1 – Visualizzazione errore sincronizzazione Database}
+    \caption{UC62.1 – Visualizzazione errore sincronizzazione Database}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: 
+    \item \textbf{Precondizioni}: È in corso il salvataggio remoto della nota.
+    \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente tenta di salvare la nota sul database;
-        \item Il sistema rileva un errore di connessione o un'indisponibilità del database;
-        \item Il sistema mostra un messaggio di errore di sincronizzazione.
+        \item Il sistema rileva un errore durante la sincronizzazione della nota.
+        \item Il sistema mostra un messaggio di errore all'utente.
     \end{enumerate}
-    \item \textbf{Precondizioni}: Richiesta di salvataggio in corso.
-    \item \textbf{Postcondizioni}: La nota non viene salvata e l'utente viene notificato del problema.
-    \item \textbf{Trigger}: Fallimento della comunicazione con il server remoto durante il salvataggio.
+    \item \textbf{Postcondizioni}: La nota non viene salvata nello spazio remoto.
+    \item \textbf{Trigger}: Problemi di connessione o indisponibilità del servizio remoto.
 \end{itemize}
 
-% UC42 - Caricamento nota da database
-\subsubsection{UC 42: (Opzionale) Caricamento nota da database}
+% UC63 - Apertura nota da lista note salvate
+\subsubsection{UC 63: (Opzionale) Apertura nota da lista note salvate}
 
-% use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{Caricamento_nota_database.png}
-    \caption{UC42 – Caricamento nota da database}
+    %\includegraphics[width=0.6\textwidth]{apertura_nota_remota.png}
+    \caption{UC63 – Apertura nota da lista note salvate}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Attore Secondario}: Database
-    \item \textbf{Scenario Principale}: 
+    \item \textbf{Precondizioni}: L'utente è autenticato e la lista delle note salvate è disponibile.
+    \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente richiede la lista delle note salvate;
-        \item Il sistema recupera i dati e, dopo la selezione, scarica il testo nell'editor.
+        \item L'utente seleziona una nota dalla lista delle note salvate.
+        \item Il sistema recupera il contenuto della nota selezionata.
+        \item Il sistema carica la nota nell'editor.
     \end{enumerate}
-    \item \textbf{Precondizioni}: L'utente è autenticato e sono presenti note sul database.
-    \item \textbf{Postcondizioni}: La nota remota viene caricata nell'editor.
-    \item \textbf{Trigger}: L'utente vuole aprire un file salvato nel proprio profilo cloud.
+    \item \textbf{Postcondizioni}: La nota selezionata è aperta nell'editor.
+    \item \textbf{Trigger}: L'utente desidera aprire una nota salvata nello spazio remoto.
+    \item \textbf{Estensioni}:
+    \begin{itemize}
+        \item \hyperlink{uc63.1}{UC 63.1: Visualizzazione errore apertura nota remota}: errore durante il recupero della nota al passo 2.
+    \end{itemize}
 \end{itemize}
 
-% UC42.1 - Visualizzazione errore sincronizzazione Database
-\paragraph{UC 42.1: Visualizzazione errore sincronizzazione Database}\mbox{}\
+% UC63.1 - Visualizzazione errore apertura nota remota
+\hypertarget{uc63.1}{}
+\paragraph{UC 63.1: Visualizzazione errore apertura nota remota}\mbox{}\\
 
-% use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{Errore_sincronizzazione_database_caricamento.png}
-    \caption{UC42.1 – Visualizzazione errore sincronizzazione Database}
+    %\includegraphics[width=0.6\textwidth]{errore_apertura_remota.png}
+    \caption{UC63.1 – Visualizzazione errore apertura nota remota}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: 
+    \item \textbf{Precondizioni}: È in corso il recupero della nota remota.
+    \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente tenta di caricare una nota dal database;
-        \item Il sistema fallisce il recupero dei dati per problemi di rete o autenticazione scaduta;
-        \item Il sistema mostra un messaggio di errore di sincronizzazione.
+        \item Il sistema non riesce a recuperare la nota selezionata.
+        \item Il sistema mostra un messaggio di errore all'utente.
     \end{enumerate}
-    \item \textbf{Precondizioni}: Richiesta di caricamento in corso.
-    \item \textbf{Postcondizioni}: L'editor rimane invariato e l'utente viene notificato.
-    \item \textbf{Trigger}: Fallimento della comunicazione con il server durante il caricamento.
-\end{itemize}
-
-% UC43 - Creazione collegamento tra note nel database
-\subsubsection{UC 43: (Opzionale) Creazione collegamento tra note nel database}
-
-% use case diagram
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{Collegamento_note_database.png}
-    \caption{UC43 – Creazione collegamento tra note nel database}
-\end{figure}
-
-\begin{itemize}
-    \item \textbf{Attore Principale}: Utente
-    \item \textbf{Attore Secondario}: Database
-    \item \textbf{Scenario Principale}: 
-    \begin{enumerate}
-        \item L'utente inserisce un riferimento a una nota esistente nel database;
-        \item Il sistema crea una connessione logica tra i documenti nel database.
-    \end{enumerate}
-    \item \textbf{Precondizioni}: L'utente è autenticato e le note sono presenti sul database.
-    \item \textbf{Postcondizioni}: Viene creato un collegamento bidirezionale tra le note.
-    \item \textbf{Trigger}: L'utente vuole connettere logicamente due documenti remoti.
-\end{itemize}
-
-% UC43.1 - Visualizzazione errore sincronizzazione Database
-\paragraph{UC 43.1: Visualizzazione errore sincronizzazione Database}\mbox{}\
-
-% use case diagram
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{Errore_sincronizzazione_database_collegamento.png}
-    \caption{UC43.1 – Visualizzazione errore sincronizzazione Database}
-\end{figure}
-
-\begin{itemize}
-    \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: 
-    \begin{enumerate}
-        \item L'utente tenta di collegare due note;
-        \item Il sistema non riesce a scrivere il nuovo collegamento sul database;
-        \item Il sistema mostra un messaggio di errore di sincronizzazione.
-    \end{enumerate}
-    \item \textbf{Precondizioni}: Procedura di collegamento avviata.
-    \item \textbf{Postcondizioni}: Il collegamento non viene creato.
-    \item \textbf{Trigger}: Problemi di integrità del database o di rete durante il collegamento.
+    \item \textbf{Postcondizioni}: L'editor rimane invariato.
+    \item \textbf{Trigger}: Errore di connessione o indisponibilità del servizio remoto.
 \end{itemize}
