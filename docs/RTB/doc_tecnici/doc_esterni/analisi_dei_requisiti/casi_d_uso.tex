@@ -30,11 +30,12 @@
     \begin{enumerate}
         \item L'utente attiva il comando ``Nuova Nota''.
         \item Il sistema richiede l'inserimento di un titolo per la nota.
-        \item L'utente inserisce il titolo desiderato e conferma.
-        \item Il sistema crea la nota e la apre nell'editor.
+        \item L'utente inserisce il titolo desiderato.
+        \item Il sistema crea una nuova nota associando il titolo inserito.
+        \item Il sistema apre la nota nell'editor.
     \end{enumerate}
-    \item \textbf{Postcondizioni}: Una nuova nota con titolo è aperta e attiva nell'editor.
-    \item \textbf{Trigger}: L'utente desidera iniziare una nuova sessione di scrittura.
+    \item \textbf{Postcondizioni}: Una nuova nota con titolo associato è aperta e modificabile nell'editor.
+    \item \textbf{Trigger}: L'utente desidera creare una nuova nota.
 \end{itemize}
 
 % UC2 - Eliminazione di una nota
@@ -147,7 +148,7 @@
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: L'editor è attivo e pronto a ricevere input.
+    \item \textbf{Precondizioni}: L'editor è attivo ed è presente una nota aperta nell'editor.
     \item \textbf{Scenario Principale}:
     \begin{enumerate}
         \item L'utente inserisce testo nell'area di input tramite tastiera.
@@ -168,7 +169,7 @@
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: L'editor è attivo ed una porzione di testo è selezionata.
+    \item \textbf{Precondizioni}: L'editor è attivo, è presente una nota aperta nell'editor ed una porzione di testo è selezionata.
     \item \textbf{Scenario Principale}:
         \begin{enumerate}
         \item L'utente attiva il comando di copia.
@@ -190,7 +191,7 @@
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: L'editor è attivo ed una porzione di testo è selezionata.
+    \item \textbf{Precondizioni}: L'editor è attivo, è presente una nota aperta nell'editor ed una porzione di testo è selezionata.
     \item \textbf{Scenario Principale}:
     \begin{enumerate}
         \item L'utente seleziona il testo da tagliare.
@@ -213,7 +214,7 @@
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: L'editor è attivo ed una porzione di testo è stata copiata o tagliata negli appunti.
+    \item \textbf{Precondizioni}: L'editor è attivo, è presente una nota aperta nell'editor ed una porzione di testo è stata copiata o tagliata negli appunti.
     \item \textbf{Scenario Principale}:
     \begin{enumerate}
         \item L'utente posiziona il cursore nel punto desiderato.
@@ -238,14 +239,14 @@
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: L'editor è attivo.
+    \item \textbf{Precondizioni}: L'editor è attivo ed è presente una nota aperta nell'editor.
     \item \textbf{Scenario Principale}:
         \begin{enumerate}
         \item L'utente attiva il comando "Grassetto".
         \item Il sistema abilita la modalità di inserimento in grassetto.
         \end{enumerate}
     \item \textbf{Postcondizioni}: Il testo inserito successivamente viene formattato in grassetto.
-    \item \textbf{Trigger}: L'utente desidera scrivere nuovo testo in grassetto.
+    \item \textbf{Trigger}: L'utente desidera applicare la formattazione grassetto durante l'inserimento del testo.
     \end{itemize}
 
 
@@ -261,7 +262,7 @@
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: L'editor è attivo ed una porzione di testo è selezionata.
+    \item \textbf{Precondizioni}: L'editor è attivo, è presente una nota aperta nell'editor ed una porzione di testo è selezionata.
     \item \textbf{Scenario Principale}:
         \begin{enumerate}
         \item L'utente attiva il comando "Grassetto".
@@ -305,7 +306,7 @@
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: L'editor è attivo ed una porzione di testo formattata in grassetto è selezionata.
+    \item \textbf{Precondizioni}: L'editor è attivo, è presente una nota aperta nell'editor ed una porzione di testo formattata in grassetto è selezionata.
     \item \textbf{Scenario Principale}:
     \begin{enumerate}
         \item L'utente disattiva il comando "Grassetto".
@@ -329,14 +330,14 @@
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: L'editor è attivo.
+    \item \textbf{Precondizioni}: L'editor è attivo ed è presente una nota aperta nell'editor.
     \item \textbf{Scenario Principale}:
         \begin{enumerate}
         \item L'utente attiva il comando "Corsivo".
         \item Il sistema abilita la modalità di inserimento  in corsivo.
         \end{enumerate}
     \item \textbf{Postcondizioni}: Il testo inserito successivamente viene formattato in corsivo.
-    \item \textbf{Trigger}: L'utente desidera scrivere nuovo testo in corsivo.
+    \item \textbf{Trigger}: L'utente desidera applicare la formattazione corsivo durante l'inserimento del testo.
     \end{itemize}
 
 % UC12 - Applicazione corsivo al testo selezionato
@@ -351,7 +352,7 @@
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: L'editor è attivo ed una porzione di testo è selezionata.
+    \item \textbf{Precondizioni}: L'editor è attivo, è presente una nota aperta nell'editor ed una porzione di testo è selezionata.
     \item \textbf{Scenario Principale}:
         \begin{enumerate}
         \item L'utente attiva il comando "Corsivo".
@@ -395,7 +396,7 @@
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: L'editor è attivo ed una porzione di testo formattata in corsivo è selezionata.
+    \item \textbf{Precondizioni}: L'editor è attivo, è presente una nota aperta nell'editor ed una porzione di testo formattata in corsivo è selezionata.
     \item \textbf{Scenario Principale}:
     \begin{enumerate}
         \item L'utente disattiva il comando "Corsivo".
@@ -419,14 +420,14 @@
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: L'editor è attivo.
+    \item \textbf{Precondizioni}: L'editor è attivo ed è presente una nota aperta nell'editor.
     \item \textbf{Scenario Principale}:
         \begin{enumerate}
         \item L'utente attiva il comando "Sottolineato".
         \item Il sistema abilita la modalità di inserimento  in sottolineato.
         \end{enumerate}
     \item \textbf{Postcondizioni}: Il testo inserito successivamente viene formattato in sottolineato.
-    \item \textbf{Trigger}: L'utente desidera scrivere nuovo testo in sottolineato.
+    \item \textbf{Trigger}: L'utente desidera applicare la formattazione sottolineato durante l'inserimento del testo.
     \end{itemize}
 
 % UC16 - Applicazione sottolineato al testo selezionato
@@ -441,7 +442,7 @@
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: L'editor è attivo ed una porzione di testo è selezionata.
+    \item \textbf{Precondizioni}: L'editor è attivo, è presente una nota aperta nell'editor ed una porzione di testo è selezionata.
     \item \textbf{Scenario Principale}:
         \begin{enumerate}
         \item L'utente attiva il comando "Sottolineato".
@@ -485,7 +486,7 @@
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: L'editor è attivo ed una porzione di testo formattata in sottolineato è selezionata.
+    \item \textbf{Precondizioni}: L'editor è attivo, è presente una nota aperta nell'editor ed una porzione di testo formattata in sottolineato è selezionata.
     \item \textbf{Scenario Principale}:
     \begin{enumerate}
         \item L'utente disattiva il comando "Sottolineato".
@@ -509,14 +510,14 @@
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: L'editor è attivo.
+    \item \textbf{Precondizioni}: L'editor è attivo ed è presente una nota aperta nell'editor.
     \item \textbf{Scenario Principale}:
         \begin{enumerate}
         \item L'utente attiva il comando "Barrato".
         \item Il sistema abilita la modalità di inserimento in barrato.
         \end{enumerate}
     \item \textbf{Postcondizioni}: Il testo inserito successivamente viene formattato in barrato.
-    \item \textbf{Trigger}: L'utente desidera scrivere nuovo testo in barrato.
+    \item \textbf{Trigger}: L'utente desidera applicare la formattazione barrato durante l'inserimento del testo.
 \end{itemize}
 
 % UC20 - Applicazione barrato al testo selezionato
@@ -531,7 +532,7 @@
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: L'editor è attivo ed una porzione di testo è selezionata.
+    \item \textbf{Precondizioni}: L'editor è attivo, è presente una nota aperta nell'editor ed una porzione di testo è selezionata.
     \item \textbf{Scenario Principale}:
         \begin{enumerate}
         \item L'utente attiva il comando "Barrato".
@@ -575,7 +576,7 @@
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: L'editor è attivo ed una porzione di testo formattata in barrato è selezionata.
+    \item \textbf{Precondizioni}: L'editor è attivo, è presente una nota aperta nell'editor ed una porzione di testo formattata in barrato è selezionata.
     \item \textbf{Scenario Principale}:
     \begin{enumerate}
         \item L'utente disattiva il comando "Barrato".
@@ -599,7 +600,7 @@
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: L'editor è attivo.
+    \item \textbf{Precondizioni}: L'editor è attivo ed è presente una nota aperta nell'editor.
     \item \textbf{Scenario Principale}:
         \begin{enumerate}
         \item L'utente attiva il comando "Citazione".
@@ -621,7 +622,7 @@
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: L'editor è attivo ed una porzione di testo è selezionata.
+    \item \textbf{Precondizioni}: L'editor è attivo, è presente una nota aperta nell'editor ed una porzione di testo è selezionata.
     \item \textbf{Scenario Principale}:
         \begin{enumerate}
         \item L'utente attiva il comando "Citazione".
@@ -665,7 +666,7 @@
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: L'editor è attivo ed una porzione di testo formattata come citazione è selezionata.
+    \item \textbf{Precondizioni}: L'editor è attivo, è presente una nota aperta nell'editor ed una porzione di testo formattata come citazione è selezionata.
     \item \textbf{Scenario Principale}:
     \begin{enumerate}
         \item L'utente disattiva il comando "Citazione".
@@ -689,7 +690,7 @@
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: L'editor è attivo.
+    \item \textbf{Precondizioni}: L'editor è attivo ed è presente una nota aperta nell'editor.
     \item \textbf{Scenario Principale}:
         \begin{enumerate}
         \item L'utente attiva il comando "Titolo".
@@ -712,7 +713,7 @@
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: L'editor è attivo ed una porzione di testo è selezionata.
+    \item \textbf{Precondizioni}: L'editor è attivo, è presente una nota aperta nell'editor ed una porzione di testo è selezionata.
     \item \textbf{Scenario Principale}:
         \begin{enumerate}
         \item L'utente attiva il comando "Titolo".
@@ -756,7 +757,7 @@
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: L'editor è attivo ed una porzione di testo formattata come titolo è selezionata.
+    \item \textbf{Precondizioni}: L'editor è attivo, è presente una nota aperta nell'editor ed una porzione di testo formattata come titolo è selezionata.
     \item \textbf{Scenario Principale}:
         \begin{enumerate}
         \item L'utente disattiva il comando "Titolo".
@@ -780,7 +781,7 @@
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: L'editor è attivo.
+    \item \textbf{Precondizioni}: L'editor è attivo ed è presente una nota aperta nell'editor.
     \item \textbf{Scenario Principale}:
     \begin{enumerate}
         \item L'utente attiva il comando "Inserisci link".
@@ -804,7 +805,7 @@
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: È presente almeno un collegamento nel documento.
+    \item \textbf{Precondizioni}: L'editor è attivo, è presente una nota aperta nell'editor ed è presente almeno un collegamento nel documento.
     \item \textbf{Scenario Principale}:
     \begin{enumerate}
         \item L'utente seleziona un collegamento esistente.
@@ -852,12 +853,12 @@
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: L'editor è attivo.
+    \item \textbf{Precondizioni}: L'editor è attivo ed è presente una nota aperta nell'editor.
     \item \textbf{Scenario Principale}:
     \begin{enumerate}
         \item L'utente attiva il comando "Elenco".
-        \item Il sistema abilita la modalità elenco.
-        \item \item L'utente seleziona il tipo di elenco desiderato (puntato o numerato).
+        \item Il sistema abilita la modalità di inserimento elenco.
+        \item L'utente seleziona il tipo di elenco desiderato (puntato o numerato).
         \item L'utente inserisce il contenuto dell'elenco.
     \end{enumerate}
     \item \textbf{Postcondizioni}: Il testo inserito successivamente viene formattato come elenco del tipo selezionato.
@@ -899,14 +900,14 @@
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: La modalità elenco è attiva.
+    \item \textbf{Precondizioni}: La modalità di inserimentoelenco è attiva.
     \item \textbf{Scenario Principale}:
     \begin{enumerate}
         \item L'utente disattiva il comando "Elenco".
-        \item Il sistema disabilita la modalità elenco.
+        \item Il sistema disabilita la modalità di inserimento elenco.
     \end{enumerate}
     \item \textbf{Postcondizioni}: Il testo inserito successivamente non verrà formattato come elenco.
-    \item \textbf{Trigger}: L'utente desidera interrompere la modalità elenco.
+    \item \textbf{Trigger}: L'utente desidera interrompere la modalità di inserimento elenco.
 \end{itemize}
 
 % UC 37 - Rimozione formattazione elenco da testo selezionato
@@ -1538,7 +1539,7 @@
     \item \textbf{Scenario Principale}:
     \begin{enumerate}
         \item L'utente accetta la proposta generata.
-        \item Il sistema inserisce il contenuto proposto nell'editor.
+        \item Il sistema applica la proposta AI aggiornando il contenuto dell'editor.
     \end{enumerate}
     \item \textbf{Postcondizioni}: Il contenuto dell'editor viene aggiornato con il testo generato dall'AI.
     \item \textbf{Trigger}: L'utente ritiene valida la proposta generata dall'AI.
@@ -1583,8 +1584,8 @@
     \item \textbf{Scenario Principale}:
     \begin{enumerate}
         \item L'utente richiede la rigenerazione della proposta.
-        \item Il sistema invia nuovamente la richiesta all'LLM.
-        \item L'LLM genera una nuova proposta.
+        \item Il sistema invia nuovamente la richiesta al servizio AI.
+        \item Il servizio AI genera una nuova proposta.
         \item Il sistema sostituisce la proposta precedente con quella nuova.
     \end{enumerate}
     \item \textbf{Postcondizioni}: Una nuova proposta AI viene visualizzata all'utente.
