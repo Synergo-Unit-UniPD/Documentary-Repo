@@ -1265,9 +1265,10 @@
         \item L'utente richiede la generazione di un riassunto del testo selezionato.
         \item Il sistema invia la richiesta al servizio AI.
         \item Il servizio AI genera il riassunto richiesto.
-        \item Il sistema rende disponibile il riassunto generato all'utente.
+        \item Il sistema rende disponibile il riassunto generato all'utente, senza modificare il contenuto della nota.
     \end{enumerate}
-    \item \textbf{Postcondizioni}: Una proposta di riassunto del testo selezionato è disponibile all'utente.
+    \item \textbf{Postcondizioni}: Una proposta di riassunto del testo selezionato è disponibile all'utente; il contenuto 
+      della nota rimane invariato.
     \item \textbf{Trigger}: L'utente desidera ottenere una sintesi del testo selezionato.
     \item \textbf{Estensioni}:
     \begin{itemize}
@@ -1319,9 +1320,10 @@
         \item L'utente seleziona la lingua di destinazione.
         \item Il sistema invia la richiesta al servizio AI.
         \item Il servizio AI genera la traduzione richiesta.
-        \item Il sistema rende disponibile il testo tradotto all'utente.
+        \item Il sistema rende disponibile il testo tradotto all'utente, senza modificare il contenuto della nota.
     \end{enumerate}
-    \item \textbf{Postcondizioni}: Una proposta di traduzione del testo selezionato è disponibile all'utente.
+    \item \textbf{Postcondizioni}: Una proposta di traduzione del testo selezionato è disponibile all'utente; il contenuto 
+      della nota rimane invariato.
     \item \textbf{Trigger}: L'utente desidera tradurre il testo selezionato in un'altra lingua.
     \item \textbf{Estensioni}:
     \begin{itemize}
@@ -1371,9 +1373,10 @@
         \item L'utente richiede la riscrittura del testo selezionato.
         \item Il sistema invia la richiesta al servizio AI.
         \item Il servizio AI genera una nuova versione del testo.
-        \item Il sistema rende disponibile il testo rielaborato all'utente.
+        \item Il sistema rende disponibile il testo rielaborato all'utente, senza modificare il contenuto della nota.
     \end{enumerate}
-    \item \textbf{Postcondizioni}: Una proposta di riscrittura del testo selezionato è disponibile all'utente.
+    \item \textbf{Postcondizioni}: Una proposta di riscrittura del testo selezionato è disponibile all'utente; il contenuto 
+      della nota rimane invariato.
     \item \textbf{Trigger}: L'utente desidera rielaborare il testo selezionato.
     \item \textbf{Estensioni}:
     \begin{itemize}
@@ -1423,9 +1426,10 @@
         \item L'utente inserisce un prompt testuale.
         \item Il sistema invia il prompt al servizio AI.
         \item Il servizio AI genera il testo richiesto.
-        \item Il sistema rende disponibile il testo generato all'utente.
+        \item Il sistema rende disponibile il testo generato all'utente, senza modificare il contenuto della nota.
     \end{enumerate}
-    \item \textbf{Postcondizioni}: Una proposta di testo generata dal servizio AI è disponibile all'utente.
+    \item \textbf{Postcondizioni}: Una proposta di testo generata dal servizio AI è disponibile all'utente; il contenuto 
+      della nota rimane invariato.
     \item \textbf{Trigger}: L'utente desidera generare automaticamente un nuovo contenuto testuale.
     \item \textbf{Estensioni}:
     \begin{itemize}
@@ -1477,9 +1481,10 @@
         \item L'utente richiede un'analisi del testo secondo il Cappello Bianco.
         \item Il sistema invia la richiesta al servizio AI.
         \item Il servizio AI analizza informazioni oggettive, dati e lacune informative presenti nel testo.
-        \item Il sistema rende disponibile l'analisi generata all'utente.
+        \item Il sistema rende disponibile l'analisi generata all'utente, senza modificare il contenuto della nota.
     \end{enumerate}
-    \item \textbf{Postcondizioni}: Una proposta di analisi oggettiva del testo selezionato è disponibile all'utente.
+    \item \textbf{Postcondizioni}: Una proposta di analisi oggettiva del testo selezionato è disponibile all'utente; il contenuto 
+      della nota rimane invariato.
     \item \textbf{Trigger}: L'utente desidera verificare dati, fatti e oggettività del testo selezionato.
     \item \textbf{Estensioni}:
     \begin{itemize}
@@ -1528,9 +1533,10 @@
         \item L'utente richiede un'analisi del testo secondo il Cappello Rosso.
         \item Il sistema invia la richiesta al servizio AI.
         \item Il servizio AI analizza emozioni, impressioni e reazioni trasmesse dal testo.
-        \item Il sistema rende disponibile l'analisi generata all'utente.
+        \item Il sistema rende disponibile l'analisi generata all'utente, senza modificare il contenuto della nota.
     \end{enumerate}
-    \item \textbf{Postcondizioni}: Una proposta di analisi emotiva del testo selezionato è disponibile all'utente.
+    \item \textbf{Postcondizioni}: Una proposta di analisi emotiva del testo selezionato è disponibile all'utente; il contenuto 
+      della nota rimane invariato.
     \item \textbf{Trigger}: L'utente desidera valutare l'impatto emotivo del testo selezionato.
     \item \textbf{Estensioni}:
     \begin{itemize}
@@ -1579,9 +1585,10 @@
         \item L'utente richiede un'analisi del testo secondo il Cappello Nero.
         \item Il sistema invia la richiesta al servizio AI.
         \item Il servizio AI individua criticità, rischi e incongruenze presenti nel testo.
-        \item Il sistema rende disponibile l'analisi generata all'utente.
+        \item Il sistema rende disponibile l'analisi generata all'utente, senza modificare il contenuto della nota.
     \end{enumerate}
-    \item \textbf{Postcondizioni}: Una proposta di analisi critica del testo selezionato è disponibile all'utente.
+    \item \textbf{Postcondizioni}: Una proposta di analisi critica del testo selezionato è disponibile all'utente; il contenuto 
+      della nota rimane invariato.
     \item \textbf{Trigger}: L'utente desidera individuare rischi, criticità e punti deboli del testo selezionato.
     \item \textbf{Estensioni}:
     \begin{itemize}
@@ -1630,9 +1637,10 @@
         \item L'utente richiede un'analisi del testo secondo il Cappello Giallo.
         \item Il sistema invia la richiesta al servizio AI.
         \item Il servizio AI evidenzia vantaggi, benefici e opportunità presenti nel testo.
-        \item Il sistema rende disponibile l'analisi generata all'utente.
+        \item Il sistema rende disponibile l'analisi generata all'utente, senza modificare il contenuto della nota.
     \end{enumerate}
-    \item \textbf{Postcondizioni}: Una proposta di analisi positiva del testo selezionato è disponibile all'utente.
+    \item \textbf{Postcondizioni}: Una proposta di analisi positiva del testo selezionato è disponibile all'utente; il contenuto 
+      della nota rimane invariato.
     \item \textbf{Trigger}: L'utente desidera individuare vantaggi e opportunità del testo selezionato.
     \item \textbf{Estensioni}:
     \begin{itemize}
@@ -1681,9 +1689,10 @@
         \item L'utente richiede un'analisi del testo secondo il Cappello Verde.
         \item Il sistema invia la richiesta al servizio AI.
         \item Il servizio AI propone idee alternative, spunti creativi e possibili innovazioni relative al contenuto selezionato.
-        \item Il sistema rende disponibile l'analisi generata all'utente.
+        \item Il sistema rende disponibile l'analisi generata all'utente, senza modificare il contenuto della nota.
     \end{enumerate}
-    \item \textbf{Postcondizioni}: Una proposta di analisi creativa del testo selezionato è disponibile all'utente.
+    \item \textbf{Postcondizioni}: Una proposta di analisi creativa del testo selezionato è disponibile all'utente; il contenuto 
+      della nota rimane invariato.
     \item \textbf{Trigger}:  L'utente desidera esplorare nuove idee, alternative e prospettive creative sul testo selezionato.
     \item \textbf{Estensioni}:
     \begin{itemize}
@@ -1732,9 +1741,10 @@
         \item L'utente richiede un'analisi del testo secondo il Cappello Blu.
         \item Il sistema invia la richiesta al servizio AI.
         \item Il servizio AI valuta la struttura logica, la coerenza del ragionamento e l’organizzazione complessiva del testo.
-        \item Il sistema rende disponibile l'analisi generata all'utente.
+        \item Il sistema rende disponibile l'analisi generata all'utente, senza modificare il contenuto della nota.
     \end{enumerate}
-    \item \textbf{Postcondizioni}: Una proposta di riorganizzazione logica e strutturale del testo selezionato è disponibile all’utente.
+    \item \textbf{Postcondizioni}: Una proposta di riorganizzazione logica e strutturale del testo selezionato è disponibile all’utente; il contenuto 
+      della nota rimane invariato.
     \item \textbf{Trigger}:  L'utente desidera analizzare la coerenza logica e la struttura del testo selezionato.
     \item \textbf{Estensioni}:
     \begin{itemize}
