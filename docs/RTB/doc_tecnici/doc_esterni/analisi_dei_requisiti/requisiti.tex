@@ -23,14 +23,14 @@ I requisiti individuati sono classificati e identificati da un codice univoco ne
 
 	% ---- Gestione note ----
 	\textbf{R1-F-O} & Obbligatorio & Il sistema deve permettere la creazione di una nuova nota, richiedendo l'inserimento di un titolo prima dell'apertura nell'editor. & \hyperlink{uc1}{UC1}, Capitolato \\ \hline
-	\textbf{R2-F-O} & Obbligatorio & Il sistema deve permettere l'eliminazione di una nota previa conferma esplicita da parte dell'utente. & \hyperlink{uc2}{UC2}, \hyperlink{uc2.1}{UC2.1}, Capitolato \\ \hline
-	\textbf{R3-F-O} & Obbligatorio & Il sistema deve notificare l'utente in caso di errore tecnico durante l'eliminazione di una nota, mantenendo la nota invariata. & \hyperlink{uc2.3}{UC2.3}, Dominio \\ \hline
+	\textbf{R2-F-O} & Obbligatorio & Il sistema deve permettere l'eliminazione di una nota previa conferma esplicita da parte dell'utente. &\hyperlink{uc2}{UC2}, \hyperlink{uc2.1}{UC2.1}, \hyperlink{uc2.2}{UC2.2}, Capitolato \\ \hline
+	\textbf{R3-F-O} & Obbligatorio & Il sistema deve notificare l'utente in caso di errore tecnico durante l'eliminazione di una nota, mantenendo la nota invariata. & \hyperlink{uc2.3}{UC2.3}, Analisi del dominio \\ \hline
 
 	% ---- Scrittura e clipboard ----
 	\textbf{R4-F-O} & Obbligatorio & Il sistema deve permettere la scrittura libera di testo nell'editor tramite tastiera. & \hyperlink{uc3}{UC3}, Capitolato \\ \hline
-	\textbf{R5-F-O} & Obbligatorio & Il sistema deve permettere la copia di una porzione di testo selezionata negli appunti di sistema. & \hyperlink{uc4}{UC4}, Dominio \\ \hline
-	\textbf{R6-F-O} & Obbligatorio & Il sistema deve permettere di tagliare una porzione di testo selezionata, rimuovendola dall'editor e copiandola negli appunti. & \hyperlink{uc5}{UC5}, Dominio \\ \hline
-	\textbf{R7-F-O} & Obbligatorio & Il sistema deve permettere di incollare il contenuto degli appunti nella posizione corrente del cursore. & \hyperlink{uc6}{UC6}, Dominio \\ \hline
+	\textbf{R5-F-O} & Obbligatorio & Il sistema deve permettere la copia di una porzione di testo selezionata negli appunti di sistema. & \hyperlink{uc4}{UC4}, Analisi del dominio \\ \hline
+	\textbf{R6-F-O} & Obbligatorio & Il sistema deve permettere di tagliare una porzione di testo selezionata, rimuovendola dall'editor e copiandola negli appunti. & \hyperlink{uc5}{UC5}, Analisi del dominio \\ \hline
+	\textbf{R7-F-O} & Obbligatorio & Il sistema deve permettere di incollare il contenuto degli appunti nella posizione corrente del cursore. & \hyperlink{uc6}{UC6}, Analisi del dominio \\ \hline
 
 	% ---- Formattazione inline ----
 	\textbf{R8-F-O} & Obbligatorio & Il sistema deve permettere l'attivazione della formattazione grassetto per il testo digitato successivamente. & \hyperlink{uc7}{UC7}, Capitolato, VE-5.1 \\ \hline
@@ -77,8 +77,8 @@ I requisiti individuati sono classificati e identificati da un codice univoco ne
 	\textbf{R45-F-O} & Obbligatorio & Il sistema deve permettere l'eliminazione di un'intera tabella dal documento. & \hyperlink{uc44}{UC44}, Capitolato \\ \hline
 
 	% ---- Cronologia modifiche ----
-	\textbf{R46-F-O} & Obbligatorio & Il sistema deve permettere l'annullamento dell'ultima modifica apportata al documento (Undo). & \hyperlink{uc45}{UC45}, Dominio \\ \hline
-	\textbf{R47-F-O} & Obbligatorio & Il sistema deve permettere il ripristino dell'ultima modifica annullata (Redo). & \hyperlink{uc46}{UC46}, Dominio \\ \hline
+	\textbf{R46-F-O} & Obbligatorio & Il sistema deve permettere l'annullamento dell'ultima modifica apportata al documento (Undo). & \hyperlink{uc45}{UC45}, Analisi del dominio \\ \hline
+	\textbf{R47-F-O} & Obbligatorio & Il sistema deve permettere il ripristino dell'ultima modifica annullata (Redo). & \hyperlink{uc46}{UC46}, Analisi del dominio \\ \hline
 
 	% ---- Visualizzazione ----
 	\textbf{R48-F-O} & Obbligatorio & Il sistema deve permettere la visualizzazione esclusiva dell'area di scrittura Markdown (Solo Editor). & \hyperlink{uc47}{UC47}, Capitolato \\ \hline
@@ -87,33 +87,33 @@ I requisiti individuati sono classificati e identificati da un codice univoco ne
 
 	% ---- Funzionalità AI base ----
 	\textbf{R51-F-O} & Obbligatorio & Il sistema deve permettere la generazione di un riassunto del testo selezionato tramite LLM. & \hyperlink{uc50}{UC50}, Capitolato \\ \hline
-	\textbf{R52-F-O} & Obbligatorio & Il sistema deve notificare l'utente in caso di errore nella comunicazione con i servizi AI durante il riassunto. & \hyperlink{uc50.1}{UC50.1}, Dominio \\ \hline
+	\textbf{R52-F-O} & Obbligatorio & Il sistema deve notificare l'utente in caso di errore nella comunicazione con i servizi AI durante il riassunto. & \hyperlink{uc50.1}{UC50.1}, Analisi del dominio \\ \hline
 	\textbf{R53-F-O} & Obbligatorio & Il sistema deve permettere la traduzione del testo selezionato nelle lingue Inglese, Francese e Spagnolo tramite LLM. & \hyperlink{uc51}{UC51}, Capitolato, VE-5.2 \\ \hline
-	\textbf{R54-F-O} & Obbligatorio & Il sistema deve notificare l'utente in caso di errore nella comunicazione con i servizi AI durante la traduzione. & \hyperlink{uc51.1}{UC51.1}, Dominio \\ \hline
+	\textbf{R54-F-O} & Obbligatorio & Il sistema deve notificare l'utente in caso di errore nella comunicazione con i servizi AI durante la traduzione. & \hyperlink{uc51.1}{UC51.1}, Analisi del dominio \\ \hline
 	\textbf{R55-F-D} & Desiderabile & Il sistema dovrebbe supportare la traduzione in Tedesco tramite LLM come estensione facoltativa. & \hyperlink{uc51}{UC51}, VE-5.2 \\ \hline
 	\textbf{R56-F-O} & Obbligatorio & Il sistema deve permettere la riscrittura del testo selezionato tramite LLM. & \hyperlink{uc52}{UC52}, Capitolato \\ \hline
-	\textbf{R57-F-O} & Obbligatorio & Il sistema deve notificare l'utente in caso di errore nella comunicazione con i servizi AI durante la riscrittura. & \hyperlink{uc52.1}{UC52.1}, Dominio \\ \hline
+	\textbf{R57-F-O} & Obbligatorio & Il sistema deve notificare l'utente in caso di errore nella comunicazione con i servizi AI durante la riscrittura. & \hyperlink{uc52.1}{UC52.1}, Analisi del dominio \\ \hline
 	\textbf{R58-F-O} & Obbligatorio & Il sistema deve permettere la generazione di testo a partire da un prompt utente (Distant Writing) tramite LLM. & \hyperlink{uc53}{UC53}, Capitolato \\ \hline
-	\textbf{R59-F-O} & Obbligatorio & Il sistema deve notificare l'utente in caso di errore nella comunicazione con i servizi AI durante la generazione da prompt. & \hyperlink{uc53.1}{UC53.1}, Dominio \\ \hline
+	\textbf{R59-F-O} & Obbligatorio & Il sistema deve notificare l'utente in caso di errore nella comunicazione con i servizi AI durante la generazione da prompt. & \hyperlink{uc53.1}{UC53.1}, Analisi del dominio \\ \hline
 
 	% ---- Sei Cappelli ----
 	\textbf{R60-F-O} & Obbligatorio & Il sistema deve permettere l'analisi critica del testo selezionato secondo la prospettiva Cappello Bianco (dati e fatti). & \hyperlink{uc54}{UC54}, Capitolato \\ \hline
-	\textbf{R61-F-O} & Obbligatorio & Il sistema deve notificare l'utente in caso di errore AI durante l'analisi Cappello Bianco. & \hyperlink{uc54.1}{UC54.1}, Dominio \\ \hline
+	\textbf{R61-F-O} & Obbligatorio & Il sistema deve notificare l'utente in caso di errore AI durante l'analisi Cappello Bianco. & \hyperlink{uc54.1}{UC54.1}, Analisi del dominio \\ \hline
 	\textbf{R62-F-O} & Obbligatorio & Il sistema deve permettere l'analisi critica del testo selezionato secondo la prospettiva Cappello Rosso (emozioni). & \hyperlink{uc55}{UC55}, Capitolato \\ \hline
-	\textbf{R63-F-O} & Obbligatorio & Il sistema deve notificare l'utente in caso di errore AI durante l'analisi Cappello Rosso. & \hyperlink{uc55.1}{UC55.1}, Dominio \\ \hline
+	\textbf{R63-F-O} & Obbligatorio & Il sistema deve notificare l'utente in caso di errore AI durante l'analisi Cappello Rosso. & \hyperlink{uc55.1}{UC55.1}, Analisi del dominio \\ \hline
 	\textbf{R64-F-O} & Obbligatorio & Il sistema deve permettere l'analisi critica del testo selezionato secondo la prospettiva Cappello Nero (rischi). & \hyperlink{uc56}{UC56}, Capitolato \\ \hline
-	\textbf{R65-F-O} & Obbligatorio & Il sistema deve notificare l'utente in caso di errore AI durante l'analisi Cappello Nero. & \hyperlink{uc56.1}{UC56.1}, Dominio \\ \hline
+	\textbf{R65-F-O} & Obbligatorio & Il sistema deve notificare l'utente in caso di errore AI durante l'analisi Cappello Nero. & \hyperlink{uc56.1}{UC56.1}, Analisi del dominio \\ \hline
 	\textbf{R66-F-O} & Obbligatorio & Il sistema deve permettere l'analisi critica del testo selezionato secondo la prospettiva Cappello Giallo (opportunità). & \hyperlink{uc57}{UC57}, Capitolato \\ \hline
-	\textbf{R67-F-O} & Obbligatorio & Il sistema deve notificare l'utente in caso di errore AI durante l'analisi Cappello Giallo. & \hyperlink{uc57.1}{UC57.1}, Dominio \\ \hline
+	\textbf{R67-F-O} & Obbligatorio & Il sistema deve notificare l'utente in caso di errore AI durante l'analisi Cappello Giallo. & \hyperlink{uc57.1}{UC57.1}, Analisi del dominio \\ \hline
 	\textbf{R68-F-O} & Obbligatorio & Il sistema deve permettere l'analisi critica del testo selezionato secondo la prospettiva Cappello Verde (creatività). & \hyperlink{uc58}{UC58}, Capitolato \\ \hline
-	\textbf{R69-F-O} & Obbligatorio & Il sistema deve notificare l'utente in caso di errore AI durante l'analisi Cappello Verde. & \hyperlink{uc58.1}{UC58.1}, Dominio \\ \hline
+	\textbf{R69-F-O} & Obbligatorio & Il sistema deve notificare l'utente in caso di errore AI durante l'analisi Cappello Verde. & \hyperlink{uc58.1}{UC58.1}, Analisi del dominio \\ \hline
 	\textbf{R70-F-O} & Obbligatorio & Il sistema deve permettere l'analisi critica del testo selezionato secondo la prospettiva Cappello Blu (logica/controllo). & \hyperlink{uc59}{UC59}, Capitolato \\ \hline
-	\textbf{R71-F-O} & Obbligatorio & Il sistema deve notificare l'utente in caso di errore AI durante l'analisi Cappello Blu. & \hyperlink{uc59.1}{UC59.1}, Dominio \\ \hline
+	\textbf{R71-F-O} & Obbligatorio & Il sistema deve notificare l'utente in caso di errore AI durante l'analisi Cappello Blu. & \hyperlink{uc59.1}{UC59.1}, Analisi del dominio \\ \hline
 
 	% ---- Gestione proposta AI ----
 	\textbf{R72-F-O} & Obbligatorio & Il sistema deve permettere all'utente di accettare la proposta generata dall'AI, inserendola nel documento. & \hyperlink{uc60}{UC60}, Capitolato, VE-3.2 \\ \hline
 	\textbf{R73-F-O} & Obbligatorio & Il sistema deve permettere all'utente di rifiutare la proposta generata dall'AI, mantenendo il documento invariato. & \hyperlink{uc61}{UC61}, Capitolato, VE-3.2 \\ \hline
-	\textbf{R74-F-O} & Obbligatorio & Il sistema deve permettere all'utente di richiedere la rigenerazione di una proposta AI non soddisfacente; deve notificare in caso di errore. & \hyperlink{uc62}{UC62}, \hyperlink{uc62.1}{UC62.1}, Dominio \\ \hline
+	\textbf{R74-F-O} & Obbligatorio & Il sistema deve permettere all'utente di richiedere la rigenerazione di una proposta AI non soddisfacente; deve notificare in caso di errore. & \hyperlink{uc62}{UC62}, \hyperlink{uc62.1}{UC62.1}, Analisi del dominio \\ \hline
 
 	% ---- I/O e persistenza locale ----
 	\textbf{R75-F-O} & Obbligatorio & Il sistema deve permettere il salvataggio della nota corrente in un file \texttt{.md} nel file system locale; deve notificare in caso di errore. & \hyperlink{uc63}{UC63}, \hyperlink{uc63.1}{UC63.1}, Capitolato \\ \hline
@@ -121,12 +121,12 @@ I requisiti individuati sono classificati e identificati da un codice univoco ne
 	\textbf{R77-F-O} & Obbligatorio & Il sistema deve permettere l'esportazione della nota nei formati PDF, HTML e JSON; deve notificare in caso di errore durante la conversione. & \hyperlink{uc65}{UC65}, \hyperlink{uc65.1}{UC65.1}, Capitolato \\ \hline
 
 	% ---- Opzionali: DB remoto ----
-	\textbf{R1-F-Op} & Opzionale & Il sistema deve permettere la registrazione di un nuovo utente tramite email e password, con validazione dei dati inseriti. & \hyperlink{uc66}{UC66}, \hyperlink{uc66.1}{UC66.1}, \hyperlink{uc66.2}{UC66.2}, Capitolato \\ \hline
-	\textbf{R2-F-Op} & Opzionale & Il sistema deve permettere l'autenticazione dell'utente tramite credenziali; deve notificare in caso di credenziali errate. & \hyperlink{uc67}{UC67}, \hyperlink{uc67.1}{UC67.1}, Capitolato \\ \hline
-	\textbf{R3-F-Op} & Opzionale & Il sistema deve permettere il logout dell'utente autenticato. & \hyperlink{uc68}{UC68}, Capitolato \\ \hline
-	\textbf{R4-F-Op} & Opzionale & Il sistema deve permettere la visualizzazione della lista delle note salvate nel servizio remoto con nome e data di ultima modifica; deve notificare in caso di errore nel recupero. & \hyperlink{uc69}{UC69}, \hyperlink{uc69.1}{UC69.1}, Capitolato \\ \hline
-	\textbf{R5-F-Op} & Opzionale & Il sistema deve permettere il salvataggio della nota corrente nello spazio remoto associato al profilo utente; deve notificare in caso di errore di sincronizzazione. & \hyperlink{uc70}{UC70}, \hyperlink{uc70.1}{UC70.1}, Capitolato \\ \hline
-	\textbf{R6-F-Op} & Opzionale & Il sistema deve permettere l'apertura di una nota dalla lista delle note salvate nel servizio remoto; deve notificare in caso di errore nel caricamento. & \hyperlink{uc71}{UC71}, \hyperlink{uc71.1}{UC71.1}, Capitolato \\ \hline
+	\textbf{R78-F-Op} & Opzionale & Il sistema deve permettere la registrazione di un nuovo utente tramite email e password, con validazione dei dati inseriti. & \hyperlink{uc66}{UC66}, \hyperlink{uc66.1}{UC66.1}, \hyperlink{uc66.2}{UC66.2}, Capitolato \\ \hline
+	\textbf{R79-F-Op} & Opzionale & Il sistema deve permettere l'autenticazione dell'utente tramite credenziali; deve notificare in caso di credenziali errate. & \hyperlink{uc67}{UC67}, \hyperlink{uc67.1}{UC67.1}, Capitolato \\ \hline
+	\textbf{R80-F-Op} & Opzionale & Il sistema deve permettere il logout dell'utente autenticato. & \hyperlink{uc68}{UC68}, Capitolato \\ \hline
+	\textbf{R81-F-Op} & Opzionale & Il sistema deve permettere la visualizzazione della lista delle note salvate nel servizio remoto con nome e data di ultima modifica; deve notificare in caso di errore nel recupero. & \hyperlink{uc69}{UC69}, \hyperlink{uc69.1}{UC69.1}, Capitolato \\ \hline
+	\textbf{R82-F-Op} & Opzionale & Il sistema deve permettere il salvataggio della nota corrente nello spazio remoto associato al profilo utente; deve notificare in caso di errore di sincronizzazione. & \hyperlink{uc70}{UC70}, \hyperlink{uc70.1}{UC70.1}, Capitolato \\ \hline
+	\textbf{R83-F-Op} & Opzionale & Il sistema deve permettere l'apertura di una nota dalla lista delle note salvate nel servizio remoto; deve notificare in caso di errore nel caricamento. & \hyperlink{uc71}{UC71}, \hyperlink{uc71.1}{UC71.1}, Capitolato \\ \hline
 
 \end{longtable}
 
@@ -148,7 +148,7 @@ I requisiti individuati sono classificati e identificati da un codice univoco ne
 	\textbf{R1-Q-O} & Obbligatorio & Il sistema deve essere corredato di test automatici con copertura adeguata dei casi d'uso principali, obbligatoriamente a partire dalla fase MVP. & Capitolato \\ \hline
 	\textbf{R2-Q-O} & Obbligatorio & L'interfaccia utente deve risultare semplice, immediata e utilizzabile senza competenze tecniche pregresse. & Capitolato, VE-3.3, VE-5.3 \\ \hline
 	\textbf{R3-Q-O} & Obbligatorio & Il codice sorgente e la documentazione devono essere pubblicati su repository pubblico. & Capitolato \\ \hline
-	\textbf{R1-Q-D} & Desiderabile & Il progetto dovrebbe rispettare i requisiti open source dell'azienda proponente nella scelta della licenza di distribuzione. & Capitolato \\ \hline
+	\textbf{R4-Q-D} & Desiderabile & Il progetto dovrebbe rispettare i requisiti open source dell'azienda proponente nella scelta della licenza di distribuzione. & Capitolato \\ \hline
 
 \end{longtable}
 
@@ -173,7 +173,7 @@ I requisiti individuati sono classificati e identificati da un codice univoco ne
 	\textbf{R4-V-O} & Obbligatorio & La gestione delle immagini è esclusa dai requisiti del prodotto. & VE-5.1 \\ \hline
 	\textbf{R5-V-O} & Obbligatorio & Le lingue con alfabeto non latino (es.\ Cinese, Russo, Arabo) sono escluse dalla funzionalità di traduzione. & VE-5.2 \\ \hline
 	\textbf{R6-V-O} & Obbligatorio & L'architettura software deve adottare pattern robusti che supportino revisioni incrementali nelle fasi PoC, MVP e prodotto completo. & Capitolato \\ \hline
-	\textbf{R1-V-Op} & Opzionale & Il servizio di persistenza remota deve preferibilmente utilizzare PostgreSQL come database, mantenendo comunque flessibilità tecnologica. & VE-1.4 \\ \hline
+	\textbf{R7-V-Op} & Opzionale & Il servizio di persistenza remota deve preferibilmente utilizzare PostgreSQL come database, mantenendo comunque flessibilità tecnologica. & VE-1.4 \\ \hline
 
 \end{longtable}
 
@@ -192,7 +192,7 @@ I requisiti individuati sono classificati e identificati da un codice univoco ne
 	\hline
 	\endhead
 
-	\textbf{R1-P-O} & Obbligatorio & Il rendering dell'anteprima Markdown deve aggiornarsi in tempo reale durante la digitazione, senza ritardi percepibili dall'utente. & Capitolato, Dominio \\ \hline
-	\textbf{R1-P-D} & Desiderabile & Il sistema dovrebbe fornire un feedback visivo (es.\ indicatore di caricamento) durante le operazioni AI la cui durata superi i 2 secondi. & Dominio \\ \hline
+	\textbf{R1-P-O} & Obbligatorio & Il rendering dell'anteprima Markdown deve aggiornarsi in tempo reale durante la digitazione, senza ritardi percepibili dall'utente. & Capitolato, Analisi del dominio \\ \hline
+	\textbf{R2-P-D} & Desiderabile & Il sistema dovrebbe fornire un feedback visivo (es.\ indicatore di caricamento) durante le operazioni AI la cui durata superi i 2 secondi. & Analisi del dominio \\ \hline
 
 \end{longtable}
