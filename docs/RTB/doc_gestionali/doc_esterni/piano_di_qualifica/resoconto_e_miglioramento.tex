@@ -1,0 +1,111 @@
+% =======================================================
+% 5. RESOCONTO ATTIVITA' DI VERIFICA
+% =======================================================
+\section{Resoconto Attività di Verifica}
+In questa sezione vengono riportati i risultati delle attività di verifica condotte durante la fase di RTB. L'obiettivo è fornire una panoramica oggettiva del livello di qualità raggiunto.
+
+\subsection{Verifica documentazione}
+La verifica della documentazione (Analisi dei Requisiti, Norme di Progetto, Piano di Progetto, Verbali e Glossario) è avvenuta tramite revisione manuale incrociata. Il Verificatore ha controllato la coerenza dei contenuti, l'assenza di errori grammaticali e il rispetto degli standard di formattazione definiti nelle Norme di Progetto.
+\\ \\
+Tutti i documenti pubblicati hanno superato il controllo di qualità, raggiungendo un indice di leggibilità conforme ai parametri accettabili.
+
+\subsection{Verifica codice}
+\textit{Non applicabile in questa fase.} Le attività di verifica del codice inizieranno nella fase di Product Baseline (PB) non appena verrà avviata la stesura dei primi moduli software.
+
+\subsection{Copertura test}
+Durante la RTB, la copertura riguarda esclusivamente la tracciabilità tra i Casi d'Uso e i Test di Sistema definiti nella sezione precedente. Il 100\% degli UC individuati è stato coperto da almeno un Test di Sistema (stato NI).
+
+\subsection{Esiti test}
+Allo stato attuale, non sono stati eseguiti test dinamici sul software. Gli unici esiti riguardano le ispezioni documentali, che hanno evidenziato una progressiva riduzione dei difetti formali grazie all'affinamento delle modalità di verifica.
+
+\newpage
+% =======================================================
+% 6. VALUTAZIONI PER IL MIGLIORAMENTO
+% =======================================================
+\section{Valutazioni per il Miglioramento}
+Il gruppo Synergo Unit adotta il metodo \textbf{PDCA} (Plan-Do-Check-Act) per garantire il miglioramento continuo dei processi.
+
+\subsection{Retrospettive}
+Al termine di ogni Sprint, il gruppo si riunisce per analizzare cosa ha funzionato e cosa può essere ottimizzato. Durante la RTB, è emersa la necessità di automatizzare maggiormente la compilazione di alcune tabelle LaTeX per ridurre il tempo di verifica manuale.
+
+\subsection{Azioni correttive}
+A fronte di anomalie rilevate dalle metriche o durante le revisioni, sono state stabilite le seguenti contromisure:
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \hline
+        \rowcolor{primarycolor!10}
+        \textbf{Problema Rilevato} & \textbf{Contromisura Adottata} \\
+        \hline
+        Difficoltà iniziale nella gestione della sintassi LaTeX complessa. & Creazione di un repository di template condivisi per tabelle e strutture ricorrenti. \\
+        \hline
+        Incoerenza nella numerazione dei Casi d'Uso (UC) tra diversi documenti. & Revisione centralizzata dell'Analisi dei Requisiti e allineamento immediato dei test. \\
+        \hline
+        Frequenti conflitti durante l'unione del codice sorgente (merge conflicts). & Utilizzo sistematico di un repository GitHub e adozione di un workflow basato su branch per isolare le funzionalità. \\
+        \hline
+        Difficoltà nel tracciamento puntuale delle attività (task) e delle ore spese dai singoli membri. & Utilizzo delle GitHub Issues per l'assegnazione dei compiti e il monitoraggio dello stato di avanzamento (ToDo, Doing, Done). \\
+        \hline
+        Eccessivo carico burocratico e rischio di errore umano nella creazione manuale dei task e nella raccolta dati. & Automazione del processo tramite un form dedicato per la generazione automatica delle Issue. I dati vengono centralizzati in un foglio di calcolo per la generazione automatica della rendicontazione e del cruscotto. \\
+        \hline
+    \end{tabularx}
+    \caption{Storico delle azioni correttive}
+\end{table}
+
+\subsection{Problemi aperti}
+Rimane aperta la questione della selezione del framework di testing definitivo per l'integrazione con le API LLM, che verrà risolta all'inizio della fase PB dopo un'analisi tecnologica approfondita.
+
+\newpage
+% =======================================================
+% 7. CRUSCOTTO DELLE METRICHE
+% =======================================================
+\section{Cruscotto delle Metriche}
+In questa sezione sono riassunti i valori ottenuti dalle metriche durante l'ultimo Sprint della fase RTB.
+
+\subsection{Stato attuale qualità di processo}
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|l|X|c|c|}
+        \hline
+        \rowcolor{primarycolor!10}
+        \textbf{Codice} & \textbf{Nome Metrica} & \textbf{Valore Rilevato} & \textbf{Esito} \\
+        \hline
+        MPC01 & Schedule Performance Index & 1.05 & Ottimale \\
+        \hline
+        MPC02 & Cost Performance Index & 0.98 & Accettabile \\
+        \hline
+        MPC03 & Requirements Stability Index & 85\% & Accettabile \\
+        \hline
+    \end{tabularx}
+    \caption{Riepilogo Qualità di Processo}
+\end{table}
+
+\subsection{Stato attuale qualità di prodotto}
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|l|X|c|c|}
+        \hline
+        \rowcolor{primarycolor!10}
+        \textbf{Codice} & \textbf{Nome Metrica} & \textbf{Valore Rilevato} & \textbf{Esito} \\
+        \hline
+        MPD01 & Soddisfacimento Requisiti Obbligatori & 100\% & Ottimale \\
+        \hline
+        MPD02 & Indice di Gulpease (Media Documenti) & 68 & Accettabile \\
+        \hline
+        MPD07 & Errori Ortografici (per pagina) & 0.2 & Ottimale \\
+        \hline
+    \end{tabularx}
+    \caption{Riepilogo Qualità di Prodotto}
+\end{table}
+
+\subsection{Grafici e dashboard}
+L'andamento storico delle metriche viene monitorato tramite grafici temporali per evidenziare eventuali trend negativi.
+% Per inserire i grafici generati, scommentare queste righe:
+% \begin{figure}[H]
+	%    \centering
+	%    \includegraphics[width=0.8\textwidth]{grafico.png}
+	%    \caption{Andamento Schedule Variance}
+	% \end{figure}

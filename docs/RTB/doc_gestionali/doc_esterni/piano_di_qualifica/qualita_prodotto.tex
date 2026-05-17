@@ -1,0 +1,64 @@
+% =======================================================
+% 3. QUALITA DI PRODOTTO
+% =======================================================
+\section{Qualità di Prodotto}
+
+\subsection{Modello di qualità ISO/IEC 25010}
+Per valutare la qualità del sistema \textit{Second Brain}, il gruppo si rifà allo standard \textbf{ISO/IEC 25010}, selezionando le seguenti caratteristiche rilevanti:
+\begin{itemize}
+	\item \textbf{Adeguatezza Funzionale}: capacità del software di fornire le funzioni LLM richieste.
+	\item \textbf{Affidabilità}: capacità di mantenere le prestazioni nel tempo.
+	\item \textbf{Usabilità}: facilità d'uso dell'interfaccia Markdown e della chat.
+	\item \textbf{Efficienza}: tempi di risposta delle chiamate alle API dell'LLM.
+	\item \textbf{Manutenibilità}: facilità di modifica e aggiornamento del codice.
+	\item \textbf{Portabilità}: capacità di operare su diversi browser o ambienti.
+\end{itemize}
+
+\subsection{Metriche di qualità}
+
+\subsubsection{Funzionalità}
+Si misura la capacità del prodotto di soddisfare tutti i requisiti (obbligatori, desiderabili, opzionali) emersi durante l'Analisi dei Requisiti.
+
+\subsubsection{Affidabilità}
+Monitora la frequenza dei fallimenti del sistema e la sua capacità di ripristino. In fase di sviluppo si concretizza nella percentuale di test superati.
+
+\subsubsection{Usabilità}
+Per la documentazione, si utilizza l'indice di leggibilità. Per il software, si valuta la facilità di apprendimento e la chiarezza dell'interfaccia di chat e gestione note.
+
+\subsubsection{Efficienza}
+Data la natura del progetto (integrazione LLM), è critica la gestione dei tempi di latenza delle API esterne e l'occupazione di risorse nel browser.
+
+\subsubsection{Manutenibilità}
+Riguarda la leggibilità del codice sorgente e la facilità di estensione delle funzionalità LLM, misurata tramite densità dei commenti e complessità del codice.
+
+\subsubsection{Portabilità}
+Il sistema deve garantire un comportamento coerente sui principali browser web come richiesto dal capitolato.
+
+\subsection{Obiettivi quantitativi}
+Di seguito sono definite le metriche di prodotto (MPD).
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|l|X|c|c|}
+        \hline
+        \rowcolor{primarycolor!10}
+        \textbf{Codice} & \textbf{Nome Metrica} & \textbf{Val. Accettabile} & \textbf{Val. Ottimale} \\
+        \hline
+        MPD01 & \textbf{Soddisfacimento Requisiti Obbligatori}: percentuale di requisiti "Must" implementati. & $100\%$ & $100\%$ \\
+        \hline
+        MPD02 & \textbf{Indice di Gulpease}: indice di leggibilità dei documenti in lingua italiana. & $\ge 40$ & $\ge 80$ \\
+        \hline
+        MPD03 & \textbf{Code Coverage}: percentuale di linee di codice coperte da test automatici. & $\ge 70\%$ & $\ge 90\%$ \\
+        \hline
+        MPD04 & \textbf{Tempo di Risposta LLM}: tempo medio di attesa per una risposta dalla chat. & $\le 10 \text{ s}$ & $\le 3 \text{ s}$ \\
+        \hline
+        MPD05 & \textbf{Comment Density}: rapporto tra righe di commento e righe di codice totali. & $\ge 15\%$ & $\ge 25\%$ \\
+        \hline
+        MPD06 & \textbf{Browser Compatibility}: numero di browser target su cui il sistema è testato. & $\ge 2$ & $\ge 3$ \\
+        \hline
+        MPD07 & \textbf{Errori Ortografici}: numero di errori rilevati per pagina di documento. & $\le 2$ & $0$ \\
+        \hline
+    \end{tabularx}
+    \caption{Metriche di Qualità di Prodotto}
+\end{table}

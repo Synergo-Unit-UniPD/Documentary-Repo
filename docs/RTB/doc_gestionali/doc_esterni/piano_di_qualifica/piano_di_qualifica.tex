@@ -1,0 +1,64 @@
+\documentclass[11pt, a4paper]{article}
+
+% 1. RICHIAMA LA CONFIGURAZIONE CONDIVISA
+\input{../../../../template/shared/configurazione.tex}
+
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
+% 2. CONFIGURAZIONI LOGHI E IMMAGINI
+\graphicspath{
+    {../../../../template/shared/loghi/}
+}
+
+\hypersetup{
+	pdftitle={Piano di Qualifica - Synergo Unit},
+	pdfauthor={Synergo Unit}
+}
+
+\pagestyle{fancy}
+\fancyhf{} 
+\fancyhead[L]{\textcolor{primarycolor}{\textbf{Synergo Unit}}}
+\fancyhead[R]{Piano di Qualifica v0.2.0 - 2026-05-15}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\setlength{\headheight}{15pt}
+
+% =========================================================
+% INIZIO DOCUMENTO
+% =========================================================
+\begin{document}
+	
+	% Frontespizio
+	\input{frontespizio.tex}
+	\newpage
+	
+	% Registro delle modifiche
+	\input{registro_modifiche.tex}
+	\newpage
+	
+	% Indici automatici 
+	\tableofcontents
+	\newpage
+	\listoffigures
+	\newpage
+	\listoftables
+	\newpage
+	
+	% Contenuto diviso in moduli
+	\input{introduzione.tex}
+	\newpage
+	
+	\input{qualita_processo.tex}
+	\newpage
+	
+	\input{qualita_prodotto.tex}
+	\newpage
+	
+	\input{specifica_test.tex}
+	\newpage
+	
+	\input{resoconto_e_miglioramento.tex}
+	
+\end{document}

@@ -1,0 +1,119 @@
+% =======================================================
+% 4. SPECIFICA DEI TEST
+% =======================================================
+
+\section{Specifica dei Test}
+Questa sezione descrive la strategia di testing adottata dal gruppo Synergo Unit per garantire la conformità del sistema \textit{Second Brain} ai requisiti analizzati.
+
+Lo stato del test è indicato come:
+\begin{itemize}
+    \item \textbf{I}: Implementato;
+    \item \textbf{NI}: Non Implementato (pianificato per le fasi successive);
+    \item \textbf{S}: Superato.
+\end{itemize}
+
+\subsection{Test di unità (TU)}
+Verificano il corretto funzionamento delle singole unità logiche del codice. Saranno implementati nella fase di Product Baseline (PB).
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|c|X|c|}
+        \hline
+        \rowcolor{primarycolor!10}
+        \textbf{ID} & \textbf{Descrizione} & \textbf{Stato} \\
+        \hline
+        TU1 & [Pianificato per fase PB] & NI \\
+        \hline
+    \end{tabularx}
+    \caption{Test di Unità}
+\end{table}
+
+\subsection{Test di integrazione (TI)}
+Garantiscono che la comunicazione tra i moduli (es. Frontend e API LLM) avvenga correttamente.
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|c|X|c|}
+        \hline
+        \rowcolor{primarycolor!10}
+        \textbf{ID} & \textbf{Descrizione} & \textbf{Stato} \\
+        \hline
+        TI1 & [Pianificato per fase PB] & NI \\
+        \hline
+    \end{tabularx}
+    \caption{Test di Integrazione}
+\end{table}
+
+\subsection{Test di sistema (TS)}
+Verificano che il comportamento dell'intera applicazione sia coerente con quanto descritto nei Casi d'Uso (UC).
+
+\renewcommand{\arraystretch}{1.3}
+\begin{xltabular}{\textwidth}{|c|X|c|c|}
+    \caption{Mappatura Test di Sistema - Casi d'Uso} \label{tab:test-sistema} \\
+    \hline
+    \rowcolor{primarycolor!10}
+    \textbf{ID} & \textbf{Descrizione} & \textbf{UC Rif.} & \textbf{Stato} \\
+    \hline
+    \endfirsthead
+    
+    \multicolumn{4}{c}%
+    {{\bfseries \tablename\ \thetable{} -- Continua dalla pagina precedente}} \\
+    \hline
+    \rowcolor{primarycolor!10}
+    \textbf{ID} & \textbf{Descrizione} & \textbf{UC Rif.} & \textbf{Stato} \\
+    \hline
+    \endhead
+
+    \hline
+    \multicolumn{4}{|r|}{{Continua nella pagina successiva...}} \\
+    \hline
+    \endfoot
+
+    \hline
+    \endlastfoot
+
+    TS01 & Creazione di una nuova nota con titolo e apertura editor. & UC 1 & NI \\ \hline
+    TS02 & Eliminazione di una nota esistente con richiesta di conferma. & UC 2 & NI \\ \hline
+    TS03 & Operazioni base: Scrittura testo, Copia, Taglia e Incolla. & UC 3, 4, 5, 6 & NI \\ \hline
+    TS04 & Formattazione testo: Grassetto (Attivazione e Rimozione). & UC 7-10 & NI \\ \hline
+    TS05 & Formattazione testo: Corsivo (Attivazione e Rimozione). & UC 11-14 & NI \\ \hline
+    TS06 & Formattazione testo: Sottolineato (Attivazione e Rimozione). & UC 15-18 & NI \\ \hline
+    TS07 & Formattazione testo: Barrato (Attivazione e Rimozione). & UC 19-22 & NI \\ \hline
+    TS08 & Formattazione testo: Citazione (Attivazione e Rimozione). & UC 23-26 & NI \\ \hline
+    TS09 & Gestione Titoli: Inserimento, Applicazione e Rimozione. & UC 27-30 & NI \\ \hline
+    TS10 & Gestione Link: Inserimento, Modifica e Rimozione link. & UC 31-33 & NI \\ \hline
+    TS11 & Gestione Elenchi: Inserimento, Modifica e Rimozione. & UC 34-37 & NI \\ \hline
+    TS12 & Gestione Modifiche: Azioni di Undo e Redo. & UC 38, 39 & NI \\ \hline
+    TS13 & Visualizzazione: Editor solo, Render solo e Split View. & UC 40, 41, 42 & NI \\ \hline
+    TS14 & AI: Generazione riassunto, Traduzione e Riscrittura. & UC 43, 44, 45 & NI \\ \hline
+    TS15 & AI: Generazione da prompt e Analisi "Sei Cappelli". & UC 46, 47 & NI \\ \hline
+    TS16 & AI: Accettazione/Rifiuto proposta e ChatBot. & UC 48, 49, 50 & NI \\ \hline
+    TS17 & I/O: Download/Upload MD ed Esportazione (PDF/HTML/JSON). & UC 51, 52, 53 & NI \\ \hline
+    TS18 & Persistenza: Salvataggio, Caricamento e Link su DB. & UC 54, 55, 56 & NI \\ \hline
+    TS19 & \textbf{Robustezza}: Gestione errori AI, Formato file e Database. & UC 43.1, 52.1, 54.1 & NI \\
+\end{xltabular}
+
+\subsection{Test di accettazione (TA)}
+Validano il prodotto rispetto alle attese della proponente Zucchetti.
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|c|X|c|}
+        \hline
+        \rowcolor{primarycolor!10}
+        \textbf{ID} & \textbf{Descrizione} & \textbf{Stato} \\
+        \hline
+        TA01 & Gestione completa del ciclo di vita di una nota Markdown. & NI \\
+        \hline
+        TA02 & Corretta integrazione delle funzionalità di elaborazione AI. & NI \\
+        \hline
+        TA03 & Analisi multi-prospettiva funzionante (Metodo De Bono). & NI \\
+        \hline
+        TA04 & Importazione ed esportazione dati corretta e senza perdite. & NI \\
+        \hline
+    \end{tabularx}
+    \caption{Test di Accettazione}
+\end{table}
