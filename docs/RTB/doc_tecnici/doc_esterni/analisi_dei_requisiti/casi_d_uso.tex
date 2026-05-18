@@ -2,9 +2,9 @@
 
 \subsection{Attori}
 \begin{itemize}
-	\item \textbf{Utente}: Attore primario $\rightarrow$ Rappresenta l'utilizzatore finale che interagisce con l'interfaccia dell'applicazione. 
+	\item \textbf{Utente}: Attore\textsubscript{G} primario $\rightarrow$ Rappresenta l'utilizzatore finale che interagisce con l'interfaccia dell'applicazione. 
     In base al capitolato e ai verbali esterni, il profilo di riferimento è un utente giovane, tipicamente uno studente, che utilizza l'applicazione per prendere appunti e desidera supporto nell'elaborazione tramite LLM (VE-5.3).
-	\item \textbf{LLM (Large Language Model)}: Attore secondario (sistema esterno) $\rightarrow$ Fornisce i servizi di analisi e generazione testo tramite API compatibile con lo standard OpenAI. I modelli di riferimento sono Gemma, ChatGPT-OSS e Qwen, messi a disposizione dall'azienda proponente (VE-1.1).
+	\item \textbf{LLM (Large Language Model\textsubscript{G})}: Attore secondario (sistema esterno) $\rightarrow$ Fornisce i servizi di analisi e generazione testo tramite API compatibile con lo standard OpenAI. I modelli di riferimento sono Gemma, ChatGPT-OSS e Qwen, messi a disposizione dall'azienda proponente (VE-1.1).
 \end{itemize}
 
 % --------------------------------------------------------------------------
@@ -28,7 +28,7 @@
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
     \item \textbf{Precondizioni}: Il sistema è avviato e l'interfaccia è correttamente caricata.
-    \item \textbf{Scenario Principale}:
+    \item \textbf{Scenario Principale\textsubscript{G}}:
     \begin{enumerate}
         \item L'utente attiva il comando ``Nuova Nota''.
         \item Il sistema richiede l'inserimento di un titolo per la nota.
@@ -142,7 +142,7 @@
         \item Il sistema mostra un messaggio di errore all'utente.
     \end{enumerate}
     \item \textbf{Postcondizioni}: La nota non viene eliminata e l'utente viene informato dell'errore.
-    \item \textbf{Trigger}: Il sistema operativo o il file system impediscono la cancellazione del file.
+    \item \textbf{Trigger}: Il sistema operativo o il file system\textsubscript{G} impediscono la cancellazione del file.
 \end{itemize}
 
 % UC3 - Scrittura di testo nell'editor
@@ -187,7 +187,7 @@
     \item \textbf{Scenario Principale}:
         \begin{enumerate}
         \item L'utente attiva il comando di copia.
-        \item Il sistema copia il testo selezionato negli appunti.
+        \item Il sistema copia il testo selezionato negli appunti\textsubscript{G}.
         \end{enumerate}
     \item \textbf{Postcondizioni}: Il testo è stato copiato negli appunti.
     \item \textbf{Trigger}: L'utente vuole copiare una porzione di testo.
@@ -1173,7 +1173,7 @@
 
 % UC45 - Azione di Undo
 \hypertarget{uc45}{}
-\subsubsection{UC 45: Azione di Undo}
+\subsubsection{UC 45: Azione di Undo\textsubscript{G}}
 
 % use case diagram
 \begin{figure}[H]
@@ -1196,7 +1196,7 @@
 
 % UC46 - Azione di Redo
 \hypertarget{uc46}{}
-\subsubsection{UC 46: Azione di Redo}
+\subsubsection{UC 46: Azione di Redo\textsubscript{G}}
 
 % use case diagram
 \begin{figure}[H]
@@ -1235,14 +1235,14 @@
     \item \textbf{Precondizioni}: L'interfaccia dell'applicazione è attiva.
     \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente attiva la modalità "Solo Editor".
+        \item L'utente attiva la modalità "Solo Editor\textsubscript{G}".
         \item Il sistema mostra esclusivamente l'area di modifica del documento.
     \end{enumerate}
     \item \textbf{Postcondizioni}: L'interfaccia mostra unicamente l'editor testuale.
     \item \textbf{Trigger}: L'utente desidera concentrarsi esclusivamente sulla scrittura del documento.
 \end{itemize}
 
-% UC 48 - Visualizzazione esclusiva Render
+% UC 48 - Visualizzazione esclusiva Render\textsubscript{G}
 \hypertarget{uc48}{}
 \subsubsection{UC 48: Visualizzazione esclusiva Render}
 
@@ -1258,14 +1258,14 @@
     \item \textbf{Precondizioni}: L'interfaccia dell'applicazione è attiva.
     \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente attiva la modalità "Solo Render".
+        \item L'utente attiva la modalità "Solo Render\textsubscript{G}".
         \item Il sistema mostra esclusivamente l'anteprima formattata del documento.
     \end{enumerate}
     \item \textbf{Postcondizioni}: L'interfaccia mostra unicamente l'anteprima del documento renderizzato.
     \item \textbf{Trigger}: L'utente desidera visualizzare il risultato finale del documento.
 \end{itemize}
 
-% UC 49 - Visualizzazione Split View
+% UC 49 - Visualizzazione Split View\textsubscript{G}
 \hypertarget{uc49}{}
 \subsubsection{UC 49: Visualizzazione Split View}
 
@@ -2060,7 +2060,7 @@
     \item \textbf{Scenario Principale}:
     \begin{enumerate}
         \item L'utente seleziona la funzione di esportazione.
-        \item L'utente sceglie il formato desiderato (PDF, JSON o HTML).
+        \item L'utente sceglie il formato desiderato (PDF, JSON\textsubscript{G} o HTML).
         \item Il sistema converte la nota nel formato selezionato.
         \item Il sistema avvia il download del file esportato.
     \end{enumerate}
@@ -2254,7 +2254,7 @@
 \end{comment}
 % UC68 - Logout utente
 \hypertarget{uc68}{}
-\subsubsection{UC 68: (Opzionale) Logout utente}
+\subsubsection{UC 68: (Opzionale) Logout\textsubscript{G} utente}
 
 \begin{figure}[H]
     \centering
