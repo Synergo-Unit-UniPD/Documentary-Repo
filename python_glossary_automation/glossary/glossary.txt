@@ -1,6 +1,7 @@
 Albero Di Decisione
 Amministratore
 API
+Appunti
 Analista
 Analisi dei Requisiti
 Attore
@@ -14,6 +15,7 @@ Candidatura
 Casi d'uso
 Cerimonie
 CI/CD
+Clipboard
 Consuntivo
 Continuous Integration / Continuous Deployment
 Chatbot
@@ -31,6 +33,7 @@ Debito Tecnico
 Dichiarazione Degli Impegni
 Discord
 Distant Writing
+Endpoint
 File System
 Formattazione
 Foglio di Calcolo
@@ -49,6 +52,7 @@ Just-in-time
 LLM
 Lettera di presentazione
 Large Language Model
+Logout
 Lucidspark
 Main
 Markdown
@@ -67,6 +71,7 @@ OWASP
 Open Web Application Security Project
 Pedice G
 Pair Programming
+Pannello contestuale
 Piano di Progetto
 Piano di Qualifica
 PoC
@@ -90,6 +95,7 @@ Responsabile
 Revisione
 Risorse Residue
 RTB
+Redo
 Requirements and Technology Baseline
 Ruolo
 Scenario Principale
@@ -123,6 +129,7 @@ T-y.z
 Traduzione
 Trunk-based Development
 UML
+Undo
 Unified Modeling Language
 Usabilità
 Utenza Target

@@ -2,9 +2,9 @@
 
 \subsection{Attori}
 \begin{itemize}
-	\item \textbf{Utente}: Attore primario. Rappresenta l'utilizzatore finale che interagisce con l'interfaccia dell'editor.
-	\item \textbf{LLM (Large Language Model)}: Attore secondario (sistema esterno). Fornisce i servizi di analisi e generazione testo.
-	\item \textbf{Database remoto}: Attore secondario (sistema esterno). Fornisce i servizi di archiviazione, recupero e sincronizzazione in cloud delle note dell'utente.
+	\item \textbf{Utente}: Attore\textsubscript{G} primario $\rightarrow$ Rappresenta l'utilizzatore finale che interagisce con l'interfaccia dell'applicazione. 
+    In base al capitolato e ai verbali esterni, il profilo di riferimento è un utente giovane, tipicamente uno studente, che utilizza l'applicazione per prendere appunti e desidera supporto nell'elaborazione tramite LLM (VE-5.3).
+	\item \textbf{LLM (Large Language Model\textsubscript{G})}: Attore secondario (sistema esterno) $\rightarrow$ Fornisce i servizi di analisi e generazione testo tramite API compatibile con lo standard OpenAI. I modelli di riferimento sono Gemma, ChatGPT-OSS e Qwen, messi a disposizione dall'azienda proponente (VE-1.1).
 \end{itemize}
 
 % --------------------------------------------------------------------------
@@ -15,83 +15,116 @@
 \textit{Funzionalità core per la manipolazione e visualizzazione del testo.}
 
 % UC1 - Creazione di una nuova nota vuota
+\hypertarget{uc1}{}
 \subsubsection{UC 1: Creazione di una nuova nota vuota}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{creazione_nota.png}
+    \includegraphics[width=0.5\textwidth]{creazione_nota.png}
     \caption{UC1 – Creazione di una nuova nota}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: 
-    \begin{enumerate}
-        \item L'utente attiva il comando "Nuova Nota";
-        \item Il sistema crea una nuova nota vuota.
-    \end{enumerate}
     \item \textbf{Precondizioni}: Il sistema è avviato e l'interfaccia è correttamente caricata.
-    \item \textbf{Postcondizioni}: Viene creata una nota vuota.
-    \item \textbf{Trigger}: L'utente desidera iniziare una nuova sessione di scrittura.
+    \item \textbf{Scenario Principale\textsubscript{G}}:
+    \begin{enumerate}
+        \item L'utente attiva il comando ``Nuova Nota''.
+        \item Il sistema richiede l'inserimento di un titolo per la nota.
+        \item L'utente inserisce il titolo desiderato.
+        \item Il sistema crea una nuova nota associando il titolo inserito.
+        \item Il sistema apre la nota nell'editor.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Una nuova nota con titolo associato è aperta e modificabile nell'editor.
+    \item \textbf{Trigger}: L'utente desidera creare una nuova nota.
 \end{itemize}
 
 % UC2 - Eliminazione di una nota
+\hypertarget{uc2}{}
 \subsubsection{UC 2: Eliminazione di una nota}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{eliminazione_nota.png}
+    \includegraphics[width=0.5\textwidth]{eliminazione_nota.png}
     \caption{UC2 – Eliminazione di una nota}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente elimina la nota selezionata.
-    \item \textbf{Precondizioni}: Il sistema è avviato ed è presente una nota.
-    \item \textbf{Postcondizioni}: La nota è stata elimintata.
+    \item \textbf{Precondizioni}: Il sistema è avviato ed è presente almeno una nota.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente seleziona la nota da eliminare.
+        \item Il sistema richiede conferma.
+        \item L'utente conferma.
+        \item Il sistema elimina la nota.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La nota selezionata è rimossa dal sistema.
     \item \textbf{Trigger}: L'utente decide di rimuovere una nota non più necessaria.
+    
+    \item \textbf{Inclusioni}:
+    \begin{itemize}
+        \item \hyperlink{uc2.1}{UC 2.1: Conferma eliminazione}
+    \end{itemize}
+
+    \item \textbf{Estensioni}: 
+    \begin{itemize}
+        \item \hyperlink{uc2.2}{UC 2.2: Annullamento eliminazione} $\rightarrow$ Condizione: risposta negativa al dialogo di conferma.
+        \item \hyperlink{uc2.3}{UC 2.3: Visualizzazione errore eliminazione} $\rightarrow$ Condizione: errore tecnico durante l'esecuzione dell'eliminazione al passo 4.
+    \end{itemize}
 \end{itemize}
 
 % UC2.1 - Conferma eliminazione
-\paragraph{UC 2.1: Conferma eliminazione}\mbox{}\
+\hypertarget{uc2.1}{}
+\subsubsection{UC 2.1: Conferma eliminazione}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{conferma_eliminazione.png}
+    \includegraphics[width=0.7\textwidth]{conferma_eliminazione.png}
     \caption{UC2.1 – Conferma eliminazione}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: l'utente conferma l'eliminazione della nota.
-    \item \textbf{Precondizioni}: L'utente ha selezionato una nota da eliminare.
-    \item \textbf{Postcondizioni}: La nota è stata eliminata.
-    \item \textbf{Trigger}: L'utente da conferma all'eliminazione di una nota non più necessaria.
+    \item \textbf{Precondizioni}: L'utente ha richiesto l'eliminazione di una nota.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema mostra un dialogo di conferma.
+        \item L'utente conferma l'operazione.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La richiesta di eliminazione è confermata e il sistema procede.
+    \item \textbf{Trigger}: Il sistema richiede una conferma esplicita prima di un'operazione distruttiva.
 \end{itemize}
 
 % UC2.2 - Annullamento eliminazione
-\paragraph{UC 2.2: Annullamento eliminazione}\mbox{}\
+\hypertarget{uc2.2}{}
+\subsubsection{UC 2.2: Annullamento eliminazione}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{annullamento_eliminazione.png}
+    \includegraphics[width=0.7\textwidth]{annullamento_eliminazione.png}
     \caption{UC2.2 – Annullamento eliminazione}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: l'utente annulla l'eliminazione della nota.
-    \item \textbf{Precondizioni}: L'utente ha selezionato una nota da eliminare.
-    \item \textbf{Postcondizioni}: La nota non è stata eliminata.
-    \item \textbf{Trigger}: L'utente decide di annullare l'eliminazione di una nota.
+    \item \textbf{Precondizioni}: Il dialogo di conferma eliminazione è visualizzato a schermo.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente preme ``Annulla'' nel dialogo di conferma.
+        \item Il sistema chiude il dialogo senza apportare modifiche.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La nota rimane invariata; nessuna modifica è avvenuta.
+    \item \textbf{Trigger}: L'utente decide di non procedere con l'eliminazione.
 \end{itemize}
 
 % UC2.3 - Visualizzazione errore eliminazione
-\paragraph{UC 2.3: Visualizzazione errore eliminazione}\mbox{}\
+\hypertarget{uc2.3}{}
+\subsubsection{UC 2.3: Visualizzazione errore eliminazione}
 
 % use case diagram
 \begin{figure}[H]
@@ -102,34 +135,43 @@
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: Il sistema riscontra un problema tecnico durante la rimozione della nota e mostra un messaggio di avviso all'utente.
-    \item \textbf{Precondizioni}: L'utente ha richiesto l'eliminazione di una nota.
+    \item \textbf{Precondizioni}: L'utente ha confermato l'eliminazione della nota.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema riscontra un problema tecnico durante la rimozione della nota.
+        \item Il sistema mostra un messaggio di errore all'utente.
+    \end{enumerate}
     \item \textbf{Postcondizioni}: La nota non viene eliminata e l'utente viene informato dell'errore.
-    \item \textbf{Trigger}: Il sistema operativo o il file system impediscono la cancellazione del file (es. file bloccato o permessi insufficienti).
+    \item \textbf{Trigger}: Il sistema operativo o il file system\textsubscript{G} impediscono la cancellazione del file.
 \end{itemize}
 
 % UC3 - Scrittura di testo nell'editor
+\hypertarget{uc3}{}
 \subsubsection{UC 3: Scrittura testo nell'editor}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{scrittura_nota.png}
+    \includegraphics[width=0.5\textwidth]{scrittura_nota.png}
     \caption{UC3 – Scrittura di testo nell'editor}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: 
+    \item \textbf{Precondizioni}: L'editor è attivo ed è presente una nota aperta nell'editor.
+    \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente inserisce testo nell'area di input tramite tastiera.
+        \item L'utente posiziona il cursore nell'area di testo.
+        \item L'utente inserisce testo tramite tastiera.
+        \item Il sistema aggiorna in tempo reale l'area di testo con il contenuto inserito.
+        \item Il sistema aggiorna l'anteprima renderizzata, se la modalità di visualizzazione attiva lo prevede.
     \end{enumerate}
-    \item \textbf{Precondizioni}: L'editor è attivo e pronto a ricevere input.
-    \item \textbf{Postcondizioni}: Il testo inserito è visibile nell'area di input.
-    \item \textbf{Trigger}: L'utente ha bisogno di inserire o modificare i contenuti testuali del documento.
+    \item \textbf{Postcondizioni}: Il testo inserito è visibile nell'editor e, ove applicabile, nell'anteprima renderizzata.
+    \item \textbf{Trigger}: L'utente vuole inserire o modificare i contenuti testuali della nota.
 \end{itemize}
 
 % UC4 - Copia testo
+\hypertarget{uc4}{}
 \subsubsection{UC 4: Copia testo}
 
 % use case diagram
@@ -141,18 +183,18 @@
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: 
-    \item \begin{enumerate}
-        \item L'utente seleziona una porzione di testo.
+    \item \textbf{Precondizioni}: L'editor è attivo, è presente una nota aperta nell'editor ed una porzione di testo è selezionata.
+    \item \textbf{Scenario Principale}:
+        \begin{enumerate}
         \item L'utente attiva il comando di copia.
-        \item Il sistema copia il testo selezionato negli appunti.
-    \end{enumerate}
-    \item \textbf{Precondizioni}: L'editor è attivo ed una porzione di testo è selezionata.
-    \item \textbf{Postcondizioni}: Il testo è stato copiato.
+        \item Il sistema copia il testo selezionato negli appunti\textsubscript{G}.
+        \end{enumerate}
+    \item \textbf{Postcondizioni}: Il testo è stato copiato negli appunti.
     \item \textbf{Trigger}: L'utente vuole copiare una porzione di testo.
 \end{itemize}
 
 % UC5 - Taglia testo
+\hypertarget{uc5}{}
 \subsubsection{UC 5: Taglia testo}
 
 % use case diagram
@@ -164,18 +206,18 @@
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: 
+    \item \textbf{Precondizioni}: L'editor è attivo, è presente una nota aperta nell'editor ed una porzione di testo è selezionata.
+    \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente seleziona il testo da tagliare.
         \item L'utente attiva il comando di taglio.
-        \item Il sistema taglia il testo selezionato e lo inserisce negli appunti.
+        \item Il sistema rimuove il testo selezionato dall'editor e lo inserisce negli appunti.
     \end{enumerate}
-    \item \textbf{Precondizioni}: L'editor è attivo ed una porzione di testo è selezionata.
-    \item \textbf{Postcondizioni}: Il testo è stato tagliato.
-    \item \textbf{Trigger}: L'utente vuole tagliare una porzione di testo.
+    \item \textbf{Postcondizioni}: Il testo è stato rimosso dall'editor e copiato negli appunti.
+    \item \textbf{Trigger}: L'utente vuole spostare una porzione di testo.
 \end{itemize}
 
 % UC6 - Incolla testo
+\hypertarget{uc6}{}
 \subsubsection{UC 6: Incolla testo}
 
 % use case diagram
@@ -187,1115 +229,1709 @@
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: 
+    \item \textbf{Precondizioni}: L'editor è attivo, è presente una nota aperta nell'editor ed una porzione di testo è stata copiata o tagliata negli appunti.
+    \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente seleziona dove incollare il testo.
+        \item L'utente posiziona il cursore nel punto desiderato.
         \item L'utente attiva il comando di incolla.
-        \item Il sistema incolla il testo nella posizione desiderata.
+        \item Il sistema inserisce il contenuto degli appunti nella posizione del cursore.
     \end{enumerate}
-    \item \textbf{Precondizioni}: L'editor è attivo ed una porzione di testo è stata copiata o tagliata.
-    \item \textbf{Postcondizioni}: Il testo è stato incollato.
-    \item \textbf{Trigger}: L'utente vuole incollare una porzione di testo.
+    \item \textbf{Postcondizioni}: Il testo è stato incollato nella posizione scelta.
+    \item \textbf{Trigger}: L'utente vuole inserire testo precedentemente copiato o tagliato.
 \end{itemize}
 
-% UC7 - Attivazione grassetto
+%---------------GRASSETTO----------------
+
+% UC7 - Attivazione grassetto 
+\hypertarget{uc7}{}
 \subsubsection{UC 7: Attivazione grassetto}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{attivazione_grassetto.png}
-    \caption{UC7 – Attivazione grassetto}
+    \caption{UC7 – Attivazione grassetto }
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente seleziona lo stile grassetto per scrivere il testo.
-    \item \textbf{Precondizioni}: L'editor è attivo.
-    \item \textbf{Postcondizioni}: Il testo inserito sarà in grassetto.
-    \item \textbf{Trigger}: L'utente vuole applicare lo stile grassetto al testo successivo.
-\end{itemize}
+    \item \textbf{Precondizioni}: L'editor è attivo ed è presente una nota aperta nell'editor.
+    \item \textbf{Scenario Principale}:
+        \begin{enumerate}
+        \item L'utente attiva il comando "Grassetto".
+        \item Il sistema abilita la modalità di inserimento in grassetto.
+        \end{enumerate}
+    \item \textbf{Postcondizioni}: Il testo inserito successivamente viene formattato in grassetto.
+    \item \textbf{Trigger}: L'utente desidera applicare la formattazione grassetto durante l'inserimento del testo.
+    \end{itemize}
 
-% UC7.1 - Grassetto su testo selezionato
-\paragraph{UC 7.1: Grassetto su testo selezionato}\mbox{}\
+
+% UC8 - Applicazione grassetto al testo selezionato
+\hypertarget{uc8}{}
+\subsubsection{UC 8: Applicazione grassetto al testo selezionato}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{grassetto_testo_selezionato.png}
-    \caption{UC7.1 – Grassetto su testo selezionato}
+    \includegraphics[width=0.5\textwidth]{applicazione_grassetto.png}
+    \caption{UC8 – Applicazione grassetto al testo selezionato}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente seleziona del testo e applica lo stile grassetto.
-    \item \textbf{Precondizioni}: L'editor è attivo e una porzione di testo è selezionata.
-    \item \textbf{Postcondizioni}: Il testo selezionato sarà in grassetto.
-    \item \textbf{Trigger}: L'utente vuole applicare lo stile grassetto al testo selezionato.
+    \item \textbf{Precondizioni}: L'editor è attivo, è presente una nota aperta nell'editor ed una porzione di testo è selezionata.
+    \item \textbf{Scenario Principale}:
+        \begin{enumerate}
+        \item L'utente attiva il comando "Grassetto".
+        \item Il sistema applica la formattazione grassetto al testo selezionato.
+        \end{enumerate}
+    \item \textbf{Postcondizioni}: La porzione di testo selezionata presenta la formattazione grassetto.
+    \item \textbf{Trigger}: L'utente desidera applicare il formato grassetto a testo esistente.
 \end{itemize}
 
-% UC8 -  Disattivazione grassetto
-\subsubsection{UC 8: Disattivazione grassetto}
+% UC9 -  Disattivazione grassetto 
+\hypertarget{uc9}{}
+\subsubsection{UC 9: Disattivazione grassetto }
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{disattivazione_grassetto.png}
-    \caption{UC8 – Disattivazione grassetto}
+    \includegraphics[width=0.5\textwidth]{disattivazione_grassetto.png}
+    \caption{UC9 – Disattivazione grassetto }
 \end{figure}
 
 \begin{itemize}
-    \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente disattiva lo stile grassetto nella scrittura del testo.
-    \item \textbf{Precondizioni}: L'editor è attivo.
-    \item \textbf{Postcondizioni}: Il testo inserito non sarà in grassetto.
-    \item \textbf{Trigger}: L'utente vuole disattivare lo stile grassetto.
+\item \textbf{Attore Principale}: Utente
+\item \textbf{Precondizioni}: La modalità di inserimento in grassetto è attiva.
+\item \textbf{Scenario Principale}:
+    \begin{enumerate}
+    \item L'utente disattiva il comando "Grassetto".
+    \item Il sistema disabilita la modalità di inserimento in grassetto.
+    \end{enumerate}
+\item \textbf{Postcondizioni}: Il testo inserito successivamente non verrà formattato in grassetto.
+\item \textbf{Trigger}: L'utente desidera interrompere la scrittura in grassetto.
 \end{itemize}
 
-% UC8.1 - Disattivazione grassetto su testo selezionato
-\paragraph{UC 8.1: Disattivazione grassetto su testo selezionato}\mbox{}\
+% UC10 - Rimozione grassetto dal testo selezionato
+\hypertarget{uc10}{}
+\subsubsection{UC 10: Rimozione grassetto dal testo selezionato}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{disattivazione_grassetto_testo_selezionato.png}
-    \caption{UC8.1 – Disattivazione grassetto su testo selezionato}
+    \includegraphics[width=0.5\textwidth]{rimozione_grassetto.png}
+    \caption{UC10 – Rimozione grassetto dal testo selezionato}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente seleziona del testo e applica lo stile grassetto.
-    \item \textbf{Precondizioni}: L'editor è attivo e una porzione di testo è selezionata.
-    \item \textbf{Postcondizioni}: Il testo selezionato sarà in grassetto.
-    \item \textbf{Trigger}: L'utente vuole applicare lo stile grassetto al testo selezionato.
+    \item \textbf{Precondizioni}: L'editor è attivo, è presente una nota aperta nell'editor ed una porzione di testo formattata in grassetto è selezionata.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente disattiva il comando "Grassetto".
+        \item Il sistema rimuove la formattazione grassetto dal testo selezionato.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La porzione di testo selezionata non presenta più la formattazione grassetto.
+    \item \textbf{Trigger}: L'utente desidera rimuovere il formato grassetto da testo esistente.
 \end{itemize}
 
-% UC9 -  Attivazione corsivo
-\subsubsection{UC 9: Attivazione corsivo}
+%---------------CORSIVO----------------
+
+% UC11 -  Attivazione corsivo 
+\hypertarget{uc11}{}
+\subsubsection{UC 11: Attivazione corsivo }
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{attivazione_corsivo.png}
-    \caption{UC9 – Attivazione corsivo}
+    \includegraphics[width=0.5\textwidth]{attivazione_corsivo.png}
+    \caption{UC11 – Attivazione corsivo }
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente attiva lo stile corsivo nella scrittura del testo.
-    \item \textbf{Precondizioni}: L'editor è attivo.
-    \item \textbf{Postcondizioni}: Il testo inserito sarà in corsivo.
-    \item \textbf{Trigger}: L'utente vuole applicare lo stile corsivo al testo successivo.
-\end{itemize}
+    \item \textbf{Precondizioni}: L'editor è attivo ed è presente una nota aperta nell'editor.
+    \item \textbf{Scenario Principale}:
+        \begin{enumerate}
+        \item L'utente attiva il comando "Corsivo".
+        \item Il sistema abilita la modalità di inserimento  in corsivo.
+        \end{enumerate}
+    \item \textbf{Postcondizioni}: Il testo inserito successivamente viene formattato in corsivo.
+    \item \textbf{Trigger}: L'utente desidera applicare la formattazione corsivo durante l'inserimento del testo.
+    \end{itemize}
 
-% UC9.1 - Attivazione corsivo su testo selezionato
-\paragraph{UC 9.1: Attivazione corsivo su testo selezionato}\mbox{}\
+% UC12 - Applicazione corsivo al testo selezionato
+\hypertarget{uc12}{}
+\subsubsection{UC 12: Applicazione corsivo al testo selezionato}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{attivazione_corsivo_testo_selezionato.png}
-    \caption{UC9.1 – Attivazione corsivo su testo selezionato}
+    \includegraphics[width=0.5\textwidth]{applicazione_corsivo.png}
+    \caption{UC12 – Applicazione corsivo al testo selezionato}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente seleziona del testo e applica lo stile corsivo.
-    \item \textbf{Precondizioni}: L'editor è attivo e una porzione di testo è selezionata.
-    \item \textbf{Postcondizioni}: Il testo selezionato sarà in corsivo.
-    \item \textbf{Trigger}: L'utente vuole applicare lo stile corsivo al testo selezionato.
+    \item \textbf{Precondizioni}: L'editor è attivo, è presente una nota aperta nell'editor ed una porzione di testo è selezionata.
+    \item \textbf{Scenario Principale}:
+        \begin{enumerate}
+        \item L'utente attiva il comando "Corsivo".
+        \item Il sistema applica la formattazione corsivo al testo selezionato.
+        \end{enumerate}
+    \item \textbf{Postcondizioni}: La porzione di testo selezionata presenta la formattazione corsivo.
+    \item \textbf{Trigger}: L'utente desidera applicare il formato corsivo a testo esistente.
 \end{itemize}
 
-% UC10 -  Disattivazione corsivo
-\subsubsection{UC 10: Disattivazione corsivo}
+% UC13 -  Disattivazione corsivo 
+\hypertarget{uc13}{}
+\subsubsection{UC 13: Disattivazione corsivo }
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{disattivazione_corsivo.png}
-    \caption{UC10 – Disattivazione corsivo}
+    \includegraphics[width=0.5\textwidth]{disattivazione_corsivo.png}
+    \caption{UC13 – Disattivazione corsivo }
 \end{figure}
 
 \begin{itemize}
-    \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente disattiva lo stile corsivo nella scrittura del testo.
-    \item \textbf{Precondizioni}: L'editor è attivo.
-    \item \textbf{Postcondizioni}: Il testo inserito non sarà in corsivo.
-    \item \textbf{Trigger}: L'utente vuole disattivare lo stile corsivo.
+\item \textbf{Attore Principale}: Utente
+\item \textbf{Precondizioni}: La modalità di inserimento in corsivo è attiva.
+\item \textbf{Scenario Principale}:
+    \begin{enumerate}
+    \item L'utente disattiva il comando "Corsivo".
+    \item Il sistema disabilita la modalità di inserimento in corsivo.
+    \end{enumerate}
+\item \textbf{Postcondizioni}: Il testo inserito successivamente non verrà formattato in corsivo.
+\item \textbf{Trigger}: L'utente desidera interrompere la scrittura in corsivo.
 \end{itemize}
 
-% UC10.1 - Disattivazione corsivo su testo selezionato
-\paragraph{UC 10.1: Disattivazione corsivo su testo selezionato}\mbox{}\
+% UC14 - Rimozione corsivo dal testo selezionato
+\hypertarget{uc14}{}
+\subsubsection{UC 14: Rimozione corsivo dal testo selezionato}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{disattivazione_corsivo_testo_selezionato.png}
-    \caption{UC10.1 – Disattivazione corsivo su testo selezionato}
+    \includegraphics[width=0.5\textwidth]{rimozione_corsivo.png}
+    \caption{UC14 – Rimozione corsivo dal testo selezionato}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente seleziona del testo e disattiva lo stile corsivo.
-    \item \textbf{Precondizioni}: L'editor è attivo e una porzione di testo è selezionata.
-    \item \textbf{Postcondizioni}: Il testo selezionato non sarà in corsivo.
-    \item \textbf{Trigger}: L'utente vuole disattivare lo stile corsivo.
+    \item \textbf{Precondizioni}: L'editor è attivo, è presente una nota aperta nell'editor ed una porzione di testo formattata in corsivo è selezionata.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente disattiva il comando "Corsivo".
+        \item Il sistema rimuove la formattazione corsivo dal testo selezionato.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La porzione di testo selezionata non presenta più la formattazione corsivo.
+    \item \textbf{Trigger}: L'utente desidera rimuovere il formato corsivo da testo esistente.
 \end{itemize}
 
-% UC11 -  Attivazione sottolineato
-\subsubsection{UC 11: Attivazione sottolineato}
+%---------------SOTTOLINEATO----------------
+
+% UC15 -  Attivazione sottolineato 
+\hypertarget{uc15}{}
+\subsubsection{UC 15: Attivazione sottolineato }
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{attivazione_sottolineato.png}
-    \caption{UC11 – Attivazione sottolineato}
+    \includegraphics[width=0.5\textwidth]{attivazione_sottolineato.png}
+    \caption{UC15 – Attivazione sottolineato }
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente attiva lo stile sottolineato nella scrittura del testo.
-    \item \textbf{Precondizioni}: L'editor è attivo.
-    \item \textbf{Postcondizioni}: Il testo inserito sarà in sottolineato.
-    \item \textbf{Trigger}: L'utente vuole applicare lo stile sottolineato al testo successivo.
-\end{itemize}
+    \item \textbf{Precondizioni}: L'editor è attivo ed è presente una nota aperta nell'editor.
+    \item \textbf{Scenario Principale}:
+        \begin{enumerate}
+        \item L'utente attiva il comando "Sottolineato".
+        \item Il sistema abilita la modalità di inserimento  in sottolineato.
+        \end{enumerate}
+    \item \textbf{Postcondizioni}: Il testo inserito successivamente viene formattato in sottolineato.
+    \item \textbf{Trigger}: L'utente desidera applicare la formattazione sottolineato durante l'inserimento del testo.
+    \end{itemize}
 
-% UC11.1 - Attivazione sottolineato su testo selezionato
-\paragraph{UC 11.1: Attivazione sottolineato su testo selezionato}\mbox{}\
+% UC16 - Applicazione sottolineato al testo selezionato
+\hypertarget{uc16}{}
+\subsubsection{UC 16: Applicazione sottolineato al testo selezionato}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{attivazione_sottolineato_testo_selezionato.png}
-    \caption{UC11.1 – Attivazione sottolineato su testo selezionato}
+    \includegraphics[width=0.5\textwidth]{applicazione_sottolineato.png}
+    \caption{UC16 – Applicazione sottolineato al testo selezionato}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente seleziona del testo e applica lo stile sottolineato.
-    \item \textbf{Precondizioni}: L'editor è attivo e una porzione di testo è selezionata.
-    \item \textbf{Postcondizioni}: Il testo selezionato sarà in sottolineato.
-    \item \textbf{Trigger}: L'utente vuole applicare lo stile sottolineato al testo selezionato.
+    \item \textbf{Precondizioni}: L'editor è attivo, è presente una nota aperta nell'editor ed una porzione di testo è selezionata.
+    \item \textbf{Scenario Principale}:
+        \begin{enumerate}
+        \item L'utente attiva il comando "Sottolineato".
+        \item Il sistema applica la formattazione sottolineato al testo selezionato.
+        \end{enumerate}
+    \item \textbf{Postcondizioni}: La porzione di testo selezionata presenta la formattazione sottolineato.
+    \item \textbf{Trigger}: L'utente desidera applicare il formato sottolineato a testo esistente.
 \end{itemize}
 
-% UC12 -  Disattivazione sottolineato
-\subsubsection{UC 12: Disattivazione sottolineato}
+% UC17 -  Disattivazione sottolineato 
+\hypertarget{uc17}{}
+\subsubsection{UC 17: Disattivazione sottolineato}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{disattivazione_sottolineato.png}
-    \caption{UC12 – Disattivazione sottolineato}
+    \includegraphics[width=0.5\textwidth]{disattivazione_sottolineato.png}
+    \caption{UC17 – Disattivazione sottolineato}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente disattiva lo stile sottolineato nella scrittura del testo.
-    \item \textbf{Precondizioni}: L'editor è attivo.
-    \item \textbf{Postcondizioni}: Il testo inserito non sarà in sottolineato.
-    \item \textbf{Trigger}: L'utente vuole disattivare lo stile sottolineato.
+    \item \textbf{Precondizioni}: La modalità di inserimento in sottolineato è attiva.
+    \item \textbf{Scenario Principale}:
+        \begin{enumerate}
+        \item L'utente disattiva il comando "Sottolineato".
+        \item Il sistema disabilita la modalità di inserimento in sottolineato.
+        \end{enumerate}
+    \item \textbf{Postcondizioni}: Il testo inserito successivamente non verrà formattato in sottolineato.
+    \item \textbf{Trigger}: L'utente desidera interrompere la scrittura in sottolineato.
 \end{itemize}
 
-% UC12.1 - Disattivazione sottolineato su testo selezionato
-\paragraph{UC 12.1: Disattivazione sottolineato su testo selezionato}\mbox{}\
+% UC18 - Rimozione sottolineato dal testo selezionato
+\hypertarget{uc18}{}
+\subsubsection{UC 18: Rimozione sottolineato dal testo selezionato}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{disattivazione_sottolineato_testo_selezionato.png}
-    \caption{UC12.1 – Disattivazione sottolineato su testo selezionato}
+    \includegraphics[width=0.5\textwidth]{rimozione_sottolineato.png}
+    \caption{UC18 – Rimozione sottolineato dal testo selezionato}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente seleziona del testo e disattiva lo stile sottolineato.
-    \item \textbf{Precondizioni}: L'editor è attivo e una porzione di testo è selezionata.
-    \item \textbf{Postcondizioni}: Il testo selezionato non sarà in sottolineato.
-    \item \textbf{Trigger}: L'utente vuole disattivare lo stile sottolineato.
+    \item \textbf{Precondizioni}: L'editor è attivo, è presente una nota aperta nell'editor ed una porzione di testo formattata in sottolineato è selezionata.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente disattiva il comando "Sottolineato".
+        \item Il sistema rimuove la formattazione sottolineato dal testo selezionato.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La porzione di testo selezionata non presenta più la formattazione sottolineato.
+    \item \textbf{Trigger}: L'utente desidera rimuovere il formato sottolineato da testo esistente.
 \end{itemize}
 
-% UC13 -  Attivazione barrato
-\subsubsection{UC 13: Attivazione barrato}
+%---------------BARRATO----------------
+
+% UC19 -  Attivazione barrato
+\hypertarget{uc19}{}
+\subsubsection{UC 19: Attivazione barrato}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{attivazione_barrato.png}
-    \caption{UC13 – Attivazione barrato}
+    \includegraphics[width=0.5\textwidth]{attivazione_barrato.png}
+    \caption{UC19 – Attivazione barrato}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente attiva lo stile barrato nella scrittura del testo.
-    \item \textbf{Precondizioni}: L'editor è attivo.
-    \item \textbf{Postcondizioni}: Il testo inserito sarà in barrato.
-    \item \textbf{Trigger}: L'utente vuole applicare lo stile barrato al testo successivo.
+    \item \textbf{Precondizioni}: L'editor è attivo ed è presente una nota aperta nell'editor.
+    \item \textbf{Scenario Principale}:
+        \begin{enumerate}
+        \item L'utente attiva il comando "Barrato".
+        \item Il sistema abilita la modalità di inserimento in barrato.
+        \end{enumerate}
+    \item \textbf{Postcondizioni}: Il testo inserito successivamente viene formattato in barrato.
+    \item \textbf{Trigger}: L'utente desidera applicare la formattazione barrato durante l'inserimento del testo.
 \end{itemize}
 
-% UC13.1 - Attivazione barrato su testo selezionato
-\paragraph{UC 13.1: Attivazione barrato su testo selezionato}\mbox{}\
+% UC20 - Applicazione barrato al testo selezionato
+\hypertarget{uc20}{}
+\subsubsection{UC 20: Applicazione barrato al testo selezionato}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{attivazione_barrato_testo_selezionato.png}
-    \caption{UC13.1 – Attivazione barrato su testo selezionato}
+    \includegraphics[width=0.5\textwidth]{applicazione_barrato.png}
+    \caption{UC20 – Applicazione barrato al testo selezionato}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente seleziona del testo e applica lo stile barrato.
-    \item \textbf{Precondizioni}: L'editor è attivo e una porzione di testo è selezionata.
-    \item \textbf{Postcondizioni}: Il testo selezionato sarà in barrato.
-    \item \textbf{Trigger}: L'utente vuole applicare lo stile barrato al testo selezionato.
+    \item \textbf{Precondizioni}: L'editor è attivo, è presente una nota aperta nell'editor ed una porzione di testo è selezionata.
+    \item \textbf{Scenario Principale}:
+        \begin{enumerate}
+        \item L'utente attiva il comando "Barrato".
+        \item Il sistema applica la formattazione barrato al testo selezionato.
+        \end{enumerate}
+    \item \textbf{Postcondizioni}: La porzione di testo selezionata presenta la formattazione barrato.
+    \item \textbf{Trigger}: L'utente desidera applicare il formato barrato a testo esistente.
 \end{itemize}
 
-% UC14 -  Disattivazione barrato
-\subsubsection{UC 14: Disattivazione barrato}
+% UC21 -  Disattivazione barrato
+\hypertarget{uc21}{}
+\subsubsection{UC 21: Disattivazione barrato}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{disattivazione_barrato.png}
-    \caption{UC14 – Disattivazione barrato}
+    \includegraphics[width=0.5\textwidth]{disattivazione_barrato.png}
+    \caption{UC21 – Disattivazione barrato}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente disattiva lo stile barrato nella scrittura del testo.
-    \item \textbf{Precondizioni}: L'editor è attivo.
-    \item \textbf{Postcondizioni}: Il testo inserito non sarà in barrato.
-    \item \textbf{Trigger}: L'utente vuole disattivare lo stile barrato.
+    \item \textbf{Precondizioni}: La modalità di inserimento in barrato è attiva.
+    \item \textbf{Scenario Principale}:
+        \begin{enumerate}
+        \item L'utente disattiva il comando "Barrato".
+        \item Il sistema disabilita la modalità di inserimento in barrato.
+        \end{enumerate}
+    \item \textbf{Postcondizioni}: Il testo inserito successivamente non verrà formattato in barrato.
+    \item \textbf{Trigger}: L'utente desidera interrompere la scrittura in barrato.
 \end{itemize}
 
-% UC14.1 - Disattivazione barrato su testo selezionato
-\paragraph{UC 14.1: Disattivazione barrato su testo selezionato}\mbox{}\
+% UC22 - Rimozione barrato dal testo selezionato
+\hypertarget{uc22}{}
+\subsubsection{UC 22: Rimozione barrato dal testo selezionato}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{disattivazione_barrato_testo_selezionato.png}
-    \caption{UC14.1 – Disattivazione barrato su testo selezionato}
+    \includegraphics[width=0.5\textwidth]{rimozione_barrato.png}
+    \caption{UC22 – Rimozione barrato dal testo selezionato}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente seleziona del testo e disattiva lo stile barrato.
-    \item \textbf{Precondizioni}: L'editor è attivo e una porzione di testo è selezionata.
-    \item \textbf{Postcondizioni}: Il testo selezionato non sarà in barrato.
-    \item \textbf{Trigger}: L'utente vuole disattivare lo stile barrato.
+    \item \textbf{Precondizioni}: L'editor è attivo, è presente una nota aperta nell'editor ed una porzione di testo formattata in barrato è selezionata.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente disattiva il comando "Barrato".
+        \item Il sistema rimuove la formattazione barrato dal testo selezionato.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La porzione di testo selezionata non presenta più la formattazione barrato.
+    \item \textbf{Trigger}: L'utente desidera rimuovere il formato barrato da testo esistente.
 \end{itemize}
 
-% UC15 -  Attivazione citazione
-\subsubsection{UC 15: Attivazione citazione}
+%---------------CITAZIONE----------------
+
+% UC23 -  Attivazione formattazione citazione
+\hypertarget{uc23}{}
+\subsubsection{UC 23: Attivazione formattazione citazione}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{attivazione_citazione.png}
-    \caption{UC15 – Attivazione citazione}
+    \includegraphics[width=0.5\textwidth]{attivazione_citazione.png}
+    \caption{UC23 – Attivazione formattazione citazione}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente attiva lo stile citazione nella scrittura del testo.
-    \item \textbf{Precondizioni}: L'editor è attivo.
-    \item \textbf{Postcondizioni}: Il testo inserito sarà in citazione.
-    \item \textbf{Trigger}: L'utente vuole applicare lo stile citazione al testo successivo.
+    \item \textbf{Precondizioni}: L'editor è attivo ed è presente una nota aperta nell'editor.
+    \item \textbf{Scenario Principale}:
+        \begin{enumerate}
+        \item L'utente attiva il comando "Citazione".
+        \item Il sistema abilita la modalità di inserimento citazione.
+        \end{enumerate}
+    \item \textbf{Postcondizioni}: Il testo inserito successivamente viene formattato come citazione.
+    \item \textbf{Trigger}: L'utente desidera scrivere nuovo testo come citazione.
 \end{itemize}
 
-% UC15.1 - Attivazione citazione su testo selezionato
-\paragraph{UC 15.1: Attivazione citazione su testo selezionato}\mbox{}\
+% UC24 - Applicazione citazione al testo selezionato
+\hypertarget{uc24}{}
+\subsubsection{UC 24: Applicazione formattazione citazione al testo selezionato}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{attivazione_citazione_testo_selezionato.png}
-    \caption{UC15.1 – Attivazione citazione su testo selezionato}
+    \includegraphics[width=0.5\textwidth]{applicazione_citazione.png}
+    \caption{UC24 – Applicazione formattazione citazione al testo selezionato}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente seleziona del testo e applica lo stile citazione.
-    \item \textbf{Precondizioni}: L'editor è attivo e una porzione di testo è selezionata.
-    \item \textbf{Postcondizioni}: Il testo selezionato sarà in citazione.
-    \item \textbf{Trigger}: L'utente vuole applicare lo stile citazione al testo selezionato.
+    \item \textbf{Precondizioni}: L'editor è attivo, è presente una nota aperta nell'editor ed una porzione di testo è selezionata.
+    \item \textbf{Scenario Principale}:
+        \begin{enumerate}
+        \item L'utente attiva il comando "Citazione".
+        \item Il sistema applica la formattazione citazione al testo selezionato.
+        \end{enumerate}
+    \item \textbf{Postcondizioni}: La porzione di testo selezionata è convertita in blocco citazione.
+    \item \textbf{Trigger}: L'utente desidera applicare la fomattazione citazione a testo esistente.
 \end{itemize}
 
-% UC16 -  Disattivazione citazione
-\subsubsection{UC 16: Disattivazione citazione}
+% UC25 -  Disattivazione citazione
+\hypertarget{uc25}{}
+\subsubsection{UC 25: Disattivazione citazione}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{disattivazione_citazione.png}
-    \caption{UC16 – Disattivazione citazione}
+    \includegraphics[width=0.5\textwidth]{disattivazione_citazione.png}
+    \caption{UC25 – Disattivazione citazione}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente disattiva lo stile citazione nella scrittura del testo.
-    \item \textbf{Precondizioni}: L'editor è attivo.
-    \item \textbf{Postcondizioni}: Il testo inserito non sarà in citazione.
-    \item \textbf{Trigger}: L'utente vuole disattivare lo stile citazione.
+    \item \textbf{Precondizioni}: La modalità di inserimento citazione è attiva.
+    \item \textbf{Scenario Principale}:
+        \begin{enumerate}
+        \item L'utente disattiva il comando "Citazione".
+        \item Il sistema disabilita la modalità di inserimento citazione.
+        \end{enumerate}
+    \item \textbf{Postcondizioni}: Il testo inserito successivamente non verrà formattato come citazione.
+    \item \textbf{Trigger}: L'utente desidera interrompere la modalità citazione.
 \end{itemize}
 
-% UC16.1 - Disattivazione citazione su testo selezionato
-\paragraph{UC 16.1: Disattivazione citazione su testo selezionato}\mbox{}\
+% UC26 - Rimozione formattazione citazione dal testo selezionato
+\hypertarget{uc26}{}
+\subsubsection{UC 26: Rimozione formattazione citazione dal testo selezionato}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{disattivazione_citazione_testo_selezionato.png}
-    \caption{UC16.1 – Disattivazione citazione su testo selezionato}
+    \includegraphics[width=0.5\textwidth]{rimozione_citazione.png}
+    \caption{UC26 – Rimozione formattazione citazione dal testo selezionato}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente seleziona del testo e disattiva lo stile citazione.
-    \item \textbf{Precondizioni}: L'editor è attivo e una porzione di testo è selezionata.
-    \item \textbf{Postcondizioni}: Il testo selezionato non sarà in citazione.
-    \item \textbf{Trigger}: L'utente vuole disattivare lo stile citazione.
+    \item \textbf{Precondizioni}: L'editor è attivo, è presente una nota aperta nell'editor ed una porzione di testo formattata come citazione è selezionata.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente disattiva il comando "Citazione".
+        \item Il sistema rimuove la formattazione citazione dal testo selezionato.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La porzione di testo selezionata non presenta più la formattazione citazione.
+    \item \textbf{Trigger}: L'utente desidera rimuovere la formattazione citazione da testo esistente.
 \end{itemize}
 
-% UC 17 - Inserimento titolo
-\subsubsection{UC 17: Inserimento titolo}
+%---------------TITOLO----------------
+
+% UC27 - Inserimento titolo
+\hypertarget{uc27}{}
+\subsubsection{UC 27: Inserimento titolo}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{inserimento_titolo.png}
-    \caption{UC 17 – Inserimento titolo}
+    \includegraphics[width=0.5\textwidth]{inserimento_titolo.png}
+    \caption{UC 27 – Inserimento titolo}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente attiva il comando per l'intestazione e inizia a digitare il titolo.
-    \item \textbf{Precondizioni}: L'editor è attivo e nessuna porzione di testo è selezionata.
-    \item \textbf{Postcondizioni}: Il nuovo testo inserito sarà formattato come titolo.
-    \item \textbf{Trigger}: L'utente vuole creare una nuova intestazione nel documento.
+    \item \textbf{Precondizioni}: L'editor è attivo ed è presente una nota aperta nell'editor.
+    \item \textbf{Scenario Principale}:
+        \begin{enumerate}
+        \item L'utente attiva il comando "Titolo".
+        \item Il sistema abilita la modalità titolo.
+        \item L'utente inserisce il testo.
+        \end{enumerate}    
+    \item \textbf{Postcondizioni}: Il testo inserito viene formattato come titolo.
+    \item \textbf{Trigger}: L'utente desidera creare una nuova intestazione nel documento.
 \end{itemize}
 
-% UC 17.1 - Inserimento titolo su testo selezionato
-\paragraph{UC 17.1: Inserimento titolo su testo selezionato}\mbox{}\
+% UC 28 - Applicazione formattazione titolo a testo selezionato
+\hypertarget{uc28}{}
+\subsubsection{UC 28: Applicazione formattazione titolo a testo selezionato}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{inserimento_titolo_selezionato.png}
-    \caption{UC 17.1 – Inserimento titolo su testo selezionato}
+    \includegraphics[width=0.5\textwidth]{applicazione_titolo.png}
+    \caption{UC 28 – Applicazione formattazione titolo a testo selezionato}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente seleziona del testo normale e applica il formato titolo.
-    \item \textbf{Precondizioni}: L'editor è attivo e una porzione di testo è selezionata.
-    \item \textbf{Postcondizioni}: Il testo selezionato sarà formattato come titolo.
-    \item \textbf{Trigger}: L'utente vuole trasformare un paragrafo esistente in un'intestazione.
+    \item \textbf{Precondizioni}: L'editor è attivo, è presente una nota aperta nell'editor ed una porzione di testo è selezionata.
+    \item \textbf{Scenario Principale}:
+        \begin{enumerate}
+        \item L'utente attiva il comando "Titolo".
+        \item Il sistema applica la formattazione titolo al testo selezionato.
+        \end{enumerate}
+    \item \textbf{Postcondizioni}: La porzione di testo selezionata presenta la formattazione titolo.
+    \item \textbf{Trigger}: L'utente desidera applicare la formattazione titolo a testo esistente.
 \end{itemize}
 
-% UC 18 - Disattivazione titolo
-\subsubsection{UC 18: Disattivazione titolo}
+% UC 29 - Disattivazione titolo
+\hypertarget{uc29}{}
+\subsubsection{UC 29: Disattivazione titolo}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{disattivazione_titolo.png}
-    \caption{UC 18 – Disattivazione titolo}
+    \includegraphics[width=0.5\textwidth]{disattivazione_titolo.png}
+    \caption{UC 29 – Disattivazione titolo}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente preme "Invio" o disattiva il comando titolo per continuare a scrivere normalmente.
-    \item \textbf{Precondizioni}: Il cursore si trova alla fine di un titolo.
-    \item \textbf{Postcondizioni}: Il comando viene disattivato e il nuovo testo sarà un paragrafo normale.
-    \item \textbf{Trigger}: L'utente ha terminato l'intestazione e vuole scrivere il contenuto normale.
+    \item \textbf{Precondizioni}: La modalità di inserimento titolo è attiva.
+    \item \textbf{Scenario Principale}:
+        \begin{enumerate}
+        \item L'utente disattiva il comando "Titolo".
+        \item Il sistema disabilita la modalità di inserimento titolo.
+        \end{enumerate}
+    \item \textbf{Postcondizioni}: Il testo inserito successivamente non verrà formattato come titolo.
+    \item \textbf{Trigger}: L'utente desidera interrompere la modalità titolo.
 \end{itemize}
 
-% UC 18.1 - Disattivazione titolo su testo selezionato
-\paragraph{UC 18.1: Disattivazione titolo su testo selezionato}\mbox{}\
+% UC 30 - Rimozione formattazione titolo da testo selezionato
+\hypertarget{uc30}{}
+\subsubsection{UC 30: Rimozione formattazione titolo da testo selezionato}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{disattivazione_titolo_selezionato.png}
-    \caption{UC 18.1 – Disattivazione titolo su testo selezionato}
+    \includegraphics[width=0.5\textwidth]{rimozione_titolo.png}
+    \caption{UC 30 – Rimozione formattazione titolo su testo selezionato}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente seleziona un'intestazione e disattiva il comando titolo.
-    \item \textbf{Precondizioni}: Un'intestazione è selezionata.
-    \item \textbf{Postcondizioni}: Il testo selezionato non sarà più un titolo e tornerà testo normale.
-    \item \textbf{Trigger}: L'utente vuole annullare la formattazione di un'intestazione esistente.
+    \item \textbf{Precondizioni}: L'editor è attivo, è presente una nota aperta nell'editor ed una porzione di testo formattata come titolo è selezionata.
+    \item \textbf{Scenario Principale}:
+        \begin{enumerate}
+        \item L'utente disattiva il comando "Titolo".
+        \item Il sistema rimuove la formattazione titolo dal testo selezionato.
+        \end{enumerate}
+    \item \textbf{Postcondizioni}: La porzione di testo selezionata non presenta più la formattazione titolo.
+    \item \textbf{Trigger}: L'utente desidera rimuovere la formattazione titolo da testo esistente.
 \end{itemize}
 
-% UC 19 - Inserimento link ipertestuale
-\subsubsection{UC 19: Inserimento link ipertestuale}
+%---------------LINK IPERTESTUALE----------------
+
+% UC 31 - Inserimento link ipertestuale
+\hypertarget{uc31}{}
+\subsubsection{UC 31: Inserimento link ipertestuale}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{inserimento_link.png}
-    \caption{UC 19 – Inserimento link ipertestuale}
+    \includegraphics[width=0.5\textwidth]{inserimento_link.png}
+    \caption{UC 31 – Inserimento link ipertestuale}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente inserisce l'URL e il testo di visualizzazione per creare un nuovo link.
-    \item \textbf{Precondizioni}: L'editor è attivo.
-    \item \textbf{Postcondizioni}: Il link ipertestuale appare nel documento.
-    \item \textbf{Trigger}: L'utente vuole inserire un collegamento a una risorsa esterna o interna.
+    \item \textbf{Precondizioni}: L'editor è attivo ed è presente una nota aperta nell'editor.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando "Inserisci link".
+        \item Il sistema richiede l'inserimento dell'URL e del testo associato.
+        \item L'utente inserisce i dati richiesti.
+        \item Il sistema crea il collegamento.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Il collegamento ipertestuale è inserito nel documento.
+    \item \textbf{Trigger}: L'utente desidera inserire un collegamento nel documento.
 \end{itemize}
 
-% UC 20 - Modifica link
-\subsubsection{UC 20: Modifica link}
+% UC 32 - Modifica link
+\hypertarget{uc32}{}
+\subsubsection{UC 32: Modifica link}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{modifica_link.png}
-    \caption{UC 20 – Modifica link}
+    \includegraphics[width=0.5\textwidth]{modifica_link.png}
+    \caption{UC 32 – Modifica link}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente seleziona un link esistente e ne modifica l'URL o il testo.
-    \item \textbf{Precondizioni}: È presente almeno un link nel documento.
-    \item \textbf{Postcondizioni}: Il link viene aggiornato con i nuovi parametri scelti dall'utente.
-    \item \textbf{Trigger}: L'utente deve correggere o aggiornare un collegamento.
+    \item \textbf{Precondizioni}: L'editor è attivo, è presente una nota aperta nell'editor ed è presente almeno un collegamento nel documento.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente seleziona un collegamento esistente.
+        \item L'utente modifica i parametri del collegamento.
+        \item Il sistema aggiorna il collegamento.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Il collegamento presenta i nuovi parametri inseriti.
+    \item \textbf{Trigger}: L'utente desidera modificare un collegamento esistente.
 \end{itemize}
 
-% UC 21 - Rimozione link
-\subsubsection{UC 21: Rimozione link}
+% UC 33 - Rimozione link
+\hypertarget{uc33}{}
+\subsubsection{UC 33: Rimozione link}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{rimozione_link.png}
-    \caption{UC 21 – Rimozione link}
+    \includegraphics[width=0.5\textwidth]{rimozione_link.png}
+    \caption{UC 33 – Rimozione link}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente seleziona un link ipertestuale e lo rimuove.
-    \item \textbf{Precondizioni}: Un link è presente e viene selezionato.
-    \item \textbf{Postcondizioni}: Il collegamento viene eliminato dal documento.
-    \item \textbf{Trigger}: L'utente non vuole più che la parola sia cliccabile.
+    \item \textbf{Precondizioni}: Un collegamento è presente nel documento ed è selezionato.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente seleziona un collegamento.
+        \item L'utente attiva il comando di rimozione.
+        \item Il sistema elimina il collegamento.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Il collegamento viene rimosso dal documento.
+    \item \textbf{Trigger}: L'utente desidera rimuovere un collegamento esistente.
 \end{itemize}
 
-% UC 22 - Inserimento elenco
-\subsubsection{UC 22: Inserimento elenco}
+%---------------ELENCHI----------------
+
+% UC 34 - Inserimento elenco
+\hypertarget{uc34}{}
+\subsubsection{UC 34: Inserimento elenco}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{inserimento_elenco.png}
-    \caption{UC 22 – Inserimento elenco}
+    \includegraphics[width=0.5\textwidth]{inserimento_elenco.png}
+    \caption{UC 34 – Inserimento elenco}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente attiva la funzione elenco e inizia a digitare il primo punto.
-    \item \textbf{Precondizioni}: L'editor è attivo e nessuna porzione di testo è selezionata.
-    \item \textbf{Postcondizioni}: Viene creato un nuovo elenco nel documento in cui l'utente digita.
-    \item \textbf{Trigger}: L'utente vuole raggruppare nuove informazioni in forma di lista.
+    \item \textbf{Precondizioni}: L'editor è attivo ed è presente una nota aperta nell'editor.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando "Elenco".
+        \item Il sistema abilita la modalità di inserimento elenco.
+        \item L'utente seleziona il tipo di elenco desiderato (puntato o numerato).
+        \item L'utente inserisce il contenuto dell'elenco.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Il testo inserito successivamente viene formattato come elenco del tipo selezionato.
+    \item \textbf{Trigger}: L'utente desidera creare un elenco nel documento.
 \end{itemize}
 
-% UC 23 - Modifica elenco
-\subsubsection{UC 23: Modifica elenco}
+% UC 35 - Modifica elenco
+\hypertarget{uc35}{}
+\subsubsection{UC 35: Modifica elenco}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{modifica_elenco.png}
-    \caption{UC 23 – Modifica elenco}
+    \includegraphics[width=0.5\textwidth]{modifica_elenco.png}
+    \caption{UC 35 – Modifica elenco}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente modifica la struttura dell'elenco (es. trasformandolo da puntato a numerato, o modificando i rientri).
-    \item \textbf{Precondizioni}: Un elenco è già presente e il cursore è posizionato su di esso.
-    \item \textbf{Postcondizioni}: La formattazione o il tipo di elenco viene aggiornato.
-    \item \textbf{Trigger}: L'utente vuole cambiare la tipologia della lista esistente.
+    \item \textbf{Precondizioni}: È presente almeno un elenco nel documento.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente seleziona un elenco esistente.
+        \item L'utente modifica le proprietà dell'elenco.
+        \item Il sistema aggiorna l'elenco.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'elenco presenta le nuove proprietà impostate.
+    \item \textbf{Trigger}: L'utente desidera modificare un elenco esistente.
 \end{itemize}
 
-% UC 24 - Disattivazione elenco
-\subsubsection{UC 24: Disattivazione elenco}
+% UC 36 - Disattivazione elenco
+\hypertarget{uc36}{}
+\subsubsection{UC 36: Disattivazione elenco}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{disattivazione_elenco.png}
-    \caption{UC 24 – Disattivazione elenco}
+    \includegraphics[width=0.5\textwidth]{disattivazione_elenco.png}
+    \caption{UC 36 – Disattivazione elenco}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente preme due volte "Invio" alla fine di un punto per interrompere la formattazione a elenco.
-    \item \textbf{Precondizioni}: Il cursore si trova su un punto elenco vuoto.
-    \item \textbf{Postcondizioni}: Il comando viene disattivato e il cursore si posiziona su un nuovo paragrafo normale.
-    \item \textbf{Trigger}: L'utente ha finito di compilare la lista e vuole riprendere a scrivere testo normale.
+    \item \textbf{Precondizioni}: La modalità di inserimento elenco è attiva.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente disattiva il comando "Elenco".
+        \item Il sistema disabilita la modalità di inserimento elenco.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Il testo inserito successivamente non verrà formattato come elenco.
+    \item \textbf{Trigger}: L'utente desidera interrompere la modalità di inserimento elenco.
 \end{itemize}
 
-% UC 24.1 - Disattivazione elenco su testo selezionato
-\paragraph{UC 24.1: Disattivazione elenco su testo selezionato}\mbox{}\
+% UC 37 - Rimozione formattazione elenco da testo selezionato
+\hypertarget{uc37}{}
+\subsubsection{UC 37: Rimozione formattazione elenco da testo selezionato}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{disattivazione_elenco_selezionato.png}
-    \caption{UC 24.1 – Disattivazione elenco su testo selezionato}
+    \includegraphics[width=0.5\textwidth]{rimozione_elenco.png}
+    \caption{UC 37 – Rimozione formattazione elenco da testo selezionato}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente seleziona l'intero elenco (o parte di esso) e disattiva il comando lista.
-    \item \textbf{Precondizioni}: Un elenco è interamente o parzialmente selezionato.
-    \item \textbf{Postcondizioni}: Tutti i punti dell'elenco selezionato diventano paragrafi normali.
-    \item \textbf{Trigger}: L'utente vuole convertire i punti della lista in testo standard.
+    \item \textbf{Precondizioni}: Una porzione di elenco è selezionata.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente disattiva il comando "Elenco".
+        \item Il sistema rimuove la formattazione elenco dal testo selezionato.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Il testo selezionato non presenta più la formattazione elenco.
+    \item \textbf{Trigger}: L'utente desidera rimuovere la formattazione elenco da testo esistente.
 \end{itemize}
 
-% UC 25 - Azione di Undo
-\subsubsection{UC 25: Azione di Undo}
+%---------------GESTIONE TABELLE--------------------
+
+% UC38 - Inserimento tabella
+\hypertarget{uc38}{}
+\subsubsection{UC 38: Inserimento tabella}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{inserimento_tabella.png}
+    \caption{UC38 – Inserimento tabella}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: Una nota è aperta nell'editor.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva la funzione di inserimento tabella.
+        \item Il sistema richiede il numero di righe e colonne.
+        \item L'utente inserisce i parametri desiderati.
+        \item Il sistema genera la struttura Markdown della tabella.
+        \item Il sistema inserisce la tabella nell'editor.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Nell'editor è presente una nuova tabella.
+    \item \textbf{Trigger}: L'utente desidera inserire una tabella nella nota.
+    \item \textbf{Estensioni}:
+    \begin{itemize}
+        \item \hyperlink{uc38.1}{UC 38.1: Visualizzazione errore parametri tabella}: parametri non validi al passo 3.
+    \end{itemize}
+\end{itemize}
+
+% UC38.1 - Visualizzazione errore parametri tabella
+\hypertarget{uc38.1}{}
+\subsubsection{UC 38.1: Visualizzazione errore parametri tabella}\mbox{}\\
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{errore_parametri_tabella.png}
+    \caption{UC38.1 – Visualizzazione errore parametri tabella}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: È in corso la creazione di una tabella.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema rileva valori non validi per righe o colonne.
+        \item Il sistema mostra un messaggio di errore all'utente.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La tabella non viene generata.
+    \item \textbf{Trigger}: Inserimento di parametri non validi.
+\end{itemize}
+
+% UC39 - Modifica contenuto cella tabella
+\hypertarget{uc39}{}
+\subsubsection{UC 39: Modifica contenuto cella tabella}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{modifica_cella_tabella.png}
+    \caption{UC39 – Modifica contenuto cella tabella}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: Nell'editor è presente una tabella.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente seleziona una cella della tabella.
+        \item L'utente inserisce o modifica il contenuto della cella.
+        \item Il sistema aggiorna la struttura della tabella.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Il contenuto della cella risulta aggiornato.
+    \item \textbf{Trigger}: L'utente desidera modificare una cella della tabella.
+\end{itemize}
+
+% UC40 - Inserimento riga tabella
+\hypertarget{uc40}{}
+\subsubsection{UC 40: Inserimento riga tabella}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{inserimento_riga_tabella.png}
+    \caption{UC40 – Inserimento riga tabella}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: Nell'editor è presente una tabella.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente seleziona una riga della tabella.
+        \item L'utente richiede l'inserimento di una nuova riga.
+        \item Il sistema aggiunge una nuova riga vuota alla tabella.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La tabella contiene una nuova riga.
+    \item \textbf{Trigger}: L'utente desidera aggiungere una riga alla tabella.
+\end{itemize}
+
+% UC41 - Eliminazione riga tabella
+\hypertarget{uc41}{}
+\subsubsection{UC 41: Eliminazione riga tabella}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{eliminazione_riga_tabella.png}
+    \caption{UC41 – Eliminazione riga tabella}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: Nell'editor è presente una tabella con almeno una riga.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente seleziona una riga della tabella.
+        \item L'utente richiede la rimozione della riga.
+        \item Il sistema elimina la riga selezionata.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La riga selezionata viene rimossa dalla tabella.
+    \item \textbf{Trigger}: L'utente desidera eliminare una riga della tabella.
+\end{itemize}
+
+% UC42 - Inserimento colonna tabella
+\hypertarget{uc42}{}
+\subsubsection{UC 42: Inserimento colonna tabella}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{inserimento_colonna_tabella.png}
+    \caption{UC42 – Inserimento colonna tabella}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: Nell'editor è presente una tabella.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente seleziona una colonna della tabella.
+        \item L'utente richiede l'inserimento di una nuova colonna.
+        \item Il sistema aggiunge una nuova colonna vuota alla tabella.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La tabella contiene una nuova colonna.
+    \item \textbf{Trigger}: L'utente desidera aggiungere una colonna alla tabella.
+\end{itemize}
+
+% UC43 - Eliminazione colonna tabella
+\hypertarget{uc43}{}
+\subsubsection{UC 43: Eliminazione colonna tabella}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{eliminazione_colonna_tabella.png}
+    \caption{UC43 – Eliminazione colonna tabella}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: Nell'editor è presente una tabella con almeno una colonna.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente seleziona una colonna della tabella.
+        \item L'utente richiede la rimozione della colonna.
+        \item Il sistema elimina la colonna selezionata.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La colonna selezionata viene rimossa dalla tabella.
+    \item \textbf{Trigger}: L'utente desidera eliminare una colonna della tabella.
+\end{itemize}
+
+% UC44 - Eliminazione tabella
+\hypertarget{uc44}{}
+\subsubsection{UC 44: Eliminazione tabella}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{eliminazione_tabella.png}
+    \caption{UC44 – Eliminazione tabella}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: Nell'editor è presente una tabella.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente seleziona la tabella.
+        \item L'utente richiede la rimozione della tabella.
+        \item Il sistema elimina la tabella dall'editor.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La tabella viene rimossa dalla nota.
+    \item \textbf{Trigger}: L'utente desidera eliminare una tabella.
+\end{itemize}
+
+%---------------GESTIONE MODIFICHE------------------
+
+% UC45 - Azione di Undo
+\hypertarget{uc45}{}
+\subsubsection{UC 45: Azione di Undo\textsubscript{G}}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{azione_undo.png}
-    \caption{UC 25 – Azione di Undo}
+    \includegraphics[width=0.5\textwidth]{azione_undo.png}
+    \caption{UC45 – Azione di Undo}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente annulla l'ultima modifica apportata al documento.
-    \item \textbf{Precondizioni}: Esiste almeno un'azione annullabile nella cronologia.
-    \item \textbf{Postcondizioni}: Il documento torna allo stato precedente all'ultima modifica.
-    \item \textbf{Trigger}: L'utente si accorge di aver commesso un errore e attiva "Undo".
+    \item \textbf{Precondizioni}: Esiste almeno una modifica annullabile.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando "Undo".
+        \item Il sistema annulla l'ultima modifica effettuata.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Il documento viene ripristinato allo stato precedente.
+    \item \textbf{Trigger}: L'utente desidera annullare un'operazione eseguita.
 \end{itemize}
 
-% UC 26 - Azione di Redo
-\subsubsection{UC 26: Azione di Redo}
+% UC46 - Azione di Redo
+\hypertarget{uc46}{}
+\subsubsection{UC 46: Azione di Redo\textsubscript{G}}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{azione_redo.png}
-    \caption{UC 26 – Azione di Redo}
+    \includegraphics[width=0.5\textwidth]{azione_redo.png}
+    \caption{UC46 – Azione di Redo}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente ripristina l'ultima modifica annullata.
-    \item \textbf{Precondizioni}: È stata eseguita almeno un'operazione di "Undo" ripristinabile.
+    \item \textbf{Precondizioni}: È stata precedentemente eseguita almeno un'operazione di Undo.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando "Redo".
+        \item Il sistema ripristina l'ultima modifica annullata.
+    \end{enumerate}
     \item \textbf{Postcondizioni}: La modifica precedentemente annullata viene riapplicata.
-    \item \textbf{Trigger}: L'utente cambia idea e attiva "Redo" per ripristinare il testo.
+    \item \textbf{Trigger}: L'utente desidera ripristinare una modifica annullata.
 \end{itemize}
 
-% UC 27 - Visualizzazione esclusiva Editor
-\subsubsection{UC 27: Visualizzazione esclusiva Editor}
+%---------------GESTIONE VISUALIZZAZIONE----------------
+
+% UC47 - Visualizzazione esclusiva Editor
+\hypertarget{uc47}{}
+\subsubsection{UC 47: Visualizzazione esclusiva Editor}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{visualizzazione_editor.png}
-    \caption{UC 27 – Visualizzazione esclusiva Editor}
+    \includegraphics[width=0.5\textwidth]{visualizzazione_editor.png}
+    \caption{UC47 – Visualizzazione esclusiva Editor}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente seleziona la modalità di visualizzazione "Solo Editor".
-    \item \textbf{Precondizioni}: L'interfaccia è attiva.
-    \item \textbf{Postcondizioni}: A schermo viene mostrata esclusivamente l'area di scrittura del codice sorgente.
-    \item \textbf{Trigger}: L'utente vuole massimizzare lo spazio dedicato alla digitazione.
+    \item \textbf{Precondizioni}: L'interfaccia dell'applicazione è attiva.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva la modalità "Solo Editor\textsubscript{G}".
+        \item Il sistema mostra esclusivamente l'area di modifica del documento.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'interfaccia mostra unicamente l'editor testuale.
+    \item \textbf{Trigger}: L'utente desidera concentrarsi esclusivamente sulla scrittura del documento.
 \end{itemize}
 
-% UC 28 - Visualizzazione esclusiva Render
-\subsubsection{UC 28: Visualizzazione esclusiva Render}
+% UC 48 - Visualizzazione esclusiva Render\textsubscript{G}
+\hypertarget{uc48}{}
+\subsubsection{UC 48: Visualizzazione esclusiva Render}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{visualizzazione_render.png}
-    \caption{UC 28 – Visualizzazione esclusiva Render}
+    \includegraphics[width=0.5\textwidth]{visualizzazione_render.png}
+    \caption{UC 48 – Visualizzazione esclusiva Render}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente seleziona la modalità di visualizzazione "Solo Render".
-    \item \textbf{Precondizioni}: L'interfaccia è attiva.
-    \item \textbf{Postcondizioni}: A schermo viene mostrata esclusivamente l'anteprima formattata del documento.
-    \item \textbf{Trigger}: L'utente vuole leggere il documento finale senza visualizzare il Markdown.
+    \item \textbf{Precondizioni}: L'interfaccia dell'applicazione è attiva.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva la modalità "Solo Render\textsubscript{G}".
+        \item Il sistema mostra esclusivamente l'anteprima formattata del documento.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'interfaccia mostra unicamente l'anteprima del documento renderizzato.
+    \item \textbf{Trigger}: L'utente desidera visualizzare il risultato finale del documento.
 \end{itemize}
 
-% UC 29 - Visualizzazione Split View
-\subsubsection{UC 29: Visualizzazione Split View}
+% UC 49 - Visualizzazione Split View\textsubscript{G}
+\hypertarget{uc49}{}
+\subsubsection{UC 49: Visualizzazione Split View}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{visualizzazione_split_view.png}
-    \caption{UC 29 – Visualizzazione Split View}
+    \includegraphics[width=0.5\textwidth]{visualizzazione_split_view.png}
+    \caption{UC 49 – Visualizzazione Split View}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente seleziona la modalità "Split View".
-    \item \textbf{Precondizioni}: L'interfaccia è attiva.
-    \item \textbf{Postcondizioni}: L'interfaccia mostra contemporaneamente l'editor e l'anteprima formattata affiancati.
-    \item \textbf{Trigger}: L'utente vuole verificare il rendering in tempo reale mentre digita.
+    \item \textbf{Precondizioni}: L'interfaccia dell'applicazione è attiva.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva la modalità "Split View".
+        \item Il sistema mostra contemporaneamente l'editor e l'anteprima del documento.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'interfaccia mostra simultaneamente l'editor testuale e l'anteprima renderizzata.
+    \item \textbf{Trigger}: L'utente desidera visualizzare il rendering del documento durante la modifica del contenuto.
 \end{itemize}
-
 
 % --------------------------------------------------------------------------
 % 2. Macroarea 2: Interazione AI (LLM)
 % --------------------------------------------------------------------------
 \newpage
 \subsection{Macroarea 2 — Interazione AI (LLM)}
-\textit{Elaborazione del testo tramite modelli linguistici e gestione degli output.}
+\textit{Elaborazione del testo tramite modelli linguistici e gestione degli output generati.}
 
-% UC30 - Generazione riassunto del testo
-\subsubsection{UC 30: Generazione riassunto del testo}
+% UC50 - Generazione riassunto del testo
+\hypertarget{uc50}{}
+\subsubsection{UC 50: Generazione riassunto del testo}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{generazione_riassunto_testo.png}
-    \caption{UC30 – Riassunto del testo}
+    \caption{UC50 – Riassunto del testo}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
     \item \textbf{Attore Secondario}: LLM
-    \item \textbf{Scenario Principale}: 
+    \item \textbf{Precondizioni}: Una porzione di testo è selezionata nell'editor e il servizio AI è disponibile.
+    \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente richiede un riassunto del testo selezionato.
-        \item Il sistema invia la richiesta specifica all'LLM.
-        \item L'LLM restituisce il riassunto richiesto.
+        \item L'utente richiede la generazione di un riassunto del testo selezionato.
+        \item Il sistema invia la richiesta al servizio AI.
+        \item Il servizio AI genera il riassunto richiesto.
+        \item Il sistema rende disponibile il riassunto generato all'utente, senza modificare il contenuto della nota.
     \end{enumerate}
-    \item \textbf{Precondizioni}: L'applicazione è avviata, la connessione ai servizi AI è stabilita, una porzione di testo è selezionata nell'editor.
-    \item \textbf{Postcondizioni}: Viene generato un riassunto che viene mostrato all'utente.
-    \item \textbf{Trigger}: L'utente necessita di una sintesi rapida di un testo troppo lungo.
+    \item \textbf{Postcondizioni}: Una proposta di riassunto del testo selezionato è disponibile all'utente; il contenuto 
+      della nota rimane invariato.
+    \item \textbf{Trigger}: L'utente desidera ottenere una sintesi del testo selezionato.
+    \item \textbf{Estensioni}:
+    \begin{itemize}
+        \item \hyperlink{uc50.1}{UC 50.1: Visualizzazione errore generazione riassunto} $ \rightarrow $ Condizione: si verifica un errore durante la comunicazione con il servizio AI.
+    \end{itemize}
 \end{itemize}
 
-% UC30.1 - Visualizzazione errore servizi AI (Timeout, API error, ecc.)
-\paragraph{UC 30.1: Visualizzazione errore servizi AI}\mbox{}\
+% UC50.1 - Visualizzazione errore generazione riassunto
+\hypertarget{uc50.1}{}
+\subsubsection{UC 50.1: Visualizzazione errore generazione riassunto}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{errore_ai_UC30.png}
-    \caption{UC30.1 – Visualizzazione errore servizi AI}
+    \includegraphics[width=0.6\textwidth]{errore_ai_UC50.1.png}
+    \caption{UC50.1 – Visualizzazione errore generazione riassunto}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente viene informato che  il processo UC 30 ha fallito a causa di un errore del servizio AI.
-    \item \textbf{Precondizioni}: È in corso l’esecuzione di UC 30.
-    \item \textbf{Postcondizioni}: L’utente è informato dell’errore.
-    \item \textbf{Trigger}: Si verifica un errore nella comunicazione con il servizio AI.
+    \item \textbf{Precondizioni}: È in corso una richiesta di generazione del riassunto.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Si verifica un errore durante l'elaborazione della richiesta.
+        \item Il sistema segnala il mancato completamento della richiesta di generazione del riassunto.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'utente viene informato del mancato completamento dell'operazione di generazione del riassunto.
+    \item \textbf{Trigger}: Si verifica un errore durante la comunicazione con il servizio AI.
 \end{itemize}
 
-% UC31 - Traduzione del testo
-\subsubsection{UC 31: Traduzione del testo}
+% UC51 - Traduzione del testo
+\hypertarget{uc51}{}
+\subsubsection{UC 51: Traduzione del testo}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{traduzione_testo.png}
-    \caption{UC31 – Traduzione del testo}
+    \caption{UC51 – Traduzione del testo}
 \end{figure}
+
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
     \item \textbf{Attore Secondario}: LLM
-    \item \textbf{Scenario Principale}: 
+    \item \textbf{Precondizioni}: Una porzione di testo è selezionata nell'editor e il servizio AI è disponibile.
+    \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente richiede la traduzione del testo selezionato nella lingua scelta.
-        \item Il sistema invia la richiesta specifica all'LLM.
-        \item L'LLM restituisce il testo tradotto richiesto.
+        \item L'utente richiede la traduzione del testo selezionato.
+        \item L'utente seleziona la lingua di destinazione.
+        \item Il sistema invia la richiesta al servizio AI.
+        \item Il servizio AI genera la traduzione richiesta.
+        \item Il sistema rende disponibile il testo tradotto all'utente, senza modificare il contenuto della nota.
     \end{enumerate}
-    \item \textbf{Precondizioni}: L'applicazione è avviata, la connessione ai servizi AI è stabilita, una porzione di testo è selezionata nell'editor.
-    \item \textbf{Postcondizioni}: Viene generato una traduzione che viene mostrato all'utente.
-    \item \textbf{Trigger}: L'utente ha bisogno di convertire una porzione di testo in una lingua differente.
+    \item \textbf{Postcondizioni}: Una proposta di traduzione del testo selezionato è disponibile all'utente; il contenuto 
+      della nota rimane invariato.
+    \item \textbf{Trigger}: L'utente desidera tradurre il testo selezionato in un'altra lingua.
+    \item \textbf{Estensioni}:
+    \begin{itemize}
+        \item \hyperlink{uc51.1}{UC 51.1: Visualizzazione errore traduzione testo} $ \rightarrow $ Condizione: si verifica un errore durante la comunicazione con il servizio AI.
+    \end{itemize}
 \end{itemize}
 
-% UC31.1 - Visualizzazione errore servizi AI (Timeout, API error, ecc.)
-\paragraph{UC 31.1: Visualizzazione errore servizi AI}\mbox{}\
+% UC51.1 - Visualizzazione errore traduzione testo
+\hypertarget{uc51.1}{}
+\subsubsection{UC 51.1: Visualizzazione errore traduzione testo}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{errore_ai_UC31.png}
-    \caption{UC31.1 – Visualizzazione errore servizi AI}
+    \includegraphics[width=0.6\textwidth]{errore_ai_UC51.1.png}
+    \caption{UC51.1 – Visualizzazione errore traduzione testo}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente viene informato che  il processo UC 31 ha fallito a causa di un errore del servizio AI.
-    \item \textbf{Precondizioni}: È in corso l’esecuzione di UC 31.
-    \item \textbf{Postcondizioni}: L’utente è informato dell’errore.
-    \item \textbf{Trigger}: Si verifica un errore nella comunicazione con il servizio AI.
+    \item \textbf{Precondizioni}: È in corso una richiesta di traduzione del testo.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Si verifica un errore durante l'elaborazione della richiesta.
+        \item Il sistema segnala il mancato completamento della richiesta di traduzione del testo.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'utente viene informato del mancato completamento dell'operazione di traduzione del testo.
+    \item \textbf{Trigger}: Si verifica un errore durante la comunicazione con il servizio AI.
 \end{itemize}
 
-% UC32 - Riscrittura del testo
-\subsubsection{UC 32: Riscrittura del testo}
+% UC52 - Riscrittura del testo
+\hypertarget{uc52}{}
+\subsubsection{UC 52: Riscrittura del testo}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{riscrittura_testo.png}
-    \caption{UC32 – Riscrittura del testo}
+    \caption{UC52 – Riscrittura del testo}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
     \item \textbf{Attore Secondario}: LLM
-    \item \textbf{Scenario Principale}: 
+    \item \textbf{Precondizioni}: Una porzione di testo è selezionata nell'editor e il servizio AI è disponibile.
+    \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente richiede una riscrittura del testo selezionato.
-        \item Il sistema invia la richiesta specifica all'LLM.
-        \item L'LLM restituisce la riscrittura richiesta.
+        \item L'utente richiede la riscrittura del testo selezionato.
+        \item Il sistema invia la richiesta al servizio AI.
+        \item Il servizio AI genera una nuova versione del testo.
+        \item Il sistema rende disponibile il testo rielaborato all'utente, senza modificare il contenuto della nota.
     \end{enumerate}
-    \item \textbf{Precondizioni}: L'applicazione è avviata, la connessione ai servizi AI è stabilita, una porzione di testo è selezionata nell'editor.
-    \item \textbf{Postcondizioni}: Viene generato una rielaborazione del testo che viene mostrata all'utente.
-    \item \textbf{Trigger}: L'utente non è soddisfatto della forma del testo e vuole che l'AI lo rielabori.
+    \item \textbf{Postcondizioni}: Una proposta di riscrittura del testo selezionato è disponibile all'utente; il contenuto 
+      della nota rimane invariato.
+    \item \textbf{Trigger}: L'utente desidera rielaborare il testo selezionato.
+    \item \textbf{Estensioni}:
+    \begin{itemize}
+        \item \hyperlink{uc52.1}{UC 52.1: Visualizzazione errore riscrittura testo} $ \rightarrow $ Condizione: si verifica un errore durante la comunicazione con il servizio AI.
+    \end{itemize}
 \end{itemize}
 
-% UC32.1 - Visualizzazione errore servizi AI (Timeout, API error, ecc.)
-\paragraph{UC 32.1: Visualizzazione errore servizi AI}\mbox{}\
+% UC52.1 - Visualizzazione errore riscrittura testo
+\hypertarget{uc52.1}{}
+\subsubsection{UC 52.1: Visualizzazione errore riscrittura testo}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{errore_ai_UC32.png}
-    \caption{UC32.1 – Visualizzazione errore servizi AI}
+    \includegraphics[width=0.6\textwidth]{errore_ai_UC52.1.png}
+    \caption{UC52.1 – Visualizzazione errore riscrittura testo}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente viene informato che  il processo UC 32 ha fallito a causa di un errore del servizio AI.
-    \item \textbf{Precondizioni}: È in corso l’esecuzione di UC 32.
-    \item \textbf{Postcondizioni}: L’utente è informato dell’errore.
-    \item \textbf{Trigger}: Si verifica un errore nella comunicazione con il servizio AI.
+    \item \textbf{Precondizioni}: È in corso una richiesta di riscrittura del testo.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Si verifica un errore durante l'elaborazione della richiesta.
+        \item Il sistema segnala il mancato completamento della richiesta di riscrittura del testo.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'utente viene informato del mancato completamento dell'operazione di riscrittura del testo.
+    \item \textbf{Trigger}: Si verifica un errore durante la comunicazione con il servizio AI.
 \end{itemize}
 
-% UC33 - Generazione automatica da prompt (Distant Writing)
-\subsubsection{UC 33: Generazione automatica da prompt (Distant Writing)}
+% UC53 - Generazione automatica da prompt (Distant Writing)
+\hypertarget{uc53}{}
+\subsubsection{UC 53: Generazione automatica da prompt (Distant Writing)}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{generazione_automatica_prompt.png}
-    \caption{UC33 – Generazione automatica da prompt (Distant Writing)}
+    \includegraphics[width=0.7\textwidth]{generazione_automatica_prompt.png}
+    \caption{UC53 – Generazione automatica da prompt (Distant Writing)}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
     \item \textbf{Attore Secondario}: LLM
-    \item \textbf{Scenario Principale}: 
+    \item \textbf{Precondizioni}: Il servizio AI è disponibile.
+    \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente inserisce un'istruzione testuale (prompt) in un apposito campo.
-        \item Il sistema invia il prompt all'LLM.
-        \item L'LLM genera il testo e lo restituisce al sistema.
-        \item Il sistema fornisce il testo generato all'utente (gestito tramite UC 12).
+        \item L'utente inserisce un prompt testuale.
+        \item Il sistema invia il prompt al servizio AI.
+        \item Il servizio AI genera il testo richiesto.
+        \item Il sistema rende disponibile il testo generato all'utente, senza modificare il contenuto della nota.
     \end{enumerate}
-    \item \textbf{Precondizioni}: L'applicazione è avviata e la connessione ai servizi AI è stabilita.
-    \item \textbf{Postcondizioni}: Viene generata una proposta di testo basata sul prompt fornito.
-    \item \textbf{Trigger}: L'utente vuole che l'AI generi nuovi contenuti testuali a partire da una sua istruzione diretta.
+    \item \textbf{Postcondizioni}: Una proposta di testo generata dal servizio AI è disponibile all'utente; il contenuto 
+      della nota rimane invariato.
+    \item \textbf{Trigger}: L'utente desidera generare automaticamente un nuovo contenuto testuale.
+    \item \textbf{Estensioni}:
+    \begin{itemize}
+        \item \hyperlink{uc53.1}{UC 53.1: Visualizzazione errore generazione testo} $ \rightarrow $ Condizione: si verifica un errore durante la comunicazione con il servizio AI.
+    \end{itemize}
 \end{itemize}
 
-% UC33.1 - Visualizzazione errore servizi AI (Timeout, API error, ecc.)
-\paragraph{UC 33.1: Visualizzazione errore servizi AI}\mbox{}\
+% UC53.1 - Visualizzazione errore generazione testo
+\hypertarget{uc53.1}{}
+\subsubsection{UC 53.1: Visualizzazione errore generazione testo}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{errore_ai_UC33.png}
-    \caption{UC33.1 – Visualizzazione errore servizi AI}
+    \includegraphics[width=0.6\textwidth]{errore_ai_UC53.1.png}
+    \caption{UC53.1 – Visualizzazione errore generazione testo}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente viene informato che  il processo UC 33 ha fallito a causa di un errore del servizio AI.
-    \item \textbf{Precondizioni}: È in corso l’esecuzione di UC 33.
-    \item \textbf{Postcondizioni}: L’utente è informato dell’errore.
-    \item \textbf{Trigger}: Si verifica un errore nella comunicazione con il servizio AI.
-\end{itemize}
-
-% UC34 - Critica del testo (Sei Cappelli per Pensare)
-\subsubsection{UC 34: Critica del testo (Sei Cappelli per Pensare)}
-
-% use case diagram
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{critica_testo_sei_cappelli_pensare.png}
-    \caption{UC34 – Critica del testo (Sei Cappelli per Pensare)}
-\end{figure}
-
-\begin{itemize}
-    \item \textbf{Attore Principale}: Utente
-    \item \textbf{Attore Secondario}: LLM
-    \item \textbf{Scenario Principale}: 
+    \item \textbf{Precondizioni}: È in corso una richiesta di generazione testo (Distant Writing).
+    \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente richiede un'analisi critica del testo selezionato.
-        \item L'utente sceglie una delle sei modalità (Cappelli).
-        \item Il sistema invia la richiesta specifica all'LLM.
-        \item L'LLM restituisce il feedback critico.
+        \item Si verifica un errore durante l'elaborazione della richiesta.
+        \item Il sistema segnala il mancato completamento della richiesta di generazione testo.
     \end{enumerate}
-    \item \textbf{Precondizioni}: L'applicazione è avviata, la connessione ai servizi AI è stabilita, una porzione di testo è selezionata nell'editor.
-    \item \textbf{Postcondizioni}: Viene generata una proposta di analisi che viene mostrata all'utente.
-    \item \textbf{Trigger}: L'utente desidera che il testo venga analizzato criticamente adottando una specifica prospettiva.
+    \item \textbf{Postcondizioni}: L'utente viene informato del mancato completamento dell'operazione di generazione testo.
+    \item \textbf{Trigger}: Si verifica un errore durante la comunicazione con il servizio AI.
 \end{itemize}
 
-% UC34.1 - Analisi Cappello Bianco (Dati e fatti)
-\paragraph{UC 34.1: Analisi Cappello Bianco (Dati e fatti)}\mbox{}\
+%---------------SEI CAPPELLI PER PENSARE------------------
+
+% UC54 - Analisi Cappello Bianco (Dati e fatti)
+\hypertarget{uc54}{}
+\subsubsection{UC 54: Analisi Cappello Bianco (Dati e fatti)}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{critica_testo_sei_cappelli_pensare_bianco.png}
-    \caption{UC34.1 – Analisi Cappello Bianco (Dati e fatti)}
+    \caption{UC54 – Analisi Cappello Bianco (Dati e fatti)}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
     \item \textbf{Attore Secondario}: LLM
-    \item \textbf{Scenario Principale}: 
+    \item \textbf{Precondizioni}: Una porzione di testo è selezionata nell'editor e il servizio AI è disponibile.
+    \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente richiede un'analisi oggettiva.
-        \item Il sistema istruisce l'LLM a evidenziare solo informazioni certe, dati e lacune informative nel testo selezionato.
-        \item L'LLM restituisce il feedback critico.
+        \item L'utente richiede un'analisi del testo secondo il Cappello Bianco.
+        \item Il sistema invia la richiesta al servizio AI.
+        \item Il servizio AI analizza informazioni oggettive, dati e lacune informative presenti nel testo.
+        \item Il sistema rende disponibile l'analisi generata all'utente, senza modificare il contenuto della nota.
     \end{enumerate}
-    \item \textbf{Precondizioni}: L'applicazione è avviata, la connessione ai servizi AI è stabilita, una porzione di testo è selezionata nell'editor.
-    \item \textbf{Postcondizioni}: Viene visualizzata un'analisi critica basata su fatti e dati oggettivi.
-    \item \textbf{Trigger}: L'utente seleziona il Cappello Bianco per verificare i fatti, i dati e l'oggettività del testo.
+    \item \textbf{Postcondizioni}: Una proposta di analisi oggettiva del testo selezionato è disponibile all'utente; il contenuto 
+      della nota rimane invariato.
+    \item \textbf{Trigger}: L'utente desidera verificare dati, fatti e oggettività del testo selezionato.
+    \item \textbf{Estensioni}:
+    \begin{itemize}
+        \item \hyperlink{uc54.1}{UC 54.1: Visualizzazione errore analisi Cappello Bianco} $ \rightarrow $ Condizione: si verifica un errore durante la comunicazione con il servizio AI.
+    \end{itemize}
 \end{itemize}
 
-% UC34.2 - Analisi Cappello Rosso (Emozioni)
-\paragraph{UC 34.2: Analisi Cappello Rosso (Emozioni)}\mbox{}\
+% UC54.1 - Visualizzazione errore analisi Cappello Bianco
+\hypertarget{uc54.1}{}
+\subsubsection{UC 54.1: Visualizzazione errore analisi Cappello Bianco}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{errore_ai_UC54.1.png}
+    \caption{UC54.1 – Visualizzazione errore analisi Cappello Bianco}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: È in corso una richiesta di analisi secondo il Cappello Bianco.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Si verifica un errore durante l'elaborazione della richiesta.
+        \item Il sistema segnala il mancato completamento della richiesta di analisi.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'utente viene informato del mancato completamento dell'analisi.
+    \item \textbf{Trigger}: Si verifica un errore durante la comunicazione con il servizio AI.
+\end{itemize}
+
+% UC55 - Analisi Cappello Rosso (Emozioni)
+\hypertarget{uc55}{}
+\subsubsection{UC 55: Analisi Cappello Rosso (Emozioni)}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{critica_testo_sei_cappelli_pensare_rosso.png}
-    \caption{UC34.2 – Analisi Cappello Rosso (Emozioni)}
+    \caption{UC55 – Analisi Cappello Rosso (Emozioni)}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
     \item \textbf{Attore Secondario}: LLM
-    \item \textbf{Scenario Principale}: 
+    \item \textbf{Precondizioni}: Una porzione di testo è selezionata nell'editor e il servizio AI è disponibile.
+    \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente richiede un'analisi emotiva.
-        \item L'LLM analizza i sentimenti, le intuizioni e le reazioni viscerali trasmesse dal testo.
-        \item L'LLM restituisce il feedback critico.
+        \item L'utente richiede un'analisi del testo secondo il Cappello Rosso.
+        \item Il sistema invia la richiesta al servizio AI.
+        \item Il servizio AI analizza emozioni, impressioni e reazioni trasmesse dal testo.
+        \item Il sistema rende disponibile l'analisi generata all'utente, senza modificare il contenuto della nota.
     \end{enumerate}
-    \item \textbf{Precondizioni}: L'applicazione è avviata, la connessione ai servizi AI è stabilita, una porzione di testo è selezionata nell'editor.
-    \item \textbf{Postcondizioni}: Viene visualizzata un'analisi del tono emotivo del testo.
-    \item \textbf{Trigger}: L'utente seleziona il Cappello Rosso per valutare l'impatto emotivo e viscerale del testo.
+    \item \textbf{Postcondizioni}: Una proposta di analisi emotiva del testo selezionato è disponibile all'utente; il contenuto 
+      della nota rimane invariato.
+    \item \textbf{Trigger}: L'utente desidera valutare l'impatto emotivo del testo selezionato.
+    \item \textbf{Estensioni}:
+    \begin{itemize}
+        \item \hyperlink{uc55.1}{UC 55.1: Visualizzazione errore analisi Cappello Rosso} $ \rightarrow $ Condizione: si verifica un errore durante la comunicazione con il servizio AI.
+    \end{itemize}
 \end{itemize}
 
-% UC34.3 - Analisi Cappello Nero (Rischi)
-\paragraph{UC 34.3: Analisi Cappello Nero (Rischi)}\mbox{}\
+% UC55.1 - Visualizzazione errore analisi Cappello Rosso
+\hypertarget{uc55.1}{}
+\subsubsection{UC 55.1: Visualizzazione errore analisi Cappello Rosso}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{errore_ai_UC55.png}
+    \caption{UC55.1 – Visualizzazione errore analisi Cappello Rosso}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: È in corso una richiesta di analisi secondo il Cappello Rosso.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Si verifica un errore durante l'elaborazione della richiesta.
+        \item Il sistema segnala il mancato completamento della richiesta di analisi.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'utente viene informato del mancato completamento dell'analisi.
+    \item \textbf{Trigger}: Si verifica un errore durante la comunicazione con il servizio AI.
+\end{itemize}
+
+% UC56 - Analisi Cappello Nero (Rischi)
+\hypertarget{uc56}{}
+\subsubsection{UC 56: Analisi Cappello Nero (Rischi)}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{critica_testo_sei_cappelli_pensare_nero.png}
-    \caption{UC34.3 – Analisi Cappello Nero (Rischi)}
+    \caption{UC56 – Analisi Cappello Nero (Rischi)}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
     \item \textbf{Attore Secondario}: LLM
-    \item \textbf{Scenario Principale}: 
+    \item \textbf{Precondizioni}: Una porzione di testo è selezionata nell'editor e il servizio AI è disponibile.
+    \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente richiede una valutazione critica negativa.
-        \item L'LLM individua potenziali punti deboli, rischi o incongruenze logiche.
-        \item L'LLM restituisce il feedback critico.
+        \item L'utente richiede un'analisi del testo secondo il Cappello Nero.
+        \item Il sistema invia la richiesta al servizio AI.
+        \item Il servizio AI individua criticità, rischi e incongruenze presenti nel testo.
+        \item Il sistema rende disponibile l'analisi generata all'utente, senza modificare il contenuto della nota.
     \end{enumerate}
-    \item \textbf{Precondizioni}: L'applicazione è avviata, la connessione ai servizi AI è stabilita, una porzione di testo è selezionata nell'editor.
-    \item \textbf{Postcondizioni}: Viene visualizzata un'analisi delle criticità del testo.
-    \item \textbf{Trigger}: L'utente seleziona il Cappello Nero per individuare criticità, rischi e punti deboli.
+    \item \textbf{Postcondizioni}: Una proposta di analisi critica del testo selezionato è disponibile all'utente; il contenuto 
+      della nota rimane invariato.
+    \item \textbf{Trigger}: L'utente desidera individuare rischi, criticità e punti deboli del testo selezionato.
+    \item \textbf{Estensioni}:
+    \begin{itemize}
+        \item \hyperlink{uc56.1}{UC 56.1: Visualizzazione errore analisi Cappello Nero} $ \rightarrow $ Condizione: si verifica un errore durante la comunicazione con il servizio AI.
+    \end{itemize}
 \end{itemize}
 
-% UC34.4 - Analisi Cappello Giallo (Opportunità)
-\paragraph{UC 34.4: Analisi Cappello Giallo (Opportunità)}\mbox{}\
+% UC56.1 - Visualizzazione errore analisi Cappello Nero
+\hypertarget{uc56.1}{}
+\subsubsection{UC 56.1: Visualizzazione errore analisi Cappello Nero}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{errore_ai_UC56.png}
+    \caption{UC56.1 – Visualizzazione errore analisi Cappello Nero}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: È in corso una richiesta di analisi secondo il Cappello Nero.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Si verifica un errore durante l'elaborazione della richiesta.
+        \item Il sistema segnala il mancato completamento della richiesta di analisi.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'utente viene informato del mancato completamento dell'analisi.
+    \item \textbf{Trigger}: Si verifica un errore durante la comunicazione con il servizio AI.
+\end{itemize}
+
+% UC57 - Analisi Cappello Giallo (Opportunità)
+\hypertarget{uc57}{}
+\subsubsection{UC 57: Analisi Cappello Giallo (Opportunità)}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{critica_testo_sei_cappelli_pensare_giallo.png}
-    \caption{UC34.4 – Analisi Cappello Giallo (Opportunità)}
+    \caption{UC57 – Analisi Cappello Giallo (Opportunità)}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
     \item \textbf{Attore Secondario}: LLM
-    \item \textbf{Scenario Principale}: 
+    \item \textbf{Precondizioni}: Una porzione di testo è selezionata nell'editor e il servizio AI è disponibile.
+    \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente richiede una valutazione ottimistica.
-        \item L'LLM mette in luce i benefici, i punti di forza e il valore aggiunto del testo.
-        \item L'LLM restituisce il feedback critico.
+        \item L'utente richiede un'analisi del testo secondo il Cappello Giallo.
+        \item Il sistema invia la richiesta al servizio AI.
+        \item Il servizio AI evidenzia vantaggi, benefici e opportunità presenti nel testo.
+        \item Il sistema rende disponibile l'analisi generata all'utente, senza modificare il contenuto della nota.
     \end{enumerate}
-    \item \textbf{Precondizioni}: L'applicazione è avviata, la connessione ai servizi AI è stabilita, una porzione di testo è selezionata nell'editor.
-    \item \textbf{Postcondizioni}: Viene visualizzata un'analisi dei vantaggi e delle opportunità.
-    \item \textbf{Trigger}: L'utente seleziona il Cappello Giallo per scoprire i vantaggi, i benefici e le opportunità espresse.
+    \item \textbf{Postcondizioni}: Una proposta di analisi positiva del testo selezionato è disponibile all'utente; il contenuto 
+      della nota rimane invariato.
+    \item \textbf{Trigger}: L'utente desidera individuare vantaggi e opportunità del testo selezionato.
+    \item \textbf{Estensioni}:
+    \begin{itemize}
+        \item \hyperlink{uc57.1}{UC 57.1: Visualizzazione errore analisi Cappello Giallo} $ \rightarrow $ Condizione: si verifica un errore durante la comunicazione con il servizio AI.
+    \end{itemize}
 \end{itemize}
 
-% UC34.5 - Analisi Cappello Verde (Creatività)
-\paragraph{UC 34.5: Analisi Cappello Verde (Creatività)}\mbox{}\
+% UC57.1 - Visualizzazione errore analisi Cappello Giallo
+\hypertarget{uc57.1}{}
+\subsubsection{UC 57.1: Visualizzazione errore analisi Cappello Giallo}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{errore_ai_UC57.png}
+    \caption{UC57.1 – Visualizzazione errore analisi Cappello Giallo}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: È in corso una richiesta di analisi secondo il Cappello Giallo.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Si verifica un errore durante l'elaborazione della richiesta.
+        \item Il sistema segnala il mancato completamento della richiesta di analisi.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'utente viene informato del mancato completamento dell'analisi.
+    \item \textbf{Trigger}: Si verifica un errore durante la comunicazione con il servizio AI.
+\end{itemize}
+
+% UC58 - Analisi Cappello Verde (Creatività)
+\hypertarget{uc58}{}
+\subsubsection{UC 58: Analisi Cappello Verde (Creatività)}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{critica_testo_sei_cappelli_pensare_verde.png}
-    \caption{UC34.5 – Analisi Cappello Verde (Creatività)}
+    \caption{UC58 – Analisi Cappello Verde (Creatività)}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
     \item \textbf{Attore Secondario}: LLM
-    \item \textbf{Scenario Principale}: 
+    \item \textbf{Precondizioni}: Una porzione di testo è selezionata nell'editor e il servizio AI è disponibile.
+    \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente richiede alternative creative.
-        \item L'LLM propone nuove idee, approcci originali o variazioni fantasiose sul tema trattato.
-        \item L'LLM restituisce il feedback critico.
+        \item L'utente richiede un'analisi del testo secondo il Cappello Verde.
+        \item Il sistema invia la richiesta al servizio AI.
+        \item Il servizio AI propone idee alternative, spunti creativi e possibili innovazioni relative al contenuto selezionato.
+        \item Il sistema rende disponibile l'analisi generata all'utente, senza modificare il contenuto della nota.
     \end{enumerate}
-    \item \textbf{Precondizioni}: L'applicazione è avviata, la connessione ai servizi AI è stabilita, una porzione di testo è selezionata nell'editor.
-    \item \textbf{Postcondizioni}: Vengono visualizzati suggerimenti creativi e alternative al testo.
-    \item \textbf{Trigger}: L'utente seleziona il Cappello Verde per cercare idee alternative, spunti creativi e innovazioni.
+    \item \textbf{Postcondizioni}: Una proposta di analisi creativa del testo selezionato è disponibile all'utente; il contenuto 
+      della nota rimane invariato.
+    \item \textbf{Trigger}:  L'utente desidera esplorare nuove idee, alternative e prospettive creative sul testo selezionato.
+    \item \textbf{Estensioni}:
+    \begin{itemize}
+        \item \hyperlink{uc58.1}{UC 58.1: Visualizzazione errore analisi Cappello Verde} $ \rightarrow $ Condizione: si verifica un errore durante la comunicazione con il servizio AI.
+    \end{itemize}
 \end{itemize}
 
-% UC34.6 - Analisi Cappello Blu (Logica/Controllo)
-\paragraph{UC 34.6: Analisi Cappello Blu (Logica/Controllo)}\mbox{}\
+% UC58.1 - Visualizzazione errore analisi Cappello Verde
+\hypertarget{uc58.1}{}
+\subsubsection{UC 58.1: Visualizzazione errore analisi Cappello Verde}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{errore_ai_UC58.png}
+    \caption{UC58.1 – Visualizzazione errore analisi Cappello Verde}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: È in corso una richiesta di analisi secondo il Cappello Verde.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Si verifica un errore durante l'elaborazione della richiesta.
+        \item Il sistema segnala il mancato completamento della richiesta di analisi.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'utente viene informato del mancato completamento dell'analisi.
+    \item \textbf{Trigger}: Si verifica un errore durante la comunicazione con il servizio AI.
+\end{itemize}
+
+% UC59 - Analisi Cappello Blu (Logica/Controllo)
+\hypertarget{uc59}{}
+\subsubsection{UC 59: Analisi Cappello Blu (Logica/Controllo)}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{critica_testo_sei_cappelli_pensare_blu.png}
-    \caption{UC34.6 – Analisi Cappello Blu (Logica/Controllo)}
+    \caption{UC59 – Analisi Cappello Blu (Logica/Controllo)}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
     \item \textbf{Attore Secondario}: LLM
-    \item \textbf{Scenario Principale}: 
+    \item \textbf{Precondizioni}: Una porzione di testo è selezionata nell'editor e il servizio AI è disponibile.
+    \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente richiede un'analisi strutturale.
-        \item L'LLM valuta l'organizzazione del pensiero, la coerenza complessiva e il processo logico seguito.
-        \item L'LLM restituisce il feedback critico.
+        \item L'utente richiede un'analisi del testo secondo il Cappello Blu.
+        \item Il sistema invia la richiesta al servizio AI.
+        \item Il servizio AI valuta la struttura logica, la coerenza del ragionamento e l’organizzazione complessiva del testo.
+        \item Il sistema rende disponibile l'analisi generata all'utente, senza modificare il contenuto della nota.
     \end{enumerate}
-    \item \textbf{Precondizioni}: L'applicazione è avviata, la connessione ai servizi AI è stabilita, una porzione di testo è selezionata nell'editor.
-    \item \textbf{Postcondizioni}: Viene visualizzata una sintesi del processo logico e della struttura del testo.
-    \item \textbf{Trigger}: L'utente seleziona il Cappello Blu per analizzare la struttura logica e l'organizzazione del documento.
+    \item \textbf{Postcondizioni}: Una proposta di riorganizzazione logica e strutturale del testo selezionato è disponibile all’utente; il contenuto 
+      della nota rimane invariato.
+    \item \textbf{Trigger}:  L'utente desidera analizzare la coerenza logica e la struttura del testo selezionato.
+    \item \textbf{Estensioni}:
+    \begin{itemize}
+        \item \hyperlink{uc59.1}{UC 59.1: Visualizzazione errore analisi Cappello Blu} $ \rightarrow $ Condizione: si verifica un errore durante la comunicazione con il servizio AI.
+    \end{itemize}
 \end{itemize}
 
-% UC34.7 - Visualizzazione errore servizi AI (Timeout, API error, ecc.)
-\paragraph{UC 34.7: Visualizzazione errore servizi AI}\mbox{}\
+% UC59.1 - Visualizzazione errore analisi Cappello Blu
+\hypertarget{uc59.1}{}
+\subsubsection{UC 59.1: Visualizzazione errore analisi Cappello Blu}
 
-% use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{errore_ai_UC34.png}
-    \caption{UC34.7 – Visualizzazione errore servizi AI}
+    \includegraphics[width=0.6\textwidth]{errore_ai_UC59.png}
+    \caption{UC59.1 – Visualizzazione errore analisi Cappello Blu}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente viene informato che  il processo UC 34 ha fallito a causa di un errore del servizio AI.
-    \item \textbf{Precondizioni}: È in corso l’esecuzione di UC 34.
-    \item \textbf{Postcondizioni}: L’utente è informato dell’errore.
-    \item \textbf{Trigger}: Si verifica un errore nella comunicazione con il servizio AI.
+    \item \textbf{Precondizioni}: È in corso una richiesta di analisi secondo il Cappello Blu.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Si verifica un errore durante l'elaborazione della richiesta.
+        \item Il sistema segnala il mancato completamento della richiesta di analisi.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'utente viene informato del mancato completamento dell'analisi.
+    \item \textbf{Trigger}: Si verifica un errore durante la comunicazione con il servizio AI.
 \end{itemize}
 
-% UC35 - Accettazione proposta AI
-\paragraph{UC 35: Accettazione proposta AI}\mbox{}\
+%--------------GESTIONE PROPOSTE AI------------------
+
+% UC60 - Accettazione proposta AI
+\hypertarget{uc60}{}
+\subsubsection{UC 60: Accettazione proposta AI}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{accettazione_proposta_ai.png}
-    \caption{UC35 – Accettazione proposta AI}
+    \caption{UC60 – Accettazione proposta AI}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: 
+    \item \textbf{Precondizioni}: Una proposta generata dall'AI è visualizzata.
+    \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente accetta tramite bottone l'inserimento della proposta fornita.
-        \item Il sistema inserisce nel testo l'output dell'AI.
+        \item L'utente accetta la proposta generata.
+        \item Il sistema applica la proposta AI aggiornando il contenuto dell'editor.
     \end{enumerate}
-    \item \textbf{Precondizioni}: Una proposta AI è visibile a schermo.
-    \item \textbf{Postcondizioni}: Il contenuto dell'editor è aggiornato con il nuovo testo.
-    \item \textbf{Trigger}: L'utente ritiene valida la proposta dell'AI e preme il tasto di conferma.
+    \item \textbf{Postcondizioni}: Il contenuto dell'editor viene aggiornato con il testo generato dall'AI.
+    \item \textbf{Trigger}: L'utente ritiene valida la proposta generata dall'AI.
 \end{itemize}
 
-% UC36 - Rifiuto proposta AI
-\paragraph{UC 36: Rifiuto proposta AI}\mbox{}\
+% UC61 - Rifiuto proposta AI
+\hypertarget{uc61}{}
+\subsubsection{UC 61: Rifiuto proposta AI}
 
 % use case diagram 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{rifiuto_proposta_ai.png}
-    \caption{UC36 – Rifiuto proposta AI}
+    \caption{UC61 – Rifiuto proposta AI}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: 
+    \item \textbf{Precondizioni}: Una proposta generata dall'AI è visualizzata.
+    \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente rifiuta tramite bottone l'inserimento della proposta fornita.
-        \item Il sistema scarta l'output dell'AI senza modificare il documento originale.
+        \item L'utente rifiuta la proposta generata.
+        \item Il sistema elimina la proposta visualizzata.
     \end{enumerate}
-    \item \textbf{Precondizioni}: Una proposta AI è visibile a schermo.
-    \item \textbf{Postcondizioni}: La proposta viene eliminata e il testo nell'editor rimane inalterato.
-    \item \textbf{Trigger}: L'utente ritiene la proposta inadeguata e preme il tasto per annullarla e chiuderla.
+    \item \textbf{Postcondizioni}: Il documento rimane invariato.
+    \item \textbf{Trigger}: L'utente non ritiene valida la proposta generata dall'AI.
 \end{itemize}
 
-% UC37 - (Opzionale) Interazione con ChatBot
-\subsubsection{UC 37: (Opzionale) Interazione con ChatBot}
+% UC62 - Rigenerazione proposta AI
+\hypertarget{uc62}{}
+\subsubsection{UC 62: Rigenerazione proposta AI}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{interazione_chatbot.png}
-    \caption{UC37 – Interazione con ChatBot}
+    \includegraphics[width=0.6\textwidth]{rigenerazione_proposta_ai.png}
+    \caption{UC62 – Rigenerazione proposta AI}
 \end{figure}
-
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
     \item \textbf{Attore Secondario}: LLM
-    \item \textbf{Scenario Principale}: 
+    \item \textbf{Precondizioni}: Una proposta generata dall'AI è visualizzata.
+    \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente apre l'interfaccia del ChatBot.
-        \item L'utente invia un messaggio di testo o seleziona un comando predefinito.
-        \item Il sistema inoltra la richiesta al modello linguistico (LLM).
-        \item Il sistema visualizza la risposta generata dall'AI nella chat.
+        \item L'utente richiede la rigenerazione della proposta.
+        \item Il sistema invia nuovamente la richiesta al servizio AI.
+        \item Il servizio AI genera una nuova proposta.
+        \item Il sistema sostituisce la proposta precedente con quella nuova.
     \end{enumerate}
-    \item \textbf{Precondizioni}: Il sistema è connesso a internet e il servizio LLM è disponibile.
-    \item \textbf{Postcondizioni}: L'utente riceve una risposta coerente con il messaggio inviato.
-    \item \textbf{Trigger}: L'utente ha bisogno di dialogare in maniera conversazionale con l'assistente virtuale.
+    \item \textbf{Postcondizioni}: Una nuova proposta AI viene visualizzata all'utente.
+    \item \textbf{Trigger}: L'utente desidera ottenere una versione alternativa della proposta generata.
+    \item \textbf{Estensioni}:
+    \begin{itemize}
+        \item \hyperlink{uc62.1}{UC 62.1: Visualizzazione errore rigenerazione proposta AI} $ \rightarrow $ Condizione: si verifica un errore durante la comunicazione con il servizio AI.
+    \end{itemize}
 \end{itemize}
 
-% UC37.1 - Visualizzazione errore servizi AI (Timeout, API error, ecc.)
-\paragraph{UC 37.1: Visualizzazione errore servizi AI}\mbox{}\
+% UC62.1 - Visualizzazione errore rigenerazione proposta AI
+\hypertarget{uc62.1}{}
+\subsubsection{UC 62.1: Visualizzazione errore rigenerazione proposta AI}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{errore_ai_UC37.png}
-    \caption{UC37.1 – Visualizzazione errore servizi AI}
+    \includegraphics[width=0.6\textwidth]{errore_ai_UC62.png}
+    \caption{UC62.1 – Visualizzazione errore rigenerazione proposta AI}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: L'utente viene informato che  il processo UC 37 ha fallito a causa di un errore del servizio AI.
-    \item \textbf{Precondizioni}: È in corso l’esecuzione di UC 37.
-    \item \textbf{Postcondizioni}: L’utente è informato dell’errore.
-    \item \textbf{Trigger}: Si verifica un errore nella comunicazione con il servizio AI.
+    \item \textbf{Precondizioni}: È in corso una richiesta di rigenerazione della proposta AI.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Si verifica un errore durante l'elaborazione della richiesta.
+        \item Il sistema segnala il mancato completamento della richiesta di rigenerazione della proposta AI.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'utente viene informato del mancato completamento della rigenerazione.
+    \item \textbf{Trigger}: Si verifica un errore durante la comunicazione con il servizio AI.
 \end{itemize}
 
 % --------------------------------------------------------------------------
@@ -1303,215 +1939,498 @@
 % --------------------------------------------------------------------------
 \newpage
 \subsection{Macroarea 3 — Gestione I/O e Persistenza}
-\textit{Salvataggio, caricamento ed esportazione.}
+\textit{Importazione, esportazione e persistenza delle note.}
 
-% UC38 - Download della nota in formato Markdown
-\subsubsection{UC 38: Download della nota in formato Markdown}
+% UC63 - Salvataggio della nota in formato Markdown
+\hypertarget{uc63}{}
+\subsubsection{UC 63: Salvataggio della nota in formato Markdown}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{Download_nota_formato_Markdown.png}
-    \caption{UC38 – Download della nota in formato Markdown}
+    \includegraphics[width=0.5\textwidth]{download_nota.png}
+    \caption{UC63 – Salvataggio della nota in formato Markdown}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: 
+    \item \textbf{Precondizioni}: Una nota è aperta nell'editor.
+    \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente seleziona la funzione di download/salvataggio locale;
-        \item Il sistema genera un file con estensione .md contenente il testo dell'editor;
-        \item Il sistema permette all'utente di scegliere la destinazione sul proprio dispositivo.
+        \item L'utente seleziona la funzione di salvataggio della nota.
+        \item Il sistema genera un file Markdown contenente il contenuto della nota corrente.
+        \item Il sistema avvia il salvataggio del file sul dispositivo dell'utente.
     \end{enumerate}
-    \item \textbf{Precondizioni}: L'editor contiene del testo (anche vuoto).
-    \item \textbf{Postcondizioni}: Il file Markdown viene salvato nel file system locale dell'utente.
-    \item \textbf{Trigger}: L'utente vuole salvare una copia locale del file sorgente .md.
+    \item \textbf{Postcondizioni}: Una copia locale della nota viene salvata sul dispositivo dell'utente.
+    \item \textbf{Trigger}: L'utente desidera salvare localmente la nota corrente.
+    \item \textbf{Estensioni}:
+    \begin{itemize}
+        \item \hyperlink{uc63.1}{UC 63.1: Visualizzazione errore salvataggio} $ \rightarrow $ Condizione: si verifica un errore durante la procedura di salvataggio.
+    \end{itemize}
 \end{itemize}
 
-% UC39 - Upload nota locale (.md)
-\subsubsection{UC 39: Upload di una nota locale (.md)}
+% UC63.1 - Visualizzazione errore salvataggio
+\hypertarget{uc63.1}{}
+\subsubsection{UC 63.1: Visualizzazione errore salvataggio}\
 
-% use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{Upload_nota_locale.png}
-    \caption{UC39 – Upload di una nota locale}
+    \includegraphics[width=0.6\textwidth]{errore_download.png}
+    \caption{UC63.1 – Visualizzazione errore salvataggio}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: 
+    \item \textbf{Precondizioni}: È in corso il salvataggio della nota.
+    \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente attiva la funzione di caricamento file;
-        \item L'utente seleziona un file .md dal proprio dispositivo;
-        \item Il sistema legge il contenuto del file e lo carica nell'editor.
-    \end{enumerate}
-    \item \textbf{Precondizioni}: L'utente possiede un file Markdown sul proprio dispositivo.
-    \item \textbf{Postcondizioni}: Il contenuto del file selezionato è visibile nell'editor.
-    \item \textbf{Trigger}: L'utente vuole caricare nel sistema un file Markdown esistente.
-\end{itemize}
-
-% UC39.1 - Visualizzazione errore formato file
-\paragraph{UC 39.1: Visualizzazione errore formato file}\mbox{}\
-
-% use case diagram
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{Errore_formato_file.png}
-    \caption{UC39.1 – Visualizzazione errore formato file}
-\end{figure}
-
-\begin{itemize}
-    \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: 
-    \begin{enumerate}
-        \item L'utente seleziona un file con estensione diversa da .md o un file corrotto;
-        \item Il sistema rileva l'incompatibilità o il danneggiamento del file;
+        \item Il sistema rileva un errore durante la generazione o il salvataggio del file.
         \item Il sistema mostra un messaggio di errore all'utente.
     \end{enumerate}
-    \item \textbf{Precondizioni}: L'utente ha avviato la procedura di upload.
-    \item \textbf{Postcondizioni}: Il sistema non carica il file e rimane nello stato precedente.
-    \item \textbf{Trigger}: L'utente tenta di caricare un file non supportato o corrotto.
+    \item \textbf{Postcondizioni}: Il file non viene salvato.
+    \item \textbf{Trigger}: Errore durante la procedura di salvataggio.
 \end{itemize}
 
-% UC40 - Esportazione della nota (PDF, HTML, JSON)
-\subsubsection{UC 40: Esportazione della nota (PDF, HTML, JSON)}
+% UC64 - Importazione nota locale
+\hypertarget{uc64}{}
+\subsubsection{UC 64: Importazione di una nota locale}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{esportazione_nota.png}
-    \caption{UC40 – Esportazione della nota}
+    \includegraphics[width=0.5\textwidth]{upload_nota.png}
+    \caption{UC64 – Importazione di una nota locale}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: 
+    \item \textbf{Precondizioni}: L'utente possiede un file Markdown compatibile.
+    \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente seleziona la funzione di esportazione;
-        \item L'utente sceglie il formato desiderato (PDF, HTML o JSON);
-        \item Il sistema converte il contenuto Markdown nel formato scelto e avvia il download.
+        \item L'utente attiva la funzione di importazione nota.
+        \item L'utente seleziona un file Markdown dal proprio dispositivo.
+        \item Il sistema verifica la compatibilità del file selezionato.
+        \item Il sistema importa il contenuto della nota nell'editor.
     \end{enumerate}
-    \item \textbf{Precondizioni}: L'editor contiene del testo.
-    \item \textbf{Postcondizioni}: L'utente ottiene il documento nel formato non-Markdown selezionato.
-    \item \textbf{Trigger}: L'utente desidera esportare il documento per la distribuzione.
+    \item \textbf{Postcondizioni}: La nota importata è aperta nell'editor.
+    \item \textbf{Trigger}: L'utente desidera aprire una nota salvata localmente.
+    \item \textbf{Estensioni}:
+    \begin{itemize}
+        \item \hyperlink{uc64.1}{UC 64.1: Visualizzazione errore formato file} $ \rightarrow $ Condizione: il file selezionato non è compatibile o è corrotto.
+    \end{itemize}
 \end{itemize}
 
-% UC40.1 - Visualizzazione errore esportazione
-\paragraph{UC 40.1: Visualizzazione errore esportazione}\mbox{}\
+% UC64.1 - Visualizzazione errore formato file
+\hypertarget{uc64.1}{}
+\subsubsection{UC 64.1: Visualizzazione errore formato file}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{Errore_esportazione.png}
-    \caption{UC40.1 – Visualizzazione errore esportazione}
+    \includegraphics[width=0.6\textwidth]{errore_formato_file.png}
+    \caption{UC64.1 – Visualizzazione errore formato file}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: 
+    \item \textbf{Precondizioni}: È in corso una procedura di importazione.
+    \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente richiede l'esportazione in un formato specifico;
-        \item Il sistema fallisce la procedura di conversione o riscontra problemi di scrittura file;
-        \item Il sistema mostra un messaggio di errore informando l'utente del fallimento.
+        \item Il sistema rileva un file incompatibile o corrotto.
+        \item Il sistema mostra un messaggio di errore.
     \end{enumerate}
-    \item \textbf{Precondizioni}: L'utente ha richiesto l'esportazione.
-    \item \textbf{Postcondizioni}: L'utente non riceve il file e viene avvisato del problema.
-    \item \textbf{Trigger}: Errore interno del sistema durante la fase di conversione.
+    \item \textbf{Postcondizioni}: La nota non viene importata.
+    \item \textbf{Trigger}: L'utente seleziona un file non valido.
 \end{itemize}
 
-% UC41 - Salvataggio nota su database
-\subsubsection{UC 41: (Opzionale) Salvataggio nota su database}
+% UC65 - Esportazione della nota 
+\hypertarget{uc65}{}
+\subsubsection{UC 65: Esportazione della nota}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{Salvataggio_nota_database.png}
-    \caption{UC41 – Salvataggio nota su database}
+    \includegraphics[width=0.5\textwidth]{esportazione_nota.png}
+    \caption{UC65 – Esportazione della nota}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Attore Secondario}: Database
-    \item \textbf{Scenario Principale}: 
+    \item \textbf{Precondizioni}: Una nota è aperta nell'editor.
+    \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente attiva il comando di salvataggio remoto;
-        \item Il sistema invia il contenuto dell'editor al database associandolo al profilo dell'utente.
+        \item L'utente seleziona la funzione di esportazione.
+        \item L'utente sceglie il formato desiderato (PDF, JSON\textsubscript{G} o HTML).
+        \item Il sistema converte la nota nel formato selezionato.
+        \item Il sistema avvia il download del file esportato.
     \end{enumerate}
-    \item \textbf{Precondizioni}: L'utente è autenticato e connesso.
-    \item \textbf{Postcondizioni}: La nota viene salvata correttamente sul server remoto.
-    \item \textbf{Trigger}: L'utente vuole sincronizzare la nota corrente sul cloud.
+    \item \textbf{Postcondizioni}: L'utente ottiene una copia della nota nel formato selezionato.
+    \item \textbf{Trigger}: L'utente desidera esportare la nota corrente.
+    \item \textbf{Estensioni}:
+    \begin{itemize}
+        \item \hyperlink{uc65.1}{UC 65.1: Visualizzazione errore esportazione} $ \rightarrow $ Condizione: si verifica un errore durante la procedura di esportazione.
+    \end{itemize}
 \end{itemize}
 
-% UC41.1 - Visualizzazione errore sincronizzazione Database
-\paragraph{UC 41.1: Visualizzazione errore sincronizzazione Database}\mbox{}\
+% UC65.1 - Visualizzazione errore esportazione
+\hypertarget{uc65.1}{}
+\subsubsection{UC 65.1: Visualizzazione errore esportazione}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{Errore_sincronizzazione_database_salvataggio.png}
-    \caption{UC41.1 – Visualizzazione errore sincronizzazione Database}
+    \includegraphics[width=0.6\textwidth]{errore_esportazione.png}
+    \caption{UC65.1 – Visualizzazione errore esportazione}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: 
+    \item \textbf{Precondizioni}: È in corso una procedura di esportazione.
+    \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente tenta di salvare la nota sul database;
-        \item Il sistema rileva un errore di connessione o un'indisponibilità del database;
-        \item Il sistema mostra un messaggio di errore di sincronizzazione.
+        \item Il sistema rileva un errore durante la conversione o il download del file.
+        \item Il sistema mostra un messaggio di errore.
     \end{enumerate}
-    \item \textbf{Precondizioni}: Richiesta di salvataggio in corso.
-    \item \textbf{Postcondizioni}: La nota non viene salvata e l'utente viene notificato del problema.
-    \item \textbf{Trigger}: Fallimento della comunicazione con il server remoto durante il salvataggio.
+    \item \textbf{Postcondizioni}: L'esportazione non viene completata.
+    \item \textbf{Trigger}: Errore durante la procedura di esportazione.
 \end{itemize}
 
-% UC42 - Caricamento nota da database
-\subsubsection{UC 42: (Opzionale) Caricamento nota da database}
+% --------------------------------------------------------------------------
+% Funzionalità opzionali di persistenza remota
+% --------------------------------------------------------------------------
+
+% UC66 - Registrazione utente 
+\hypertarget{uc66}{}
+\subsubsection{UC 66: (Opzionale) Registrazione utente}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{registrazione_utente.png}
+    \caption{UC66 – Registrazione utente}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: Il sistema è avviato e il servizio di persistenza remota è disponibile.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente seleziona la funzione di registrazione.
+        \item Il sistema mostra il modulo di registrazione.
+        \item L'utente inserisce le informazioni richieste (es.\ email e password).
+        \item Il sistema valida i dati inseriti.
+        \item Il sistema crea il nuovo account utente.
+        \item Il sistema conferma l'avvenuta registrazione.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'account utente viene creato correttamente.
+    \item \textbf{Trigger}: L'utente desidera accedere alle funzionalità di sincronizzazione remota.
+    \item \textbf{Estensioni}:
+    \begin{itemize}
+        \item \hyperlink{uc66.1}{UC 66.1: Visualizzazione errore email registrazione} $ \rightarrow $ Condizione: email non valida o già registrata al passo 4.
+        \item \hyperlink{uc66.2}{UC 66.2: Visualizzazione errore password registrazione} $ \rightarrow $ Condizione: password non conforme ai requisiti al passo 4.
+    \end{itemize}
+\end{itemize}
+
+% UC66.1 - Visualizzazione errore email registrazione
+\hypertarget{uc66.1}{}
+\subsubsection{UC 66.1: Visualizzazione errore email registrazione}\
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{errore_email_registrazione.png}
+    \caption{UC66.1 – Visualizzazione errore email registrazione}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: È in corso la procedura di registrazione.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema rileva che l'email inserita non è valida oppure è già associata a un account esistente.
+        \item Il sistema mostra un messaggio di errore all'utente.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La registrazione non viene completata.
+    \item \textbf{Trigger}: Inserimento di email non valida o già presente nel sistema.
+\end{itemize}
+
+% UC66.2 - Visualizzazione errore password registrazione
+\hypertarget{uc66.2}{}
+\subsubsection{UC 66.2: Visualizzazione errore password registrazione}\
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{errore_password_registrazione.png}
+    \caption{UC66.2 – Visualizzazione errore password registrazione}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: È in corso la procedura di registrazione.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema rileva che la password inserita non soddisfa i requisiti minimi previsti.
+        \item Il sistema mostra un messaggio di errore all'utente.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La registrazione non viene completata.
+    \item \textbf{Trigger}: Inserimento di password non conforme ai requisiti di sicurezza.
+\end{itemize}
+
+% UC67 - Autenticazione utente
+\hypertarget{uc67}{}
+\subsubsection{UC 67: (Opzionale) Autenticazione utente}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{autenticazione_utente.png}
+    \caption{UC67 – Autenticazione utente}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: L'utente possiede un account registrato.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente seleziona la funzione di accesso.
+        \item Il sistema mostra il modulo di autenticazione.
+        \item L'utente inserisce le proprie credenziali.
+        \item Il sistema verifica le credenziali inserite.
+        \item Il sistema autentica l'utente e abilita le funzionalità di persistenza remota.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'utente risulta autenticato nel sistema.
+    \item \textbf{Trigger}: L'utente desidera accedere alle funzionalità remote.
+    \item \textbf{Estensioni}:
+    \begin{itemize}
+        \item \hyperlink{uc67.1}{UC 67.1: Visualizzazione errore autenticazione} $ \rightarrow $ Condizione: credenziali non valide al passo 4.
+        %\item \hyperlink{uc67.2}{UC 67.2: Visualizzazione errore utente non registrato} $ \rightarrow $ Condizione: utente non registrato al passo 4.
+    \end{itemize}
+\end{itemize}
+
+% UC67.1 - Visualizzazione errore autenticazione
+\hypertarget{uc67.1}{}
+\subsubsection{UC 67.1: Visualizzazione errore autenticazione}\
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{errore_autenticazione.png}
+    \caption{UC67.1 – Visualizzazione errore autenticazione}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: È in corso l'autenticazione dell'utente.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema rileva che le credenziali inserite non sono corrette.
+        \item Il sistema mostra un messaggio di errore all'utente.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'utente non viene autenticato.
+    \item \textbf{Trigger}: Inserimento di credenziali non valide.
+\end{itemize}
+
+% UC67.2 - Visualizzazione errore utente non registrato
+
+% Utente non registrato è un tipo di credenziale non valida
+\begin{comment}
+    
+\hypertarget{uc67.2}{}
+\subsubsection{UC 67.2: Visualizzazione errore utente non registrato}\
+
+\begin{figure}[H]
+    \centering
+    %\includegraphics[width=0.6\textwidth]{errore_utente_non_registrato.png}
+    \caption{UC67.2 – Visualizzazione errore utente non registrato}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: È in corso l'autenticazione dell'utente.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema verifica che l'utente non possiede un account registrato.
+        \item Il sistema informa l'utente che è necessaria la registrazione.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'accesso non viene consentito.
+    \item \textbf{Trigger}: Tentativo di autenticazione con account inesistente.
+\end{itemize}
+\end{comment}
+% UC68 - Logout utente
+\hypertarget{uc68}{}
+\subsubsection{UC 68: (Opzionale) Logout\textsubscript{G} utente}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{logout_utente.png}
+    \caption{UC68 – Logout utente}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: L'utente è autenticato nel sistema.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente seleziona la funzione di logout.
+        \item Il sistema termina la sessione utente autenticata.
+        \item Il sistema disabilita le funzionalità di persistenza remota.
+        \item Il sistema riporta l'utente alla modalità non autenticata.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'utente non risulta più autenticato nel sistema.
+    \item \textbf{Trigger}: L'utente desidera terminare la sessione autenticata.
+\end{itemize}
+
+% UC69 - Visualizzazione lista note salvate
+\hypertarget{uc69}{}
+\subsubsection{UC 69: (Opzionale) Visualizzazione lista note salvate}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{lista_note_salvate.png}
+    \caption{UC69 – Visualizzazione lista note salvate}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: L'utente è autenticato e il servizio remoto è disponibile.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente accede alla sezione delle note sincronizzate.
+        \item Il sistema recupera le note associate all'account dell'utente.
+        \item Il sistema mostra l'elenco delle note, presentando per ciascuna:
+        \begin{itemize}
+            \item il titolo della nota;
+            \item la data di ultima modifica;
+            \item un'anteprima del contenuto.
+        \end{itemize}
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'utente visualizza la lista delle proprie note remote con le relative informazioni.
+    \item \textbf{Trigger}: L'utente desidera consultare le note salvate nello spazio remoto.
+
+    \item \textbf{Estensioni}:
+    \begin{itemize}
+        \item \hyperlink{uc69.1}{UC 69.1: Visualizzazione errore recupero lista note remote} $ \rightarrow $ Condizione: errore durante il recupero delle note al passo 2.
+    \end{itemize}
+\end{itemize}
+
+% UC69.1 - Visualizzazione errore recupero lista note
+\hypertarget{uc69.1}{}
+\subsubsection{UC 69.1: Visualizzazione errore recupero lista note}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{errore_lista_note_remote.png}
+    \caption{UC69.1 – Visualizzazione errore recupero lista note}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: È in corso il recupero delle note remote.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema rileva un errore durante il recupero delle note associate all'utente.
+        \item Il sistema mostra un messaggio di errore all'utente.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La lista delle note non viene visualizzata.
+    \item \textbf{Trigger}: Problemi di connessione o indisponibilità del servizio remoto.
+\end{itemize}
+
+% UC70 - Salvataggio nota su spazio remoto
+\hypertarget{uc70}{}
+\subsubsection{UC 70: (Opzionale) Salvataggio nota su spazio remoto}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{Caricamento_nota_database.png}
-    \caption{UC42 – Caricamento nota da database}
+    \includegraphics[width=0.5\textwidth]{salvataggio_db.png}
+    \caption{UC70 – Salvataggio nota su spazio remoto}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Attore Secondario}: Database
-    \item \textbf{Scenario Principale}: 
+    \item \textbf{Precondizioni}: L'utente è autenticato e una nota è aperta nell'editor.
+    \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente richiede la lista delle note salvate;
-        \item Il sistema recupera i dati e, dopo la selezione, scarica il testo nell'editor.
+        \item L'utente seleziona la funzione di salvataggio remoto.
+        \item Il sistema sincronizza il contenuto della nota con lo spazio remoto associato all'utente.
+        \item Il sistema conferma l'avvenuto salvataggio.
     \end{enumerate}
-    \item \textbf{Precondizioni}: L'utente è autenticato e sono presenti note sul database.
-    \item \textbf{Postcondizioni}: La nota remota viene caricata nell'editor.
-    \item \textbf{Trigger}: L'utente vuole aprire un file salvato nel proprio profilo cloud.
+    \item \textbf{Postcondizioni}: La nota viene salvata nello spazio remoto dell'utente.
+    \item \textbf{Trigger}: L'utente desidera sincronizzare la nota corrente.
+    \item \textbf{Estensioni}:
+    \begin{itemize}
+        \item \hyperlink{uc70.1}{UC 70.1: Visualizzazione errore sincronizzazione remota} $ \rightarrow $ Condizione: errore di sincronizzazione al passo 2.
+    \end{itemize}
 \end{itemize}
 
-% UC42.1 - Visualizzazione errore sincronizzazione Database
-\paragraph{UC 42.1: Visualizzazione errore sincronizzazione Database}\mbox{}\
+% UC70.1 - Visualizzazione errore sincronizzazione remota
+\hypertarget{uc70.1}{}
+\subsubsection{UC 70.1: Visualizzazione errore sincronizzazione remota}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{Errore_sincronizzazione_database_caricamento.png}
-    \caption{UC42.1 – Visualizzazione errore sincronizzazione Database}
+    \includegraphics[width=0.6\textwidth]{errore_salvataggio_db.png}
+    \caption{UC70.1 – Visualizzazione errore sincronizzazione remota}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Scenario Principale}: 
+    \item \textbf{Precondizioni}: È in corso il salvataggio remoto della nota.
+    \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente tenta di caricare una nota dal database;
-        \item Il sistema fallisce il recupero dei dati per problemi di rete o autenticazione scaduta;
-        \item Il sistema mostra un messaggio di errore di sincronizzazione.
+        \item Il sistema rileva un errore durante la sincronizzazione della nota.
+        \item Il sistema mostra un messaggio di errore all'utente.
     \end{enumerate}
-    \item \textbf{Precondizioni}: Richiesta di caricamento in corso.
-    \item \textbf{Postcondizioni}: L'editor rimane invariato e l'utente viene notificato.
-    \item \textbf{Trigger}: Fallimento della comunicazione con il server durante il caricamento.
+    \item \textbf{Postcondizioni}: La nota non viene salvata nello spazio remoto.
+    \item \textbf{Trigger}: Problemi di connessione o indisponibilità del servizio remoto.
 \end{itemize}
 
+% UC71 - Apertura nota da lista note salvate
+\hypertarget{uc71}{}
+\subsubsection{UC 71: (Opzionale) Apertura nota da lista note salvate}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{apertura_nota_remota.png}
+    \caption{UC71 – Apertura nota da lista note salvate}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: L'utente è autenticato e la lista delle note salvate è disponibile.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente seleziona una nota dalla lista delle note salvate.
+        \item Il sistema recupera il contenuto della nota selezionata.
+        \item Il sistema carica la nota nell'editor.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La nota selezionata è aperta nell'editor.
+    \item \textbf{Trigger}: L'utente desidera aprire una nota salvata nello spazio remoto.
+    \item \textbf{Estensioni}:
+    \begin{itemize}
+        \item \hyperlink{uc71.1}{UC 71.1: Visualizzazione errore apertura nota remota} $ \rightarrow $ Condizione: errore durante il recupero della nota al passo 2.
+    \end{itemize}
+\end{itemize}
+
+% UC71.1 - Visualizzazione errore apertura nota remota
+\hypertarget{uc71.1}{}
+\subsubsection{UC 71.1: Visualizzazione errore apertura nota remota}\
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{errore_apertura_remota.png}
+    \caption{UC71.1 – Visualizzazione errore apertura nota remota}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: È in corso il recupero della nota remota.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema non riesce a recuperare la nota selezionata.
+        \item Il sistema mostra un messaggio di errore all'utente.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'editor rimane invariato.
+    \item \textbf{Trigger}: Problemi di connessione o indisponibilità del servizio remoto.
+\end{itemize}
+
+\begin{comment}
 % UC43 - Creazione collegamento tra note nel database
 \subsubsection{UC 43: (Opzionale) Creazione collegamento tra note nel database}
 
@@ -1536,7 +2455,7 @@
 \end{itemize}
 
 % UC43.1 - Visualizzazione errore sincronizzazione Database
-\paragraph{UC 43.1: Visualizzazione errore sincronizzazione Database}\mbox{}\
+\subsubsection{UC 43.1: Visualizzazione errore sincronizzazione Database}
 
 % use case diagram
 \begin{figure}[H]
@@ -1557,3 +2476,4 @@
     \item \textbf{Postcondizioni}: Il collegamento non viene creato.
     \item \textbf{Trigger}: Problemi di integrità del database o di rete durante il collegamento.
 \end{itemize}
+\end{comment}
