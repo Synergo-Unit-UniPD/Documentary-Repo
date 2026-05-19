@@ -99,11 +99,20 @@ L’architettura software può essere progettata seguendo due approcci principal
     \item \textbf{Architettura a Microservizi}: il sistema è suddiviso in servizi indipendenti e specializzati, ciascuno responsabile di una specifica funzionalità. Ogni microservizio può essere sviluppato, distribuito e scalato autonomamente, migliorando modularità, resilienza ai guasti e manutenibilità, a fronte di una maggiore complessità nella gestione dell’infrastruttura e della comunicazione tra servizi.
 \end{enumerate}
 
-La scelta del gruppo è ricaduta su \textbf{Docker}, una piattaforma di containerizzazione che consente di implementare un’architettura a microservizi attraverso l’utilizzo di container indipendenti.
+La scelta del gruppo è ricaduta su un'architettura \textbf{monolitica modulare}, dove saranno definiti 3 \textit{moduli}:
+\begin{itemize}
+    \item Frontend
+    \item Backend
+    \item Database
+\end{itemize}
+
+Per lo strumento di deploy dei 3 moduli, il gruppo ha scelto \textbf{Docker}: una piattaforma di containerizzazione che permette di isolare e distribuire le componenti software in ambienti leggeri e riproducibili.
 
 Ogni container è considerato \textit{lightweight} poiché, a differenza delle tradizionali macchine virtuali, non richiede l’emulazione completa di un sistema operativo. Esso si basa invece su un’immagine essenziale, contenente esclusivamente le dipendenze e i file necessari al funzionamento dello specifico servizio.
 
 Ad esempio, un container basato su PostgreSQL include solamente i componenti indispensabili per l’esecuzione del database, garantendo così maggiore efficienza, rapidità di avvio e portabilità tra ambienti differenti.
+
+Nel nostro caso, Docker viene utilizzato per containerizzare le 3 componenti definite prima, per renderle leggere, portabili, e facilmente avviabili, e favorire così anche lo sviluppo del software da parte dei membri del gruppo.
 
 
 % --------------------------------------------------------------------------
