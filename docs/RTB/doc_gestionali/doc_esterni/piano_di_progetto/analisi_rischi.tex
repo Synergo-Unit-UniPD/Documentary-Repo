@@ -1,12 +1,12 @@
 % =======================================================
-% 2. ANALISI DEI RISCHI
+% 2. ANALISI DEI RISCHI\textsubscript{G}
 % =======================================================
 \section{Analisi dei Rischi}
 \subsection{Nomenclatura e lettura della tabella}
 Ogni rischio è identificato da un codice composto da due lettere indicanti la categoria e un numero progressivo:
 \begin{itemize}
-	\item \textbf{RR}: Rischi legati ai Requisiti (ambiguità, scope creep, qualità, scadenze)
-	\item \textbf{RT}: Rischi Tecnici (tecnologie, integrazione, strumenti, debito tecnico)
+	\item \textbf{RR}: Rischi legati ai Requisiti (ambiguità, scope creep\textsubscript{G}, qualità, scadenze)
+	\item \textbf{RT}: Rischi Tecnici (tecnologie, integrazione, strumenti, debito tecnico\textsubscript{G})
 	\item \textbf{RO}: Rischi Organizzativi (disponibilità, comunicazione, carico, motivazione, comprensione)
 \end{itemize}
 
@@ -35,7 +35,7 @@ Per ciascun rischio vengono indicati:
 		\hline
 		\textbf{Piano di Mitigazione} & Versionare i requisiti nel VCS; approvare formalmente le baseline; mantenere confronto continuo con il proponente \\
 		\hline
-		\textbf{Piano di Contingenza} & Attivazione del processo di change request; revisione backlog; rinegoziazione delle priorità e della pianificazione \\
+		\textbf{Piano di Contingenza} & Attivazione del processo di change request\textsubscript{G}; revisione backlog\textsubscript{G}; rinegoziazione delle priorità e della pianificazione \\
 		\hline
 	\end{tabularx}
 	\caption{Scheda rischio RR1}
@@ -54,7 +54,7 @@ Per ciascun rischio vengono indicati:
 		\hline
 		\textbf{Piano di Mitigazione} & Definizione chiara dello scope RTB; backlog prioritizzato; approvazione preventiva delle nuove feature \\
 		\hline
-		\textbf{Piano di Contingenza} & Posticipo delle funzionalità non essenziali alla PB; riduzione dello scope MVP \\		
+		\textbf{Piano di Contingenza} & Posticipo delle funzionalità non essenziali alla PB; riduzione dello scope MVP\textsubscript{G} \\		
 		\hline
 	\end{tabularx}
 	\caption{Scheda rischio RR2}
@@ -71,9 +71,9 @@ Per ciascun rischio vengono indicati:
 		\hline
 		\textbf{Probabilità / Impatto} & Media/Alta \\
 		\hline
-		\textbf{Piano di Mitigazione} & Definition of Done con criteri di qualità espliciti; code review sistematiche; copertura minima di test definita \\
+		\textbf{Piano di Mitigazione} & Definition of Done\textsubscript{G} con criteri di qualità espliciti; code review sistematiche; copertura minima di test definita \\
 		\hline
-		\textbf{Piano di Contingenza} & Sprint dedicato al bug fixing; riallocazione del tempo verso attività di verifica e validazione \\
+		\textbf{Piano di Contingenza} & Sprint\textsubscript{G} dedicato al bug fixing; riallocazione del tempo verso attività di verifica e validazione \\
 		\hline
 	\end{tabularx}
 	\caption{Scheda rischio RR3}
@@ -90,7 +90,7 @@ Per ciascun rischio vengono indicati:
 		\hline
 		\textbf{Probabilità / Impatto} & Media/Alta \\
 		\hline
-		\textbf{Piano di Mitigazione} & Pianificazione conservativa con buffer temporali; monitoraggio settimanale dell'avanzamento e della burndown chart \\
+		\textbf{Piano di Mitigazione} & Pianificazione conservativa con buffer temporali; monitoraggio settimanale dell'avanzamento e della burndown chart\textsubscript{G} \\
 		\hline
 		\textbf{Piano di Contingenza} & Riduzione dello scope MVP; rinegoziazione delle milestone interne; riallocazione delle risorse \\
 		\hline
@@ -125,11 +125,11 @@ Per ciascun rischio vengono indicati:
 		\hline
 		\textbf{Codice} & \textbf{RT1} \\
 		\hline
-		\textbf{Descrizione} & Inesperienza con le tecnologie scelte (framework, librerie, API) \\
+		\textbf{Descrizione} & Inesperienza con le tecnologie scelte (framework\textsubscript{G}, librerie, API\textsubscript{G}) \\
 		\hline
 		\textbf{Probabilità / Impatto} & Media/Alta \\
 		\hline
-		\textbf{Piano di Mitigazione} & Formazione iniziale, spike tecnici e studio delle tecnologie candidate; pair programming \\
+		\textbf{Piano di Mitigazione} & Formazione iniziale, spike tecnici e studio delle tecnologie candidate; pair programming\textsubscript{G} \\
 		\hline
 		\textbf{Piano di Contingenza} & Riduzione dello scope tecnico; sostituzione di librerie o componenti troppo complessi \\
 		\hline
@@ -163,7 +163,7 @@ Per ciascun rischio vengono indicati:
 		\hline
 		\textbf{Codice} & \textbf{RT3} \\
 		\hline
-		\textbf{Descrizione} & Indisponibilità o instabilità di strumenti/servizi esterni (GitHub, CI/CD, cloud) \\
+		\textbf{Descrizione} & Indisponibilità o instabilità di strumenti/servizi esterni (GitHub, CI/CD\textsubscript{G}, cloud) \\
 		\hline
 		\textbf{Probabilità / Impatto} & Bassa/Media \\
 		\hline
@@ -186,7 +186,7 @@ Per ciascun rischio vengono indicati:
 		\hline
 		\textbf{Probabilità / Impatto} & Media/Media \\
 		\hline
-		\textbf{Piano di Mitigazione} & Refactoring incrementale continuo; code review; riserva di capacità dedicata al debito tecnico \\
+		\textbf{Piano di Mitigazione} & Refactoring\textsubscript{G} incrementale continuo; code review; riserva di capacità dedicata al debito tecnico \\
 		\hline
 		\textbf{Piano di Contingenza} & Sprint dedicato alla manutenzione correttiva e al consolidamento tecnico \\
 		\hline
@@ -205,7 +205,7 @@ Per ciascun rischio vengono indicati:
 		\hline
 		\textbf{Probabilità / Impatto} & Media/Alta \\
 		\hline
-		\textbf{Piano di Mitigazione} & Analisi comparativa delle tecnologie; sviluppo del PoC; confronto continuo con il proponente \\
+		\textbf{Piano di Mitigazione} & Analisi comparativa delle tecnologie; sviluppo del PoC\textsubscript{G}; confronto continuo con il proponente \\
 		\hline
 		\textbf{Piano di Contingenza} & Sostituzione delle componenti critiche; riduzione dello scope tecnico non essenziale \\
 		\hline
@@ -226,7 +226,7 @@ Per ciascun rischio vengono indicati:
 		\hline
 		\textbf{Probabilità / Impatto} & Media/Alta \\
 		\hline
-		\textbf{Piano di Mitigazione} & Condivisione continua delle conoscenze; documentazione costante delle attività; evitare single point of failure \\
+		\textbf{Piano di Mitigazione} & Condivisione continua delle conoscenze; documentazione costante delle attività; evitare single point of failure\textsubscript{G} \\
 		\hline
 		\textbf{Piano di Contingenza} & Ridistribuzione del carico; riduzione dello scope dello sprint; aggiornamento della pianificazione \\
 		\hline
@@ -247,7 +247,7 @@ Per ciascun rischio vengono indicati:
 		\hline
 		\textbf{Piano di Mitigazione} & Daily standup regolari; retrospettive periodiche; definizione di convenzioni condivise \\
 		\hline
-		\textbf{Piano di Contingenza} & Mediazione del responsabile; eventuale coinvolgimento del docente o del proponente \\
+		\textbf{Piano di Contingenza} & Mediazione del responsabile\textsubscript{G}; eventuale coinvolgimento del docente o del proponente \\
 		\hline
 	\end{tabularx}
 	\caption{Scheda rischio RO2}
@@ -264,7 +264,7 @@ Per ciascun rischio vengono indicati:
 		\hline
 		\textbf{Probabilità / Impatto} & Media/Media \\
 		\hline
-		\textbf{Piano di Mitigazione} & Monitoraggio continuo delle ore e della velocity; revisione periodica dell'assegnazione task \\
+		\textbf{Piano di Mitigazione} & Monitoraggio continuo delle ore e della velocity\textsubscript{G}; revisione periodica dell'assegnazione task\textsubscript{G} \\
 		\hline
 		\textbf{Piano di Contingenza} & Ribilanciamento immediato del backlog; redistribuzione delle responsabilità \\
 		\hline
@@ -302,7 +302,7 @@ Per ciascun rischio vengono indicati:
 		\hline
 		\textbf{Probabilità / Impatto} & Media/Alta \\
 		\hline
-		\textbf{Piano di Mitigazione} & Workshop iniziali di analisi; aggiornamento continuo del glossario e dei casi d'uso; confronto periodico con il proponente \\
+		\textbf{Piano di Mitigazione} & Workshop iniziali di analisi; aggiornamento continuo del glossario e dei casi d'uso\textsubscript{G}; confronto periodico con il proponente \\
 		\hline
 		\textbf{Piano di Contingenza} & Revisione straordinaria dei requisiti; riallineamento del backlog e delle priorità progettuali \\
 		\hline
@@ -317,19 +317,19 @@ Per ciascun rischio vengono indicati:
 		\hline
 		\textbf{Codice} & \textbf{RO6} \\
 		\hline
-		\textbf{Descrizione} & Sottostima del carico documentale e organizzativo associato al ruolo di Amministratore \\
+		\textbf{Descrizione} & Sottostima del carico documentale e organizzativo associato al ruolo\textsubscript{G} di Amministratore\textsubscript{G} \\
 		\hline
 		\textbf{Probabilità / Impatto} & Alta/Media \\
 		\hline
 		\textbf{Piano di Mitigazione} & Distribuzione delle attività redazionali; revisione periodica della pianificazione delle ore \\
 		\hline
-		\textbf{Piano di Contingenza} & Aggiornamento del Preventivo a Finire; riallocazione del budget orario tra i membri del gruppo \\
+		\textbf{Piano di Contingenza} & Aggiornamento del Preventivo a Finire; riallocazione del budget\textsubscript{G} orario tra i membri del gruppo \\
 		\hline
 	\end{tabularx}
 	\caption{Scheda rischio RO6}
 \end{table}
 
-\subsection{Matrice dei rischi}
+\subsection{Matrice dei rischi\textsubscript{G}}
 
 \begin{table}[H]
 \centering
@@ -364,7 +364,7 @@ Bassa
 \end{table}
 
 \subsection{Monitoraggio dei rischi}
-I rischi vengono rivalutati al termine di ogni Sprint Review.
+I rischi vengono rivalutati al termine di ogni Sprint Review\textsubscript{G}.
 Il Responsabile monitora l'evoluzione dei rischi identificati,
 verifica l'efficacia delle azioni di mitigazione adottate e aggiorna
 il registro dei rischi sulla base di eventuali nuovi elementi emersi
