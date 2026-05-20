@@ -7,7 +7,7 @@
 La Definition of Done è la lista di criteri che un task deve soddisfare per essere
 considerato completato.
 Si applica a due livelli distinti e si \textbf{espande} al crescere del progetto: la
-Sez.~\ref{sec:dod-doc} è attiva fin dal primo sprint, mentre, la Sez.~\ref{sec:dod-codice} dall'inizio dello sviluppo del PoC\textsubscript{G}.
+Sez.~\ref{sec:dod-doc} è attiva fin dal primo sprint, mentre, la Sez.~\ref{sec:dod-codice} dall'inizio dello sviluppo del PoC.
 
 % ── 4.1 Livello task — fase documentale ─────────────────────────────────────
 \subsection{Livello task -- Fase documentale}
@@ -18,8 +18,8 @@ Sez.~\ref{sec:dod-doc} è attiva fin dal primo sprint, mentre, la Sez.~\ref{sec:
 \begin{itemize}
     \item Il task è stato creato tramite Google Form dal Responsabile durante la
           riunione del martedì.
-    \item Il task è linkato nel verbale della riunione dal Redattore\textsubscript{G}.
-    \item È stato creato un branch\textsubscript{G} da \texttt{development} direttamente dalla issue\textsubscript{G},
+    \item Il task è linkato nel verbale della riunione dal Redattore.
+    \item È stato creato un branch da \texttt{development} direttamente dalla issue,
           con naming: \\
           \texttt{id-gestionale|tecnico\_esterno|interno\_nomeDoc}
     \item Il branch è stato pushato entro la fine del giorno in cui si inizia a
@@ -29,7 +29,7 @@ Sez.~\ref{sec:dod-doc} è attiva fin dal primo sprint, mentre, la Sez.~\ref{sec:
 
 \subsubsection*{Redazione}
 \begin{itemize}
-    \item Il documento rispetta il template\textsubscript{G} e la struttura concordata nelle Norme di
+    \item Il documento rispetta il template e la struttura concordata nelle Norme di
           Progetto.
     \item Il contenuto è completo rispetto allo scope definito nel task.
     \item Nessun segnaposto \texttt{[da compilare]} lasciato senza motivazione
@@ -38,12 +38,12 @@ Sez.~\ref{sec:dod-doc} è attiva fin dal primo sprint, mentre, la Sez.~\ref{sec:
     \item Terminologia coerente con il Glossario di progetto.
 \end{itemize}
 
-\subsubsection*{Commit\textsubscript{G} e Pull Request\textsubscript{G}}
+\subsubsection*{Commit e Pull Request}
 \begin{itemize}
     \item Ogni commit fa riferimento alla issue con \texttt{\#id} nel messaggio.
     \item I messaggi di commit sono concisi e fanno riferimento al documento di
           riunione se pertinente.
-    \item La PR è aperta \textbf{entro domenica} per dare tempo al Verificatore\textsubscript{G} di
+    \item La PR è aperta \textbf{entro domenica} per dare tempo al Verificatore di
           revisionare prima del martedì successivo.
     \item La PR linka la issue corrispondente.
     \item La PR descrive brevemente le modifiche apportate.
@@ -53,13 +53,13 @@ Sez.~\ref{sec:dod-doc} è attiva fin dal primo sprint, mentre, la Sez.~\ref{sec:
 \begin{itemize}
     \item Almeno un membro del team (il Verificatore assegnato) ha revisionato il
           documento.
-    \item Tutti i commenti della review sono stati risolti o discussi prima del merge\textsubscript{G}.
+    \item Tutti i commenti della review sono stati risolti o discussi prima del merge.
     \item È \textbf{il Redattore} a fare il merge, non il Verificatore.
 \end{itemize}
 
 \subsubsection*{Chiusura}
 \begin{itemize}
-    \item Merge effettuato su \texttt{main\textsubscript{G}}.
+    \item Merge effettuato su \texttt{main}.
     \item Issue chiusa nel board.
     \item Ore effettive aggiornate su Google Form.
 \end{itemize}
@@ -73,13 +73,13 @@ Applicabile a: task di sviluppo software.}
 \medskip
 \textbf{[Da compilare]}
 \textit{Questa sezione verrà completata quando il team avvierà lo sviluppo del
-Proof of Concept\textsubscript{G}. I criteri includeranno almeno:}
+Proof of Concept. I criteri includeranno almeno:}
 \begin{itemize}
     \item codice funzionante in locale senza errori;
     \item test unitari e/o di integrazione scritti e superati;
     \item copertura dei test non inferiore alla soglia concordata (es.\ $\geq 70\%$);
     \item nessun bug bloccante aperto;
-    \item linting superato secondo la configurazione del repository\textsubscript{G};
+    \item linting superato secondo la configurazione del repository;
     \item PR revisionata e approvata da almeno un membro del team;
     \item documentazione tecnica (commenti, Swagger/JSDoc) aggiornata;
     \item task chiuso nel board e ore rendicontate.
