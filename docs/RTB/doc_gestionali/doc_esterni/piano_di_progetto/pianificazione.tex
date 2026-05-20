@@ -6,7 +6,7 @@
 \subsection{Suddivisione temporale}
 La pianificazione del progetto è articolata nelle seguenti fasi principali:
 \begin{itemize}
-	\item \textbf{Analisi dei capitolati e assegnazione dell’appalto}: Marzo 2026;
+	\item \textbf{Candidatura e assegnazione dell’appalto}: Marzo 2026;
 	\item \textbf{Fase RTB (Requirements and Technology Baseline)}: Marzo 2026 – Giugno 2026;
 	\item \textbf{Fase PB (Product Baseline)}: Giugno 2026 – Agosto 2026.
 \end{itemize}
@@ -31,7 +31,7 @@ La pianificazione del progetto è articolata nelle seguenti fasi principali:
 
 \subsection{Pianificazione a lungo termine}
 
-\subsubsection{Attività pre-avviamento RTB}
+\subsubsection{Attività di candidatura (CC)}
 Prima dell'avvio formale degli sprint RTB il team ha svolto le seguenti attività
 preparatorie (Marzo 2026):
 \begin{itemize}
@@ -43,7 +43,7 @@ preparatorie (Marzo 2026):
     \item Configurazione del repository documentale e del sito di presentazione della documentazione ufficiale.
 \end{itemize}
 
-\subsubsection{Attività di avvio RTB}
+\subsubsection{Attività preparatorie alla RTB}
 \label{sec:pre-rtb}
 A seguito dell'aggiudicazione del capitolato, prima dell'avvio formale degli
 sprint RTB, il gruppo ha svolto (Marzo -- Aprile 2026):
@@ -55,7 +55,7 @@ sprint RTB, il gruppo ha svolto (Marzo -- Aprile 2026):
 
 \subsubsection{Attività fissate per la RTB}
 \label{sec:attivita-rtb}
-La fase RTB copre il periodo Marzo -- Giugno 2026. Di seguito è riportato lo stato di avanzamento di ciascun documento/attività al momento dell'ultimo
+La fase RTB copre il periodo Aprile -- Giugno 2026. Di seguito è riportato lo stato di avanzamento di ciascun documento/attività al momento dell'ultimo
 aggiornamento del presente documento.
 
 \paragraph{Norme di Progetto (NdP)}
@@ -81,15 +81,14 @@ Sprint di redazione: tutti gli sprint RTB.\\
 
 \paragraph{Analisi dei Requisiti (AdR)}
 Parti previste: introduzione, casi d'uso, requisiti funzionali e non
-funzionali, tracciamento requisiti--fonte.\\
+funzionali, tracciamento (requisiti--fonte, UC--requisiti, fonti--requisiti), riepilogo.\\
 Sprint di redazione: Sprint 1 -- Sprint 7\\
 \textbf{Data prima stesura:} 2026/04/08.\\
 \textbf{Stato attuale:} completata per RTB; in attesa di validazione con
 il proponente.
 
 \paragraph{Piano di Qualifica (PdQ)}
-Parti previste: introduzione, metriche di qualità di processo e di prodotto,
-metodi di testing, cruscotto di valutazione, retrospettive.\\
+Parti previste: introduzione, metriche di qualità di processo, cruscotto di valutazione, resoconto e miglioramento.\\
 Sprint di redazione: Sprint 3 -- Sprint N (da definire).\\
 \textbf{Data prima stesura:} 2026/05/11.\\
 \textbf{Stato attuale:} in corso.
@@ -98,7 +97,7 @@ Sprint di redazione: Sprint 3 -- Sprint N (da definire).\\
 Parti previste: analisi delle tecnologie candidate per il sistema
 \textit{Second Brain}, valutazione comparativa, scelte motivate.\\
 Sprint di redazione: Sprint 6.\\
-\textbf{Data prima stesura:} 2026/05/18.\\
+\textbf{Data prima stesura:} 2026/05/13.\\
 \textbf{Stato attuale:} completato; in attesa di confronto con il proponente.
 
 \paragraph{Proof of Concept (PoC)}
@@ -128,8 +127,8 @@ La struttura delle attività principali è la seguente:
   \begin{figure}[H]
 \begin{ganttchart}[
   time slot format=isodate,
-  x unit=0.2cm,
-  y unit chart=0.7cm,
+  x unit=0.21cm,
+  y unit chart=0.8cm,
   vgrid,
   hgrid,
   bar label font=\small,
@@ -143,7 +142,7 @@ La struttura delle attività principali è la seguente:
 % ============================================================
 % PRE-CANDIDATURA
 % ============================================================
-\ganttgroup{Pre-Candidatura (CC)}{2026-03-13}{2026-03-27} \\
+\ganttgroup{Fase CC}{2026-03-13}{2026-03-27} \\
 
 \ganttbar[name=prev]{Preventivo Costi e Impegni}{2026-03-13}{2026-03-26} \\
 \ganttbar[name=valcap]{Valutazione Capitolati}{2026-03-17}{2026-03-26} \\
@@ -160,13 +159,13 @@ La struttura delle attività principali è la seguente:
 % ============================================================
 % PRE-AVVIO RTB
 % ============================================================
-\ganttgroup{Pre-Avvio RTB}{2026-03-28}{2026-04-01} \\
+%\ganttgroup{Pre-Avvio RTB}{2026-03-28}{2026-04-01} \\
 
 %\ganttbar[name=repo]{Repo documentale e sito}{2026-03-28}{2026-04-02} \\
 %\ganttbar[name=allineamento]{Allineamento struttura documenti}{2026-03-29}{2026-04-03} \\
 %\ganttbar[name=scrum]{Definizione assetto Scrum}{2026-03-30}{2026-04-04} \\
 %\ganttbar[name=board]{Config. board GitHub + Google Form}{2026-04-02}{2026-04-07} \\
-\ganttmilestone[name=verb01]{VE-2026-04-01 (Aggiudicazione)}{2026-04-01} \\
+\ganttmilestone[name=verb01]{Aggiudicazione Capitolato}{2026-04-01} \\
 
 
 %\ganttlink[link type=s-s]{ndp}{allineamento}
@@ -190,7 +189,7 @@ La struttura delle attività principali è la seguente:
 \ganttlink[link type=s-s]{ndp}{adr}
 %\ganttlink[link type=s-s]{gloss}{adr}
 
-\ganttlink[link type=s-s]{adr}{pdp}
+%\ganttlink[link type=s-s]{adr}{pdp}
 
 \ganttlink[link type=s-s]{ndp}{pdq}
 \ganttlink[link type=s-s]{adr}{pdq}
@@ -201,7 +200,7 @@ La struttura delle attività principali è la seguente:
 \ganttlink[link type=f-s]{adr}{poc}
 
 % Milestone finale RTB
-\ganttmilestone[name=ms_rtb]{Milestone: Revisione RTB}{2026-06-15} \\
+\ganttmilestone[name=ms_rtb]{Revisione RTB}{2026-06-15} \\
 \ganttlink{pdp}{ms_rtb}
 \ganttlink{pdq}{ms_rtb}
 \ganttlink{adr}{ms_rtb}
@@ -212,6 +211,7 @@ La struttura delle attività principali è la seguente:
   \end{figure}
 \end{landscape}
 
+\begin{comment}
 \subsubsection{Consuntivo di fase RTB}
 \label{sec:consuntivo-rtb}
 Al termine della fase RTB (data revisione: \textbf{XX/XX/2026}) il gruppo
@@ -225,3 +225,4 @@ ha consegnato i seguenti documenti e artefatti:
     \item \textbf{Stato dell'Arte}: avviato 13/05/2026, versione finale 19/05/2026.
     \item \textbf{Proof of Concept}: completato XX/XX/2026.
 \end{itemize}
+\end{comment}
