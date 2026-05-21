@@ -14,137 +14,6 @@
 \subsection{Macroarea 1 — Gestione Editor e Markdown}
 \textit{Funzionalità core per la manipolazione e visualizzazione del testo.}
 
-% UC1 - Creazione di una nuova nota vuota
-\hypertarget{uc1}{}
-\subsubsection{UC 1: Creazione di una nuova nota vuota}
-
-% use case diagram
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{creazione_nota.png}
-    \caption{UC1 – Creazione di una nuova nota}
-\end{figure}
-
-\begin{itemize}
-    \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: Il sistema è avviato e l'interfaccia è correttamente caricata.
-    \item \textbf{Scenario Principale\textsubscript{G}}:
-    \begin{enumerate}
-        \item L'utente attiva il comando ``Nuova Nota''.
-        \item Il sistema richiede l'inserimento di un titolo per la nota.
-        \item L'utente inserisce il titolo desiderato.
-        \item Il sistema crea una nuova nota associando il titolo inserito.
-        \item Il sistema apre la nota nell'editor.
-    \end{enumerate}
-    \item \textbf{Postcondizioni}: Una nuova nota con titolo associato è aperta e modificabile nell'editor.
-    \item \textbf{Trigger}: L'utente desidera creare una nuova nota.
-\end{itemize}
-
-% UC2 - Eliminazione di una nota
-\hypertarget{uc2}{}
-\subsubsection{UC 2: Eliminazione di una nota}
-
-% use case diagram
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{eliminazione_nota.png}
-    \caption{UC2 – Eliminazione di una nota}
-\end{figure}
-
-\begin{itemize}
-    \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: Il sistema è avviato ed è presente almeno una nota.
-    \item \textbf{Scenario Principale}:
-    \begin{enumerate}
-        \item L'utente seleziona la nota da eliminare.
-        \item Il sistema richiede conferma.
-        \item L'utente conferma.
-        \item Il sistema elimina la nota.
-    \end{enumerate}
-    \item \textbf{Postcondizioni}: La nota selezionata è rimossa dal sistema.
-    \item \textbf{Trigger}: L'utente decide di rimuovere una nota non più necessaria.
-    
-    \item \textbf{Inclusioni}:
-    \begin{itemize}
-        \item \hyperlink{uc2.1}{UC 2.1: Conferma eliminazione}
-    \end{itemize}
-
-    \item \textbf{Estensioni}: 
-    \begin{itemize}
-        \item \hyperlink{uc2.2}{UC 2.2: Annullamento eliminazione} $\rightarrow$ Condizione: risposta negativa al dialogo di conferma.
-        \item \hyperlink{uc2.3}{UC 2.3: Visualizzazione errore eliminazione} $\rightarrow$ Condizione: errore tecnico durante l'esecuzione dell'eliminazione al passo 4.
-    \end{itemize}
-\end{itemize}
-
-% UC2.1 - Conferma eliminazione
-\hypertarget{uc2.1}{}
-\subsubsection{UC 2.1: Conferma eliminazione}
-
-% use case diagram
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{conferma_eliminazione.png}
-    \caption{UC2.1 – Conferma eliminazione}
-\end{figure}
-
-\begin{itemize}
-    \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: L'utente ha richiesto l'eliminazione di una nota.
-    \item \textbf{Scenario Principale}:
-    \begin{enumerate}
-        \item Il sistema mostra un dialogo di conferma.
-        \item L'utente conferma l'operazione.
-    \end{enumerate}
-    \item \textbf{Postcondizioni}: La richiesta di eliminazione è confermata e il sistema procede.
-    \item \textbf{Trigger}: Il sistema richiede una conferma esplicita prima di un'operazione distruttiva.
-\end{itemize}
-
-% UC2.2 - Annullamento eliminazione
-\hypertarget{uc2.2}{}
-\subsubsection{UC 2.2: Annullamento eliminazione}
-
-% use case diagram
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{annullamento_eliminazione.png}
-    \caption{UC2.2 – Annullamento eliminazione}
-\end{figure}
-
-\begin{itemize}
-    \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: Il dialogo di conferma eliminazione è visualizzato a schermo.
-    \item \textbf{Scenario Principale}:
-    \begin{enumerate}
-        \item L'utente preme ``Annulla'' nel dialogo di conferma.
-        \item Il sistema chiude il dialogo senza apportare modifiche.
-    \end{enumerate}
-    \item \textbf{Postcondizioni}: La nota rimane invariata; nessuna modifica è avvenuta.
-    \item \textbf{Trigger}: L'utente decide di non procedere con l'eliminazione.
-\end{itemize}
-
-% UC2.3 - Visualizzazione errore eliminazione
-\hypertarget{uc2.3}{}
-\subsubsection{UC 2.3: Visualizzazione errore eliminazione}
-
-% use case diagram
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{errore_eliminazione.png}
-    \caption{UC2.3 – Visualizzazione errore eliminazione}
-\end{figure}
-
-\begin{itemize}
-    \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: L'utente ha confermato l'eliminazione della nota.
-    \item \textbf{Scenario Principale}:
-    \begin{enumerate}
-        \item Il sistema riscontra un problema tecnico durante la rimozione della nota.
-        \item Il sistema mostra un messaggio di errore all'utente.
-    \end{enumerate}
-    \item \textbf{Postcondizioni}: La nota non viene eliminata e l'utente viene informato dell'errore.
-    \item \textbf{Trigger}: Il sistema operativo o il file system\textsubscript{G} impediscono la cancellazione del file.
-\end{itemize}
-
 % UC3 - Scrittura di testo nell'editor
 \hypertarget{uc3}{}
 \subsubsection{UC 3: Scrittura testo nell'editor}
@@ -159,7 +28,7 @@
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
     \item \textbf{Precondizioni}: L'editor è attivo ed è presente una nota aperta nell'editor.
-    \item \textbf{Scenario Principale}:
+    \item \textbf{Scenario Principale\textsubscript{G}}:
     \begin{enumerate}
         \item L'utente posiziona il cursore nell'area di testo.
         \item L'utente inserisce testo tramite tastiera.
@@ -1940,6 +1809,137 @@
 \newpage
 \subsection{Macroarea 3 — Gestione I/O e Persistenza}
 \textit{Importazione, esportazione e persistenza delle note.}
+
+% UC1 - Creazione di una nuova nota vuota
+\hypertarget{uc1}{}
+\subsubsection{UC 1: Creazione di una nuova nota vuota}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{creazione_nota.png}
+    \caption{UC1 – Creazione di una nuova nota}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: Il sistema è avviato e l'interfaccia è correttamente caricata.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando ``Nuova Nota''.
+        \item Il sistema richiede l'inserimento di un titolo per la nota.
+        \item L'utente inserisce il titolo desiderato.
+        \item Il sistema crea una nuova nota associando il titolo inserito.
+        \item Il sistema apre la nota nell'editor.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Una nuova nota con titolo associato è aperta e modificabile nell'editor.
+    \item \textbf{Trigger}: L'utente desidera creare una nuova nota.
+\end{itemize}
+
+% UC2 - Eliminazione di una nota
+\hypertarget{uc2}{}
+\subsubsection{UC 2: Eliminazione di una nota}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{eliminazione_nota.png}
+    \caption{UC2 – Eliminazione di una nota}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: Il sistema è avviato ed è presente almeno una nota.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente seleziona la nota da eliminare.
+        \item Il sistema richiede conferma.
+        \item L'utente conferma.
+        \item Il sistema elimina la nota.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La nota selezionata è rimossa dal sistema.
+    \item \textbf{Trigger}: L'utente decide di rimuovere una nota non più necessaria.
+    
+    \item \textbf{Inclusioni}:
+    \begin{itemize}
+        \item \hyperlink{uc2.1}{UC 2.1: Conferma eliminazione}
+    \end{itemize}
+
+    \item \textbf{Estensioni}: 
+    \begin{itemize}
+        \item \hyperlink{uc2.2}{UC 2.2: Annullamento eliminazione} $\rightarrow$ Condizione: risposta negativa al dialogo di conferma.
+        \item \hyperlink{uc2.3}{UC 2.3: Visualizzazione errore eliminazione} $\rightarrow$ Condizione: errore tecnico durante l'esecuzione dell'eliminazione al passo 4.
+    \end{itemize}
+\end{itemize}
+
+% UC2.1 - Conferma eliminazione
+\hypertarget{uc2.1}{}
+\subsubsection{UC 2.1: Conferma eliminazione}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{conferma_eliminazione.png}
+    \caption{UC2.1 – Conferma eliminazione}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: L'utente ha richiesto l'eliminazione di una nota.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema mostra un dialogo di conferma.
+        \item L'utente conferma l'operazione.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La richiesta di eliminazione è confermata e il sistema procede.
+    \item \textbf{Trigger}: Il sistema richiede una conferma esplicita prima di un'operazione distruttiva.
+\end{itemize}
+
+% UC2.2 - Annullamento eliminazione
+\hypertarget{uc2.2}{}
+\subsubsection{UC 2.2: Annullamento eliminazione}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{annullamento_eliminazione.png}
+    \caption{UC2.2 – Annullamento eliminazione}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: Il dialogo di conferma eliminazione è visualizzato a schermo.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente preme ``Annulla'' nel dialogo di conferma.
+        \item Il sistema chiude il dialogo senza apportare modifiche.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La nota rimane invariata; nessuna modifica è avvenuta.
+    \item \textbf{Trigger}: L'utente decide di non procedere con l'eliminazione.
+\end{itemize}
+
+% UC2.3 - Visualizzazione errore eliminazione
+\hypertarget{uc2.3}{}
+\subsubsection{UC 2.3: Visualizzazione errore eliminazione}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{errore_eliminazione.png}
+    \caption{UC2.3 – Visualizzazione errore eliminazione}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: L'utente ha confermato l'eliminazione della nota.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema riscontra un problema tecnico durante la rimozione della nota.
+        \item Il sistema mostra un messaggio di errore all'utente.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La nota non viene eliminata e l'utente viene informato dell'errore.
+    \item \textbf{Trigger}: Il sistema operativo o il file system\textsubscript{G} impediscono la cancellazione del file.
+\end{itemize}
 
 % UC63 - Salvataggio della nota in formato Markdown
 \hypertarget{uc63}{}
