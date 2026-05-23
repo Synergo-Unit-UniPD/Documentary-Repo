@@ -119,11 +119,57 @@ Per ogni macroarea i requisiti opzionali sono raggruppati in una sezione dedicat
 I casi d'uso adottano le seguenti convenzioni:
 
 \begin{itemize}
-  \item \textbf{Denominazione}: formato \texttt{UC X: Testo Del Titolo}, dove
-        \texttt{X} è il numero progressivo.
-  \item \textbf{Ordine dei diagrammi}: i casi d'uso, nel foglio condiviso Lucidspark\textsubscript{G}, sono ordinati numericamente
-        dall'alto verso il basso; le sottoclassi da sinistra verso destra.
-  \item \textbf{Strumento}: i diagrammi UML\textsubscript{G} sono gestiti tramite
-        \textbf{LucidSpark} su un foglio condiviso, mantenuto aggiornato
-        in modo incrementale.
+      \item \textbf{Denominazione}: formato \texttt{UC X: Testo Del Titolo}, dove
+            \texttt{X} è il numero progressivo.
+      \item \textbf{Ordine dei diagrammi}: i casi d'uso, nel foglio condiviso Lucidspark\textsubscript{G}, sono ordinati numericamente
+            dall'alto verso il basso; le sottoclassi da sinistra verso destra.
+      \item \textbf{Strumento}: i diagrammi UML\textsubscript{G} sono gestiti tramite
+            \textbf{LucidChart} su un foglio condiviso, mantenuto aggiornato
+            in modo incrementale.
+      \item \textbf{Link interni}: i riferimenti tra casi d'uso all'interno
+            dell'Analisi dei Requisiti\textsubscript{G} utilizzano i comandi
+            \verb|\hyperlink| e \verb|\hypertarget| con il colore primario del
+            template\textsubscript{G} e testo sottolineato, garantendo navigabilità
+            nel documento PDF. La configurazione è definita nel preambolo
+            condiviso (\texttt{shared/}).
+      \item \textbf{Inclusioni ed Estensioni}: nel caso d'uso padre si aggiunge nel campo
+        dedicato:
+      \begin{verbatim}
+            \item \textbf{Inclusioni}: \hyperlink{ucY.y}{UC Y.y: Titolo}.
+            \item \textbf{Estensioni}: \hyperlink{ucX.x}{UC X.x: Titolo}.
+      \end{verbatim}
+      Nel caso d'uso inclusione o estensione si inserisce l'ancora prima del
+        \verb|\paragraph|:
+      \begin{verbatim}
+      \hypertarget{ucX.x}{}
+      \paragraph{UC X.x: Titolo}
+      \end{verbatim}
 \end{itemize}
+
+\paragraph{Tecnologie: Valutazione, Confronto E Scelta}
+ 
+Nell'ambito del processo di sviluppo, la gestione delle tecnologie
+segue una responsabilità divisa per fasi:
+ 
+\begin{itemize}
+  \item \textbf{Valutazione e confronto}: spettano all'\textbf{Analista\textsubscript{G}},
+        che produce il documento \textit{Analisi Dello Stato Dell'Arte}
+        con pro, contro e motivazioni per ciascuna alternativa esaminata.
+ 
+  \item \textbf{Scelta finale}: spetta al \textbf{Progettista\textsubscript{G}},
+        che seleziona le tecnologie sulla base dell'analisi prodotta
+        dall'Analista e delle esigenze architetturali del sistema.
+\end{itemize}
+ 
+Lo stack tecnologico adottato per il PoC\textsubscript{G} è il seguente:
+ 
+\begin{itemize}
+  \item \textbf{Frontend}: Vue.js con CodeMirror come editor Markdown\textsubscript{G}.
+  \item \textbf{Backend}: Python con framework FastAPI\textsubscript{G}.
+  \item \textbf{Database}: PostgreSQL\textsubscript{G}.
+  \item \textbf{Deployment}: Docker\textsubscript{G} (containerizzazione dei tre
+        moduli frontend, backend, database).
+\end{itemize}
+ 
+La documentazione completa delle valutazioni comparative è riportata nel documento \link{https://synergo-unit-unipd.github.io/Documentary-Repo/docs/RTB/doc_gestionali/doc_interni/analisi_stato_arte/analisi_stato_arte.pdf}{Analisi Dello Stato Dell'Arte}.
+ 

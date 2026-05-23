@@ -17,32 +17,41 @@ costituisce prerequisito per l'attivazione di qualsiasi altro processo.
  
 \paragraph{Documentazione Gestionale Interna}
 \begin{itemize}
-  \item \textbf{Norme Di Progetto\textsubscript{G}}: il presente documento;
-        definisce processi, convenzioni e strumenti adottati dal gruppo.
-        Redatto e mantenuto dall'Amministratore\textsubscript{G}.
-  \item \textbf{Verbali Interni}: documentano le discussioni, le decisioni adottate
-        e i task\textsubscript{G} assegnati nel corso delle riunioni interne.
-        Prevedono registro delle modifiche; viene pubblicata la versione approvata.
-  \item \textbf{Glossario}: raccoglie i termini specialistici utilizzati nella
-        documentazione, con la relativa definizione. Aggiornato in modo incrementale
+      \item \textbf{Norme di Progetto\textsubscript{G}}: il presente documento;
+            definisce processi, convenzioni e strumenti adottati dal gruppo.
+            Redatto e mantenuto dall'\textbf{Amministratore\textsubscript{G}}.
+      \item \textbf{Verbali Interni}: documentano le discussioni, le decisioni
+        adottate e i task\textsubscript{G} assegnati nel corso delle riunioni
+        interne. Redatti dal \textbf{Responsabile\textsubscript{G}}.
+      \item \textbf{Glossario}: raccoglie i termini specialistici utilizzati nella
+            documentazione, con la relativa definizione. Aggiornato in modo incrementale
         a ogni introduzione di nuovi termini.
 \end{itemize}
  
 \paragraph{Documentazione Gestionale Esterna}
 \begin{itemize}
-  \item \textbf{Verbali Esterni}: documentano gli incontri o le comunicazioni formali
-        con aziende e docenti. Prevedono registro delle modifiche.
-  \item \textbf{Valutazione Dei Capitolati}: documento comparativo
-        che motiva la scelta del capitolato.
-  \item \textbf{Dichiarazione Degli Impegni}: contiene scadenza
-        prevista, preventivo dei costi, assegnazione di ore per ruolo, rischi attesi
-        e impegni formali del gruppo.
+      \item \textbf{Verbali Esterni}: documentano gli incontri formali con
+        la proponente e sono redatti dall' \textbf{Amministratore\textsubscript{G}}.
+      \item \textbf{Piano di Qualifica\textsubscript{G}}: definisce gli standard,
+        le procedure e gli strumenti adottati per la verifica e la
+        validazione\textsubscript{G}. Redatto e mantenuto dall'\textbf{Amministratore\textsubscript{G}}.
+      \item \textbf{Piano di Progetto\textsubscript{G}}: definisce la pianificazione
+        strategica e operativa, la gestione dei rischi e il consuntivo
+        degli sprint\textsubscript{G}. Redatto dall'\textbf{Amministratore\textsubscript{G}}.
+      \item \textbf{Diario di Bordo\textsubscript{G}}: relaziona al committente
+        sull'avanzamento del progetto con cadenza stabilita.
+        Redatto dal \textbf{Responsabile\textsubscript{G}}.
+      \item \textbf{Sito Web}: punto di accesso unico alla documentazione
+        pubblicata su GitHub Pages\textsubscript{G}. Gestito e aggiornato
+        dall'\textbf{Amministratore\textsubscript{G}}.
 \end{itemize}
  
 \paragraph{Documentazione Tecnica}
-La documentazione tecnica è attiva a partire dalla baseline RTB. Comprende,
-a titolo esemplificativo: Analisi Dei Requisiti, Specifica Architetturale,
-Manuale Utente.
+\begin{itemize}
+      \item \textbf{Analisi dei Requisiti:} documento tecnico principale che descrive i requisiti funzionali e
+        non funzionali del sistema, organizzati in casi d'uso\textsubscript{G}.
+        Redatto e mantenuto dall'\textbf{Analista\textsubscript{G}}.
+\end{itemize}
  
 \subsubsection{Convenzioni Redazionali}
 \label{sec:convenzioni}
@@ -418,3 +427,81 @@ Lo sprint è considerato \textit{Done} se:
         pull~request e richiede modifiche. Il Redattore è tenuto
         ad apportare le correzioni richieste e a richiedere una nuova verifica.
 \end{itemize}
+
+\subsection{Processo Di Accertamento Della Qualità}
+\label{sec:qualita}
+ 
+\subsubsection{Descrizione}
+ 
+Il processo di accertamento della qualità (QA\textsubscript{G}) ha lo scopo
+di garantire che i processi di lavoro e i prodotti realizzati siano
+conformi agli standard stabiliti nelle presenti norme. A differenza
+della verifica, che controlla la correttezza puntuale di un artefatto,
+il QA si concentra sul monitoraggio continuo dei processi per
+prevenire l'introduzione di difetti alla fonte.
+ 
+\subsubsection{Modello Di Miglioramento}
+ 
+Il gruppo adotta il ciclo iterativo \textbf{PDCA\textsubscript{G}}
+(Plan-Do-Check-Act) come riferimento per il miglioramento continuo
+dei processi:
+ 
+\begin{itemize}
+  \item \textbf{Plan}: definire gli obiettivi di qualità e i processi
+        per raggiungerli (metriche, soglie, procedure nel Piano di
+        Qualifica\textsubscript{G}).
+  \item \textbf{Do}: eseguire i processi secondo le norme stabilite.
+  \item \textbf{Check}: misurare i risultati rispetto agli obiettivi
+        tramite il foglio di calcolo\textsubscript{G} condiviso e la revisione
+        delle pull~request.
+  \item \textbf{Act}: adottare azioni correttive emerse dalla
+        retrospettiva\textsubscript{G} di sprint\textsubscript{G} e aggiornare le
+        presenti norme di conseguenza.
+\end{itemize}
+ 
+\subsubsection{Responsabilità}
+ 
+\begin{itemize}
+  \item L'\textbf{Amministratore\textsubscript{G}} mantiene aggiornate le norme e
+        il Piano di Qualifica\textsubscript{G}; predispone gli strumenti di
+        misurazione automatica.
+  \item Il \textbf{Responsabile\textsubscript{G}} monitora l'avanzamento e
+        attiva azioni correttive in base ai dati raccolti.
+  \item Il \textbf{Verificatore\textsubscript{G}} applica le metriche definite
+        nel Piano di Qualifica\textsubscript{G} durante le revisioni.
+\end{itemize}
+ 
+Le metriche, le soglie di accettabilità e i risultati delle misurazioni
+sono riportati nel \link{https://synergo-unit-unipd.github.io/Documentary-Repo/docs/RTB/doc_gestionali/doc_esterni/piano_di_qualifica/piano_di_qualifica.pdf}{Piano Di Qualifica\textsubscript{G}}.
+
+\subsection{Processo Di Validazione}
+\label{sec:validazione}
+ 
+\subsubsection{Descrizione}
+ 
+Il processo di validazione ha lo scopo di confermare che il sistema
+realizzato soddisfi le esigenze del proponente\textsubscript{G} nel contesto
+operativo reale. Mentre la verifica risponde alla domanda
+\textit{«stiamo costruendo il prodotto nel modo giusto?»}, la
+validazione risponde a \textit{«stiamo costruendo il prodotto giusto?»}.
+ 
+Il processo è attivato a partire dalla baseline\textsubscript{G} RTB\textsubscript{G} per
+i requisiti analizzati, e verrà esteso nella fase PB\textsubscript{G} al
+prodotto software.
+ 
+\subsubsection{Attività}
+ 
+\begin{itemize}
+  \item \textbf{Tracciabilità bidirezionale}: ogni requisito
+        dell'Analisi dei Requisiti\textsubscript{G} deve essere collegato alla
+        fonte (capitolato\textsubscript{G} o verbale esterno) e, nelle fasi
+        successive, a un test di sistema che ne certifichi il
+        soddisfacimento.
+  \item \textbf{Revisione con il proponente}: in ogni incontro esterno
+        con Zucchetti S.p.A. viene verificata la corrispondenza tra
+        i requisiti individuati e le aspettative del proponente; gli
+        esiti sono documentati nel verbale esterno.
+\end{itemize}
+ 
+I criteri di accettazione e la matrice di tracciamento requisiti-test
+sono definiti nel \link{https://synergo-unit-unipd.github.io/Documentary-Repo/docs/RTB/doc_gestionali/doc_esterni/piano_di_qualifica/piano_di_qualifica.pdf}{Piano Di Qualifica\textsubscript{G}}.

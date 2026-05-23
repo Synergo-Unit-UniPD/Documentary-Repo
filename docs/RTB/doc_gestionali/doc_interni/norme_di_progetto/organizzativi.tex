@@ -42,8 +42,8 @@ garantendo verifica indipendente per ogni attività.
   Amministratore
     & 20\,€/h
     & Assicura l'efficienza di procedure, strumenti e tecnologie a supporto
-      del \textit{way of working\textsubscript{G}}; redige e mantiene aggiornate le Norme di
-      Progetto e il Piano di Progetto; gestisce la creazione delle issue tramite Google Form; verifica,
+      del \textit{way of working\textsubscript{G}}; redige i verbali esternie mantiene aggiornate le Norme di
+      Progetto, il Piano di Progetto e il Piano di Qualifica; gestisce la creazione delle issue tramite Google Form; verifica,
       prima della chiusura di ogni sprint, che i tempi effettivi nel foglio di
       calcolo siano stati compilati correttamente. \\[6pt]
   Analista\textsubscript{G}
@@ -58,7 +58,7 @@ garantendo verifica indipendente per ogni attività.
   Verificatore
     & 15\,€/h
     & Svolge le attività di verifica di documenti e codice prodotti dagli
-      altri membri; redige i relativi esiti di verifica e il Piano di Qualifica\textsubscript{G}. \\
+      altri membri. \\
   \bottomrule
 \end{tabularx}
  
@@ -263,3 +263,95 @@ di conseguenza.
   \item \textbf{WhatsApp}: canale secondario per comunicazioni
         rapide, notifiche urgenti e convocazioni straordinarie.
 \end{itemize}
+
+\subsection{Processo Di Miglioramento}
+\label{sec:miglioramento}
+ 
+\subsubsection{Descrizione}
+ 
+Il processo di miglioramento ha lo scopo di identificare inefficienze
+nei processi attivi e adottare azioni correttive concrete, applicando
+il ciclo PDCA\textsubscript{G} descritto nella
+Sezione~\ref{sec:qualita}.
+ 
+\subsubsection{Attività}
+ 
+\paragraph{Identificazione}
+Le criticità emergono da due fonti principali:
+ 
+\begin{itemize}
+  \item la \textbf{Sprint Retrospective\textsubscript{G}}: ogni martedì il
+        team identifica almeno un'azione correttiva concreta da
+        applicare allo sprint\textsubscript{G} successivo, registrata nel
+        verbale interno.
+  \item il \textbf{monitoraggio delle metriche}: scostamenti significativi
+        tra preventivo e consuntivo orario o tra versione attesa e
+        versione consegnata segnalano processi da rivedere.
+\end{itemize}
+ 
+\paragraph{Attuazione}
+L'Amministratore\textsubscript{G} aggiorna le presenti norme in seguito a ogni
+delibera di modifica adottata in riunione. Nessun processo può essere
+modificato unilateralmente: la revisione richiede delibera esplicita e
+registrazione nel verbale interno con codice decisione
+\texttt{VI-y.x\textsubscript{G}}.
+
+\subsection{Processo Di Formazione}
+\label{sec:formazione}
+ 
+\subsubsection{Descrizione}
+ 
+Il processo di formazione ha lo scopo di garantire che ogni membro del
+gruppo acquisisca le competenze necessarie per operare efficacemente
+sulle tecnologie e gli strumenti adottati, minimizzando i rischi legati
+alla rotazione dei ruoli\textsubscript{G}.
+ 
+\subsubsection{Tecnologie Di Riferimento}
+ 
+Le tecnologie oggetto di formazione per la fase RTB\textsubscript{G} sono:
+ 
+\bigskip
+\begin{tabularx}{\textwidth}{l X}
+  \toprule
+  \textbf{Ambito} & \textbf{Risorsa principale} \\
+  \midrule
+  Vue.js (frontend\textsubscript{G}) &
+    \href{https://vuejs.org/guide/introduction.html}{\underline{Documentazione ufficiale Vue.js}} \\
+  CodeMirror (editor) &
+    \href{https://codemirror.net/docs/}{\underline{Documentazione ufficiale CodeMirror}} \\
+  Python / FastAPI\textsubscript{G} (backend\textsubscript{G}) &
+    \href{https://fastapi.tiangolo.com/}{\underline{Documentazione ufficiale FastAPI}} \\
+  PostgreSQL\textsubscript{G} (database) &
+    \href{https://www.postgresql.org/docs/}{\underline{Documentazione ufficiale PostgreSQL}} \\
+  Docker\textsubscript{G} (deployment) &
+    \href{https://docs.docker.com/get-started/}{\underline{Docker Get Started}} \\
+  \LaTeX{} / LaTeX Workshop &
+    \href{https://www.latex-project.org/}{\underline{Documentazione ufficiale \LaTeX{}}} \\
+  GitHub\textsubscript{G} &
+    \href{https://docs.github.com/}{\underline{GitHub Docs}} \\
+  LucidSpark\textsubscript{G} (diagrammi UML\textsubscript{G}) &
+    \href{https://lucid.app/}{\underline{Lucidchart / LucidSpark Help}} \\
+  \bottomrule
+\end{tabularx}
+ 
+\subsubsection{Modalità Di Formazione}
+ 
+\begin{itemize}
+  \item \textbf{Auto-formazione}: ogni membro studia autonomamente la
+        documentazione ufficiale degli strumenti assegnati prima di
+        operare su di essi nel repository\textsubscript{G}.
+ 
+  \item \textbf{Apprendimento tra pari}: in caso di introduzione di una
+        nuova tecnologia o di rotazione di ruolo\textsubscript{G}, il membro più
+        esperto organizza una breve sessione sincrona su
+        Discord\textsubscript{G} per condividere best~practice operative.
+ 
+  \item \textbf{Supporto alla rotazione}: chi assume un ruolo nuovo si
+        confronta con chi lo ha ricoperto precedentemente per
+        ricevere indicazioni operative non formalmente codificabili.
+\end{itemize}
+ 
+L'adozione di un nuovo strumento non presente nella tabella sopra
+deve essere deliberata in riunione, registrata nel verbale interno
+e aggiornata nelle presenti norme prima dell'utilizzo effettivo
+(principio \textit{just-in-time\textsubscript{G}}).
