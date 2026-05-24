@@ -4,6 +4,7 @@ API
 Appunti
 Analista
 Analisi dei Requisiti
+Analisi dei Rischi
 Attore
 AWS
 Backlog
@@ -11,11 +12,14 @@ Baseline
 Branch
 Brainstorming
 Burndown Chart
+Budget
 Candidatura
 Casi d'uso
 Cerimonie
 CI/CD
 Clipboard
+Change Request
+Contingenza
 Consuntivo
 Continuous Integration / Continuous Deployment
 Chatbot
@@ -56,10 +60,12 @@ Logout
 Lucidspark
 Main
 Markdown
+Matrice dei rischi
 Merge
 Messaggi Precompilati
 Milestone
 Misurazione
+Mitigazione
 MongoDB
 MVP
 Minimum Viable Product

@@ -52,7 +52,7 @@ Il gruppo pensa sia possibile che possano presentarsi i seguenti rischi:
     \item RO1: Membro del team non disponibile per malattia o impegni accademici.
 \end{itemize}
 
-\subsubsection{Consuntivo\textsubscript{G}}
+\subsubsection{Consuntivo}
 \begin{table}[H]
     \centering
     \renewcommand{\arraystretch}{1.3}
@@ -288,7 +288,7 @@ Il gruppo pensa sia possibile che possano presentarsi i seguenti rischi:
 \subsubsection{Sprint Retrospective}
 Azioni correttive emerse:
 \begin{itemize}
-    \item \textbf{Ordinamento Lucidspark:} gli use case presenti nel lucid spark devono essere ordinati dall'alto
+    \item \textbf{Ordinamento Lucidspark\textsubscript{G}:} gli use case presenti nel lucid spark devono essere ordinati dall'alto
         al basso per i nuovi casi e da sinistra a destra per i vari sottocasi, inoltre le varie macroaree sono separate
         da delle note che danno inoltre il colore ai vari use case appartenenti ad esse.
     \item \textbf{Descrizioni registro modifiche standard:} ogni descrizione presente nel registro delle modifiche 
@@ -589,7 +589,7 @@ Attività svolte e output prodotti:
     \item Revisione e spiegazione degli strumenti Excel di tracciamento e calcolo
           ore, con illustrazione del flusso di utilizzo per il calcolo semplificato
           del consuntivo di sprint.
-    \item Diario di Bordo (DdB) revisionato e approvato.
+    \item Diario di Bordo\textsubscript{G} (DdB) revisionato e approvato.
     \item Macroarea 1 dell'Analisi dei Requisiti (AdR) revisionata e approvata.
 \end{itemize}
 
@@ -726,7 +726,200 @@ Durante lo sprint si sono manifestate incertezze sulla struttura iniziale del Pd
 
 \begin{itemize}
     \item \textbf{Piano di Qualifica:} Approvata la struttura principale del documento.
-    \item \textbf{Scelte Tecnologiche:} Completata la panoramica comparativa per il frontend (React vs Vue) e per il backend (valutando l'opzione custom in Python rispetto ad architetture serverless con AWS Lambda).
-    \item \textbf{Analisi dei Requisiti:} Apportate modifiche correttive strutturali (rimozione definitiva dell'entità chatbot, sfoltimento e rimodellazione del tracciamento dei Sei Cappelli).
+    \item \textbf{Scelte Tecnologiche:} Completata la panoramica comparativa per il frontend (React vs Vue) e per il backend (valutando l'opzione custom in Python rispetto ad architetture serverless con AWS\textsubscript{G} Lambda).
+    \item \textbf{Analisi dei Requisiti:} Apportate modifiche correttive strutturali (rimozione definitiva dell'entità chatbot\textsubscript{G}, sfoltimento e rimodellazione del tracciamento dei Sei Cappelli).
     \item \textbf{Approvazione Consuntivo:} Validato lo spostamento di ore effettive a favore dell'Amministratore, compensato dal minor tempo richiesto per le attività di verifica e analisi tecnica. Viene fissato il traguardo strategico di completare AdR e Stato dell'Arte entro due sprint per procedere con il PoC.
+\end{itemize}
+
+% ── Sprint  ─────────────────────────────────────────────────
+\subsection{Sprint 6 -- 12/05/2026 -- 18/05/2026}
+\label{sec:sprint6}
+
+\subsubsection{Ruoli assegnati}
+\begin{itemize}
+    \item Sofia De Blasi: Analista
+    \item Francesco Marcon: Progettista
+    \item Roberto Mariano Doroftei: Responsabile
+    \item Armando Moda Scarati: Amministratore
+    \item Anton Ricardo Rupi: Verificatore
+    \item Filippo Idiometri: Analista
+\end{itemize}
+
+\subsubsection{Obiettivi}
+\begin{itemize}
+    \item Completamento e approvazione dell'Analisi dei Requisiti (AdR).
+    \item Avanzamento del Piano di Qualifica (PdQ): revisione metriche,
+          cruscotto di valutazione e azioni correttive.
+    \item Completamento dello Stato dell'Arte sulle tecnologie candidate.
+    \item Aggiornamento del Piano di Progetto (PdP).
+\end{itemize}
+
+\subsubsection{Preventivo}
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|X|c|c|r|}
+        \hline
+        \textbf{Membro} & \textbf{Ruolo} & \textbf{Ore prev.} &
+        \textbf{Costo prev.} \\
+        \hline
+        Sofia De Blasi           & AN & 2,50 &  62{,}50~\euro \\
+        Francesco Marcon         & PJ & 1,50 &  37{,}50~\euro \\
+        Roberto M. Doroftei      & RE & 2,00 &  60{,}00~\euro \\
+        Armando Moda Scarati     & AM & 2,67 &  53{,}33~\euro \\
+        Anton Ricardo Rupi       & VE & 1,83 &  27{,}50~\euro \\
+        Filippo Idiometri        & AN & 2,50 &  62{,}50~\euro \\
+        \hline
+        \textbf{Totale} & & \textbf{13,00} & \textbf{303{,}33~\euro} \\
+        \hline
+    \end{tabularx}
+    \caption{Tabella Preventivo Sprint 6}
+\end{table}
+
+\subsubsection{Rischi Previsti}
+Il gruppo pensa sia possibile che possano presentarsi i seguenti rischi:
+\begin{itemize}
+    \item RO1: Membro del team non disponibile per impegni accademici.
+    \item RO3: Distribuzione sbilanciata del carico di lavoro.
+    \item RR1: Requisiti ambigui da chiarire con il committente.
+\end{itemize}
+
+\subsubsection{Consuntivo}
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|X|c|c|c|c|c|r|}
+        \hline
+        \textbf{Membro} & \textbf{Ruolo} & \textbf{Ore prev.} &
+        \textbf{Ore eff.} & \textbf{$\Delta$ ore} &
+        \textbf{Costo eff.} & \textbf{$\Delta$ costo} \\
+        \hline
+        Sofia De Blasi
+            & AN & 2,50 & 10,00
+            & {\color{red}(+7,50)}
+            & 250{,}00~\euro & {\color{red}(+187{,}50~\euro)} \\
+        Francesco Marcon
+            & PJ & 1,50 & 3,00
+            & {\color{red}(+1,50)}
+            & 75{,}00~\euro & {\color{red}(+37{,}50~\euro)} \\
+        Roberto M. Doroftei
+            & RE & 2,00 & 1,92
+            & {\color{green}(-0,08)}
+            & 57{,}50~\euro & {\color{green}(-2{,}50~\euro)} \\
+        Armando Moda Scarati
+            & AM & 2,67 & 2,75
+            & {\color{red}(+0,08)}
+            & 55{,}00~\euro & {\color{red}(+1{,}67~\euro)} \\
+        Anton Ricardo Rupi
+            & VE & 1,83 & 5,00
+            & {\color{red}(+3,17)}
+            & 75{,}00~\euro & {\color{red}(+47{,}50~\euro)} \\
+        Filippo Idiometri
+            & AN & 2,50 & 4,50
+            & {\color{red}(+2,00)}
+            & 112{,}50~\euro & {\color{red}(+50{,}00~\euro)} \\
+        \hline
+        \textbf{Totale} & & \textbf{13,00} & \textbf{27,17}
+            & {\color{red}(+14,17)}
+            & \textbf{625{,}00~\euro}
+            & {\color{red}(+321{,}67~\euro)} \\
+        \hline
+    \end{tabularx}
+    \caption{Tabella Consuntivo Sprint 6}
+\end{table}
+
+\subsubsection{Prospetto risorse residue per ruolo}
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|X|c|c|r|}
+        \hline
+        \textbf{Ruolo} & \textbf{Ore Residue} & \textbf{Costo Orario} &
+        \textbf{Costo Totale Residuo} \\
+        \hline
+        Responsabile   & 46,17 & 30~\euro & 1.385{,}00~\euro \\
+        Amministratore & 37,03 & 20~\euro &   740{,}67~\euro \\
+        Analista       & 80,83 & 25~\euro & 2.020{,}83~\euro \\
+        Progettista    & 122,00 & 25~\euro & 3.050{,}00~\euro \\
+        Programmatore  & 91,00 & 15~\euro & 1.365{,}00~\euro \\
+        Verificatore   & 83,08 & 15~\euro & 1.246{,}25~\euro \\
+        \hline
+        \textbf{Totale Residuo} & \textbf{460,12} & &
+        \textbf{9.807{,}75~\euro} \\
+        \hline
+    \end{tabularx}
+    \caption{Tabella Risorse Residue per Ruolo dopo Sprint 6}
+\end{table}
+
+\subsubsection{Prospetto ore residue per membro}
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|X|c|c|c|c|c|c|c|}
+        \hline
+        \textbf{Membro} & \textbf{Re} & \textbf{Am} & \textbf{An} &
+        \textbf{Pj} & \textbf{Pr} & \textbf{Ve} & \textbf{Totale} \\
+        \hline
+        Sofia De Blasi           &  7,33 &  1,87 &  6,00 & 20,00 & 16,00 & 14,42 & \textbf{65,62} \\
+        Francesco Marcon         &  8,33 &  6,75 & 17,75 & 19,00 & 14,00 & 14,00 & \textbf{79,83} \\
+        Roberto M. Doroftei      &  5,83 &  8,00 & 15,17 & 20,00 & 16,00 & 13,92 & \textbf{78,92} \\
+        Armando Moda Scarati     &  9,00 &  4,92 & 13,67 & 21,00 & 15,00 & 16,00 & \textbf{79,58} \\
+        Anton Ricardo Rupi       &  7,67 &  7,50 & 15,50 & 22,00 & 15,00 &  9,33 & \textbf{77,00} \\
+        Filippo Idiometri        &  8,00 &  8,00 & 12,75 & 20,00 & 15,00 & 15,42 & \textbf{79,17} \\
+        \hline
+        \textbf{Totale} &
+        \textbf{46,17} & \textbf{37,03} & \textbf{80,83} &
+        \textbf{122,00} & \textbf{91,00} & \textbf{83,08} &
+        \textbf{460,12} \\
+        \hline
+    \end{tabularx}
+    \begin{minipage}{\textwidth}
+        \smallskip
+        \footnotesize\textit{Legenda: RE=Responsabile, AM=Amministratore,
+        AN=Analista, PJ=Progettista, PR=Programmatore, VE=Verificatore.}
+    \end{minipage}
+    \caption{Tabella Risorse Residue per Membro dopo Sprint 6}
+\end{table}
+
+\subsubsection{Sprint Retrospective}
+Azioni correttive emerse:
+\begin{itemize}
+    \item \textbf{Allineamento trasversale:} tutti i membri devono mantenersi
+          aggiornati sull'avanzamento complessivo del progetto, non solo sulle
+          proprie task. È responsabilità di ciascuno seguire anche le attività
+          degli altri tramite il board e il daily asincrono, così da rilevare
+          dipendenze e blocchi in anticipo.
+\end{itemize}
+
+\subsubsection{Aggiornamento dei rischi}
+Lo scostamento significativo tra ore preventivate ed effettive, in particolare
+per il ruolo di Analista (RO3), ha evidenziato la necessità di stime più accurate
+nella fase di planning e di un monitoraggio più frequente dell'avanzamento.
+Il rischio RR1 si è parzialmente manifestato: l'Analisi dei Requisiti ha richiesto
+revisioni più profonde del previsto, confermando la necessità di un confronto
+diretto con il proponente per validare la completezza dei requisiti e le tecnologie
+scelte prima della RTB.
+
+\subsubsection{Sprint Review}
+Attività svolte e output prodotti:
+\begin{itemize}
+    \item \textbf{Analisi dei Requisiti (AdR):} documento completato per la
+          RTB. Tutti i membri devono prenderne visione
+          integrale prima del prossimo sprint. Azioni aperte:
+          \begin{itemize}
+              \item Contattare il proponente per confrontarsi sulla completezza
+                    dei requisiti e sulle tecnologie scelte.
+              \item UC1: creazione della nota e UC2: eliminazione della nota vanno sposatnte nella macroarea 3 relativa allo spazio remoto; infatti, le funzionalità, in quanto non sussistente in configurazione locale,
+                   appartengono alla macroarea opzionale ``spazio remoto''.
+          \end{itemize}
+    \item \textbf{Piano di Qualifica (PdQ):} avanzamento con le seguenti
+          azioni aperte per il prossimo sprint:
+          \begin{itemize}
+              \item Verificare la completezza delle azioni correttive documentate.
+              \item Identificare le metriche richieste nel cruscotto RTB, distinguere
+                    quelle già disponibili (da modellare graficamente) da quelle
+                    mancanti (da ricavare definendo le modalità di misurazione\textsubscript{G}).
+          \end{itemize}
+    \item \textbf{Stato dell'Arte:} documento completato. Da confrontare con
+          il referente del proponente per validare le tecnologie selezionate.
 \end{itemize}

@@ -6,13 +6,16 @@
 
 La Definition of Done è la lista di criteri che un task deve soddisfare per essere
 considerato completato.
-Si applica a due livelli distinti e si \textbf{espande} al crescere del progetto: la
-Sez.~\ref{sec:dod-doc} è attiva fin dal primo sprint, mentre, la Sez.~\ref{sec:dod-codice} dall'inizio dello sviluppo del PoC\textsubscript{G}.
+Si applica a due livelli distinti e si espande al crescere del progetto: la
+Sez.~\ref{sec:dod-doc} è attiva fin dal primo sprint, mentre, la Sez.~\ref{sec:dod-codice} dall'inizio dello sviluppo del PoC.
 
 % ── 4.1 Livello task — fase documentale ─────────────────────────────────────
-\subsection{Livello task -- Fase documentale}
+\subsection{Livello task: Fase documentale}
 \label{sec:dod-doc}
-\textit{Attiva da: Sprint 1. Applicabile a: tutti i task documentali.}
+
+\textbf{Attiva da:} Sprint 1. 
+
+\textbf{Applicabile a:} tutti i task documentali.
 
 \subsubsection*{Creazione e tracciabilità}
 \begin{itemize}
@@ -21,7 +24,7 @@ Sez.~\ref{sec:dod-doc} è attiva fin dal primo sprint, mentre, la Sez.~\ref{sec:
     \item Il task è linkato nel verbale della riunione dal Redattore\textsubscript{G}.
     \item È stato creato un branch\textsubscript{G} da \texttt{development} direttamente dalla issue\textsubscript{G},
           con naming: \\
-          \texttt{id-gestionale|tecnico\_esterno|interno\_nomeDoc}
+          \texttt{<id>-<gestionale|tecnico>-<esterno|interno>-<nomeDoc>}
     \item Il branch è stato pushato entro la fine del giorno in cui si inizia a
           lavorare (anche se il documento è vuoto), così la issue risulta
           \textit{In Progress} nel board.
@@ -46,15 +49,14 @@ Sez.~\ref{sec:dod-doc} è attiva fin dal primo sprint, mentre, la Sez.~\ref{sec:
     \item La PR è aperta \textbf{entro domenica} per dare tempo al Verificatore\textsubscript{G} di
           revisionare prima del martedì successivo.
     \item La PR linka la issue corrispondente.
-    \item La PR descrive brevemente le modifiche apportate.
 \end{itemize}
 
 \subsubsection*{Revisione}
 \begin{itemize}
-    \item Almeno un membro del team (il Verificatore assegnato) ha revisionato il
+    \item Il Verificatore assegnato ha revisionato il
           documento.
     \item Tutti i commenti della review sono stati risolti o discussi prima del merge\textsubscript{G}.
-    \item È \textbf{il Redattore} a fare il merge, non il Verificatore.
+    \item È il Redattore a fare il merge, non il Verificatore.
 \end{itemize}
 
 \subsubsection*{Chiusura}
@@ -65,10 +67,12 @@ Sez.~\ref{sec:dod-doc} è attiva fin dal primo sprint, mentre, la Sez.~\ref{sec:
 \end{itemize}
 
 % ── 4.2 Livello task — fase sviluppo/PoC ────────────────────────────────────
-\subsection{Livello task -- Fase sviluppo / PoC}
+\subsection{Livello task: Fase sviluppo (PoC)}
 \label{sec:dod-codice}
-\textit{Attiva da: Sprint N [da definire all'avvio dello sviluppo].
-Applicabile a: task di sviluppo software.}
+
+\textbf{Attiva da:} Sprint (da definire). 
+
+\textbf{Applicabile a:} tutti i task di sviluppo software.
 
 \medskip
 \textbf{[Da compilare]}
