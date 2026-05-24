@@ -1,175 +1,761 @@
 % ================================================================
-% PRIMARI
+% PROCESSI PRIMARI
 % ================================================================
-\section{Processi Primari}
 
-\subsection{Processo Di Fornitura}
+\section{Processi Primari}
+\label{sec:processi-primari}
+
+In conformità allo standard ISO/IEC~12207:1995\textsubscript{G}, i processi primari
+comprendono le attività direttamente coinvolte nella realizzazione, nella fornitura
+e nell'evoluzione del prodotto software.
+
+Nel contesto del progetto \textit{Second Brain}, e in accordo con il tailoring
+descritto nella Sezione~\ref{sec:tailoring}, il gruppo \textit{Synergo Unit} adotta
+i seguenti processi primari:
+
+\begin{itemize}
+    \item \textbf{Fornitura}: disciplina il rapporto tra il gruppo, il committente e
+    la proponente, regolando candidatura, pianificazione, produzione degli
+    artefatti, consegna e comunicazioni ufficiali;
+
+    \item \textbf{Sviluppo}: disciplina le attività tecniche necessarie alla
+    definizione e alla progressiva realizzazione del prodotto software, con
+    particolare riferimento, in fase RTB\textsubscript{G}, all'analisi dei requisiti,
+    all'analisi dello stato dell'arte, alla progettazione preliminare e alla
+    definizione del Proof of Concept\textsubscript{G}.
+\end{itemize}
+
+Le attività di codifica estesa, testing automatico, integrazione continua e
+rilascio software verranno progressivamente normate nella fase PB\textsubscript{G},
+in seguito alla stabilizzazione dell'architettura e all'avvio dello sviluppo
+del prodotto.
+
+% ================================================================
+% FORNITURA
+% ================================================================
+
+\subsection{Processo di Fornitura}
 \label{sec:fornitura}
 
 \subsubsection{Descrizione}
 
-Il processo di fornitura regola le attività con cui \textit{Synergo Unit} si pone
-nella posizione di fornitore nei confronti del committente (Prof.\ Vardanega) e del
-mentore/cliente (Zucchetti S.p.A.). Il Regolamento del Progetto Didattico stabilisce
-le seguenti distinzioni di ruolo\textsubscript{G}:
+Il processo di fornitura regola le attività mediante cui il gruppo
+\textit{Synergo Unit} opera come fornitore nei confronti del committente e della
+proponente.
+
+Nel contesto del progetto didattico:
 
 \begin{itemize}
-  \item il \textbf{proponente} è \textit{cliente} rispetto alle esigenze di prodotto
-        e \textit{mentore} rispetto alle scelte di sviluppo;
-  \item il \textbf{docente} è \textit{committente} di tutte le forniture;
-  \item l'interazione fornitore-committente concerne vincoli contrattuali
-        (scadenze, costi) e questioni regolamentari.
+    \item il \textbf{docente} ricopre il ruolo di committente rispetto alle forniture,
+    alle scadenze, ai vincoli regolamentari e alla valutazione delle baseline;
+
+    \item la \textbf{proponente}, Zucchetti\textsubscript{G} S.p.A., ricopre il ruolo
+    di cliente rispetto alle esigenze di prodotto e di mentore rispetto alle
+    scelte tecniche e progettuali;
+
+    \item il gruppo \textit{Synergo Unit} ricopre il ruolo di fornitore, assumendosi
+    la responsabilità di produrre, verificare e consegnare gli artefatti richiesti
+    dalle revisioni di avanzamento.
 \end{itemize}
 
-Le attività di valutazione dei capitolati\textsubscript{G}, selezione e candidatura sono state
-completate nella fase CC. Nella fase RTB il processo regola le comunicazioni
-formali con i referenti esterni, la produzione della documentazione richiesta
-per le revisioni di avanzamento e la rendicontazione periodica al committente.
-
-\subsubsection{Attività}
-
-\paragraph{Valutazione Dei Capitolati}
-Il gruppo ha analizzato i capitolati disponibili producendo il documento
-\href{https://synergo-unit-unipd.github.io/Documentary-Repo/docs/CC/doc_gestionali/doc_esterni/valutazione_dei_capitolati/valutazione_dei_capitolati.pdf}
-     {\underline{Valutazione Dei Capitolati}},
-che illustra i criteri di confronto, i vantaggi e gli svantaggi di ciascun
-capitolato, includendo il resoconto degli incontri esplorativi con i proponenti,
-e motiva la scelta finale.
-
-\paragraph{Dichiarazione Degli Impegni\textsubscript{G}}
-A seguito della selezione del capitolato, il gruppo ha redatto la
-\href{https://synergo-unit-unipd.github.io/Documentary-Repo/docs/CC/doc_gestionali/doc_esterni/dichiarazione_degli_impegni/dichiarazione_degli_impegni.pdf}
-     {\underline{Dichiarazione Degli Impegni}},
-che specifica:
+Il processo comprende:
 
 \begin{itemize}
-  \item scadenza ultima di consegna prevista;
-  \item preventivo dei costi\textsubscript{G} finali calcolato secondo il
-        regolamento (costo minimo ammesso: 12.000\,€ per gruppi di 7,
-        proporzionalmente ridotto per gruppi di 6);
-  \item totale delle ore produttive assegnate a persona, strettamente compreso
-        nell'intervallo 80\,(min)~--~95\,(max) ore per membro;
-  \item distribuzione delle ore per ruolo (non per persona) secondo i costi orari
-        ufficiali riportati nella Sezione~\ref{sec:ruoli};
-  \item rischi attesi e strategie di mitigazione;
-  \item impegni formali assunti verso il committente.
+    \item la valutazione dei capitolati;
+    \item la candidatura al capitolato scelto;
+    \item la formalizzazione degli impegni economici e temporali;
+    \item la produzione della documentazione richiesta per ciascuna baseline;
+    \item la gestione delle comunicazioni ufficiali;
+    \item la rendicontazione dell'avanzamento;
+    \item la consegna della documentazione tramite repository pubblico e sito web.
 \end{itemize}
 
-Il costo accettato all'aggiudicazione costituisce il limite superiore invalicabile
-per l'intero svolgimento del progetto.
+% ------------------------------------------------
 
-\paragraph{Comunicazioni Esterne}
-Le comunicazioni ufficiali con aziende e docenti avvengono tramite l'indirizzo email
-istituzionale del gruppo. Tale indirizzo è configurato con inoltro automatico verso
-gli indirizzi personali dei membri delegati; le risposte vengono inviate mantenendo
-come mittente l'indirizzo ufficiale, garantendo continuità e tracciabilità delle
-comunicazioni formali. 
+\subsubsection{Norme e strumenti del processo di fornitura}
 
-Le candidature alle revisioni di avanzamento avvengono per
-posta elettronica, senza invio di allegati, esponendo il puntatore alla sezione del
-repository\textsubscript{G} dedicata alla revisione\textsubscript{G}.
+\paragraph{Strumenti a supporto}
 
-\paragraph{Incontri Con Il Proponente}
-Ogni incontro con il proponente viene pianificato con congruo
-anticipo, prevede la predisposizione di un ordine del giorno e si conclude con la
-redazione e approvazione di un verbale esterno secondo le norme descritte nella
-Sezione~\ref{sec:documentazione}.
+Il processo di fornitura è supportato dai seguenti strumenti:
 
-\paragraph{Diario Di Bordo\textsubscript{G}}
-Il gruppo è tenuto a relazionare al committente negli eventi "Diario di Bordo"
-secondo il calendario stabilito, esponendo il rapporto tra costi sostenuti e
-avanzamento conseguito e comunicando le difficoltà riscontrate.
+\begin{itemize}
+      \item \textbf{Email istituzionale del gruppo}: l'indirizzo
+            \texttt{synergounit.20@gmail.com} viene utilizzato per le comunicazioni ufficiali
+            con committente e proponente, garantendo tracciabilità e continuità nelle
+            interazioni esterne;
 
-\subsection{Processo Di Sviluppo}
+      \item \textbf{Repository GitHub}: utilizzato come punto di raccolta, versionamento
+      e pubblicazione degli artefatti documentali;
+
+      \item \textbf{GitHub Pages}: utilizzato per rendere consultabile la documentazione
+      prodotta;
+
+      \item \textbf{GitHub Projects}: utilizzato per il tracciamento delle attività,
+      delle milestone RTB e PB e dello stato di avanzamento;
+
+      \item \textbf{Google Sheets}: utilizzato per la raccolta e la consuntivazione
+      delle ore previste ed effettive;
+
+      \item \textbf{Google Forms}: utilizzato per la creazione standardizzata delle
+      attività e il successivo tracciamento su GitHub;
+
+      \item \textbf{Canva}: utilizzato per la predisposizione del materiale di supporto
+      ai Diari di Bordo.
+\end{itemize}
+
+Le modalità operative di utilizzo degli strumenti sono dettagliate nei processi
+di supporto e nei processi organizzativi.
+
+% ------------------------------------------------
+
+\paragraph{Documentazione prodotta in fase CC}
+
+Durante la fase di candidatura\textsubscript{G} (CC), il gruppo ha prodotto e
+approvato la documentazione necessaria alla presentazione della propria proposta
+per il capitolato C6 -- \textit{Second Brain}.
+
+\bigskip
+\begin{xltabular}{\textwidth}{>{\hsize=.32\hsize\raggedright\arraybackslash}X
+                                >{\hsize=.68\hsize\raggedright\arraybackslash}X}
+    \toprule
+    \textbf{Documento} & \textbf{Descrizione} \\
+    \midrule
+    \endfirsthead
+
+    \toprule
+    \textbf{Documento} & \textbf{Descrizione} \\
+    \midrule
+    \endhead
+
+    \midrule
+    \multicolumn{2}{r}{\textit{Continua nella pagina successiva}}\\
+    \endfoot
+
+    \bottomrule
+    \endlastfoot
+
+    \doclink{https://github.com/Synergo-Unit-UniPD/Documentary-Repo/blob/main/docs/CC/doc_gestionali/doc_esterni/lettera_presentazione/lettera_presentazione.pdf}
+    {Lettera di Presentazione}
+    & Documento con cui il gruppo comunica formalmente la candidatura al capitolato
+    scelto. Contiene l'indicazione del capitolato, della proponente, della scadenza
+    prevista, del budget preventivato e degli impegni assunti dal gruppo. \\
+
+    \doclink{https://github.com/Synergo-Unit-UniPD/Documentary-Repo/blob/main/docs/CC/doc_gestionali/doc_esterni/valutazione_capitolati/valutazione_capitolati.pdf}
+    {Valutazione dei Capitolati}
+    & Documento esterno che raccoglie il confronto tra i capitolati analizzati,
+    evidenziando per ciascuno aspetti positivi, criticità, rischi e motivazioni
+    della scelta finale. \\
+
+    \doclink{https://github.com/Synergo-Unit-UniPD/Documentary-Repo/blob/main/docs/CC/doc_gestionali/doc_esterni/preventivo_costi_assunzione_impegni/preventivo_costi_e_assunzione_impegni.pdf}
+    {Preventivo Costi e Assunzione Impegni}
+    & Documento esterno che formalizza il preventivo economico, la distribuzione
+    delle ore produttive, la ripartizione del lavoro per ruolo e gli impegni assunti
+    dal gruppo verso il committente. \\
+
+    Norme di Progetto
+    & Documento interno, approvato in versione 1.x.x per la baseline CC, contenente
+    le norme operative iniziali del gruppo. \\
+
+    Glossario
+    & Documento interno, approvato in versione 1.x.x per la baseline CC, contenente
+    i termini tecnici e ambigui utilizzati nella documentazione iniziale. \\
+
+    Verbali interni
+    & Documenti interni che tracciano decisioni organizzative, assegnazioni di attività
+    e discussioni svolte dal gruppo. \\
+
+    Verbali esterni
+    & Documenti esterni che formalizzano gli incontri con le aziende proponenti e i
+    chiarimenti ottenuti durante la fase di candidatura. \\
+
+\end{xltabular}
+
+\bigskip
+
+La versione 1.x.x delle Norme di Progetto e del Glossario è relativa alla sola
+fase di candidatura. Con l'ingresso nella fase RTB, tali documenti vengono
+aggiornati alla versione 2.x.x per recepire i nuovi processi attivati.
+
+% ------------------------------------------------
+
+\paragraph{Documentazione prodotta o prevista in fase RTB}
+
+Durante la fase RTB, il gruppo produce e aggiorna la documentazione necessaria
+alla Requirements \& Technology Baseline\textsubscript{G}.
+
+\bigskip
+
+\begin{xltabular}{\textwidth}{
+    >{\hsize=.23\hsize\raggedright\arraybackslash}X
+    >{\hsize=.18\hsize\raggedright\arraybackslash}X
+    >{\hsize=.12\hsize\raggedright\arraybackslash}X
+    >{\hsize=.47\hsize\raggedright\arraybackslash}X
+}
+    \toprule
+    \textbf{Documento} & \textbf{Redattore} & \textbf{Uso} & \textbf{Descrizione} \\
+    \midrule
+    \endfirsthead
+
+    \toprule
+    \textbf{Documento} & \textbf{Redattore} & \textbf{Uso} & \textbf{Descrizione} \\
+    \midrule
+    \endhead
+
+    \midrule
+    \multicolumn{4}{r}{\textit{Continua nella pagina successiva}}\\
+    \endfoot
+
+    \bottomrule
+    \endlastfoot
+
+    Lettera di Presentazione RTB
+    & Responsabile
+    & Esterno
+    & Documento redatto prima della candidatura alla RTB. Formalizza la richiesta di
+    partecipazione alla revisione e rimanda alla documentazione disponibile nel
+    repository pubblico. \\
+
+    \doclink{https://synergo-unit-unipd.github.io/Documentary-Repo/docs/RTB/doc_gestionali/doc_esterni/piano_di_progetto/piano_di_progetto.pdf}
+    {Piano di Progetto}
+    & Amministratore
+    & Esterno
+    & Documento che descrive pianificazione, consuntivazione, gestione dei rischi,
+    rotazione dei ruoli, avanzamento degli sprint e controllo dei costi. \\
+
+    \doclink{https://synergo-unit-unipd.github.io/Documentary-Repo/docs/RTB/doc_gestionali/doc_esterni/piano_di_qualifica/piano_di_qualifica.pdf}
+    {Piano di Qualifica}
+    & Amministratore
+    & Esterno
+    & Documento che definisce strategie, metriche e attività di verifica e validazione
+    adottate dal gruppo per garantire la qualità di processo e di prodotto. \\
+
+    \doclink{https://synergo-unit-unipd.github.io/Documentary-Repo/docs/RTB/doc_tecnici/doc_esterni/analisi_dei_requisiti/analisi_dei_requisiti.pdf}
+    {Analisi dei Requisiti}
+    & Analista
+    & Esterno
+    & Documento tecnico che formalizza casi d'uso, requisiti, fonti e tracciabilità
+    tra esigenze espresse, funzionalità attese e vincoli del prodotto. \\
+
+    Norme di Progetto
+    & Amministratore
+    & Interno
+    & Documento che definisce il way of working\textsubscript{G} del gruppo. In RTB viene
+    aggiornato alla versione 2.x.x per includere i processi attivi dopo la candidatura. \\
+
+    \doclink{https://synergo-unit-unipd.github.io/Documentary-Repo/docs/RTB/doc_gestionali/doc_interni/glossario/glossario.pdf}
+    {Glossario}
+    & Amministratore
+    & Interno
+    & Documento contenente termini tecnici, acronimi ed espressioni ambigue. Ogni
+    autore propone i termini emersi durante la stesura; l'Amministratore ne cura
+    normalizzazione e coerenza. \\
+
+    \doclink{https://synergo-unit-unipd.github.io/Documentary-Repo/docs/RTB/doc_gestionali/doc_interni/analisi_stato_arte/analisi_stato_arte.pdf}
+    {Analisi dello Stato dell'Arte}
+    & Analista / Progettista
+    & Interno
+    & Documento che raccoglie la valutazione comparativa delle tecnologie e la scelta
+    dello stack candidato. L'Analista cura la valutazione; il Progettista seleziona
+    le tecnologie sulla base delle esigenze architetturali. \\
+
+    Verbali interni
+    & Responsabile
+    & Interno
+    & Documenti che tracciano riunioni, decisioni operative, criticità, retrospettive
+    e pianificazione interna. \\
+
+    Verbali esterni
+    & Amministratore
+    & Esterno
+    & Documenti che formalizzano incontri con la proponente e chiarimenti rilevanti
+    ai fini dell'Analisi dei Requisiti e delle scelte tecnologiche. \\
+
+    Diari di Bordo
+    & Responsabile
+    & Esterno
+    & Slide e materiale gestionale utilizzati per il confronto periodico con il
+    committente, con evidenza di avanzamento, criticità e obiettivi successivi. \\
+
+\end{xltabular}
+
+\bigskip
+
+I destinatari dei documenti esterni sono:
+
+\begin{itemize}
+    \item il gruppo \textit{Synergo Unit};
+    \item Zucchetti\textsubscript{G} S.p.A.;
+    \item il Prof.\ Tullio Vardanega;
+    \item il Prof.\ Riccardo Cardin.
+\end{itemize}
+
+I Diari di Bordo devono riportare almeno:
+\begin{itemize}
+    \item risultati raggiunti nel periodo di riferimento;
+    \item obiettivi previsti per il periodo successivo;
+    \item criticità emerse;
+    \item eventuali scostamenti rispetto alla pianificazione;
+    \item decisioni o richieste di chiarimento da sottoporre al committente.
+\end{itemize}
+
+Tale materiale ha funzione di supporto alla comunicazione periodica con il
+committente e non sostituisce la documentazione ufficiale di progetto.
+
+Il Proof of Concept non prevede, nella fase RTB, un documento separato dedicato:
+le sue finalità, il perimetro e gli esiti verranno descritti all'interno del materiale
+di presentazione della Requirements \& Technology Baseline\textsubscript{G} e, ove necessario, nei Diari
+di Bordo.
+
+Gli Architecture Decision Records (ADR)\textsubscript{G} non sono ancora considerati
+artefatti attivi della fase RTB; la loro introduzione è pianificata per la fase PB,
+in seguito alla validazione preliminare delle scelte tecnologiche e architetturali.
+
+% ------------------------------------------------
+
+\subsubsection{Attività del processo di fornitura}
+
+\paragraph{Inizializzazione}
+
+\begin{itemize}
+    \item \textbf{Ruoli}: Responsabile, Amministratore.
+    \item \textbf{Input}: capitolati disponibili, regolamento del progetto didattico,
+    indicazioni dei docenti.
+    \item \textbf{Output}: decisione di partecipazione alla selezione del capitolato.
+\end{itemize}
+
+L'attività consiste nell'analisi preliminare delle proposte disponibili, nella
+valutazione della compatibilità tra competenze del gruppo e richieste del capitolato
+e nella decisione di procedere con la candidatura.
+
+\paragraph{Risposta}
+
+\begin{itemize}
+    \item \textbf{Ruoli}: Responsabile.
+    \item \textbf{Input}: capitolato selezionato, valutazione dei capitolati, preventivo.
+    \item \textbf{Output}: Lettera di Presentazione.
+\end{itemize}
+
+Il gruppo formalizza la propria candidatura mediante una Lettera di Presentazione,
+nella quale dichiara il capitolato scelto, la motivazione della scelta, la scadenza
+prevista, il budget preventivato e gli impegni assunti.
+
+\paragraph{Consolidamento degli impegni}
+
+\begin{itemize}
+    \item \textbf{Ruoli}: Responsabile, Amministratore.
+    \item \textbf{Input}: candidatura accettata, Preventivo Costi e Assunzione Impegni.
+    \item \textbf{Output}: impegni economici e temporali consolidati.
+\end{itemize}
+
+A seguito dell'aggiudicazione, il gruppo considera vincolanti gli impegni dichiarati
+in fase di candidatura.
+
+Gli impegni assunti prevedono:
+\begin{itemize}
+    \item completamento del progetto entro il 2026-08-28;
+    \item rispetto del budget preventivato pari a 11.665,00~\euro{};
+    \item mantenimento del monte ore produttivo dichiarato;
+    \item rotazione dei ruoli secondo quanto pianificato nel Piano di Progetto;
+    \item comunicazione costante e tracciabile con committente e proponente.
+\end{itemize}
+
+Il costo preventivato costituisce il limite massimo previsto per l'intero
+svolgimento del progetto.
+
+\paragraph{Pianificazione}
+
+\begin{itemize}
+    \item \textbf{Ruoli}: Amministratore, Responsabile.
+    \item \textbf{Input}: impegni approvati, milestone di progetto, baseline prevista.
+    \item \textbf{Output}: Piano di Progetto aggiornato.
+\end{itemize}
+
+L'Amministratore redige e aggiorna il Piano di Progetto, includendo pianificazione,
+preventivi, consuntivi di sprint, rischi, rotazione dei ruoli e avanzamento rispetto
+alle milestone.
+
+\paragraph{Esecuzione e controllo}
+
+\begin{itemize}
+    \item \textbf{Ruoli}: tutti i ruoli attivi nello sprint.
+    \item \textbf{Input}: Piano di Progetto, attività pianificate, issue assegnate.
+    \item \textbf{Output}: documentazione prodotta, consuntivi aggiornati, avanzamento
+    monitorato.
+\end{itemize}
+
+Durante ogni sprint il gruppo svolge le attività pianificate, consuntiva le ore
+effettive e aggiorna lo stato delle issue. Il controllo dell'avanzamento avviene
+tramite GitHub Projects e fogli di consuntivazione condivisi.
+
+\paragraph{Revisione}
+
+\begin{itemize}
+    \item \textbf{Ruoli}: Responsabile, Verificatore, ruoli coinvolti negli artefatti.
+    \item \textbf{Input}: documenti o materiali prodotti, feedback interno o esterno.
+    \item \textbf{Output}: artefatti corretti, feedback integrato, eventuali nuove issue.
+\end{itemize}
+
+Il gruppo revisiona periodicamente gli artefatti prodotti tramite verifiche interne,
+retrospettive di sprint, incontri con la proponente e Diari di Bordo con il committente.
+Eventuali osservazioni vengono trasformate in attività tracciate.
+
+\paragraph{Validazione esterna}
+
+\begin{itemize}
+    \item \textbf{Ruoli}: Responsabile, Analista, Progettista.
+    \item \textbf{Input}: requisiti, dubbi interpretativi, scelte tecnologiche preliminari,
+    materiale di supporto.
+    \item \textbf{Output}: chiarimenti formalizzati, verbale esterno approvato,
+      eventuali modifiche all'Analisi dei Requisiti, all'Analisi dello Stato dell'Arte
+      o al perimetro del Proof of Concept.
+\end{itemize}
+
+La validazione esterna ha lo scopo di verificare con la proponente la correttezza
+delle interpretazioni assunte dal gruppo, in particolare per gli aspetti riguardanti
+il perimetro funzionale, l'interazione con LLM, la gestione delle note Markdown,
+il distant writing e i requisiti prestazionali.
+
+Ogni chiarimento rilevante deve essere riportato in un verbale esterno e, se
+necessario, tradotto in modifiche tracciate alla documentazione.
+
+I verbali esterni devono essere condivisi con la proponente per confermare la
+correttezza dei contenuti riportati e degli accordi emersi.
+
+\paragraph{Consegna e completamento}
+
+\begin{itemize}
+    \item \textbf{Ruoli}: Responsabile, Amministratore.
+    \item \textbf{Input}: documentazione verificata e approvata.
+    \item \textbf{Output}: baseline pubblicata e candidatura alla revisione.
+\end{itemize}
+
+La consegna della documentazione avviene tramite pubblicazione nel repository
+pubblico e nel sito web associato. La candidatura alla revisione viene effettuata
+tramite email, riportando il puntatore alla documentazione aggiornata, senza invio
+di allegati salvo diversa indicazione del committente.
+
+% ================================================================
+% SVILUPPO
+% ================================================================
+
+\subsection{Processo di Sviluppo}
 \label{sec:sviluppo}
 
 \subsubsection{Descrizione}
 
-Il processo di sviluppo è attivo dalla baseline RTB e regola le attività di
-analisi dei requisiti e progettazione del sistema. Le attività di codifica
-saranno attivate nella fase PB\textsubscript{G}.
+Il processo di sviluppo disciplina le attività tecniche che portano alla definizione
+e alla progressiva realizzazione del prodotto software.
 
-\subsubsection{Modello Di Sviluppo}
-
-Il gruppo adotta il framework\textsubscript{G} \textbf{Scrum} con sprint\textsubscript{G} della durata di
-\textbf{una settimana}, con cadenza da martedì a martedì. I ruoli vengono ruotati
-a ogni sprint secondo le regole descritte nella Sezione~\ref{sec:ruoli}.
-
-La pianificazione dettagliata degli sprint, il piano di rotazione dei ruoli e le
-milestone\textsubscript{G} sono definiti nel documento \link{https://synergo-unit-unipd.github.io/Documentary-Repo/docs/RTB/doc_gestionali/doc_esterni/piano_di_progetto/piano_di_progetto.pdf}{Piano di Progetto\textsubscript{G}}.
-
-\subsubsection{Analisi Dei Requisiti}
-
-L'\link{https://synergo-unit-unipd.github.io/Documentary-Repo/docs/RTB/doc_tecnici/doc_esterni/analisi_dei_requisiti/analisi_dei_requisiti.pdf}{Analisi dei Requisiti} è il documento tecnico principale della fase RTB. I casi
-d'uso sono organizzati in tre macroaree funzionali:
+In fase RTB risultano attive le seguenti attività:
 
 \begin{itemize}
-  \item \textbf{Macroarea 1 — Gestione Editor e Markdown\textsubscript{G}}: scrittura, formattazione\textsubscript{G},
-        rendering.
-  \item \textbf{Macroarea 2 — Interazione AI (LLM\textsubscript{G})}: riassunto, riscrittura,
-        traduzione\textsubscript{G}, i "Sei cappelli per pensare\textsubscript{G}", distant writing\textsubscript{G}.
-  \item \textbf{Macroarea 3 — Gestione I/O e Persistenza}: salvataggio, apertura,
-        esportazione note.
+    \item analisi dei requisiti;
+    \item analisi dello stato dell'arte;
+    \item progettazione architetturale preliminare;
+    \item definizione del Proof of Concept.
 \end{itemize}
 
-Per ogni macroarea i requisiti opzionali sono raggruppati in una sezione dedicata.
+La realizzazione del PoC può prevedere attività di codifica limitate e finalizzate
+alla sola validazione tecnica delle scelte effettuate; tali attività non costituiscono
+ancora il processo completo di sviluppo software previsto per la fase PB.
 
-\paragraph{Convenzioni Dei Casi D'uso\textsubscript{G}}
+Le attività di codifica estesa, testing automatico, integrazione continua e rilascio
+software saranno normate in modo completo nella fase PB.
+
+% ------------------------------------------------
+
+\subsubsection{Modello di sviluppo}
+
+Il gruppo adotta un modello organizzativo incrementale ispirato a Scrum\textsubscript{G},
+basato su sprint settimanali con cadenza da martedì a martedì.
+
+Il workflow prevede:
+
+\begin{itemize}
+    \item sprint retrospective dello sprint precedente;
+    \item sprint review dello sprint precedente;
+    \item sprint planning dello sprint corrente;
+    \item daily stand-up asincrono;
+    \item riunione intermedia di allineamento;
+    \item monitoraggio continuo delle attività.
+\end{itemize}
+
+La pianificazione dettagliata degli sprint, la rotazione dei ruoli e le milestone
+sono riportate nel Piano di Progetto.
+
+% ------------------------------------------------
+
+\subsubsection{Approccio incrementale}
+
+Il gruppo adotta un approccio incrementale alla progettazione e allo sviluppo.
+
+Le decisioni tecniche e architetturali vengono raffinate progressivamente sulla base di:
+
+\begin{itemize}
+    \item feedback della proponente;
+    \item risultati del Proof of Concept;
+    \item criticità emerse durante gli sprint;
+    \item evoluzione dei requisiti;
+    \item vincoli rilevati durante l'analisi dello stato dell'arte.
+\end{itemize}
+
+Tale approccio consente di evitare scelte premature e di mantenere coerenza tra
+requisiti, tecnologie e architettura.
+
+% ------------------------------------------------
+
+\subsubsection{Analisi dei requisiti}
+
+\paragraph{Scopo}
+
+L'analisi dei requisiti ha lo scopo di identificare, classificare, tracciare e mantenere
+aggiornati i requisiti del prodotto software.
+
+\paragraph{Raccolta dei requisiti}
+
+I requisiti vengono raccolti a partire da:
+
+\begin{itemize}
+    \item capitolato d'appalto C6 -- \textit{Second Brain};
+    \item incontri con la proponente (verbali esterni);
+    \item analisi del dominio applicativo.
+\end{itemize}
+
+\paragraph{Classificazione}
+
+I requisiti vengono classificati secondo:
+
+\begin{itemize}
+    \item tipologia;
+    \item importanza;
+    \item fonte;
+    \item casi d'uso associati.
+\end{itemize}
+
+\paragraph{Nomenclatura dei requisiti}
+
+Ogni requisito deve essere identificato tramite un codice univoco nel formato:
+
+\begin{center}
+\texttt{R[ID]-[Tipo]-[Importanza]}
+\end{center}
+
+dove:
+\begin{itemize}
+    \item \textbf{ID}: identificativo numerico progressivo;
+    \item \textbf{Tipo}: indica la categoria del requisito:
+    \begin{itemize}
+        \item \texttt{F}: funzionale;
+        \item \texttt{Q}: qualità;
+        \item \texttt{V}: vincolo;
+        \item \texttt{P}: prestazionale;
+    \end{itemize}
+    \item \textbf{Importanza}: indica la priorità del requisito:
+    \begin{itemize}
+        \item \texttt{O}: obbligatorio;
+        \item \texttt{D}: desiderabile;
+        \item \texttt{Op}: opzionale.
+    \end{itemize}
+\end{itemize}
+
+La nomenclatura deve essere mantenuta stabile per tutta la durata della baseline.
+Eventuali modifiche agli identificativi devono essere motivate, tracciate e
+verificate per non compromettere la consistenza delle matrici di tracciabilità.
+
+\paragraph{Tracciabilità}
+
+Il gruppo mantiene matrici di tracciabilità tra:
+
+\begin{itemize}
+    \item fonti e requisiti;
+    \item requisiti e casi d'uso;
+    \item casi d'uso e requisiti.
+\end{itemize}
+
+La tracciabilità deve garantire:
+
+\begin{itemize}
+    \item copertura completa delle fonti;
+    \item assenza di requisiti privi di motivazione;
+    \item coerenza tra requisiti e casi d'uso;
+    \item possibilità di risalire da ogni requisito alla fonte che lo giustifica;
+    \item possibilità di risalire da ogni caso d'uso ai requisiti soddisfatti;
+    \item supporto alla successiva attività di verifica e validazione.
+\end{itemize}
+
+\paragraph{Gestione delle modifiche}
+
+Le modifiche ai requisiti devono:
+
+\begin{itemize}
+    \item essere discusse internamente;
+    \item essere tracciate tramite issue;
+    \item mantenere consistenti le matrici di tracciabilità;
+    \item essere riportate nei verbali quando derivano da incontri esterni;
+    \item essere validate dalla proponente quando incidono sul perimetro funzionale
+    o sui vincoli del prodotto.
+\end{itemize}
+
+% ------------------------------------------------
+
+\subsubsection{Gestione dei casi d'uso}
+
+I casi d'uso costituiscono il principale strumento di descrizione delle interazioni
+tra utente e sistema nella fase RTB.
+
+Essi sono organizzati nelle seguenti macroaree funzionali:
+
+\begin{itemize}
+    \item \textbf{Gestione editor e Markdown}: scrittura, formattazione e rendering;
+
+    \item \textbf{Interazione AI e LLM}: generazione di suggerimenti, riscrittura,
+    distant writing, applicazione di stili e supporto tramite tecniche come i
+    \textit{Sei Cappelli Per Pensare};
+
+    \item \textbf{Gestione I/O e persistenza}: apertura, salvataggio, importazione ed
+    esportazione delle note.
+\end{itemize}
+
+\paragraph{Convenzioni dei casi d'uso}
 
 I casi d'uso adottano le seguenti convenzioni:
 
 \begin{itemize}
-      \item \textbf{Denominazione}: formato \texttt{UC X: Testo Del Titolo}, dove
-            \texttt{X} è il numero progressivo.
-      \item \textbf{Ordine dei diagrammi}: i casi d'uso, nel foglio condiviso Lucidspark\textsubscript{G}, sono ordinati numericamente
-            dall'alto verso il basso; le sottoclassi da sinistra verso destra.
-      \item \textbf{Strumento}: i diagrammi UML\textsubscript{G} sono gestiti tramite
-            \textbf{LucidChart} su un foglio condiviso, mantenuto aggiornato
-            in modo incrementale.
-      \item \textbf{Link interni}: i riferimenti tra casi d'uso all'interno
-            dell'Analisi dei Requisiti\textsubscript{G} utilizzano i comandi
-            \verb|\hyperlink| e \verb|\hypertarget| con il colore primario del
-            template\textsubscript{G} e testo sottolineato, garantendo navigabilità
-            nel documento PDF. La configurazione è definita nel preambolo
-            condiviso (\texttt{shared/}).
-      \item \textbf{Inclusioni ed Estensioni}: nel caso d'uso padre si aggiunge nel campo
-        dedicato:
-      \begin{verbatim}
-            \item \textbf{Inclusioni}: \hyperlink{ucY.y}{UC Y.y: Titolo}.
-            \item \textbf{Estensioni}: \hyperlink{ucX.x}{UC X.x: Titolo}.
-      \end{verbatim}
-      Nel caso d'uso inclusione o estensione si inserisce l'ancora prima del
-        \verb|\paragraph|:
-      \begin{verbatim}
-      \hypertarget{ucX.x}{}
-      \paragraph{UC X.x: Titolo}
-      \end{verbatim}
+      \item \textbf{Denominazione}: ogni caso d'uso deve seguire il formato \texttt{UC X: Titolo}, dove \texttt{X} rappresenta l'identificativo numerico
+      progressivo e \texttt{Titolo} descrive sinteticamente l'interazione modellata;
+
+      \item \textbf{Sottocasi}: eventuali casi d'uso derivati devono mantenere una numerazione gerarchica coerente con il caso d'uso principale;
+      
+      \item \textbf{Ordinamento}: i diagrammi vengono mantenuti in ordine numerico e
+      aggiornati in modo incrementale;
+
+      \item \textbf{Strumenti}: i diagrammi UML\textsubscript{G} vengono realizzati e
+      mantenuti tramite LucidChart/LucidSpark o strumenti equivalenti condivisi dal
+      gruppo;
+
+      \item \textbf{Navigabilità}: i riferimenti interni tra casi d'uso devono essere
+      realizzati tramite collegamenti interni al documento;
+
+      \item \textbf{Inclusioni ed estensioni}: le relazioni tra casi d'uso devono essere
+      esplicitate sia nei diagrammi sia nella descrizione testuale.
 \end{itemize}
 
-\paragraph{Tecnologie: Valutazione, Confronto E Scelta}
- 
-Nell'ambito del processo di sviluppo, la gestione delle tecnologie
-segue una responsabilità divisa per fasi:
- 
+% ------------------------------------------------
+
+\subsubsection{Analisi dello stato dell'arte}
+
+\paragraph{Scopo}
+
+L'analisi dello stato dell'arte ha lo scopo di individuare, confrontare e motivare
+le tecnologie maggiormente adatte allo sviluppo del prodotto.
+
+\paragraph{Criteri di valutazione}
+
+La valutazione delle tecnologie considera:
+
 \begin{itemize}
-  \item \textbf{Valutazione e confronto}: spettano all'\textbf{Analista\textsubscript{G}},
-        che produce il documento \textit{Analisi Dello Stato Dell'Arte}
-        con pro, contro e motivazioni per ciascuna alternativa esaminata.
- 
-  \item \textbf{Scelta finale}: spetta al \textbf{Progettista\textsubscript{G}},
-        che seleziona le tecnologie sulla base dell'analisi prodotta
-        dall'Analista e delle esigenze architetturali del sistema.
+    \item compatibilità con il capitolato;
+    \item semplicità manutentiva;
+    \item maturità tecnologica;
+    \item integrazione con lo stack applicativo;
+    \item disponibilità di documentazione;
+    \item curva di apprendimento;
+    \item adeguatezza rispetto al Proof of Concept.
 \end{itemize}
- 
-Lo stack tecnologico adottato per il PoC\textsubscript{G} è il seguente:
- 
+
+\paragraph{Ruoli coinvolti}
+
+La gestione delle tecnologie prevede una responsabilità distinta:
+
 \begin{itemize}
-  \item \textbf{Frontend}: Vue.js con CodeMirror come editor Markdown\textsubscript{G}.
-  \item \textbf{Backend}: Python con framework FastAPI\textsubscript{G}.
-  \item \textbf{Database}: PostgreSQL\textsubscript{G}.
-  \item \textbf{Deployment}: Docker\textsubscript{G} (containerizzazione dei tre
-        moduli frontend, backend, database).
+    \item l'\textbf{Analista} cura la valutazione comparativa delle alternative;
+    \item il \textbf{Progettista} seleziona le tecnologie sulla base delle esigenze
+    architetturali, previa validazione interna del gruppo.
 \end{itemize}
- 
-La documentazione completa delle valutazioni comparative è riportata nel documento \link{https://synergo-unit-unipd.github.io/Documentary-Repo/docs/RTB/doc_gestionali/doc_interni/analisi_stato_arte/analisi_stato_arte.pdf}{Analisi Dello Stato Dell'Arte}.
- 
+
+\paragraph{Stack tecnologico individuato}
+
+Lo stack tecnologico attualmente individuato per il Proof of Concept comprende:
+
+\begin{itemize}
+    \item \textbf{Frontend}: Vue.js con CodeMirror;
+    \item \textbf{Backend}: Python con FastAPI\textsubscript{G};
+    \item \textbf{Database}: PostgreSQL\textsubscript{G};
+    \item \textbf{Containerizzazione}: Docker\textsubscript{G}.
+\end{itemize}
+
+Le scelte tecnologiche rimangono soggette a confronto con la proponente e potranno
+essere aggiornate in seguito ai risultati del Proof of Concept.
+
+% ------------------------------------------------
+
+\subsubsection{Progettazione architetturale preliminare}
+
+La progettazione architetturale preliminare ha lo scopo di individuare una prima
+struttura del sistema, coerente con i requisiti e con le tecnologie selezionate.
+
+In fase RTB, tale attività ha carattere esplorativo e mira a:
+
+\begin{itemize}
+    \item individuare i principali moduli del sistema;
+    \item valutare le interazioni tra frontend, backend, database e servizi AI;
+    \item evidenziare rischi tecnici;
+    \item preparare il perimetro del Proof of Concept;
+    \item raccogliere elementi utili per la progettazione di dettaglio in PB.
+\end{itemize}
+
+Le decisioni architetturali definitive verranno consolidate nella fase PB. Gli ADR
+verranno introdotti quando il gruppo avrà stabilizzato il processo decisionale
+architetturale e saranno utilizzati per documentare in modo tracciabile le scelte
+rilevanti, le alternative valutate e le motivazioni della decisione finale.
+
+% ------------------------------------------------
+
+\subsubsection{Proof of Concept}
+
+\paragraph{Scopo}
+
+Il Proof of Concept ha lo scopo di validare la fattibilità tecnica delle principali
+funzionalità individuate dal gruppo per la Requirements \& Technology Baseline\textsubscript{G}.
+
+Il PoC costituisce una baseline tecnologica e non architetturale: esso ha valore
+dimostrativo e può essere rivisto o scartato nella successiva fase PB, qualora le
+evidenze raccolte lo rendano opportuno.
+
+\paragraph{Obiettivi}
+
+Il PoC dovrà verificare:
+
+\begin{itemize}
+    \item integrazione con LLM;
+    \item importazione e salvataggio di note Markdown;
+    \item apertura iniziale di una nota esistente;
+    \item visualizzazione split editor;
+    \item applicazione di uno stile;
+    \item interazione con LLM tramite bottone o popup;
+    \item accettazione, rifiuto e rigenerazione di proposte;
+    \item proposta contestuale su selezione di testo;
+    \item distant writing tramite inserimento di prompt.
+\end{itemize}
+
+\paragraph{Criteri di successo}
+
+Il PoC è considerato soddisfacente se consente di:
+\begin{itemize}
+    \item dimostrare l'integrazione minima tra frontend, backend, database e servizio LLM;
+    \item verificare almeno un flusso completo di gestione di una nota Markdown;
+    \item mostrare l'interazione utente con una proposta generata dal modello;
+    \item raccogliere evidenze utili alla progettazione di dettaglio;
+    \item individuare eventuali rischi tecnici da mitigare nella fase PB.
+\end{itemize}
+
+\paragraph{Validazione}
+
+I risultati del Proof of Concept devono:
+
+\begin{itemize}
+      \item essere discussi internamente;
+      \item essere confrontati con la proponente;
+      \item essere presentati durante la Requirements \& Technology Baseline;
+      \item guidare la successiva progettazione di dettaglio in PB.
+\end{itemize}
