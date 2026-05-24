@@ -5,7 +5,7 @@
 \section{Processi Di Supporto}
 \label{sec:processi-supporto}
 
-In conformità allo standard ISO/IEC~12207:1995\textsubscript{G}, i processi di
+In conformità allo standard ISO/IEC~12207:1995, i processi di
 supporto comprendono le attività trasversali necessarie a garantire qualità,
 tracciabilità, coerenza e controllo degli artefatti prodotti.
 
@@ -37,8 +37,8 @@ produzione, la revisione, l'approvazione e la pubblicazione della documentazione
 del gruppo.
 
 Esso si applica a ogni documento gestionale o tecnico, interno o esterno, prodotto
-dal gruppo \textit{Synergo Unit}. Il Diario di Bordo segue un template separato
-realizzato tramite Canva\textsubscript{G} e non prevede registro delle modifiche.
+dal gruppo \textit{Synergo Unit}. Il Diario di Bordo\textsubscript{G} segue un template\textsubscript{G} separato
+realizzato tramite Canva e non prevede registro delle modifiche.
 
 La documentazione deve essere:
 \begin{itemize}
@@ -46,7 +46,7 @@ La documentazione deve essere:
     \item coerente con le presenti Norme di Progetto;
     \item verificabile tramite Pull Request\textsubscript{G};
     \item tracciabile rispetto alle modifiche logiche effettuate;
-    \item consultabile tramite repository\textsubscript{G} e sito documentale.
+    \item consultabile tramite repository e sito documentale.
 \end{itemize}
 
 % ------------------------------------------------
@@ -58,14 +58,14 @@ La documentazione deve essere:
 \begin{itemize}
     \item \textbf{Norme di Progetto}: definiscono processi, convenzioni, strumenti
     e procedure operative adottate dal gruppo. Sono redatte e mantenute
-    dall'Amministratore\textsubscript{G}.
+    dall'Amministratore.
 
     \item \textbf{Glossario}: raccoglie termini tecnici, acronimi ed espressioni
     ambigue utilizzate nella documentazione. Ogni autore può proporre nuovi
     termini; l'Amministratore ne cura normalizzazione e coerenza.
 
     \item \textbf{Analisi dello Stato dell'Arte}: documento che raccoglie valutazione comparativa 
-    delle tecnologie e motivazione dello stack candidato per il Proof of Concept\textsubscript{G}.
+    delle tecnologie e motivazione dello stack candidato per il Proof of Concept.
 
     \item \textbf{Verbali Interni}: documentano riunioni interne, decisioni operative,
     retrospettive, pianificazione e assegnazione dei task\textsubscript{G}.
@@ -89,7 +89,7 @@ La documentazione deve essere:
     il ciclo di versionamento documentale dei documenti \LaTeX{}.
 
     \item \textbf{Sito Web}: punto di accesso alla documentazione pubblicata tramite
-    GitHub Pages\textsubscript{G}.
+    GitHub Pages.
 \end{itemize}
 
 \paragraph{Documentazione Tecnica}
@@ -121,7 +121,7 @@ La documentazione viene prodotta tramite:
     \item \textbf{Canva}: strumento utilizzato per il template dei Diari di Bordo;
 
     \item \textbf{Script Python per Glossario}: strumento utilizzato per applicare
-    automaticamente il pedice \textsubscript{G} alla prima occorrenza dei termini
+    automaticamente il pedice  alla prima occorrenza dei termini
     presenti nel Glossario.
 \end{itemize}
 
@@ -154,9 +154,9 @@ seguenti convenzioni:
     essere realizzate tramite \texttt{xltabular} o \texttt{longtable}, in modo da
     consentirne la spezzatura automatica.
 
-    \item \textbf{Pedice G}: la prima occorrenza, nell'intero documento, di ogni
+    \item \textbf{Pedice G\textsubscript{G}}: la prima occorrenza, nell'intero documento, di ogni
     termine presente nel Glossario deve essere marcata con il pedice
-    \textsubscript{G}. Lo script riceve in ingresso la concatenazione dei file
+    . Lo script riceve in ingresso la concatenazione dei file
     \LaTeX{} delle sezioni e applica il pedice alla prima occorrenza globale.
 
     \item \textbf{Link generici}: i collegamenti ipertestuali nel testo devono essere
@@ -170,11 +170,11 @@ seguenti convenzioni:
     il comando \verb|\ghissue{id}|.
 
     \item \textbf{Decisioni da verbale interno}: le decisioni interne devono essere
-    identificate con codice \texttt{VI-y.x}, dove \texttt{y} è il numero progressivo
+    identificate con codice \texttt{VI-y.x\textsubscript{G}}, dove \texttt{y} è il numero progressivo
     del verbale e \texttt{x} è il numero progressivo della decisione.
 
     \item \textbf{Decisioni da verbale esterno}: le decisioni esterne devono essere
-    identificate con codice \texttt{VE-y.x}, con la stessa logica adottata per i
+    identificate con codice \texttt{VE-y.x\textsubscript{G}}, con la stessa logica adottata per i
     verbali interni.
 \end{itemize}
 
@@ -222,7 +222,7 @@ Il registro deve riportare:
     \item \textbf{Descrizione}.
 \end{itemize}
 
-Il registro delle modifiche è aggiornato dal Redattore\textsubscript{G}.
+Il registro delle modifiche è aggiornato dal Redattore.
 
 Le voci del registro devono descrivere modifiche logiche e documentali significative.
 
@@ -246,7 +246,7 @@ Il processo prevede:
     Python;
 
     \item l'autore esegue manualmente lo script per applicare il pedice
-    \textsubscript{G} alla prima occorrenza dei termini nel documento;
+     alla prima occorrenza dei termini nel documento;
 
     \item il Verificatore controlla che i termini inseriti siano coerenti con il
     documento e che il pedice sia stato applicato correttamente.
@@ -270,13 +270,13 @@ Prima di aprire una Pull Request, il Redattore deve verificare che:
     \item i riferimenti interni siano corretti;
     \item le tabelle lunghe siano spezzabili;
     \item il Glossario sia aggiornato, se necessario;
-    \item il pedice \textsubscript{G} sia stato applicato correttamente;
+    \item il pedice  sia stato applicato correttamente;
     \item il nome del file sia conforme alle convenzioni.
 \end{itemize}
 
 % ------------------------------------------------
 
-\subsubsection{Ciclo Di Vita Documentale}
+\subsubsection{Ciclo Di Vita Documentale}\textsubscript{G}
 \label{sec:ciclo-vita}
 
 Ogni documento attraversa i seguenti stati:
@@ -304,7 +304,7 @@ di gruppo.
 
 \subsubsection{Versionamento Documentale}
 
-Il gruppo adotta il \textit{Semantic Versioning}\textsubscript{G} a tre cifre nel
+Il gruppo adotta il \textit{Semantic Versioning\textsubscript{G}} a tre cifre nel
 formato:
 
 \begin{center}
@@ -388,10 +388,10 @@ Ogni modifica deve essere tracciata tramite:
 \begin{itemize}
     \item issue;
     \item branch dedicato;
-    \item commit riferiti alla issue;
+    \item commit\textsubscript{G} riferiti alla issue;
     \item Pull Request;
     \item review;
-    \item merge controllato.
+    \item merge\textsubscript{G} controllato.
 \end{itemize}
 
 % ------------------------------------------------
@@ -414,13 +414,13 @@ La struttura deve mantenere separati:
 \end{itemize}
 
 La versione ufficiale e stabile di ogni elemento configurativo è quella presente
-nel branch \texttt{main}.
+nel branch \texttt{main}\textsubscript{G}.
 
 % ------------------------------------------------
 
 \subsubsection{Strategia Di Branching}
 
-Il gruppo adotta un modello \textit{trunk-based development}\textsubscript{G}.
+Il gruppo adotta un modello \textit{trunk-based development\textsubscript{G}}.
 
 Il branch \texttt{main} è l'unico branch stabile. Ogni modifica deve essere sviluppata su branch dedicato, creato a partire dalla
 sezione \textit{Development} della issue GitHub associata.
@@ -449,7 +449,7 @@ Ogni issue deve contenere:
     \item ruolo;
     \item priorità;
     \item scadenza;
-    \item tempo previsto;
+    \item tempo previsto\textsubscript{G};
     \item milestone RTB o PB;
     \item descrizione dell'attività.
 \end{itemize}
@@ -474,9 +474,9 @@ Le issue vengono classificate secondo:
 Le issue attraversano i seguenti stati all'interno di GitHub Projects:
 
 \begin{itemize}
-    \item \textbf{To Do};
+    \item \textbf{To Do\textsubscript{G}};
     \item \textbf{In Progress};
-    \item \textbf{In Review};
+    \item \textbf{In Review\textsubscript{G}};
     \item \textbf{Done}.
 \end{itemize}
 
@@ -523,7 +523,7 @@ segnare la Pull Request come \textit{draft} fino al completamento delle correzio
 
 % ------------------------------------------------
 
-\subsubsection{Branch Protection Rules}
+\subsubsection{Branch Protection Rules}\textsubscript{G}
 
 Il branch \texttt{main} è protetto tramite branch protection rules.
 
@@ -531,7 +531,7 @@ Le regole attive prevedono:
 
 \begin{itemize}
     \item obbligo di almeno una review positiva;
-    \item blocco dei force push;
+    \item blocco dei force push\textsubscript{G};
     \item restrizione dell'eliminazione del branch protetto.
 \end{itemize}
 
@@ -552,7 +552,7 @@ Dopo il merge:
 \begin{itemize}
     \item la issue associata viene chiusa automaticamente;
     \item il branch di lavoro viene eliminato;
-    \item il Redattore aggiorna il tempo effettivo nel foglio di consuntivazione.
+    \item il Redattore aggiorna il tempo effettivo\textsubscript{G} nel foglio di consuntivazione.
 \end{itemize}
 
 % ------------------------------------------------
@@ -574,7 +574,7 @@ periodica dedicata.
 
 \subsubsection{Descrizione}
 
-Il processo di verifica assicura che ogni artefatto prodotto sia conforme alle
+Il processo di verifica assicura che ogni artefatto\textsubscript{G} prodotto sia conforme alle
 presenti norme e agli obiettivi di qualità definiti nel Piano di Qualifica.
 
 La verifica risponde alla domanda:
@@ -620,7 +620,7 @@ Il Verificatore deve controllare:
     \item correttezza del registro delle modifiche;
     \item correttezza dei riferimenti interni;
     \item funzionamento dei link;
-    \item presenza del pedice \textsubscript{G} dove necessario;
+    \item presenza del pedice  dove necessario;
     \item coerenza con il Glossario;
     \item conformità alle convenzioni di naming;
     \item correttezza del versionamento;
@@ -657,13 +657,13 @@ le osservazioni.
 
 % ------------------------------------------------
 
-\subsubsection{Definition Of Done}
+\subsubsection{Definition Of Done}\textsubscript{G}
 \label{sec:dod}
 
 Un task è considerato \textit{Done} solo se:
 
 \begin{itemize}
-    \item è stato creato tramite Google Form;
+    \item è stato creato tramite Google Form\textsubscript{G};
     \item è associato a una issue GitHub;
     \item è collegato, se necessario, a una decisione verbalizzata;
     \item è stato sviluppato su branch dedicato;
@@ -746,7 +746,7 @@ Il processo di accertamento della qualità ha lo scopo di monitorare e migliorar
 la qualità dei processi e degli artefatti prodotti.
 
 A differenza della verifica, che controlla puntualmente un artefatto, l'accertamento
-della qualità monitora l'efficacia e l'efficienza del way of working\textsubscript{G}.
+della qualità monitora l'efficacia e l'efficienza del way of working.
 
 % ------------------------------------------------
 
@@ -758,7 +758,7 @@ continuo:
 \begin{itemize}
     \item \textbf{Plan}: definizione di obiettivi, metriche e procedure;
     \item \textbf{Do}: applicazione dei processi definiti;
-    \item \textbf{Check}: misurazione dei risultati e analisi degli scostamenti;
+    \item \textbf{Check}: misurazione\textsubscript{G} dei risultati e analisi degli scostamenti;
     \item \textbf{Act}: introduzione di azioni correttive e aggiornamento del way of working.
 \end{itemize}
 
@@ -766,7 +766,7 @@ continuo:
 
 \subsubsection{Metriche E Piano Di Qualifica}
 
-Le metriche, le soglie e il cruscotto di qualità sono definiti progressivamente
+Le metriche, le soglie e il cruscotto di qualità\textsubscript{G} sono definiti progressivamente
 nel Piano di Qualifica.
 
 Poiché in fase RTB il Piano di Qualifica è ancora in stesura, le presenti norme

@@ -35,7 +35,6 @@ Daily Stand-up
 Diario di Bordo
 Decision Tree
 Definition of Done
-DoD
 Debito Tecnico
 Deployment Automatizzato
 Discord
