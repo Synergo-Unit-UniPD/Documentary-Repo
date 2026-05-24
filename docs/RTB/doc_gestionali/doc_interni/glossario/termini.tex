@@ -15,9 +15,11 @@
       prima della chiusura di ogni sprint, che i tempi effettivi nel foglio di
       calcolo siano stati compilati correttamente.
       \item \textbf{Analisi dei Requisiti:} Documento essenziale che fissa i requisiti che il fornitore si impegna a soddisfare in accordo con il proponente. Traduce i bisogni dell'utente descrivendo esclusivamente \textit{cosa} il sistema deve fare, senza entrare in alcun dettaglio implementativo (il \textit{come}). Costituisce la base contrattuale e il documento fondamentale per l'accesso e il superamento della revisione RTB.
+      \item \textbf{Analisi Dei Rischi:} Sezione del Piano di Progetto che raccoglie l'elenco dei rischi identificati, il loro stato, la probabilità, l'impatto e le relative strategie di mitigazione e contingenza.
       \item \textbf{Analista:} Ruolo del gruppo responsabile delle attività di
       analisi dei requisiti. Attivo dalla baseline RTB.
       \item \textbf{Angular:} Framework frontend sviluppato da Google per la realizzazione di applicazioni web dinamiche e strutturate, basato su TypeScript.
+      \item \textbf{API (Application Programming Interface):} Insieme di regole e strumenti che permettono a diversi sistemi software di comunicare tra loro. Nel contesto del progetto, consente l'invocazione di servizi esterni di LLM tramite chiamate strutturate.
       \item \textbf{API Key:} Chiave di autenticazione utilizzata per autorizzare l’accesso a servizi o API esterne.
       \item \textbf{Architecture Decision Record (ADR):} Documento sintetico utilizzato per registrare una decisione architetturale rilevante, includendo il contesto, le alternative valutate, la decisione presa e le relative motivazioni. Nel progetto è previsto per la fase PB, quando le scelte architetturali saranno consolidate.
       \item \textbf{Artefatto:} Prodotto concreto generato durante lo svolgimento del progetto, come documento, diagramma, codice sorgente, script, file PDF, verbale o materiale di presentazione.
@@ -25,6 +27,8 @@
       \item \textbf{Attore:} In ambito UML, rappresenta un'entità esterna (un utente umano o un altro sistema) che interagisce direttamente con il sistema software per raggiungere uno specifico obiettivo.
       \item \textbf{API (Application Programming Interface):} Insieme di regole e strumenti che permettono a diversi sistemi software di comunicare tra loro. Nel contesto del progetto, consente l'invocazione di servizi esterni di LLM tramite chiamate strutturate.
       \item \textbf{Appunti (Clipboard):} Area temporanea di memoria del sistema operativo utilizzata per conservare dati copiati o tagliati dall'utente, rendendoli disponibili per operazioni di incolla. Nel progetto è utilizzata per trasferire testo da e verso l'editor.
+      \item \textbf{Asincrono:} Modello di esecuzione in cui operazioni e processi possono essere svolti senza bloccare il flusso principale del programma.   
+      \item \textbf{Attore:} In ambito UML, rappresenta un'entità esterna (un utente umano o un altro sistema) che interagisce direttamente con il sistema software per raggiungere uno specifico obiettivo.
       \item \textbf{AWS (Amazon Web Services):} Piattaforma di cloud computing che fornisce servizi on-demand come elaborazione, storage e database.
       \end{itemize}
  
@@ -51,6 +55,7 @@
           repository Git, utilizzata per lavorare su modifiche isolate senza
           influenzare il ramo principale (\texttt{main}).
       \item \textbf{Branch Protection Rules:} Regole di protezione configurate su GitHub per limitare le modifiche dirette a un branch. Nel progetto sono utilizzate sul branch \texttt{main} per richiedere almeno una review positiva, bloccare i force push e restringere l'eliminazione del branch protetto.
+      \item \textbf{Budget:} Quantità di risorse economiche disponibili per il progetto o per uno specifico sprint, calcolata sulla base delle ore preventivate e dei costi orari associati ai ruoli.
       \item \textbf{Burndown Chart:} Grafico che mostra l'andamento del lavoro residuo nel
       corso di uno sprint o dell'intero progetto, confrontando il ritmo di avanzamento
       effettivo con quello pianificato. Utilizzata per monitorare il rischio di ritardo
@@ -81,6 +86,7 @@
       \item \textbf{Container:} Unità software isolata che include codice, dipendenze e configurazioni necessarie all’esecuzione di uno specifico servizio.
       \item \textbf{Containerizzazione:} Processo di distribuzione ed esecuzione del software tramite container isolati e portabili.
       \item \textbf{Cruscotto Di Qualità:} Strumento di raccolta e visualizzazione delle metriche di qualità di processo e di prodotto, utilizzato per monitorare il raggiungimento degli obiettivi definiti nel Piano di Qualifica.
+      \item \textbf{Contingenza:} Insieme di azioni correttive attivate quando un rischio si manifesta effettivamente, con l'obiettivo di ridurne gli effetti sul progetto.
 \end{itemize}
  
 % ------------- D -------------
@@ -239,6 +245,9 @@
 \addcontentsline{toc}{subsection}{M}
 \subsection*{M}
 \begin{itemize}[leftmargin=*]
+      \item \textbf{Main:} Ramo (branch) principale del repository Git, che contiene esclusivamente le versioni stabili, verificate e approvate dei documenti e del codice.
+      \item \textbf{Markdown:} Linguaggio di markup leggero che permette di formattare il testo utilizzando una sintassi semplice e intuitiva in puro testo semplice.
+      \item \textbf{Matrice Dei Rischi:} Strumento grafico che classifica i rischi in base alla loro probabilità di occorrenza e al loro impatto sul progetto, utilizzato per prioritizzare le azioni di gestione.
       \item \textbf{Merge:} Operazione Git che integra le modifiche di un branch
       di lavoro nel branch principale (\texttt{main}). Nel flusso del gruppo
       il merge viene eseguito dall'Assegnatario del task (non dal Verificatore)
@@ -255,14 +264,13 @@
           ricoperto, tempo previsto e tempo effettivo impiegato. I dati sono
           registrati nel foglio di calcolo condiviso e utilizzati per il
           monitoraggio dell'avanzamento.
+      \item \textbf{Mitigazione:} Insieme di azioni preventive adottate per ridurre la probabilità di occorrenza o l'impatto di un rischio identificato.
       \item \textbf{MongoDB:} Database NoSQL orientato ai documenti, open source,progettato per scalabilità orizzontale e alte prestazioni in contesti distribuiti.
       \item \textbf{MVP (Minimum Viable Product):} Versione del prodotto dotata delle
           funzionalità minime sufficienti per essere valutata dal proponente.
           Consente di verificare la bontà della visione iniziale, di raccogliere
           feedback fondato e di prendere decisioni informate per il completamento
           definitivo del prodotto.
-      \item \textbf{Main:} Ramo (branch) principale del repository Git, che contiene esclusivamente le versioni stabili, verificate e approvate dei documenti e del codice.
-      \item \textbf{Markdown:} Linguaggio di markup leggero che permette di formattare il testo utilizzando una sintassi semplice e intuitiva in puro testo semplice.
 \end{itemize}
  
 % ------------- N -------------
@@ -315,13 +323,13 @@
           alla prima occorrenza del termine in ciascun documento tramite lo script
           Python di automazione (\texttt{python\_glossary\_automation/}).
           \textit{Esempio}: Termine\textsubscript{G}.
+      \item \textbf{PII:} Informazioni personali identificabili che consentono l’identificazione diretta o indiretta di un individuo.
       \item \textbf{Piano di Progetto:} Documento gestionale e strategico mirato all'efficienza del team. Definisce l'organigramma, l'assegnazione e la rotazione dei ruoli, il preventivo dell'impegno orario e il consuntivo di periodo. Gestisce l'analisi dei rischi e struttura le attività in una pianificazione macroscopica a lungo termine (fissando le milestone a ritroso) e una pianificazione dettagliata a breve termine (guardando in avanti per i singoli sprint).
       \item \textbf{Piano Di Qualifica:} Documento gestionale esterno che definisce
       gli obiettivi quantitativi di qualità di processo e di prodotto, le
       metriche adottate per misurarli e il cruscotto di valutazione utilizzato
       per monitorarne il raggiungimento nel tempo. Include le retrospettive
       e le iniziative di automiglioramento del gruppo.
-      \item \textbf{PII:} Informazioni personali identificabili che consentono l’identificazione diretta o indiretta di un individuo.
       \item \textbf{PoC (Proof of Concept):} Artefatto eseguibile, da considerarsi
           usa-e-getta sul piano architetturale, realizzato all'inizio del progetto
           per valutare la fattibilità tecnologica del prodotto atteso rispetto a
@@ -330,7 +338,6 @@
           requisiti dal lato della soluzione.
       \item \textbf{Pop-up:} Finestra grafica temporanea che appare in sovrapposizione all'interfaccia principale per mostrare informazioni o risultati contestuali senza interrompere il flusso di lavoro dell'utente.
       \item \textbf{Portabilità:} Capacità di un software di essere eseguito su ambienti differenti senza modifiche sostanziali.
-      \item \textbf{Prompt Engineering:} Attività di progettazione e ottimizzazione dei prompt forniti a un LLM per ottenere risposte coerenti, accurate e aderenti agli obiettivi del sistema.
       \item \textbf{Postgres (PostgreSQL):} Sistema avanzato di gestione di database
           relazionali e ad oggetti, open source. Utilizzato come tecnologia di
           persistenza dei dati nel capitolato di riferimento.
@@ -348,15 +355,16 @@
             progettazione architetturale (\textit{design}). Attivo dalla baseline RTB.
       \item \textbf{Programmatore:} Ruolo del gruppo responsabile delle attività di
             codifica del prodotto software; attivato durante la fase di sviluppo.
+      \item \textbf{Project Manager:} Figura responsabile della pianificazione, esecuzione e chiusura di un progetto. Nel gruppo, questa funzione è ricoperta dal Responsabile.
       \item \textbf{Prompt:} Input testuale in linguaggio naturale fornito da un
             utente a un sistema di intelligenza artificiale per guidarne la
             generazione di contenuto.
+      \item \textbf{Prompt Engineering:} Attività di progettazione e ottimizzazione dei prompt forniti a un LLM per ottenere risposte coerenti, accurate e aderenti agli obiettivi del sistema.
       \item \textbf{Pull Request:} Meccanismo di GitHub utilizzato per proporre
           l'integrazione di modifiche da un branch di lavoro al branch
           \texttt{main}. Nel flusso documentale del gruppo costituisce il punto
           di ingresso obbligatorio per la verifica: il Verificatore esamina le
           modifiche, lascia eventuali commenti e approva o rifiuta l'integrazione.
-      \item \textbf{Project Manager:} Figura responsabile della pianificazione, esecuzione e chiusura di un progetto. Nel gruppo, questa funzione è ricoperta dal Responsabile.
 \end{itemize}
  
 % ------------- Q -------------
@@ -376,11 +384,11 @@
           contenuto di un documento, nel rispetto del template approvato e delle
           convenzioni redazionali definite nelle Norme di Progetto. Non può
           verificare il proprio lavoro.
-      \item \textbf{Redo:} Funzionalità dell'editor che permette rispettivamente di ripristinare una modifica annullata. Supporta la gestione incrementale delle revisioni del testo durante la modifica delle note.
-      \item \textbf{Refactoring:} Attività di ristrutturazione del codice sorgente
+      \item \textbf{Redo:} Funzionalità dell'editor che permette di ripristinare una modifica precedentemente annullata.      \item \textbf{Refactoring:} Attività di ristrutturazione del codice sorgente
       finalizzata a migliorarne la leggibilità, la manutenibilità e la qualità
       interna, senza modificarne il comportamento esterno. Utilizzata per ridurre
       il debito tecnico accumulato.
+      \item \textbf{Render (o Rendering):} Processo di conversione e visualizzazione a schermo del codice sorgente (es. testo in Markdown) in un formato grafico leggibile e impaginato per l'utente finale.
       \item \textbf{Repository:} Archivio Git centralizzato che contiene documenti,
           codice sorgente e cronologia completa delle versioni del progetto.
           Ospitato su GitHub; il branch \texttt{main} contiene esclusivamente le
@@ -406,7 +414,6 @@
           Responsabile, Amministratore, Analista, Progettista, Programmatore,
           Verificatore. Ogni membro deve ricoprire un solo ruolo alla volta e
           ruotare su tutti i ruoli nel corso del progetto.
-      \item \textbf{Render (o Rendering):} Processo di conversione e visualizzazione a schermo del codice sorgente (es. testo in Markdown) in un formato grafico leggibile e impaginato per l'utente finale.
 \end{itemize}
  
 % ------------- S -------------
@@ -501,6 +508,7 @@
             ogni parola. \textit{Esempio}: ``Ciclo Di Vita Documentale''.
       \item \textbf{TLS:} Protocollo crittografico utilizzato per garantire sicurezza e riservatezza nelle comunicazioni di rete.
       \item \textbf{To Do:} Stato di una issue in GitHub Projects che indica che l'attività è stata pianificata ma non ancora iniziata.
+      \item \textbf{TypeScript:} Superset di JavaScript che introduce tipizzazione statica e strumenti avanzati di sviluppo.
       \item \textbf{Token:} Elemento digitale utilizzato per autenticazione, autorizzazione o identificazione all’interno di un sistema.
       \item \textbf{Traduzione:} Funzionalità del sistema che consente di
             convertire il testo presente nell'editor in una lingua diversa
@@ -512,7 +520,6 @@
           membro lavora su un branch dedicato a un singolo documento o attività e
           integra le modifiche nel branch principale (\texttt{main}) tramite pull
           request al termine del lavoro, eliminando poi il branch.
-      \item \textbf{TypeScript:} Superset di JavaScript che introduce tipizzazione statica e strumenti avanzati di sviluppo.
 \end{itemize}
  
 % ------------- U -------------
@@ -524,7 +531,7 @@
       standard utilizzato per rappresentare graficamente la struttura e il
       comportamento di un sistema software. Nel contesto del progetto è
       adottato per la rappresentazione dei diagrammi dei casi d'uso.
-      \item \textbf{Undo:} Funzionalità dell'editor che permette rispettivamente di annullare l'ultima modifica effettuata. Supporta la gestione incrementale delle revisioni del testo durante la modifica delle note.
+      \item \textbf{Undo:} Funzionalità dell'editor che permette di annullare l'ultima modifica effettuata.
       \item \textbf{Usabilità:} Capacità di un sistema di essere utilizzato in modo efficace, efficiente e soddisfacente dall'utente finale.
       \item \textbf{Utenza Target:} Profilo dell'utente finale a cui il sistema
       è destinato, definito in accordo con il proponente. Nel contesto del
