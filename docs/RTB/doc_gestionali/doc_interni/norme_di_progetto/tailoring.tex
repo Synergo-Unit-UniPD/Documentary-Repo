@@ -1,59 +1,136 @@
 % ================================================================
-% TAILORINIG
+% TAILORING
 % ================================================================
+
 \section{Tailoring}
 \label{sec:tailoring}
- 
-Lo standard ISO/IEC~12207:1995 prevede esplicitamente la possibilità di adattare
-(tailoring) il proprio insieme di processi al contesto specifico
-del progetto. Il presente documento applica tale adattamento in ragione dei seguenti
-fattori contestuali:
- 
+
+Lo standard ISO/IEC~12207:1995\textsubscript{G} prevede la possibilità di adattare
+(\textit{tailoring}\textsubscript{G}) i processi del ciclo di vita software al contesto
+specifico del progetto.
+
+Il gruppo \textit{Synergo Unit} adotta un approccio incrementale orientato al
+miglioramento continuo, introducendo progressivamente processi e pratiche
+in funzione dell'evoluzione del progetto e delle baseline\textsubscript{G} previste dal
+regolamento didattico.
+
+Il tailoring adottato tiene conto dei seguenti fattori contestuali:
+
 \begin{itemize}
-  \item \textbf{Baseline\textsubscript{G} attuale}: RTB\textsubscript{G}; il gruppo è in fase di
-        analisi dei requisiti\textsubscript{G} e produzione della documentazione tecnica e gestionale
-        richiesta per la Requirements \& Technology Baseline\textsubscript{G}.
-  \item \textbf{Dimensione del gruppo}: sei membri con rotazione documentata dei
-        ruoli.
-  \item \textbf{Natura didattica}: progetto svolto in ambito accademico con vincoli
-        di tempo e risorse predefiniti dal regolamento del corso.
+    \item \textbf{Baseline attuale}: RTB\textsubscript{G}; il gruppo si trova nella fase di consolidamento dei requisiti e della documentazione tecnica e gestionale richiesta per la Requirements \& Technology Baseline\textsubscript{G};
+
+    \item \textbf{Dimensione del gruppo}: sei membri con rotazione periodica e documentata dei ruoli;
+
+    \item \textbf{Natura didattica del progetto}: il progetto viene svolto in ambito accademico, con vincoli temporali, organizzativi e tecnologici definiti dal regolamento del corso;
+
+    \item \textbf{Approccio incrementale}: il gruppo introduce esclusivamente processi effettivamente utilizzati e verificabili.
 \end{itemize}
- 
-\subsection{Processi Attivati: Fase CC}
- 
-La tabella seguente elenca i processi attivati nella fase di candidatura\textsubscript{G} (CC),
-rimasti operativi nelle fasi successive.
- 
+
+Il presente documento è soggetto ad aggiornamento progressivo secondo il principio \textit{just-in-time}\textsubscript{G}: ogni nuova attività o pratica introdotta nel progetto deve essere normata prima della sua applicazione operativa.
+
+% ------------------------------------------------
+
+\subsection{Processi attivati nella fase CC}
+
+La seguente tabella riporta i processi attivati durante la fase di candidatura\textsubscript{G} (CC), mantenuti operativi anche nelle fasi successive del progetto.
+
 \bigskip
+
 \begin{tabularx}{\textwidth}{l l X}
-  \toprule
-  \textbf{Categoria} & \textbf{Processo} & \textbf{Sezione} \\
-  \midrule
-  Primario      & Fornitura                     & \ref{sec:fornitura} \\
-  Di supporto   & Documentazione                & \ref{sec:documentazione} \\
-  Di supporto   & Gestione della Configurazione & \ref{sec:configurazione} \\
-  Di supporto   & Verifica                      & \ref{sec:verifica} \\
-  Organizzativo & Gestione                      & \ref{sec:gestione} \\
-  Organizzativo & Infrastruttura                & \ref{sec:infrastruttura} \\
-  \bottomrule
+    \toprule
+    \textbf{Categoria} & \textbf{Processo} & \textbf{Sezione} \\
+    \midrule
+
+    Primario
+    & Fornitura
+    & \ref{sec:fornitura} \\
+
+    Di supporto
+    & Gestione della documentazione
+    & \ref{sec:documentazione} \\
+
+    Di supporto
+    & Gestione della configurazione
+    & \ref{sec:configurazione} \\
+
+    Di supporto
+    & Verifica documentale
+    & \ref{sec:verifica} \\
+
+    Organizzativo
+    & Pianificazione e gestione delle attività
+    & \ref{sec:gestione} \\
+
+    Organizzativo
+    & Gestione dell'infrastruttura operativa
+    & \ref{sec:infrastruttura} \\
+
+    \bottomrule
 \end{tabularx}
 
-\subsection{Processi Attivati: Fase RTB}
+% ------------------------------------------------
 
-Con l'avanzamento alla baseline RTB vengono attivati i seguenti processi
-aggiuntivi. I processi della fase CC restano operativi.
+\subsection{Processi attivati nella fase RTB}
+
+Con l'avanzamento alla baseline RTB vengono introdotti ulteriori processi necessari al consolidamento dei requisiti, della qualità e delle attività di progettazione.
+
+I processi precedentemente attivati rimangono operativi.
 
 \bigskip
+
 \begin{tabularx}{\textwidth}{l l X}
-  \toprule
-  \textbf{Categoria} & \textbf{Processo} & \textbf{Sezione} \\
-  \midrule
-  Primario    & Sviluppo: Analisi Dei Requisiti & \ref{sec:sviluppo} \\
-  Primario    & Sviluppo: Progettazione         & \ref{sec:sviluppo} \\
-  Di supporto & Garanzia Della Qualità           & \ref{sec:qualita} \\
-  \bottomrule
+    \toprule
+    \textbf{Categoria} & \textbf{Processo} & \textbf{Sezione} \\
+    \midrule
+
+    Primario
+    & Analisi dei requisiti
+    & \ref{sec:sviluppo} \\
+
+    Primario
+    & Analisi dello stato dell'arte
+    & \ref{sec:sviluppo} \\
+
+    Primario
+    & Progettazione architetturale preliminare
+    & \ref{sec:sviluppo} \\
+
+    Primario
+    & Proof of Concept
+    & \ref{sec:sviluppo} \\
+
+    Di supporto
+    & Garanzia della qualità
+    & \ref{sec:qualita} \\
+
+    Di supporto
+    & Gestione dei rischi
+    & \ref{sec:rischi} \\
+
+    Di supporto
+    & Utilizzo di strumenti AI
+    & \ref{sec:ai} \\
+
+    \bottomrule
 \end{tabularx}
- 
-\bigskip
-I \textbf{processi esclusi} saranno rivalutati a ogni cambio di baseline del progetto e,
-ove necessario, introdotti con un aggiornamento del presente documento.
+
+% ------------------------------------------------
+
+\subsection{Processi pianificati per la fase PB}
+
+Alcuni processi risultano attualmente non necessari oppure ancora in consolidamento.
+
+Tali processi verranno rivalutati e, ove necessario, introdotti durante la Product Baseline\textsubscript{G} (PB).
+
+Tra i principali processi pianificati rientrano:
+
+\begin{itemize}
+    \item integrazione continua;
+    \item testing automatico;
+    \item deployment automatizzato;
+    \item gestione avanzata delle release software;
+    \item metriche avanzate di prodotto;
+    \item Architecture Decision Records (ADR)\textsubscript{G}.
+\end{itemize}
+
+L'introduzione di nuovi processi comporterà l'aggiornamento incrementale del presente documento.
