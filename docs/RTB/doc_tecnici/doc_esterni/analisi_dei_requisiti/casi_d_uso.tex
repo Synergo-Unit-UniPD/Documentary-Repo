@@ -14,152 +14,21 @@
 \subsection{Macroarea 1 — Gestione Editor e Markdown}
 \textit{Funzionalità core per la manipolazione e visualizzazione del testo.}
 
-% UC1 - Creazione di una nuova nota vuota
+% UC1 - Scrittura di testo nell'editor
 \hypertarget{uc1}{}
-\subsubsection{UC 1: Creazione di una nuova nota vuota}
-
-% use case diagram
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{creazione_nota.png}
-    \caption{UC1 – Creazione di una nuova nota}
-\end{figure}
-
-\begin{itemize}
-    \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: Il sistema è avviato e l'interfaccia è correttamente caricata.
-    \item \textbf{Scenario Principale\textsubscript{G}}:
-    \begin{enumerate}
-        \item L'utente attiva il comando ``Nuova Nota''.
-        \item Il sistema richiede l'inserimento di un titolo per la nota.
-        \item L'utente inserisce il titolo desiderato.
-        \item Il sistema crea una nuova nota associando il titolo inserito.
-        \item Il sistema apre la nota nell'editor.
-    \end{enumerate}
-    \item \textbf{Postcondizioni}: Una nuova nota con titolo associato è aperta e modificabile nell'editor.
-    \item \textbf{Trigger}: L'utente desidera creare una nuova nota.
-\end{itemize}
-
-% UC2 - Eliminazione di una nota
-\hypertarget{uc2}{}
-\subsubsection{UC 2: Eliminazione di una nota}
-
-% use case diagram
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{eliminazione_nota.png}
-    \caption{UC2 – Eliminazione di una nota}
-\end{figure}
-
-\begin{itemize}
-    \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: Il sistema è avviato ed è presente almeno una nota.
-    \item \textbf{Scenario Principale}:
-    \begin{enumerate}
-        \item L'utente seleziona la nota da eliminare.
-        \item Il sistema richiede conferma.
-        \item L'utente conferma.
-        \item Il sistema elimina la nota.
-    \end{enumerate}
-    \item \textbf{Postcondizioni}: La nota selezionata è rimossa dal sistema.
-    \item \textbf{Trigger}: L'utente decide di rimuovere una nota non più necessaria.
-    
-    \item \textbf{Inclusioni}:
-    \begin{itemize}
-        \item \hyperlink{uc2.1}{UC 2.1: Conferma eliminazione}
-    \end{itemize}
-
-    \item \textbf{Estensioni}: 
-    \begin{itemize}
-        \item \hyperlink{uc2.2}{UC 2.2: Annullamento eliminazione} $\rightarrow$ Condizione: risposta negativa al dialogo di conferma.
-        \item \hyperlink{uc2.3}{UC 2.3: Visualizzazione errore eliminazione} $\rightarrow$ Condizione: errore tecnico durante l'esecuzione dell'eliminazione al passo 4.
-    \end{itemize}
-\end{itemize}
-
-% UC2.1 - Conferma eliminazione
-\hypertarget{uc2.1}{}
-\subsubsection{UC 2.1: Conferma eliminazione}
-
-% use case diagram
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{conferma_eliminazione.png}
-    \caption{UC2.1 – Conferma eliminazione}
-\end{figure}
-
-\begin{itemize}
-    \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: L'utente ha richiesto l'eliminazione di una nota.
-    \item \textbf{Scenario Principale}:
-    \begin{enumerate}
-        \item Il sistema mostra un dialogo di conferma.
-        \item L'utente conferma l'operazione.
-    \end{enumerate}
-    \item \textbf{Postcondizioni}: La richiesta di eliminazione è confermata e il sistema procede.
-    \item \textbf{Trigger}: Il sistema richiede una conferma esplicita prima di un'operazione distruttiva.
-\end{itemize}
-
-% UC2.2 - Annullamento eliminazione
-\hypertarget{uc2.2}{}
-\subsubsection{UC 2.2: Annullamento eliminazione}
-
-% use case diagram
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{annullamento_eliminazione.png}
-    \caption{UC2.2 – Annullamento eliminazione}
-\end{figure}
-
-\begin{itemize}
-    \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: Il dialogo di conferma eliminazione è visualizzato a schermo.
-    \item \textbf{Scenario Principale}:
-    \begin{enumerate}
-        \item L'utente preme ``Annulla'' nel dialogo di conferma.
-        \item Il sistema chiude il dialogo senza apportare modifiche.
-    \end{enumerate}
-    \item \textbf{Postcondizioni}: La nota rimane invariata; nessuna modifica è avvenuta.
-    \item \textbf{Trigger}: L'utente decide di non procedere con l'eliminazione.
-\end{itemize}
-
-% UC2.3 - Visualizzazione errore eliminazione
-\hypertarget{uc2.3}{}
-\subsubsection{UC 2.3: Visualizzazione errore eliminazione}
-
-% use case diagram
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{errore_eliminazione.png}
-    \caption{UC2.3 – Visualizzazione errore eliminazione}
-\end{figure}
-
-\begin{itemize}
-    \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: L'utente ha confermato l'eliminazione della nota.
-    \item \textbf{Scenario Principale}:
-    \begin{enumerate}
-        \item Il sistema riscontra un problema tecnico durante la rimozione della nota.
-        \item Il sistema mostra un messaggio di errore all'utente.
-    \end{enumerate}
-    \item \textbf{Postcondizioni}: La nota non viene eliminata e l'utente viene informato dell'errore.
-    \item \textbf{Trigger}: Il sistema operativo o il file system\textsubscript{G} impediscono la cancellazione del file.
-\end{itemize}
-
-% UC3 - Scrittura di testo nell'editor
-\hypertarget{uc3}{}
-\subsubsection{UC 3: Scrittura testo nell'editor}
+\subsubsection{UC 1: Scrittura testo nell'editor}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{scrittura_nota.png}
-    \caption{UC3 – Scrittura di testo nell'editor}
+    \caption{UC 1 – Scrittura di testo nell'editor}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
     \item \textbf{Precondizioni}: L'editor è attivo ed è presente una nota aperta nell'editor.
-    \item \textbf{Scenario Principale}:
+    \item \textbf{Scenario Principale\textsubscript{G}}:
     \begin{enumerate}
         \item L'utente posiziona il cursore nell'area di testo.
         \item L'utente inserisce testo tramite tastiera.
@@ -170,15 +39,15 @@
     \item \textbf{Trigger}: L'utente vuole inserire o modificare i contenuti testuali della nota.
 \end{itemize}
 
-% UC4 - Copia testo
-\hypertarget{uc4}{}
-\subsubsection{UC 4: Copia testo}
+% UC2 - Copia testo
+\hypertarget{uc2}{}
+\subsubsection{UC 2: Copia testo}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{copia_testo.png}
-    \caption{UC4 – Copia testo}
+    \caption{UC 2 – Copia testo}
 \end{figure}
 
 \begin{itemize}
@@ -193,15 +62,15 @@
     \item \textbf{Trigger}: L'utente vuole copiare una porzione di testo.
 \end{itemize}
 
-% UC5 - Taglia testo
-\hypertarget{uc5}{}
-\subsubsection{UC 5: Taglia testo}
+% UC3 - Taglia testo
+\hypertarget{uc3}{}
+\subsubsection{UC 3: Taglia testo}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{taglia_testo.png}
-    \caption{UC5 – Taglia testo}
+    \caption{UC 3 – Taglia testo}
 \end{figure}
 
 \begin{itemize}
@@ -216,15 +85,15 @@
     \item \textbf{Trigger}: L'utente vuole spostare una porzione di testo.
 \end{itemize}
 
-% UC6 - Incolla testo
-\hypertarget{uc6}{}
-\subsubsection{UC 6: Incolla testo}
+% UC4 - Incolla testo
+\hypertarget{uc4}{}
+\subsubsection{UC 4: Incolla testo}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{incolla_testo.png}
-    \caption{UC6 – Incolla testo}
+    \caption{UC 4 – Incolla testo}
 \end{figure}
 
 \begin{itemize}
@@ -242,15 +111,15 @@
 
 %---------------GRASSETTO----------------
 
-% UC7 - Attivazione grassetto 
-\hypertarget{uc7}{}
-\subsubsection{UC 7: Attivazione grassetto}
+% UC5 - Attivazione grassetto 
+\hypertarget{uc5}{}
+\subsubsection{UC 5: Attivazione grassetto}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{attivazione_grassetto.png}
-    \caption{UC7 – Attivazione grassetto }
+    \caption{UC 5 – Attivazione grassetto }
 \end{figure}
 
 \begin{itemize}
@@ -266,15 +135,15 @@
     \end{itemize}
 
 
-% UC8 - Applicazione grassetto al testo selezionato
-\hypertarget{uc8}{}
-\subsubsection{UC 8: Applicazione grassetto al testo selezionato}
+% UC6 - Applicazione grassetto al testo selezionato
+\hypertarget{uc6}{}
+\subsubsection{UC 6: Applicazione grassetto al testo selezionato}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{applicazione_grassetto.png}
-    \caption{UC8 – Applicazione grassetto al testo selezionato}
+    \caption{UC 6 – Applicazione grassetto al testo selezionato}
 \end{figure}
 
 \begin{itemize}
@@ -289,15 +158,15 @@
     \item \textbf{Trigger}: L'utente desidera applicare il formato grassetto a testo esistente.
 \end{itemize}
 
-% UC9 -  Disattivazione grassetto 
-\hypertarget{uc9}{}
-\subsubsection{UC 9: Disattivazione grassetto }
+% UC7 -  Disattivazione grassetto 
+\hypertarget{uc7}{}
+\subsubsection{UC 7: Disattivazione grassetto }
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{disattivazione_grassetto.png}
-    \caption{UC9 – Disattivazione grassetto }
+    \caption{UC 7 – Disattivazione grassetto }
 \end{figure}
 
 \begin{itemize}
@@ -312,15 +181,15 @@
 \item \textbf{Trigger}: L'utente desidera interrompere la scrittura in grassetto.
 \end{itemize}
 
-% UC10 - Rimozione grassetto dal testo selezionato
-\hypertarget{uc10}{}
-\subsubsection{UC 10: Rimozione grassetto dal testo selezionato}
+% UC8 - Rimozione grassetto dal testo selezionato
+\hypertarget{uc8}{}
+\subsubsection{UC 8: Rimozione grassetto dal testo selezionato}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{rimozione_grassetto.png}
-    \caption{UC10 – Rimozione grassetto dal testo selezionato}
+    \caption{UC 8 – Rimozione grassetto dal testo selezionato}
 \end{figure}
 
 \begin{itemize}
@@ -337,15 +206,15 @@
 
 %---------------CORSIVO----------------
 
-% UC11 -  Attivazione corsivo 
-\hypertarget{uc11}{}
-\subsubsection{UC 11: Attivazione corsivo }
+% UC9 -  Attivazione corsivo 
+\hypertarget{uc9}{}
+\subsubsection{UC 9: Attivazione corsivo }
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{attivazione_corsivo.png}
-    \caption{UC11 – Attivazione corsivo }
+    \caption{UC 9 – Attivazione corsivo }
 \end{figure}
 
 \begin{itemize}
@@ -360,15 +229,15 @@
     \item \textbf{Trigger}: L'utente desidera applicare la formattazione corsivo durante l'inserimento del testo.
     \end{itemize}
 
-% UC12 - Applicazione corsivo al testo selezionato
-\hypertarget{uc12}{}
-\subsubsection{UC 12: Applicazione corsivo al testo selezionato}
+% UC10 - Applicazione corsivo al testo selezionato
+\hypertarget{uc10}{}
+\subsubsection{UC 10: Applicazione corsivo al testo selezionato}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{applicazione_corsivo.png}
-    \caption{UC12 – Applicazione corsivo al testo selezionato}
+    \caption{UC 10 – Applicazione corsivo al testo selezionato}
 \end{figure}
 
 \begin{itemize}
@@ -383,15 +252,15 @@
     \item \textbf{Trigger}: L'utente desidera applicare il formato corsivo a testo esistente.
 \end{itemize}
 
-% UC13 -  Disattivazione corsivo 
-\hypertarget{uc13}{}
-\subsubsection{UC 13: Disattivazione corsivo }
+% UC11 -  Disattivazione corsivo 
+\hypertarget{uc11}{}
+\subsubsection{UC 11: Disattivazione corsivo }
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{disattivazione_corsivo.png}
-    \caption{UC13 – Disattivazione corsivo }
+    \caption{UC 11 – Disattivazione corsivo }
 \end{figure}
 
 \begin{itemize}
@@ -406,15 +275,15 @@
 \item \textbf{Trigger}: L'utente desidera interrompere la scrittura in corsivo.
 \end{itemize}
 
-% UC14 - Rimozione corsivo dal testo selezionato
-\hypertarget{uc14}{}
-\subsubsection{UC 14: Rimozione corsivo dal testo selezionato}
+% UC12 - Rimozione corsivo dal testo selezionato
+\hypertarget{uc12}{}
+\subsubsection{UC 12: Rimozione corsivo dal testo selezionato}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{rimozione_corsivo.png}
-    \caption{UC14 – Rimozione corsivo dal testo selezionato}
+    \caption{UC 12 – Rimozione corsivo dal testo selezionato}
 \end{figure}
 
 \begin{itemize}
@@ -431,15 +300,15 @@
 
 %---------------SOTTOLINEATO----------------
 
-% UC15 -  Attivazione sottolineato 
-\hypertarget{uc15}{}
-\subsubsection{UC 15: Attivazione sottolineato }
+% UC13 -  Attivazione sottolineato 
+\hypertarget{uc13}{}
+\subsubsection{UC 13: Attivazione sottolineato }
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{attivazione_sottolineato.png}
-    \caption{UC15 – Attivazione sottolineato }
+    \caption{UC 13 – Attivazione sottolineato }
 \end{figure}
 
 \begin{itemize}
@@ -454,15 +323,15 @@
     \item \textbf{Trigger}: L'utente desidera applicare la formattazione sottolineato durante l'inserimento del testo.
     \end{itemize}
 
-% UC16 - Applicazione sottolineato al testo selezionato
-\hypertarget{uc16}{}
-\subsubsection{UC 16: Applicazione sottolineato al testo selezionato}
+% UC14 - Applicazione sottolineato al testo selezionato
+\hypertarget{uc14}{}
+\subsubsection{UC 14: Applicazione sottolineato al testo selezionato}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{applicazione_sottolineato.png}
-    \caption{UC16 – Applicazione sottolineato al testo selezionato}
+    \caption{UC 14 – Applicazione sottolineato al testo selezionato}
 \end{figure}
 
 \begin{itemize}
@@ -477,15 +346,15 @@
     \item \textbf{Trigger}: L'utente desidera applicare il formato sottolineato a testo esistente.
 \end{itemize}
 
-% UC17 -  Disattivazione sottolineato 
-\hypertarget{uc17}{}
-\subsubsection{UC 17: Disattivazione sottolineato}
+% UC15 -  Disattivazione sottolineato 
+\hypertarget{uc15}{}
+\subsubsection{UC 15: Disattivazione sottolineato}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{disattivazione_sottolineato.png}
-    \caption{UC17 – Disattivazione sottolineato}
+    \caption{UC 15 – Disattivazione sottolineato}
 \end{figure}
 
 \begin{itemize}
@@ -500,15 +369,15 @@
     \item \textbf{Trigger}: L'utente desidera interrompere la scrittura in sottolineato.
 \end{itemize}
 
-% UC18 - Rimozione sottolineato dal testo selezionato
-\hypertarget{uc18}{}
-\subsubsection{UC 18: Rimozione sottolineato dal testo selezionato}
+% UC16 - Rimozione sottolineato dal testo selezionato
+\hypertarget{uc16}{}
+\subsubsection{UC 16: Rimozione sottolineato dal testo selezionato}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{rimozione_sottolineato.png}
-    \caption{UC18 – Rimozione sottolineato dal testo selezionato}
+    \caption{UC 16 – Rimozione sottolineato dal testo selezionato}
 \end{figure}
 
 \begin{itemize}
@@ -525,15 +394,15 @@
 
 %---------------BARRATO----------------
 
-% UC19 -  Attivazione barrato
-\hypertarget{uc19}{}
-\subsubsection{UC 19: Attivazione barrato}
+% UC17 -  Attivazione barrato
+\hypertarget{uc17}{}
+\subsubsection{UC 17: Attivazione barrato}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{attivazione_barrato.png}
-    \caption{UC19 – Attivazione barrato}
+    \caption{UC 17 – Attivazione barrato}
 \end{figure}
 
 \begin{itemize}
@@ -548,15 +417,15 @@
     \item \textbf{Trigger}: L'utente desidera applicare la formattazione barrato durante l'inserimento del testo.
 \end{itemize}
 
-% UC20 - Applicazione barrato al testo selezionato
-\hypertarget{uc20}{}
-\subsubsection{UC 20: Applicazione barrato al testo selezionato}
+% UC18 - Applicazione barrato al testo selezionato
+\hypertarget{uc18}{}
+\subsubsection{UC 18: Applicazione barrato al testo selezionato}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{applicazione_barrato.png}
-    \caption{UC20 – Applicazione barrato al testo selezionato}
+    \caption{UC 18 – Applicazione barrato al testo selezionato}
 \end{figure}
 
 \begin{itemize}
@@ -571,15 +440,15 @@
     \item \textbf{Trigger}: L'utente desidera applicare il formato barrato a testo esistente.
 \end{itemize}
 
-% UC21 -  Disattivazione barrato
-\hypertarget{uc21}{}
-\subsubsection{UC 21: Disattivazione barrato}
+% UC19 -  Disattivazione barrato
+\hypertarget{uc19}{}
+\subsubsection{UC 19: Disattivazione barrato}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{disattivazione_barrato.png}
-    \caption{UC21 – Disattivazione barrato}
+    \caption{UC 19 – Disattivazione barrato}
 \end{figure}
 
 \begin{itemize}
@@ -594,15 +463,15 @@
     \item \textbf{Trigger}: L'utente desidera interrompere la scrittura in barrato.
 \end{itemize}
 
-% UC22 - Rimozione barrato dal testo selezionato
-\hypertarget{uc22}{}
-\subsubsection{UC 22: Rimozione barrato dal testo selezionato}
+% UC20 - Rimozione barrato dal testo selezionato
+\hypertarget{uc20}{}
+\subsubsection{UC 20: Rimozione barrato dal testo selezionato}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{rimozione_barrato.png}
-    \caption{UC22 – Rimozione barrato dal testo selezionato}
+    \caption{UC 20 – Rimozione barrato dal testo selezionato}
 \end{figure}
 
 \begin{itemize}
@@ -619,15 +488,15 @@
 
 %---------------CITAZIONE----------------
 
-% UC23 -  Attivazione formattazione citazione
-\hypertarget{uc23}{}
-\subsubsection{UC 23: Attivazione formattazione citazione}
+% UC21 -  Attivazione formattazione citazione
+\hypertarget{uc21}{}
+\subsubsection{UC 21: Attivazione formattazione citazione}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{attivazione_citazione.png}
-    \caption{UC23 – Attivazione formattazione citazione}
+    \caption{UC 21 – Attivazione formattazione citazione}
 \end{figure}
 
 \begin{itemize}
@@ -642,15 +511,15 @@
     \item \textbf{Trigger}: L'utente desidera scrivere nuovo testo come citazione.
 \end{itemize}
 
-% UC24 - Applicazione citazione al testo selezionato
-\hypertarget{uc24}{}
-\subsubsection{UC 24: Applicazione formattazione citazione al testo selezionato}
+% UC22 - Applicazione citazione al testo selezionato
+\hypertarget{uc22}{}
+\subsubsection{UC 22: Applicazione formattazione citazione al testo selezionato}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{applicazione_citazione.png}
-    \caption{UC24 – Applicazione formattazione citazione al testo selezionato}
+    \caption{UC 22 – Applicazione formattazione citazione al testo selezionato}
 \end{figure}
 
 \begin{itemize}
@@ -665,15 +534,15 @@
     \item \textbf{Trigger}: L'utente desidera applicare la fomattazione citazione a testo esistente.
 \end{itemize}
 
-% UC25 -  Disattivazione citazione
-\hypertarget{uc25}{}
-\subsubsection{UC 25: Disattivazione citazione}
+% UC23 -  Disattivazione citazione
+\hypertarget{uc23}{}
+\subsubsection{UC 23: Disattivazione citazione}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{disattivazione_citazione.png}
-    \caption{UC25 – Disattivazione citazione}
+    \caption{UC 23 – Disattivazione citazione}
 \end{figure}
 
 \begin{itemize}
@@ -688,15 +557,15 @@
     \item \textbf{Trigger}: L'utente desidera interrompere la modalità citazione.
 \end{itemize}
 
-% UC26 - Rimozione formattazione citazione dal testo selezionato
-\hypertarget{uc26}{}
-\subsubsection{UC 26: Rimozione formattazione citazione dal testo selezionato}
+% UC24 - Rimozione formattazione citazione dal testo selezionato
+\hypertarget{uc24}{}
+\subsubsection{UC 24: Rimozione formattazione citazione dal testo selezionato}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{rimozione_citazione.png}
-    \caption{UC26 – Rimozione formattazione citazione dal testo selezionato}
+    \caption{UC 24 – Rimozione formattazione citazione dal testo selezionato}
 \end{figure}
 
 \begin{itemize}
@@ -713,15 +582,15 @@
 
 %---------------TITOLO----------------
 
-% UC27 - Inserimento titolo
-\hypertarget{uc27}{}
-\subsubsection{UC 27: Inserimento titolo}
+% UC25 - Inserimento titolo
+\hypertarget{uc25}{}
+\subsubsection{UC 25: Inserimento titolo}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{inserimento_titolo.png}
-    \caption{UC 27 – Inserimento titolo}
+    \caption{UC 25 – Inserimento titolo}
 \end{figure}
 
 \begin{itemize}
@@ -737,15 +606,15 @@
     \item \textbf{Trigger}: L'utente desidera creare una nuova intestazione nel documento.
 \end{itemize}
 
-% UC 28 - Applicazione formattazione titolo a testo selezionato
-\hypertarget{uc28}{}
-\subsubsection{UC 28: Applicazione formattazione titolo a testo selezionato}
+% UC 26 - Applicazione formattazione titolo a testo selezionato
+\hypertarget{uc26}{}
+\subsubsection{UC 26: Applicazione formattazione titolo a testo selezionato}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{applicazione_titolo.png}
-    \caption{UC 28 – Applicazione formattazione titolo a testo selezionato}
+    \caption{UC 26 – Applicazione formattazione titolo a testo selezionato}
 \end{figure}
 
 \begin{itemize}
@@ -760,15 +629,15 @@
     \item \textbf{Trigger}: L'utente desidera applicare la formattazione titolo a testo esistente.
 \end{itemize}
 
-% UC 29 - Disattivazione titolo
-\hypertarget{uc29}{}
-\subsubsection{UC 29: Disattivazione titolo}
+% UC 27 - Disattivazione titolo
+\hypertarget{uc27}{}
+\subsubsection{UC 27: Disattivazione titolo}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{disattivazione_titolo.png}
-    \caption{UC 29 – Disattivazione titolo}
+    \caption{UC 27 – Disattivazione titolo}
 \end{figure}
 
 \begin{itemize}
@@ -783,15 +652,15 @@
     \item \textbf{Trigger}: L'utente desidera interrompere la modalità titolo.
 \end{itemize}
 
-% UC 30 - Rimozione formattazione titolo da testo selezionato
-\hypertarget{uc30}{}
-\subsubsection{UC 30: Rimozione formattazione titolo da testo selezionato}
+% UC 28 - Rimozione formattazione titolo da testo selezionato
+\hypertarget{uc28}{}
+\subsubsection{UC 28: Rimozione formattazione titolo da testo selezionato}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{rimozione_titolo.png}
-    \caption{UC 30 – Rimozione formattazione titolo su testo selezionato}
+    \caption{UC 28 – Rimozione formattazione titolo su testo selezionato}
 \end{figure}
 
 \begin{itemize}
@@ -808,15 +677,15 @@
 
 %---------------LINK IPERTESTUALE----------------
 
-% UC 31 - Inserimento link ipertestuale
-\hypertarget{uc31}{}
-\subsubsection{UC 31: Inserimento link ipertestuale}
+% UC 29 - Inserimento link ipertestuale
+\hypertarget{uc29}{}
+\subsubsection{UC 29: Inserimento link ipertestuale}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{inserimento_link.png}
-    \caption{UC 31 – Inserimento link ipertestuale}
+    \caption{UC 29 – Inserimento link ipertestuale}
 \end{figure}
 
 \begin{itemize}
@@ -833,15 +702,15 @@
     \item \textbf{Trigger}: L'utente desidera inserire un collegamento nel documento.
 \end{itemize}
 
-% UC 32 - Modifica link
-\hypertarget{uc32}{}
-\subsubsection{UC 32: Modifica link}
+% UC 30 - Modifica link
+\hypertarget{uc30}{}
+\subsubsection{UC 30: Modifica link}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{modifica_link.png}
-    \caption{UC 32 – Modifica link}
+    \caption{UC 30 – Modifica link}
 \end{figure}
 
 \begin{itemize}
@@ -857,15 +726,15 @@
     \item \textbf{Trigger}: L'utente desidera modificare un collegamento esistente.
 \end{itemize}
 
-% UC 33 - Rimozione link
-\hypertarget{uc33}{}
-\subsubsection{UC 33: Rimozione link}
+% UC 31 - Rimozione link
+\hypertarget{uc31}{}
+\subsubsection{UC 31: Rimozione link}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{rimozione_link.png}
-    \caption{UC 33 – Rimozione link}
+    \caption{UC 31 – Rimozione link}
 \end{figure}
 
 \begin{itemize}
@@ -883,15 +752,15 @@
 
 %---------------ELENCHI----------------
 
-% UC 34 - Inserimento elenco
-\hypertarget{uc34}{}
-\subsubsection{UC 34: Inserimento elenco}
+% UC 32 - Inserimento elenco
+\hypertarget{uc32}{}
+\subsubsection{UC 32: Inserimento elenco}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{inserimento_elenco.png}
-    \caption{UC 34 – Inserimento elenco}
+    \caption{UC 32 – Inserimento elenco}
 \end{figure}
 
 \begin{itemize}
@@ -908,15 +777,15 @@
     \item \textbf{Trigger}: L'utente desidera creare un elenco nel documento.
 \end{itemize}
 
-% UC 35 - Modifica elenco
-\hypertarget{uc35}{}
-\subsubsection{UC 35: Modifica elenco}
+% UC 33 - Modifica elenco
+\hypertarget{uc33}{}
+\subsubsection{UC 33: Modifica elenco}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{modifica_elenco.png}
-    \caption{UC 35 – Modifica elenco}
+    \caption{UC 33 – Modifica elenco}
 \end{figure}
 
 \begin{itemize}
@@ -932,15 +801,15 @@
     \item \textbf{Trigger}: L'utente desidera modificare un elenco esistente.
 \end{itemize}
 
-% UC 36 - Disattivazione elenco
-\hypertarget{uc36}{}
-\subsubsection{UC 36: Disattivazione elenco}
+% UC 34 - Disattivazione elenco
+\hypertarget{uc34}{}
+\subsubsection{UC 34: Disattivazione elenco}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{disattivazione_elenco.png}
-    \caption{UC 36 – Disattivazione elenco}
+    \caption{UC 34 – Disattivazione elenco}
 \end{figure}
 
 \begin{itemize}
@@ -955,15 +824,15 @@
     \item \textbf{Trigger}: L'utente desidera interrompere la modalità di inserimento elenco.
 \end{itemize}
 
-% UC 37 - Rimozione formattazione elenco da testo selezionato
-\hypertarget{uc37}{}
-\subsubsection{UC 37: Rimozione formattazione elenco da testo selezionato}
+% UC 35 - Rimozione formattazione elenco da testo selezionato
+\hypertarget{uc35}{}
+\subsubsection{UC 35: Rimozione formattazione elenco da testo selezionato}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{rimozione_elenco.png}
-    \caption{UC 37 – Rimozione formattazione elenco da testo selezionato}
+    \caption{UC 35 – Rimozione formattazione elenco da testo selezionato}
 \end{figure}
 
 \begin{itemize}
@@ -980,14 +849,14 @@
 
 %---------------GESTIONE TABELLE--------------------
 
-% UC38 - Inserimento tabella
-\hypertarget{uc38}{}
-\subsubsection{UC 38: Inserimento tabella}
+% UC36 - Inserimento tabella
+\hypertarget{uc36}{}
+\subsubsection{UC 36: Inserimento tabella}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{inserimento_tabella.png}
-    \caption{UC38 – Inserimento tabella}
+    \caption{UC 36 – Inserimento tabella}
 \end{figure}
 
 \begin{itemize}
@@ -1005,18 +874,18 @@
     \item \textbf{Trigger}: L'utente desidera inserire una tabella nella nota.
     \item \textbf{Estensioni}:
     \begin{itemize}
-        \item \hyperlink{uc38.1}{UC 38.1: Visualizzazione errore parametri tabella}: parametri non validi al passo 3.
+        \item \hyperlink{uc36.1}{UC 36.1: Visualizzazione errore parametri tabella}: parametri non validi al passo 3.
     \end{itemize}
 \end{itemize}
 
-% UC38.1 - Visualizzazione errore parametri tabella
-\hypertarget{uc38.1}{}
-\subsubsection{UC 38.1: Visualizzazione errore parametri tabella}\mbox{}\\
+% UC36.1 - Visualizzazione errore parametri tabella
+\hypertarget{uc36.1}{}
+\subsubsection{UC 36.1: Visualizzazione errore parametri tabella}\mbox{}\\
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{errore_parametri_tabella.png}
-    \caption{UC38.1 – Visualizzazione errore parametri tabella}
+    \caption{UC 36.1 – Visualizzazione errore parametri tabella}
 \end{figure}
 
 \begin{itemize}
@@ -1031,14 +900,14 @@
     \item \textbf{Trigger}: Inserimento di parametri non validi.
 \end{itemize}
 
-% UC39 - Modifica contenuto cella tabella
-\hypertarget{uc39}{}
-\subsubsection{UC 39: Modifica contenuto cella tabella}
+% UC37 - Modifica contenuto cella tabella
+\hypertarget{uc37}{}
+\subsubsection{UC 37: Modifica contenuto cella tabella}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{modifica_cella_tabella.png}
-    \caption{UC39 – Modifica contenuto cella tabella}
+    \caption{UC 37 – Modifica contenuto cella tabella}
 \end{figure}
 
 \begin{itemize}
@@ -1054,14 +923,14 @@
     \item \textbf{Trigger}: L'utente desidera modificare una cella della tabella.
 \end{itemize}
 
-% UC40 - Inserimento riga tabella
-\hypertarget{uc40}{}
-\subsubsection{UC 40: Inserimento riga tabella}
+% UC38 - Inserimento riga tabella
+\hypertarget{uc38}{}
+\subsubsection{UC 38: Inserimento riga tabella}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{inserimento_riga_tabella.png}
-    \caption{UC40 – Inserimento riga tabella}
+    \caption{UC 38 – Inserimento riga tabella}
 \end{figure}
 
 \begin{itemize}
@@ -1077,14 +946,14 @@
     \item \textbf{Trigger}: L'utente desidera aggiungere una riga alla tabella.
 \end{itemize}
 
-% UC41 - Eliminazione riga tabella
-\hypertarget{uc41}{}
-\subsubsection{UC 41: Eliminazione riga tabella}
+% UC39 - Eliminazione riga tabella
+\hypertarget{uc39}{}
+\subsubsection{UC 39: Eliminazione riga tabella}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{eliminazione_riga_tabella.png}
-    \caption{UC41 – Eliminazione riga tabella}
+    \caption{UC 39 – Eliminazione riga tabella}
 \end{figure}
 
 \begin{itemize}
@@ -1100,14 +969,14 @@
     \item \textbf{Trigger}: L'utente desidera eliminare una riga della tabella.
 \end{itemize}
 
-% UC42 - Inserimento colonna tabella
-\hypertarget{uc42}{}
-\subsubsection{UC 42: Inserimento colonna tabella}
+% UC40 - Inserimento colonna tabella
+\hypertarget{uc40}{}
+\subsubsection{UC 40: Inserimento colonna tabella}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{inserimento_colonna_tabella.png}
-    \caption{UC42 – Inserimento colonna tabella}
+    \caption{UC 40 – Inserimento colonna tabella}
 \end{figure}
 
 \begin{itemize}
@@ -1123,14 +992,14 @@
     \item \textbf{Trigger}: L'utente desidera aggiungere una colonna alla tabella.
 \end{itemize}
 
-% UC43 - Eliminazione colonna tabella
-\hypertarget{uc43}{}
-\subsubsection{UC 43: Eliminazione colonna tabella}
+% UC41 - Eliminazione colonna tabella
+\hypertarget{uc41}{}
+\subsubsection{UC 41: Eliminazione colonna tabella}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{eliminazione_colonna_tabella.png}
-    \caption{UC43 – Eliminazione colonna tabella}
+    \caption{UC 41 – Eliminazione colonna tabella}
 \end{figure}
 
 \begin{itemize}
@@ -1146,14 +1015,14 @@
     \item \textbf{Trigger}: L'utente desidera eliminare una colonna della tabella.
 \end{itemize}
 
-% UC44 - Eliminazione tabella
-\hypertarget{uc44}{}
-\subsubsection{UC 44: Eliminazione tabella}
+% UC42 - Eliminazione tabella
+\hypertarget{uc42}{}
+\subsubsection{UC 42: Eliminazione tabella}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{eliminazione_tabella.png}
-    \caption{UC44 – Eliminazione tabella}
+    \caption{UC 42 – Eliminazione tabella}
 \end{figure}
 
 \begin{itemize}
@@ -1171,15 +1040,15 @@
 
 %---------------GESTIONE MODIFICHE------------------
 
-% UC45 - Azione di Undo
-\hypertarget{uc45}{}
-\subsubsection{UC 45: Azione di Undo\textsubscript{G}}
+% UC43 - Azione di Undo
+\hypertarget{uc43}{}
+\subsubsection{UC 43: Azione di Undo\textsubscript{G}}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{azione_undo.png}
-    \caption{UC45 – Azione di Undo}
+    \caption{UC 43 – Azione di Undo}
 \end{figure}
 
 \begin{itemize}
@@ -1194,15 +1063,15 @@
     \item \textbf{Trigger}: L'utente desidera annullare un'operazione eseguita.
 \end{itemize}
 
-% UC46 - Azione di Redo
-\hypertarget{uc46}{}
-\subsubsection{UC 46: Azione di Redo\textsubscript{G}}
+% UC44 - Azione di Redo
+\hypertarget{uc44}{}
+\subsubsection{UC 44: Azione di Redo\textsubscript{G}}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{azione_redo.png}
-    \caption{UC46 – Azione di Redo}
+    \caption{UC 44 – Azione di Redo}
 \end{figure}
 
 \begin{itemize}
@@ -1219,15 +1088,15 @@
 
 %---------------GESTIONE VISUALIZZAZIONE----------------
 
-% UC47 - Visualizzazione esclusiva Editor
-\hypertarget{uc47}{}
-\subsubsection{UC 47: Visualizzazione esclusiva Editor}
+% UC45 - Visualizzazione esclusiva Editor
+\hypertarget{uc45}{}
+\subsubsection{UC 45: Visualizzazione esclusiva Editor}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{visualizzazione_editor.png}
-    \caption{UC47 – Visualizzazione esclusiva Editor}
+    \caption{UC 45 – Visualizzazione esclusiva Editor}
 \end{figure}
 
 \begin{itemize}
@@ -1242,15 +1111,15 @@
     \item \textbf{Trigger}: L'utente desidera concentrarsi esclusivamente sulla scrittura del documento.
 \end{itemize}
 
-% UC 48 - Visualizzazione esclusiva Render\textsubscript{G}
-\hypertarget{uc48}{}
-\subsubsection{UC 48: Visualizzazione esclusiva Render}
+% UC 46 - Visualizzazione esclusiva Render\textsubscript{G}
+\hypertarget{uc46}{}
+\subsubsection{UC 46: Visualizzazione esclusiva Render}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{visualizzazione_render.png}
-    \caption{UC 48 – Visualizzazione esclusiva Render}
+    \caption{UC 46 – Visualizzazione esclusiva Render}
 \end{figure}
 
 \begin{itemize}
@@ -1265,15 +1134,15 @@
     \item \textbf{Trigger}: L'utente desidera visualizzare il risultato finale del documento.
 \end{itemize}
 
-% UC 49 - Visualizzazione Split View\textsubscript{G}
-\hypertarget{uc49}{}
-\subsubsection{UC 49: Visualizzazione Split View}
+% UC 47 - Visualizzazione Split View\textsubscript{G}
+\hypertarget{uc47}{}
+\subsubsection{UC 47: Visualizzazione Split View}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{visualizzazione_split_view.png}
-    \caption{UC 49 – Visualizzazione Split View}
+    \caption{UC 47 – Visualizzazione Split View}
 \end{figure}
 
 \begin{itemize}
@@ -1295,15 +1164,15 @@
 \subsection{Macroarea 2 — Interazione AI (LLM)}
 \textit{Elaborazione del testo tramite modelli linguistici e gestione degli output generati.}
 
-% UC50 - Generazione riassunto del testo
-\hypertarget{uc50}{}
-\subsubsection{UC 50: Generazione riassunto del testo}
+% UC48 - Generazione riassunto del testo
+\hypertarget{uc48}{}
+\subsubsection{UC 48: Generazione riassunto del testo}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{generazione_riassunto_testo.png}
-    \caption{UC50 – Riassunto del testo}
+    \caption{UC 48 – Riassunto del testo}
 \end{figure}
 
 \begin{itemize}
@@ -1322,19 +1191,19 @@
     \item \textbf{Trigger}: L'utente desidera ottenere una sintesi del testo selezionato.
     \item \textbf{Estensioni}:
     \begin{itemize}
-        \item \hyperlink{uc50.1}{UC 50.1: Visualizzazione errore generazione riassunto} $ \rightarrow $ Condizione: si verifica un errore durante la comunicazione con il servizio AI.
+        \item \hyperlink{uc48.1}{UC 48.1: Visualizzazione errore generazione riassunto} $ \rightarrow $ Condizione: si verifica un errore durante la comunicazione con il servizio AI.
     \end{itemize}
 \end{itemize}
 
-% UC50.1 - Visualizzazione errore generazione riassunto
-\hypertarget{uc50.1}{}
-\subsubsection{UC 50.1: Visualizzazione errore generazione riassunto}
+% UC48.1 - Visualizzazione errore generazione riassunto
+\hypertarget{uc48.1}{}
+\subsubsection{UC 48.1: Visualizzazione errore generazione riassunto}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{errore_ai_UC50.1.png}
-    \caption{UC50.1 – Visualizzazione errore generazione riassunto}
+    \includegraphics[width=0.6\textwidth]{errore_ai_UC48.1.png}
+    \caption{UC 48.1 – Visualizzazione errore generazione riassunto}
 \end{figure}
 
 \begin{itemize}
@@ -1349,15 +1218,15 @@
     \item \textbf{Trigger}: Si verifica un errore durante la comunicazione con il servizio AI.
 \end{itemize}
 
-% UC51 - Traduzione del testo
-\hypertarget{uc51}{}
-\subsubsection{UC 51: Traduzione del testo}
+% UC49 - Traduzione del testo
+\hypertarget{uc49}{}
+\subsubsection{UC 49: Traduzione del testo}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{traduzione_testo.png}
-    \caption{UC51 – Traduzione del testo}
+    \caption{UC 49 – Traduzione del testo}
 \end{figure}
 
 
@@ -1378,19 +1247,19 @@
     \item \textbf{Trigger}: L'utente desidera tradurre il testo selezionato in un'altra lingua.
     \item \textbf{Estensioni}:
     \begin{itemize}
-        \item \hyperlink{uc51.1}{UC 51.1: Visualizzazione errore traduzione testo} $ \rightarrow $ Condizione: si verifica un errore durante la comunicazione con il servizio AI.
+        \item \hyperlink{uc49.1}{UC 49.1: Visualizzazione errore traduzione testo} $ \rightarrow $ Condizione: si verifica un errore durante la comunicazione con il servizio AI.
     \end{itemize}
 \end{itemize}
 
-% UC51.1 - Visualizzazione errore traduzione testo
-\hypertarget{uc51.1}{}
-\subsubsection{UC 51.1: Visualizzazione errore traduzione testo}
+% UC49.1 - Visualizzazione errore traduzione testo
+\hypertarget{uc49.1}{}
+\subsubsection{UC 49.1: Visualizzazione errore traduzione testo}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{errore_ai_UC51.1.png}
-    \caption{UC51.1 – Visualizzazione errore traduzione testo}
+    \includegraphics[width=0.6\textwidth]{errore_ai_UC49.1.png}
+    \caption{UC 49.1 – Visualizzazione errore traduzione testo}
 \end{figure}
 
 \begin{itemize}
@@ -1405,15 +1274,15 @@
     \item \textbf{Trigger}: Si verifica un errore durante la comunicazione con il servizio AI.
 \end{itemize}
 
-% UC52 - Riscrittura del testo
-\hypertarget{uc52}{}
-\subsubsection{UC 52: Riscrittura del testo}
+% UC50 - Riscrittura del testo
+\hypertarget{uc50}{}
+\subsubsection{UC 50: Riscrittura del testo}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{riscrittura_testo.png}
-    \caption{UC52 – Riscrittura del testo}
+    \caption{UC 50 – Riscrittura del testo}
 \end{figure}
 
 \begin{itemize}
@@ -1432,19 +1301,19 @@
     \item \textbf{Trigger}: L'utente desidera rielaborare il testo selezionato.
     \item \textbf{Estensioni}:
     \begin{itemize}
-        \item \hyperlink{uc52.1}{UC 52.1: Visualizzazione errore riscrittura testo} $ \rightarrow $ Condizione: si verifica un errore durante la comunicazione con il servizio AI.
+        \item \hyperlink{uc50.1}{UC 50.1: Visualizzazione errore riscrittura testo} $ \rightarrow $ Condizione: si verifica un errore durante la comunicazione con il servizio AI.
     \end{itemize}
 \end{itemize}
 
-% UC52.1 - Visualizzazione errore riscrittura testo
-\hypertarget{uc52.1}{}
-\subsubsection{UC 52.1: Visualizzazione errore riscrittura testo}
+% UC50.1 - Visualizzazione errore riscrittura testo
+\hypertarget{uc50.1}{}
+\subsubsection{UC 50.1: Visualizzazione errore riscrittura testo}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{errore_ai_UC52.1.png}
-    \caption{UC52.1 – Visualizzazione errore riscrittura testo}
+    \includegraphics[width=0.6\textwidth]{errore_ai_UC50.1.png}
+    \caption{UC 50.1 – Visualizzazione errore riscrittura testo}
 \end{figure}
 
 \begin{itemize}
@@ -1459,15 +1328,15 @@
     \item \textbf{Trigger}: Si verifica un errore durante la comunicazione con il servizio AI.
 \end{itemize}
 
-% UC53 - Generazione automatica da prompt (Distant Writing)
-\hypertarget{uc53}{}
-\subsubsection{UC 53: Generazione automatica da prompt (Distant Writing)}
+% UC51 - Generazione automatica da prompt (Distant Writing)
+\hypertarget{uc51}{}
+\subsubsection{UC 51: Generazione automatica da prompt (Distant Writing)}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{generazione_automatica_prompt.png}
-    \caption{UC53 – Generazione automatica da prompt (Distant Writing)}
+    \caption{UC 51 – Generazione automatica da prompt (Distant Writing)}
 \end{figure}
 
 \begin{itemize}
@@ -1486,19 +1355,19 @@
     \item \textbf{Trigger}: L'utente desidera generare automaticamente un nuovo contenuto testuale.
     \item \textbf{Estensioni}:
     \begin{itemize}
-        \item \hyperlink{uc53.1}{UC 53.1: Visualizzazione errore generazione testo} $ \rightarrow $ Condizione: si verifica un errore durante la comunicazione con il servizio AI.
+        \item \hyperlink{uc51.1}{UC 51.1: Visualizzazione errore generazione testo} $ \rightarrow $ Condizione: si verifica un errore durante la comunicazione con il servizio AI.
     \end{itemize}
 \end{itemize}
 
-% UC53.1 - Visualizzazione errore generazione testo
-\hypertarget{uc53.1}{}
-\subsubsection{UC 53.1: Visualizzazione errore generazione testo}
+% UC51.1 - Visualizzazione errore generazione testo
+\hypertarget{uc51.1}{}
+\subsubsection{UC 51.1: Visualizzazione errore generazione testo}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{errore_ai_UC53.1.png}
-    \caption{UC53.1 – Visualizzazione errore generazione testo}
+    \includegraphics[width=0.6\textwidth]{errore_ai_UC51.1.png}
+    \caption{UC51.1 – Visualizzazione errore generazione testo}
 \end{figure}
 
 \begin{itemize}
@@ -1515,15 +1384,15 @@
 
 %---------------SEI CAPPELLI PER PENSARE------------------
 
-% UC54 - Analisi Cappello Bianco (Dati e fatti)
-\hypertarget{uc54}{}
-\subsubsection{UC 54: Analisi Cappello Bianco (Dati e fatti)}
+% UC52 - Analisi Cappello Bianco (Dati e fatti)
+\hypertarget{uc52}{}
+\subsubsection{UC 52: Analisi Cappello Bianco (Dati e fatti)}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{critica_testo_sei_cappelli_pensare_bianco.png}
-    \caption{UC54 – Analisi Cappello Bianco (Dati e fatti)}
+    \caption{UC 52 – Analisi Cappello Bianco (Dati e fatti)}
 \end{figure}
 
 \begin{itemize}
@@ -1542,18 +1411,18 @@
     \item \textbf{Trigger}: L'utente desidera verificare dati, fatti e oggettività del testo selezionato.
     \item \textbf{Estensioni}:
     \begin{itemize}
-        \item \hyperlink{uc54.1}{UC 54.1: Visualizzazione errore analisi Cappello Bianco} $ \rightarrow $ Condizione: si verifica un errore durante la comunicazione con il servizio AI.
+        \item \hyperlink{uc52.1}{UC 52.1: Visualizzazione errore analisi Cappello Bianco} $ \rightarrow $ Condizione: si verifica un errore durante la comunicazione con il servizio AI.
     \end{itemize}
 \end{itemize}
 
-% UC54.1 - Visualizzazione errore analisi Cappello Bianco
-\hypertarget{uc54.1}{}
-\subsubsection{UC 54.1: Visualizzazione errore analisi Cappello Bianco}
+% UC52.1 - Visualizzazione errore analisi Cappello Bianco
+\hypertarget{uc52.1}{}
+\subsubsection{UC 52.1: Visualizzazione errore analisi Cappello Bianco}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{errore_ai_UC54.1.png}
-    \caption{UC54.1 – Visualizzazione errore analisi Cappello Bianco}
+    \includegraphics[width=0.6\textwidth]{errore_ai_UC52.1.png}
+    \caption{UC 52.1 – Visualizzazione errore analisi Cappello Bianco}
 \end{figure}
 
 \begin{itemize}
@@ -1568,15 +1437,15 @@
     \item \textbf{Trigger}: Si verifica un errore durante la comunicazione con il servizio AI.
 \end{itemize}
 
-% UC55 - Analisi Cappello Rosso (Emozioni)
-\hypertarget{uc55}{}
-\subsubsection{UC 55: Analisi Cappello Rosso (Emozioni)}
+% UC53 - Analisi Cappello Rosso (Emozioni)
+\hypertarget{uc53}{}
+\subsubsection{UC 53: Analisi Cappello Rosso (Emozioni)}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{critica_testo_sei_cappelli_pensare_rosso.png}
-    \caption{UC55 – Analisi Cappello Rosso (Emozioni)}
+    \caption{UC 53 – Analisi Cappello Rosso (Emozioni)}
 \end{figure}
 
 \begin{itemize}
@@ -1595,18 +1464,18 @@
     \item \textbf{Trigger}: L'utente desidera valutare l'impatto emotivo del testo selezionato.
     \item \textbf{Estensioni}:
     \begin{itemize}
-        \item \hyperlink{uc55.1}{UC 55.1: Visualizzazione errore analisi Cappello Rosso} $ \rightarrow $ Condizione: si verifica un errore durante la comunicazione con il servizio AI.
+        \item \hyperlink{uc53.1}{UC 53.1: Visualizzazione errore analisi Cappello Rosso} $ \rightarrow $ Condizione: si verifica un errore durante la comunicazione con il servizio AI.
     \end{itemize}
 \end{itemize}
 
-% UC55.1 - Visualizzazione errore analisi Cappello Rosso
-\hypertarget{uc55.1}{}
-\subsubsection{UC 55.1: Visualizzazione errore analisi Cappello Rosso}
+% UC53.1 - Visualizzazione errore analisi Cappello Rosso
+\hypertarget{uc53.1}{}
+\subsubsection{UC 53.1: Visualizzazione errore analisi Cappello Rosso}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{errore_ai_UC55.png}
-    \caption{UC55.1 – Visualizzazione errore analisi Cappello Rosso}
+    \includegraphics[width=0.6\textwidth]{errore_ai_UC53.png}
+    \caption{UC 53.1 – Visualizzazione errore analisi Cappello Rosso}
 \end{figure}
 
 \begin{itemize}
@@ -1621,15 +1490,15 @@
     \item \textbf{Trigger}: Si verifica un errore durante la comunicazione con il servizio AI.
 \end{itemize}
 
-% UC56 - Analisi Cappello Nero (Rischi)
-\hypertarget{uc56}{}
-\subsubsection{UC 56: Analisi Cappello Nero (Rischi)}
+% UC54 - Analisi Cappello Nero (Rischi)
+\hypertarget{uc54}{}
+\subsubsection{UC 54: Analisi Cappello Nero (Rischi)}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{critica_testo_sei_cappelli_pensare_nero.png}
-    \caption{UC56 – Analisi Cappello Nero (Rischi)}
+    \caption{UC 54 – Analisi Cappello Nero (Rischi)}
 \end{figure}
 
 \begin{itemize}
@@ -1648,18 +1517,18 @@
     \item \textbf{Trigger}: L'utente desidera individuare rischi, criticità e punti deboli del testo selezionato.
     \item \textbf{Estensioni}:
     \begin{itemize}
-        \item \hyperlink{uc56.1}{UC 56.1: Visualizzazione errore analisi Cappello Nero} $ \rightarrow $ Condizione: si verifica un errore durante la comunicazione con il servizio AI.
+        \item \hyperlink{uc54.1}{UC 54.1: Visualizzazione errore analisi Cappello Nero} $ \rightarrow $ Condizione: si verifica un errore durante la comunicazione con il servizio AI.
     \end{itemize}
 \end{itemize}
 
-% UC56.1 - Visualizzazione errore analisi Cappello Nero
-\hypertarget{uc56.1}{}
-\subsubsection{UC 56.1: Visualizzazione errore analisi Cappello Nero}
+% UC54.1 - Visualizzazione errore analisi Cappello Nero
+\hypertarget{uc54.1}{}
+\subsubsection{UC 54.1: Visualizzazione errore analisi Cappello Nero}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{errore_ai_UC56.png}
-    \caption{UC56.1 – Visualizzazione errore analisi Cappello Nero}
+    \includegraphics[width=0.6\textwidth]{errore_ai_UC54.png}
+    \caption{UC 54.1 – Visualizzazione errore analisi Cappello Nero}
 \end{figure}
 
 \begin{itemize}
@@ -1674,15 +1543,15 @@
     \item \textbf{Trigger}: Si verifica un errore durante la comunicazione con il servizio AI.
 \end{itemize}
 
-% UC57 - Analisi Cappello Giallo (Opportunità)
-\hypertarget{uc57}{}
-\subsubsection{UC 57: Analisi Cappello Giallo (Opportunità)}
+% UC55 - Analisi Cappello Giallo (Opportunità)
+\hypertarget{uc55}{}
+\subsubsection{UC 55: Analisi Cappello Giallo (Opportunità)}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{critica_testo_sei_cappelli_pensare_giallo.png}
-    \caption{UC57 – Analisi Cappello Giallo (Opportunità)}
+    \caption{UC 55 – Analisi Cappello Giallo (Opportunità)}
 \end{figure}
 
 \begin{itemize}
@@ -1701,18 +1570,18 @@
     \item \textbf{Trigger}: L'utente desidera individuare vantaggi e opportunità del testo selezionato.
     \item \textbf{Estensioni}:
     \begin{itemize}
-        \item \hyperlink{uc57.1}{UC 57.1: Visualizzazione errore analisi Cappello Giallo} $ \rightarrow $ Condizione: si verifica un errore durante la comunicazione con il servizio AI.
+        \item \hyperlink{uc55.1}{UC 55.1: Visualizzazione errore analisi Cappello Giallo} $ \rightarrow $ Condizione: si verifica un errore durante la comunicazione con il servizio AI.
     \end{itemize}
 \end{itemize}
 
-% UC57.1 - Visualizzazione errore analisi Cappello Giallo
-\hypertarget{uc57.1}{}
-\subsubsection{UC 57.1: Visualizzazione errore analisi Cappello Giallo}
+% UC55.1 - Visualizzazione errore analisi Cappello Giallo
+\hypertarget{uc55.1}{}
+\subsubsection{UC 55.1: Visualizzazione errore analisi Cappello Giallo}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{errore_ai_UC57.png}
-    \caption{UC57.1 – Visualizzazione errore analisi Cappello Giallo}
+    \includegraphics[width=0.6\textwidth]{errore_ai_UC55.png}
+    \caption{UC 55.1 – Visualizzazione errore analisi Cappello Giallo}
 \end{figure}
 
 \begin{itemize}
@@ -1727,15 +1596,15 @@
     \item \textbf{Trigger}: Si verifica un errore durante la comunicazione con il servizio AI.
 \end{itemize}
 
-% UC58 - Analisi Cappello Verde (Creatività)
-\hypertarget{uc58}{}
-\subsubsection{UC 58: Analisi Cappello Verde (Creatività)}
+% UC56 - Analisi Cappello Verde (Creatività)
+\hypertarget{uc56}{}
+\subsubsection{UC 56: Analisi Cappello Verde (Creatività)}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{critica_testo_sei_cappelli_pensare_verde.png}
-    \caption{UC58 – Analisi Cappello Verde (Creatività)}
+    \caption{UC 56 – Analisi Cappello Verde (Creatività)}
 \end{figure}
 
 \begin{itemize}
@@ -1754,18 +1623,18 @@
     \item \textbf{Trigger}:  L'utente desidera esplorare nuove idee, alternative e prospettive creative sul testo selezionato.
     \item \textbf{Estensioni}:
     \begin{itemize}
-        \item \hyperlink{uc58.1}{UC 58.1: Visualizzazione errore analisi Cappello Verde} $ \rightarrow $ Condizione: si verifica un errore durante la comunicazione con il servizio AI.
+        \item \hyperlink{uc56.1}{UC 56.1: Visualizzazione errore analisi Cappello Verde} $ \rightarrow $ Condizione: si verifica un errore durante la comunicazione con il servizio AI.
     \end{itemize}
 \end{itemize}
 
-% UC58.1 - Visualizzazione errore analisi Cappello Verde
-\hypertarget{uc58.1}{}
-\subsubsection{UC 58.1: Visualizzazione errore analisi Cappello Verde}
+% UC56.1 - Visualizzazione errore analisi Cappello Verde
+\hypertarget{uc56.1}{}
+\subsubsection{UC 56.1: Visualizzazione errore analisi Cappello Verde}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{errore_ai_UC58.png}
-    \caption{UC58.1 – Visualizzazione errore analisi Cappello Verde}
+    \includegraphics[width=0.6\textwidth]{errore_ai_UC56.png}
+    \caption{UC 56.1 – Visualizzazione errore analisi Cappello Verde}
 \end{figure}
 
 \begin{itemize}
@@ -1780,15 +1649,15 @@
     \item \textbf{Trigger}: Si verifica un errore durante la comunicazione con il servizio AI.
 \end{itemize}
 
-% UC59 - Analisi Cappello Blu (Logica/Controllo)
-\hypertarget{uc59}{}
-\subsubsection{UC 59: Analisi Cappello Blu (Logica/Controllo)}
+% UC57 - Analisi Cappello Blu (Logica/Controllo)
+\hypertarget{uc57}{}
+\subsubsection{UC 57: Analisi Cappello Blu (Logica/Controllo)}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{critica_testo_sei_cappelli_pensare_blu.png}
-    \caption{UC59 – Analisi Cappello Blu (Logica/Controllo)}
+    \caption{UC 57 – Analisi Cappello Blu (Logica/Controllo)}
 \end{figure}
 
 \begin{itemize}
@@ -1807,18 +1676,18 @@
     \item \textbf{Trigger}:  L'utente desidera analizzare la coerenza logica e la struttura del testo selezionato.
     \item \textbf{Estensioni}:
     \begin{itemize}
-        \item \hyperlink{uc59.1}{UC 59.1: Visualizzazione errore analisi Cappello Blu} $ \rightarrow $ Condizione: si verifica un errore durante la comunicazione con il servizio AI.
+        \item \hyperlink{uc57.1}{UC 57.1: Visualizzazione errore analisi Cappello Blu} $ \rightarrow $ Condizione: si verifica un errore durante la comunicazione con il servizio AI.
     \end{itemize}
 \end{itemize}
 
-% UC59.1 - Visualizzazione errore analisi Cappello Blu
-\hypertarget{uc59.1}{}
-\subsubsection{UC 59.1: Visualizzazione errore analisi Cappello Blu}
+% UC57.1 - Visualizzazione errore analisi Cappello Blu
+\hypertarget{uc57.1}{}
+\subsubsection{UC 57.1: Visualizzazione errore analisi Cappello Blu}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{errore_ai_UC59.png}
-    \caption{UC59.1 – Visualizzazione errore analisi Cappello Blu}
+    \includegraphics[width=0.6\textwidth]{errore_ai_UC57.png}
+    \caption{UC 57.1 – Visualizzazione errore analisi Cappello Blu}
 \end{figure}
 
 \begin{itemize}
@@ -1835,15 +1704,15 @@
 
 %--------------GESTIONE PROPOSTE AI------------------
 
-% UC60 - Accettazione proposta AI
-\hypertarget{uc60}{}
-\subsubsection{UC 60: Accettazione proposta AI}
+% UC58 - Accettazione proposta AI
+\hypertarget{uc58}{}
+\subsubsection{UC 58: Accettazione proposta AI}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{accettazione_proposta_ai.png}
-    \caption{UC60 – Accettazione proposta AI}
+    \caption{UC 58 – Accettazione proposta AI}
 \end{figure}
 
 \begin{itemize}
@@ -1858,15 +1727,15 @@
     \item \textbf{Trigger}: L'utente ritiene valida la proposta generata dall'AI.
 \end{itemize}
 
-% UC61 - Rifiuto proposta AI
-\hypertarget{uc61}{}
-\subsubsection{UC 61: Rifiuto proposta AI}
+% UC59 - Rifiuto proposta AI
+\hypertarget{uc59}{}
+\subsubsection{UC 59: Rifiuto proposta AI}
 
 % use case diagram 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{rifiuto_proposta_ai.png}
-    \caption{UC61 – Rifiuto proposta AI}
+    \caption{UC 59 – Rifiuto proposta AI}
 \end{figure}
 
 \begin{itemize}
@@ -1881,15 +1750,15 @@
     \item \textbf{Trigger}: L'utente non ritiene valida la proposta generata dall'AI.
 \end{itemize}
 
-% UC62 - Rigenerazione proposta AI
-\hypertarget{uc62}{}
-\subsubsection{UC 62: Rigenerazione proposta AI}
+% UC60 - Rigenerazione proposta AI
+\hypertarget{uc60}{}
+\subsubsection{UC 60: Rigenerazione proposta AI}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{rigenerazione_proposta_ai.png}
-    \caption{UC62 – Rigenerazione proposta AI}
+    \caption{UC 60 – Rigenerazione proposta AI}
 \end{figure}
 
 \begin{itemize}
@@ -1907,19 +1776,19 @@
     \item \textbf{Trigger}: L'utente desidera ottenere una versione alternativa della proposta generata.
     \item \textbf{Estensioni}:
     \begin{itemize}
-        \item \hyperlink{uc62.1}{UC 62.1: Visualizzazione errore rigenerazione proposta AI} $ \rightarrow $ Condizione: si verifica un errore durante la comunicazione con il servizio AI.
+        \item \hyperlink{uc60.1}{UC 60.1: Visualizzazione errore rigenerazione proposta AI} $ \rightarrow $ Condizione: si verifica un errore durante la comunicazione con il servizio AI.
     \end{itemize}
 \end{itemize}
 
-% UC62.1 - Visualizzazione errore rigenerazione proposta AI
-\hypertarget{uc62.1}{}
-\subsubsection{UC 62.1: Visualizzazione errore rigenerazione proposta AI}
+% UC60.1 - Visualizzazione errore rigenerazione proposta AI
+\hypertarget{uc60.1}{}
+\subsubsection{UC 60.1: Visualizzazione errore rigenerazione proposta AI}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{errore_ai_UC62.png}
-    \caption{UC62.1 – Visualizzazione errore rigenerazione proposta AI}
+    \includegraphics[width=0.6\textwidth]{errore_ai_UC60.png}
+    \caption{UC 60.1 – Visualizzazione errore rigenerazione proposta AI}
 \end{figure}
 
 \begin{itemize}
@@ -1941,6 +1810,137 @@
 \subsection{Macroarea 3 — Gestione I/O e Persistenza}
 \textit{Importazione, esportazione e persistenza delle note.}
 
+% UC61 - Creazione di una nuova nota vuota
+\hypertarget{uc61}{}
+\subsubsection{UC 61: (Opzionale) Creazione di una nuova nota vuota}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{creazione_nota.png}
+    \caption{UC 61 – Creazione di una nuova nota}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: Il sistema è avviato e l'interfaccia è correttamente caricata.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando ``Nuova Nota''.
+        \item Il sistema richiede l'inserimento di un titolo per la nota.
+        \item L'utente inserisce il titolo desiderato.
+        \item Il sistema crea una nuova nota associando il titolo inserito.
+        \item Il sistema apre la nota nell'editor.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Una nuova nota con titolo associato è aperta e modificabile nell'editor.
+    \item \textbf{Trigger}: L'utente desidera creare una nuova nota.
+\end{itemize}
+
+% UC62 - Eliminazione di una nota
+\hypertarget{uc62}{}
+\subsubsection{UC 62: (Opzionale) Eliminazione di una nota}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{eliminazione_nota.png}
+    \caption{UC 62 – Eliminazione di una nota}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: Il sistema è avviato ed è presente almeno una nota.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente seleziona la nota da eliminare.
+        \item Il sistema richiede conferma.
+        \item L'utente conferma.
+        \item Il sistema elimina la nota.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La nota selezionata è rimossa dal sistema.
+    \item \textbf{Trigger}: L'utente decide di rimuovere una nota non più necessaria.
+    
+    \item \textbf{Inclusioni}:
+    \begin{itemize}
+        \item \hyperlink{uc62.1}{UC 62.1: Conferma eliminazione}
+    \end{itemize}
+
+    \item \textbf{Estensioni}: 
+    \begin{itemize}
+        \item \hyperlink{uc62.2}{UC 62.2: Annullamento eliminazione} $\rightarrow$ Condizione: risposta negativa al dialogo di conferma.
+        \item \hyperlink{uc62.3}{UC 62.3: Visualizzazione errore eliminazione} $\rightarrow$ Condizione: errore tecnico durante l'esecuzione dell'eliminazione al passo 4.
+    \end{itemize}
+\end{itemize}
+
+% UC62.1 - Conferma eliminazione
+\hypertarget{uc62.1}{}
+\subsubsection{UC 62.1: Conferma eliminazione}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{conferma_eliminazione.png}
+    \caption{UC 62.1 – Conferma eliminazione}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: L'utente ha richiesto l'eliminazione di una nota.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema mostra un dialogo di conferma.
+        \item L'utente conferma l'operazione.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La richiesta di eliminazione è confermata e il sistema procede.
+    \item \textbf{Trigger}: Il sistema richiede una conferma esplicita prima di un'operazione distruttiva.
+\end{itemize}
+
+% UC62.2 - Annullamento eliminazione
+\hypertarget{uc62.2}{}
+\subsubsection{UC 62.2: Annullamento eliminazione}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{annullamento_eliminazione.png}
+    \caption{UC 62.2 – Annullamento eliminazione}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: Il dialogo di conferma eliminazione è visualizzato a schermo.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente preme ``Annulla'' nel dialogo di conferma.
+        \item Il sistema chiude il dialogo senza apportare modifiche.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La nota rimane invariata; nessuna modifica è avvenuta.
+    \item \textbf{Trigger}: L'utente decide di non procedere con l'eliminazione.
+\end{itemize}
+
+% UC62.3 - Visualizzazione errore eliminazione
+\hypertarget{uc62.3}{}
+\subsubsection{UC 62.3: Visualizzazione errore eliminazione}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{errore_eliminazione.png}
+    \caption{UC 62.3 – Visualizzazione errore eliminazione}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: L'utente ha confermato l'eliminazione della nota.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema riscontra un problema tecnico durante la rimozione della nota.
+        \item Il sistema mostra un messaggio di errore all'utente.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La nota non viene eliminata e l'utente viene informato dell'errore.
+    \item \textbf{Trigger}: Il sistema operativo o il file system\textsubscript{G} impediscono la cancellazione del file.
+\end{itemize}
+
 % UC63 - Salvataggio della nota in formato Markdown
 \hypertarget{uc63}{}
 \subsubsection{UC 63: Salvataggio della nota in formato Markdown}
@@ -1949,7 +1949,7 @@
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{download_nota.png}
-    \caption{UC63 – Salvataggio della nota in formato Markdown}
+    \caption{UC 63 – Salvataggio della nota in formato Markdown}
 \end{figure}
 
 \begin{itemize}
@@ -1976,7 +1976,7 @@
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{errore_download.png}
-    \caption{UC63.1 – Visualizzazione errore salvataggio}
+    \caption{UC 63.1 – Visualizzazione errore salvataggio}
 \end{figure}
 
 \begin{itemize}
@@ -1999,7 +1999,7 @@
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{upload_nota.png}
-    \caption{UC64 – Importazione di una nota locale}
+    \caption{UC 64 – Importazione di una nota locale}
 \end{figure}
 
 \begin{itemize}
@@ -2028,7 +2028,7 @@
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{errore_formato_file.png}
-    \caption{UC64.1 – Visualizzazione errore formato file}
+    \caption{UC 64.1 – Visualizzazione errore formato file}
 \end{figure}
 
 \begin{itemize}
@@ -2051,7 +2051,7 @@
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{esportazione_nota.png}
-    \caption{UC65 – Esportazione della nota}
+    \caption{UC 65 – Esportazione della nota}
 \end{figure}
 
 \begin{itemize}
@@ -2080,7 +2080,7 @@
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{errore_esportazione.png}
-    \caption{UC65.1 – Visualizzazione errore esportazione}
+    \caption{UC 65.1 – Visualizzazione errore esportazione}
 \end{figure}
 
 \begin{itemize}
@@ -2106,7 +2106,7 @@
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{registrazione_utente.png}
-    \caption{UC66 – Registrazione utente}
+    \caption{UC 66 – Registrazione utente}
 \end{figure}
 
 \begin{itemize}
@@ -2137,7 +2137,7 @@
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{errore_email_registrazione.png}
-    \caption{UC66.1 – Visualizzazione errore email registrazione}
+    \caption{UC 66.1 – Visualizzazione errore email registrazione}
 \end{figure}
 
 \begin{itemize}
@@ -2159,7 +2159,7 @@
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{errore_password_registrazione.png}
-    \caption{UC66.2 – Visualizzazione errore password registrazione}
+    \caption{UC 66.2 – Visualizzazione errore password registrazione}
 \end{figure}
 
 \begin{itemize}
@@ -2181,7 +2181,7 @@
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{autenticazione_utente.png}
-    \caption{UC67 – Autenticazione utente}
+    \caption{UC 67 – Autenticazione utente}
 \end{figure}
 
 \begin{itemize}
@@ -2211,7 +2211,7 @@
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{errore_autenticazione.png}
-    \caption{UC67.1 – Visualizzazione errore autenticazione}
+    \caption{UC 67.1 – Visualizzazione errore autenticazione}
 \end{figure}
 
 \begin{itemize}
@@ -2237,7 +2237,7 @@
 \begin{figure}[H]
     \centering
     %\includegraphics[width=0.6\textwidth]{errore_utente_non_registrato.png}
-    \caption{UC67.2 – Visualizzazione errore utente non registrato}
+    \caption{UC 67.2 – Visualizzazione errore utente non registrato}
 \end{figure}
 
 \begin{itemize}
@@ -2259,7 +2259,7 @@
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{logout_utente.png}
-    \caption{UC68 – Logout utente}
+    \caption{UC 68 – Logout utente}
 \end{figure}
 
 \begin{itemize}
@@ -2283,7 +2283,7 @@
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{lista_note_salvate.png}
-    \caption{UC69 – Visualizzazione lista note salvate}
+    \caption{UC 69 – Visualizzazione lista note salvate}
 \end{figure}
 
 \begin{itemize}
@@ -2315,7 +2315,7 @@
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{errore_lista_note_remote.png}
-    \caption{UC69.1 – Visualizzazione errore recupero lista note}
+    \caption{UC 69.1 – Visualizzazione errore recupero lista note}
 \end{figure}
 
 \begin{itemize}
@@ -2338,7 +2338,7 @@
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{salvataggio_db.png}
-    \caption{UC70 – Salvataggio nota su spazio remoto}
+    \caption{UC 70 – Salvataggio nota su spazio remoto}
 \end{figure}
 
 \begin{itemize}
@@ -2366,7 +2366,7 @@
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{errore_salvataggio_db.png}
-    \caption{UC70.1 – Visualizzazione errore sincronizzazione remota}
+    \caption{UC 70.1 – Visualizzazione errore sincronizzazione remota}
 \end{figure}
 
 \begin{itemize}
@@ -2388,7 +2388,7 @@
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{apertura_nota_remota.png}
-    \caption{UC71 – Apertura nota da lista note salvate}
+    \caption{UC 71 – Apertura nota da lista note salvate}
 \end{figure}
 
 \begin{itemize}
@@ -2415,7 +2415,7 @@
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{errore_apertura_remota.png}
-    \caption{UC71.1 – Visualizzazione errore apertura nota remota}
+    \caption{UC 71.1 – Visualizzazione errore apertura nota remota}
 \end{figure}
 
 \begin{itemize}
