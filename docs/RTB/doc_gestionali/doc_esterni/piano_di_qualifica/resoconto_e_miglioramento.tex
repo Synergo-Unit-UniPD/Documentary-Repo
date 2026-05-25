@@ -103,9 +103,84 @@ In questa sezione sono riassunti i valori ottenuti dalle metriche durante l'ulti
 
 \subsection{Grafici e dashboard}
 L'andamento storico delle metriche viene monitorato tramite grafici temporali per evidenziare eventuali trend negativi.
-% Per inserire i grafici generati, scommentare queste righe:
-% \begin{figure}[H]
-	%    \centering
-	%    \includegraphics[width=0.8\textwidth]{grafico.png}
-	%    \caption{Andamento Schedule Variance}
-	% \end{figure}
+
+\subsubsection{Trend di Progetto}
+ \begin{figure}[H]
+	    \centering
+	    \includegraphics[width=0.8\textwidth]{trend.png}
+	    \caption{Andamento PV, AC, EV}
+	 \end{figure}
+
+Il grafico riporta l'andamento cumulato, sprint dopo sprint, del Planned Value (PV), 
+dell'Actual Cost (AC) e dell'Earned Value (EV).
+Nei primi quattro sprint si osserva un sostanziale allineamento tra PV e AC, 
+con EV sempre inferiore, indice di una minore produttività rispetto al piano. 
+A partire dallo sprint 5, l'EV supera PV e AC, segnalando un recupero dell'avanzamento.
+Nello sprint 6, tuttavia, l'AC cresce bruscamente (620 € contro un PV di 310 €), 
+determinando una forte varianza negativa. Questo picco è dovuto a task complessi 
+di stesura e revisione dell'AdR che hanno richiesto ore effettive superiori al preventivato.
+L'EV si attesta a 300 €, indicando che il valore realizzato è rimasto sotto la spesa.
+La tendenza suggerisce che il progetto, pur recuperando terreno in termini di lavoro 
+completato, sta subendo un incremento dei costi che dovrà essere monitorato con 
+attenzione nelle prossime iterazioni.
+
+\subsubsection{Varianze di Progetto}
+ \begin{figure}[H]
+	    \centering
+	    \includegraphics[width=0.8\textwidth]{varianze.png}
+	    \caption{Andamento SV, BV}
+	 \end{figure}
+
+Il grafico illustra l'andamento della Schedule Variance (SV) e della Budget Variance (BV).
+Nei primi quattro sprint entrambe le varianze sono negative, nello sprint 2 e 
+valori più contenuti negli sprint 3 e 4. 
+Ciò indica che il progetto procedeva in ritardo e con costi superiori al valore guadagnato.
+Allo sprint 5 si registra una breve inversione di tendenza: SV e BV diventano positive, 
+segnale di un recupero di efficienza. 
+Tuttavia, nello sprint 6 si verifica una brusca flessione. 
+Questo scostamento negativo è dovuto a un incremento anomalo dei costi effettivi (AC) 
+rispetto al valore prodotto (EV), come già evidenziato nel grafico precendente. 
+La metrica conferma la necessità di rivedere le stime per i task complessi 
+e di rafforzare le attività di verifica in corso d'opera.
+
+\subsubsection{Indici di Performance}
+ \begin{figure}[H]
+	    \centering
+	    \includegraphics[width=0.8\textwidth]{performance.png}
+	    \caption{Andamento CPI, SPI}
+	 \end{figure}
+
+Il grafico riporta l'andamento sprint per sprint del Cost Performance Index (CPI) 
+e dello Schedule Performance Index (SPI). 
+Lo SPI si mantiene stabilmente su 1,0 per tutti gli sprint. 
+Ciò indica che il progetto ha sempre rispettato i tempi pianificati, 
+completando esattamente il lavoro previsto entro ogni iterazione.
+Il CPI, invece, nei primi quattro sprint oscilla tra 0,65 e 0,92, sempre al di sotto 
+della soglia ottimale (1,0), segnalando una spesa sistematicamente 
+superiore al valore guadagnato. 
+Nello sprint 5 si registra un recupero, a indicare una temporanea efficienza positiva. 
+Nello sprint 6 si registra di nuovo il problema già visto negli altri grafici.
+La combinazione di uno SPI perfettamente in linea con un CPI fortemente negativo 
+indica che il progetto rispetta le scadenze, ma a costo di un notevole superamento 
+del budget. Le azioni correttive dovranno concentrarsi sul controllo delle stime orarie 
+e sulla razionalizzazione dei task ad alta complessità, per riportare il CPI entro 
+la soglia di accettabilità negli sprint successivi.
+
+\subsubsection{Previsione Spesa Finale}
+ \begin{figure}[H]
+	    \centering
+	    \includegraphics[width=0.8\textwidth]{previsione_spesa.png}
+	    \caption{Andamento EAC}
+	 \end{figure}
+
+Il grafico illustra l'andamento dell' Estimate at Completion (EAC). 
+%La linea orizzontale tratteggiata rappresenta il BAC (Budget at Completion), fissato a 11.665 €.
+Nei primi quattro sprint, l'EAC si mantiene stabilmente superiore al BAC, 
+con valori compresi tra 12.500 € e 18.000 €, a causa di un CPI sempre inferiore a 1. 
+Nello sprint 5 si registra un miglioramento significativo: l'EAC scende a 10.500 €, 
+portandosi al di sotto del budget.
+Tuttavia, nello sprint 6 si verifica un brusco peggioramento come già osservato. 
+È pertanto necessario rivedere le stime orarie per i task complessi e rafforzare 
+il controllo preventivo prima di avviare attività ad alto assorbimento di risorse. 
+Il monitoraggio continuo dell'EAC consentirà di valutare l'efficacia delle azioni 
+correttive intraprese.
