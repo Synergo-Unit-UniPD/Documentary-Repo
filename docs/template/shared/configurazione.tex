@@ -25,6 +25,7 @@
 \usepackage{pdflscape}    % opzionale: ruota la pagina in landscape per il Gantt
 
 \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 
 % === PROFONDITA INDICE ===
 \setcounter{secnumdepth}{4}
@@ -69,3 +70,16 @@
 
 % Comando per link automatici alle issue GitHub
 \newcommand{\ghissue}[1]{\href{https://github.com/Synergo-Unit-UniPD/Documentary-Repo/issues/#1}{\underline{\##1}}}
+
+%comando per link spezzati su più righe
+\usepackage{xurl}
+\usepackage{ragged2e}
+\usepackage{soul}
+
+\newcommand{\doclink}[2]{%
+  \href{#1}{%
+    \RaggedRight
+    \sloppy
+    \ul{#2}%
+  }%
+}
