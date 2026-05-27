@@ -1,0 +1,159 @@
+% --- 1. INFORMAZIONI GENERALI ---
+\section{Informazioni Generali}
+\begin{itemize}
+	\item \textbf{Luogo/Piattaforma:} Server Discord
+	\item \textbf{Data:} 2026-05-26
+	\item \textbf{Orario di inizio:} 14:30
+	\item \textbf{Orario di fine:} 15:50
+	\item \textbf{Responsabile:} Armando Moda Scarati
+	\item \textbf{Scriba:} Sofia De Blasi
+\end{itemize}
+
+\vspace{0.5cm}
+\textbf{Partecipanti presenti:}
+\begin{table}[ht]
+	\centering
+	\renewcommand{\arraystretch}{1.2}
+	\begin{tabularx}{\textwidth}{X l}
+		\toprule
+		\textbf{Nome e Cognome} & \textbf{Matricola} \\
+		\midrule
+		Sofia De Blasi & 2111014 \\
+		Roberto Mariano Doroftei & 2111031 \\
+		Filippo Idiometri & 2035617 \\
+		Francesco Marcon & 2110990 \\
+		Armando Moda Scarati & 2082864 \\
+		Anton Ricardo Rupi & 2054304 \\
+		\bottomrule
+	\end{tabularx}
+\\ \end{table}
+
+\vspace{0.5cm}
+\textbf{Partecipanti assenti:}
+\begin{table}[ht]
+	\centering
+	\renewcommand{\arraystretch}{1.2}
+	\begin{tabularx}{\textwidth}{X l}
+		\toprule
+		\textbf{Nome e Cognome} & \textbf{Matricola} \\
+		\midrule
+		Nessuno & - \\
+		\bottomrule
+	\end{tabularx}
+\end{table}
+
+% --- 2. ORDINE DEL GIORNO ---
+\section{Ordine del Giorno}
+Gli argomenti previsti per la riunione odierna sono:
+\begin{enumerate}
+	\item Sprint review e retrospective,
+	\item Revisione e approvazione dello stato dei documenti (NdP, PdQ, PdP),
+	\item Discussione sull'integrazione delle metriche di qualificazione,
+	\item Pianificazione del POC e organizzazione delle scadenze per la consegna RTB,
+	\item Pianificazione dello sprint successivo ed allocazione delle task e dei ruoli.
+\end{enumerate}
+
+% --- 3. RESOCONTO E DISCUSSIONE ---
+\section{Resoconto della Riunione}
+
+\subsection{Sprint review e retrospective}
+Il gruppo ha analizzato l'andamento dello sprint precedente basandosi sui dati estratti dal cruscotto del Piano di Qualifica (PdQ). È emersa una criticità legata alle metriche predittive (in particolare sull'indice di costo e sul trend futuro), pesantemente inficiate dal picco di ore registrato nello sprint 6 per via della ristrutturazione corposa dell'AdR e delle NdP. \\
+Il gruppo ha identificato come causa principale la sottostima sistematica del perimetro delle task: attività preventivate come piccoli aggiustamenti si sono rivelate lavori di riscrittura quasi totale. Come azione correttiva per gli sprint futuri, il gruppo ha deciso di incrementare la precisione nella definizione dei confini dei singoli task in fase di pianificazione e di utilizzare stime orarie più congrue e granulari.
+
+\subsection{Revisione e approvazione dei documenti}
+Le Norme di Progetto (NdP) aggiornate sono state presentate e approvate formalmente da tutti i membri del gruppo. Si è concordato di integrarle con le nuove metriche descritte nel PdQ non appena quest'ultimo sarà ultimato. \\
+Per quanto riguarda il Piano di Qualifica, Filippo ha evidenziato la necessità di completare i grafici mancanti inserendo i dati storici calcolati manualmente e di inserire una linea di riferimento per il budget totale all'interno dei grafici di spesa, così da rendere più evidente il trend rispetto al massimale stabilito. Inoltre, è stata discussa la fattibilità dell'introduzione dell'indice di Gulpease per il controllo ortografico automatizzato.
+
+\subsection{Pianificazione del POC e tempistiche RTB}
+In seguito all'allineamento positivo avvenuto con l'azienda proponente Zucchetti, che ha validato l'AdR, lo stack tecnologico scelto e il perimetro del POC (Proof of Concept) tramite i mockup mostrati, il gruppo ha definito la strategia di candidatura per l'RTB. L'obiettivo collettivo è terminare la programmazione e predisporre la presentazione entro la settimana del 9 giugno 2026, garantendo un margine di sicurezza per eventuali correzioni richieste dal prof. Cardin prima della consegna definitiva al prof. Tullio. \\
+Francesco si è fatto carico di sviluppare e distribuire il setup base dell'ambiente di sviluppo via Docker entro il 2 giugno, permettendo così al team di iniziare a lavorare parallelamente e in modo coordinato sul front-end e sul back-end a partire dalla settimana successiva.
+
+% --- 4. DECISIONI PRESE ---
+\section{Decisioni Prese}
+
+\renewcommand{\arraystretch}{1.3}
+\vspace{-0.3cm}
+\noindent
+\begin{longtable}{c p{12cm}}
+	\toprule
+	\textbf{Codice} & \textbf{Decisione} \\
+	\midrule
+	\endfirsthead
+
+	\toprule
+	\textbf{Codice} & \textbf{Decisione} \\
+	\midrule
+	\endhead
+
+	\midrule
+	\multicolumn{2}{r}{\textit{Continua nella pagina successiva}} \\
+	\midrule
+	\endfoot
+
+	\bottomrule
+	\endlastfoot
+
+	\textbf{VI-15.1} & {Adozione di una maggiore granularità e precisione nel perimetro di definizione delle task per evitare discrepanze tra ore preventivate ed effettive.} \\
+	\textbf{VI-15.2} & {Integrazione di una linea di target per il budget totale all'interno dei grafici di spesa nel Piano di Qualifica.} \\
+	\textbf{VI-15.3} & {Mantenimento della continuità dei ruoli per la stesura finale di NdP e PdQ, inserendo l'obbligo di lettura e studio dei documenti per i membri non direttamente redattori.} \\
+	\textbf{VI-15.4} & {Chiusura formale della Pull Request obsoleta del Diario di Bordo e riapertura corretta come Diario di Bordo N. 3.} \\
+	\textbf{VI-15.5} & {Inserimento nei verbali esterni delle tabelle di tracciamento delle decisioni con collegamento diretto alle issue GitHub attivate a valle della validazione con la proponente.}
+
+\end{longtable}
+
+% --- 5. AZIONI (TODO) ---
+\section{Azioni da Svolgere (To-Do)}
+
+\renewcommand{\arraystretch}{1.3}
+\begin{longtable}{c c p{4.5cm} p{3cm} l}
+	\toprule
+	\textbf{Codice} & \textbf{Rif. Decisione} & \textbf{Descrizione Task} & \textbf{Assegnatario} & \textbf{Scadenza} \\
+	\midrule
+	\endfirsthead
+
+	\toprule
+	\textbf{Codice} & \textbf{Rif. Decisione} & \textbf{Descrizione Task} & \textbf{Assegnatario} & \textbf{Scadenza} \\
+	\midrule
+	\endhead
+
+	\midrule
+	\multicolumn{5}{r}{\textit{Continua nella pagina successiva}} \\
+	\midrule
+	\endfoot
+
+	\bottomrule
+	\endlastfoot
+
+	\ghissue{185} & VI-15.3 & Completamento e integrazione formale delle metriche nelle Norme di Progetto & Sofia De Blasi & 2026-06-02 \\[4pt]
+	
+	\ghissue{186} & VI-15.2 & PdQ: Controllo tabelle, scrittura descrizioni dei grafici ed estrazione termini per il glossario & Filippo Idiometri & 2026-06-02 \\[4pt]
+	
+	\ghissue{187} & VI-15.2 & PdQ: Inserimento linea budget, ultimazione grafici storici e studio fattibilità indice Gulpease & Francesco Marcon & 2026-06-02 \\[4pt]
+	
+	\ghissue{193} & - & POC: Sviluppo e configurazione del setup iniziale dell'ambiente tramite Docker & Francesco Marcon & 2026-06-02 \\[4pt]
+	
+	\ghissue{188} & - & Stesura del consuntivo dello Sprint 7 all'interno del Piano di Progetto & Ricardo Rupi & 2026-06-02 \\[4pt]
+	
+	\ghissue{189} & VI-15.4 & Redazione e pubblicazione del Diario di Bordo N. 3 & Armando Moda Scarati & 2026-05-29 \\[4pt]
+	
+	\ghissue{190} & VI-15.5 & Stesura verbale esterno relativo alla validazione di AdR, tecnologie e mockup del POC & Ricardo Rupi & 2026-06-02 \\[4pt]
+	
+	\ghissue{191} & - & Redazione del verbale interno della riunione odierna (VI N. 15) & Armando Moda Scarati & 2026-06-02 \\[4pt]
+	
+	\ghissue{192} & - & Aggiornamento e caricamento dei nuovi contenuti sul sito web del gruppo & Sofia De Blasi & 2026-06-02 \\[4pt]
+
+\end{longtable}
+
+% --- 6. PROSSIMA RIUNIONE ---
+\section{Prossima Riunione}
+\begin{itemize}
+	\item \textbf{Data:} 2026-06-02
+	\item \textbf{Ora:} 14:30
+	\item \textbf{OdG preliminare:}
+	\begin{itemize}
+		\item Verifica e consegna dei task dello sprint 7;
+		\item Allineamento sul funzionamento del setup base di Docker distribuito;
+		\item Avvio ufficiale dello sviluppo parallelo delle componenti front-end e back-end del POC;
+		\item Pianificazione dello sprint 8 e assegnazione dei relativi ruoli.
+	\end{itemize}
+\end{itemize}
