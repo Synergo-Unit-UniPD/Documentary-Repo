@@ -6,10 +6,13 @@ Analista
 Analisi dei Requisiti
 Analisi dei Rischi
 Attore
+Architecture Decision Record
+Artefatto
 AWS
 Backlog
 Baseline
 Branch
+Branch Protection Rules
 Brainstorming
 Burndown Chart
 Budget
@@ -27,21 +30,26 @@ Code Coverage
 Commit
 Compito
 Colli di bottiglia
+Configurazione
+Code Review
+Change Request
 Ciclo Di Vita Documentale
+Cruscotto Di Qualità
 Daily Stand-up
 Diario di Bordo
 Decision Tree
 Definition of Done
-DoD
 Debito Tecnico
-Dichiarazione Degli Impegni
+Deployment Automatizzato
 Discord
 Distant Writing
 Endpoint
 File System
 Formattazione
+Force Push
 Foglio di Calcolo
 Framework
+Github actions
 GitHub Pages
 GitHub Project
 Google Calendar
@@ -51,6 +59,8 @@ Interfaccia Utente
 ISO/IEC 12207:1995
 Issue
 JSON
+Integrazione continua
+In Review
 Issue Tracking
 Just-in-time
 LLM
@@ -70,6 +80,7 @@ MongoDB
 MVP
 Minimum Viable Product
 Norme Di Progetto
+Non conformità
 OCR
 Optical Character Recognition
 OdG Preliminare
@@ -78,6 +89,7 @@ Open Web Application Security Project
 Pedice G
 Pair Programming
 Pannello contestuale
+PDCA
 Piano di Progetto
 Piano di Qualifica
 PoC
@@ -134,11 +146,13 @@ Title Case
 T-y.z
 Traduzione
 Trunk-based Development
+To do
 UML
 Undo
 Unified Modeling Language
 Usabilità
 Utenza Target
+VAlidazione
 Valutazione Dei Capitolati
 VarGroup
 Velocity

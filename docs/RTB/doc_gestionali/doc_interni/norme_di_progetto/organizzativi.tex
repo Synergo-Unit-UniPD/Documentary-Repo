@@ -1,118 +1,281 @@
 % ================================================================
-% ORGANIZZATIVI
+% PROCESSI ORGANIZZATIVI
 % ================================================================
+
 \section{Processi Organizzativi}
- 
-\subsection{Processo Di Gestione}
+\label{sec:processi-organizzativi}
+
+In conformità allo standard ISO/IEC~12207:1995, i processi
+organizzativi comprendono le attività trasversali necessarie a governare il gruppo,
+mantenere l'infrastruttura di lavoro, favorire il miglioramento continuo e garantire
+l'acquisizione delle competenze necessarie.
+
+Nel contesto del progetto \textit{Second Brain}, e in accordo con il tailoring
+descritto nella Sezione~\ref{sec:tailoring}, il gruppo \textit{Synergo Unit} adotta
+i seguenti processi organizzativi:
+
+\begin{itemize}
+    \item gestione;
+    \item gestione dei rischi;
+    \item comunicazione;
+    \item infrastruttura;
+    \item miglioramento;
+    \item formazione.
+\end{itemize}
+
+% ================================================================
+% GESTIONE
+% ================================================================
+
+\subsection{Processo di Gestione}
 \label{sec:gestione}
- 
+
 \subsubsection{Descrizione}
- 
-Il processo di gestione regola la pianificazione delle attività, l'assegnazione e
-la rotazione dei ruoli, la conduzione delle riunioni e il tracciamento
-dell'avanzamento del lavoro. Esso fornisce la struttura organizzativa entro cui
-tutti gli altri processi operano.
- 
-\subsubsection{Ruoli Del Gruppo}
+
+Il processo di gestione disciplina l'organizzazione interna del gruppo, la
+pianificazione delle attività, l'assegnazione e la rotazione dei ruoli, la
+conduzione degli sprint, il tracciamento dell'avanzamento e il
+monitoraggio di tempi e costi.
+
+Esso fornisce la struttura organizzativa entro cui i processi primari e di supporto
+vengono attuati.
+
+% ------------------------------------------------
+
+\subsubsection{Composizione del Gruppo}
+
+Il gruppo \textit{Synergo Unit} è composto da sei membri.
+
+Ogni membro contribuisce allo svolgimento del progetto assumendo, nel tempo, i
+ruoli previsti dal Regolamento del Progetto Didattico.
+
+La composizione del gruppo, la rotazione dei ruoli e la distribuzione delle ore
+sono riportate nel Piano di Progetto.
+
+% ------------------------------------------------
+
+\subsubsection{Ruoli del Gruppo}
 \label{sec:ruoli}
- 
-Il gruppo prevede i seguenti ruoli, assegnati a rotazione tra i membri. Il
-Regolamento del Progetto Didattico impone che ogni componente:
- 
-\begin{itemize}
-  \item ruoti su tutti i ruoli secondo regole documentate;
-  \item assuma ogni ruolo per un tempo totale congruo;
-  \item assuma \textbf{non più di un ruolo alla volta}.
-\end{itemize}
- 
-Le regole di rotazione devono assicurare assenza di conflitti di interesse,
-garantendo verifica indipendente per ogni attività.
- 
-\bigskip
-\begin{tabularx}{\textwidth}{l c X}
-  \toprule
-  \textbf{Ruolo} & \textbf{Costo orario} & \textbf{Responsabilità} \\
-  \midrule
-  Responsabile
-    & 30\,€/h
-    & Coordina l'elaborazione di piani e scadenze; approva il rilascio di
-      prodotti parziali o finali (SW, documenti); coordina le attività del
-      gruppo; rappresenta \textit{Synergo Unit} verso committente e
-      proponente; redige il verbale interno di ogni riunione; redige e presenta il Diario di Borgo settimanale. \\[6pt]
-  Amministratore
-    & 20\,€/h
-    & Assicura l'efficienza di procedure, strumenti e tecnologie a supporto
-      del \textit{way of working\textsubscript{G}}; redige e mantiene aggiornate le Norme di
-      Progetto e il Piano di Progetto; gestisce la creazione delle issue tramite Google Form; verifica,
-      prima della chiusura di ogni sprint, che i tempi effettivi nel foglio di
-      calcolo siano stati compilati correttamente. \\[6pt]
-  Analista\textsubscript{G}
-    & 25\,€/h
-    & Svolge le attività di analisi dei requisiti. \\[6pt]
-  Progettista\textsubscript{G}
-    & 25\,€/h
-    & Svolge le attività di progettazione (\textit{design}). \\[6pt]
-  Programmatore\textsubscript{G}
-    & 15\,€/h
-    & Svolge le attività di codifica; attivato nella fase PB. \\[6pt]
-  Verificatore
-    & 15\,€/h
-    & Svolge le attività di verifica di documenti e codice prodotti dagli
-      altri membri; redige i relativi esiti di verifica e il Piano di Qualifica\textsubscript{G}. \\
-  \bottomrule
-\end{tabularx}
- 
-\bigskip
-Le assegnazioni di ruolo sono tracciate nei verbali interni di ogni sprint e
-nei task su GitHub Project\textsubscript{G}.
- 
-\subsubsection{Pianificazione E Tracciamento Delle Attività}
 
-Le attività sono tracciate tramite \textbf{GitHub Project}.
-Ogni task corrisponde a una issue GitHub il cui identificativo numerico funge da
-codice univoco. Ogni task riporta obbligatoriamente i seguenti attributi, compilati
-tramite il Google Form di creazione task:
+Il gruppo adotta i seguenti ruoli:
 
 \begin{itemize}
-  \item \textbf{Tipo}: \textit{doc.\ gestionale}, \textit{doc.\ tecnico}, o
-        \textit{altro} (per task non legati a un documento, es.\ aggiornamento sito,
-        invio email);
-  \item \textbf{Categoria}: \textit{interno}, \textit{esterno}, o \textit{altro};
-  \item \textbf{Nome documento}: per i verbali nel formato
-        \texttt{verb-int/est-AAAA-MM-GG}; per task non documentali, parole
-        identificative senza spazi (es.\ \texttt{campi-google-form},
-        \texttt{aggiornamento-sito}). Il nome documento coincide con la parte
-        finale del nome del branch;
-  \item \textbf{Descrizione}: sintetica; il dettaglio è nel documento di riunione
-        condiviso;
-  \item \textbf{Priorità}: \textit{Bassa}, \textit{Media}, \textit{Alta},
-        \textit{Critica};
-  \item \textbf{Assegnazione}: uno o più membri del gruppo;
-  \item \textbf{Ruolo}: ruolo dell'assegnatario per quel task;
-  \item \textbf{Scadenza};
-  \item \textbf{Tempo previsto\textsubscript{G}} per il Redattore (in minuti);
-  \item \textbf{Tempo previsto per il Responsabile e l'Amministratore}: se sono i diretti assegnatari, il campo
-        è pari a 0;
-  \item \textbf{Tempo previsto per il Verificatore};
-  \item \textbf{Tempo effettivo} per ciascun ruolo coinvolto (in minuti),
-        compilato \textbf{dopo il merge e la chiusura della issue};
-  \item \textbf{Stato di avanzamento}: \textit{Backlog}, \textit{In Progress},
-        \textit{Done}.
+    \item Responsabile;
+    \item Amministratore;
+    \item Analista;
+    \item Progettista;
+    \item Programmatore\textsubscript{G};
+    \item Verificatore.
 \end{itemize}
 
-La creazione di un task avviene tramite \textbf{Google Form}, che genera
-automaticamente una issue su GitHub e registra i dati in un
-foglio di calcolo condiviso. Il form è configurato con campi precompilati che
-rispettano automaticamente le convenzioni di nomenclatura di task e branch.
+Ogni membro può ricoprire un solo ruolo all'interno dello stesso sprint. Tuttavia,
+uno stesso ruolo può essere assegnato a più membri nello stesso sprint, qualora il
+carico di lavoro lo renda necessario.
 
-I task non relativi a modifiche della repository
-vengono classificati come tipo \textit{altro}.
+In fase RTB, il ruolo di Programmatore viene attivato solo per
+attività di codifica limitate alla realizzazione del Proof of Concept.
+La piena attivazione del ruolo è prevista nella fase PB.
 
-\subsubsection{Calcolo Ore E Costi Sprint}
+La rotazione dei ruoli è definita sprint per sprint durante la riunione di
+pianificazione. Essa tiene conto di:
+
+\begin{itemize}
+    \item disponibilità temporale dei membri;
+    \item carico di lavoro previsto;
+    \item competenze richieste dalle attività;
+    \item necessità di distribuire l'esperienza sui diversi ruoli;
+    \item obiettivo di mantenere tutti i membri aggiornati sull'avanzamento del progetto.
+\end{itemize}
+
+Le assegnazioni sono decise collegialmente dal gruppo durante il planning e
+registrate nel verbale interno.
+
+% ------------------------------------------------
+
+\subsubsection{Costi Orari dei Ruoli}
+
+I costi orari adottati sono quelli previsti dal Regolamento del Progetto Didattico.
+
+\begin{xltabular}{\textwidth}{
+    >{\raggedright\arraybackslash}p{3.5cm}
+    >{\raggedright\arraybackslash}p{3cm}
+    >{\raggedright\arraybackslash}X
+}
+    \toprule
+    \textbf{Ruolo} & \textbf{Costo Orario} & \textbf{Responsabilità Principale} \\
+    \midrule
+    \endfirsthead
+
+    \toprule
+    \textbf{Ruolo} & \textbf{Costo Orario} & \textbf{Responsabilità Principale} \\
+    \midrule
+    \endhead
+
+    \midrule
+    \multicolumn{3}{r}{\textit{Continua nella pagina successiva}} \\
+    \endfoot
+
+    \bottomrule
+    \endlastfoot
+
+    Responsabile
+    & 30\,\euro{}/h
+    & Coordina il gruppo, rappresenta il fornitore verso committente e proponente,
+    approva il rilascio degli artefatti e supervisiona l'avanzamento complessivo. \\
+
+    Amministratore
+    & 20\,\euro{}/h
+    & Assicura l'efficienza degli strumenti e delle procedure a supporto del
+    way of working, mantiene le Norme di Progetto e gestisce
+    l'infrastruttura operativa. \\
+
+    Analista
+    & 25\,\euro{}/h
+    & Svolge attività di analisi dei requisiti, studio del dominio e confronto tra
+    esigenze della proponente e funzionalità attese. \\
+
+    Progettista
+    & 25\,\euro{}/h
+    & Svolge attività di progettazione, selezione tecnologica e definizione della
+    soluzione tecnica. \\
+
+    Programmatore
+    & 15\,\euro{}/h
+    & Svolge attività di codifica. In RTB opera solo su eventuali parti di codice
+    necessarie al Proof of Concept. \\
+
+    Verificatore
+    & 15\,\euro{}/h
+    & Svolge attività di verifica sugli artefatti prodotti dagli altri membri,
+    garantendo indipendenza rispetto al Redattore. \\
+
+\end{xltabular}
+
+% ------------------------------------------------
+
+\subsubsection{Responsabilità Operative Specifiche}
+
+Oltre alle responsabilità previste dal ruolo, il gruppo adotta le seguenti
+responsabilità operative:
+
+\begin{itemize}
+    \item il \textbf{Responsabile} coordina le riunioni, approva i documenti
+    verificati, supervisiona l'avanzamento complessivo e cura il coordinamento
+    verso committente e proponente;
+
+    \item l'\textbf{Amministratore} mantiene l'infrastruttura, gestisce Google
+    Forms, Google Sheets, GitHub Pages,
+    email istituzionale, verbali esterni e aggiornamenti delle Norme di Progetto;
+
+    \item l'\textbf{Analista} cura l'Analisi dei Requisiti, le fonti, i casi d'uso,
+    il tracciamento e il confronto con la proponente sugli aspetti funzionali;
+
+    \item il \textbf{Progettista} cura la valutazione tecnica delle soluzioni,
+    lo stack tecnologico e il perimetro tecnico del Proof of Concept;
+
+    \item il \textbf{Programmatore} realizza codice solo quando necessario per il
+    Proof of Concept in RTB e in modo più esteso nella fase PB;
+
+    \item il \textbf{Verificatore} controlla gli artefatti prodotti da altri membri,
+    senza modificare direttamente il lavoro verificato.
+\end{itemize}
+
+% ------------------------------------------------
+
+\subsubsection{Pianificazione degli Sprint}
+
+Gli sprint hanno durata settimanale, con cadenza da martedì a martedì.
+
+Le attività vengono pianificate durante la riunione del martedì, dopo la
+retrospettiva e la review dello sprint precedente.
+
+Durante lo sprint planning il gruppo:
+
+\begin{itemize}
+    \item individua le attività da svolgere;
+    \item valuta priorità e scadenze;
+    \item stima i tempi previsti;
+    \item assegna i ruoli dello sprint;
+    \item assegna i task ai membri;
+    \item crea le issue tramite Google Form;
+    \item aggiorna il backlog\textsubscript{G} dello sprint.
+\end{itemize}
+
+I task vengono pianificati ordinariamente durante il planning del martedì.
+L'aggiunta di nuovi task durante lo sprint è ammessa solo in caso di necessità
+motivata e deve essere tracciata.
+
+% ------------------------------------------------
+
+\subsubsection{Gestione dei Task Non Completati}
+
+I task non completati entro la fine dello sprint non vengono chiusi e ricreati.
+
+Essi devono essere:
+
+\begin{itemize}
+    \item discussi durante la sprint review;
+    \item motivati nel verbale interno;
+    \item mantenuti aperti;
+    \item riportati nella lista delle issue dello sprint in cui vengono posticipati.
+\end{itemize}
+
+Per i task non associati a modifiche della repository, la chiusura della issue
+spetta all'assegnatario, dopo il completamento dell'attività e la verifica in
+review.
+
+% ------------------------------------------------
+
+\subsubsection{Tracciamento Ore e Costi}
 \label{sec:calcolo-ore}
 
-Il foglio di calcolo condiviso calcola automaticamente, selezionando la data di
-inizio sprint, preventivo e consuntivo\textsubscript{G} per lo sprint corrente e le risorse residue\textsubscript{G}.
+Il tracciamento delle ore avviene in minuti.
+
+Il tempo previsto viene inserito nel Google Form al momento della creazione del
+task. Il tempo effettivo viene inserito manualmente nel foglio Google condiviso:
+
+\begin{itemize}
+    \item dopo il merge e la chiusura della issue, per attività con modifica della
+    repository;
+    \item al termine dell'attività, per task non associati a modifiche della repository.
+\end{itemize}
+
+Per ogni task devono essere registrati:
+
+\begin{itemize}
+    \item tempo previsto del ruolo assegnatario;
+    \item tempo effettivo del ruolo assegnatario;
+    \item tempo previsto ed effettivo del Verificatore;
+    \item tempo previsto ed effettivo del Responsabile, se coinvolto;
+    \item tempo previsto ed effettivo dell'Amministratore, se coinvolto.
+\end{itemize}
+
+L'Amministratore controlla che i tempi effettivi siano compilati correttamente e
+li utilizza per:
+
+\begin{itemize}
+    \item consuntivo\textsubscript{G} di sprint;
+    \item aggiornamento del Piano di Progetto;
+    \item monitoraggio dei costi;
+    \item analisi delle risorse residue\textsubscript{G}.
+\end{itemize}
+
+Il monitoraggio dei costi deve garantire il rispetto del costo massimo accettato
+in fase di aggiudicazione. Qualora i costi sostenuti si avvicinino al limite
+previsto, il gruppo deve valutare azioni correttive e, se necessario, rinegoziare
+il perimetro dei requisiti con la proponente.
+
+Il foglio di calcolo\textsubscript{G} condiviso produce automaticamente:
+
+\begin{itemize}
+    \item preventivo di sprint;
+    \item consuntivo di sprint;
+    \item delta ore;
+    \item delta costi;
+    \item risorse residue per ruolo;
+    \item risorse residue per membro.
+\end{itemize}
+
 Le formule di conversione applicate sono:
 
 \begin{align*}
@@ -120,146 +283,512 @@ Le formule di conversione applicate sono:
   \text{costo} &= \frac{\text{minuti}}{60} \times \text{costo orario del ruolo}
 \end{align*}
 
-Il foglio produce le seguenti tabelle:
+\subsubsection{Gestione dei Rischi}
 
-\paragraph{Preventivo}
-Per ogni membro: ruolo nello sprint (recuperato dalle task), ore preventivate e
-costo preventivato, con totali di colonna.
+La gestione dei rischi è responsabilità del Responsabile e viene formalizzata nel
+Piano di Progetto.
 
-\paragraph{Consuntivo}
-Per ogni membro: ruolo, ore preventivate, ore effettive, delta ore, costo
-preventivato, costo effettivo, delta costo, con totali di colonna.
-
-\paragraph{Risorse Residue Per Ruolo}
-Per ogni ruolo: ore residue, costo orario (fisso per ruolo, cfr.\
-Sezione~\ref{sec:ruoli}), costo totale residuo.
-
-\paragraph{Ore Residue Per Membro}
-Per ogni membro: ore residue suddivise per ruolo (Responsabile, Amministratore,
-Analista, Progettista, Programmatore, Verificatore) e totale complessivo.
- 
-\subsubsection{Riunioni Interne}
- 
-\paragraph{Cadenza E Piattaforma}
-Il gruppo si riunisce con cadenza fissa, salvo diversa comunicazione del
-Responsabile:
- 
+Durante ogni sprint retrospective, il gruppo valuta:
 \begin{itemize}
-  \item \textbf{Martedì} alle \textbf{14:30};
-  \item \textbf{Venerdì} alle \textbf{14:30}.
+    \item rischi occorsi;
+    \item variazioni di probabilità o impatto dei rischi già identificati;
+    \item nuovi rischi emersi;
+    \item efficacia delle strategie di mitigazione adottate.
 \end{itemize}
- 
-Le riunioni si svolgono in modalità remota sulla piattaforma Discord\textsubscript{G}.
-Il Responsabile può convocare riunioni straordinarie tramite il gruppo
-WhatsApp\textsubscript{G}.
- 
-\paragraph{Struttura Della Riunione Del Martedì}
-La riunione del martedì segue la struttura seguente, nell'ordine indicato:
+
+Gli aggiornamenti rilevanti vengono riportati nel Piano di Progetto e, se
+necessario, trasformati in azioni correttive o task operativi.
+
+% ------------------------------------------------
+
+\subsubsection{Riunione del Martedì}
+
+La riunione ordinaria del martedì si tiene alle 14:30 su Discord\textsubscript{G}.
+
+Qualora emergano impedimenti, l'orario può essere anticipato o posticipato previo
+accordo su WhatsApp\textsubscript{G}. L'orario effettivo di inizio e fine viene
+riportato nel verbale interno.
+
+La riunione ha durata variabile in base
+alla complessità delle decisioni da assumere.
+
+La struttura della riunione è:
 
 \begin{enumerate}
-      \item \textbf{Sprint Retrospective\textsubscript{G}}: il team identifica criticità nel processo
-            di lavoro e definisce almeno un'azione correttiva concreta da applicare
-            allo sprint successivo.
-      \item \textbf{Sprint Review\textsubscript{G}}: il team verifica
-            l'avanzamento rispetto alle attività pianificate nello sprint appena
-            concluso, analizza le eventuali difficoltà e confronta le ore previste
-            con quelle effettive per ciascun task.
-      \item \textbf{Sprint Planning\textsubscript{G}}: il Responsabile aggiorna il backlog prioritario,
-            stima il tempo previsto per i task completabili nello sprint corrente e
-            l'Amministratore assegna i task tramite Google Form. Output: sprint backlog.
-      \item \textbf{Predisposizione del documento di riunione}: lo Scriba
-            registra le decisioni prese nel documento Google condiviso, che costituisce
-            la base per la redazione del verbale.
-      \item \textbf{Redazione del verbale}: il Responsabile redige il verbale interno
-            al termine della riunione; il verbale è verificato e pubblicato entro la
-            riunione successiva.
+    \item \textbf{Sprint Retrospective}: il gruppo analizza il processo seguito nello
+    sprint precedente e individua almeno un'azione correttiva;
+
+    \item \textbf{Sprint Review}: il gruppo verifica lo stato dei task, analizza
+    eventuali scostamenti tra preventivo e consuntivo e valuta i task non completati;
+
+    \item \textbf{Sprint Planning}: il gruppo pianifica lo sprint corrente, assegna
+    ruoli e task e crea le relative issue.
 \end{enumerate}
 
-\paragraph{Aggiornamento Asincrono E Riunione Del Venerdì}
-Il daily stand-up\textsubscript{G} è gestito in modalità asincrona tramite il gruppo WhatsApp:
-ogni membro aggiorna il gruppo su ciò che ha svolto, ciò che prevede di fare e
-gli eventuali impedimenti. La riunione del venerdì alle 14:30 funge da punto di
-sincronizzazione intermedio per affrontare dubbi o criticità emerse durante la
-settimana.
- 
-\paragraph{Modalità Decisionale}
-Il gruppo adotta il \textbf{brainstorming\textsubscript{G}} come tecnica principale per la generazione
-e il confronto delle idee. Il processo si articola in tre fasi:
- 
-\begin{enumerate}
-  \item raccolta libera delle proposte da parte di ogni membro, senza valutazione
-        immediata;
-  \item confronto strutturato delle idee emerse, con analisi di vantaggi e
-        svantaggi;
-  \item scelta della soluzione ritenuta più adeguata, con registrazione
-        della decisione nel verbale.
-\end{enumerate}
- 
-Le decisioni adottate sono registrate con il codice \texttt{VI-y.x}. Le decisioni
-non possono essere modificate unilateralmente: eventuali revisioni richiedono
-delibera in una riunione successiva.
- 
-\subsubsection{Gestione Delle Disponibilità}
- 
-Le disponibilità dei membri e la pianificazione delle riunioni ricorrenti sono
-gestite tramite \textbf{Google Calendar\textsubscript{G}}. I calendari condivisi
-sono aggiornati dal Responsabile o dall'Amministratore. Le comunicazioni urgenti
-e le notifiche rapide avvengono tramite il gruppo \textbf{WhatsApp}.
- 
-% ---------------------------------------------------------------
-\subsection{Processo Di Infrastruttura}
-\label{sec:infrastruttura}
- 
+Le decisioni, le azioni e le assegnazioni emerse vengono registrate nel documento
+di riunione condiviso e successivamente formalizzate nel verbale interno.
+
+% ------------------------------------------------
+
+\subsubsection{Riunione del Venerdì}
+
+La riunione del venerdì è fissata alle 14:30 su Discord e ha durata indicativa di
+30 minuti.
+
+La riunione può essere anticipata o posticipata, di comune accordo, al termine del
+Diario di Bordo, in modo da recepire tempestivamente eventuali aggiornamenti o
+osservazioni.
+
+Essa ha lo scopo di:
+
+\begin{itemize}
+    \item risolvere dubbi emersi durante lo sprint;
+    \item affrontare criticità operative;
+    \item aggiornare il gruppo sullo stato delle attività;
+    \item recepire eventuali osservazioni emerse dal Diario di Bordo.
+\end{itemize}
+
+% ------------------------------------------------
+
+\subsubsection{Daily Stand-Up Asincrono}
+
+Il gruppo utilizza WhatsApp per aggiornamenti asincroni durante lo sprint.
+
+Il daily stand-up asincrono viene utilizzato quando utile e deve riportare, se
+necessario:
+
+\begin{itemize}
+    \item attività svolte;
+    \item attività previste;
+    \item impedimenti;
+    \item richieste di supporto.
+\end{itemize}
+
+% ------------------------------------------------
+
+\subsubsection{Verbali e Tracciamento Decisioni}
+
+Ogni riunione interna produce un verbale interno.
+
+Il verbale interno deve riportare:
+
+\begin{itemize}
+    \item data, orario e piattaforma;
+    \item partecipanti presenti e assenti;
+    \item ordine del giorno;
+    \item sintesi della discussione;
+    \item decisioni prese;
+    \item azioni da svolgere;
+    \item riferimenti alle issue create;
+    \item data della riunione successiva.
+\end{itemize}
+
+Le decisioni interne sono identificate tramite codice:
+
+\begin{center}
+    \texttt{VI-y.x}
+\end{center}
+
+dove \texttt{y} identifica il verbale e \texttt{x} la decisione progressiva.
+
+Ogni decisione rilevante deve essere collegata, quando possibile, a una o più
+issue operative.
+
+% ================================================================
+% COMUNICAZIONE
+% ================================================================
+
+\subsection{Processo di Comunicazione}
+\label{sec:comunicazione}
+
 \subsubsection{Descrizione}
- 
-Il processo di infrastruttura definisce, mantiene e documenta l'insieme degli
-strumenti adottati dal gruppo a supporto di tutti i processi attivi. L'adozione
-di un nuovo strumento deve essere deliberata collegialmente e registrata nel verbale
-della riunione in cui viene approvata; le presenti norme devono essere aggiornate
-di conseguenza.
- 
-\subsubsection{Strumenti Di Gestione}
- 
+
+Il processo di comunicazione disciplina i canali, le modalità e le responsabilità
+relative alle comunicazioni interne ed esterne del gruppo.
+
+Una comunicazione corretta deve essere:
+
 \begin{itemize}
-  \item \textbf{GitHub Project}: sistema principale per la
-        pianificazione e il tracciamento dei task, con gestione
-        di assegnatari, scadenze, stime e stati di avanzamento.
-  \item \textbf{Google Form}: interfaccia guidata per la creazione dei task;
-        genera automaticamente la issue corrispondente su GitHub
-        e registra i dati nel foglio di calcolo condiviso.
-  \item \textbf{Foglio Di Calcolo}: aggregazione e monitoraggio delle misurazioni
-        relative ai task; calcola automaticamente preventivo, consuntivo e risorse
-        residue per sprint (cfr.\ Sezione~\ref{sec:calcolo-ore}).
-  \item \textbf{Google Calendar}: gestione delle disponibilità
-        dei membri e pianificazione delle riunioni ricorrenti e straordinarie.
+    \item tracciabile;
+    \item tempestiva;
+    \item pertinente;
+    \item accessibile ai membri coinvolti;
+    \item formalizzata quando produce decisioni o impegni.
 \end{itemize}
- 
-\subsubsection{Strumenti Di Documentazione}
- 
+
+% ------------------------------------------------
+
+\subsubsection{Comunicazione Interna}
+
+I canali interni adottati sono:
+
 \begin{itemize}
-  \item \textbf{\LaTeX{} con Visual Studio Code}: ambiente di redazione documentale
-        principale; la compilazione automatica in PDF è gestita tramite l'estensione
-        \textit{LaTeX Workshop}.
-  \item \textbf{Script Python} (\texttt{python\_glossary\_automation/}):
-        automatizza l'applicazione del pedice G ai termini del
-        Glossario, riducendo il rischio di omissioni.
-  \item \textbf{GitHub}: sistema di controllo versione centralizzato per tutti i
-        documenti del progetto; gestisce branch, pull
-        request e baseline.
-  \item \textbf{GitHub Pages}: piattaforma di pubblicazione del
-        sito documentale del gruppo, sviluppato in HTML5 e CSS3.
+    \item \textbf{Discord}: piattaforma principale per riunioni, discussioni operative
+    e allineamenti sincroni;
+
+    \item \textbf{WhatsApp}: canale per comunicazioni rapide, aggiornamenti asincroni,
+    impedimenti e convocazioni straordinarie;
+
+    \item \textbf{GitHub}: canale operativo per issue, Pull Request, review e
+    tracciamento delle attività;
+
+    \item \textbf{Google Calendar\textsubscript{G}}: strumento per disponibilità, eventi ricorrenti e
+    pianificazione delle riunioni;
+
+    \item \textbf{Google Drive/Docs}: spazio di supporto per documenti di riunione
+    condivisi e materiali temporanei.
 \end{itemize}
- 
-\subsubsection{Strumenti Di Comunicazione}
- 
+
+Le decisioni prese su canali informali devono essere riportate nel primo verbale
+interno utile, qualora producano effetti su documenti, task, requisiti, strumenti
+o processi.
+
+% ------------------------------------------------
+
+\subsubsection{Comunicazione Esterna}
+
+Le comunicazioni esterne avvengono tramite l'email istituzionale del gruppo:
+
+\begin{center}
+    \texttt{synergounit.20@gmail.com}
+\end{center}
+
+L'indirizzo è gestito dall'Amministratore.
+
+L'Amministratore cura la gestione operativa della casella email; il Responsabile
+mantiene la responsabilità del contenuto delle comunicazioni formali quando esse
+comportano impegni verso committente o proponente.
+
+Le comunicazioni esterne devono passare attraverso l'email istituzionale, salvo
+diversa indicazione esplicita della proponente o del committente.
+
+% ------------------------------------------------
+
+\subsubsection{Incontri con la Proponente}
+
+Gli incontri con la proponente avvengono tramite Google Meet.
+
+Il processo prevede:
+
+\begin{enumerate}
+    \item durante una riunione interna il gruppo individua i temi da discutere;
+    \item il gruppo definisce l'ordine del giorno;
+    \item l'Amministratore contatta la proponente tramite email ufficiale;
+    \item dopo conferma della disponibilità, il gruppo invia l'evento Google Meet;
+    \item prima dell'incontro vengono definiti i portavoce per i diversi argomenti;
+    \item al termine dell'incontro l'Amministratore redige il verbale esterno;
+    \item il verbale viene inviato alla proponente per firma;
+    \item dopo conferma, il verbale viene caricato, verificato, approvato e pubblicato.
+\end{enumerate}
+
+Il portavoce dell'incontro viene scelto in base all'argomento trattato. In caso di
+più tematiche, il gruppo stabilisce preventivamente chi interviene su ciascun
+punto, mantenendo comunque la possibilità per ogni membro di porre domande.
+
+L'obiettivo è ottimizzare il tempo dell'incontro, evitare tempi morti e garantire
+che tutti i dubbi preparati vengano affrontati.
+
+% ------------------------------------------------
+
+\subsubsection{Comunicazione con il Committente}
+
+La comunicazione con il committente avviene tramite:
+
 \begin{itemize}
-  \item \textbf{Email Istituzionale Del Gruppo}: canale ufficiale per le
-        comunicazioni formali con committente e proponente. Configurata con
-        inoltro automatico verso i membri delegati; le risposte mantengono
-        l'indirizzo istituzionale come mittente.
-  \item \textbf{Discord}: piattaforma principale per le riunioni
-        interne, le discussioni operative e il coordinamento quotidiano tra i
-        membri.
-  \item \textbf{WhatsApp}: canale secondario per comunicazioni
-        rapide, notifiche urgenti e convocazioni straordinarie.
+    \item email istituzionale del gruppo;
+    \item Diari di Bordo;
+    \item revisioni di avanzamento;
+    \item incontri o ricevimenti richiesti.
+\end{itemize}
+
+Gli esiti rilevanti delle comunicazioni con il committente devono essere analizzati
+dal gruppo e, se necessario, tradotti in azioni operative.
+
+% ================================================================
+% INFRASTRUTTURA
+% ================================================================
+
+\subsection{Processo di Infrastruttura}
+\label{sec:infrastruttura}
+
+\subsubsection{Descrizione}
+
+Il processo di infrastruttura definisce e mantiene l'insieme degli strumenti
+utilizzati dal gruppo per supportare pianificazione, comunicazione, documentazione,
+sviluppo, pubblicazione e tracciamento.
+
+L'infrastruttura deve essere mantenuta coerente con i processi definiti nelle
+presenti Norme di Progetto.
+
+% ------------------------------------------------
+
+\subsubsection{Responsabilità}
+
+L'Amministratore è responsabile della manutenzione dell'infrastruttura operativa.
+
+In particolare, l'Amministratore:
+
+\begin{itemize}
+    \item mantiene configurati gli strumenti di gestione;
+    \item mantiene Google Forms e Google Sheets;
+    \item gestisce l'email istituzionale;
+    \item aggiorna il sito GitHub Pages;
+    \item supporta i membri nell'utilizzo degli strumenti;
+    \item propone aggiornamenti alle Norme di Progetto quando cambia l'infrastruttura.
+\end{itemize}
+
+% ------------------------------------------------
+
+\subsubsection{Strumenti di Gestione}
+
+Gli strumenti di gestione adottati sono:
+
+\begin{itemize}
+    \item \textbf{GitHub Projects}: pianificazione e tracciamento dello stato delle
+    issue;
+
+    \item \textbf{Google Forms}: creazione standardizzata dei task e generazione
+    automatica delle issue;
+
+    \item \textbf{Google Sheets}: raccolta di stime, consuntivi e calcolo automatico
+    di ore, costi e risorse residue;
+
+    \item \textbf{Google Calendar}: gestione di riunioni, disponibilità ed eventi.
+\end{itemize}
+
+% ------------------------------------------------
+
+\subsubsection{Strumenti di Documentazione}
+
+Gli strumenti di documentazione adottati sono:
+
+\begin{itemize}
+    \item \textbf{\LaTeX{}};
+    \item \textbf{Visual Studio Code};
+    \item \textbf{LaTeX Workshop};
+    \item \textbf{Script Python per Glossario};
+    \item \textbf{GitHub Pages};
+    \item \textbf{Canva}.
+\end{itemize}
+
+Le modalità operative di utilizzo di tali strumenti sono descritte nel Processo
+Di Documentazione e nel Processo Di Gestione Della Configurazione.
+
+% ------------------------------------------------
+
+\subsubsection{Strumenti di Comunicazione}
+
+Gli strumenti di comunicazione adottati sono:
+
+\begin{itemize}
+    \item \textbf{Discord};
+    \item \textbf{WhatsApp};
+    \item \textbf{Email istituzionale};
+    \item \textbf{Google Meet};
+    \item \textbf{Google Drive/Docs}.
+\end{itemize}
+
+% ------------------------------------------------
+
+\subsubsection{Strumenti Tecnici}
+
+Gli strumenti e le tecnologie tecniche attualmente considerate per il Proof of
+Concept includono:
+
+\begin{itemize}
+    \item Vue.js;
+    \item CodeMirror;
+    \item Python;
+    \item FastAPI;
+    \item PostgreSQL;
+    \item Docker;
+    \item GitHub;
+    \item LucidSpark con elementi UML di LucidChart.
+\end{itemize}
+
+Le decisioni definitive relative allo stack tecnologico sono riportate
+nell'Analisi dello Stato dell'Arte e potranno essere aggiornate in seguito al
+confronto con la proponente e agli esiti del Proof of Concept.
+
+% ------------------------------------------------
+
+\subsubsection{Adozione di Nuovi Strumenti}
+
+L'adozione di un nuovo strumento deve seguire la seguente procedura:
+
+\begin{enumerate}
+    \item proposta durante una riunione interna;
+    \item valutazione collegiale di utilità, costi, benefici e impatto sul workflow;
+    \item approvazione del gruppo;
+    \item registrazione della decisione nel verbale interno;
+    \item aggiornamento delle Norme di Progetto prima dell'utilizzo operativo.
+\end{enumerate}
+
+% ================================================================
+% MIGLIORAMENTO
+% ================================================================
+
+\subsection{Processo di Miglioramento}
+\label{sec:miglioramento}
+
+\subsubsection{Descrizione}
+
+Il processo di miglioramento ha lo scopo di individuare inefficienze nei processi
+attivi e introdurre azioni correttive finalizzate al miglioramento continuo del
+way of working.
+
+Il processo è collegato al ciclo PDCA descritto nella Sezione~\ref{sec:qualita}
+e viene attuato principalmente tramite retrospective, consuntivi di sprint e
+aggiornamento delle presenti Norme di Progetto.
+
+% ------------------------------------------------
+
+\subsubsection{Identificazione delle Criticità}
+
+Le criticità possono emergere da:
+
+\begin{itemize}
+    \item sprint retrospective;
+    \item sprint review;
+    \item scostamenti tra preventivo e consuntivo;
+    \item difficoltà operative riportate dai membri;
+    \item non conformità;
+    \item feedback di committente o proponente;
+    \item problemi nell'utilizzo degli strumenti.
+\end{itemize}
+
+% ------------------------------------------------
+
+\subsubsection{Azioni Correttive}
+
+Ogni sprint retrospective deve produrre almeno una azione correttiva, anche minima.
+
+Le azioni correttive devono essere:
+
+\begin{itemize}
+    \item verbalizzate nel verbale interno;
+    \item riportate nel consuntivo di sprint;
+    \item monitorate nello sprint successivo;
+    \item trasformate in aggiornamenti delle Norme di Progetto, se modificano il
+    way of working.
+\end{itemize}
+
+Le azioni correttive possono riguardare:
+
+\begin{itemize}
+    \item processo;
+    \item comunicazione;
+    \item strumenti;
+    \item pianificazione;
+    \item qualità documentale;
+    \item gestione dei task;
+    \item stima e consuntivazione.
+\end{itemize}
+
+% ------------------------------------------------
+
+\subsubsection{Aggiornamento del Way of Working}
+
+Nessun processo può essere modificato unilateralmente.
+
+Ogni modifica al way of working deve:
+
+\begin{itemize}
+    \item essere discussa in riunione;
+    \item essere approvata dal gruppo;
+    \item essere verbalizzata;
+    \item essere recepita nelle Norme di Progetto dall'Amministratore.
+\end{itemize}
+
+% ================================================================
+% FORMAZIONE
+% ================================================================
+
+\subsection{Processo di Formazione}
+\label{sec:formazione}
+
+\subsubsection{Descrizione}
+
+Il processo di formazione ha lo scopo di garantire che i membri del gruppo
+acquisiscano le competenze necessarie per utilizzare strumenti, tecnologie e
+processi adottati.
+
+La formazione riduce i rischi derivanti da inesperienza tecnica, rotazione dei
+ruoli e introduzione di nuovi strumenti.
+
+% ------------------------------------------------
+
+\subsubsection{Modalità di Formazione}
+
+La formazione viene pianificata tramite task specifici quando una nuova tecnologia,
+uno strumento o una procedura richiede studio preliminare.
+
+Le attività di formazione possono avvenire tramite:
+
+\begin{itemize}
+    \item studio individuale della documentazione ufficiale;
+    \item prove pratiche su repository o ambienti locali;
+    \item confronto tra membri;
+    \item sessioni di allineamento su Discord;
+    \item condivisione di indicazioni operative da parte di membri più esperti.
+\end{itemize}
+
+Le ore dedicate alla formazione sono considerate ore di palestra e non vengono
+consuntivate come ore produttive di progetto.
+
+% ------------------------------------------------
+
+\subsubsection{Formazione su Strumenti di Processo}
+
+La formazione sugli strumenti di processo è coordinata dall'Amministratore.
+
+Essa riguarda principalmente:
+
+\begin{itemize}
+    \item GitHub Projects;
+    \item Google Forms;
+    \item Google Sheets;
+    \item GitHub Pages;
+    \item template documentali;
+    \item script di automazione del Glossario.
+\end{itemize}
+
+% ------------------------------------------------
+
+\subsubsection{Formazione Tecnica}
+
+La formazione tecnica è coordinata dai membri che ricoprono i ruoli di Analista e
+Progettista, in base all'ambito trattato.
+
+Essa riguarda principalmente:
+
+\begin{itemize}
+    \item Vue.js;
+    \item CodeMirror;
+    \item Python;
+    \item FastAPI;
+    \item PostgreSQL;
+    \item Docker;
+    \item strumenti UML;
+    \item strumenti di sviluppo collegati al Proof of Concept.
+\end{itemize}
+
+Le risorse di riferimento principali sono le documentazioni ufficiali delle
+tecnologie adottate.
+
+% ------------------------------------------------
+
+\subsubsection{Applicazione della Formazione}
+
+La formazione deve essere avviata prima dell'utilizzo operativo dello strumento o
+della tecnologia.
+
+Qualora l'apprendimento possa avvenire in modo incrementale, il membro può
+proseguire la formazione durante l'attività, purché siano garantiti:
+
+\begin{itemize}
+    \item comprensione minima dello strumento;
+    \item supporto da parte del gruppo;
+    \item verifica dell'artefatto prodotto;
+    \item tracciabilità dell'attività svolta.
 \end{itemize}

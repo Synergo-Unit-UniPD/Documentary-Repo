@@ -1,59 +1,214 @@
 % ================================================================
-% TAILORINIG
+% TAILORING
 % ================================================================
+
 \section{Tailoring}
 \label{sec:tailoring}
- 
-Lo standard ISO/IEC~12207:1995 prevede esplicitamente la possibilità di adattare
-(tailoring) il proprio insieme di processi al contesto specifico
-del progetto. Il presente documento applica tale adattamento in ragione dei seguenti
-fattori contestuali:
- 
+
+Lo standard ISO/IEC~12207:1995 prevede la possibilità di adattare
+(\textit{tailoring}) i processi del ciclo di vita software al
+contesto specifico del progetto.
+
+Il gruppo \textit{Synergo Unit} adotta un approccio incrementale orientato al
+miglioramento continuo, introducendo progressivamente processi e pratiche in
+funzione dell'evoluzione del progetto e delle baseline\textsubscript{G} previste
+dal Regolamento del Progetto Didattico.
+
+Il tailoring adottato tiene conto dei seguenti fattori contestuali:
+
 \begin{itemize}
-  \item \textbf{Baseline\textsubscript{G} attuale}: RTB\textsubscript{G}; il gruppo è in fase di
-        analisi dei requisiti\textsubscript{G} e produzione della documentazione tecnica e gestionale
-        richiesta per la Requirements \& Technology Baseline\textsubscript{G}.
-  \item \textbf{Dimensione del gruppo}: sei membri con rotazione documentata dei
-        ruoli.
-  \item \textbf{Natura didattica}: progetto svolto in ambito accademico con vincoli
-        di tempo e risorse predefiniti dal regolamento del corso.
+    \item \textbf{Baseline attuale}: RTB\textsubscript{G}; il gruppo si trova nella
+    fase di consolidamento dei requisiti, delle scelte tecnologiche e della
+    documentazione tecnica e gestionale richiesta per la Requirements \& Technology
+    Baseline;
+
+    \item \textbf{Dimensione del gruppo}: sei membri con rotazione periodica e
+    documentata dei ruoli;
+
+    \item \textbf{Natura didattica del progetto}: il progetto viene svolto in ambito
+    accademico, con vincoli temporali, organizzativi ed economici definiti dal
+    regolamento del corso;
+
+    \item \textbf{Approccio incrementale}: il gruppo introduce esclusivamente processi
+    effettivamente utilizzati, verificabili e coerenti con lo stato corrente del
+    progetto;
+
+    \item \textbf{Principio just-in-time}: ogni nuova attività o pratica viene normata
+    prima della sua applicazione operativa.
 \end{itemize}
- 
-\subsection{Processi Attivati: Fase CC}
- 
-La tabella seguente elenca i processi attivati nella fase di candidatura\textsubscript{G} (CC),
-rimasti operativi nelle fasi successive.
- 
-\bigskip
-\begin{tabularx}{\textwidth}{l l X}
-  \toprule
-  \textbf{Categoria} & \textbf{Processo} & \textbf{Sezione} \\
-  \midrule
-  Primario      & Fornitura                     & \ref{sec:fornitura} \\
-  Di supporto   & Documentazione                & \ref{sec:documentazione} \\
-  Di supporto   & Gestione della Configurazione & \ref{sec:configurazione} \\
-  Di supporto   & Verifica                      & \ref{sec:verifica} \\
-  Organizzativo & Gestione                      & \ref{sec:gestione} \\
-  Organizzativo & Infrastruttura                & \ref{sec:infrastruttura} \\
-  \bottomrule
-\end{tabularx}
 
-\subsection{Processi Attivati: Fase RTB}
+Il presente documento è soggetto ad aggiornamento progressivo: ogni evoluzione
+significativa del way of working, degli strumenti o delle attività
+di progetto comporta, se necessario, l'aggiornamento delle presenti Norme di
+Progetto.
 
-Con l'avanzamento alla baseline RTB vengono attivati i seguenti processi
-aggiuntivi. I processi della fase CC restano operativi.
+% ------------------------------------------------
+
+\subsection{Processi Attivati nella Fase CC}
+
+La seguente tabella riporta i processi attivati durante la fase di
+candidatura\textsubscript{G} (CC), mantenuti operativi anche nelle fasi successive
+del progetto.
 
 \bigskip
-\begin{tabularx}{\textwidth}{l l X}
-  \toprule
-  \textbf{Categoria} & \textbf{Processo} & \textbf{Sezione} \\
-  \midrule
-  Primario    & Sviluppo: Analisi Dei Requisiti & \ref{sec:sviluppo} \\
-  Primario    & Sviluppo: Progettazione         & \ref{sec:sviluppo} \\
-  Di supporto & Garanzia Della Qualità           & \ref{sec:qualita} \\
-  \bottomrule
-\end{tabularx}
- 
+
+\begin{xltabular}{\textwidth}{
+    >{\raggedright\arraybackslash}p{3cm}
+    >{\raggedright\arraybackslash}X
+    >{\raggedright\arraybackslash}p{3cm}
+}
+    \toprule
+    \textbf{Categoria} & \textbf{Processo} & \textbf{Sezione} \\
+    \midrule
+    \endfirsthead
+
+    \toprule
+    \textbf{Categoria} & \textbf{Processo} & \textbf{Sezione} \\
+    \midrule
+    \endhead
+
+    \midrule
+    \multicolumn{3}{r}{\textit{Continua nella pagina successiva}} \\
+    \endfoot
+
+    \bottomrule
+    \endlastfoot
+
+    Primario
+    & Processo Di Fornitura
+    & \ref{sec:fornitura} \\
+
+    Di supporto
+    & Processo Di Documentazione
+    & \ref{sec:documentazione} \\
+
+    Di supporto
+    & Processo Di Gestione Della Configurazione
+    & \ref{sec:configurazione} \\
+
+    Di supporto
+    & Processo Di Verifica
+    & \ref{sec:verifica} \\
+
+    Organizzativo
+    & Processo Di Gestione
+    & \ref{sec:gestione} \\
+
+    Organizzativo
+    & Processo Di Comunicazione
+    & \ref{sec:comunicazione} \\
+
+    Organizzativo
+    & Processo Di Infrastruttura
+    & \ref{sec:infrastruttura} \\
+
+\end{xltabular}
+
+% ------------------------------------------------
+
+\subsection{Processi Attivati nella Fase RTB}
+
+Con l'avanzamento alla baseline RTB vengono introdotti ulteriori processi e
+attività necessari al consolidamento dei requisiti, alla motivazione delle scelte
+tecnologiche e alla preparazione del Proof of Concept\textsubscript{G}.
+
+I processi precedentemente attivati rimangono operativi.
+
 \bigskip
-I \textbf{processi esclusi} saranno rivalutati a ogni cambio di baseline del progetto e,
-ove necessario, introdotti con un aggiornamento del presente documento.
+
+\begin{xltabular}{\textwidth}{
+    >{\raggedright\arraybackslash}p{3cm}
+    >{\raggedright\arraybackslash}X
+    >{\raggedright\arraybackslash}p{3cm}
+}
+    \toprule
+    \textbf{Categoria} & \textbf{Processo} & \textbf{Sezione} \\
+    \midrule
+    \endfirsthead
+
+    \toprule
+    \textbf{Categoria} & \textbf{Processo} & \textbf{Sezione} \\
+    \midrule
+    \endhead
+
+    \midrule
+    \multicolumn{3}{r}{\textit{Continua nella pagina successiva}} \\
+    \endfoot
+
+    \bottomrule
+    \endlastfoot
+
+    Primario
+    & Processo Di Sviluppo: Analisi Dei Requisiti
+    & \ref{sec:sviluppo} \\
+
+    Primario
+    & Processo Di Sviluppo: Analisi Dello Stato Dell'Arte
+    & \ref{sec:sviluppo} \\
+
+    Primario
+    & Processo Di Sviluppo: Progettazione Architetturale Preliminare
+    & \ref{sec:sviluppo} \\
+
+    Primario
+    & Processo Di Sviluppo: Proof of Concept
+    & \ref{sec:sviluppo} \\
+
+    Di supporto
+    & Processo Di Validazione\textsubscript{G}
+    & \ref{sec:validazione} \\
+
+    Di supporto
+    & Processo Di Accertamento Della Qualità
+    & \ref{sec:qualita} \\
+
+    Di supporto
+    & Processo Di Gestione Dei Cambiamenti
+    & \ref{sec:cambiamenti} \\
+
+    Di supporto
+    & Processo Di Gestione Delle Non Conformità\textsubscript{G}
+    & \ref{sec:non-conformita} \\
+
+    Organizzativo
+    & Gestione Dei Rischi
+    & \ref{sec:gestione} \\
+
+    Organizzativo
+    & Processo Di Miglioramento
+    & \ref{sec:miglioramento} \\
+
+    Organizzativo
+    & Processo Di Formazione
+    & \ref{sec:formazione} \\
+
+\end{xltabular}
+
+% ------------------------------------------------
+
+\subsection{Processi Pianificati per la Fase PB}\textsubscript{G}
+
+Alcuni processi risultano attualmente non necessari oppure non ancora pienamente
+attivabili, poiché dipendono dalla stabilizzazione dell'architettura, dall'avvio
+dello sviluppo esteso e dalla produzione del Minimum Viable Product\textsubscript{G}.
+
+Tali processi verranno rivalutati e, ove necessario, introdotti durante la Product
+Baseline (PB).
+
+Tra i principali processi pianificati rientrano:
+
+\begin{itemize}
+    \item codifica estesa del prodotto;
+    \item norme di codifica;
+    \item code review\textsubscript{G};
+    \item integrazione continua\textsubscript{G};
+    \item testing automatico;
+    \item analisi dinamica del codice;
+    \item deployment automatizzato\textsubscript{G};
+    \item gestione avanzata delle release software;
+    \item metriche avanzate di prodotto;
+    \item Architecture Decision Records (ADR).
+\end{itemize}
+
+L'introduzione di nuovi processi comporterà l'aggiornamento incrementale del
+presente documento.
