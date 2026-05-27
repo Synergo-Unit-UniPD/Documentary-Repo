@@ -163,3 +163,25 @@ Way of Working
 WoW
 WhatsApp
 Zucchetti
+AC
+Actual Cost
+BAC
+Budget at Completion
+BV
+Budget Variance
+CPI
+Cost Performance Index
+CV
+Cost Variance
+EAC
+Estimate at Completion
+EV
+Earned Value
+PV
+Planned Value
+RSI
+Requirements Stability Index
+SPI
+Schedule Performance Index
+SV
+Schedule Variance
