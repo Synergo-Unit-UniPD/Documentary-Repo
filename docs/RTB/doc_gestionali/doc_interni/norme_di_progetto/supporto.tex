@@ -37,14 +37,14 @@ produzione, la revisione, l'approvazione e la pubblicazione della documentazione
 del gruppo.
 
 Esso si applica a ogni documento gestionale o tecnico, interno o esterno, prodotto
-dal gruppo \textit{Synergo Unit}. Il Diario di Bordo\textsubscript{G} segue un template\textsubscript{G} separato
+dal gruppo \textit{Synergo Unit}. Il Diario di Bordo segue un template separato
 realizzato tramite Canva e non prevede registro delle modifiche.
 
 La documentazione deve essere:
 \begin{itemize}
     \item uniforme nella struttura;
     \item coerente con le presenti Norme di Progetto;
-    \item verificabile tramite Pull Request\textsubscript{G};
+    \item verificabile tramite Pull Request;
     \item tracciabile rispetto alle modifiche logiche effettuate;
     \item consultabile tramite repository e sito documentale.
 \end{itemize}
@@ -68,14 +68,14 @@ La documentazione deve essere:
     delle tecnologie e motivazione dello stack candidato per il Proof of Concept.
 
     \item \textbf{Verbali Interni}: documentano riunioni interne, decisioni operative,
-    retrospettive, pianificazione e assegnazione dei task\textsubscript{G}.
+    retrospettive, pianificazione e assegnazione dei task.
 \end{itemize}
 
 \paragraph{Documentazione Gestionale Esterna}
 
 \begin{itemize}
     \item \textbf{Verbali Esterni}: documentano gli incontri con la proponente e con
-    gli stakeholder\textsubscript{G} esterni. Sono redatti dall'Amministratore e
+    gli stakeholder esterni. Sono redatti dall'Amministratore e
     condivisi con la proponente per conferma e firma.
 
     \item \textbf{Piano di Progetto}: descrive pianificazione, consuntivazione,
@@ -85,7 +85,7 @@ La documentazione deve essere:
     verifica e validazione adottate dal gruppo.
 
     \item \textbf{Diario di Bordo}: materiale gestionale usato per il confronto
-    periodico con il committente. È redatto tramite template Canva e non segue
+    periodico con il committente. \`E redatto tramite template Canva e non segue
     il ciclo di versionamento documentale dei documenti \LaTeX{}.
 
     \item \textbf{Sito Web}: punto di accesso alla documentazione pubblicata tramite
@@ -148,16 +148,15 @@ seguenti convenzioni:
     \texttt{norme\_di\_progetto.pdf}.
 
     \item \textbf{Titoli}: sezioni, sottosezioni e paragrafi devono utilizzare
-    Title Case\textsubscript{G} italianizzato, con maiuscola sulle parole semanticamente
+    Title Case italianizzato, con maiuscola sulle parole semanticamente
     rilevanti e minuscola su articoli, preposizioni e congiunzioni interne.
 
     \item \textbf{Tabelle lunghe}: le tabelle che possono superare una pagina devono
     essere realizzate tramite \texttt{xltabular} o \texttt{longtable}, in modo da
     consentirne la spezzatura automatica.
 
-    \item \textbf{Pedice G\textsubscript{G}}: la prima occorrenza, nell'intero documento, di ogni
-    termine presente nel Glossario deve essere marcata con il pedice
-    . Lo script riceve in ingresso la concatenazione dei file
+    \item \textbf{Pedice G}: la prima occorrenza, nell'intero documento, di ogni
+    termine presente nel Glossario deve essere marcata con il pedice\textsubscript{G}. Lo script riceve in ingresso la concatenazione dei file
     \LaTeX{} delle sezioni e applica il pedice alla prima occorrenza globale.
 
     \item \textbf{Link generici}: i collegamenti ipertestuali nel testo devono essere
@@ -171,11 +170,11 @@ seguenti convenzioni:
     il comando \verb|\ghissue{id}|.
 
     \item \textbf{Decisioni da verbale interno}: le decisioni interne devono essere
-    identificate con codice \texttt{VI-y.x\textsubscript{G}}, dove \texttt{y} è il numero progressivo
+    identificate con codice \texttt{VI-y.x}, dove \texttt{y} è il numero progressivo
     del verbale e \texttt{x} è il numero progressivo della decisione.
 
     \item \textbf{Decisioni da verbale esterno}: le decisioni esterne devono essere
-    identificate con codice \texttt{VE-y.x\textsubscript{G}}, con la stessa logica adottata per i
+    identificate con codice \texttt{VE-y.x}, con la stessa logica adottata per i
     verbali interni.
 \end{itemize}
 
@@ -246,11 +245,11 @@ Il processo prevede:
     \item l'autore aggiorna il file \texttt{glossary.txt}, utilizzato dallo script
     Python;
 
-    \item l'autore esegue manualmente lo script per applicare il pedice
+    \item l'autore esegue manualmente lo script per applicare il pedice\textsubscript{G}
      alla prima occorrenza dei termini nel documento;
 
     \item il Verificatore controlla che i termini inseriti siano coerenti con il
-    documento e che il pedice sia stato applicato correttamente.
+    documento e che il pedice\textsubscript{G} sia stato applicato correttamente.
 \end{enumerate}
 
 L'Amministratore può intervenire per normalizzare definizioni, duplicati,
@@ -277,7 +276,7 @@ Prima di aprire una Pull Request, il Redattore deve verificare che:
 
 % ------------------------------------------------
 
-\subsubsection{Ciclo di Vita Documentale}\textsubscript{G}
+\subsubsection{Ciclo di Vita Documentale}
 \label{sec:ciclo-vita}
 
 Ogni documento attraversa i seguenti stati:
@@ -305,7 +304,7 @@ di gruppo.
 
 \subsubsection{Versionamento Documentale}
 
-Il gruppo adotta il \textit{Semantic Versioning\textsubscript{G}} a tre cifre nel
+Il gruppo adotta il \textit{Semantic Versioning} a tre cifre nel
 formato:
 
 \begin{center}
@@ -389,10 +388,10 @@ Ogni modifica deve essere tracciata tramite:
 \begin{itemize}
     \item issue;
     \item branch dedicato;
-    \item commit\textsubscript{G} riferiti alla issue;
+    \item commit riferiti alla issue;
     \item Pull Request;
     \item review;
-    \item merge\textsubscript{G} controllato.
+    \item merge controllato.
 \end{itemize}
 
 % ------------------------------------------------
@@ -538,7 +537,7 @@ Ogni issue deve contenere:
 
 \subsubsection{Strategia di Branching}
 
-Il gruppo adotta un modello \textit{trunk-based development}\textsubscript{G}.
+Il gruppo adotta un modello \textit{trunk-based development}.
 
 Il branch \texttt{main} è l'unico branch stabile. Ogni modifica deve essere sviluppata su branch dedicato, creato a partire dalla
 sezione \textit{Development} della issue GitHub associata.
@@ -735,7 +734,7 @@ segnare la Pull Request come \textit{draft} fino al completamento delle correzio
 
 % ------------------------------------------------
 
-\subsubsection{Branch Protection Rules}\textsubscript{G}
+\subsubsection{Branch Protection Rules}
 
 Il branch \texttt{main} è protetto tramite branch protection rules.
 
@@ -743,7 +742,7 @@ Le regole attive prevedono:
 
 \begin{itemize}
     \item obbligo di almeno una review positiva;
-    \item blocco dei force push\textsubscript{G};
+    \item blocco dei force push;
     \item restrizione dell'eliminazione del branch protetto.
 \end{itemize}
 
@@ -764,7 +763,7 @@ Dopo il merge:
 \begin{itemize}
     \item la issue associata viene chiusa automaticamente;
     \item il branch di lavoro viene eliminato;
-    \item il Redattore aggiorna il tempo effettivo\textsubscript{G} nel foglio di consuntivazione.
+    \item il Redattore aggiorna il tempo effettivo nel foglio di consuntivazione.
 \end{itemize}
 
 % ------------------------------------------------
@@ -834,7 +833,7 @@ Per i task documentali, il Verificatore deve controllare:
     \item correttezza del registro delle modifiche;
     \item correttezza dei riferimenti interni;
     \item funzionamento dei link;
-    \item presenza del pedice \textsubscript{G} dove necessario;
+    \item presenza del pedice  dove necessario;
     \item coerenza con il Glossario;
     \item conformità alle convenzioni di naming;
     \item correttezza del versionamento;
@@ -927,7 +926,7 @@ alla natura dell'attività, i criteri specifici per documentazione o implementaz
     \item il PDF è stato generato senza errori bloccanti;
     \item i link e i riferimenti interni sono corretti;
     \item il Glossario è stato aggiornato, se necessario;
-    \item il pedice \textsubscript{G} è stato applicato correttamente.
+    \item il pedice  è stato applicato correttamente.
 \end{itemize}
 
 \paragraph{Criteri per Task di Implementazione del PoC}
@@ -1024,13 +1023,13 @@ della qualità monitora l'efficacia e l'efficienza del way of working.
 
 \subsubsection{Modello di Miglioramento}
 
-Il gruppo adotta il ciclo PDCA\textsubscript{G} come riferimento per il miglioramento
+Il gruppo adotta il ciclo PDCA come riferimento per il miglioramento
 continuo:
 
 \begin{itemize}
     \item \textbf{Plan}: definizione di obiettivi, metriche e procedure;
     \item \textbf{Do}: applicazione dei processi definiti;
-    \item \textbf{Check}: misurazione\textsubscript{G} dei risultati e analisi degli scostamenti;
+    \item \textbf{Check}: misurazione dei risultati e analisi degli scostamenti;
     \item \textbf{Act}: introduzione di azioni correttive e aggiornamento del way of working.
 \end{itemize}
 
