@@ -148,7 +148,8 @@ seguenti convenzioni:
     \texttt{norme\_di\_progetto.pdf}.
 
     \item \textbf{Titoli}: sezioni, sottosezioni e paragrafi devono utilizzare
-    Title Case\textsubscript{G}.
+    Title Case\textsubscript{G} italianizzato, con maiuscola sulle parole semanticamente
+    rilevanti e minuscola su articoli, preposizioni e congiunzioni interne.
 
     \item \textbf{Tabelle lunghe}: le tabelle che possono superare una pagina devono
     essere realizzate tramite \texttt{xltabular} o \texttt{longtable}, in modo da
@@ -398,40 +399,44 @@ Ogni modifica deve essere tracciata tramite:
 
 \subsubsection{Struttura del Repository}
 
-La repository è organizzata per baseline e tipologia documentale.
+A partire dallo Sprint 9, la repository ufficiale del progetto assume il nome
+\texttt{Second-Brain} e non è più destinata esclusivamente alla documentazione.
 
-La struttura deve mantenere separati:
+Essa contiene:
 
 \begin{itemize}
-    \item documenti interni;
-    \item documenti esterni;
-    \item verbali interni;
-    \item verbali esterni;
-    \item documentazione tecnica;
-    \item template;
+    \item documentazione di progetto;
+    \item codice del Proof of Concept;
+    \item script di automazione;
+    \item configurazioni di supporto;
     \item asset condivisi;
-    \item automazioni.
+    \item materiali pubblicati tramite GitHub Pages.
 \end{itemize}
 
+La struttura principale della repository è:
+
+\begin{verbatim}
+Second-Brain/
++-- docs/
++-- poc/
+|   +-- frontend/
+|   +-- backend/
++-- scripts/
+\end{verbatim}
+
+La cartella \texttt{docs/} contiene la documentazione di progetto.
+
+La cartella \texttt{poc/} contiene il codice del Proof of Concept, separando
+frontend e backend.
+
+La cartella \texttt{scripts/} contiene gli script di automazione già adottati dal
+gruppo, inclusi quelli a supporto del Glossario e del Piano di Qualifica.
+
+Il sito GitHub Pages pubblica la documentazione e rende disponibile una versione
+compressa del PoC per il download.
+
 La versione ufficiale e stabile di ogni elemento configurativo è quella presente
-nel branch \texttt{main}\textsubscript{G}.
-
-% ------------------------------------------------
-
-\subsubsection{Strategia di Branching}
-
-Il gruppo adotta un modello \textit{trunk-based development\textsubscript{G}}.
-
-Il branch \texttt{main} è l'unico branch stabile. Ogni modifica deve essere sviluppata su branch dedicato, creato a partire dalla
-sezione \textit{Development} della issue GitHub associata.
-
-La convenzione di naming dei branch è:
-
-\begin{center}
-    \texttt{<id>-<[gestionale|tecnico]>\_<[esterno|interno]>\_<nomeDoc>}
-\end{center}
-
-\textit{Esempio}: \texttt{116-gestionale\_interno\_norme\_di\_progetto}
+nel branch \texttt{main}.
 
 % ------------------------------------------------
 
@@ -439,69 +444,274 @@ La convenzione di naming dei branch è:
 
 Le issue devono essere create esclusivamente tramite Google Forms.
 
-Non è consentita la creazione manuale di issue, salvo futura modifica esplicita
-delle presenti norme.
+A partire dallo Sprint 9, il form di creazione delle issue distingue tra attività
+documentali e attività non documentali.
+
+\paragraph{Issue documentali}
+
+Per le issue documentali continua a essere applicata la classificazione già
+adottata per la documentazione.
+
+Il nome logico della issue documentale deve seguire la forma:
+
+\begin{center}
+    \texttt{doc-<categoria>-<uso>-<nome-documento>}
+\end{center}
+
+dove:
+
+\begin{itemize}
+    \item \texttt{categoria} può assumere i valori \texttt{gestionale} o
+    \texttt{tecnico};
+    \item \texttt{uso} può assumere i valori \texttt{interno} o \texttt{esterno};
+    \item \texttt{nome-documento} identifica il documento o l'artefatto documentale
+    coinvolto.
+\end{itemize}
+
+\textit{Esempi}:
+
+\begin{itemize}
+    \item \texttt{doc-gestionale-interno-norme-di-progetto};
+    \item \texttt{doc-gestionale-esterno-piano-di-qualifica};
+    \item \texttt{doc-tecnico-esterno-analisi-dei-requisiti}.
+\end{itemize}
+
+\paragraph{Issue non documentali}
+
+Per le issue non documentali, il form distingue il tipo di attività secondo le
+seguenti categorie:
+
+\begin{itemize}
+    \item \textbf{feature}: nuova funzionalità del prodotto o del PoC;
+    \item \textbf{bug}: comportamento non corretto rispetto all'atteso;
+    \item \textbf{refactor}: miglioramento interno senza modifica del comportamento
+    osservabile;
+    \item \textbf{test}: attività relativa ai test, prevista per le attività successive
+    alla RTB.
+\end{itemize}
+
+La posizione deve essere scelta tra:
+
+\begin{itemize}
+    \item \textbf{poc};
+    \item \textbf{frontend};
+    \item \textbf{backend};
+    \item \textbf{infra};
+    \item \textbf{test}.
+\end{itemize}
+
+Il nome logico della issue non documentale deve seguire la forma:
+
+\begin{center}
+    \texttt{tipo-posizione-descrizione-breve}
+\end{center}
+
+La descrizione breve deve essere scritta in minuscolo, senza accenti e con parole
+separate da trattini.
+
+\textit{Esempi}:
+
+\begin{itemize}
+    \item \texttt{feature-frontend-css};
+    \item \texttt{bug-frontend-css};
+    \item \texttt{refactor-infra-aggiornamento-token};
+    \item \texttt{test-backend-test-chiamata-ai}.
+\end{itemize}
+
+\paragraph{Campi obbligatori}
 
 Ogni issue deve contenere:
 
 \begin{itemize}
+    \item tipo o categoria;
+    \item posizione, uso o ambito;
     \item assegnatario;
     \item ruolo;
     \item priorità;
     \item scadenza;
-    \item tempo previsto\textsubscript{G};
+    \item tempo previsto;
     \item milestone RTB o PB;
     \item descrizione dell'attività.
 \end{itemize}
 
 % ------------------------------------------------
 
-\subsubsection{Priorità delle Issue}
+\subsubsection{Strategia di Branching}
 
-Le issue vengono classificate secondo:
+Il gruppo adotta un modello \textit{trunk-based development}\textsubscript{G}.
 
-\begin{itemize}
-    \item \textbf{Bassa}: attività non urgente o non vincolante per lo sprint corrente;
-    \item \textbf{Media}: priorità standard;
-    \item \textbf{Alta}: attività da completare entro lo sprint corrente;
-    \item \textbf{Urgente}: criticità che richiede intervento immediato.
-\end{itemize}
+Il branch \texttt{main} è l'unico branch stabile. Ogni modifica deve essere sviluppata su branch dedicato, creato a partire dalla
+sezione \textit{Development} della issue GitHub associata.
 
-% ------------------------------------------------
+A partire dallo Sprint 9, con decorrenza dal 2026-06-02, il gruppo distingue tra
+attività documentali e attività non documentali.
 
-\subsubsection{Workflow delle Issue}
+\paragraph{Branch documentali}
 
-Le issue attraversano i seguenti stati all'interno di GitHub Projects:
+Per le attività documentali, la convenzione di naming dei branch è:
 
-\begin{itemize}
-    \item \textbf{To Do\textsubscript{G}};
-    \item \textbf{In Progress};
-    \item \textbf{In Review\textsubscript{G}};
-    \item \textbf{Done}.
-\end{itemize}
+\begin{center}
+    \texttt{<id>-doc-<categoria>-<uso>-<nome-documento>}
+\end{center}
 
-Le transizioni sono gestite tramite automazioni:
+dove:
 
 \begin{itemize}
-      \item la creazione del branch dalla issue porta la issue in \textit{In Progress};
-      \item l'apertura della Pull Request porta la issue in \textit{In Review};
-      \item il merge della Pull Request chiude automaticamente la issue e la porta in \textit{Done}.
+    \item \texttt{id} è l'identificativo della issue;
+    \item \texttt{categoria} indica la natura del documento e può assumere i valori
+    \texttt{gestionale} o \texttt{tecnico};
+    \item \texttt{uso} indica la destinazione del documento e può assumere i valori
+    \texttt{interno} o \texttt{esterno};
+    \item \texttt{nome-documento} identifica il documento o l'artefatto documentale
+    modificato.
 \end{itemize}
+
+\textit{Esempi}:
+
+\begin{itemize}
+    \item \texttt{146-doc-gestionale-interno-norme-di-progetto};
+    \item \texttt{147-doc-gestionale-esterno-piano-di-qualifica};
+    \item \texttt{148-doc-tecnico-esterno-analisi-dei-requisiti}.
+\end{itemize}
+
+\paragraph{Branch non documentali}
+
+Per le attività non documentali, la convenzione di naming dei branch è:
+
+\begin{center}
+    \texttt{<id>-<tipo>-<posizione>-<descrizione-breve>}
+\end{center}
+
+dove:
+
+\begin{itemize}
+    \item \texttt{id} è l'identificativo della issue;
+    \item \texttt{tipo} indica la natura dell'attività e può assumere i valori
+    \texttt{feature}, \texttt{bug}, \texttt{refactor} o \texttt{test};
+    \item \texttt{posizione} indica l'area coinvolta e può assumere i valori
+    \texttt{poc}, \texttt{frontend}, \texttt{backend}, \texttt{infra} o \texttt{test};
+    \item \texttt{descrizione-breve} sintetizza l'attività con parole minuscole,
+    senza accenti e separate da trattini.
+\end{itemize}
+
+\textit{Esempi}:
+
+\begin{itemize}
+    \item \texttt{142-feature-frontend-css};
+    \item \texttt{143-bug-frontend-css};
+    \item \texttt{144-refactor-infra-aggiornamento-token};
+    \item \texttt{145-test-backend-test-chiamata-ai}.
+\end{itemize}
+
+Le issue e i branch già aperti prima dell'adozione della presente convenzione
+mantengono la nomenclatura originaria fino alla loro chiusura. Le nuove attività
+aperte a partire dallo Sprint 9 devono seguire le convenzioni aggiornate.
 
 % ------------------------------------------------
 
 \subsubsection{Commit}
 
-Ogni commit relativo a una issue deve contenere il riferimento all'identificativo
-della issue nel messaggio.
+Ogni commit deve seguire una convenzione ispirata ai Conventional Commits,
+adattata al workflow del gruppo.
 
 La forma prescritta è:
 
 \begin{center}
-    \texttt{\#id messaggio}
+    \texttt{<tipo>(<posizione>): <messaggio> (\#id)}
 \end{center}
 
-\textit{Esempio}: \texttt{\#116 aggiornata sezione documentazione}
+dove:
+
+\begin{itemize}
+    \item \texttt{tipo} identifica la natura della modifica;
+    \item \texttt{posizione} indica l'area o il documento coinvolto;
+    \item \texttt{messaggio} descrive sinteticamente la modifica;
+    \item \texttt{id} è l'identificativo della issue collegata.
+\end{itemize}
+
+I tipi ammessi sono:
+
+\begin{xltabular}{\textwidth}{
+    >{\raggedright\arraybackslash}p{3cm}
+    >{\raggedright\arraybackslash}p{3cm}
+    >{\raggedright\arraybackslash}X
+}
+    \toprule
+    \textbf{Tipo Task} & \textbf{Tipo Commit} & \textbf{Significato} \\
+    \midrule
+    \endfirsthead
+
+    \toprule
+    \textbf{Tipo Task} & \textbf{Tipo Commit} & \textbf{Significato} \\
+    \midrule
+    \endhead
+
+    \midrule
+    \multicolumn{3}{r}{\textit{Continua nella pagina successiva}} \\
+    \endfoot
+
+    \bottomrule
+    \endlastfoot
+
+    feature
+    & \texttt{feat}
+    & Nuova funzionalità del prodotto o del PoC. \\
+
+    bug
+    & \texttt{fix}
+    & Correzione di un comportamento non corretto. \\
+
+    doc
+    & \texttt{docs}
+    & Modifica alla documentazione. \\
+
+    refactor
+    & \texttt{refactor}
+    & Miglioramento interno senza modifica del comportamento osservabile. \\
+
+    test
+    & \texttt{test}
+    & Aggiunta o modifica di test. \\
+
+\end{xltabular}
+
+Il tipo del commit deve essere coerente con il tipo della issue associata (per le attività documentali, il tipo di commit è sempre \texttt{docs}.).
+
+Il messaggio deve essere scritto in italiano e in forma descrittiva.
+
+Ogni commit deve riferirsi a una sola issue. Le Pull Request possono includere più
+issue solo quando le attività sono strettamente collaborative o tecnicamente
+indivisibili.
+
+\paragraph{Scope Documentali}
+
+Per i commit documentali devono essere utilizzati i seguenti scope:
+
+\begin{itemize}
+    \item \texttt{ndp}: Norme di Progetto;
+    \item \texttt{pdq}: Piano di Qualifica;
+    \item \texttt{pdp}: Piano di Progetto;
+    \item \texttt{adr}: Analisi dei Requisiti;
+    \item \texttt{sa}: Analisi dello Stato dell'Arte;
+    \item \texttt{glo}: Glossario;
+    \item \texttt{viN}: Verbale interno numero \texttt{N};
+    \item \texttt{veN}: Verbale esterno numero \texttt{N};
+    \item \texttt{ddbN}: Diario di Bordo numero \texttt{N};
+    \item \texttt{sito}: sito documentale.
+\end{itemize}
+
+Lo scope \texttt{adr} indica l'Analisi dei Requisiti nel contesto dei commit
+documentali e non deve essere confuso con gli Architecture Decision Records.
+
+\paragraph{Esempi}
+
+\begin{itemize}
+    \item \texttt{feat(frontend): aggiunto css (\#142)};
+    \item \texttt{fix(frontend): sistemato problema padding css (\#143)};
+    \item \texttt{docs(ndp): aggiunta sezione 2 (\#144)};
+    \item \texttt{refactor(infra): aggiornato token (\#145)};
+    \item \texttt{test(backend): aggiunto test chiamata ai (\#146)}.
+\end{itemize}
 
 % ------------------------------------------------
 
@@ -512,10 +722,12 @@ Ogni modifica deve essere integrata tramite Pull Request.
 La Pull Request deve:
 
 \begin{itemize}
-      \item essere collegata alla issue corrispondente;
-      \item descrivere sinteticamente le modifiche effettuate;
-      \item essere aperta, salvo urgenze motivate, entro la domenica precedente la riunione del martedì;    \item ricevere almeno una review positiva;
-      \item non essere approvata dall'autore della modifica.
+    \item essere collegata alla issue corrispondente;
+    \item descrivere sinteticamente le modifiche effettuate;
+    \item essere aperta preferibilmente entro la domenica precedente la riunione del
+    martedì;
+    \item ricevere almeno una review positiva;
+    \item non essere approvata dall'autore della modifica.
 \end{itemize}
 
 In caso di modifiche sostanziali richieste dal Verificatore, il Redattore può
@@ -574,7 +786,7 @@ periodica dedicata.
 
 \subsubsection{Descrizione}
 
-Il processo di verifica assicura che ogni artefatto\textsubscript{G} prodotto sia conforme alle
+Il processo di verifica assicura che ogni artefatto prodotto sia conforme alle
 presenti norme e agli obiettivi di qualità definiti nel Piano di Qualifica.
 
 La verifica risponde alla domanda:
@@ -583,14 +795,16 @@ La verifica risponde alla domanda:
     \textit{Il prodotto o artefatto è stato realizzato correttamente rispetto alle norme stabilite?}
 \end{center}
 
-In fase RTB la verifica riguarda principalmente:
+In fase RTB e durante l'implementazione del Proof of Concept, la verifica riguarda:
 
 \begin{itemize}
     \item documentazione;
     \item coerenza dei riferimenti;
     \item correttezza delle matrici di tracciabilità;
     \item rispetto delle convenzioni;
-    \item adeguatezza del materiale relativo al Proof of Concept.
+    \item adeguatezza del materiale relativo al Proof of Concept;
+    \item codice prodotto per il Proof of Concept;
+    \item configurazioni necessarie all'esecuzione locale del PoC.
 \end{itemize}
 
 % ------------------------------------------------
@@ -600,18 +814,18 @@ In fase RTB la verifica riguarda principalmente:
 \begin{itemize}
     \item Il Verificatore deve essere sempre un membro diverso dal Redattore.
     \item Nessun membro può verificare e approvare il proprio lavoro.
-    \item Il Verificatore non modifica direttamente il documento verificato.
+    \item Il Verificatore non modifica direttamente l'artefatto verificato.
     \item Il Verificatore segnala le modifiche richieste tramite commenti o richieste
     di cambiamento nella Pull Request.
     \item Il Responsabile interviene nell'approvazione finale, non nella verifica
-    puntuale del documento.
+    puntuale dell'artefatto.
 \end{itemize}
 
 % ------------------------------------------------
 
 \subsubsection{Attività di Verifica}
 
-Il Verificatore deve controllare:
+Per i task documentali, il Verificatore deve controllare:
 
 \begin{itemize}
     \item correttezza linguistica;
@@ -620,7 +834,7 @@ Il Verificatore deve controllare:
     \item correttezza del registro delle modifiche;
     \item correttezza dei riferimenti interni;
     \item funzionamento dei link;
-    \item presenza del pedice  dove necessario;
+    \item presenza del pedice \textsubscript{G} dove necessario;
     \item coerenza con il Glossario;
     \item conformità alle convenzioni di naming;
     \item correttezza del versionamento;
@@ -642,6 +856,30 @@ In particolare, modifiche ai requisiti devono comportare il controllo di:
 
 % ------------------------------------------------
 
+\subsubsection{Verifica del Codice del Proof of Concept}
+
+Durante la fase RTB, la verifica del codice riguarda esclusivamente il codice
+prodotto per il Proof of Concept.
+
+Per le Pull Request di implementazione, il Verificatore deve controllare:
+
+\begin{itemize}
+    \item coerenza della modifica rispetto alla issue;
+    \item correttezza della convenzione di branch e commit;
+    \item avvio locale del PoC;
+    \item assenza di errori evidenti in console;
+    \item assenza di credenziali, token o file \texttt{.env} nel repository;
+    \item aggiornamento del README se la modifica cambia la procedura di avvio;
+    \item descrizione della prova effettuata per modifiche backend o API;
+    \item coerenza con requisiti e casi d'uso collegati, se disponibili.
+\end{itemize}
+
+La verifica del codice PoC non prevede test automatici obbligatori in fase RTB.
+Tali attività saranno normate quando il gruppo introdurrà il processo di testing
+nelle fasi successive.
+
+% ------------------------------------------------
+
 \subsubsection{Esito della Verifica}
 
 La verifica può avere:
@@ -657,25 +895,59 @@ le osservazioni.
 
 % ------------------------------------------------
 
-\subsubsection{Definition of Done}\textsubscript{G}
+\subsubsection{Definition of Done}
 \label{sec:dod}
 
-Un task è considerato \textit{Done} solo se:
+Un task è considerato \textit{Done} solo se soddisfa i criteri comuni e, in base
+alla natura dell'attività, i criteri specifici per documentazione o implementazione.
+
+\paragraph{Criteri Comuni}
 
 \begin{itemize}
-    \item è stato creato tramite Google Form\textsubscript{G};
-    \item è associato a una issue GitHub;
-    \item è collegato, se necessario, a una decisione verbalizzata;
-    \item è stato sviluppato su branch dedicato;
-    \item i commit riportano il riferimento alla issue;
-    \item la Pull Request è stata aperta, salvo urgenze motivate, entro la domenica precedente la riunione;
-    \item il contenuto è completo rispetto allo scope della issue;
-    \item il registro delle modifiche è stato aggiornato;
-    \item il documento compila correttamente;
-    \item il Verificatore ha approvato la Pull Request;
+    \item il task è stato creato tramite Google Form;
+    \item il task è associato a una issue GitHub;
+    \item la issue contiene tipo, posizione, assegnatario, ruolo, priorità, scadenza
+    e tempo previsto;
+    \item il task è stato sviluppato su branch dedicato;
+    \item i commit rispettano la convenzione definita nelle presenti norme;
+    \item la Pull Request è collegata alla issue corrispondente;
+    \item la Pull Request ha ricevuto almeno una review positiva;
+    \item il Verificatore è diverso dall'autore della modifica;
     \item il Redattore ha eseguito il merge;
     \item la issue è stata chiusa;
     \item il tempo effettivo è stato registrato.
+\end{itemize}
+
+\paragraph{Criteri per Task Documentali}
+
+\begin{itemize}
+    \item il contenuto è completo rispetto allo scope della issue;
+    \item il registro delle modifiche è stato aggiornato, se necessario;
+    \item il documento compila correttamente;
+    \item il PDF è stato generato senza errori bloccanti;
+    \item i link e i riferimenti interni sono corretti;
+    \item il Glossario è stato aggiornato, se necessario;
+    \item il pedice \textsubscript{G} è stato applicato correttamente.
+\end{itemize}
+
+\paragraph{Criteri per Task di Implementazione del PoC}
+
+\begin{itemize}
+    \item il codice è coerente con lo scope della issue;
+    \item il PoC si avvia localmente;
+    \item non sono presenti errori evidenti in console;
+    \item non sono presenti credenziali, token, file \texttt{.env} o dati sensibili
+    nel repository;
+    \item il README è aggiornato se la modifica cambia la procedura di avvio;
+    \item l'Analisi dei Requisiti è aggiornata se emerge una modifica funzionale;
+    \item l'Analisi dello Stato dell'Arte è aggiornata se cambia una tecnologia;
+    \item il Piano di Qualifica è aggiornato se cambiano metriche o modalità di
+    misurazione;
+    \item il Glossario è aggiornato se vengono introdotti nuovi termini tecnici;
+    \item per le issue di tipo \texttt{bug}, la Pull Request descrive la causa del
+    problema e la correzione effettuata;
+    \item per le issue di tipo \texttt{feature}, la Pull Request indica il requisito
+    o il caso d'uso collegato, se disponibile.
 \end{itemize}
 
 % ================================================================
@@ -766,23 +1038,143 @@ continuo:
 
 \subsubsection{Metriche e Piano di Qualifica}
 
-Le metriche, le soglie e il cruscotto di qualità\textsubscript{G} sono definiti progressivamente
+Il Piano di Qualifica definisce le metriche, le soglie e il cruscotto di qualità
+utilizzati dal gruppo per monitorare qualità di processo e qualità di prodotto.
+
+Le Norme di Progetto disciplinano il processo di raccolta, aggiornamento e gestione
+delle metriche; formule, soglie, valori rilevati e rappresentazioni grafiche sono
+riportati nel \link{https://synergo-unit-unipd.github.io/Second-Brain/docs/RTB/doc_gestionali/doc_esterni/piano_di_qualifica/piano_di_qualifica.pdf}{Piano di Qualifica}.
+
+L'Amministratore assegnato alla relativa task raccoglie i dati necessari, aggiorna
+il file di tracciamento e mantiene il cruscotto delle metriche.
+
+Le metriche vengono aggiornate ogni due sprint, integrando i dati raccolti negli
+sprint conclusi e aggiornando le rappresentazioni tabellari e grafiche presenti
 nel Piano di Qualifica.
 
-Poiché in fase RTB il Piano di Qualifica è ancora in stesura, le presenti norme
-definiscono il processo generale, demandando al Piano di Qualifica la definizione
-di dettaglio di:
+Le metriche relative al codice vengono calcolate solo sul codice mergiato nel
+branch \texttt{main}.
 
-\begin{itemize}
-    \item metriche di qualità di processo;
-    \item metriche di qualità di prodotto;
-    \item soglie di accettabilità;
-    \item strumenti di misurazione;
-    \item modalità di raccolta dei dati.
-\end{itemize}
+Se una metrica risulta fuori soglia, il gruppo ne discute durante la retrospective.
+L'esito della discussione viene verbalizzato e, qualora richieda una modifica
+operativa, viene creata una issue dedicata.
 
-Ogni modifica al way of working emersa da retrospettive o azioni correttive deve
-comportare, se necessario, l'aggiornamento delle Norme di Progetto.
+\paragraph{Metriche di qualità di processo}
+
+Le metriche di qualità di processo misurano l'efficienza, la stabilità e la
+controllabilità del way of working adottato dal gruppo.
+
+Il Piano di Qualifica definisce le seguenti metriche di processo:
+
+\begin{xltabular}{\textwidth}{
+    >{\raggedright\arraybackslash}p{2.5cm}
+    >{\raggedright\arraybackslash}X
+    >{\raggedright\arraybackslash}p{6cm}
+}
+    \toprule
+    \textbf{Codice} & \textbf{Metrica} & \textbf{Finalità} \\
+    \midrule
+    \endfirsthead
+
+    \toprule
+    \textbf{Codice} & \textbf{Metrica} & \textbf{Finalità} \\
+    \midrule
+    \endhead
+
+    \midrule
+    \multicolumn{3}{r}{\textit{Continua nella pagina successiva}} \\
+    \endfoot
+
+    \bottomrule
+    \endlastfoot
+
+    MPC01
+    & Schedule Performance Index (SPI)
+    & Misurare l'efficienza nel rispetto dei tempi pianificati. \\
+
+    MPC02
+    & Cost Performance Index (CPI)
+    & Misurare l'efficienza nell'utilizzo del budget allocato. \\
+
+    MPC03
+    & Requirements Stability Index (RSI)
+    & Monitorare la stabilità dei requisiti e le variazioni introdotte nell'Analisi dei Requisiti. \\
+
+    MPC04
+    & Time Efficiency
+    & Misurare la percentuale di ore produttive rispetto al totale delle ore spese. \\
+
+    MPC05
+    & Task Completion Rate
+    & Misurare la percentuale di issue chiuse rispetto a quelle pianificate. \\
+
+    MPC06
+    & PR Resolution Time
+    & Misurare il tempo medio necessario per la revisione e il merge di una Pull Request. \\
+
+    MPC07
+    & Review Coverage
+    & Misurare la percentuale di documenti o file verificati da un membro diverso dall'autore. \\
+
+\end{xltabular}
+
+\paragraph{Metriche di qualità di prodotto}
+
+Le metriche di qualità di prodotto misurano la qualità degli artefatti prodotti,
+sia documentali sia software.
+
+Il Piano di Qualifica definisce le seguenti metriche di prodotto:
+
+\begin{xltabular}{\textwidth}{
+    >{\raggedright\arraybackslash}p{2.5cm}
+    >{\raggedright\arraybackslash}X
+    >{\raggedright\arraybackslash}p{6cm}
+}
+    \toprule
+    \textbf{Codice} & \textbf{Metrica} & \textbf{Finalità} \\
+    \midrule
+    \endfirsthead
+
+    \toprule
+    \textbf{Codice} & \textbf{Metrica} & \textbf{Finalità} \\
+    \midrule
+    \endhead
+
+    \midrule
+    \multicolumn{3}{r}{\textit{Continua nella pagina successiva}} \\
+    \endfoot
+
+    \bottomrule
+    \endlastfoot
+
+    MPD01
+    & Soddisfacimento Requisiti Obbligatori
+    & Misurare la percentuale di requisiti obbligatori implementati. \\
+
+    MPD02
+    & Comment Density
+    & Misurare il rapporto tra righe di commento e righe di codice totali. \\
+
+    MPD03
+    & Browser Compatibility
+    & Misurare il numero di browser target su cui il sistema è testato. \\
+
+    MPD04
+    & Errori Ortografici
+    & Misurare il numero di errori ortografici rilevati per pagina di documento. \\
+
+    MPD05
+    & Complessità Ciclomatica
+    & Misurare la complessità dei flussi di controllo delle funzioni del codice frontend e backend. \\
+
+    MPD06
+    & Tempo Iniziale di Caricamento del Programma
+    & Misurare il tempo necessario affinché l'interfaccia principale del PoC risulti disponibile e utilizzabile. \\
+
+\end{xltabular}
+
+Le formule, gli strumenti di dettaglio, le soglie e le modalità operative di
+misurazione sono riportati nel Piano di Qualifica.
 
 % ================================================================
 % GESTIONE DEI CAMBIAMENTI
