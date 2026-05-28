@@ -9,6 +9,8 @@ Attore
 Architecture Decision Record
 Artefatto
 AWS
+Backend
+Bug
 Backlog
 Baseline
 Branch
@@ -16,6 +18,7 @@ Branch Protection Rules
 Brainstorming
 Burndown Chart
 Budget
+Browser Compatibility
 Candidatura
 Casi d'uso
 Cerimonie
@@ -35,6 +38,10 @@ Code Review
 Change Request
 Ciclo Di Vita Documentale
 Cruscotto Di Qualità
+CodeMirror
+Comment density
+Complessità Ciclomatica
+Conventional Commits
 Daily Stand-up
 Diario di Bordo
 Decision Tree
@@ -43,12 +50,16 @@ Debito Tecnico
 Deployment Automatizzato
 Discord
 Distant Writing
+Docker
+Docker Compose
 Endpoint
 File System
 Formattazione
 Force Push
 Foglio di Calcolo
 Framework
+Feature
+Frontend
 Github actions
 GitHub Pages
 GitHub Project
@@ -116,9 +127,13 @@ RTB
 Redo
 Requirements and Technology Baseline
 Ruolo
+README
+Refactor
+Review Coverage
 Scenario Principale
 Scenari Alternativi
 SAL
+Scope
 Scope Creep
 Sei Cappelli per Pensare
 Second Brain
@@ -136,6 +151,7 @@ Stack tecnologico
 Stakeholder
 Tailoring
 Task
+Task Completion Rate
 Technology Baseline
 Template
 Ticket
@@ -147,6 +163,8 @@ T-y.z
 Traduzione
 Trunk-based Development
 To do
+Tempo Iniziale di Caricamento del Programma
+Time Efficiency
 UML
 Undo
 Unified Modeling Language
