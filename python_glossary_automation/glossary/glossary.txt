@@ -34,7 +34,6 @@ Commit
 Compito
 Colli di bottiglia
 Configurazione
-Code Review
 Change Request
 Ciclo Di Vita Documentale
 Cruscotto Di Qualità

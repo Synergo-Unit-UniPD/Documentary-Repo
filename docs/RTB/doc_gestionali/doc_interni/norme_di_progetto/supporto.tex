@@ -37,14 +37,14 @@ produzione, la revisione, l'approvazione e la pubblicazione della documentazione
 del gruppo.
 
 Esso si applica a ogni documento gestionale o tecnico, interno o esterno, prodotto
-dal gruppo \textit{Synergo Unit}. Il Diario di Bordo segue un template separato
+dal gruppo \textit{Synergo Unit}. Il Diario di Bordo\textsubscript{G} segue un template\textsubscript{G} separato
 realizzato tramite Canva e non prevede registro delle modifiche.
 
 La documentazione deve essere:
 \begin{itemize}
     \item uniforme nella struttura;
     \item coerente con le presenti Norme di Progetto;
-    \item verificabile tramite Pull Request;
+    \item verificabile tramite Pull Request\textsubscript{G};
     \item tracciabile rispetto alle modifiche logiche effettuate;
     \item consultabile tramite repository e sito documentale.
 \end{itemize}
@@ -68,14 +68,14 @@ La documentazione deve essere:
     delle tecnologie e motivazione dello stack candidato per il Proof of Concept.
 
     \item \textbf{Verbali Interni}: documentano riunioni interne, decisioni operative,
-    retrospettive, pianificazione e assegnazione dei task.
+    retrospettive, pianificazione e assegnazione dei task\textsubscript{G}.
 \end{itemize}
 
 \paragraph{Documentazione Gestionale Esterna}
 
 \begin{itemize}
     \item \textbf{Verbali Esterni}: documentano gli incontri con la proponente e con
-    gli stakeholder esterni. Sono redatti dall'Amministratore e
+    gli stakeholder\textsubscript{G} esterni. Sono redatti dall'Amministratore e
     condivisi con la proponente per conferma e firma.
 
     \item \textbf{Piano di Progetto}: descrive pianificazione, consuntivazione,
@@ -121,7 +121,7 @@ La documentazione viene prodotta tramite:
     \item \textbf{Canva}: strumento utilizzato per il template dei Diari di Bordo;
 
     \item \textbf{Script Python per Glossario}: strumento utilizzato per applicare
-    automaticamente il pedice  alla prima occorrenza dei termini
+    automaticamente il pedice\textsubscript{G} alla prima occorrenza dei termini
     presenti nel Glossario.
 \end{itemize}
 
@@ -148,14 +148,14 @@ seguenti convenzioni:
     \texttt{norme\_di\_progetto.pdf}.
 
     \item \textbf{Titoli}: sezioni, sottosezioni e paragrafi devono utilizzare
-    Title Case italianizzato, con maiuscola sulle parole semanticamente
+    Title Case\textsubscript{G} italianizzato, con maiuscola sulle parole semanticamente
     rilevanti e minuscola su articoli, preposizioni e congiunzioni interne.
 
     \item \textbf{Tabelle lunghe}: le tabelle che possono superare una pagina devono
     essere realizzate tramite \texttt{xltabular} o \texttt{longtable}, in modo da
     consentirne la spezzatura automatica.
 
-    \item \textbf{Pedice G}: la prima occorrenza, nell'intero documento, di ogni
+    \item \textbf{Pedice\textsubscript{G}}: la prima occorrenza, nell'intero documento, di ogni
     termine presente nel Glossario deve essere marcata con il pedice\textsubscript{G}. Lo script riceve in ingresso la concatenazione dei file
     \LaTeX{} delle sezioni e applica il pedice alla prima occorrenza globale.
 
@@ -170,11 +170,11 @@ seguenti convenzioni:
     il comando \verb|\ghissue{id}|.
 
     \item \textbf{Decisioni da verbale interno}: le decisioni interne devono essere
-    identificate con codice \texttt{VI-y.x}, dove \texttt{y} è il numero progressivo
+    identificate con codice \texttt{VI-y.x\textsubscript{G}}, dove \texttt{y} è il numero progressivo
     del verbale e \texttt{x} è il numero progressivo della decisione.
 
     \item \textbf{Decisioni da verbale esterno}: le decisioni esterne devono essere
-    identificate con codice \texttt{VE-y.x}, con la stessa logica adottata per i
+    identificate con codice \texttt{VE-y.x\textsubscript{G}}, con la stessa logica adottata per i
     verbali interni.
 \end{itemize}
 
@@ -270,13 +270,13 @@ Prima di aprire una Pull Request, il Redattore deve verificare che:
     \item i riferimenti interni siano corretti;
     \item le tabelle lunghe siano spezzabili;
     \item il Glossario sia aggiornato, se necessario;
-    \item il pedice  sia stato applicato correttamente;
+    \item il pedice\textsubscript{G} sia stato applicato correttamente;
     \item il nome del file sia conforme alle convenzioni.
 \end{itemize}
 
 % ------------------------------------------------
 
-\subsubsection{Ciclo di Vita Documentale}
+\subsubsection{Ciclo di Vita Documentale\textsubscript{G}}
 \label{sec:ciclo-vita}
 
 Ogni documento attraversa i seguenti stati:
@@ -304,7 +304,7 @@ di gruppo.
 
 \subsubsection{Versionamento Documentale}
 
-Il gruppo adotta il \textit{Semantic Versioning} a tre cifre nel
+Il gruppo adotta il \textit{Semantic Versioning\textsubscript{G}} a tre cifre nel
 formato:
 
 \begin{center}
@@ -388,10 +388,10 @@ Ogni modifica deve essere tracciata tramite:
 \begin{itemize}
     \item issue;
     \item branch dedicato;
-    \item commit riferiti alla issue;
+    \item commit\textsubscript{G} riferiti alla issue;
     \item Pull Request;
     \item review;
-    \item merge controllato.
+    \item merge\textsubscript{G} controllato.
 \end{itemize}
 
 % ------------------------------------------------
@@ -435,7 +435,7 @@ Il sito GitHub Pages pubblica la documentazione e rende disponibile una versione
 compressa del PoC per il download.
 
 La versione ufficiale e stabile di ogni elemento configurativo è quella presente
-nel branch \texttt{main}.
+nel branch \texttt{main}\textsubscript{G}.
 
 % ------------------------------------------------
 
@@ -463,7 +463,7 @@ dove:
     \item \texttt{categoria} può assumere i valori \texttt{gestionale} o
     \texttt{tecnico};
     \item \texttt{uso} può assumere i valori \texttt{interno} o \texttt{esterno};
-    \item \texttt{nome-documento} identifica il documento o l'artefatto documentale
+    \item \texttt{nome-documento} identifica il documento o l'artefatto\textsubscript{G} documentale
     coinvolto.
 \end{itemize}
 
@@ -481,9 +481,9 @@ Per le issue non documentali, il form distingue il tipo di attività secondo le
 seguenti categorie:
 
 \begin{itemize}
-    \item \textbf{feature}: nuova funzionalità del prodotto o del PoC;
-    \item \textbf{bug}: comportamento non corretto rispetto all'atteso;
-    \item \textbf{refactor}: miglioramento interno senza modifica del comportamento
+    \item \textbf{feature\textsubscript{G}}: nuova funzionalità del prodotto o del PoC;
+    \item \textbf{bug\textsubscript{G}}: comportamento non corretto rispetto all'atteso;
+    \item \textbf{refactor\textsubscript{G}}: miglioramento interno senza modifica del comportamento
     osservabile;
     \item \textbf{test}: attività relativa ai test, prevista per le attività successive
     alla RTB.
@@ -528,7 +528,7 @@ Ogni issue deve contenere:
     \item ruolo;
     \item priorità;
     \item scadenza;
-    \item tempo previsto;
+    \item tempo previsto\textsubscript{G};
     \item milestone RTB o PB;
     \item descrizione dell'attività.
 \end{itemize}
@@ -537,7 +537,7 @@ Ogni issue deve contenere:
 
 \subsubsection{Strategia di Branching}
 
-Il gruppo adotta un modello \textit{trunk-based development}.
+Il gruppo adotta un modello \textit{trunk-based development\textsubscript{G}}.
 
 Il branch \texttt{main} è l'unico branch stabile. Ogni modifica deve essere sviluppata su branch dedicato, creato a partire dalla
 sezione \textit{Development} della issue GitHub associata.
@@ -610,7 +610,7 @@ aperte a partire dallo Sprint 9 devono seguire le convenzioni aggiornate.
 
 \subsubsection{Commit}
 
-Ogni commit deve seguire una convenzione ispirata ai Conventional Commits,
+Ogni commit deve seguire una convenzione ispirata ai Conventional Commits\textsubscript{G},
 adattata al workflow del gruppo.
 
 La forma prescritta è:
@@ -682,7 +682,7 @@ Ogni commit deve riferirsi a una sola issue. Le Pull Request possono includere p
 issue solo quando le attività sono strettamente collaborative o tecnicamente
 indivisibili.
 
-\paragraph{Scope Documentali}
+\paragraph{Scope\textsubscript{G} Documentali}
 
 Per i commit documentali devono essere utilizzati i seguenti scope:
 
@@ -734,7 +734,7 @@ segnare la Pull Request come \textit{draft} fino al completamento delle correzio
 
 % ------------------------------------------------
 
-\subsubsection{Branch Protection Rules}
+\subsubsection{Branch Protection Rules\textsubscript{G}}
 
 Il branch \texttt{main} è protetto tramite branch protection rules.
 
@@ -742,7 +742,7 @@ Le regole attive prevedono:
 
 \begin{itemize}
     \item obbligo di almeno una review positiva;
-    \item blocco dei force push;
+    \item blocco dei force push\textsubscript{G};
     \item restrizione dell'eliminazione del branch protetto.
 \end{itemize}
 
@@ -763,7 +763,7 @@ Dopo il merge:
 \begin{itemize}
     \item la issue associata viene chiusa automaticamente;
     \item il branch di lavoro viene eliminato;
-    \item il Redattore aggiorna il tempo effettivo nel foglio di consuntivazione.
+    \item il Redattore aggiorna il tempo effettivo\textsubscript{G} nel foglio di consuntivazione.
 \end{itemize}
 
 % ------------------------------------------------
@@ -833,7 +833,7 @@ Per i task documentali, il Verificatore deve controllare:
     \item correttezza del registro delle modifiche;
     \item correttezza dei riferimenti interni;
     \item funzionamento dei link;
-    \item presenza del pedice  dove necessario;
+    \item presenza del pedice\textsubscript{G} dove necessario;
     \item coerenza con il Glossario;
     \item conformità alle convenzioni di naming;
     \item correttezza del versionamento;
@@ -868,8 +868,8 @@ Per le Pull Request di implementazione, il Verificatore deve controllare:
     \item avvio locale del PoC;
     \item assenza di errori evidenti in console;
     \item assenza di credenziali, token o file \texttt{.env} nel repository;
-    \item aggiornamento del README se la modifica cambia la procedura di avvio;
-    \item descrizione della prova effettuata per modifiche backend o API;
+    \item aggiornamento del README\textsubscript{G} se la modifica cambia la procedura di avvio;
+    \item descrizione della prova effettuata per modifiche backend o API\textsubscript{G};
     \item coerenza con requisiti e casi d'uso collegati, se disponibili.
 \end{itemize}
 
@@ -894,7 +894,7 @@ le osservazioni.
 
 % ------------------------------------------------
 
-\subsubsection{Definition of Done}
+\subsubsection{Definition of Done\textsubscript{G}}
 \label{sec:dod}
 
 Un task è considerato \textit{Done} solo se soddisfa i criteri comuni e, in base
@@ -903,7 +903,7 @@ alla natura dell'attività, i criteri specifici per documentazione o implementaz
 \paragraph{Criteri Comuni}
 
 \begin{itemize}
-    \item il task è stato creato tramite Google Form;
+    \item il task è stato creato tramite Google Form\textsubscript{G};
     \item il task è associato a una issue GitHub;
     \item la issue contiene tipo, posizione, assegnatario, ruolo, priorità, scadenza
     e tempo previsto;
@@ -926,7 +926,7 @@ alla natura dell'attività, i criteri specifici per documentazione o implementaz
     \item il PDF è stato generato senza errori bloccanti;
     \item i link e i riferimenti interni sono corretti;
     \item il Glossario è stato aggiornato, se necessario;
-    \item il pedice  è stato applicato correttamente.
+    \item il pedice\textsubscript{G} è stato applicato correttamente.
 \end{itemize}
 
 \paragraph{Criteri per Task di Implementazione del PoC}
@@ -941,7 +941,7 @@ alla natura dell'attività, i criteri specifici per documentazione o implementaz
     \item l'Analisi dei Requisiti è aggiornata se emerge una modifica funzionale;
     \item l'Analisi dello Stato dell'Arte è aggiornata se cambia una tecnologia;
     \item il Piano di Qualifica è aggiornato se cambiano metriche o modalità di
-    misurazione;
+    misurazione\textsubscript{G};
     \item il Glossario è aggiornato se vengono introdotti nuovi termini tecnici;
     \item per le issue di tipo \texttt{bug}, la Pull Request descrive la causa del
     problema e la correzione effettuata;
@@ -1023,7 +1023,7 @@ della qualità monitora l'efficacia e l'efficienza del way of working.
 
 \subsubsection{Modello di Miglioramento}
 
-Il gruppo adotta il ciclo PDCA come riferimento per il miglioramento
+Il gruppo adotta il ciclo PDCA\textsubscript{G} come riferimento per il miglioramento
 continuo:
 
 \begin{itemize}
@@ -1037,7 +1037,7 @@ continuo:
 
 \subsubsection{Metriche e Piano di Qualifica}
 
-Il Piano di Qualifica definisce le metriche, le soglie e il cruscotto di qualità
+Il Piano di Qualifica definisce le metriche, le soglie e il cruscotto di qualità\textsubscript{G}
 utilizzati dal gruppo per monitorare qualità di processo e qualità di prodotto.
 
 Le Norme di Progetto disciplinano il processo di raccolta, aggiornamento e gestione
@@ -1088,23 +1088,23 @@ Il Piano di Qualifica definisce le seguenti metriche di processo:
     \endlastfoot
 
     MPC01
-    & Schedule Performance Index (SPI)
+    & Schedule Performance Index\textsubscript{G} (SPI\textsubscript{G})
     & Misurare l'efficienza nel rispetto dei tempi pianificati. \\
 
     MPC02
-    & Cost Performance Index (CPI)
+    & Cost Performance Index\textsubscript{G} (CPI\textsubscript{G})
     & Misurare l'efficienza nell'utilizzo del budget allocato. \\
 
     MPC03
-    & Requirements Stability Index (RSI)
+    & Requirements Stability Index\textsubscript{G} (RSI\textsubscript{G})
     & Monitorare la stabilità dei requisiti e le variazioni introdotte nell'Analisi dei Requisiti. \\
 
     MPC04
-    & Time Efficiency
+    & Time Efficiency\textsubscript{G}
     & Misurare la percentuale di ore produttive rispetto al totale delle ore spese. \\
 
     MPC05
-    & Task Completion Rate
+    & Task Completion Rate\textsubscript{G}
     & Misurare la percentuale di issue chiuse rispetto a quelle pianificate. \\
 
     MPC06
@@ -1112,7 +1112,7 @@ Il Piano di Qualifica definisce le seguenti metriche di processo:
     & Misurare il tempo medio necessario per la revisione e il merge di una Pull Request. \\
 
     MPC07
-    & Review Coverage
+    & Review Coverage\textsubscript{G}
     & Misurare la percentuale di documenti o file verificati da un membro diverso dall'autore. \\
 
 \end{xltabular}
@@ -1151,11 +1151,11 @@ Il Piano di Qualifica definisce le seguenti metriche di prodotto:
     & Misurare la percentuale di requisiti obbligatori implementati. \\
 
     MPD02
-    & Comment Density
+    & Comment Density\textsubscript{G}
     & Misurare il rapporto tra righe di commento e righe di codice totali. \\
 
     MPD03
-    & Browser Compatibility
+    & Browser Compatibility\textsubscript{G}
     & Misurare il numero di browser target su cui il sistema è testato. \\
 
     MPD04
@@ -1163,11 +1163,11 @@ Il Piano di Qualifica definisce le seguenti metriche di prodotto:
     & Misurare il numero di errori ortografici rilevati per pagina di documento. \\
 
     MPD05
-    & Complessità Ciclomatica
+    & Complessità Ciclomatica\textsubscript{G}
     & Misurare la complessità dei flussi di controllo delle funzioni del codice frontend e backend. \\
 
     MPD06
-    & Tempo Iniziale di Caricamento del Programma
+    & Tempo Iniziale di Caricamento del Programma\textsubscript{G}
     & Misurare il tempo necessario affinché l'interfaccia principale del PoC risulti disponibile e utilizzabile. \\
 
 \end{xltabular}

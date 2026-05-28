@@ -83,7 +83,6 @@ browser target su cui il sistema è verificato o testato.
       \item \textbf{Casi d'uso:} Tecnica di modellazione che descrive le funzionalità del sistema tramite una "visione esterna" (come percepite dall'attore), ignorandone l'implementazione. A livello tecnico è definito come un insieme di scenari (sequenze di azioni che includono uno scenario principale e possibili scenari alternativi o di errore) che condividono lo stesso scopo finale per l'utente.
       \item  \textbf{CI/CD (Continuous Integration / Continuous Deployment):} Pratica di sviluppo software che prevede l’integrazione frequente del codice in un repository condiviso e la sua automazione di build, test e distribuzione.
       \item \textbf{Ciclo Di Vita Documentale:} Sequenza di stati attraversati da un documento dalla creazione al rilascio. Nel gruppo si articola in: In Stesura, In Verifica, Verificato, Approvato e Rilasciato.      \item \textbf{Code Coverage:} Metrica che misura la percentuale di codice sorgente eseguita durante l’esecuzione dei test automatici.
-      \item \textbf{Code Review:} Attività di revisione del codice sorgente svolta prima dell'integrazione nel branch principale. In fase RTB non è ancora pienamente normata, poiché la codifica è limitata al Proof of Concept; verrà formalizzata nella fase PB.
       \item \textbf{Colli di bottiglia:} Fase o componente di un processo che rallenta l'efficienza complessiva, limitando la capacità operativa del team o del sistema.
       \item \textbf{Commit:} Operazione Git che registra un insieme di modifiche nel
       repository locale, associandovi un messaggio descrittivo. Nel flusso del gruppo
@@ -127,13 +126,11 @@ browser target su cui il sistema è verificato o testato.
       che richiedono interventi correttivi futuri (refactoring) e che, se non gestite,
       rallentano la velocity degli sprint successivi.
       \item \textbf{Decision Tree (Albero Di Decisione):} Modello strutturato ad albero utilizzato per rappresentare decisioni e le loro possibili conseguenze.
-      \item \textbf{Definition of Done (DoD):} Lista esplicita di criteri che un
-      task deve soddisfare per essere considerato completato a tutti
-      gli effetti. Si articola in due livelli: livello task (criteri tecnici e
-      procedurali sul singolo deliverable) e livello sprint (criteri di processo
-      sull'intero sprint). Si espande al crescere del progetto: nella fase documentale
-      copre redazione, revisione e tracciabilità; nella fase di sviluppo includerà
-      anche criteri su test e copertura del codice.
+      \item \textbf{Definition of Done (DoD):} Lista esplicita di criteri che un task
+      deve soddisfare per essere considerato completato a tutti gli effetti. Nella fase
+      RTB include criteri documentali e criteri minimi per il codice del Proof of
+      Concept; nella fase PB potrà essere estesa a test automatici e copertura del
+      codice.
       \item \textbf{Deployment:} Processo di rilascio e distribuzione di un’applicazione in un ambiente di esecuzione.
       \item \textbf{Diario Di Bordo:} Momento di rendicontazione periodica al committente
       in cui il gruppo espone il rapporto tra costi sostenuti e avanzamento
@@ -389,8 +386,7 @@ browser target su cui il sistema è verificato o testato.
             automaticamente dal foglio di calcolo condiviso.
       \item \textbf{Preventivo Dei Costi:} Stima dell'impegno economico complessivo
             del progetto, calcolata moltiplicando le ore previste per ciascun ruolo
-            per il relativo costo orario ufficiale. Presentato nella Dichiarazione
-            degli Impegni; il valore accettato all'aggiudicazione diventa limite
+            per il relativo costo orario ufficiale. Presentato nel Preventivo dei Costi e Assunzione degli Impegni; il valore accettato all'aggiudicazione diventa limite
             superiore invalicabile durante lo svolgimento del progetto.
       \item \textbf{Progettista:} Ruolo del gruppo responsabile delle attività di
             progettazione architetturale (\textit{design}). Attivo dalla baseline RTB.
@@ -583,10 +579,10 @@ browser target su cui il sistema è verificato o testato.
             Francese e Spagnolo come requisito obbligatorio; il Tedesco è
             previsto come estensione facoltativa. Sono escluse le lingue con
             alfabeti non latini.
-      \item \textbf{Trunk-based Development:} Strategia di branching in cui ogni
-          membro lavora su un branch dedicato a un singolo documento o attività e
-          integra le modifiche nel branch principale (\texttt{main}) tramite pull
-          request al termine del lavoro, eliminando poi il branch.
+      \item \textbf{Trunk-based Development:} Strategia di branching in cui il branch
+      \texttt{main} rappresenta il ramo stabile principale e ogni modifica viene
+      sviluppata su un branch di breve durata, poi integrato tramite Pull Request.
+      Nel progetto non viene utilizzato un branch \texttt{develop}.
 \end{itemize}
  
 % ------------- U -------------
