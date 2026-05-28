@@ -1,0 +1,161 @@
+% --- 1. INFORMAZIONI GENERALI ---
+\section{Informazioni Generali}
+\begin{itemize}
+	\item \textbf{Azienda Coinvolta:} Zucchetti\textsubscript{G}
+	\item \textbf{Mezzo di Comunicazione:} Google Meet
+	\item \textbf{Data:} 2026-05-28
+	\item \textbf{Orario di inizio:} 12:00
+	\item \textbf{Orario di fine:} 12:40
+\end{itemize}
+
+Il presente verbale documenta l’incontro, svoltosi tramite Google Meet, 
+tra il gruppo Synergo Unit e il referente dell’azienda Zucchetti. 
+Durante la riunione sono stati trattati i seguenti argomenti: 
+l’AdR, lo stato dell’arte, il proof of concept (PoC) e la presentazione del mockup.
+
+
+\vspace{0.5cm}
+\textbf{Referenti Azienda:}
+\begin{table}[ht]
+	\centering
+	\renewcommand{\arraystretch}{1.2}
+	\begin{tabularx}{\textwidth}{X l}
+		\toprule
+		\textbf{Nome e Cognome} & \textbf{Ruolo\textsubscript{G}} \\
+		\midrule
+		Gregorio Piccoli & Referente Principale \\
+		\bottomrule
+	\end{tabularx}
+\end{table}
+
+% --- 2. CHIARIMENTI TECNICI RICHIESTI ---
+\section{Chiarimenti Richiesti}
+Il gruppo ha richiesto chiarimenti sui seguenti aspetti:
+
+\begin{enumerate}
+	\item Presentazione Analisi dei requisiti
+		\begin{itemize}
+			\item presentate tre macroaree e analizzati i diagrammi UML
+			\item tracciamento dei requisiti
+			\item confronto sui requisiti prestazionali individuati
+			\item aggiunto requisito di rendering in tempo reale durante la digitazione
+			\item aggiunto requisito per la segnalazione di operazioni con durata superiore ai due secondi
+		\end{itemize}
+	\item Presentazione Stato dell'arte
+		\begin{itemize}
+			\item selezionato CodeMirror in quanto Monaco potrebbe risultare più complesso
+			\item selezionato Vue
+			\item selezionata FastAPI
+			\item selezionato PostgreSQL per il supporto a JSON e alle funzionalità embedded tramite plugin
+		\end{itemize}
+	\item Presentazione proof of concept
+		\begin{itemize}
+			\item editor aperto su una nota esistente 
+				\begin{itemize}
+					\item importazione e salvataggio in formato Markdown
+					\item applicazione di uno stile per testare una possibile formattazione
+					\item visualizzazione in modalità split
+					\item interazione con LLM tramite pulsante popup con opzioni di accettazione e rifiuto
+						\begin{itemize}
+							\item suggerimento diretto su selezione di testo tramite “cappello”
+							\item distant writing per interazione con inserimento di prompt
+						\end{itemize}
+				\end{itemize}
+		\end{itemize}
+	\item Presentazione mockup
+\end{enumerate}
+
+% --- 3. RESOCONTO ---
+\section{Resoconto}
+Dalla risposta del referente aziendale sono emersi i seguenti punti.
+
+\subsection{Presentazione Analisi dei requisiti}
+\begin{itemize}
+	\item L'AdR è stato approvato
+\end{itemize}
+
+\subsection{Presentazione Stato dell'arte}
+\begin{itemize}
+	\item Lo stato dell'arte è stato approvato
+\end{itemize}
+
+\subsection{Presentazione proof of concept}
+\begin{itemize}
+	\item Il PoC è stato approvato
+\end{itemize}
+
+\subsection{Presentazione mockup}
+\begin{itemize}
+	\item Il mockup è stato approvato
+\end{itemize}
+
+% --- 4. DECISIONI FORMALI ---
+\section{Decisioni Formali}
+Nella seguente tabella sono tracciate le decisioni adottate a seguito
+dei chiarimenti ricevuti.
+
+\renewcommand{\arraystretch}{1.3}
+\vspace{-0.3cm}
+\noindent
+\begin{longtable}{c p{12cm}}
+	\toprule
+	\textbf{Codice} & \textbf{Decisione} \\
+	\midrule
+	\endfirsthead
+
+	\toprule
+	\textbf{Codice} & \textbf{Decisione} \\
+	\midrule
+	\endhead
+
+	\midrule
+	\multicolumn{2}{r}{\textit{Continua nella pagina successiva}} \\
+	\midrule
+	\endfoot
+
+	\bottomrule
+	\endlastfoot
+
+	\textbf{VE-6.1}
+		& Scelte riguardo l'AdR approvate \\[4pt]
+
+	\textbf{VE-6.2}
+		& Scelte riguardo lo stato dell'arte approvate \\[4pt]
+
+	\textbf{VE-6.3}
+		& Scelte riguardo il PoC approvate \\[4pt]
+
+	\textbf{VE-6.4}
+		& Mockup dell'interafaccia approvato \\[4pt]
+\end{longtable}
+
+\newpage
+% --- 5. FIRME ---
+\section*{Approvazione e Firme}
+Con le seguenti firme, i rappresentanti approvano formalmente il contenuto
+del presente verbale e le decisioni adottate.
+
+\vspace{2.5cm}
+
+\noindent
+\begin{minipage}[c]{0.45\textwidth}
+	\begin{center}
+		\rule{6cm}{0.4pt} \\
+		\vspace{0.2cm}
+		\textbf{Per il Gruppo Synergo Unit} \\
+		Armando Moda Scarati \\
+		\textit{Responsabile\textsubscript{G} di Progetto}
+	\end{center}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.45\textwidth}
+	\begin{center}
+		\rule{6cm}{0.4pt} \\
+		\vspace{0.2cm}
+		\textbf{Per l'Azienda Zucchetti} \\
+		Gregorio Piccoli \\
+		\textit{Referente Aziendale}
+	\end{center}
+\end{minipage}
+
+\vspace{2cm}
