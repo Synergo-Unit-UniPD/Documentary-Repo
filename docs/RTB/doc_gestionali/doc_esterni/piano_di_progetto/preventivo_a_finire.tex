@@ -3,38 +3,69 @@
 % =======================================================
 \section{Preventivo a Finire (PaF)}
 \label{sec:paf}
-Il Preventivo a Finire viene aggiornato al termine di ogni sprint sulla base degli
-scostamenti rilevati nel consuntivo. Riflette la stima aggiornata del costo totale
-del progetto tenendo conto di quanto già speso e di quanto rimane da fare.
+
+Il Preventivo a Finire viene aggiornato al termine di ogni sprint sulla base
+degli scostamenti rilevati nei consuntivi. Il suo scopo è fornire una stima
+aggiornata del costo complessivo del progetto, tenendo conto del costo già
+sostenuto e del costo stimato per completare le attività rimanenti.
 
 \subsection{Analisi scostamenti}
-Si evidenzia uno scostamento nelle ore associate al ruolo di
-Amministratore. Infatti, nella fase di preventivazione iniziale il carico
-documentale relativo alla redazione e manutenzione di documenti
-trasversali quali Piano di Progetto, Piano di Qualifica e Norme di
-Progetto è stato sottostimato.
 
-L'avanzamento della fase RTB ha evidenziato la necessità di un
-maggiore impegno continuativo per attività di coordinamento,
-aggiornamento documentale e gestione organizzativa.
+L'avanzamento della fase RTB\textsubscript{G} ha evidenziato uno scostamento
+nella distribuzione delle ore tra i ruoli rispetto alla preventivazione iniziale.
+In particolare, il carico associato alle attività di Amministrazione è risultato
+superiore a quanto previsto, a causa della necessità di mantenere aggiornati in
+modo continuativo gli strumenti di gestione, la documentazione di progetto, il
+tracciamento delle attività e i consuntivi di sprint.
+
+Parallelamente, alcune attività inizialmente associate a ruoli con tariffa oraria
+maggiore, in particolare Analista\textsubscript{G} e Progettista\textsubscript{G},
+si sono rivelate meno onerose del previsto nella fase corrente. Questo consente
+di ribilanciare parte dell'impegno verso il ruolo di Amministratore senza
+generare un incremento del costo complessivo stimato.
+
+Lo scostamento rilevato riguarda quindi principalmente la distribuzione interna
+delle ore tra ruoli e membri del gruppo, non il superamento del budget economico
+preventivato.
 
 \subsection{Ripianificazione}
-\textit{Da compilare se necessario: descrivere le azioni di ribilanciamento adottate
-(riduzione scope, redistribuzione ore, posticipo task).}
+
+A seguito degli scostamenti osservati, il gruppo ha aggiornato la pianificazione
+delle attività rimanenti mantenendo invariato il vincolo economico complessivo
+definito nel preventivo iniziale.
+
+La ripianificazione prevede un ribilanciamento delle ore residue tra ruoli,
+tenendo conto dell'effettivo andamento del progetto e delle attività ancora da
+completare. In particolare, viene riconosciuto un maggiore peso alle attività di
+Amministrazione, necessarie per il coordinamento operativo, la gestione degli
+strumenti, l'aggiornamento della documentazione e il monitoraggio delle risorse.
+
+Tale ribilanciamento non comporta un aumento del costo totale stimato, poiché
+l'incremento relativo delle ore di Amministrazione viene compensato dalla
+riduzione dell'impegno previsto su ruoli con tariffa oraria superiore. Il gruppo
+continua pertanto a considerare il budget iniziale come vincolo non superabile e
+mantiene il monitoraggio delle ore residue per ruolo e per componente al termine
+di ogni sprint.
+
+Eventuali ulteriori scostamenti verranno valutati nelle successive
+retrospettive e recepiti nel Preventivo a Finire, aggiornando la stima delle
+risorse residue senza modificare il perimetro economico complessivo del progetto.
 
 \subsection{Quadro economico aggiornato}
+
 \begin{table}[H]
     \centering
     \renewcommand{\arraystretch}{1.3}
-    \begin{tabularx}{\textwidth}{X r}
+    \begin{tabular}{l r}
         \toprule
         \textbf{Voce} & \textbf{Importo} \\
         \midrule
         Budget iniziale preventivato  & 11.665{,}00~\euro \\
-        Costo sostenuto finora        & 1.231{,}33~\euro \\
-        Costo stimato per completare  & 10.432{,}75~\euro \\
+        Costo sostenuto finora        & 2.295{,}58~\euro \\
+        Costo stimato per completare  & 9.369{,}42~\euro \\
         \midrule
-        \textbf{Nuovo totale stimato} & \textbf{11.664{,}08~\euro} \\
+        \textbf{Nuovo totale stimato} & \textbf{11.665{,}00~\euro} \\
         \bottomrule
-    \end{tabularx}
+    \end{tabular}
+    \caption{Quadro economico aggiornato del Preventivo a Finire dopo lo Sprint 7}
 \end{table}
