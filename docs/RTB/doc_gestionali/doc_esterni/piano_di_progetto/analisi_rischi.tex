@@ -67,13 +67,13 @@ Per ciascun rischio vengono indicati:
 		\hline
 		\textbf{Codice} & \textbf{RR3} \\
 		\hline
-		\textbf{Descrizione} & Qualità insufficiente del prodotto (bug, mancanza di test) \\
+		\textbf{Descrizione} & Qualità insufficiente degli artefatti prodotti o del Proof of Concept\textsubscript{G} \\
 		\hline
 		\textbf{Probabilità / Impatto} & Media/Alta \\
 		\hline
-		\textbf{Piano di Mitigazione} & Definition of Done\textsubscript{G} con criteri di qualità espliciti; code review sistematiche; copertura minima di test definita \\
+		\textbf{Piano di Mitigazione} & Applicazione della Definition of Done\textsubscript{G}; review obbligatoria tramite Pull Request\textsubscript{G}; verifica documentale e verifica manuale del PoC secondo le Norme di Progetto \\
 		\hline
-		\textbf{Piano di Contingenza} & Sprint\textsubscript{G} dedicato al bug fixing; riallocazione del tempo verso attività di verifica e validazione \\
+		\textbf{Piano di Contingenza} & Apertura di issue\textsubscript{G} correttive; riallocazione del tempo verso attività di verifica, consolidamento e risoluzione delle non conformità\textsubscript{G} \\
 		\hline
 	\end{tabularx}
 	\caption{Scheda rischio RR3}
@@ -163,13 +163,13 @@ Per ciascun rischio vengono indicati:
 		\hline
 		\textbf{Codice} & \textbf{RT3} \\
 		\hline
-		\textbf{Descrizione} & Indisponibilità o instabilità di strumenti/servizi esterni (GitHub, CI/CD\textsubscript{G}, cloud) \\
+		\textbf{Descrizione} & Indisponibilità o instabilità degli strumenti di supporto al progetto, quali GitHub, GitHub Pages\textsubscript{G}, Google Forms\textsubscript{G} o Google Sheets \\
 		\hline
 		\textbf{Probabilità / Impatto} & Bassa/Media \\
 		\hline
-		\textbf{Piano di Mitigazione} & Predisporre strumenti alternativi e backup locali; documentare workflow indipendenti dai servizi esterni \\
+		\textbf{Piano di Mitigazione} & Mantenere copie locali aggiornate del repository\textsubscript{G}; documentare i workflow principali; predisporre strumenti alternativi per il tracciamento temporaneo delle attività \\
 		\hline
-		\textbf{Piano di Contingenza} & Passaggio temporaneo ad ambienti locali; aggiornamento della pianificazione e sospensione delle pipeline dipendenti \\
+		\textbf{Piano di Contingenza} & Prosecuzione temporanea del lavoro in locale; registrazione manuale delle attività e delle ore; aggiornamento del repository e degli strumenti condivisi al ripristino dei servizi \\
 		\hline
 	\end{tabularx}
 	\caption{Scheda rischio RT3}
@@ -211,6 +211,44 @@ Per ciascun rischio vengono indicati:
 		\hline
 	\end{tabularx}
 	\caption{Scheda rischio RT5}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabularx}{\textwidth}{|c|X|}
+		\hline
+		\textbf{Codice} & \textbf{RT6} \\
+		\hline
+		\textbf{Descrizione} & Difficoltà nell'avvio locale o nell'integrazione minima del Proof of Concept tramite Docker Compose\textsubscript{G} \\
+		\hline
+		\textbf{Probabilità / Impatto} & Media/Alta \\
+		\hline
+		\textbf{Piano di Mitigazione} & Predisporre una struttura chiara nella cartella \texttt{poc/}; separare frontend e backend; documentare nel README\textsubscript{G} i prerequisiti, le porte utilizzate e la procedura di avvio locale \\
+		\hline
+		\textbf{Piano di Contingenza} & Ridurre temporaneamente il perimetro dimostrativo del PoC; isolare il problema sul servizio coinvolto; prevedere sessioni tecniche dedicate alla configurazione e all'integrazione \\
+		\hline
+	\end{tabularx}
+	\caption{Scheda rischio RT6}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabularx}{\textwidth}{|c|X|}
+		\hline
+		\textbf{Codice} & \textbf{RT7} \\
+		\hline
+		\textbf{Descrizione} & Inserimento accidentale nel repository di credenziali, token, file \texttt{.env} o dati sensibili durante lo sviluppo del PoC \\
+		\hline
+		\textbf{Probabilità / Impatto} & Bassa/Alta \\
+		\hline
+		\textbf{Piano di Mitigazione} & Escludere i file sensibili tramite \texttt{.gitignore}; verificare le Pull Request prima del merge; evitare l'inserimento di token o credenziali nel codice sorgente \\
+		\hline
+		\textbf{Piano di Contingenza} & Rimozione immediata del contenuto sensibile; rotazione delle credenziali eventualmente esposte; apertura di una issue correttiva e verifica straordinaria del repository \\
+		\hline
+	\end{tabularx}
+	\caption{Scheda rischio RT7}
 \end{table}
 
 \subsection{RO - Rischi Organizzativi}
@@ -329,6 +367,44 @@ Per ciascun rischio vengono indicati:
 	\caption{Scheda rischio RO6}
 \end{table}
 
+\begin{table}[H]
+	\centering
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabularx}{\textwidth}{|c|X|}
+		\hline
+		\textbf{Codice} & \textbf{RT6} \\
+		\hline
+		\textbf{Descrizione} & Difficoltà nell'avvio locale o nell'integrazione minima del Proof of Concept tramite Docker Compose\textsubscript{G} \\
+		\hline
+		\textbf{Probabilità / Impatto} & Media/Alta \\
+		\hline
+		\textbf{Piano di Mitigazione} & Predisporre una struttura chiara nella cartella \texttt{poc/}; separare frontend e backend; documentare nel README\textsubscript{G} i prerequisiti, le porte utilizzate e la procedura di avvio locale \\
+		\hline
+		\textbf{Piano di Contingenza} & Ridurre temporaneamente il perimetro dimostrativo del PoC; isolare il problema sul servizio coinvolto; prevedere sessioni tecniche dedicate alla configurazione e all'integrazione \\
+		\hline
+	\end{tabularx}
+	\caption{Scheda rischio RT6}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabularx}{\textwidth}{|c|X|}
+		\hline
+		\textbf{Codice} & \textbf{RT7} \\
+		\hline
+		\textbf{Descrizione} & Inserimento accidentale nel repository di credenziali, token, file \texttt{.env} o dati sensibili durante lo sviluppo del PoC \\
+		\hline
+		\textbf{Probabilità / Impatto} & Bassa/Alta \\
+		\hline
+		\textbf{Piano di Mitigazione} & Escludere i file sensibili tramite \texttt{.gitignore}; verificare le Pull Request prima del merge; evitare l'inserimento di token o credenziali nel codice sorgente \\
+		\hline
+		\textbf{Piano di Contingenza} & Rimozione immediata del contenuto sensibile; rotazione delle credenziali eventualmente esposte; apertura di una issue correttiva e verifica straordinaria del repository \\
+		\hline
+	\end{tabularx}
+	\caption{Scheda rischio RT7}
+\end{table}
+
 \subsection{Matrice dei rischi\textsubscript{G}}
 
 \begin{table}[H]
@@ -341,14 +417,14 @@ Per ciascun rischio vengono indicati:
 \hline
 
 Alta
-& --
-& RR1, RR4, RR5, RT1, RT5, RO1, RO5
+& RT7
+& RR1, RR3, RR4, RR5, RT1, RT5, RT6, RO1, RO5
 & RR2 \\
 \hline
 
 Media
 & RT3, RO4
-& RT2, RT4, RO3
+& RT2, RT4, RO3, RO7
 & RO6 \\
 \hline
 
@@ -364,8 +440,14 @@ Bassa
 \end{table}
 
 \subsection{Monitoraggio dei rischi}
-I rischi vengono rivalutati al termine di ogni Sprint Review\textsubscript{G}.
-Il Responsabile monitora l'evoluzione dei rischi identificati,
-verifica l'efficacia delle azioni di mitigazione adottate e aggiorna
-il registro dei rischi sulla base di eventuali nuovi elementi emersi
-durante lo sviluppo del progetto.
+
+I rischi vengono rivalutati al termine di ogni Sprint Review\textsubscript{G}
+e discussi, quando necessario, durante la Sprint Retrospective\textsubscript{G}.
+Il Responsabile monitora l'evoluzione dei rischi identificati, verifica
+l'efficacia delle azioni di mitigazione adottate e aggiorna il registro dei
+rischi sulla base di eventuali nuovi elementi emersi.
+
+Qualora un rischio si manifesti o cambi significativamente il proprio profilo
+di probabilità o impatto, il gruppo valuta le azioni correttive da adottare,
+aggiorna il Piano di Progetto e, se necessario, crea issue dedicate per
+tracciare le attività conseguenti.
