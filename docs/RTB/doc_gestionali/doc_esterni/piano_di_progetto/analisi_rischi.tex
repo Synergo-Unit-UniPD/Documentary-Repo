@@ -372,37 +372,18 @@ Per ciascun rischio vengono indicati:
 	\renewcommand{\arraystretch}{1.3}
 	\begin{tabularx}{\textwidth}{|c|X|}
 		\hline
-		\textbf{Codice} & \textbf{RT6} \\
+		\textbf{Codice} & \textbf{RO7} \\
 		\hline
-		\textbf{Descrizione} & Difficoltà nell'avvio locale o nell'integrazione minima del Proof of Concept tramite Docker Compose\textsubscript{G} \\
+		\textbf{Descrizione} & Disallineamento del gruppo nell'adozione del nuovo workflow operativo previsto per le attività documentali e non documentali a partire dallo Sprint 9 \\
 		\hline
-		\textbf{Probabilità / Impatto} & Media/Alta \\
+		\textbf{Probabilità / Impatto} & Media/Media \\
 		\hline
-		\textbf{Piano di Mitigazione} & Predisporre una struttura chiara nella cartella \texttt{poc/}; separare frontend e backend; documentare nel README\textsubscript{G} i prerequisiti, le porte utilizzate e la procedura di avvio locale \\
+		\textbf{Piano di Mitigazione} & Richiamare le nuove convenzioni durante lo Sprint Planning\textsubscript{G}; distinguere esplicitamente issue documentali e non documentali; verificare naming di issue, branch\textsubscript{G} e commit\textsubscript{G} durante la Pull Request \\
 		\hline
-		\textbf{Piano di Contingenza} & Ridurre temporaneamente il perimetro dimostrativo del PoC; isolare il problema sul servizio coinvolto; prevedere sessioni tecniche dedicate alla configurazione e all'integrazione \\
-		\hline
-	\end{tabularx}
-	\caption{Scheda rischio RT6}
-\end{table}
-
-\begin{table}[H]
-	\centering
-	\renewcommand{\arraystretch}{1.3}
-	\begin{tabularx}{\textwidth}{|c|X|}
-		\hline
-		\textbf{Codice} & \textbf{RT7} \\
-		\hline
-		\textbf{Descrizione} & Inserimento accidentale nel repository di credenziali, token, file \texttt{.env} o dati sensibili durante lo sviluppo del PoC \\
-		\hline
-		\textbf{Probabilità / Impatto} & Bassa/Alta \\
-		\hline
-		\textbf{Piano di Mitigazione} & Escludere i file sensibili tramite \texttt{.gitignore}; verificare le Pull Request prima del merge; evitare l'inserimento di token o credenziali nel codice sorgente \\
-		\hline
-		\textbf{Piano di Contingenza} & Rimozione immediata del contenuto sensibile; rotazione delle credenziali eventualmente esposte; apertura di una issue correttiva e verifica straordinaria del repository \\
+		\textbf{Piano di Contingenza} & Correzione delle issue o dei branch non conformi; apertura di task correttive; riallineamento del gruppo durante la riunione intermedia o la retrospettiva \\
 		\hline
 	\end{tabularx}
-	\caption{Scheda rischio RT7}
+	\caption{Scheda rischio RO7}
 \end{table}
 
 \subsection{Matrice dei rischi\textsubscript{G}}
