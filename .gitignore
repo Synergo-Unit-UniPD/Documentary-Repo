@@ -7,3 +7,5 @@
 *.toc
 *.lot
 *.lof
+*.env
+node_modules/
