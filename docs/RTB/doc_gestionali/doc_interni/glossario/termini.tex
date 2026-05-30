@@ -25,9 +25,6 @@
       \item \textbf{API Key:} Chiave di autenticazione utilizzata per autorizzare l’accesso a servizi o API esterne.
       \item \textbf{Architecture Decision Record (ADR):} Documento sintetico utilizzato per registrare una decisione architetturale rilevante, includendo il contesto, le alternative valutate, la decisione presa e le relative motivazioni. Nel progetto è previsto per la fase PB, quando le scelte architetturali saranno consolidate.
       \item \textbf{Artefatto:} Prodotto concreto generato durante lo svolgimento del progetto, come documento, diagramma, codice sorgente, script, file PDF, verbale o materiale di presentazione.
-      \item \textbf{Asincrono:} Modello di esecuzione in cui operazioni e processi possono essere svolti senza bloccare il flusso principale del programma.   
-      \item \textbf{Attore:} In ambito UML, rappresenta un'entità esterna (un utente umano o un altro sistema) che interagisce direttamente con il sistema software per raggiungere uno specifico obiettivo.
-      \item \textbf{API (Application Programming Interface):} Insieme di regole e strumenti che permettono a diversi sistemi software di comunicare tra loro. Nel contesto del progetto, consente l'invocazione di servizi esterni di LLM tramite chiamate strutturate.
       \item \textbf{Appunti (Clipboard):} Area temporanea di memoria del sistema operativo utilizzata per conservare dati copiati o tagliati dall'utente, rendendoli disponibili per operazioni di incolla. Nel progetto è utilizzata per trasferire testo da e verso l'editor.
       \item \textbf{Asincrono:} Modello di esecuzione in cui operazioni e processi possono essere svolti senza bloccare il flusso principale del programma.   
       \item \textbf{Attore:} In ambito UML, rappresenta un'entità esterna (un utente umano o un altro sistema) che interagisce direttamente con il sistema software per raggiungere uno specifico obiettivo.
@@ -50,6 +47,8 @@
           e utilizzata come riferimento ufficiale per le fasi successive. Nel
           contesto del progetto didattico le baseline principali sono: candidatura
           (CC), Requirements and Technology Baseline (RTB) e Product Baseline (PB).
+      \item \textbf{Backend:} Parte dell'applicazione che gestisce logica server, API e
+      servizi di supporto non direttamente visibili all'utente.
       \item \textbf{Brainstorming:} Tecnica di generazione collettiva delle idee adottata
       dal gruppo come metodo decisionale principale. Si articola in tre fasi:
       raccolta libera delle proposte senza valutazione immediata, confronto
@@ -59,7 +58,11 @@
           repository Git, utilizzata per lavorare su modifiche isolate senza
           influenzare il ramo principale (\texttt{main}).
       \item \textbf{Branch Protection Rules:} Regole di protezione configurate su GitHub per limitare le modifiche dirette a un branch. Nel progetto sono utilizzate sul branch \texttt{main} per richiedere almeno una review positiva, bloccare i force push e restringere l'eliminazione del branch protetto.
+      \item \textbf{Browser Compatibility:} Metrica di prodotto che misura il numero di
+browser target su cui il sistema è verificato o testato.
       \item \textbf{Budget:} Quantità di risorse economiche disponibili per il progetto o per uno specifico sprint, calcolata sulla base delle ore preventivate e dei costi orari associati ai ruoli.
+      \item \textbf{Bug:} Comportamento errato o non conforme rispetto a quanto atteso
+      per una funzionalità o componente software.
       \item \textbf{Burndown Chart:} Grafico che mostra l'andamento del lavoro residuo nel
       corso di uno sprint o dell'intero progetto, confrontando il ritmo di avanzamento
       effettivo con quello pianificato. Utilizzata per monitorare il rischio di ritardo
@@ -71,7 +74,8 @@
 \addcontentsline{toc}{subsection}{C}
 \subsection*{C}
 \begin{itemize}[leftmargin=*]
-      \item \textbf{Candidatura (CC):} Fase iniziale del progetto didattico, antecedente all'aggiudicazione del capitolato, in cui il gruppo si propone come fornitore producendo la Valutazione dei Capitolati, la Lettera di Presentazione e il Preventivo Costi e Assunzione Impegni. Non è un documento, ma una baseline di fase.      \item \textbf{Cerimonie:} Insieme degli incontri strutturati previsti dal
+      \item \textbf{Candidatura (CC):} Fase iniziale del progetto didattico, antecedente all'aggiudicazione del capitolato, in cui il gruppo si propone come fornitore producendo la Valutazione dei Capitolati, la Lettera di Presentazione e il Preventivo Costi e Assunzione Impegni. Non è un documento, ma una baseline di fase.      
+      \item \textbf{Cerimonie:} Insieme degli incontri strutturati previsti dal
       framework Scrum: Sprint Planning, Sprint Review, Sprint
       Retrospective e Daily Stand-up. Nel gruppo le prime tre si svolgono il martedì in sequenza fissa; il Daily Stand-up è gestito in modo asincrono.
       \item \textbf{Change Request:} Richiesta di cambiamento relativa a documenti, requisiti, tecnologie o processi. Deve essere valutata rispetto al suo impatto, approvata dal ruolo competente, tracciata tramite issue e verificata tramite Pull Request.
@@ -79,16 +83,27 @@
       \item \textbf{Casi d'uso:} Tecnica di modellazione che descrive le funzionalità del sistema tramite una "visione esterna" (come percepite dall'attore), ignorandone l'implementazione. A livello tecnico è definito come un insieme di scenari (sequenze di azioni che includono uno scenario principale e possibili scenari alternativi o di errore) che condividono lo stesso scopo finale per l'utente.
       \item  \textbf{CI/CD (Continuous Integration / Continuous Deployment):} Pratica di sviluppo software che prevede l’integrazione frequente del codice in un repository condiviso e la sua automazione di build, test e distribuzione.
       \item \textbf{Ciclo Di Vita Documentale:} Sequenza di stati attraversati da un documento dalla creazione al rilascio. Nel gruppo si articola in: In Stesura, In Verifica, Verificato, Approvato e Rilasciato.      \item \textbf{Code Coverage:} Metrica che misura la percentuale di codice sorgente eseguita durante l’esecuzione dei test automatici.
-      \item \textbf{Code Review:} Attività di revisione del codice sorgente svolta prima dell'integrazione nel branch principale. In fase RTB non è ancora pienamente normata, poiché la codifica è limitata al Proof of Concept; verrà formalizzata nella fase PB.
       \item \textbf{Colli di bottiglia:} Fase o componente di un processo che rallenta l'efficienza complessiva, limitando la capacità operativa del team o del sistema.
-      \item \textbf{Commit:} Operazione Git che registra un insieme di modifiche nel repository locale, associandovi un messaggio descrittivo. Nel flusso del gruppo ogni commit relativo a una issue include il riferimento all'identificativo della issue nel messaggio, secondo la convenzione \texttt{git commit -m "\#<id> <messaggio>"}, garantendo la tracciabilità delle modifiche rispetto alle attività pianificate.
+      \item \textbf{Commit:} Operazione Git che registra un insieme di modifiche nel
+      repository locale, associandovi un messaggio descrittivo. Nel flusso del gruppo
+      ogni commit deve seguire la convenzione
+      \texttt{<tipo>(<posizione>): <messaggio> (\#id)}, così da garantire
+      tracciabilità rispetto alla issue collegata.
+      \item \textbf{Comment Density:} Metrica di qualità del prodotto che misura il
+      rapporto tra righe di commento e righe di codice totali.
       \item \textbf{Compito:} Obiettivo espresso dall'utente in linguaggio naturale (es.\ ``applicare il cappello critico''), che il sistema interpreta per determinare la funzionalità da eseguire.
+      \item \textbf{Complessità Ciclomatica:} Metrica di qualità del software che misura
+      la complessità dei flussi di controllo di una funzione o di un modulo, utile per
+      valutare manutenibilità e difficoltà di verifica.
       \item \textbf{Configurazione:} Insieme degli elementi che compongono lo stato controllato del progetto, inclusi documenti, codice, template, asset, script, file PDF e configurazioni del repository.
       \item \textbf{Consuntivo:} Documento o sezione del Piano di Progetto che riporta, al termine di ogni sprint, le ore effettivamente
       impiegate da ciascun membro per ciascun ruolo, il relativo costo
       effettivo e lo scostamento rispetto al preventivo.
       \item \textbf{Container:} Unità software isolata che include codice, dipendenze e configurazioni necessarie all’esecuzione di uno specifico servizio.
       \item \textbf{Containerizzazione:} Processo di distribuzione ed esecuzione del software tramite container isolati e portabili.
+      \item \textbf{Conventional Commits:} Convenzione per la scrittura dei messaggi di
+      commit che associa a ogni modifica un tipo, uno scope e una descrizione
+      sintetica. Nel progetto viene adottata in forma adattata al workflow del gruppo.
       \item \textbf{Cruscotto Di Qualità:} Strumento di raccolta e visualizzazione delle metriche di qualità di processo e di prodotto, utilizzato per monitorare il raggiungimento degli obiettivi definiti nel Piano di Qualifica.
       \item \textbf{Contingenza:} Insieme di azioni correttive attivate quando un rischio si manifesta effettivamente, con l'obiettivo di ridurne gli effetti sul progetto.
       \item \textbf{Cost Performance Index (CPI):} Indice di performance dei costi, se >1 
@@ -111,13 +126,11 @@
       che richiedono interventi correttivi futuri (refactoring) e che, se non gestite,
       rallentano la velocity degli sprint successivi.
       \item \textbf{Decision Tree (Albero Di Decisione):} Modello strutturato ad albero utilizzato per rappresentare decisioni e le loro possibili conseguenze.
-      \item \textbf{Definition of Done (DoD):} Lista esplicita di criteri che un
-      task deve soddisfare per essere considerato completato a tutti
-      gli effetti. Si articola in due livelli: livello task (criteri tecnici e
-      procedurali sul singolo deliverable) e livello sprint (criteri di processo
-      sull'intero sprint). Si espande al crescere del progetto: nella fase documentale
-      copre redazione, revisione e tracciabilità; nella fase di sviluppo includerà
-      anche criteri su test e copertura del codice.
+      \item \textbf{Definition of Done (DoD):} Lista esplicita di criteri che un task
+      deve soddisfare per essere considerato completato a tutti gli effetti. Nella fase
+      RTB include criteri documentali e criteri minimi per il codice del Proof of
+      Concept; nella fase PB potrà essere estesa a test automatici e copertura del
+      codice.
       \item \textbf{Deployment:} Processo di rilascio e distribuzione di un’applicazione in un ambiente di esecuzione.
       \item \textbf{Diario Di Bordo:} Momento di rendicontazione periodica al committente
       in cui il gruppo espone il rapporto tra costi sostenuti e avanzamento
@@ -127,6 +140,10 @@
             dal gruppo come ambiente principale per le riunioni interne e il coordinamento
             quotidiano.
       \item \textbf{Distant Writing:} Funzionalità di generazione automatica del testo tramite prompt, in cui l’LLM produce contenuti estesi a partire da istruzioni concise fornite dall’utente.
+      \item \textbf{Docker:} Piattaforma per creare, distribuire ed eseguire applicazioni
+      tramite container.
+      \item \textbf{Docker Compose:} Strumento per definire ed eseguire applicazioni
+      composte da più container tramite un file di configurazione.
 \end{itemize}
  
 % ------------- E -------------
@@ -149,6 +166,8 @@
 \subsection*{F}
 \begin{itemize}[leftmargin=*]
       \item \textbf{FastAPI:} Framework moderno Python per la creazione di API REST ad alte prestazioni, con supporto asincrono e generazione automatica della documentazione.
+      \item \textbf{Feature:} Nuova funzionalità del prodotto, del Proof of Concept o di
+      una sua componente.
       \item \textbf{File System:} Componente del sistema operativo responsabile della gestione dei file locali. Nel progetto può fungere da attore secondario per operazioni di upload e download delle note.
       \item \textbf{Foglio Di Calcolo:} Strumento condiviso del gruppo utilizzato per
       il monitoraggio aggregato delle misurazioni. Raccoglie i dati delle task
@@ -164,6 +183,8 @@
             citazioni. La gestione delle immagini è esplicitamente esclusa dai
             requisiti.
       \item \textbf{Framework:} Struttura software di base o piattaforma che fornisce librerie e strumenti per facilitare e standardizzare lo sviluppo di applicazioni.
+      \item \textbf{Frontend:} Parte dell'applicazione con cui l'utente interagisce
+      direttamente tramite interfaccia grafica.
 \end{itemize}
  
 % ------------- G -------------
@@ -201,6 +222,9 @@
 \addcontentsline{toc}{subsection}{I}
 \subsection*{I}
 \begin{itemize}[leftmargin=*]
+      \item \textbf{Indice di Gulpease}: Indice di leggibilità della lingua italiana che
+      misura la facilità di lettura di un testo sulla base della lunghezza delle parole
+      e delle frasi.
       \item \textbf{In Review:} Stato di una issue in GitHub Projects che indica che l'attività è stata completata dal Redattore ed è in attesa di verifica tramite Pull Request.
       \item \textbf{Integrazione Continua:} Pratica di sviluppo che prevede l'integrazione frequente delle modifiche nel repository principale, accompagnata da controlli automatici. Nel progetto è pianificata per la fase PB.
       \item \textbf{Interfaccia Utente (UI):} Insieme degli elementi grafici e interattivi attraverso cui l'utente interagisce con il sistema. Deve garantire semplicità, chiarezza e accessibilità.
@@ -360,13 +384,12 @@
           persistenza dei dati nel capitolato di riferimento.
       \item \textbf{Preventivo:} Stima delle ore e dei costi per ogni membro e ruolo
             per uno sprint, calcolata a partire dai tempi previsti delle task assegnate.
-            Distinto dal \textit{Preventivo Dei Costi} della Dichiarazione degli Impegni,
+            Distinto dal \textit{Preventivo Dei Costi} del Preventivo dei Costi e Assunzione degli Impegni,
             che è il preventivo globale di progetto; il preventivo di sprint è prodotto
             automaticamente dal foglio di calcolo condiviso.
       \item \textbf{Preventivo Dei Costi:} Stima dell'impegno economico complessivo
             del progetto, calcolata moltiplicando le ore previste per ciascun ruolo
-            per il relativo costo orario ufficiale. Presentato nella Dichiarazione
-            degli Impegni; il valore accettato all'aggiudicazione diventa limite
+            per il relativo costo orario ufficiale. Presentato nel Preventivo dei Costi e Assunzione degli Impegni; il valore accettato all'aggiudicazione diventa limite
             superiore invalicabile durante lo svolgimento del progetto.
       \item \textbf{Progettista:} Ruolo del gruppo responsabile delle attività di
             progettazione architetturale (\textit{design}). Attivo dalla baseline RTB.
@@ -388,7 +411,11 @@
 \phantomsection
 \addcontentsline{toc}{subsection}{Q}
 \subsection*{Q}
-\textit{Nessun termine.}
+\begin{itemize}
+      \item \textbf{Quality Metrics Compliance Rate (QMCR)}: Metrica di processo che misura
+      la percentuale di metriche del cruscotto qualità che raggiungono il valore
+      ottimale rispetto al totale delle metriche considerate.
+\end{itemize}
  
 % ------------- R -------------
 \phantomsection
@@ -397,11 +424,18 @@
 \begin{itemize}[leftmargin=*]
       \item \textbf{Rate Limiting:} Tecnica che limita il numero di richieste effettuabili verso un servizio in un determinato intervallo temporale.
       \item \textbf{React:} Libreria JavaScript sviluppata da Meta per la creazione di interfacce utente reattive basate su componenti.
+      \item \textbf{README:} File testuale che descrive informazioni operative relative
+      a una cartella o componente del progetto, come prerequisiti, procedura di avvio,
+      configurazione e problemi noti.
       \item \textbf{Redattore:} Ruolo del gruppo responsabile della produzione del
           contenuto di un documento, nel rispetto del template approvato e delle
           convenzioni redazionali definite nelle Norme di Progetto. Non può
           verificare il proprio lavoro.
-      \item \textbf{Redo:} Funzionalità dell'editor che permette di ripristinare una modifica precedentemente annullata.      \item \textbf{Refactoring:} Attività di ristrutturazione del codice sorgente
+      \item \textbf{Redo:} Funzionalità dell'editor che permette di ripristinare una modifica precedentemente annullata.      
+      \item \textbf{Refactor:} Tipo di attività o commit che indica una modifica interna
+      al codice o alla struttura del progetto senza cambiamento del comportamento
+      osservabile.
+      \item \textbf{Refactoring:} Attività di ristrutturazione del codice sorgente
       finalizzata a migliorarne la leggibilità, la manutenibilità e la qualità
       interna, senza modificarne il comportamento esterno. Utilizzata per ridurre
       il debito tecnico accumulato.
@@ -412,6 +446,8 @@
           versioni approvate e stabili.
       \item \textbf{Responsabile:} Ruolo del gruppo responsabile del coordinamento delle attività, dell'elaborazione di piani e scadenze, dell'approvazione del rilascio di prodotti parziali o finali e della rappresentanza del gruppo verso committente e proponente.
       \item \textbf{RESTful API:} Interfaccia di programmazione che segue i principi architetturali REST per la comunicazione tra client e server.
+      \item \textbf{Review Coverage:} Metrica di processo che misura la percentuale di
+      documenti o file verificati da un membro diverso dall'autore.
       \item \textbf{Revisione:} Fase del ciclo di vita documentale in cui il
           Verificatore controlla struttura, coerenza, correttezza linguistica e
           conformità del documento alle Norme di Progetto, prima che esso venga
@@ -447,6 +483,9 @@
       \item \textbf{Scenari Alternativi:} Varianti del flusso principale che descrivono eccezioni, estensioni o condizioni particolari del Caso d'Uso.
       \item \textbf{Schedule Variance (SV):} Varianza dei tempi.
       Valore positivo indica anticipo, negativo ritardo.
+      \item \textbf{Scope:} Parte del progetto, documento o area tecnica a cui si riferisce
+      un commit. Nel workflow del gruppo può indicare, ad esempio, un'area tecnica come
+      \texttt{frontend} o un documento come \texttt{ndp}.
       \item \textbf{Scope Creep:} Fenomeno per cui l'ambito di un progetto si espande
       in modo incontrollato durante lo sviluppo, a causa dell'aggiunta di
       funzionalità non pianificate o non approvate formalmente. Costituisce uno
@@ -503,12 +542,14 @@
             gruppo: ISO/IEC 12207:1995) al contesto specifico del progetto, mediante
             la selezione motivata dei processi da attivare e l'esclusione giustificata
             di quelli non applicabili.
-      \item \textbf{Task:} Unità operativa di lavoro assegnata a un membro del
-      gruppo con ruolo, scadenza, stima del tempo previsto e tracciamento
-      del tempo effettivo. Creata tramite Google Form, genera automaticamente
-      una issue su GitHub; il branch corrispondente segue la convenzione
-      \texttt{<id>-<gestionale|tecnico>\_<esterno|interno>\_<nomeDoc>}.
-      Tracciata su GitHub Project.
+      \item \textbf{Task:} Unità operativa di lavoro assegnata a un membro del gruppo
+      con ruolo, scadenza, stima del tempo previsto e tracciamento del tempo effettivo.
+      Viene creata tramite Google Form, genera automaticamente una issue su GitHub ed
+      è tracciata tramite GitHub Projects. A seconda della natura dell'attività, può
+      essere documentale o non documentale e segue le convenzioni di naming definite
+      nelle Norme di Progetto.
+      \item \textbf{Task Completion Rate:} Metrica di processo che misura la percentuale
+      di issue completate rispetto a quelle pianificate in uno sprint.
       \item \textbf{Technology Baseline:} Baseline che fissa le tecnologie, i
             framework e le librerie adottate per il progetto, dimostrando tramite
             Proof of Concept la loro adeguatezza e interoperabilità rispetto ai
@@ -520,15 +561,21 @@
       \item \textbf{Tempo Effettivo:} Tempo realmente impiegato da un membro del
             gruppo per completare un task, espresso in minuti. Registrato nel foglio
             di calcolo condiviso a consuntivo dell'attività.
-      \item \textbf{Tempo Previsto:} Stima iniziale del tempo necessario per
+      \item \textbf{Tempo Iniziale di Caricamento del Programma:} Metrica di prodotto
+      che misura il tempo necessario affinché l'interfaccia principale dell'applicazione
+      risulti disponibile e utilizzabile dall'utente.
+            \item \textbf{Tempo Previsto:} Stima iniziale del tempo necessario per
             completare un task, espressa in minuti. Definita al momento della
             creazione del task e utilizzata come riferimento per il monitoraggio
             dell'avanzamento.
       \item \textbf{Ticket:} Segnalazione o richiesta di lavoro tecnica tracciata all'interno di un sistema di gestione. Nel flusso del gruppo, equivale a una Issue.
+      \item \textbf{Time Efficiency:} Metrica di processo che misura la percentuale di
+      ore produttive rispetto al totale delle ore spese.
       \item \textbf{Timeout LLM:} Errore generato quando il modello linguistico non risponde entro il tempo massimo previsto, gestito tramite messaggi di errore e retry.
       \item \textbf{Title Case:} Convenzione tipografica adottata dal gruppo per i
-            titoli di sezioni e sotto-sezioni, che prevede l'iniziale maiuscola per
-            ogni parola. \textit{Esempio}: ``Ciclo Di Vita Documentale''.
+            titoli di sezioni, sottosezioni e paragrafi. Nella forma italianizzata adottata
+            dal gruppo, le parole semanticamente rilevanti hanno iniziale maiuscola, mentre
+            articoli, preposizioni e congiunzioni interne rimangono in minuscolo.
       \item \textbf{TLS:} Protocollo crittografico utilizzato per garantire sicurezza e riservatezza nelle comunicazioni di rete.
       \item \textbf{To Do:} Stato di una issue in GitHub Projects che indica che l'attività è stata pianificata ma non ancora iniziata.
       \item \textbf{TypeScript:} Superset di JavaScript che introduce tipizzazione statica e strumenti avanzati di sviluppo.
@@ -539,10 +586,10 @@
             Francese e Spagnolo come requisito obbligatorio; il Tedesco è
             previsto come estensione facoltativa. Sono escluse le lingue con
             alfabeti non latini.
-      \item \textbf{Trunk-based Development:} Strategia di branching in cui ogni
-          membro lavora su un branch dedicato a un singolo documento o attività e
-          integra le modifiche nel branch principale (\texttt{main}) tramite pull
-          request al termine del lavoro, eliminando poi il branch.
+      \item \textbf{Trunk-based Development:} Strategia di branching in cui il branch
+      \texttt{main} rappresenta il ramo stabile principale e ogni modifica viene
+      sviluppata su un branch di breve durata, poi integrato tramite Pull Request.
+      Nel progetto non viene utilizzato un branch \texttt{develop}.
 \end{itemize}
  
 % ------------- U -------------
