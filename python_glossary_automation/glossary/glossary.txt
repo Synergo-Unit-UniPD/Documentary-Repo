@@ -65,10 +65,11 @@ GitHub Project
 Google Calendar
 Google Form
 HTML
+JSON
 Interfaccia Utente
 ISO/IEC 12207:1995
 Issue
-JSON
+Indice di Gulpease
 Integrazione continua
 In Review
 Issue Tracking
@@ -115,6 +116,7 @@ Prompt
 Pull Request
 PB
 Product Baseline
+Quality Metrics Compliance Rate
 Redattore
 Refactoring
 Render
