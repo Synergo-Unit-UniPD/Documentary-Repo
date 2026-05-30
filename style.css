@@ -137,6 +137,50 @@ body {
 }
 
 /* ------------------------------
+   CODE BANNER
+------------------------------ */
+
+.code-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    padding: 1rem 1.25rem;
+    border-radius: 14px;
+    background: var(--viola);
+    color: var(--bianco);
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 6px 18px rgba(123, 44, 191, 0.25);
+}
+
+.code-left {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.code-download {
+    padding: 0.45rem 0.8rem;
+    border-radius: 999px;
+    background: var(--bianco);
+    color: var(--viola);
+    font-size: 0.9rem;
+}
+
+.code-banner:hover {
+    background: var(--viola-trasp);
+}
+
+.code-icon-btn {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    opacity: .95;
+}
+
+/* ------------------------------
    SEZIONI DOCUMENTI
 ------------------------------ */
 .doc-section {
