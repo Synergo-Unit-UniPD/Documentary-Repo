@@ -4,60 +4,77 @@
 \section{Preventivo}
 
 \subsection{Assunzioni sul costo orario per ruolo}
-Il calcolo dei costi si basa sulle tariffe orarie imposte dal regolamento didattico:
+
+Il calcolo del costo preventivato si basa sulle tariffe orarie previste dal
+Regolamento del Progetto Didattico:
 \begin{itemize}
-	\item \textbf{Responsabile:} 30 \euro/h
-	\item \textbf{Amministratore:} 20 \euro/h
-	\item \textbf{Analista\textsubscript{G}:} 25 \euro/h
-	\item \textbf{Progettista\textsubscript{G}:} 25 \euro/h
-	\item \textbf{Programmatore\textsubscript{G}:} 15 \euro/h
-	\item \textbf{Verificatore:} 15 \euro/h
+	\item \textbf{Responsabile:} 30 \euro/h;
+	\item \textbf{Amministratore:} 20 \euro/h;
+	\item \textbf{Analista\textsubscript{G}:} 25 \euro/h;
+	\item \textbf{Progettista\textsubscript{G}:} 25 \euro/h;
+	\item \textbf{Programmatore\textsubscript{G}:} 15 \euro/h;
+	\item \textbf{Verificatore:} 15 \euro/h.
 \end{itemize}
 
-\subsection{Preventivo iniziale}
-\begin{table}[H]
-		\centering
-		\renewcommand{\arraystretch}{1.3}
-		\begin{tabularx}{\textwidth}{|X|c|c|r|}
-			\hline
-			\textbf{Ruolo} & \textbf{Ore Totali} & \textbf{Costo Orario} & \textbf{Costo Totale (\euro)} \\
-			\hline
-			Responsabile & 55 & 30 \euro & 1.650,00 \euro \\
-			Amministratore & 48 & 20 \euro & 960,00 \euro \\
-			Analista & 125 & 25 \euro & 3.125,00 \euro \\
-			Progettista & 125 & 25 \euro & 3.125,00 \euro \\
-			Programmatore & 91 & 15 \euro & 1.365,00 \euro \\
-			Verificatore & 96 & 15 \euro & 1.440,00 \euro \\
-			\hline
-			\textbf{Costo Totale Preventivato} & \textbf{540} & & \textbf{11.665,00 \euro} \\
-			\hline
-		\end{tabularx}
-	\end{table}
+Il preventivo iniziale costituisce la baseline economica del progetto. Eventuali
+scostamenti rilevati durante gli sprint non modificano questa sezione, ma vengono
+rendicontati nei consuntivi di sprint e nel Preventivo a Finire.
 
-	\subsection{Ore di ciascun componente per ruolo preventivate}
-	Di seguito viene illustrata la suddivisione esatta delle ore per ruolo per ogni componente del team. La distribuzione è stata bilanciata per assicurare che ciascun membro raggiunga esattamente le 90 ore previste dal preventivo.
-	
-	\begin{table}[H]
-		\centering
-		\renewcommand{\arraystretch}{1.3}
-		\begin{tabularx}{\textwidth}{|X|c|c|c|c|c|c|c|}
-			\hline
-			\textbf{Membro} & \textbf{Re} & \textbf{Am} & \textbf{An} & \textbf{Pj} & \textbf{Pr} & \textbf{Ve} & \textbf{Totale} \\
-			\hline
-			{Sofia De Blasi} & 9 & 8 & 21 & 20 & 16 & 16 & \textbf{90} \\
-			{Roberto Mariano Doroftei} & 9 & 8 & 21 & 20 & 16 & 16 & \textbf{90} \\
-			{Filippo Idiometri} & 9 & 8 & 21 & 20 & 15 & 17 & \textbf{90} \\
-			{Francesco Marcon} & 10 & 8 & 21 & 22 & 14 & 15 & \textbf{90} \\
-			{Armando Moda Scarati} & 9 & 8 & 21 & 21 & 15 & 16 & \textbf{90} \\
-			{Anton Ricardo Rupi} & 9 & 8 & 20 & 22 & 15 & 16 & \textbf{90} \\
-			\hline
-			\textbf{Totale} & \textbf{55} & \textbf{48} & \textbf{125} & \textbf{125} & \textbf{91} & \textbf{96} & \textbf{540} \\
-			\hline
-		\end{tabularx}
+\subsection{Preventivo iniziale}
+
+La seguente tabella riporta la distribuzione iniziale delle ore produttive per
+ruolo e il relativo costo preventivato.
+
+\begin{table}[H]
+	\centering
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabular}{|l|c|c|r|}
+		\hline
+		\textbf{Ruolo} & \textbf{Ore Totali} & \textbf{Costo Orario} & \textbf{Costo Totale} \\
+		\hline
+		Responsabile & 55 & 30 \euro & 1.650,00 \euro \\
+		Amministratore & 48 & 20 \euro & 960,00 \euro \\
+		Analista & 125 & 25 \euro & 3.125,00 \euro \\
+		Progettista & 125 & 25 \euro & 3.125,00 \euro \\
+		Programmatore & 91 & 15 \euro & 1.365,00 \euro \\
+		Verificatore & 96 & 15 \euro & 1.440,00 \euro \\
+		\hline
+		\textbf{Costo Totale Preventivato} & \textbf{540} & -- & \textbf{11.665,00 \euro} \\
+		\hline
+	\end{tabular}
+	\caption{Preventivo iniziale per ruolo}
+\end{table}
+
+\subsection{Ore di ciascun componente per ruolo preventivate}
+
+La seguente tabella riporta la distribuzione iniziale delle ore per ruolo e per
+membro. La ripartizione è stata definita in modo da assegnare a ciascun componente
+90 ore produttive complessive, mantenendo una distribuzione bilanciata dei ruoli
+all'interno del gruppo.
+
+\begin{table}[H]
+	\centering
+	\renewcommand{\arraystretch}{1.3}
+	\small
+	\begin{tabular}{|l|c|c|c|c|c|c|c|}
+		\hline
+		\textbf{Membro} & \textbf{RE} & \textbf{AM} & \textbf{AN} & \textbf{PJ} & \textbf{PR} & \textbf{VE} & \textbf{Totale} \\
+		\hline
+		Sofia De Blasi & 9 & 8 & 21 & 20 & 16 & 16 & \textbf{90} \\
+		Roberto Mariano Doroftei & 9 & 8 & 21 & 20 & 16 & 16 & \textbf{90} \\
+		Filippo Idiometri & 9 & 8 & 21 & 20 & 15 & 17 & \textbf{90} \\
+		Francesco Marcon & 10 & 8 & 21 & 22 & 14 & 15 & \textbf{90} \\
+		Armando Moda Scarati & 9 & 8 & 21 & 21 & 15 & 16 & \textbf{90} \\
+		Anton Ricardo Rupi & 9 & 8 & 20 & 22 & 15 & 16 & \textbf{90} \\
+		\hline
+		\textbf{Totale} & \textbf{55} & \textbf{48} & \textbf{125} & \textbf{125} & \textbf{91} & \textbf{96} & \textbf{540} \\
+		\hline
+	\end{tabular}
+	\caption{Distribuzione iniziale delle ore per membro e ruolo}
+
 	\begin{minipage}{\textwidth}
 		\smallskip
 		\footnotesize\textit{Legenda: RE=Responsabile, AM=Amministratore,
 		AN=Analista, PJ=Progettista, PR=Programmatore, VE=Verificatore.}
-    \end{minipage}	
+    \end{minipage}
 \end{table}
-	
