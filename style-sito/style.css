@@ -47,7 +47,7 @@ body {
 /* LOGO */
 #logo-home {
     display: block;
-    background-image: url("assets/logo_orizzontale.png");
+    background-image: url("../assets/logo_orizzontale.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: left center;
@@ -153,6 +153,7 @@ body {
     text-decoration: none;
     font-weight: 600;
     box-shadow: 0 6px 18px rgba(123, 44, 191, 0.25);
+    transition: 0.25s ease;
 }
 
 .code-left {
@@ -170,7 +171,10 @@ body {
 }
 
 .code-banner:hover {
-    background: var(--viola-trasp);
+    background-color: var(--viola); 
+    border-left: 4px solid var(--bianco);
+    color: var(--bianco);
+    transform: translateX(4px);
 }
 
 .code-icon-btn {
@@ -295,7 +299,7 @@ body {
     background-size: contain;
     background-repeat: no-repeat;
 
-    background-image: url("assets/modifica.svg");
+    background-image: url("../assets/modifica.svg");
 }
 
 /* ------------------------------
