@@ -90,6 +90,19 @@ pianificazione. Essa tiene conto di:
 Le assegnazioni sono decise collegialmente dal gruppo durante il planning e
 registrate nel verbale interno.
 
+La rotazione dei ruoli e l'assegnazione delle attività devono favorire la
+distribuzione delle competenze all'interno del gruppo.
+
+Il gruppo non adotta una logica di assegnazione basata esclusivamente sulla
+competenza pregressa del singolo membro: la scelta dell'assegnatario non deve
+ricadere automaticamente su chi possiede già maggiore familiarità con una
+specifica attività o tecnologia.
+
+Quando una competenza è concentrata in uno o pochi membri, il gruppo deve
+favorire affiancamento, condivisione delle conoscenze e progressiva autonomia
+degli altri componenti, compatibilmente con scadenze, carico di lavoro e criticità
+dello sprint.
+
 % ------------------------------------------------
 
 \subsubsection{Costi Orari dei Ruoli}
@@ -293,7 +306,7 @@ Durante ogni sprint retrospective, il gruppo valuta:
     \item rischi occorsi;
     \item variazioni di probabilità o impatto dei rischi già identificati;
     \item nuovi rischi emersi;
-    \item efficacia delle strategie di mitigazione adottate.
+    \item efficacia delle strategie di mitigazione\textsubscript{G} adottate.
 \end{itemize}
 
 Gli aggiornamenti rilevanti vengono riportati nel Piano di Progetto e, se
@@ -572,7 +585,7 @@ Gli strumenti di documentazione adottati sono:
 \end{itemize}
 
 Le modalità operative di utilizzo di tali strumenti sono descritte nel Processo
-Di Documentazione e nel Processo Di Gestione Della Configurazione.
+di Documentazione e nel Processo di Gestione della Configurazione.
 
 % ------------------------------------------------
 
@@ -592,23 +605,58 @@ Gli strumenti di comunicazione adottati sono:
 
 \subsubsection{Strumenti Tecnici}
 
-Gli strumenti e le tecnologie tecniche attualmente considerate per il Proof of
-Concept includono:
+Gli strumenti e le tecnologie tecniche adottati per il Proof of Concept includono:
 
 \begin{itemize}
     \item Vue.js;
     \item CodeMirror;
     \item Python;
     \item FastAPI;
-    \item PostgreSQL;
     \item Docker;
+    \item Docker Compose;
     \item GitHub;
     \item LucidSpark con elementi UML di LucidChart.
 \end{itemize}
 
+In fase RTB il Proof of Concept non prevede persistenza su database. L'eventuale
+adozione di PostgreSQL rimane collegata alle successive decisioni progettuali e
+sarà rivalutata nella fase PB, in base agli esiti del Proof of Concept e al
+confronto con la proponente.
+
 Le decisioni definitive relative allo stack tecnologico sono riportate
 nell'Analisi dello Stato dell'Arte e potranno essere aggiornate in seguito al
 confronto con la proponente e agli esiti del Proof of Concept.
+
+% ------------------------------------------------
+
+\subsubsection{Infrastruttura del Proof of Concept}
+
+L'infrastruttura del Proof of Concept è contenuta nella cartella \texttt{poc/}
+della repository \texttt{Second-Brain}.
+
+Il PoC viene eseguito tramite Docker Compose e comprende due servizi:
+
+\begin{itemize}
+    \item \texttt{frontend}: servizio dedicato all'interfaccia Vue.js;
+    \item \texttt{backend}: servizio dedicato alle API FastAPI.
+\end{itemize}
+
+La procedura di avvio del PoC deve essere documentata nel README della cartella
+\texttt{poc/}.
+
+Il README deve contenere almeno:
+
+\begin{itemize}
+    \item prerequisiti;
+    \item procedura di avvio tramite Docker Compose;
+    \item porte utilizzate dai servizi;
+    \item modalità di verifica dell'avvio corretto;
+    \item eventuali problemi noti.
+\end{itemize}
+
+Il README tecnico del PoC è mantenuto dal Progettista quando riguarda scelte
+tecniche o architetturali, e dal Programmatore quando riguarda comandi operativi,
+setup ed esecuzione locale.
 
 % ------------------------------------------------
 
@@ -767,7 +815,7 @@ Essa riguarda principalmente:
     \item CodeMirror;
     \item Python;
     \item FastAPI;
-    \item PostgreSQL;
+    \item PostgreSQL, qualora venga confermato nelle successive decisioni progettuali;
     \item Docker;
     \item strumenti UML;
     \item strumenti di sviluppo collegati al Proof of Concept.
