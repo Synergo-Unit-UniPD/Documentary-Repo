@@ -189,7 +189,7 @@ body {
 ------------------------------ */
 .doc-section {
     max-width: 1100px;
-    margin: 60px auto;
+    margin: 30px auto;
     padding: 0 20px;
     border-top: 2px solid var(--viola);
 }
@@ -396,7 +396,7 @@ footer {
 
 #project-note {
     max-width: 760px;
-    margin: -1rem auto 2.5rem auto;
+    margin: -1rem auto 1rem auto;
     padding: 0 20px;
 
     display: flex;
