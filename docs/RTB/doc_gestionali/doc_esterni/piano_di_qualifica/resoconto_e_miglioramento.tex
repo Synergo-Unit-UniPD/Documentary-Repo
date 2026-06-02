@@ -10,7 +10,8 @@ La verifica della documentazione (Analisi dei Requisiti, Norme di Progetto, Pian
 Tutti i documenti pubblicati hanno superato il controllo di qualità, raggiungendo un indice di leggibilità conforme ai parametri accettabili.
 
 \subsection{Verifica codice}
-\textit{Non applicabile in questa fase.} Le attività di verifica del codice inizieranno nella fase di Product Baseline (PB) non appena verrà avviata la stesura dei primi moduli software.
+Durante la fase RTB non sono previsti test automatici obbligatori sul codice. La verifica del codice riguarda esclusivamente il Proof of Concept e viene svolta manualmente tramite Pull Request, controllando la coerenza con la issue, l'avvio locale, l'assenza di errori evidenti e l'assenza di credenziali o file sensibili nel repository.
+ Le attività di verifica del codice inizieranno nella fase di Product Baseline (PB) non appena verrà avviata la stesura dei primi moduli software.
 
 \subsection{Copertura test}
 Durante la RTB, la copertura riguarda esclusivamente la tracciabilità tra i Casi d'Uso e i Test di Sistema definiti nella sezione precedente. Il 100\% degli UC individuati è stato coperto da almeno un Test di Sistema (stato NI).
@@ -34,20 +35,20 @@ A fronte di anomalie rilevate dalle metriche o durante le revisioni, sono state 
 \begin{table}[H]
     \centering
     \renewcommand{\arraystretch}{1.3}
-    \begin{tabularx}{\textwidth}{|X|X|}
+    \begin{tabularx}{\textwidth}{|X|X|X|}
         \hline
         \rowcolor{primarycolor!10}
-        \textbf{Problema Rilevato} & \textbf{Contromisura Adottata} \\
+        \textbf{Problema Rilevato} & \textbf{Contromisura Adottata} & \textbf{Rischio correlato} \\
         \hline
-        Difficoltà iniziale nella gestione della sintassi LaTeX complessa. & Creazione di un repository di template\textsubscript{G} condivisi per tabelle e strutture ricorrenti. \\
+        Difficoltà iniziale nella gestione della sintassi LaTeX complessa. & Creazione di un repository di template\textsubscript{G} condivisi per tabelle e strutture ricorrenti. & RT1 \\
         \hline
-        Incoerenza nella numerazione dei Casi d'Uso (UC) tra diversi documenti. & Revisione centralizzata dell'Analisi dei Requisiti e allineamento immediato dei test. \\
+        Incoerenza nella numerazione dei Casi d'Uso (UC) tra diversi documenti. & Revisione centralizzata dell'Analisi dei Requisiti e allineamento immediato dei test. & RR1, RO5 \\
         \hline
-        Frequenti conflitti durante l'unione del codice sorgente (merge conflicts). & Utilizzo sistematico di un repository GitHub e adozione di un workflow basato su branch\textsubscript{G} per isolare le funzionalità. \\
+        Frequenti conflitti durante l'unione del codice sorgente (merge conflicts). & Utilizzo sistematico di un repository GitHub e adozione di un workflow basato su branch\textsubscript{G} per isolare le funzionalità. & RT4 \\
         \hline
-        Difficoltà nel tracciamento puntuale delle attività (task) e delle ore spese dai singoli membri. & Utilizzo delle GitHub Issues per l'assegnazione dei compiti e il monitoraggio dello stato di avanzamento (ToDo, Doing, Done). \\
+        Difficoltà nel tracciamento puntuale delle attività (task) e delle ore spese dai singoli membri. & Utilizzo delle GitHub Issues per l'assegnazione dei compiti e il monitoraggio dello stato di avanzamento (ToDo, Doing, Done). & RO3 \\
         \hline
-        Eccessivo carico burocratico e rischio di errore umano nella creazione manuale dei task e nella raccolta dati. & Automazione del processo tramite un form dedicato per la generazione automatica delle Issue. I dati vengono centralizzati in un foglio di calcolo\textsubscript{G} per la generazione automatica della rendicontazione e del cruscotto. \\
+        Eccessivo carico burocratico e rischio di errore umano nella creazione manuale dei task e nella raccolta dati. & Automazione del processo tramite un form dedicato per la generazione automatica delle Issue. I dati vengono centralizzati in un foglio di calcolo\textsubscript{G} per la generazione automatica della rendicontazione e del cruscotto. & RO6, RO7 \\
         \hline
     \end{tabularx}
     \caption{Storico delle azioni correttive}
@@ -78,6 +79,16 @@ In questa sezione sono riassunti i valori ottenuti dalle metriche durante l'ulti
         \hline
         MPC03 & Requirements Stability Index & 85\% & Accettabile \\
         \hline
+        MPC04 & Time Efficency & 75\% & Accettabile \\
+        \hline
+        MPC05 & Task Completion Rate & 100\% & Ottimale \\
+        \hline
+        MPC06 & PR Resolution Time & 2 giorni & Accettabile \\
+        \hline
+        MPC07 & Review Coverage & 100\% & Ottimale \\
+        \hline
+        MPC08 & Quality Metrics Compliance Rate & 100\% & Ottimale \\
+        \hline
     \end{tabularx}
     \caption{Riepilogo Qualità di Processo}
 \end{table}
@@ -93,13 +104,25 @@ In questa sezione sono riassunti i valori ottenuti dalle metriche durante l'ulti
         \hline
         MPD01 & Soddisfacimento Requisiti Obbligatori & 100\% & Ottimale \\
         \hline
-        MPD02 & Indice di Gulpease (Media Documenti) & 68 & Accettabile \\
+        MPD02 & Comment Density &   &   \\
         \hline
-        MPD07 & Errori Ortografici (per pagina) & 0.2 & Ottimale \\
+        MPD03 & Browser Compatibility &   &   \\
+        \hline
+        MPD04 & Errori Ortografici (per pagina) & 0 & Ottimale \\
+        \hline
+        MPD05 & Complessità Ciclomatica &   &   \\
+        \hline
+        MPD06 & Tempo di Caricamento Iniziale &   &   \\
+        \hline
+        MPD07 & Indice di Gulpease (Media Documenti) & 148 & Ottimale \\
         \hline
     \end{tabularx}
     \caption{Riepilogo Qualità di Prodotto}
 \end{table}
+Le metriche MPD02, MPD03, MPD05 e MPD06 sono pianificate per la fase PB, poiché richiedono 
+la disponibilità di codice sorgente stabile o di un prodotto eseguibile su cui 
+effettuare misurazioni significative.
+
 
 \subsection{Grafici e dashboard}
 L'andamento storico delle metriche viene monitorato tramite grafici temporali per evidenziare eventuali trend negativi.
@@ -107,7 +130,7 @@ L'andamento storico delle metriche viene monitorato tramite grafici temporali pe
 \subsubsection{Trend di Progetto}
  \begin{figure}[H]
 	    \centering
-	    \includegraphics[width=0.8\textwidth]{trend.png}
+	    \includegraphics[width=0.8\textwidth]{grafici/trend.png}
 	    \caption{Andamento PV\textsubscript{G}, AC\textsubscript{G}, EV\textsubscript{G}}
 	 \end{figure}
 
@@ -127,7 +150,7 @@ attenzione nelle prossime iterazioni.
 \subsubsection{Varianze di Progetto}
  \begin{figure}[H]
 	    \centering
-	    \includegraphics[width=0.8\textwidth]{varianze.png}
+	    \includegraphics[width=0.8\textwidth]{grafici/varianze.png}
 	    \caption{Andamento SV\textsubscript{G}, BV\textsubscript{G}}
 	 \end{figure}
 
@@ -146,7 +169,7 @@ e di rafforzare le attività di verifica in corso d'opera.
 \subsubsection{Indici di Performance}
  \begin{figure}[H]
 	    \centering
-	    \includegraphics[width=0.8\textwidth]{performance.png}
+	    \includegraphics[width=0.8\textwidth]{grafici/performance.png}
 	    \caption{Andamento CPI, SPI}
 	 \end{figure}
 
@@ -169,7 +192,7 @@ la soglia di accettabilità negli sprint successivi.
 \subsubsection{Previsione Spesa Finale}
  \begin{figure}[H]
 	    \centering
-	    \includegraphics[width=0.8\textwidth]{previsione_spesa.png}
+	    \includegraphics[width=0.8\textwidth]{grafici/previsione_spesa.png}
 	    \caption{Andamento EAC\textsubscript{G}}
 	 \end{figure}
 
@@ -188,7 +211,7 @@ correttive intraprese.
 \subsubsection{Requisiti}
  \begin{figure}[H]
 	    \centering
-	    \includegraphics[width=0.8\textwidth]{RSI.png}
+	    \includegraphics[width=0.8\textwidth]{grafici/RSI.png}
 	    \caption{Andamento Requisiti\textsubscript{G}}
 	 \end{figure}
 Il grafico descrive l'andamento del Requirement Stability Index (RSI) di sprint in sprint.
@@ -199,7 +222,7 @@ ricevuto dal professor Cardin durante le riunioni che il gruppo ha chiesto.
 \subsubsection{Correttezza Ortografica}
  \begin{figure}[H]
 	    \centering
-	    \includegraphics[width=0.8\textwidth]{gulpease.png}
+	    \includegraphics[width=0.8\textwidth]{grafici/gulpease.png}
 	    \caption{Indice di Gulpease\textsubscript{G}}
 	 \end{figure}
 Il grafico rappresenta l'indice di Gulpease usato per monitorare la leggibilità 
@@ -208,7 +231,7 @@ ottimale ($\ge 80$) il che indica una elevata facilità di lettura dei vari docu
 \subsubsection{Sprint Goal Achievement}
  \begin{figure}[H]
 	    \centering
-	    \includegraphics[width=0.8\textwidth]{task.png}
+	    \includegraphics[width=0.8\textwidth]{grafici/task.png}
 	    \caption{Andamento task\textsubscript{G}}
 	 \end{figure}
 Il grafico mostra lo Sprint Goal Achievement (SGA) per osservare il numero di task 

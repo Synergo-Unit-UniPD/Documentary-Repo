@@ -24,6 +24,15 @@ Accerta che ogni attività non contenga errori tramite un processo di controllo 
 \subsubsection{Validazione}
 Fornisce la conferma che il prodotto finale sia conforme alle attese dell'utente e della proponente. In questa fase si concentra sulla verifica che i requisiti individuati rispondano agli obiettivi del "Second Brain".
 
+\subsubsection{Accertamento della qualità}
+Monitora l'efficacia dei processi adottati e il raggiungimento degli obiettivi qualitativi definiti nel presente documento. Tale processo si basa sulla raccolta periodica delle metriche, sull'analisi degli scostamenti e sull'individuazione di eventuali azioni correttive.
+
+\subsubsection{Gestione dei cambiamenti}
+Disciplina la valutazione, l'approvazione e il tracciamento delle modifiche rilevanti a requisiti, documenti, tecnologie e processi. Ogni cambiamento significativo viene gestito tramite issue\textsubscript{G}, Pull Request\textsubscript{G} e verifica da parte di un membro diverso dall'autore.
+
+\subsubsection{Gestione delle non conformità}
+Gestisce le deviazioni rispetto alle Norme di Progetto, al Piano di Qualifica o agli accordi formalizzati nei verbali. Le non conformità vengono classificate, tracciate e risolte tramite attività correttive dedicate.
+
 \subsection{Processi organizzativi}
 \subsubsection{Gestione processo}
 Si occupa del coordinamento del team durante i cicli di Sprint. Mira a bilanciare il carico di lavoro tra i componenti del gruppo Synergo Unit per evitare colli di bottiglia\textsubscript{G}.
@@ -31,9 +40,22 @@ Si occupa del coordinamento del team durante i cicli di Sprint. Mira a bilanciar
 \subsubsection{Miglioramento continuo}
 Attraverso le retrospettive di fine Sprint, il gruppo analizza le inefficienze e definisce azioni correttive immediate per ottimizzare le metodologie di lavoro.
 
+\subsubsection{Comunicazione}
+Regola i canali e le modalità di comunicazione interna ed esterna, garantendo che decisioni, chiarimenti e impegni siano tracciati tramite verbali, issue o comunicazioni ufficiali.
+
+\subsubsection{Infrastruttura}
+Definisce e mantiene gli strumenti utilizzati dal gruppo per documentazione, pianificazione, sviluppo del Proof of Concept\textsubscript{G}, pubblicazione e tracciamento delle attività.
+
+\subsubsection{Formazione}
+Supporta l'acquisizione progressiva delle competenze necessarie all'utilizzo degli strumenti, delle tecnologie e dei processi adottati. In fase RTB assume particolare rilevanza per mitigare i rischi legati all'inesperienza tecnica.
+
 \subsection{Metriche per processi}
 Le metriche di processo (MPC) vengono calcolate a ogni fine Sprint e riportate nel Cruscotto delle Metriche.
-
+Le metriche di processo sono inoltre utilizzate come strumenti di monitoraggio dei rischi individuati nel 
+\link{https://synergo-unit-unipd.github.io/Second-Brain/docs/RTB/doc_gestionali/doc_esterni/piano_di_progetto/piano_di_progetto.pdf}{Piano di Progetto}. 
+In particolare, SPI e CPI supportano il controllo dei rischi legati a scadenze e budget; RSI consente di monitorare la stabilità dei requisiti; 
+Time Efficiency e Task Completion Rate aiutano a rilevare criticità organizzative; PR Resolution Time e Review Coverage permettono di controllare 
+l'efficacia del processo di verifica; Quality Metrics Compliance Rate fornisce una visione sintetica del livello complessivo di qualità raggiunto.
 \begin{table}[H]
     \centering
     \renewcommand{\arraystretch}{1.3}
@@ -56,7 +78,7 @@ Le metriche di processo (MPC) vengono calcolate a ogni fine Sprint e riportate n
         \hline
         MPC07 & \textbf{Review Coverage}: percentuale di documenti/file verificati da un membro terzo. & $100\%$ & $100\%$ \\
         \hline
-        MPC08 & \textbf{Quality Metrics Compliance Rate}: percentuale di metriche i cui valori sono almeno accetabili. & $\ge 80\%$ & $\ge 95\%$ \\
+        MPC08 & \textbf{Quality Metrics Compliance Rate}: percentuale di metriche i cui valori sono almeno accettabili. & $\ge 80\%$ & $\ge 95\%$ \\
         \hline
     \end{tabularx}
     \caption{Metriche di Qualità di Processo}

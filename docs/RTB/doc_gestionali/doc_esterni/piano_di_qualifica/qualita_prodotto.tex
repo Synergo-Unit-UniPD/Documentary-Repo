@@ -8,7 +8,7 @@ Per valutare la qualità del sistema \textit{Second Brain}, il gruppo si rifà a
 \begin{itemize}
 	\item \textbf{Adeguatezza Funzionale}: capacità del software di fornire le funzioni LLM richieste.
 	\item \textbf{Affidabilità}: capacità di mantenere le prestazioni nel tempo.
-	\item \textbf{Usabilità\textsubscript{G}}: facilità d'uso dell'interfaccia Markdown e della chat.
+	\item \textbf{Usabilità\textsubscript{G}}: facilità d'uso dell'interfaccia Markdown e delle funzionalità di supporto alla scrittura.
 	\item \textbf{Efficienza}: tempi di risposta delle chiamate alle API\textsubscript{G} dell'LLM.
 	\item \textbf{Manutenibilità}: facilità di modifica e aggiornamento del codice.
 	\item \textbf{Portabilità}: capacità di operare su diversi browser o ambienti.
@@ -23,7 +23,7 @@ Si misura la capacità del prodotto di soddisfare tutti i requisiti (obbligatori
 Monitora la frequenza dei fallimenti del sistema e la sua capacità di ripristino. In fase di sviluppo si concretizza nella percentuale di test superati.
 
 \subsubsection{Usabilità}
-Per la documentazione, si utilizza l'indice di leggibilità. Per il software, si valuta la facilità di apprendimento e la chiarezza dell'interfaccia di chat e gestione note.
+Per la documentazione, si utilizza l'indice di leggibilità. Per il software, si valuta la facilità di apprendimento e la chiarezza dell'interfaccia di editing, anteprima e gestione note.
 
 \subsubsection{Efficienza}
 Data la natura del progetto (integrazione LLM), è critica la gestione dei tempi di latenza delle API esterne e l'occupazione di risorse nel browser.
@@ -55,7 +55,7 @@ Di seguito sono definite le metriche di prodotto (MPD).
         \hline
         MPD05 & \textbf{Complessità Ciclomatica}: valore medio dell'indice di complessità ciclomatica dei metodi. & $\le 10$ & $\le 5$\\
         \hline
-        MPD06 & \textbf{Tempo di Caricamento Iniziale}: tempo medio dall'avvio dell'applicazione al momento in cui l'interfaccia diventa utilizzabile. & $\le 5$ & $\le 2 $ \\
+        MPD06 & \textbf{Tempo di Caricamento Iniziale}: tempo medio dall'avvio dell'applicazione al momento in cui l'interfaccia diventa utilizzabile. & $\le 5$s & $\le 2 $s \\
         \hline
         MPD07 & \textbf{Indice di Gulpease}: indice di leggibilità dei documenti in lingua italiana. & $\ge 40$ & $\ge 80$ \\
         \hline
