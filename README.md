@@ -1,0 +1,36 @@
+# Second Brain
+
+Repository ufficiale del progetto **Second Brain**, sviluppato dal gruppo **Synergo Unit** nell'ambito del corso di **Ingegneria del Software** dell'Università degli Studi di Padova (A.A. 2025/2026), in collaborazione con **Zucchetti S.p.A.**.
+
+## Descrizione
+
+Second Brain è un'applicazione di *note taking* supportata da modelli di *Large Language Models (LLM)*, finalizzata ad assistere l'utente nella produzione, organizzazione e rielaborazione di contenuti testuali.
+
+## Documentazione
+
+La documentazione ufficiale del progetto è pubblicata tramite GitHub Pages ed è disponibile al seguente indirizzo:
+
+https://synergo-unit-unipd.github.io/Second-Brain/
+
+## Struttura della repository
+
+```text
+Second-Brain/
+├── assets/
+├── docs/
+├── poc/
+├── scripts/
+└── README.md
+```
+
+## Team di sviluppo
+
+**Synergo Unit** – Gruppo 20
+
+Corso di Ingegneria del Software
+Università degli Studi di Padova
+Anno Accademico 2025/2026
+
+## Licenza
+
+Il materiale contenuto nella repository è prodotto per finalità didattiche nell'ambito del corso di Ingegneria del Software dell'Università degli Studi di Padova.
