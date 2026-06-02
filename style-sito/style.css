@@ -236,12 +236,12 @@ body {
     padding: 0;
 }
 
-.box ul li, #lettera_presentazione, #presentazione_revisione {
+.box ul li, .presentazione {
     margin: 0.7em 0;
     justify-content: space-between;
 }
 
-.box ul li a, #lettera_presentazione, #presentazione_revisione {
+.box ul li a, .presentazione {
     display: flex;
     align-items: center;
     width: 100%;
@@ -259,7 +259,7 @@ body {
     transition: 0.25s ease;
 }
 
-.box ul li a:hover, #lettera_presentazione:hover, #presentazione_revisione:hover {
+.box ul li a:hover, .presentazione:hover {
     background-color: var(--violetto); 
     border-left: 4px solid var(--viola);
     color: var(--blu-scuro);
