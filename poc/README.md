@@ -55,8 +55,6 @@ Per eseguire il PoC è necessario avere installato:
 
 * Docker Desktop
 
-Non sono richieste installazioni aggiuntive di Node.js o Python.
-
 ---
 
 ## Struttura del progetto
