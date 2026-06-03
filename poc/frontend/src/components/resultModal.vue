@@ -19,7 +19,7 @@ const emit = defineEmits<{
     <div class="modal large-modal">
       <div class="modal-header">
         <h2>{{ mode === 'hat' ? 'Cappello Rosso' : 'Distant Writing' }}</h2>
-        <button class="close-button" @click="emit('close')">×</button>
+        <button class="close-button" aria-label="Chiudi" @click="emit('close')">&times;</button>
       </div>
 
       <p class="modal-subtitle">
@@ -37,13 +37,13 @@ const emit = defineEmits<{
 
       <div class="result-box">
         <strong>Proposta</strong>
-        <span class="box-hint">Questa è la proposta che verrà inserita nel testo.</span>
+        <span class="box-hint">Questa e' la proposta che verra' inserita nel testo.</span>
         <p>{{ suggestedText }}</p>
       </div>
 
       <div v-if="mode === 'hat' && suggestionComment" class="result-box">
         <strong>Commento secondo il Cappello Rosso</strong>
-        <span class="box-hint">Questo commento non verrà inserito nel Markdown.</span>
+        <span class="box-hint">Questo commento non verra' inserito nel Markdown.</span>
         <p>{{ suggestionComment }}</p>
       </div>
 
