@@ -15,7 +15,7 @@ const emit = defineEmits<{
     <div class="modal">
       <div class="modal-header">
         <h2>Distant Writing</h2>
-        <button class="close-button" @click="emit('close')">×</button>
+        <button class="close-button" aria-label="Chiudi" @click="emit('close')">&times;</button>
       </div>
 
       <p class="modal-subtitle">Descrivi il testo che vuoi generare.</p>
