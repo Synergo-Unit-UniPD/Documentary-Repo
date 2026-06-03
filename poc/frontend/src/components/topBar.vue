@@ -136,7 +136,10 @@ const emit = defineEmits<{
             Salva
         </button>
 
-        <span class="status" :class="{ offline: apiStatus === 'Offline' }">
+        <span
+            class="status"
+            :class="{ offline: apiStatus === 'Offline' || apiStatus.includes('Errore') || apiStatus.includes('non supportato') }"
+        >
             {{ apiStatus }}
         </span>
         </div>
