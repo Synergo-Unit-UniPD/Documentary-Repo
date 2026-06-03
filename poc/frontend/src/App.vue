@@ -5,6 +5,7 @@ import { languages } from '@codemirror/language-data'
 import { oneDark } from '@codemirror/theme-one-dark'
 import { EditorSelection } from '@codemirror/state'
 import type { EditorView } from '@codemirror/view'
+import DOMPurify from 'dompurify'
 import { marked } from 'marked'
 
 import TopBar from './components/topBar.vue'
@@ -28,7 +29,9 @@ const fileHandle = ref<any>(null)
 const extensions = [markdown({ codeLanguages: languages }), oneDark]
 const editorView = ref<EditorView | null>(null)
 
-const apiStatus = ref<string>('Verifica...')
+const connectionStatus = ref<string>('Verifica...')
+const documentStatus = ref<string>('')
+const operationStatus = ref<string>('')
 const showPromptModal = ref(false)
 const showResultModal = ref(false)
 
@@ -40,7 +43,20 @@ const suggestionMode = ref<SuggestionMode>('hat')
 const savedRange = ref<{ from: number; to: number } | null>(null)
 const savedCursor = ref<number | null>(null)
 
-const compiledMarkdown = computed(() => marked(code.value) as string)
+const apiStatus = computed(() => operationStatus.value || documentStatus.value || connectionStatus.value)
+const compiledMarkdown = computed(() => DOMPurify.sanitize(marked(code.value) as string))
+
+const setOperationStatus = (status: string, autoClear = true): void => {
+  operationStatus.value = status
+
+  if (!autoClear) return
+
+  setTimeout(() => {
+    if (operationStatus.value === status) {
+      operationStatus.value = ''
+    }
+  }, 1800)
+}
 
 const handleReady = (payload: any): void => {
   editorView.value = payload.view ?? payload
@@ -51,13 +67,18 @@ const getView = (): EditorView | null => editorView.value
 const testConnection = async (): Promise<void> => {
   try {
     await getStatus()
-    apiStatus.value = 'Online'
+    connectionStatus.value = 'Online'
   } catch {
-    apiStatus.value = 'Offline'
+    connectionStatus.value = 'Offline'
   }
 }
 
 const importMarkdownFile = async (): Promise<void> => {
+  if (!('showOpenFilePicker' in window)) {
+    setOperationStatus('Import non supportato dal browser', false)
+    return
+  }
+
   try {
     const [handle] = await (window as any).showOpenFilePicker({
       types: [
@@ -78,13 +99,19 @@ const importMarkdownFile = async (): Promise<void> => {
     fileHandle.value = handle
     code.value = content
     lastSavedContent.value = content
-    apiStatus.value = 'File importato'
+    documentStatus.value = 'Salvato'
+    setOperationStatus('File importato')
   } catch {
-    apiStatus.value = 'Importazione annullata'
+    setOperationStatus('Importazione annullata')
   }
 }
 
 const saveCurrentDocument = async (): Promise<void> => {
+  if (!fileHandle.value && !('showSaveFilePicker' in window)) {
+    setOperationStatus('Salvataggio non supportato dal browser', false)
+    return
+  }
+
   try {
     if (!fileHandle.value) {
       fileHandle.value = await (window as any).showSaveFilePicker({
@@ -106,22 +133,15 @@ const saveCurrentDocument = async (): Promise<void> => {
     await writable.close()
 
     lastSavedContent.value = code.value
-    apiStatus.value = 'Salvato'
-
-    setTimeout(() => {
-      if (apiStatus.value === 'Salvato') {
-        apiStatus.value = 'Online'
-      }
-    }, 1800)
+    documentStatus.value = 'Salvato'
+    setOperationStatus('Salvato')
   } catch {
-    apiStatus.value = 'Salvataggio annullato'
+    setOperationStatus('Salvataggio annullato')
   }
 }
 
 watch(code, (newValue) => {
-  if (newValue !== lastSavedContent.value) {
-    apiStatus.value = 'Modifiche non salvate'
-  }
+  documentStatus.value = newValue !== lastSavedContent.value ? 'Modifiche non salvate' : 'Salvato'
 })
 
 const insertBold = (): void => {
@@ -222,7 +242,7 @@ const openRedHat = async (): Promise<void> => {
     suggestionComment.value = data.comment
     showResultModal.value = true
   } catch {
-    apiStatus.value = 'Errore LLM'
+    setOperationStatus('Errore LLM', false)
   }
 }
 
@@ -247,7 +267,7 @@ const generateDistantWriting = async (): Promise<void> => {
     showPromptModal.value = false
     showResultModal.value = true
   } catch {
-    apiStatus.value = 'Errore LLM'
+    setOperationStatus('Errore LLM', false)
   }
 }
 
