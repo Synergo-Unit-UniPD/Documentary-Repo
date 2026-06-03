@@ -26,7 +26,13 @@ export const generateRedHatProposal = async (text: string): Promise<RedHatRespon
     throw new Error('Errore durante la generazione Cappello Rosso')
   }
 
-  return response.json()
+  const data = await response.json()
+
+  if (!data.proposal || !data.comment) {
+    throw new Error('Risposta Cappello Rosso non valida')
+  }
+
+  return data
 }
 
 export const generateDistantWritingProposal = async (
@@ -42,5 +48,11 @@ export const generateDistantWritingProposal = async (
     throw new Error('Errore durante la generazione Distant Writing')
   }
 
-  return response.json()
+  const data = await response.json()
+
+  if (!data.proposal) {
+    throw new Error('Risposta Distant Writing non valida')
+  }
+
+  return data
 }
