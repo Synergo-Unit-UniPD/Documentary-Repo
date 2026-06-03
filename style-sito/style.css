@@ -47,7 +47,7 @@ body {
 /* LOGO */
 #logo-home {
     display: block;
-    background-image: url("assets/logo_orizzontale.png");
+    background-image: url("../assets/logo_orizzontale.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: left center;
@@ -137,11 +137,59 @@ body {
 }
 
 /* ------------------------------
+   CODE BANNER
+------------------------------ */
+
+.code-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    padding: 1rem 1.25rem;
+    border-radius: 14px;
+    background: var(--viola);
+    color: var(--bianco);
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 6px 18px rgba(123, 44, 191, 0.25);
+    transition: 0.25s ease;
+}
+
+.code-left {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.code-download {
+    padding: 0.45rem 0.8rem;
+    border-radius: 999px;
+    background: var(--bianco);
+    color: var(--viola);
+    font-size: 0.9rem;
+}
+
+.code-banner:hover {
+    background-color: var(--viola); 
+    border-left: 4px solid var(--bianco);
+    color: var(--bianco);
+    transform: translateX(4px);
+}
+
+.code-icon-btn {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    opacity: .95;
+}
+
+/* ------------------------------
    SEZIONI DOCUMENTI
 ------------------------------ */
 .doc-section {
     max-width: 1100px;
-    margin: 60px auto;
+    margin: 30px auto;
     padding: 0 20px;
     border-top: 2px solid var(--viola);
 }
@@ -188,12 +236,12 @@ body {
     padding: 0;
 }
 
-.box ul li, #lettera_presentazione{
+.box ul li, .presentazione {
     margin: 0.7em 0;
     justify-content: space-between;
 }
 
-.box ul li a, #lettera_presentazione {
+.box ul li a, .presentazione {
     display: flex;
     align-items: center;
     width: 100%;
@@ -211,7 +259,7 @@ body {
     transition: 0.25s ease;
 }
 
-.box ul li a:hover, #lettera_presentazione:hover {
+.box ul li a:hover, .presentazione:hover {
     background-color: var(--violetto); 
     border-left: 4px solid var(--viola);
     color: var(--blu-scuro);
@@ -251,7 +299,7 @@ body {
     background-size: contain;
     background-repeat: no-repeat;
 
-    background-image: url("assets/modifica.svg");
+    background-image: url("../assets/modifica.svg");
 }
 
 /* ------------------------------
@@ -346,3 +394,34 @@ footer {
     opacity: 0.85;
 }
 
+#project-note {
+    max-width: 760px;
+    margin: -1rem auto 1rem auto;
+    padding: 0 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+
+    text-align: center;
+}
+
+.project-note-label {
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+
+    background-color: transparent;
+    color: var(--violetto);
+    border: 2px solid var(--viola);
+
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+#project-note p {
+    margin: 0;
+    color: var(--bianco);
+    font-size: 0.95rem;
+}

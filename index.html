@@ -2,14 +2,14 @@
 <html lang="it">
 
 <head>
-    <title>Synergo Unit Project Documentation</title>
+    <title>Second Brain - Synergo Unit</title>
 
     <meta charset="utf-8">
     <meta name="author" content="SynergoUnitTeam">
     <meta name="viewport" content="width=device-width">
 
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="mini.css" media="screen and (max-width:800px)">
+    <link rel="stylesheet" href="style-sito/style.css">
+    <link rel="stylesheet" href="style-sito/mini.css" media="screen and (max-width:800px)">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,16 +35,15 @@
                 <li><a href="#candidatura">Candidatura</a></li>
                 -->
                 <li><a href="#team">Team</a></li>
-                <li class="button"><a href="https://github.com/Synergo-Unit-UniPD/Documentary-Repo" target="_blank"
+                <li class="button"><a href="https://github.com/Synergo-Unit-UniPD/Second-Brain" target="_blank"
                         title="Vai alla repo">Repository</a></li>
             </ul>
         </nav>
     </header>
+
     <main>
         <section id="hero">
-            <p>Sito ufficiale di presentazione della documentazione del gruppo <strong>Synergo Unit</strong> per il
-                <strong>progetto di Ingegneria del Software 2025/2026</strong>.
-            </p>
+            <p>Sito ufficiale del progetto <strong>Second Brain</strong> sviluppato da <strong>Synergo Unit</strong> nell'ambito del corso di <strong>Ingegneria del Software 2025/2026</strong>.</p>
             <p>Puoi scriverci per <span lang='en'>email</span>:</p>
             <a class="button" href="mailto:synergounit.20@gmail.com" target="_blank"
                 title="Invia email a synergounit.20@gmail.com">
@@ -57,183 +56,345 @@
             </a>
         </section>
 
-<!-- 
-    <section id="PB" class="doc-section">
-        <h2>PB – Product Baseline</h2>
-    </section>
--->
+<section id="project-note" aria-label="Descrizione sintetica del progetto">
+    <span class="project-note-label">Progetto</span>
+    <p>
+        <strong>Second Brain</strong> è un'applicazione di
+        <span lang="en">note taking</span> aumentata tramite LLM,
+        sviluppata per  Zucchetti s.p.a.
+    </p>
+</section>
 
-    <section id="RTB" class="doc-section">
-        <h2>RTB – Requirements & Technology Baseline</h2>
-                  <!-- <a id="lettera_presentazione"
-                href="/Documentary-Repo/docs/CC/doc_gestionali/doc_esterni/lettera_presentazione/lettera_presentazione.pdf"
-                target="_blank">Lettera di Presentazione <div class="etichette-container"><span
-                        class="etichettaCategoria">v. 1.0.0</span> <span
-                        class="modifica etichettaCategoria">2026-03-27</span></div></a> 
-                -->
-            
-            <h3>Documentazione Tecnica</h3>
-            <div class="box">
-                <h4>Documenti Esterni</h4>
-                <ul>
-                    <li>
-                        <a href="/Documentary-Repo/docs/RTB/doc_tecnici/doc_esterni/analisi_dei_requisiti/analisi_dei_requisiti.pdf"
-                        target="_blank">
-                            Analisi dei Requisiti
-                            <div class="etichette-container">
-                                <span class="etichettaCategoria">v. 1.0.4</span>
-                                <span class="modifica etichettaCategoria">2026-05-18</span>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
 
-            <h3>Documentazione Gestionale</h3>
-            <div class="grid">
+    <!-- 
+        <section id="PB" class="doc-section">
+            <h2>PB – Product Baseline</h2>
+        </section>
+    -->
+
+        <section id="RTB" class="doc-section">
+            <h2>RTB – Requirements & Technology Baseline</h2>
+                
+                <a class="code-banner"
+                    href="/Second-Brain/docs/RTB/poc/proof_of_concept.zip"
+                    download
+                    title="Scarica il Proof of Concept">
+                    <span class="code-left">
+                        <svg class="icon-btn" xmlns="http://www.w3.org/2000/svg"
+                            width="28" height="28" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor"
+                            stroke-width="2.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <polyline points="8 7 3 12 8 17"/>
+                            <polyline points="16 7 21 12 16 17"/>
+                            <line x1="13" y1="5" x2="11" y2="19"/>
+                        </svg>
+                        <span>Proof of Concept</span>
+                    </span>
+                    <span class="code-download">Scarica ZIP</span>
+                </a>
+
+                <a class="presentazione"
+                    href="/Second-Brain/docs/RTB/doc_gestionali/doc_esterni/lettera_presentazione/lettera_presentazione.pdf"
+                    target="_blank">
+                    Lettera di Presentazione 
+                    <div class="etichette-container">
+                        <span class="etichettaCategoria">v. 1.0.0</span> 
+                        <span class="modifica etichettaCategoria">2026-06-xx</span>
+                    </div>
+                </a> 
+                
+                <h3>Documentazione Tecnica</h3>
                 <div class="box">
                     <h4>Documenti Esterni</h4>
                     <ul>
-                        <li><a href="/Documentary-Repo/docs/RTB/doc_gestionali/doc_esterni/piano_di_qualifica/piano_di_qualifica.pdf"
-                                target="_blank">Piano di Qualifica <div class="etichette-container"><span
-                                        class="etichettaCategoria">v.x.x.x</span> <span
-                                        class="modifica etichettaCategoria">2026-xx-xx</span></div></a></li>
-                        <li><a href="/Documentary-Repo/docs/RTB/doc_gestionali/doc_esterni/piano_di_progetto/piano_di_progetto.pdf" target="_blank">
-                            Piano di Progetto
-                            <div class="etichette-container">
-                                <span class="etichettaCategoria">v.1.5.0</span> 
-                                <span class="modifica etichettaCategoria">2026-05-11</span>
-                            </div>
-                            </a></li>
+                        <li>
+                            <a href="/Second-Brain/docs/RTB/doc_tecnici/doc_esterni/analisi_dei_requisiti/analisi_dei_requisiti.pdf"
+                                target="_blank">
+                                Analisi dei Requisiti
+                                <div class="etichette-container">
+                                    <span class="etichettaCategoria">v. 1.0.0</span>
+                                    <span class="modifica etichettaCategoria">2026-05-26</span>
+                                </div>
+                            </a>
+                        </li>
                     </ul>
                 </div>
 
+                <h3>Documentazione Gestionale</h3>
+                <div class="grid">
+                    <div class="box">
+                        <h4>Documenti Esterni</h4>
+                        <ul>
+                            <li>
+                                <a href="/Second-Brain/docs/RTB/doc_gestionali/doc_esterni/piano_di_qualifica/piano_di_qualifica.pdf"
+                                    target="_blank">
+                                    Piano di Qualifica 
+                                    <div class="etichette-container">
+                                        <span class="etichettaCategoria">v.0.5.0</span> 
+                                        <span class="modifica etichettaCategoria">2026-06-02</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Second-Brain/docs/RTB/doc_gestionali/doc_esterni/piano_di_progetto/piano_di_progetto.pdf" 
+                                    target="_blank">
+                                    Piano di Progetto
+                                    <div class="etichette-container">
+                                        <span class="etichettaCategoria">v.1.14.0</span> 
+                                        <span class="modifica etichettaCategoria">2026-05-30</span>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="box">
+                        <h4>Documenti Interni</h4>
+                        <ul>
+                            <li>
+                                <a href="/Second-Brain/docs/CC/doc_gestionali/doc_interni/norme_di_progetto/norme_di_progetto.pdf"
+                                    target="_blank">
+                                    Norme di Progetto 
+                                    <div class="etichette-container">
+                                        <span class="etichettaCategoria">v. 2.11.0</span> 
+                                        <span class="modifica etichettaCategoria">2026-05-30</span>
+                                    </div>
+                                </a>
+                            </li> 
+                            <li>
+                                <a href="/Second-Brain/docs/RTB/doc_gestionali/doc_interni/glossario/glossario.pdf"
+                                    target="_blank">
+                                    Glossario 
+                                    <div class="etichette-container">
+                                        <span class="etichettaCategoria">v. 2.11.0</span> 
+                                        <span class="modifica etichettaCategoria">2026-05-28</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Second-Brain/docs/CC/doc_gestionali/doc_interni/analisi_stato_arte/analisi_stato_arte.pdf"
+                                    target="_blank">
+                                    Analisi dello Stato dell'Arte
+                                    <div class="etichette-container">
+                                        <span class="etichettaCategoria">v. 1.0.0</span> 
+                                        <span class="modifica etichettaCategoria">2026-05-26</span>
+                                    </div>
+                                </a>
+                            </li> 
+                        </ul>
+                    </div>
+
+                    <div class="box">
+                        <h4>Verbali Esterni</h4>
+                        <ul>
+                            <li>
+                                <a href="/Second-Brain/docs/RTB/doc_gestionali/verb_esterni/verb_est_2026_05_26/verb_est_2026_05_26_firmato.pdf"
+                                    target="_blank">
+                                    Verbale Esterno 2026-05-26
+                                    <div class="etichette-container">
+                                        <span class="etichettaCategoria">v. 1.0.1</span>
+                                        <span class="modifica etichettaCategoria">2026-05-28</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Second-Brain/docs/RTB/doc_gestionali/verb_esterni/verb_est_2026_04_15/verb_est_2026_04_15_firmato.pdf"
+                                    target="_blank">
+                                    Verbale Esterno 2026-04-15
+                                    <div class="etichette-container">
+                                        <span class="etichettaCategoria">v. 1.0.0</span>
+                                        <span class="modifica etichettaCategoria">2026-04-21</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Second-Brain/docs/RTB/doc_gestionali/verb_esterni/verb_est_2026_04_01/verb_est_2026_04_01_firmato.pdf"
+                                    target="_blank">
+                                    Verbale Esterno 2026-04-01
+                                    <div class="etichette-container">
+                                        <span class="etichettaCategoria">v. 1.0.0</span>
+                                        <span class="modifica etichettaCategoria">2026-04-01</span>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="box">
+                        <h4>Verbali Interni</h4>
+                        <ul>
+                            <li>
+                                <a href="/Second-Brain/docs/RTB/doc_gestionali/verb_interni/verb_int_2026_06_09/verb_int_2026_06_09.pdf"
+                                    target="_blank">
+                                    Verbale Interno 2026-06-09
+                                    <div class="etichette-container">
+                                        <span class="etichettaCategoria">v.1.0.0</span>
+                                        <span class="modifica etichettaCategoria">2026-06-09</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Second-Brain/docs/RTB/doc_gestionali/verb_interni/verb_int_2026_06_02/verb_int_2026_06_02.pdf"
+                                    target="_blank">
+                                    Verbale Interno 2026-06-02
+                                    <div class="etichette-container">
+                                        <span class="etichettaCategoria">v.1.0.0</span>
+                                        <span class="modifica etichettaCategoria">2026-06-02</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Second-Brain/docs/RTB/doc_gestionali/verb_interni/verb_int_2026_05_26/verb_int_2026_05_26.pdf"
+                                    target="_blank">
+                                    Verbale Interno 2026-05-26
+                                    <div class="etichette-container">
+                                        <span class="etichettaCategoria">v.1.0.1</span>
+                                        <span class="modifica etichettaCategoria">2026-05-28</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Second-Brain/docs/RTB/doc_gestionali/verb_interni/verb_int_2026_05_19/verb_int_2026_05_19.pdf"
+                                    target="_blank">
+                                    Verbale Interno 2026-05-19
+                                    <div class="etichette-container">
+                                        <span class="etichettaCategoria">v.1.0.1</span>
+                                        <span class="modifica etichettaCategoria">2026-05-22</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Second-Brain/docs/RTB/doc_gestionali/verb_interni/verb_int_2026_05_12/verb_int_2026_05_12.pdf"
+                                    target="_blank">
+                                    Verbale Interno 2026-05-12
+                                    <div class="etichette-container">
+                                        <span class="etichettaCategoria">v.1.0.2</span>
+                                        <span class="modifica etichettaCategoria">2026-05-13</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Second-Brain/docs/RTB/doc_gestionali/verb_interni/verb_int_2026_05_05/verb_int_2026_05_05.pdf"
+                                    target="_blank">
+                                    Verbale Interno 2026-05-05
+                                    <div class="etichette-container">
+                                        <span class="etichettaCategoria">v.1.0.0</span>
+                                        <span class="modifica etichettaCategoria">2026-05-05</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Second-Brain/docs/RTB/doc_gestionali/verb_interni/verb_int_2026_04_28/verb_int_2026_04_28.pdf"
+                                    target="_blank">
+                                    Verbale Interno 2026-04-28
+                                    <div class="etichette-container">
+                                        <span class="etichettaCategoria">v.1.0.2</span>
+                                        <span class="modifica etichettaCategoria">2026-05-03</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Second-Brain/docs/RTB/doc_gestionali/verb_interni/verb_int_2026_04_21/verb_int_2026_04_21.pdf"
+                                    target="_blank">
+                                    Verbale Interno 2026-04-21
+                                    <div class="etichette-container">
+                                        <span class="etichettaCategoria">v.1.0.0</span>
+                                        <span class="modifica etichettaCategoria">2026-04-23</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Second-Brain/docs/RTB/doc_gestionali/verb_interni/verb_int_2026_04_14/verb_int_2026_04_14.pdf"
+                                    target="_blank">
+                                    Verbale Interno 2026-04-14
+                                    <div class="etichette-container">
+                                        <span class="etichettaCategoria">v.1.0.1</span>
+                                        <span class="modifica etichettaCategoria">2026-04-14</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Second-Brain/docs/RTB/doc_gestionali/verb_interni/verb_int_2026_04_07/verb_int_2026_04_07.pdf"
+                                    target="_blank">
+                                    Verbale Interno 2026-04-07
+                                    <div class="etichette-container">
+                                        <span class="etichettaCategoria">v.1.0.0</span>
+                                        <span class="modifica etichettaCategoria">2026-04-08</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Second-Brain/docs/RTB/doc_gestionali/verb_interni/verb_int_2026_04_03/verb_int_2026_04_03.pdf"
+                                    target="_blank">
+                                    Verbale Interno 2026-04-03
+                                    <div class="etichette-container">
+                                        <span class="etichettaCategoria">v.1.0.0</span>
+                                        <span class="modifica etichettaCategoria">2026-04-04</span>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Slides</h3>
+                <div class="grid">
                 <div class="box">
-                    <h4>Documenti Interni</h4>
+                    <h4>Presentazioni</h4>
                     <ul>
-                        <li><a href="/Documentary-Repo/docs/RTB/doc_gestionali/doc_interni/glossario/glossario.pdf"
-                                target="_blank">Glossario <div class="etichette-container"><span
-                                        class="etichettaCategoria">v. 2.7.0</span> <span
-                                        class="modifica etichettaCategoria">2026-05-18</span></div></a></li>
-                        <li><a href="/Documentary-Repo/docs/CC/doc_gestionali/doc_interni/norme_di_progetto/norme_di_progetto.pdf"
-                                target="_blank">Norme di Progetto <div class="etichette-container"><span
-                                        class="etichettaCategoria">v. 2.4.0</span> <span
-                                        class="modifica etichettaCategoria">2026-05-07</span></div></a></li> 
+                        <li>
+                            <a class="presentazione"
+                                href="/Second-Brain/docs/RTB/doc_gestionali/slides/presentazione_revisione.pdf"
+                                target="_blank">
+                                Presentazione per Revisione RTB
+                                <div class="etichette-container">
+                                    <span class="modifica etichettaCategoria">2026-06-xx</span>
+                                </div>
+                            </a>
+                        </li> 
+                        <li>
+                            <a class="presentazione"
+                                href="/Second-Brain/docs/RTB/doc_gestionali/slides/presentazione_tecnologie.pdf"
+                                target="_blank">
+                                Presentazione Tecnologie RTB
+                                <div class="etichette-container">
+                                    <span class="modifica etichettaCategoria">2026-06-xx</span>
+                                </div>
+                            </a> 
+                        </li>
                     </ul>
                 </div>
 
-                <div class="box">
-                    <h4>Verbali Esterni</h4>
-                    <ul>
-                        <li><a href="/Documentary-Repo/docs/RTB/doc_gestionali/verb_esterni/verb_est_2026_04_15/verb_est_2026_04_15.pdf"
-                                target="_blank">Verbale Esterno
-                                2026-04-15 <div class="etichette-container"><span
-                                        class="etichettaCategoria">v. 1.0.0</span> <span
-                                        class="modifica etichettaCategoria">2026-04-21</span></div>
-                            </a></li>
-                        <li><a href="/Documentary-Repo/docs/RTB/doc_gestionali/verb_esterni/verb_est_2026_04_01/verb_est_2026_04_01.pdf"
-                                target="_blank">Verbale Esterno
-                                2026-04-01 <div class="etichette-container"><span
-                                        class="etichettaCategoria">v. 1.0.0</span> <span
-                                        class="modifica etichettaCategoria">2026-04-01</span></div>
-                            </a></li>
-                    </ul>
-                </div>
-
-                <div class="box">
-                    <h4>Verbali Interni</h4>
-                    <ul>
-                        <li>
-                            <a href="/Documentary-Repo/docs/RTB/doc_gestionali/verb_interni/verb_int_2026_05_05/verb_int_2026_05_05.pdf"
-                                target="_blank">
-                                Verbale Interno 2026-05-05
-                                <div class="etichette-container">
-                                    <span class="etichettaCategoria">v.1.0.0</span>
-                                    <span class="modifica etichettaCategoria">2026-05-05</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/Documentary-Repo/docs/RTB/doc_gestionali/verb_interni/verb_int_2026_04_28/verb_int_2026_04_28.pdf"
-                                target="_blank">
-                                Verbale Interno 2026-04-28
-                                <div class="etichette-container">
-                                    <span class="etichettaCategoria">v.1.0.2</span>
-                                    <span class="modifica etichettaCategoria">2026-05-03</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/Documentary-Repo/docs/RTB/doc_gestionali/verb_interni/verb_int_2026_04_21/verb_int_2026_04_21.pdf"
-                                target="_blank">
-                                Verbale Interno 2026-04-21
-                                <div class="etichette-container">
-                                    <span class="etichettaCategoria">v.1.0.0</span>
-                                    <span class="modifica etichettaCategoria">2026-04-23</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/Documentary-Repo/docs/RTB/doc_gestionali/verb_interni/verb_int_2026_04_14/verb_int_2026_04_14.pdf"
-                                target="_blank">
-                                Verbale Interno 2026-04-14
-                                <div class="etichette-container">
-                                    <span class="etichettaCategoria">v.1.0.1</span>
-                                    <span class="modifica etichettaCategoria">2026-04-14</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/Documentary-Repo/docs/RTB/doc_gestionali/verb_interni/verb_int_2026_04_07/verb_int_2026_04_07.pdf"
-                                target="_blank">
-                                Verbale Interno 2026-04-07
-                                <div class="etichette-container">
-                                    <span class="etichettaCategoria">v.1.0.0</span>
-                                    <span class="modifica etichettaCategoria">2026-04-08</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/Documentary-Repo/docs/RTB/doc_gestionali/verb_interni/verb_int_2026_04_03/verb_int_2026_04_03.pdf"
-                                target="_blank">
-                                Verbale Interno 2026-04-03
-                                <div class="etichette-container">
-                                    <span class="etichettaCategoria">v.1.0.0</span>
-                                    <span class="modifica etichettaCategoria">2026-04-04</span>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <h3>Slides</h3>
-            <!-- <div class="grid"> -->
                 <div class="box">
                     <h4>Diari di Bordo</h4>
                     <ul>
-                        <li><a href="/Documentary-Repo/docs/RTB/slides/diario_di_bordo/Ddb1.pdf" target="_blank">
+                        <li><a href="/Second-Brain/docs/RTB/slides/diario_di_bordo/Ddb3.pdf" target="_blank">
+                            Diario di Bordo 3 (2026-05-29)
+                            <div class="etichette-container">
+                                    <span class="modifica etichettaCategoria">2026-05-28</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li><a href="/Second-Brain/docs/RTB/slides/diario_di_bordo/Ddb2.pdf" target="_blank">
+                            Diario di Bordo 2 (2026-05-15)
+                            <div class="etichette-container">
+                                    <span class="modifica etichettaCategoria">2026-05-14</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li><a href="/Second-Brain/docs/RTB/slides/diario_di_bordo/Ddb1.pdf" target="_blank">
                             Diario di Bordo 1 (2026-05-08)
                             <div class="etichette-container">
-                                    <span class="etichettaCategoria">v.1.0.0</span>
                                     <span class="modifica etichettaCategoria">2026-05-07</span>
                                 </div>
-                            </a></li>
+                            </a>
+                        </li>
                     </ul>
                 </div>
-
-                <!--
-                <div class="box">
-                    <h4>Presentazioni Revisioni</h4>
-                    <ul>
-                        <li><a href="/Documentary-Repo/docs/RTB/slides/diario_di_bordo/Ddb1.pdf" target="_blank">
-                            Diario di Bordo 1 (2026-05-08)
-                            </a></li>
-                         
-                    </ul>
-                </div> -->
-            <!-- </div> -->
-        </section>
+                </div>
+            </section>
         
 
         <!--    ETICHETTE VERSIONI E MODIFICA: <div class="etichette-container"><span class="etichettaCategoria">v. 0.x.x</span> <span class="etichettaCategoria">>2026-MM-GG</span></div> -->
@@ -241,8 +402,8 @@
         <!--
         <section id="candidatura" class="doc-section">
             <h2>Candidatura</h2>
-            <a id="lettera_presentazione"
-                href="/Documentary-Repo/docs/CC/doc_gestionali/doc_esterni/lettera_presentazione/lettera_presentazione.pdf"
+            <a class="presentazione"
+                href="/Second-Brain/docs/CC/doc_gestionali/doc_esterni/lettera_presentazione/lettera_presentazione.pdf"
                 target="_blank">Lettera di Presentazione <div class="etichette-container"><span
                         class="etichettaCategoria">v. 1.0.0</span> <span
                         class="modifica etichettaCategoria">2026-03-27</span></div></a>
@@ -252,12 +413,12 @@
                 <div class="box">
                     <h4>Documenti Esterni</h4>
                     <ul>
-                        <li><a href="/Documentary-Repo/docs/CC/doc_gestionali/doc_esterni/valutazione_capitolati/valutazione_capitolati.pdf" target="_blank">Valutazione
+                        <li><a href="/Second-Brain/docs/CC/doc_gestionali/doc_esterni/valutazione_capitolati/valutazione_capitolati.pdf" target="_blank">Valutazione
                                 dei Capitolati<div class="etichette-container"><span class="etichettaCategoria">v.
                                         1.1.1</span> <span class="modifica etichettaCategoria">2026-03-26</span></div>
                             </a></li>
 
-                        <li><a href="/Documentary-Repo/docs/CC/doc_gestionali/doc_esterni/preventivo_costi_assunzione_impegni/preventivo_costi_e_assunzione_impegni.pdf"
+                        <li><a href="/Second-Brain/docs/CC/doc_gestionali/doc_esterni/preventivo_costi_assunzione_impegni/preventivo_costi_e_assunzione_impegni.pdf"
                                 target="_blank">Preventivo Costi e Assunzione Impegni <div class="etichette-container">
                                     <span class="etichettaCategoria">v. 1.1.0</span> <span
                                         class="modifica etichettaCategoria">2026-03-26</span>
@@ -268,11 +429,11 @@
                 <div class="box">
                     <h4>Documenti Interni</h4>
                     <ul>
-                        <li><a href="/Documentary-Repo/docs/CC/doc_gestionali/doc_interni/glossario/glossario.pdf"
+                        <li><a href="/Second-Brain/docs/CC/doc_gestionali/doc_interni/glossario/glossario.pdf"
                                 target="_blank">Glossario <div class="etichette-container"><span
                                         class="etichettaCategoria">v. 1.5.0</span> <span
                                         class="modifica etichettaCategoria">2026-03-26</span></div></a></li>
-                        <li><a href="/Documentary-Repo/docs/CC/doc_gestionali/doc_interni/norme_di_progetto/norme_di_progetto.pdf"
+                        <li><a href="/Second-Brain/docs/CC/doc_gestionali/doc_interni/norme_di_progetto/norme_di_progetto.pdf"
                                 target="_blank">Norme di Progetto <div class="etichette-container"><span
                                         class="etichettaCategoria">v. 1.1.2</span> <span
                                         class="modifica etichettaCategoria">2026-03-25</span></div></a></li>
@@ -282,25 +443,25 @@
                 <div class="box">
                     <h4>Verbali Esterni</h4>
                     <ul>
-                        <li><a href="/Documentary-Repo/docs/CC/doc_gestionali/verb_esterni/verb_est_2026_04_01_zucchetti/verb_est_2026_04_01_zucchetti.pdf"
+                        <li><a href="/Second-Brain/docs/CC/doc_gestionali/verb_esterni/verb_est_2026_04_01_zucchetti/verb_est_2026_04_01_zucchetti.pdf"
                                 target="_blank">Verbale Esterno
                                 2026-04-01 (Zucchetti) <div class="etichette-container"><span
                                         class="etichettaCategoria">v. 1.0.0</span> <span
                                         class="modifica etichettaCategoria">2026-04-01</span></div>
                             </a></li>
-                        <li><a href="/Documentary-Repo/docs/CC/doc_gestionali/verb_esterni/verb_est_2026_03_25_zucchetti/verb_est_2026_03_25_zucchetti.pdf"
+                        <li><a href="/Second-Brain/docs/CC/doc_gestionali/verb_esterni/verb_est_2026_03_25_zucchetti/verb_est_2026_03_25_zucchetti.pdf"
                                 target="_blank">Verbale Esterno
                                 2026-03-25 (Zucchetti) <div class="etichette-container"><span
                                         class="etichettaCategoria">v. 1.1.1</span> <span
                                         class="modifica etichettaCategoria">2026-03-25</span></div>
                             </a></li>
-                        <li><a href="/Documentary-Repo/docs/CC/doc_gestionali/verb_esterni/verb_est_2026_03_17_vargroup/verb_est_2026_03_17_vargroup.pdf"
+                        <li><a href="/Second-Brain/docs/CC/doc_gestionali/verb_esterni/verb_est_2026_03_17_vargroup/verb_est_2026_03_17_vargroup.pdf"
                                 target="_blank">Verbale Esterno
                                 2026-03-17 (Var Group) <div class="etichette-container"><span
                                         class="etichettaCategoria">v. 1.1.1</span> <span
                                         class="modifica etichettaCategoria">2026-03-25</span></div>
                             </a></li>
-                        <li><a href="/Documentary-Repo/docs/CC/doc_gestionali/verb_esterni/verb_est_2026_03_16_zucchetti/verb_est_2026_03_16_zucchetti.pdf"
+                        <li><a href="/Second-Brain/docs/CC/doc_gestionali/verb_esterni/verb_est_2026_03_16_zucchetti/verb_est_2026_03_16_zucchetti.pdf"
                                 target="_blank">Verbale Esterno
                                 2026-03-16 (Zucchetti) <div class="etichette-container"><span
                                         class="etichettaCategoria">v. 1.0.0</span> <span
@@ -313,7 +474,7 @@
                     <h4>Verbali Interni</h4>
                     <ul>
                         <li>
-                            <a href="/Documentary-Repo/docs/CC/doc_gestionali/verb_interni/verb_int_2026_03_31/verb_int_2026_03_31.pdf"
+                            <a href="/Second-Brain/docs/CC/doc_gestionali/verb_interni/verb_int_2026_03_31/verb_int_2026_03_31.pdf"
                                 target="_blank">
                                 Verbale Interno 2026-03-31
                                 <div class="etichette-container">
@@ -323,7 +484,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/Documentary-Repo/docs/CC/doc_gestionali/verb_interni/verb_int_2026_03_24/verb_int_2026_03_24.pdf"
+                            <a href="/Second-Brain/docs/CC/doc_gestionali/verb_interni/verb_int_2026_03_24/verb_int_2026_03_24.pdf"
                                 target="_blank">
                                 Verbale Interno 2026-03-24
                                 <div class="etichette-container">
@@ -333,7 +494,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/Documentary-Repo/docs/CC/doc_gestionali/verb_interni/verb_int_2026_03_20/verb_int_2026_03_20.pdf"
+                            <a href="/Second-Brain/docs/CC/doc_gestionali/verb_interni/verb_int_2026_03_20/verb_int_2026_03_20.pdf"
                                 target="_blank">
                                 Verbale Interno 2026-03-20
                                 <div class="etichette-container">
@@ -343,7 +504,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/Documentary-Repo/docs/CC/doc_gestionali/verb_interni/verb_int_2026_03_17/verb_int_2026_03_17.pdf"
+                            <a href="/Second-Brain/docs/CC/doc_gestionali/verb_interni/verb_int_2026_03_17/verb_int_2026_03_17.pdf"
                                 target="_blank">
                                 Verbale Interno 2026-03-17
                                 <div class="etichette-container">
@@ -352,12 +513,12 @@
                                 </div>
                             </a>
                         </li>
-                        <li><a href="/Documentary-Repo/docs/CC/doc_gestionali/verb_interni/verb_int_2026_03_13/verb_int_2026_03_13.pdf"
+                        <li><a href="/Second-Brain/docs/CC/doc_gestionali/verb_interni/verb_int_2026_03_13/verb_int_2026_03_13.pdf"
                                 target="_blank">Verbale Interno
                                 2026-03-13 <div class="etichette-container"><span class="etichettaCategoria">v.
                                         1.1.0</span> <span class="modifica etichettaCategoria">2026-03-18</span></div>
                             </a></li>
-                        <li><a href="/Documentary-Repo/docs/CC/doc_gestionali/verb_interni/verb_int_2026_03_09/verb_int_2026_03_09.pdf"
+                        <li><a href="/Second-Brain/docs/CC/doc_gestionali/verb_interni/verb_int_2026_03_09/verb_int_2026_03_09.pdf"
                                 target="_blank">Verbale Interno
                                 2026-03-09 <div class="etichette-container"><span class="etichettaCategoria">v.
                                         1.1.0</span> <span class="modifica etichettaCategoria">2026-03-18</span></div>
@@ -424,8 +585,8 @@
 
         <img src="assets/logo_noscritta.png" alt="Logo Synergo Unit" class="logo-footer">
 
-        <p class="footer-text">© Synergo Unit - Università degli Studi di Padova</p>
-        <p class="footer-text">Gruppo 20 - Ingegneria del Software - Anno Accademico 2025/2026</p>
+        <p class="footer-text">© Synergo Unit - Gruppo 20</p>
+        <p class="footer-text">Università degli Studi di Padova - Ingegneria del Software - Anno Accademico 2025/2026</p>
     </footer>
 </body>
 

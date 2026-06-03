@@ -116,9 +116,8 @@ I requisiti individuati sono classificati e identificati da un codice univoco ne
 	\textbf{R74-F-O} & Obbligatorio & Il sistema deve permettere l'esportazione della nota nei formati PDF, HTML e JSON; deve notificare in caso di errore durante la conversione. & \hyperlink{uc65}{UC65}, \hyperlink{uc65.1}{UC65.1}, Capitolato \\ \hline
 
 	% ---- Opzionali: DB remoto ----
-	% ---- Opzionali: DB remoto ----
 	\textbf{R75-F-Op} & Opzionale & Il sistema deve permettere la creazione di una nuova nota vuota associando il titolo inserito dall'utente. & \hyperlink{uc61}{UC61}, Capitolato \\ \hline
-	\textbf{R76-F-Op} & Opzionale & Il sistema deve permettere l'eliminazione di una nota previa conferma esplicita da parte dell'utente. &\hyperlink{uc62}{UC62}, \hyperlink{uc62.1}{UC62.1}, \hyperlink{uc62.2}{UC62.2}, Capitolato \\ \hline
+	\textbf{R76-F-Op} & Opzionale & Il sistema deve permettere l'eliminazione di una nota previa conferma esplicita da parte dell'utente. & \hyperlink{uc62}{UC62}, \hyperlink{uc62.1}{UC62.1}, \hyperlink{uc62.2}{UC62.2}, Capitolato \\ \hline
 	\textbf{R77-F-Op} & Opzionale & Il sistema deve notificare l'utente in caso di errore tecnico o del file system durante l'eliminazione di una nota. & \hyperlink{uc62.3}{UC62.3}, Analisi del dominio \\ \hline
 	\textbf{R78-F-Op} & Opzionale & Il sistema deve permettere la registrazione di un nuovo utente tramite email e password, con validazione dei dati inseriti. & \hyperlink{uc66}{UC66}, \hyperlink{uc66.1}{UC66.1}, \hyperlink{uc66.2}{UC66.2}, Capitolato \\ \hline
 	\textbf{R79-F-Op} & Opzionale & Il sistema deve permettere l'autenticazione dell'utente tramite credenziali; deve notificare in caso di credenziali errate. & \hyperlink{uc67}{UC67}, \hyperlink{uc67.1}{UC67.1}, Capitolato \\ \hline
@@ -144,7 +143,7 @@ I requisiti individuati sono classificati e identificati da un codice univoco ne
 	\hline
 	\endhead
 
-	\textbf{R1-Q-O} & Obbligatorio & Il sistema deve essere corredato di test automatici con copertura adeguata dei casi d'uso principali, obbligatoriamente a partire dalla fase MVP. & Capitolato \\ \hline
+	\textbf{R1-Q-O} & Obbligatorio & Il sistema dovrà essere corredato di test automatici con copertura adeguata dei casi d'uso principali. & Capitolato \\ \hline
 	\textbf{R2-Q-O} & Obbligatorio & L'interfaccia utente\textsubscript{G} deve risultare semplice, immediata e utilizzabile senza competenze tecniche pregresse. & Capitolato, VE-3.3, VE-5.3 \\ \hline
 	\textbf{R3-Q-O} & Obbligatorio & Il codice sorgente e la documentazione devono essere pubblicati su repository pubblico. & Capitolato \\ \hline
 	\textbf{R4-Q-D} & Desiderabile & Il progetto dovrebbe rispettare i requisiti open source dell'azienda proponente nella scelta della licenza di distribuzione. & Capitolato \\ \hline
@@ -171,8 +170,7 @@ I requisiti individuati sono classificati e identificati da un codice univoco ne
 	\textbf{R3-V-O} & Obbligatorio & I modelli LLM di riferimento sono Gemma, ChatGPT-OSS e Qwen, messi a disposizione dall'azienda proponente; ulteriori modelli possono essere integrati successivamente. & Capitolato, VE-1.1 \\ \hline
 	\textbf{R4-V-O} & Obbligatorio & La gestione delle immagini è esclusa dai requisiti del prodotto. & VE-5.1 \\ \hline
 	\textbf{R5-V-O} & Obbligatorio & Le lingue con alfabeto non latino (es.\ Cinese, Russo, Arabo) sono escluse dalla funzionalità di traduzione. & VE-5.2 \\ \hline
-	\textbf{R6-V-O} & Obbligatorio & L'architettura software deve adottare pattern robusti che supportino revisioni incrementali nelle fasi PoC\textsubscript{G}, MVP e prodotto completo. & Capitolato \\ \hline
-	\textbf{R7-V-Op} & Opzionale & Il servizio di persistenza remota deve preferibilmente utilizzare PostgreSQL\textsubscript{G} come database, mantenendo comunque flessibilità tecnologica. & VE-1.4 \\ \hline
+	\textbf{R6-V-Op} & Opzionale & Nel caso venga implementata la persistenza remota, il sistema dovrà supportare PostgreSQL\textsubscript{G} come DBMS di riferimento. & VE-1.4 \\ \hline
 
 \end{longtable}
 
@@ -191,7 +189,7 @@ I requisiti individuati sono classificati e identificati da un codice univoco ne
 	\hline
 	\endhead
 
-	\textbf{R1-P-O} & Obbligatorio & Il rendering dell'anteprima Markdown deve aggiornarsi in tempo reale durante la digitazione, senza ritardi percepibili dall'utente. & Capitolato, Analisi del dominio \\ \hline
-	\textbf{R2-P-D} & Desiderabile & Il sistema dovrebbe fornire un feedback visivo (es.\ indicatore di caricamento) durante le operazioni AI la cui durata superi i 2 secondi. & Analisi del dominio \\ \hline
+	\textbf{R1-P-O} & Obbligatorio & Il rendering dell'anteprima Markdown deve aggiornarsi in tempo reale durante la digitazione, entro 1 secondo dalla modifica del contenuto dell’editor. & Capitolato, Analisi del dominio \\ \hline
+	\textbf{R2-P-O} & Obbligatorio & Il sistema deve fornire un feedback visivo (es.\ indicatore di caricamento) durante le operazioni AI la cui durata superi i 2 secondi. & Analisi del dominio, VE-6.1 \\ \hline
 
 \end{longtable}
