@@ -31,8 +31,16 @@ def analizza_testo_grezzo(testo):
     parole_lista = re.findall(r'[a-zA-ZàèìòùáéíóúòçÀÈÌÒÙÁÉÍÓÚÚ]+', testo)
     parole = len(parole_lista)
     
-    # 3. Conteggio delle Frasi
-    frasi = len(re.findall(r'[.!?](?:\s|$)', testo))
+    # 3. Conteggio delle Frasi (Corretto per i PDF)
+    # Rimuoviamo i puntini degli indici (es. ......)
+    testo_pulito = re.sub(r'\.{2,}', ' ', testo)
+    # Rimuoviamo i punti dei numeri di capitolo o versione (es. 1.2 o v.1.0.0)
+    testo_pulito = re.sub(r'\d+\.\d+', '', testo_pulito)
+    
+    # Contiamo le frasi dividendo solo per . ! ? seguiti da uno spazio o a fine riga
+    frasi_lista = re.split(r'[.!?]+(?:\s|$)', testo_pulito)
+    # Contiamo solo le frasi che non sono vuote
+    frasi = len([f for f in frasi_lista if f.strip()])
     
     if frasi == 0 and parole > 0:
         frasi = 1
