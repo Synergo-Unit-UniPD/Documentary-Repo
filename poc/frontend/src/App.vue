@@ -1,130 +1,370 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
-import Codemirror from 'vue-codemirror6'
+import { ref, computed, onMounted, watch } from 'vue'
 import { markdown } from '@codemirror/lang-markdown'
 import { languages } from '@codemirror/language-data'
 import { oneDark } from '@codemirror/theme-one-dark'
+import { EditorSelection } from '@codemirror/state'
+import type { EditorView } from '@codemirror/view'
+import DOMPurify from 'dompurify'
 import { marked } from 'marked'
 
-const code = ref<string>('# Ciao Mondo!\n\nScrivi qui il tuo **Markdown**.')
+import TopBar from './components/topBar.vue'
+import MarkdownEditor from './components/markdownEditor.vue'
+import MarkdownPreview from './components/markdownPreview.vue'
+import PromptModal from './components/promptModal.vue'
+import ResultModal from './components/resultModal.vue'
+
+import {
+  getStatus,
+  generateRedHatProposal,
+  generateDistantWritingProposal
+} from './services/api'
+
+type SuggestionMode = 'hat' | 'distant'
+
+const code = ref<string>('')
+const lastSavedContent = ref<string>('')
+const fileHandle = ref<any>(null)
+
 const extensions = [markdown({ codeLanguages: languages }), oneDark]
-const compiledMarkdown = computed(() => {
-  return marked(code.value) as string
-})
+const editorView = ref<EditorView | null>(null)
 
-// - - - - - TEST API - - - - -
-const apiStatus = ref<string>('Verifica connessione al backend in corso...')
+const connectionStatus = ref<string>('Verifica...')
+const documentStatus = ref<string>('')
+const operationStatus = ref<string>('')
+const showPromptModal = ref(false)
+const showResultModal = ref(false)
 
-const testConnessione = async () => {
-  try {
-    const response = await fetch('/api/status')
+const prompt = ref('')
+const suggestedText = ref('')
+const suggestionComment = ref('')
+const selectedText = ref('')
+const suggestionMode = ref<SuggestionMode>('hat')
+const savedRange = ref<{ from: number; to: number } | null>(null)
+const savedCursor = ref<number | null>(null)
 
-    if (!response.ok) {
-      throw new Error(`Errore del server backend: ${response.status} ❌`)
+const apiStatus = computed(() => operationStatus.value || documentStatus.value || connectionStatus.value)
+const compiledMarkdown = computed(() => DOMPurify.sanitize(marked(code.value) as string))
+
+const setOperationStatus = (status: string, autoClear = true): void => {
+  operationStatus.value = status
+
+  if (!autoClear) return
+
+  setTimeout(() => {
+    if (operationStatus.value === status) {
+      operationStatus.value = ''
     }
+  }, 1800)
+}
 
-    const response_status = await response.status
-    apiStatus.value = `✅ Connesso al server backend, ${response_status} ✅`
+const handleReady = (payload: any): void => {
+  editorView.value = payload.view ?? payload
+}
 
-  } catch (error) {
-    apiStatus.value = `❌ Connessione al backend fallita: ${error instanceof Error ? error.message : 'Errore sconosciuto ❌'}`
+const getView = (): EditorView | null => editorView.value
+
+const testConnection = async (): Promise<void> => {
+  try {
+    await getStatus()
+    connectionStatus.value = 'Online'
+  } catch {
+    connectionStatus.value = 'Offline'
   }
 }
 
-// Esegui il test quando il componente viene montato
-onMounted(() => {
-  testConnessione()
+const importMarkdownFile = async (): Promise<void> => {
+  if (!('showOpenFilePicker' in window)) {
+    setOperationStatus('Import non supportato dal browser', false)
+    return
+  }
+
+  try {
+    const [handle] = await (window as any).showOpenFilePicker({
+      types: [
+        {
+          description: 'Markdown',
+          accept: {
+            'text/markdown': ['.md'],
+            'text/plain': ['.md', '.txt']
+          }
+        }
+      ],
+      multiple: false
+    })
+
+    const file = await handle.getFile()
+    const content = await file.text()
+
+    fileHandle.value = handle
+    code.value = content
+    lastSavedContent.value = content
+    documentStatus.value = 'Salvato'
+    setOperationStatus('File importato')
+  } catch {
+    setOperationStatus('Importazione annullata')
+  }
+}
+
+const saveCurrentDocument = async (): Promise<void> => {
+  if (!fileHandle.value && !('showSaveFilePicker' in window)) {
+    setOperationStatus('Salvataggio non supportato dal browser', false)
+    return
+  }
+
+  try {
+    if (!fileHandle.value) {
+      fileHandle.value = await (window as any).showSaveFilePicker({
+        suggestedName: 'nota.md',
+        types: [
+          {
+            description: 'Markdown',
+            accept: {
+              'text/markdown': ['.md'],
+              'text/plain': ['.md']
+            }
+          }
+        ]
+      })
+    }
+
+    const writable = await fileHandle.value.createWritable()
+    await writable.write(code.value)
+    await writable.close()
+
+    lastSavedContent.value = code.value
+    documentStatus.value = 'Salvato'
+    setOperationStatus('Salvato')
+  } catch {
+    setOperationStatus('Salvataggio annullato')
+  }
+}
+
+watch(code, (newValue) => {
+  documentStatus.value = newValue !== lastSavedContent.value ? 'Modifiche non salvate' : 'Salvato'
+})
+
+const insertBold = (): void => {
+  const view = getView()
+  if (!view) return
+
+  const { from, to } = view.state.selection.main
+  const selected = view.state.doc.sliceString(from, to)
+
+  if (selected.startsWith('**') && selected.endsWith('**') && selected.length >= 4) {
+    const unboldText = selected.slice(2, -2)
+
+    view.dispatch({
+      changes: { from, to, insert: unboldText },
+      selection: EditorSelection.range(from, from + unboldText.length),
+      scrollIntoView: true
+    })
+
+    view.focus()
+    return
+  }
+
+  const before = view.state.doc.sliceString(Math.max(0, from - 2), from)
+  const after = view.state.doc.sliceString(to, Math.min(view.state.doc.length, to + 2))
+
+  if (!selected && before === '**' && after === '**') {
+    view.dispatch({
+      changes: [
+        { from: to, to: to + 2, insert: '' },
+        { from: from - 2, to: from, insert: '' }
+      ],
+      selection: EditorSelection.cursor(from - 2),
+      scrollIntoView: true
+    })
+
+    view.focus()
+    return
+  }
+
+  if (selected && before === '**' && after === '**') {
+    view.dispatch({
+      changes: [
+        { from: to, to: to + 2, insert: '' },
+        { from: from - 2, to: from, insert: '' }
+      ],
+      selection: EditorSelection.range(from - 2, to - 2),
+      scrollIntoView: true
+    })
+
+    view.focus()
+    return
+  }
+
+  if (selected) {
+    view.dispatch({
+      changes: { from, to, insert: `**${selected}**` },
+      selection: EditorSelection.range(from + 2, to + 2),
+      scrollIntoView: true
+    })
+
+    view.focus()
+    return
+  }
+
+  view.dispatch({
+    changes: { from, insert: '****' },
+    selection: EditorSelection.cursor(from + 2),
+    scrollIntoView: true
+  })
+
+  view.focus()
+}
+
+const openRedHat = async (): Promise<void> => {
+  const view = getView()
+  if (!view) return
+
+  const { from, to } = view.state.selection.main
+  const selected = view.state.doc.sliceString(from, to)
+
+  if (!selected) {
+    selectedText.value = ''
+    suggestedText.value = 'Seleziona una porzione di testo prima di applicare il Cappello Rosso.'
+    suggestionComment.value = ''
+    suggestionMode.value = 'hat'
+    savedRange.value = null
+    showResultModal.value = true
+    return
+  }
+
+  selectedText.value = selected
+  savedRange.value = { from, to }
+  suggestionMode.value = 'hat'
+
+  try {
+    const data = await generateRedHatProposal(selected)
+    suggestedText.value = data.proposal
+    suggestionComment.value = data.comment
+    showResultModal.value = true
+  } catch {
+    setOperationStatus('Errore LLM', false)
+  }
+}
+
+const openDistantWriting = (): void => {
+  const view = getView()
+  if (!view) return
+
+  savedCursor.value = view.state.selection.main.from
+  suggestionMode.value = 'distant'
+  prompt.value = ''
+  showPromptModal.value = true
+}
+
+const generateDistantWriting = async (): Promise<void> => {
+  suggestionMode.value = 'distant'
+
+  try {
+    const data = await generateDistantWritingProposal(prompt.value)
+    suggestedText.value = data.proposal
+    suggestionComment.value = ''
+    selectedText.value = ''
+    showPromptModal.value = false
+    showResultModal.value = true
+  } catch {
+    setOperationStatus('Errore LLM', false)
+  }
+}
+
+const acceptSuggestion = (): void => {
+  const view = getView()
+  if (!view) return
+
+  if (suggestionMode.value === 'hat' && savedRange.value) {
+    view.dispatch({
+      changes: {
+        from: savedRange.value.from,
+        to: savedRange.value.to,
+        insert: suggestedText.value
+      },
+      selection: EditorSelection.cursor(savedRange.value.from + suggestedText.value.length),
+      scrollIntoView: true
+    })
+  }
+
+  if (suggestionMode.value === 'distant' && savedCursor.value !== null) {
+    view.dispatch({
+      changes: {
+        from: savedCursor.value,
+        insert: suggestedText.value
+      },
+      selection: EditorSelection.cursor(savedCursor.value + suggestedText.value.length),
+      scrollIntoView: true
+    })
+  }
+
+  closeModals()
+  view.focus()
+}
+
+const closeModals = (): void => {
+  showPromptModal.value = false
+  showResultModal.value = false
+  savedRange.value = null
+  savedCursor.value = null
+  selectedText.value = ''
+  suggestedText.value = ''
+  suggestionComment.value = ''
+}
+
+onMounted(async () => {
+  await testConnection()
 })
 </script>
 
 <template>
-  <div class="api-banner" :class="{ 'error': apiStatus.includes('❌'), 'connected': apiStatus.includes('✅') }"> {{ apiStatus }} </div>
+  <main class="app">
+    <TopBar
+      :api-status="apiStatus"
+      @bold="insertBold"
+      @red-hat="openRedHat"
+      @distant-writing="openDistantWriting"
+      @import-document="importMarkdownFile"
+      @save-document="saveCurrentDocument"
+    />
 
-  <div class="editor-container">
-    <!-- Editor panel -->
-    <div class="editor-panel">
-      <Codemirror v-model="code" :extensions="extensions" :basic="true" :dark="true" :wrap="true"
-        placeholder="Scrivi qui il tuo Markdown..." />
-    </div>
+    <section class="workspace">
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Markdown</h2>
+        </div>
 
-    <!-- Preview panel -->
-    <div class="preview-panel">
-      <div class="preview-content" v-html="compiledMarkdown"></div>
-    </div>
-  </div>
+        <MarkdownEditor
+          v-model="code"
+          :extensions="extensions"
+          @ready="handleReady"
+        />
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Anteprima</h2>
+        </div>
+
+        <MarkdownPreview :html="compiledMarkdown" />
+      </section>
+    </section>
+
+    <PromptModal
+      v-if="showPromptModal"
+      v-model="prompt"
+      @close="closeModals"
+      @generate="generateDistantWriting"
+    />
+
+    <ResultModal
+      v-if="showResultModal"
+      :mode="suggestionMode"
+      :selected-text="selectedText"
+      :suggested-text="suggestedText"
+      :suggestion-comment="suggestionComment"
+      @close="closeModals"
+      @accept="acceptSuggestion"
+    />
+  </main>
 </template>
-
-
-<!--css-->
-<style scoped>
-.api-banner {
-  background-color: #707070;
-  color: white;
-  padding: 0.5rem 1rem;
-  font-family: monospace;
-  font-size: 0.9rem;
-  text-align: center;
-}
-.api-banner.error {
-  background-color: #c62828;
-}
-.api-banner.connected {
-  background-color: #2e7d32;
-}
-
-.editor-container {
-  display: flex;
-  gap: 1rem;
-  height: 100vh;
-  padding: 1rem;
-  background-color: #1e1e2f;
-  /* sfondo scuro per abbinare il tema */
-}
-
-.editor-panel,
-.preview-panel {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  overflow: auto;
-  border-radius: 8px;
-  background-color: #282c34;
-}
-
-/* Assicura che l'editor occupi tutto lo spazio del pannello */
-.editor-panel :deep(.cm-editor) {
-  height: 100%;
-}
-
-.preview-content {
-  padding: 1rem;
-  color: #e0e0e0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  overflow-y: auto;
-}
-
-/* Stili base per l'HTML generato (Markdown) */
-.preview-content h1,
-.preview-content h2,
-.preview-content h3 {
-  color: #ffffff;
-}
-
-.preview-content code {
-  background-color: #3a3f4b;
-  padding: 0.2rem 0.4rem;
-  border-radius: 4px;
-  font-family: monospace;
-}
-
-.preview-content pre {
-  background-color: #1e1e2f;
-  padding: 0.5rem;
-  border-radius: 6px;
-  overflow-x: auto;
-}
-
-.preview-content a {
-  color: #61dafb;
-}
-</style>
