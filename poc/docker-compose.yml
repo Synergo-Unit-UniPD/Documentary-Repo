@@ -26,3 +26,5 @@ services:
       - ./backend:/app
     environment:
       - PYTHONUNBUFFERED=1
+      - ZUCCHETTI_LLM_BASE_URL
+      - ZUCCHETTI_LLM_API_KEY
