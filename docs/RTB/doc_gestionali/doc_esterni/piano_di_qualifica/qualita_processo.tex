@@ -20,6 +20,35 @@ Garantisce l'integrità dei prodotti di lavoro tramite il versionamento su repos
 
 \subsubsection{Verifica}
 Accerta che ogni attività non contenga errori tramite un processo di controllo incrociato tra i membri del gruppo. Per i documenti, la verifica manuale si focalizza su sintassi, semantica e aderenza alle norme.
+\vspace{0.5cm}
+\subsubsection*{Checklist di Ispezione Documentale}
+Per garantire uniformità e oggettività durante le attività di verifica manuale, i Verificatori si avvalgono della seguente lista di controllo strutturata. Questa tabella raggruppa le verifiche fondamentali da effettuare prima di approvare una Pull Request relativa a un documento:
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|l|X|}
+        \hline
+        \rowcolor{primarycolor!10}
+        \textbf{Elemento} & \textbf{Descrizione del Controllo} \\
+        \hline
+        \textbf{Dati di Copertina} & Verifica della corretta corrispondenza tra versione, data, autori e verificatori nel Registro delle Modifiche e nel frontespizio. \\
+        \hline
+        \textbf{Terminologia (Glossario)} & Controllo che i termini tecnici, alla loro prima occorrenza nel testo, siano rigorosamente contrassegnati dal pedice\textsubscript{G}. \\
+        \hline
+        \textbf{Didascalie e Riferimenti} & Accertamento che ogni figura e tabella inserita possieda una \textit{caption} esplicativa e sia correttamente richiamata nel testo. \\
+        \hline
+        \textbf{Struttura} & Assenza di sezioni vuote prive di contenuto o di gerarchie dei titoli errate. \\
+        \hline
+        \textbf{Leggibilità (Gulpease)} & Rilevazione di frasi eccessivamente lunghe o complesse per garantire il rispetto della soglia ottimale, con l'ausilio di script automatici. \\
+        \hline
+        \textbf{Tracciamento} (AdR / PdQ) & Verifica della bidirezionalità dei tracciamenti (es. Caso d'Uso $\leftrightarrow$ Requisito $\leftrightarrow$ Test di Sistema). \\
+        \hline
+        \textbf{Ortografia e Formattazione} & Controllo sintattico e semantico per eliminare refusi, doppi spazi e disallineamenti tipografici rispetto alle Norme di Progetto. \\
+        \hline
+    \end{tabularx}
+    \caption{Checklist per l'ispezione formale della documentazione}
+\end{table}
 
 \subsubsection{Validazione}
 Fornisce la conferma che il prodotto finale sia conforme alle attese dell'utente e della proponente. In questa fase si concentra sulla verifica che i requisiti individuati rispondano agli obiettivi del "Second Brain".
@@ -56,6 +85,21 @@ Le metriche di processo sono inoltre utilizzate come strumenti di monitoraggio d
 In particolare, SPI e CPI supportano il controllo dei rischi legati a scadenze e budget; RSI consente di monitorare la stabilità dei requisiti; 
 Time Efficiency e Task Completion Rate aiutano a rilevare criticità organizzative; PR Resolution Time e Review Coverage permettono di controllare 
 l'efficacia del processo di verifica; Quality Metrics Compliance Rate fornisce una visione sintetica del livello complessivo di qualità raggiunto.
+
+\vspace{0.5cm}
+\subsubsection*{Definizione matematica delle metriche principali}
+Di seguito sono riportate le formule matematiche utilizzate per il calcolo degli indici di performance economica, temporale e di stabilità, ricavate dal foglio di tracciamento Excel:
+
+\begin{itemize}
+    \item \textbf{Schedule Performance Index (SPI)}: Misura l'efficienza temporale del progetto. Un valore $\ge 1$ indica che si è in anticipo o in linea con i tempi.
+    \[ SPI = \frac{EV}{PV} \]
+    \item \textbf{Cost Performance Index (CPI)}: Misura l'efficienza economica. Un valore $\ge 1$ indica che il costo sostenuto è inferiore o uguale al budget previsto per quel lavoro.
+    \[ CPI = \frac{EV}{AC} \]
+    \item \textbf{Requirements Stability Index (RSI)}: Misura la stabilità dei requisiti consolidati.
+    \[ RSI = \left( 1 - \frac{N_{modifiche}}{N_{totali}} \right) \times 100 \]
+\end{itemize}
+\vspace{0.5cm}
+
 \begin{table}[H]
     \centering
     \renewcommand{\arraystretch}{1.3}
@@ -83,3 +127,15 @@ l'efficacia del processo di verifica; Quality Metrics Compliance Rate fornisce u
     \end{tabularx}
     \caption{Metriche di Qualità di Processo}
 \end{table}
+
+\vspace{0.5cm}
+\subsubsection*{Motivazione delle soglie metriche}
+\begin{itemize}
+    \item \textbf{MPC01 (SPI) e MPC02 (CPI)}: Un valore accettabile $\ge 0.9$ tollera un fisiologico margine di errore del 10\% nelle stime, tipico di un team con esperienza in maturazione. Il valore ottimale $1.0$ rappresenta la perfetta aderenza al piano e al budget.
+    \item \textbf{MPC03 (RSI)}: La soglia accettabile dell'80\% assorbe i naturali cambiamenti emersi durante i colloqui di chiarimento con la proponente in fase RTB. Un valore ottimale del 100\% indica un'analisi iniziale perfetta e assenza di ambiguità.
+    \item \textbf{MPC04 (Time Efficiency)}: Si accetta un $\ge 75\%$ poiché una parte del tempo deve necessariamente essere investita in auto-formazione ("ore di palestra") e coordinamento. Un valore $\ge 90\%$ indica un team pienamente a regime e con basso overhead organizzativo.
+    \item \textbf{MPC05 (Task Completion Rate)}: La soglia dell'80\% tollera che alcune task possano slittare allo sprint successivo per impedimenti non prevedibili. Il 100\% ottimale indica una pianificazione dello sprint impeccabile.
+    \item \textbf{MPC06 (PR Resolution Time)}: Un tempo accettabile di $\le 3$ giorni previene la stagnazione del codice e riduce il rischio di complessi conflitti di merge. L'ottimo $\le 1$ giorno favorisce una vera Continuous Integration.
+    \item \textbf{MPC07 (Review Coverage)}: Il 100\% è l'unico valore ammesso, sia come accettabile che come ottimale, poiché nessuna modifica può essere unita al ramo principale senza la verifica di un membro terzo.
+    \item \textbf{MPC08 (Quality Metrics Compliance)}: Un'accettazione all'80\% riconosce che singole metriche possano temporaneamente fallire durante uno sprint, pur mantenendo la qualità generale sotto controllo.
+\end{itemize}

@@ -37,6 +37,18 @@ Il sistema deve garantire un comportamento coerente sui principali browser web c
 \subsection{Obiettivi quantitativi}
 Di seguito sono definite le metriche di prodotto (MPD).
 
+\vspace{0.5cm}
+\subsubsection*{Definizione matematica delle metriche principali}
+Di seguito sono esplicitate le formule matematiche utilizzate per il calcolo quantitativo della qualità del prodotto e della documentazione redatta:
+
+\begin{itemize}
+    \item \textbf{Soddisfacimento Requisiti Obbligatori}: Misura la completezza dell'implementazione rispetto a quanto concordato nel capitolato.
+    \[ SRO = \frac{Req_{soddisfatti}}{Req_{totali}} \times 100 \]
+    \item \textbf{Indice di Gulpease}: Misura la leggibilità della documentazione in lingua italiana. Valori tra 40 e 60 indicano testi tecnici facilmente comprensibili con licenza superiore.
+    \[ IG = 89 + \frac{300 \times (\text{numero di frasi}) - 10 \times (\text{numero di lettere})}{\text{numero di parole}} \]
+\end{itemize}
+\vspace{0.5cm}
+
 \begin{table}[H]
     \centering
     \renewcommand{\arraystretch}{1.3}
@@ -62,3 +74,15 @@ Di seguito sono definite le metriche di prodotto (MPD).
     \end{tabularx}
     \caption{Metriche di Qualità di Prodotto}
 \end{table}
+
+\vspace{0.5cm}
+\subsubsection*{Motivazione delle soglie metriche}
+\begin{itemize}
+    \item \textbf{MPD01 (Requisiti Obbligatori)}: Il 100\% è sia il valore accettabile che ottimale. I requisiti obbligatori sono vincolanti per l'utilizzo base del sistema e non implementarli renderebbe il prodotto non conforme alle richieste della proponente.
+    \item \textbf{MPD02 (Comment Density)}: Un livello $\ge 15\%$ garantisce la documentazione della logica di base del codice. L'ottimo $\ge 25\%$ assicura un'eccellente manutenibilità per sviluppi futuri.
+    \item \textbf{MPD03 (Browser Compatibility)}: La soglia $\ge 2$ garantisce il funzionamento multipiattaforma di base, mentre l'ottimo $\ge 3$ copre l'intero spettro del mercato mainstream (es. Chrome, Firefox, Brave).
+    \item \textbf{MPD04 (Errori Ortografici)}: Si tollerano $\le 2$ refusi per pagina in fase di stesura, ma l'obiettivo ottimale è 0, indispensabile per una documentazione formale destinata agli stakeholder.
+    \item \textbf{MPD05 (Complessità Ciclomatica)}: Un valore $\le 10$ evita codice "spaghetti" troppo nidificato, ma si punta a un ottimale $\le 5$ per garantire metodi coesi, semplici e facilmente testabili.
+    \item \textbf{MPD06 (Tempo di Caricamento)}: Un tempo $\le 5$ secondi previene l'abbandono da parte dell'utente. Un valore $\le 2$ secondi offre un'esperienza utente istantanea e fluida.
+    \item \textbf{MPD07 (Indice di Gulpease)}: La soglia $\ge 40$ assicura che concetti ingegneristici complessi siano comunque comprensibili da utenti con un diploma superiore, bilanciando il rigore tecnico con la chiarezza espositiva.
+\end{itemize}
