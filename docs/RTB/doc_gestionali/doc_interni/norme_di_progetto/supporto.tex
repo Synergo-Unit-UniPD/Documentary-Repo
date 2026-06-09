@@ -500,6 +500,9 @@ dove:
     \item \texttt{doc\_tecnico-esterno\_analisi-dei-requisiti}.
 \end{itemize}
 
+Il sito documentale è considerato un artefatto documentale quando la modifica
+riguarda contenuti, collegamenti, indici o documenti pubblicati.
+
 \paragraph{Issue non documentali}
 
 Per le issue non documentali, il form distingue il tipo di attività secondo le
@@ -558,6 +561,9 @@ Ogni issue deve contenere:
     \item milestone RTB o PB;
     \item descrizione dell'attività.
 \end{itemize}
+
+Le modifiche strutturali o configurative del sito documentale sono invece
+classificate come attività infrastrutturali con posizione \texttt{infra}.
 
 % ------------------------------------------------
 
@@ -811,6 +817,60 @@ I PDF vengono generati localmente tramite LaTeX Workshop.
 Il sito GitHub Pages non viene aggiornato automaticamente a ogni merge su
 \texttt{main}; l'aggiornamento del sito documentale viene gestito tramite task
 periodica dedicata.
+
+% ------------------------------------------------
+
+\subsubsection{Gestione del Sito Documentale}
+
+Il sito documentale pubblicato tramite GitHub Pages costituisce un elemento
+configurativo del progetto e viene aggiornato mediante task dedicate.
+
+Le attività relative al sito documentale sono distinte in due categorie:
+
+\begin{itemize}
+\item \textbf{Aggiornamenti documentali}: comprendono la pubblicazione o
+sostituzione di documenti PDF, l'aggiornamento degli indici, dei collegamenti,
+delle pagine informative e di ogni altro contenuto documentale reso disponibile
+sul sito.
+
+Tali attività sono considerate documentali e devono seguire le convenzioni
+previste per documenti, issue e branch documentali.
+
+Per queste attività deve essere utilizzato lo scope
+\texttt{sito} nei commit.
+
+\textit{Esempi}:
+
+\begin{itemize}
+    \item branch:
+    \texttt{215\_doc\_gestionale-esterno\_sito-documentale};
+
+    \item commit:
+    \texttt{docs(sito): aggiornato indice documenti (\#215)}.
+\end{itemize}
+
+\item \textbf{Aggiornamenti infrastrutturali}: comprendono modifiche alla
+struttura del sito, alla navigazione, al tema grafico, agli script di build,
+ai workflow GitHub Pages e alle configurazioni tecniche necessarie alla
+pubblicazione.
+
+Tali attività sono considerate non documentali e devono essere classificate
+come attività di tipo \texttt{feature}, \texttt{bug} o \texttt{refactor}
+con posizione \texttt{infra}.
+
+\textit{Esempi}:
+
+\begin{itemize}
+    \item branch:
+    \texttt{216\_feature\_infra\_navbar-sito};
+
+    \item commit:
+    \texttt{feat(infra): aggiunta navbar sito (\#216)}.
+\end{itemize}
+\end{itemize}
+
+L'aggiornamento periodico del sito documentale finalizzato alla pubblicazione
+dei documenti approvati è considerato attività documentale.
 
 % ================================================================
 % VERIFICA
