@@ -13,6 +13,7 @@ import MarkdownEditor from './components/markdownEditor.vue'
 import MarkdownPreview from './components/markdownPreview.vue'
 import PromptModal from './components/promptModal.vue'
 import ResultModal from './components/resultModal.vue'
+import LoadingModal from './components/loadingModal.vue'
 
 import {
   getStatus,
@@ -34,6 +35,9 @@ const documentStatus = ref<string>('')
 const operationStatus = ref<string>('')
 const showPromptModal = ref(false)
 const showResultModal = ref(false)
+
+const isGenerating = ref(false)
+const loadingTitle = ref('Generazione in corso...')
 
 const prompt = ref('')
 const suggestedText = ref('')
@@ -237,12 +241,18 @@ const openRedHat = async (): Promise<void> => {
   suggestionMode.value = 'hat'
 
   try {
+    loadingTitle.value = 'Analisi Cappello Rosso in corso...'
+    isGenerating.value = true
+
     const data = await generateRedHatProposal(selected)
+
     suggestedText.value = data.proposal
     suggestionComment.value = data.comment
     showResultModal.value = true
   } catch {
-    setOperationStatus('Errore LLM', false)
+    apiStatus.value = 'Errore LLM'
+  } finally {
+    isGenerating.value = false
   }
 }
 
@@ -260,14 +270,20 @@ const generateDistantWriting = async (): Promise<void> => {
   suggestionMode.value = 'distant'
 
   try {
+    loadingTitle.value = 'Generazione Distant Writing in corso...'
+    isGenerating.value = true
+
     const data = await generateDistantWritingProposal(prompt.value)
+
     suggestedText.value = data.proposal
     suggestionComment.value = ''
     selectedText.value = ''
     showPromptModal.value = false
     showResultModal.value = true
   } catch {
-    setOperationStatus('Errore LLM', false)
+    apiStatus.value = 'Errore LLM'
+  } finally {
+    isGenerating.value = false
   }
 }
 
@@ -365,6 +381,11 @@ onMounted(async () => {
       :suggestion-comment="suggestionComment"
       @close="closeModals"
       @accept="acceptSuggestion"
+    />
+
+    <LoadingModal
+      v-if="isGenerating"
+      :title="loadingTitle"
     />
   </main>
 </template>
