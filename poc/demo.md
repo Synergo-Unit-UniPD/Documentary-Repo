@@ -8,4 +8,8 @@ Durante la riunione di progettazione, il gruppo ha presentato una prima proposta
 
 ## Distant Writing
 
-Posiziona il cursore sotto questa riga e usa Distant Writing per generare un nuovo paragrafo:
+Posiziona il cursore sotto questa riga e usa Distant Writing per generare un nuovo paragrafo.
+
+Prompt suggerito:
+
+Scrivi un breve paragrafo che descriva il ruolo del Cappello Rosso nel metodo dei Sei Cappelli per Pensare e il suo utilizzo per evidenziare emozioni, intuizioni e percezioni durante l'analisi di un testo.
