@@ -1,89 +1,91 @@
 import os
-from fastapi import FastAPI, HTTPException
-from openai import AsyncOpenAI
 import json
-import asyncio
 from fastapi import HTTPException
+from openai import AsyncOpenAI
 
-print(os.getenv("ZUCCHETTI_LLM_BASE_URL"))
+DEFAULT_MODEL = "gemma3:1b"
 
 client = AsyncOpenAI(
     base_url=os.getenv("ZUCCHETTI_LLM_BASE_URL"),
     api_key=os.getenv("ZUCCHETTI_LLM_API_KEY"),
-    max_retries=5,
-    timeout=60.0
+    max_retries=0,
+    timeout=40.0
 )
 
-async def get_red_hat_proposal(text: str, model_name: str) -> dict:
-    """
-    Effettua due chiamate parallele all'LLM per generare separatamente 
-    la proposta e il commento (Cappello Rosso), restituendo il dizionario finale.
-    """
-    
-    # 1. Definiamo i prompt di sistema specifici per ciascun compito
-    proposal_system_prompt = (
-        "Sei un assistente esperto del metodo dei Sei Cappelli per Pensare (Cappello Rosso). "
-        "Fornisci l'analisi emotiva, viscerale e intuitiva (la proposta) del testo fornito. "
-        "Rispondi ESCLUSIVAMENTE con il testo dell'analisi, senza introduzioni, commenti o virgolette."
+
+def extract_json(content: str) -> dict:
+    start = content.find("{")
+    end = content.rfind("}") + 1
+
+    if start == -1 or end == 0:
+        raise ValueError(f"Risposta non JSON: {content}")
+
+    return json.loads(content[start:end])
+
+
+async def get_red_hat_proposal(text: str, model_name: str = DEFAULT_MODEL) -> dict:
+    system_prompt = (
+        "Sei un assistente integrato in un editor Markdown. "
+        "Devi applicare il Cappello Rosso del metodo dei Sei Cappelli per Pensare. "
+        "Il Cappello Rosso NON analizza fatti, logica, rischi tecnici o soluzioni razionali. "
+        "Esprime invece reazioni emotive, impressioni immediate, disagio, fiducia, esitazione, entusiasmo, "
+        "percezioni intuitive e clima percepito nel testo. "
+        "Devi restituire una proposta testuale inseribile nel documento e un commento critico separato. "
+        "Il commento deve spiegare quale reazione emotiva o intuitiva emerge dal testo e perché. "
+        "Rispondi solo con JSON valido nel formato: "
+        '{"proposal": "...", "comment": "..."}'
     )
 
-    comment_system_prompt = (
-        "Sei un assistente esperto del metodo dei Sei Cappelli per Pensare (Cappello Rosso). "
-        "Fornisci un commento di supporto o una spiegazione razionale/metodologica all'analisi emotiva del testo. "
-        "Rispondi ESCLUSIVAMENTE con il testo del commento, senza introduzioni o virgolette."
-    )
+    user_prompt = f"""
+                    Testo selezionato:
+                    {text}
 
-    # 2. Definiamo le due sotto-funzioni asincrone per le chiamate all'API
-    async def fetch_proposal():
-        res = await client.chat.completions.create(
-            model=model_name,
-            messages=[
-                {"role": "system", "content": proposal_system_prompt},
-                {"role": "user", "content": text}
-            ],
-            temperature=0.7
-        )
-        return res.choices[0].message.content.strip()
+                    Genera:
+                    - proposal: 2-4 frasi, direttamente inseribili nel documento, con tono naturale e coerente.
+                    - comment: 2-3 frasi, NON da inserire nel documento, che spiega la lettura emotiva/intuitiva del Cappello Rosso.
 
-    async def fetch_comment():
-        res = await client.chat.completions.create(
-            model=model_name,
-            messages=[
-                {"role": "system", "content": comment_system_prompt},
-                {"role": "user", "content": text}
-            ],
-            temperature=0.7
-        )
-        return res.choices[0].message.content.strip()
+                    Non fare un riassunto del testo.
+                    Non proporre soluzioni tecniche.
+                    Non parlare di dati oggettivi.
+                    """
 
     try:
-        # 3. Lanciamo entrambe le richieste contemporaneamente in parallelo
-        proposal_text, comment_text = await asyncio.gather(
-            fetch_proposal(),
-            fetch_comment()
+        response = await client.chat.completions.create(
+            model=model_name,
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt}
+            ],
+            temperature=0.5,
+            max_tokens=350
         )
 
-        # 4. Costruiamo il dizionario finale che si aspetta il frontend
+        content = response.choices[0].message.content.strip()
+        data = extract_json(content)
+
+        proposal = data.get("proposal", "").strip()
+        comment = data.get("comment", "").strip()
+
+        if not proposal or not comment:
+            raise ValueError(f"JSON incompleto: {data}")
+
         return {
-            "proposal": proposal_text,
-            "comment": comment_text
+            "proposal": proposal,
+            "comment": comment
         }
 
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Errore di comunicazione con l'LLM: {str(e)}")
+        raise HTTPException(
+            status_code=500,
+            detail=f"Errore di comunicazione con l'LLM: {str(e)}"
+        )
 
-from fastapi import HTTPException
 
-async def get_distant_writing_proposal(prompt: str, model_name: str) -> dict:
-    """
-    Effettua una chiamata all'LLM per generare la proposta di Distant Writing
-    e restituisce il dizionario formattato per il frontend.
-    """
-    
+async def get_distant_writing_proposal(prompt: str, model_name: str = DEFAULT_MODEL) -> dict:
     system_prompt = (
-        "Sei un assistente esperto di scrittura creativa e comunicazione a distanza (Distant Writing). "
-        "Genera una proposta accurata in base alle indicazioni dell'utente. "
-        "Rispondi ESCLUSIVAMENTE con il testo della proposta, senza introduzioni, commenti o virgolette."
+        "Sei un assistente di Distant Writing integrato in un editor Markdown. "
+        "L'utente progetta il contenuto, tu scrivi un testo fluido, coerente e direttamente inseribile nel documento. "
+        "Non aggiungere introduzioni, spiegazioni o commenti esterni."
     )
 
     try:
@@ -93,15 +95,16 @@ async def get_distant_writing_proposal(prompt: str, model_name: str) -> dict:
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": prompt}
             ],
-            temperature=0.7
+            temperature=0.6,
+            max_tokens=450
         )
 
-        proposal_text = response.choices[0].message.content.strip()
-
-        # Costruiamo il dizionario con l'unica chiave richiesta dal frontend
         return {
-            "proposal": proposal_text
+            "proposal": response.choices[0].message.content.strip()
         }
 
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Errore di comunicazione con l'LLM: {str(e)}")
+        raise HTTPException(
+            status_code=500,
+            detail=f"Errore di comunicazione con l'LLM: {str(e)}"
+        )

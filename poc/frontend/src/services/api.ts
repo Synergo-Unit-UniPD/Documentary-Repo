@@ -23,13 +23,14 @@ export const generateRedHatProposal = async (text: string): Promise<RedHatRespon
   })
 
   if (!response.ok) {
-    throw new Error('Errore durante la generazione Cappello Rosso')
+    const errorText = await response.text()
+    throw new Error(`Errore durante la generazione Cappello Rosso: ${errorText}`)
   }
 
   const data = await response.json()
 
   if (!data.proposal || !data.comment) {
-    throw new Error('Risposta Cappello Rosso non valida')
+    throw new Error(`Risposta Cappello Rosso non valida: ${JSON.stringify(data)}`)
   }
 
   return data
@@ -45,13 +46,14 @@ export const generateDistantWritingProposal = async (
   })
 
   if (!response.ok) {
-    throw new Error('Errore durante la generazione Distant Writing')
+    const errorText = await response.text()
+    throw new Error(`Errore durante la generazione Distant Writing: ${errorText}`)
   }
 
   const data = await response.json()
 
   if (!data.proposal) {
-    throw new Error('Risposta Distant Writing non valida')
+    throw new Error(`Risposta Distant Writing non valida: ${JSON.stringify(data)}`)
   }
 
   return data
