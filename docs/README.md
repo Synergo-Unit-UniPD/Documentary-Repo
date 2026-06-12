@@ -11,7 +11,7 @@ docs/
 ├── CC/
 ├── RTB/
 ├── template/
-└── rif_info_ISO/
+└── rif_norm_ISO/
 ```
 
 ## Fasi di progetto
