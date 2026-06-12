@@ -5,12 +5,12 @@
 
 \subsection{Scopo del Documento}
 Il presente documento raccoglie i risultati dell'analisi preliminare delle tecnologie considerate
-per la realizzazione del Proof of Concept del progetto \textit{Second Brain}, proposto da
-Zucchetti S.p.A. nel capitolato C6.
+per la realizzazione del Proof of Concept\textsubscript{G} del progetto \textit{Second Brain\textsubscript{G}}, proposto da
+Zucchetti\textsubscript{G} S.p.A. nel capitolato C6.
 
 L'obiettivo del documento non è definire l'architettura definitiva del prodotto, che verrà
-consolidata nella successiva fase PB, ma motivare le scelte tecnologiche adottate per la
-Technology Baseline e individuare i principali rischi tecnici da validare tramite il PoC.
+consolidata nella successiva fase PB\textsubscript{G}, ma motivare le scelte tecnologiche adottate per la
+Technology Baseline\textsubscript{G} e individuare i principali rischi tecnici da validare tramite il PoC\textsubscript{G}.
 % ------------------------------------------------
 
 \subsection{Scopo del Prodotto}
@@ -32,8 +32,8 @@ La piattaforma dovrà supportare funzionalità di:
 \subsection{Aree di Indagine}
 L’analisi verte sulle seguenti aree di sviluppo.
 \begin{itemize}
-    \item Tecnologie frontend: valutazione di framework e librerie per interfacce reattive.
-    \item Tecnologie backend: analisi di framework per API RESTful e gestione logica.
+    \item Tecnologie frontend\textsubscript{G}: valutazione di framework\textsubscript{G} e librerie per interfacce reattive.
+    \item Tecnologie backend\textsubscript{G}: analisi di framework per API\textsubscript{G} RESTful e gestione logica.
     \item Struttura tecnica preliminare: definizione dell'organizzazione del PoC e gestione dell'ambiente di esecuzione.    
     \item Sicurezza e protezione dei dati: strategie per la protezione delle comunicazioni e dei dati sensibili.
 \end{itemize}
@@ -46,7 +46,7 @@ I termini tecnici, gli acronimi e le espressioni potenzialmente ambigue utilizza
 \link{https://synergo-unit-unipd.github.io/Second-Brain/docs/RTB/doc_gestionali/doc_interni/glossario/glossario.pdf}
 {Glossario}.
 
-La prima occorrenza dei termini presenti nel glossario viene marcata automaticamente tramite pedice\textsubscript{G} mediante uno script Python dedicato descritto nella Sezione~\ref{sec:strumenti-doc}.
+La prima occorrenza dei termini presenti nel glossario viene marcata automaticamente tramite pedice\textsubscript{G}.
 
 % ------------------------------------------------
 
@@ -60,17 +60,17 @@ La prima occorrenza dei termini presenti nel glossario viene marcata automaticam
              {Zucchetti S.p.A.}
   	\item \link{https://www.math.unipd.it/~tullio/IS-1/2025/Dispense/PD1.pdf}{Regolamento del Progetto Didattico}, Prof.\ Tullio Vardanega,
         A.A. 2025/2026. 
-	\item \link{https://synergo-unit-unipd.github.io/Second-Brain/docs/RTB/doc_gestionali/doc_interni/norme_di_progetto/norme_di_progetto.pdf}{Norme di Progetto\textsubscript{G}}
+	\item \link{https://synergo-unit-unipd.github.io/Second-Brain/docs/RTB/doc_gestionali/doc_interni/norme_di_progetto/norme_di_progetto.pdf}{Norme di Progetto}\textsubscript{G}
 \end{itemize}
 
 \subsubsection{Informativi}
 
 \begin{itemize}
     \item Documentazione ufficiale Vue.js: \link{https://vuejs.org/}{Vue.js Documentation};
-    \item Documentazione ufficiale CodeMirror: \link{https://codemirror.net/}{CodeMirror Documentation};
+    \item Documentazione ufficiale CodeMirror\textsubscript{G}: \link{https://codemirror.net/}{CodeMirror Documentation};
     \item Documentazione ufficiale FastAPI: \link{https://fastapi.tiangolo.com/}{FastAPI Documentation};
-    \item Documentazione ufficiale PostgreSQL: \link{https://www.postgresql.org/docs/}{PostgreSQL Documentation};
-    \item Documentazione ufficiale Docker: \link{https://docs.docker.com/}{Docker Documentation}.
+    \item Documentazione ufficiale PostgreSQL\textsubscript{G}: \link{https://www.postgresql.org/docs/}{PostgreSQL Documentation};
+    \item Documentazione ufficiale Docker\textsubscript{G}: \link{https://docs.docker.com/}{Docker Documentation}.
 \end{itemize}
 
 \newpage
@@ -90,11 +90,11 @@ Sono state analizzate le seguenti alternative.
     \item \textbf{React}: principale alternativa ad Angular per diffusione e integrazione.
         \begin{itemize}
             \item \textit{Pro}: ecosistema maturo, performance ottimizzate, ampia disponibilità di librerie e pattern consolidati.
-            \item \textit{Contro}: richiede la definizione preventiva di standard architetturali (state management, routing, styling) per evitare frammentazione nel team. Data l'assenza di esperienza pregressa con framework moderni, è stato valutato come ad alto rischio di debito tecnico iniziale.
+            \item \textit{Contro}: richiede la definizione preventiva di standard architetturali (state management, routing, styling) per evitare frammentazione nel team. Data l'assenza di esperienza pregressa con framework moderni, è stato valutato come ad alto rischio di debito tecnico\textsubscript{G} iniziale.
         \end{itemize}
     \item \textbf{Vue.js}: tecnologia scelta dal gruppo per lo sviluppo frontend.
         \begin{itemize}
-            \item \textit{Pro}: progressività (inizio da codice semplice e intuitivo, man mano si aggiunge complessità ove necessario), separazione di struttura HTML e styling CSS, ottimizzato per granularità della User Interface.
+            \item \textit{Pro}: progressività (inizio da codice semplice e intuitivo, man mano si aggiunge complessità ove necessario), separazione di struttura HTML\textsubscript{G} e styling CSS, ottimizzato per granularità della User Interface.
             \item \textit{Contro}: ecosistema leggermente meno vasto di React in ambito enterprise, ma pienamente sufficiente per le funzionalità richieste dal capitolato.
         \end{itemize}
 \end{itemize}
@@ -102,8 +102,8 @@ Sono state analizzate le seguenti alternative.
 Inoltre, nelle tecnologie frontend ricade la scelta di un altro componente critico: l’editor di testo. \\
 Le alternative analizzate in questo caso sono state due.
 \begin{itemize}
-    \item \textbf{Monaco Editor}: motore alla base dell’editor di testo VS Code, potente e completo ma con elevato consumo di risorse ed una complessa configurazione.
-    \item \textbf{CodeMirror}: componente scelto dal gruppo per bilanciamento tra leggerezza e estensibilità. Ideale per l’implementazione del sistema Second Brain, fornisce la possibilità di integrare comandi personalizzati per l’interazione con il LLM e/o altre feature del sistema, ha un ecosistema di estensioni pronte all’uso per Markdown, syntax highlighting, keybindings, etc.
+    \item \textbf{Monaco Editor}: motore alla base dell’editor di testo VS Code, potente e completo ma con elevato consumo di risorse ed una complessa configurazione\textsubscript{G}.
+    \item \textbf{CodeMirror}: componente scelto dal gruppo per bilanciamento tra leggerezza e estensibilità. Ideale per l’implementazione del sistema Second Brain, fornisce la possibilità di integrare comandi personalizzati per l’interazione con il LLM e/o altre feature\textsubscript{G} del sistema, ha un ecosistema di estensioni pronte all’uso per Markdown, syntax highlighting, keybindings, etc.
 \end{itemize}
 Sono stati presi in considerazione anche altri editor, come TipTap e Milkdown, tuttavia sono stati scartati per la complessità di configurazione, inoltre richiedono maggiore esperienza per mantenere la coerenza tra modello interno e markdown generato.
 
@@ -132,7 +132,7 @@ Per quanto riguarda, invece, i framework di gestione delle api, sono state valut
     \item \textbf{Flask}: estremamente leggero.
         \begin{itemize}
             \item \textit{Pro}: semplice da configurare, ideale per piccoli prototipi.
-            \item \textit{Contro}: manca di strumenti all’avanguardia, validazione dei dati o supporto asincrono, richiede l’uso di “plugin” esterni per raggiungere le funzionalità minime richieste.
+            \item \textit{Contro}: manca di strumenti all’avanguardia, validazione\textsubscript{G} dei dati o supporto asincrono, richiede l’uso di “plugin” esterni per raggiungere le funzionalità minime richieste.
         \end{itemize}
     \item \textbf{FastAPI}: tecnologia scelta dal gruppo.
         \begin{itemize}
@@ -142,19 +142,19 @@ Per quanto riguarda, invece, i framework di gestione delle api, sono state valut
 \end{itemize}
 
 La gestione dei dati (salvataggio di note), pur essendo un requisito opzionale, richiede la valutazione di un sistema di database. \\
-Durante l’analisi, il gruppo ha analizzato sia un approccio SQL, sia un approccio NoSQL. Rispettivamente, i motori selezionati sarebbero stati PostgreSQL (preferito dalla proponente Zucchetti) e MongoDB (flessibile nel gestire documenti non strutturati). \\
+Durante l’analisi, il gruppo ha analizzato sia un approccio SQL, sia un approccio NoSQL. Rispettivamente, i motori selezionati sarebbero stati PostgreSQL (preferito dalla proponente Zucchetti) e MongoDB\textsubscript{G} (flessibile nel gestire documenti non strutturati). \\
 La scelta finale è però ricaduta su \textbf{PostgreSQL}.
 \begin{itemize}
     \item Sistema relazionale più solido rispetto ad un sistema NoSQL.
     \item Affidabile gestione delle transazioni.
     \item Indexing avanzato per ricerche full-text.
     \item Licenza open source, a differenza della licenza più restrittiva di MongoDB.
-    \item Supporto al salvataggio di informazioni JSON, offrendo la flessibilità dei database non relazionali pur mantenendo la robustezza di un sistema SQL.
+    \item Supporto al salvataggio di informazioni JSON\textsubscript{G}, offrendo la flessibilità dei database non relazionali pur mantenendo la robustezza di un sistema SQL.
     \item Possibilità di valutare estensioni per la gestione di embeddings, qualora nelle fasi successive emerga l'esigenza di rappresentare relazioni semantiche tra le note.
 \end{itemize}
 
 Tale scelta non è stata validata nel PoC, poiché la persistenza non rientra tra i rischi
-tecnologici principali della RTB. PostgreSQL viene quindi indicato come tecnologia candidata
+tecnologici principali della RTB\textsubscript{G}. PostgreSQL viene quindi indicato come tecnologia candidata
 per le successive fasi progettuali.
 
 % --------------------------------------------------------------------------
@@ -173,14 +173,14 @@ componenti tecnologiche.
 Il PoC è organizzato secondo una struttura client-server composta da:
 
 \begin{itemize}
-    \item \textbf{Frontend}: applicazione Vue.js responsabile dell'interfaccia utente,
+    \item \textbf{Frontend}: applicazione Vue.js responsabile\textsubscript{G} dell'interfaccia utente,
     dell'editor Markdown, dell'anteprima e della gestione delle interazioni dell'utente;
     
     \item \textbf{Backend}: servizio FastAPI responsabile dell'esposizione delle API REST,
     della ricezione delle richieste provenienti dal frontend e dell'interazione con il servizio LLM;
     
     \item \textbf{Servizio LLM esterno}: componente esterno utilizzato per generare proposte
-    testuali a partire dal contenuto selezionato o dal prompt fornito dall'utente.
+    testuali a partire dal contenuto selezionato o dal prompt\textsubscript{G} fornito dall'utente.
 \end{itemize}
 
 Nel PoC non è stato incluso un database, poiché la persistenza dei dati non rappresentava uno
@@ -208,7 +208,7 @@ alternative principali:
     \item \textbf{Macchina virtuale}: garantisce isolamento completo dell'ambiente, ma introduce
     un overhead superiore rispetto alle esigenze del PoC;
 
-    \item \textbf{Docker Compose}: consente di descrivere frontend e backend come servizi separati
+    \item \textbf{Docker Compose\textsubscript{G}}: consente di descrivere frontend e backend come servizi separati
     e di avviarli tramite un unico comando.
 \end{itemize}
 
@@ -265,7 +265,7 @@ delle fasi successive, in base alla priorità dei requisiti e alla disponibilit�
 %           SCELTE FINALI
 % --------------------------------------------------------------------------
 \section{Scelte Finali}
-L’analisi approfondita dello Stato dell’Arte ha permesso al gruppo Synergo Unit di definire uno stack tecnologico solido, moderno e strettamente mirato a soddisfare i requisiti del capitolato C6 proposto da Zucchetti.
+L’analisi approfondita dello Stato dell’Arte ha permesso al gruppo Synergo Unit di definire uno stack tecnologico\textsubscript{G} solido, moderno e strettamente mirato a soddisfare i requisiti del capitolato C6 proposto da Zucchetti.
 
 La sinergia tra le tecnologie selezionate definisce la seguente struttura tecnica di riferimento per il PoC.
 \begin{itemize}
@@ -285,4 +285,4 @@ La sinergia tra le tecnologie selezionate definisce la seguente struttura tecnic
 
 In conclusione, il gruppo ritiene che questo stack rappresenti il compromesso ideale tra velocità di sviluppo e solidità tecnica.
 
-La soluzione così delineata permetterà di validare l'efficacia del sistema di \textbf{Second Brain}, fornendo una base tecnica per l'evoluzione del note-taking verso funzionalità di co-authoring e distant writing descritte dalla proponente.
+La soluzione così delineata permetterà di validare l'efficacia del sistema di \textbf{Second Brain}, fornendo una base tecnica per l'evoluzione del note-taking verso funzionalità di co-authoring e distant writing\textsubscript{G} descritte dalla proponente.
