@@ -11,7 +11,7 @@ docs/
 ├── CC/
 ├── RTB/
 ├── template/
-└── ISO_12207-1995.pdf
+└── rif_info_ISO/
 ```
 
 ## Fasi di progetto
