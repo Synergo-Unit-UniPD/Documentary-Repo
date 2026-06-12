@@ -8,7 +8,4 @@ Durante la riunione di progettazione, il gruppo ha presentato una prima proposta
 
 ## Distant Writing
 
-Posiziona il cursore sotto questa riga e usa Distant Writing per generare un nuovo paragrafo.
-
-Prompt suggerito:
-Scrivi un breve paragrafo che dia la definizione di Ingegneria del Software.
+Posiziona il cursore sotto questa riga e usa Distant Writing per generare un nuovo paragrafo:

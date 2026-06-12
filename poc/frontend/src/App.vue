@@ -249,9 +249,14 @@ const openRedHat = async (): Promise<void> => {
     suggestedText.value = data.proposal
     suggestionComment.value = data.comment
     showResultModal.value = true
-  } catch {
-    apiStatus.value = 'Errore LLM'
-  } finally {
+  } catch (error) {
+      console.error('ERRORE OPEN RED HAT:', error)
+      suggestedText.value = 'Errore durante la generazione della proposta.'
+      suggestionComment.value = String(error)
+      suggestionMode.value = 'hat'
+      showResultModal.value = true
+      setOperationStatus('Errore LLM', false)
+} finally {
     isGenerating.value = false
   }
 }
@@ -280,11 +285,17 @@ const generateDistantWriting = async (): Promise<void> => {
     selectedText.value = ''
     showPromptModal.value = false
     showResultModal.value = true
-  } catch {
-    apiStatus.value = 'Errore LLM'
+  } catch (error) {
+      console.error('ERRORE DISTANT WRITING:', error)
+      suggestedText.value = 'Errore durante la generazione della proposta.'
+      suggestionComment.value = String(error)
+      selectedText.value = ''
+      showPromptModal.value = false
+      showResultModal.value = true
+      setOperationStatus('Errore LLM', false)
   } finally {
-    isGenerating.value = false
-  }
+      isGenerating.value = false
+    }
 }
 
 const acceptSuggestion = (): void => {
