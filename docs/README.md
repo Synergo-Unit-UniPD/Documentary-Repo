@@ -86,7 +86,7 @@ contiene i template LaTeX e le risorse condivise utilizzate per produrre la docu
 
 La documentazione approvata e pubblicata è consultabile anche tramite il sito documentale del progetto:
 
-https://synergo-unit-unipd.github.io/Documentary-Repo/
+https://synergo-unit-unipd.github.io/Second-Brain/
 
 ## Compilazione dei documenti
 
