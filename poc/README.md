@@ -8,10 +8,10 @@ L'applicazione consente di scrivere e modificare documenti Markdown tramite un'i
 
 Il PoC è composto da:
 
-- Frontend sviluppato con Vue 3 e TypeScript;
-- Editor Markdown basato su CodeMirror;
-- Backend sviluppato con FastAPI;
-- Containerizzazione tramite Docker e Docker Compose.
+* Frontend sviluppato con Vue 3 e TypeScript;
+* Editor Markdown basato su CodeMirror;
+* Backend sviluppato con FastAPI;
+* Containerizzazione tramite Docker e Docker Compose.
 
 ---
 
@@ -19,21 +19,42 @@ Il PoC è composto da:
 
 Per eseguire il PoC è necessario avere installato:
 
-- Docker Desktop;
-- Google Chrome o Microsoft Edge per usare correttamente importazione e salvataggio locale dei file Markdown.
+* Docker Desktop;
+* Google Chrome o Microsoft Edge per utilizzare correttamente importazione e salvataggio locale dei file Markdown.
 
 ---
 
 ## Configurazione LLM
 
-Prima dell'avvio creare nella cartella `poc/` un file `.env` con il seguente contenuto:
+Le funzionalità basate su Large Language Models richiedono credenziali fornite dalla proponente.
+
+Per motivi di sicurezza, il file `.env` non è versionato e non viene distribuito all'interno del repository.
+
+Prima dell'avvio è quindi necessario creare nella cartella `poc/` un file `.env`.
+
+È possibile partire dal file di esempio:
+
+```bash
+cp .env.example .env
+```
+
+Su Windows PowerShell:
+
+```powershell
+Copy-Item .env.example .env
+```
+
+Il file `.env` deve contenere:
 
 ```env
 ZUCCHETTI_LLM_BASE_URL=https://llm.padova.zucchettitest.it
 ZUCCHETTI_LLM_API_KEY=INSERIRE_API_KEY
 ```
 
-Il file .env non deve essere versionato.
+Il valore `INSERIRE_API_KEY` deve essere sostituito con la chiave fornita dal proponente.
+
+In assenza di una chiave valida, il backend viene avviato correttamente ma le funzionalità AI (Cappello Rosso e Distant Writing) non saranno disponibili.
+
 ---
 
 ## Struttura del progetto
@@ -42,6 +63,7 @@ Il file .env non deve essere versionato.
 poc/
 ├── backend/
 ├── frontend/
+├── .env.example
 ├── docker-compose.yml
 ├── Makefile
 └── README.md
@@ -87,13 +109,14 @@ docker compose down
 ---
 
 ## Funzionalità disponibili
+
 ### Editor Markdown
 
 All'avvio l'editor viene aperto vuoto. L'utente può iniziare a scrivere una nuova nota oppure importare un file Markdown locale.
 
 ### Importazione file
 
-È possibile importare un file Markdown (.md) presente sul proprio dispositivo.
+È possibile importare un file Markdown (`.md`) presente sul proprio dispositivo.
 
 ### Salvataggio file
 
@@ -105,17 +128,28 @@ L'anteprima del documento viene aggiornata in tempo reale durante la scrittura.
 
 ### Grassetto
 
-Permette di applicare o rimuovere automaticamente la formattazione Markdown **testo**.
+Permette di applicare o rimuovere automaticamente la formattazione Markdown:
+
+```markdown
+**testo**
+```
 
 ### Cappello Rosso
 
-Il testo selezionato viene analizzato secondo il Cappello Rosso del metodo dei Sei Cappelli per Pensare. Il sistema restituisce:
-- una proposta di riscrittura;
-- un commento emotivo, che non viene inserito nel documento.
+Il testo selezionato viene analizzato secondo il Cappello Rosso del metodo dei Sei Cappelli per Pensare.
+
+Il sistema restituisce:
+
+* una proposta di riscrittura;
+* un commento emotivo coerente con la proposta generata.
+
+Il commento viene mostrato all'utente ma non viene inserito nel documento.
 
 ### Distant Writing
 
-Permette di generare nuovo testo a partire da una richiesta inserita dall'utente. La proposta viene inserita nel punto del cursore solo dopo accettazione.
+Permette di generare nuovo testo a partire da una richiesta inserita dall'utente.
+
+La proposta viene inserita nel documento solo dopo l'accettazione esplicita dell'utente.
 
 ### Connessione backend
 
@@ -139,21 +173,21 @@ Frontend (Vue + TypeScript)
 
 Gestisce:
 
-- interfaccia utente;
-- editor Markdown;
-- anteprima in tempo reale;
-- importazione e salvataggio locale dei file;
-- selezione del testo;
-- accettazione o rifiuto delle proposte generate.
+* interfaccia utente;
+* editor Markdown;
+* anteprima in tempo reale;
+* importazione e salvataggio locale dei file;
+* selezione del testo;
+* accettazione o rifiuto delle proposte generate.
 
 ### Backend
 
 Gestisce:
 
-- API REST;
-- costruzione dei prompt;
-- comunicazione con il modello LLM;
-- restituzione delle risposte al frontend.
+* API REST;
+* costruzione dei prompt;
+* comunicazione con il modello LLM;
+* restituzione delle risposte al frontend.
 
 ---
 
@@ -173,7 +207,7 @@ POST /api/red-hat
 
 Request:
 
-```JSON
+```json
 {
   "text": "testo selezionato"
 }
@@ -181,7 +215,7 @@ Request:
 
 Response:
 
-```JSON
+```json
 {
   "proposal": "testo riscritto",
   "comment": "analisi emotiva"
@@ -196,7 +230,7 @@ POST /api/distant-writing
 
 Request:
 
-```JSON
+```json
 {
   "prompt": "richiesta dell'utente"
 }
@@ -204,12 +238,26 @@ Request:
 
 Response:
 
-```JSON
+```json
 {
   "proposal": "testo generato"
 }
 ```
---- 
+
+---
+
+## Tecnologie utilizzate
+
+* Vue 3
+* TypeScript
+* CodeMirror
+* FastAPI
+* Docker
+* Docker Compose
+* Large Language Models tramite API compatibili OpenAI
+
+---
+
 ## Note
 
 Il backend è progettato per poter integrare differenti Large Language Models senza modificare il frontend.
