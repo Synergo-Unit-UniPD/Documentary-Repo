@@ -135,11 +135,10 @@ L'andamento storico delle metriche viene monitorato tramite grafici temporali pe
 
 Il grafico riporta l'andamento cumulato, sprint dopo sprint, del Planned Value\textsubscript{G} (PV), dell'Actual Cost\textsubscript{G} (AC) e dell'Earned Value\textsubscript{G} (EV).
 
-Dal grafico si osserva una perfetta sovrapposizione tra la curva del PV e quella dell'EV lungo tutti gli sprint: questo indica che il gruppo è riuscito a completare esattamente il lavoro pianificato per ogni iterazione, rispettando in pieno le tempistiche.
+Dal grafico si osserva una perfetta sovrapposizione tra la curva del PV e quella dell'EV lungo tutti e 10 gli sprint: questo indica che il gruppo è riuscito a completare costantemente il 100\% del lavoro pianificato per ogni iterazione, rispettando in pieno le tempistiche.
 
-Tuttavia, si nota che l'Actual Cost (AC) si mantiene costantemente al di sopra delle altre due curve. Nello sprint 6 si evidenzia un picco anomalo di spesa (AC pari a 625 €) a fronte di un valore prodotto (EV/PV) di circa 340 €. Questo scostamento è dovuto a task complessi di stesura e revisione dell'Analisi dei Requisiti che hanno richiesto ore effettive superiori a quelle preventivate. 
+Tuttavia, la vera svolta si osserva analizzando l'Actual Cost (AC). Dopo il picco anomalo di spesa dello sprint 6 e il progressivo recupero di efficienza degli sprint 7 e 8, nelle iterazioni 9 e 10 si registra un'inversione di tendenza estremamente positiva. Per la prima volta, i costi sostenuti scendono al di sotto del valore prodotto: nello sprint 9 l'AC si attesta a 513,75~\euro\ a fronte di un EV di 637,50~\euro\, dinamica che si ripete nello sprint 10 con un AC di 501,25~\euro\ contro un EV di 555,00~\euro. Questo dimostra che il team ha ottimizzato il lavoro, assorbendo il debito precedente e operando in pieno risparmio rispetto alle proiezioni.
 
-Nelle iterazioni successive (sprint 7 e 8) il divario si restringe, con l'EV che sale a 460 € e l'AC a circa 510 €. Ciò dimostra un netto recupero dell'efficienza, seppur i costi cumulati rimangano ancora superiori al piano, suggerendo la necessità di mantenere un monitoraggio attento nelle prossime fasi di progetto.
 
 \subsubsection{Varianze di Progetto}
  \begin{figure}[H]
@@ -150,11 +149,10 @@ Nelle iterazioni successive (sprint 7 e 8) il divario si restringe, con l'EV che
 
 Il grafico illustra l'andamento della Schedule Variance\textsubscript{G} (SV) e della Budget Variance\textsubscript{G} (BV).
 
-Coerentemente con quanto osservato nei trend di progetto, la Schedule Variance si mantiene costantemente a 0,00 € per tutti gli sprint: questo è il risultato matematico del perfetto allineamento tra il lavoro completato (EV) e quello pianificato (PV), confermando l'assenza di ritardi.
+Coerentemente con quanto osservato nei trend di progetto, la Schedule Variance si mantiene costantemente a 0,00~\euro\ per tutti gli sprint: questo è il risultato matematico del perfetto allineamento tra il lavoro completato (EV) e quello pianificato (PV), confermando l'assoluta assenza di ritardi.
 
-La Budget Variance, invece, si mantiene sempre su valori negativi, evidenziando che i costi reali hanno sempre superato il valore guadagnato. 
+Il dato più rilevante emerge dalla Budget Variance. Dopo otto sprint di passivo (culminati nel picco negativo dello sprint 6), negli sprint 9 e 10 le colonne della BV passano nettamente in territorio positivo. Nello sprint 9 si registra un avanzo di ben +123,75~\euro, seguito da un +53,75~\euro\ nello sprint 10. Questa marcata ripresa conferma il superamento delle criticità passate e un'eccellente capacità del team di completare i task risparmiando sul budget orario stimato.
 
-In particolare, si nota il picco negativo in corrispondenza dello sprint 6 (in cui la BV sprofonda a circa -285 €). Grazie alle azioni correttive intraprese, la varianza si riduce significativamente negli sprint successivi, chiudendo lo sprint 8 a circa -50 €, confermando una stabilizzazione dell'efficienza economica del team.
 
 \subsubsection{Indici di Performance}
  \begin{figure}[H]
@@ -165,12 +163,10 @@ In particolare, si nota il picco negativo in corrispondenza dello sprint 6 (in c
 
 Il grafico riporta l'andamento sprint per sprint del Cost Performance Index (CPI) e dello Schedule Performance Index (SPI). 
 
-Lo SPI si mantiene stabilmente su 1,0 per tutti gli sprint. Ciò indica che il progetto ha sempre rispettato i tempi pianificati, completando esattamente il 100\% del lavoro previsto entro ogni singola iterazione.
+Lo SPI si mantiene stabilmente sulla linea ottimale di 1,0 per tutti gli sprint, a dimostrazione di una pianificazione delle tempistiche e di un'esecuzione sempre perfette.
 
-Il CPI, al contrario, subisce forti fluttuazioni. Dopo essersi mantenuto al di sotto della soglia ottimale nei primi 4 sprint, crolla a un minimo di circa 0,55 durante lo sprint 6, confermando l'eccessivo assorbimento di risorse per la documentazione. 
-Grazie alle ottimizzazioni introdotte, l'indice mostra un forte recupero negli sprint 7 e 8, riportandosi verso la soglia di accettabilità (superando lo 0,90 a livello di singolo sprint). 
+Il CPI mostra un andamento in forte riscatto. Dopo il crollo sotto lo 0,60 durante lo sprint 6 e la fase di stabilizzazione successiva, l'indice supera finalmente la soglia ottimale di 1,0. Nello sprint 9 il CPI vola a 1,24, assestandosi poi a 1,10 nello sprint 10. La combinazione di questi due indici (SPI a 1,0 e CPI $> 1,0$) indica non solo il rispetto rigoroso delle scadenze, ma un'efficienza di costo superiore alle aspettative iniziali.
 
-La combinazione di uno SPI perfettamente in linea e di un CPI in via di stabilizzazione dimostra che il gruppo sa rispettare le scadenze concordate, e sta imparando a calibrare sempre meglio le stime orarie preventive per non eccedere il budget.
 
 \subsubsection{Previsione Spesa Finale}
  \begin{figure}[H]
@@ -179,13 +175,12 @@ La combinazione di uno SPI perfettamente in linea e di un CPI in via di stabiliz
 	    \caption{Andamento EAC\textsubscript{G}}
 	 \end{figure}
 
-Il grafico illustra l'andamento dell'Estimate at Completion\textsubscript{G} (EAC). La linea orizzontale tratteggiata rappresenta il BAC\textsubscript{G} (Budget at Completion\textsubscript{G}), fissato a 11.665 €.
+Il grafico illustra l'andamento dell'Estimate at Completion\textsubscript{G} (EAC). La linea orizzontale tratteggiata rappresenta il BAC\textsubscript{G} (Budget at Completion\textsubscript{G}), fissato a 11.665~\euro.
 
-Nei primi quattro sprint, l'EAC si mantiene stabilmente superiore al BAC, con valori compresi tra i 13.000 € e i 17.000 €, a causa di un CPI sempre inferiore a 1. Nello sprint 5 si registra un lieve miglioramento, con l'EAC che scende a circa 12.500 €, avvicinandosi alla soglia del budget senza tuttavia riuscire a scendere al di sotto di essa.
+L'andamento della stima a finire rispecchia fedelmente l'evoluzione del CPI. Dopo aver sfiorato proiezioni critiche intorno ai 21.000~\euro\ nello sprint 6, le azioni di ottimizzazione del team hanno generato un abbattimento drastico dei costi stimati. 
 
-Nello sprint 6 si verifica un brusco peggioramento come già osservato nei grafici precedenti, con la proiezione finale che sfiora la quota critica di quasi 21.000 €. 
+Grazie alle eccellenti performance economiche degli sprint 9 e 10, la curva dell'EAC è scesa per la prima volta al di sotto della soglia di sicurezza del budget (BAC), attestandosi rispettivamente a 9.401~\euro\ nello sprint 9 e a 10.534~\euro\ nello sprint 10. Questi dati confermano che il gruppo, assorbiti i rallentamenti della stesura iniziale, è ora proiettato verso una chiusura economica del progetto pienamente in attivo.
 
-Tuttavia, il drastico miglioramento dell'efficienza registrato negli sprint 7 e 8 ha permesso di abbattere nuovamente questa stima, facendola stabilizzare intorno ai 13.000 €. È pertanto necessario continuare a monitorare l'EAC e mantenere rigorose le stime orarie preventive per i task complessi, al fine di valutare l'efficacia delle azioni correttive e riportare la spesa sempre più vicina al BAC originario.
 
 \subsubsection{Requisiti}
  \begin{figure}[H]
@@ -206,7 +201,8 @@ ricevuto dal professor Cardin durante le riunioni che il gruppo ha chiesto.
 	 \end{figure}
 Il grafico illustra l'andamento dell'Indice di Gulpease, utilizzato per monitorare la leggibilità e la chiarezza della documentazione in lingua italiana. 
 Nel corso degli sprint si osserva un miglioramento costante del valore, frutto delle continue attività di revisione, che si stabilizza sul risultato attuale di 52,62. 
-Durante tutti gli sprint si osserva un valore accettabile ($\ge 40$ e $< 80$) il che indica una facilità di lettura variabile dei vari documenti.
+Durante tutti gli sprint si osserva un valore accettabile ($\ge 40$ e $< 80$) il che indica una facilità di lettura variabile dei vari documenti. 
+Il trend positivo si conferma negli ultimi sprint, portando l'Indice di Gulpease all'attuale valore di 56,69.
 \subsubsection{Sprint Goal Achievement}
  \begin{figure}[H]
 	    \centering
