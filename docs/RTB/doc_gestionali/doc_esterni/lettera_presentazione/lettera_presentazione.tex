@@ -1,0 +1,106 @@
+\documentclass[11pt, a4paper]{article}
+
+% 1. Configurazione condivisa
+\input{../../../../template/shared/configurazione.tex}
+
+% 2. Loghi
+\graphicspath{{../../../../template/shared/loghi/}}
+
+% === CONFIGURAZIONE COLORI E LINK ===
+\definecolor{primarycolor}{RGB}{20, 40, 75}
+
+\hypersetup{
+	pdftitle={Lettera di Presentazione RTB - Synergo Unit},
+	pdfauthor={Synergo Unit}
+}
+
+% === CONFIGURAZIONE INTESTAZIONE E PIÈ DI PAGINA ===
+\pagestyle{fancy}
+\fancyhf{} 
+\fancyhead[L]{\textcolor{primarycolor}{\textbf{Synergo Unit}}}
+\fancyhead[R]{Lettera di Presentazione RTB - 2026-06-16}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\setlength{\headheight}{15pt}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+
+% =========================================================
+% INIZIO DOCUMENTO
+% =========================================================
+\begin{document}
+    
+    % --- CARTA INTESTATA ---
+    \vspace*{8pt}
+
+    \begin{center}
+        \begin{minipage}[t]{0.55\textwidth}
+            \raggedright
+            \textbf{Università degli Studi di Padova} \\
+                Alla cortese attenzione \\
+                del Prof. Tullio Vardanega \\
+                e del Prof. Riccardo Cardin
+        \end{minipage}
+        \begin{minipage}[t]{0.40\textwidth}
+            \vspace{-30pt}
+            \raggedleft
+            \includegraphics[height=2.5cm]{logo_unipd.png} \hspace{0.5cm}
+            \includegraphics[height=2.5cm]{logo_gruppo.png}
+        \end{minipage}
+    \end{center}
+
+    \vspace{1cm}
+    
+    % --- INFORMAZIONI MITTENTE E DATA ---
+    \begin{flushleft}
+        \textbf{Gruppo:} Synergo Unit \\
+        \textbf{Email:} \link{mailto:synergounit.20@gmail.com}{synergounit.20@gmail.com} \\
+        \textbf{Data:} 2026-06-16
+    \end{flushleft}
+    
+    \vspace{0.5cm}
+    
+    % --- OGGETTO ---
+    \textbf{Oggetto:} \textbf{Presentazione per la revisione Requirements and Technology Baseline (RTB)}
+    
+    \vspace{1cm}
+    
+    % --- CORPO DELLA LETTERA ---
+    Egregio Prof. Tullio Vardanega,\\
+    Egregio Prof. Riccardo Cardin,
+    
+    \vspace{0.3cm}
+    con la presente il gruppo \textbf{Synergo Unit} comunica formalmente la propria intenzione di sostenere la revisione della \textit{Requirements and Technology Baseline} (RTB), relativamente al progetto proposto dall'azienda \textbf{Zucchetti}, capitolato \textbf{C6}, intitolato: \textbf{«Second Brain»}.
+    
+    \vspace{0.3cm}
+	Nel periodo trascorso, il gruppo ha realizzato un \textit{Proof of Concept} (PoC) finalizzato alla validazione delle scelte tecnologiche individuate durante la Technology Baseline e alla mitigazione dei principali rischi tecnologici, consultabile presso la \link{https://github.com/Synergo-Unit-UniPD/Second-Brain/tree/main/poc}{Repository di Progetto}.
+
+    \vspace{0.3cm}
+    La documentazione completa relativa alla revisione RTB è invece disponibile sul \link{https://synergo-unit-unipd.github.io/Second-Brain/}{sito ufficiale} del gruppo. In particolare, si sottopongono alla Vostra attenzione i seguenti documenti:
+    \begin{itemize}
+        \item Lettera di presentazione (documento attuale)
+        \item \link{https://synergo-unit-unipd.github.io/Second-Brain/docs/RTB/doc_tecnici/doc_esterni/analisi_dei_requisiti/analisi_dei_requisiti.pdf}{Analisi dei Requisiti (AdR) v1.0.0}
+        \item \link{https://synergo-unit-unipd.github.io/Second-Brain/docs/RTB/doc_gestionali/doc_interni/norme_di_progetto/norme_di_progetto.pdf}{Norme di Progetto (NdP) v2.12.0}
+        \item \link{https://synergo-unit-unipd.github.io/Second-Brain/docs/RTB/doc_gestionali/doc_esterni/piano_di_progetto/piano_di_progetto.pdf}{Piano di Progetto (PdP) v1.17.2}
+        \item \link{https://synergo-unit-unipd.github.io/Second-Brain/docs/RTB/doc_gestionali/doc_esterni/piano_di_qualifica/piano_di_qualifica.pdf}{Piano di Qualifica (PdQ) v1.2.1}
+        \item \link{https://synergo-unit-unipd.github.io/Second-Brain/docs/RTB/doc_gestionali/doc_interni/glossario/glossario.pdf}{Glossario v2.11.0}
+        \item \link{https://synergo-unit-unipd.github.io/Second-Brain/docs/RTB/doc_gestionali/doc_interni/analisi_stato_arte/analisi_stato_arte.pdf}{Analisi dello Stato dell'Arte v1.0.0}
+    \end{itemize}
+
+    \vspace{0.3cm}
+    Il gruppo mette inoltre a disposizione tutti i verbali delle riunioni interne e dei colloqui intercorsi con l'azienda proponente \textbf{Zucchetti}, consultabili nella sezione dedicata del \link{https://synergo-unit-unipd.github.io/Second-Brain\#verbali}{sito web}.
+
+    \vspace{0.3cm}
+    Infine, vengono riconfermati gli impegni assunti nella \textit{Dichiarazione degli Impegni} inserita nel \textit{Piano di Progetto (PdP)}, relativamente alla data di consegna finale (\textbf{2026-08-28}) e al preventivo di costo massimo stimato (\textbf{11.665,00\euro}).
+
+    \vspace{0.5cm}
+    Ringraziamo nuovamente per la Vostra disponibilità,\\
+    Restiamo a completa disposizione per eventuali chiarimenti.
+    
+    \vspace{0.5cm}
+    Cordiali saluti,\\
+    \textbf{Team Synergo Unit} 
+
+\end{document}
