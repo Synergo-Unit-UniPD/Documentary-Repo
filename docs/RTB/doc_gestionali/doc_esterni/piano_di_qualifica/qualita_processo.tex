@@ -91,12 +91,55 @@ l'efficacia del processo di verifica; Quality Metrics Compliance Rate fornisce u
 Di seguito sono riportate le formule matematiche utilizzate per il calcolo degli indici di performance economica, temporale e di stabilità, ricavate dal foglio di tracciamento Excel:
 
 \begin{itemize}
-    \item \textbf{Schedule Performance Index (SPI)}: Misura l'efficienza temporale del progetto. Un valore $\ge 1$ indica che si è in anticipo o in linea con i tempi.
-    \[ SPI = \frac{EV}{PV} \]
-    \item \textbf{Cost Performance Index (CPI)}: Misura l'efficienza economica. Un valore $\ge 1$ indica che il costo sostenuto è inferiore o uguale al budget previsto per quel lavoro.
-    \[ CPI = \frac{EV}{AC} \]
+
+    \item \textbf{Schedule Performance Index (SPI)}: Misura l'efficienza temporale del progetto. Un valore $\geq 1$ indica che il progetto è in linea con la pianificazione o in anticipo.
+
+    \[
+    SPI = \frac{EV}{PV}
+    \]
+
+    dove:
+    \begin{itemize}
+        \item $EV$ (\textit{Earned Value}) rappresenta il valore del lavoro effettivamente completato;
+        \item $PV$ (\textit{Planned Value}) rappresenta il valore del lavoro pianificato.
+    \end{itemize}
+
+    \item \textbf{Cost Performance Index (CPI)}: Misura l'efficienza economica del progetto. Un valore $\geq 1$ indica che il costo sostenuto è inferiore o uguale al budget previsto per il lavoro svolto.
+
+    \[
+    CPI = \frac{EV}{AC}
+    \]
+
+    dove:
+    \begin{itemize}
+        \item $EV$ (\textit{Earned Value}) rappresenta il valore del lavoro effettivamente completato;
+        \item $AC$ (\textit{Actual Cost}) rappresenta il costo effettivamente sostenuto.
+    \end{itemize}
+
     \item \textbf{Requirements Stability Index (RSI)}: Misura la stabilità dei requisiti consolidati.
-    \[ RSI = \left( 1 - \frac{N_{modifiche}}{N_{totali}} \right) \times 100 \]
+
+    \[
+    RSI = \left( 1 - \frac{N_{modifiche}}{N_{totali}} \right) \times 100
+    \]
+
+    dove:
+    \begin{itemize}
+        \item $N_{modifiche}$ rappresenta il numero di requisiti aggiunti, modificati o rimossi nel periodo considerato;
+        \item $N_{totali}$ rappresenta il numero totale di requisiti presenti all'inizio del periodo considerato.
+    \end{itemize}
+
+    \item \textbf{Quality Metrics Compliance Rate (QMCR)}: Misura la percentuale di metriche che rispettano i valori soglia definiti.
+
+    \[
+    QMCR = \frac{N_{conformi}}{N_{misurate}} \times 100
+    \]
+
+    dove:
+    \begin{itemize}
+        \item $N_{conformi}$ rappresenta il numero di metriche che rispettano i valori soglia previsti;
+        \item $N_{misurate}$ rappresenta il numero totale di metriche effettivamente misurate nel periodo considerato.
+    \end{itemize}
+
 \end{itemize}
 \vspace{0.5cm}
 
@@ -120,7 +163,7 @@ Di seguito sono riportate le formule matematiche utilizzate per il calcolo degli
         \hline
         MPC06 & \textbf{PR Resolution Time}: tempo medio per revisione\textsubscript{G} e merge\textsubscript{G} di una Pull Request\textsubscript{G}. & $\le 3 \text{ giorni}$ & $\le 1 \text{ giorno}$ \\
         \hline
-        MPC07 & \textbf{Review Coverage}: percentuale di documenti/file verificati da un membro terzo. & $100\%$ & $100\%$ \\
+        MPC07 & \textbf{Review Coverage}: percentuale di Pull Request approvate da un revisore diverso dall'autore. & $100\%$ & $100\%$ \\
         \hline
         MPC08 & \textbf{Quality Metrics Compliance Rate}: percentuale di metriche i cui valori sono almeno accettabili. & $\ge 80\%$ & $\ge 95\%$ \\
         \hline
@@ -136,6 +179,6 @@ Di seguito sono riportate le formule matematiche utilizzate per il calcolo degli
     \item \textbf{MPC04 (Time Efficiency)}: Si accetta un $\ge 75\%$ poiché una parte del tempo deve necessariamente essere investita in auto-formazione ("ore di palestra") e coordinamento. Un valore $\ge 90\%$ indica un team pienamente a regime e con basso overhead organizzativo.
     \item \textbf{MPC05 (Task Completion Rate)}: La soglia dell'80\% tollera che alcune task possano slittare allo sprint successivo per impedimenti non prevedibili. Il 100\% ottimale indica una pianificazione dello sprint impeccabile.
     \item \textbf{MPC06 (PR Resolution Time)}: Un tempo accettabile di $\le 3$ giorni previene la stagnazione del codice e riduce il rischio di complessi conflitti di merge. L'ottimo $\le 1$ giorno favorisce una vera Continuous Integration.
-    \item \textbf{MPC07 (Review Coverage)}: Il 100\% è l'unico valore ammesso, sia come accettabile che come ottimale, poiché nessuna modifica può essere unita al ramo principale senza la verifica di un membro terzo.
+    \item \textbf{MPC07 (Review Coverage)}: Il 100\% è l'unico valore ammesso, sia come accettabile che come ottimale, poiché ogni Pull Request deve essere approvata da un revisore diverso dall'autore prima di poter essere integrata nel ramo principale.
     \item \textbf{MPC08 (Quality Metrics Compliance)}: Un'accettazione all'80\% riconosce che singole metriche possano temporaneamente fallire durante uno sprint, pur mantenendo la qualità generale sotto controllo.
 \end{itemize}

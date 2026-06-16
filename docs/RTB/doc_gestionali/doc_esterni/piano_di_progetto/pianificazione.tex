@@ -20,7 +20,7 @@ Prima dell'avvio formale degli sprint RTB il team ha svolto le seguenti attivit�
 preparatorie, relative alla fase di candidatura:
 \begin{itemize}
 \item Primo allineamento su struttura documentale, Norme di Progetto
-(2026/03/13 -- in corso) e Glossario (2026/03/13 -- in corso).
+(2026/03/13 -- in aggiornamento continuo) e Glossario (2026/03/13 -- in aggiornamento continuo).
 \item Stima dell'impegno orario complessivo e definizione del budget di progetto,
 presentati nel Preventivo dei Costi\textsubscript{G} e Assunzione degli
 Impegni (2026/03/13 -- 2026/03/26).
@@ -103,7 +103,7 @@ incrementalmente secondo quanto definito nelle Norme di Progetto.
 \paragraph{Analisi dello Stato dell'Arte}
 Parti previste: analisi delle tecnologie candidate per il sistema
 \textit{Second Brain}, valutazione comparativa, scelte motivate e stack
-tecnologico individuato per il Proof of Concept.\\
+tecnologico individuato.\\
 Sprint di redazione: Sprint 5 -- Sprint 8.\\
 \textbf{Data prima stesura:} 2026/05/13.\\
 \textbf{Stato attuale:} completato e validato dalla proponente in data
@@ -114,8 +114,7 @@ l'implementazione del Proof of Concept.
 Artefatto eseguibile per la validazione tecnologica della Technology Baseline.\\
 Sprint di setup: Sprint 8.\\
 Sprint di implementazione: Sprint 9 -- Sprint 10.\\
-\textbf{Stato attuale:} setup avviato nello Sprint 8; implementazione a
-partire dallo Sprint 9.
+\textbf{Stato attuale:} completato.
 
 Il setup del PoC comprende la predisposizione della struttura nella cartella
 \texttt{poc/}, la separazione tra frontend e backend, la configurazione iniziale
@@ -157,7 +156,7 @@ La struttura delle attività principali è la seguente:
     bar/.append style={fill=gray!20},
     group/.append style={fill=gray!35},
     milestone/.append style={fill=black}
-]{2026-03-13}{2026-06-12}
+]{2026-03-13}{2026-06-16}
 
 \gantttitlecalendar{year, month=name} \\
 
@@ -168,8 +167,8 @@ La struttura delle attività principali è la seguente:
 
 \ganttbar[name=prev]{Preventivo Costi e Impegni}{2026-03-13}{2026-03-26} \\
 \ganttbar[name=valcap]{Valutazione Capitolati}{2026-03-17}{2026-03-26} \\
-\ganttbar[name=ndp]{Norme di Progetto}{2026-03-13}{2026-06-12} \\
-\ganttbar[name=gloss]{Glossario}{2026-03-13}{2026-06-12} \\
+\ganttbar[name=ndp]{Norme di Progetto}{2026-03-13}{2026-06-16} \\
+\ganttbar[name=gloss]{Glossario}{2026-03-13}{2026-06-16} \\
 \ganttmilestone[name=lettera]{Lettera di Presentazione CC}{2026-03-27} \\
 
 \ganttlink[link type=f-s]{valcap}{lettera}
@@ -184,15 +183,15 @@ La struttura delle attività principali è la seguente:
 % ============================================================
 % FASE RTB
 % ============================================================
-\ganttgroup{Fase RTB}{2026-04-02}{2026-06-12} \\
+\ganttgroup{Fase RTB}{2026-04-02}{2026-06-16} \\
 
 \ganttbar[name=adr]{Analisi dei Requisiti}{2026-04-08}{2026-05-26} \\
-\ganttbar[name=pdp]{Piano di Progetto}{2026-04-09}{2026-06-12} \\
-\ganttbar[name=pdq]{Piano di Qualifica}{2026-05-11}{2026-06-12} \\
+\ganttbar[name=pdp]{Piano di Progetto}{2026-04-09}{2026-06-16} \\
+\ganttbar[name=pdq]{Piano di Qualifica}{2026-05-11}{2026-06-16} \\
 \ganttbar[name=soa]{Analisi Stato dell'Arte}{2026-05-13}{2026-05-26} \\
 \ganttmilestone[name=validazione]{Validazione AdR e Stato dell'Arte}{2026-05-26} \\
 \ganttbar[name=pocsetup]{Setup Proof of Concept}{2026-05-27}{2026-06-01} \\
-\ganttbar[name=pocimpl]{Implementazione Proof of Concept}{2026-06-02}{2026-06-12} \\
+\ganttbar[name=pocimpl]{Implementazione Proof of Concept}{2026-06-02}{2026-06-16} \\
 
 % ============================================================
 % DIPENDENZE RTB
@@ -213,7 +212,7 @@ La struttura delle attività principali è la seguente:
 % ============================================================
 % MILESTONE FINALE RTB
 % ============================================================
-\ganttmilestone[name=msrtb]{Revisione RTB}{2026-06-12} \\
+\ganttmilestone[name=msrtb]{Revisione RTB}{2026-06-16} \\
 \ganttlink{pdp}{msrtb}
 \ganttlink{pdq}{msrtb}
 \ganttlink{validazione}{msrtb}
