@@ -1,0 +1,149 @@
+% --- 1. INFORMAZIONI GENERALI ---
+\section{Informazioni Generali}
+\begin{itemize}
+    \item \textbf{Luogo/Piattaforma:} Server Discord
+    \item \textbf{Data:} 2026-06-23
+    \item \textbf{Orario di inizio:} 14:30
+    \item \textbf{Orario di fine:} 15:30
+    \item \textbf{Responsabile:} Armando Moda Scarati
+    \item \textbf{Scriba:} Sofia De Blasi
+\end{itemize}
+
+\vspace{0.5cm}
+\textbf{Partecipanti presenti:}
+\begin{table}[ht]
+    \centering
+    \renewcommand{\arraystretch}{1.2}
+    \begin{tabularx}{\textwidth}{X l}
+        \toprule
+        \textbf{Nome e Cognome} & \textbf{Matricola} \\
+        \midrule
+        Sofia De Blasi & 2111014 \\
+        Roberto Mariano Doroftei & 2111031 \\
+        Filippo Idiometri & 2035617 \\
+        Francesco Marcon & 2110990 \\
+        Armando Moda Scarati & 2082864 \\
+        Anton Ricardo Rupi & 2054304 \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\vspace{0.5cm}
+\textbf{Partecipanti assenti:}
+\begin{table}[ht]
+    \centering
+    \renewcommand{\arraystretch}{1.2}
+    \begin{tabularx}{\textwidth}{X l}
+        \toprule
+        \textbf{Nome e Cognome} & \textbf{Matricola} \\
+        \midrule
+        Nessuno & - \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+% --- 2. ORDINE DEL GIORNO ---
+\section{Ordine del Giorno}
+
+Gli argomenti previsti per la riunione odierna sono:
+
+\begin{enumerate}
+    \item Sprint review e retrospective,
+    \item Aggiornamento dei documenti di progetto (PdP, PdQ) e delle slide di presentazione,
+    \item Discussione sulle criticità infrastrutturali e comunicazioni con la proponente,
+    \item Analisi preliminare per la Product Baseline (architettura, CI/CD, metriche),
+    \item Pianificazione dello sprint successivo e allocazione dei ruoli.
+\end{enumerate}
+
+
+% --- 3. RESOCONTO E DISCUSSIONE ---
+\section{Resoconto della Riunione}
+
+\subsection{Sprint review e retrospective}
+Il gruppo ha effettuato un rapido confronto sull'andamento dello sprint precedente. Non sono state riscontrate problematiche interne rilevanti e i documenti risultano in regola. Tuttavia, a livello organizzativo, è stato rilevato un rallentamento generale dovuto alla sovrapposizione con i vari impegni accademici dei membri. Dal punto di vista tecnico, è emersa una criticità bloccante legata alla latenza di risposta dei modelli LLM resi disponibili dall'infrastruttura dell'azienda proponente. A tal proposito, il Responsabile si incaricherà di redigere un'email formale diretta all'azienda chiedendo un incontro in cui il gruppo illustrerà il Proof of Concept e chiederà delucidazioni o alternative in merito al problema infrastrutturale.
+
+\subsection{Aggiornamento dei documenti e presentazioni}
+Le attività di chiusura per la fase attuale procedono senza intoppi. Il ruolo dell'Amministratore si farà carico dell'aggiornamento del Piano di Progetto, inserendo il consuntivo per lo Sprint 11, aggiornando le percentuali del preventivo a finire e allineando l'organigramma. Contestualmente, interverrà sul Piano di Qualifica per perfezionare le descrizioni e i diagrammi. Infine, dovrà assicurarsi di riportare e aggiornare correttamente il monte ore all'interno delle slide di presentazione destinate al colloquio con il prof. Tullio.
+
+\subsection{Preparazione alla Product Baseline}
+In attesa degli esiti ufficiali e del colloquio, il team ha concordato di non interrompere i lavori, sfruttando il periodo di transizione per iniziare a ragionare sulla futura architettura del prodotto. Tutti i membri avvieranno uno studio preliminare che servirà da base per la stesura della Specifica Tecnica. Nello specifico, la ricerca si concentrerà sull'architettura logica e di deployment, sull'individuazione dei design pattern, delle dipendenze e delle interfacce. Parallelamente, verrà analizzato il setup di un ambiente CI/CD (con potenziale uso di GitHub Actions) per automatizzare le fasi di build e testing, e si decideranno in anticipo le metriche di code quality e i relativi strumenti di misurazione da integrare.
+
+% --- 4. DECISIONI PRESE ---
+\section{Decisioni Prese}
+
+\renewcommand{\arraystretch}{1.3}
+\vspace{-0.3cm}
+\noindent
+\begin{longtable}{c p{12cm}}
+    \toprule
+    \textbf{Codice} & \textbf{Decisione} \\
+    \midrule
+    \endfirsthead
+
+    \toprule
+    \textbf{Codice} & \textbf{Decisione} \\
+    \midrule
+    \endhead
+
+    \midrule
+    \multicolumn{2}{r}{\textit{Continua nella pagina successiva}} \\
+    \midrule
+    \endfoot
+
+    \bottomrule
+    \endlastfoot
+
+    \textbf{VI-19.1} & {Pianificata la comunicazione ufficiale alla proponente in merito alle problematiche di latenza dei modelli LLM e per la visione del POC.} \\
+	\textbf{VI-19.2} & {Avvio di una fase di studio collettiva per la predisposizione degli strumenti di CI/CD, architettura e metriche necessarie per la futura Specifica Tecnica.}
+\end{longtable}
+
+% --- 5. AZIONI (TODO) ---
+\section{Azioni da Svolgere (To-Do)}
+
+\renewcommand{\arraystretch}{1.3}
+\begin{longtable}{p{2.3cm} c p{4.5cm} p{3cm} l}
+    \toprule
+    \textbf{Codice} & \textbf{Rif. Decisione} & \textbf{Descrizione Task\textsubscript{G}} & \textbf{Assegnatario} & \textbf{Scadenza} \\
+    \midrule
+    \endfirsthead
+
+    \toprule
+    \textbf{Codice} & \textbf{Rif. Decisione} & \textbf{Descrizione Task} & \textbf{Assegnatario} & \textbf{Scadenza} \\
+    \midrule
+    \endhead
+
+    \midrule
+    \multicolumn{5}{r}{\textit{Continua nella pagina successiva}} \\
+    \midrule
+    \endfoot
+
+    \bottomrule
+    \endlastfoot
+
+    \ghissue{253} & VI-16.1 & Stesura e invio email a Zucchetti per POC e criticità latenza modelli & Armando M. Scarati & 2026-06-30 \\[4pt]
+	
+	\ghissue{255} & - & Aggiornamento consuntivo Sprint 11, preventivo e organigramma nel PdP & Roberto M. Doroftei & 2026-06-30 \\[4pt]
+	
+	\ghissue{256} & - & Aggiornamento diagrammi e relative descrizioni all'interno del PdQ & Roberto M. Doroftei & 2026-06-30 \\[4pt]
+	
+	\ghissue{257} & - & Integrazione e aggiornamento del riepilogo ore nelle slide per il prof. Tullio & Roberto M. Doroftei & 2026-06-30 \\[4pt]
+	
+	& VI-16.2 & Studio preliminare su architettura, automazioni CI/CD e metriche di qualità & Tutti i membri & 2026-06-30 \\[4pt]
+	
+	\ghissue{254} & - & Redazione del verbale interno della riunione odierna (VI N. 19) & Armando M. Scarati & 2026-06-30 \\[4pt]
+\end{longtable}
+
+% --- 6. PROSSIMA RIUNIONE ---
+\section{Prossima Riunione}
+\begin{itemize}
+	\item \textbf{Data:} 2026-06-30
+	\item \textbf{Ora:} 14:30
+	\item \textbf{OdG preliminare\textsubscript{G}:}
+	\begin{itemize}
+		\item Verifica dei task assegnati per lo Sprint 11;
+		\item Allineamento sulle comunicazioni ricevute dall'azienda proponente;
+		\item Condivisione dei risultati dello studio preliminare sull'architettura e CI/CD;
+		\item Pianificazione dello sprint successivo e assegnazione dei ruoli.
+	\end{itemize}
+\end{itemize}
+
