@@ -156,7 +156,7 @@ La struttura delle attività principali è la seguente:
     bar/.append style={fill=gray!20},
     group/.append style={fill=gray!35},
     milestone/.append style={fill=black}
-]{2026-03-13}{2026-06-16}
+]{2026-03-13}{2026-06-23}
 
 \gantttitlecalendar{year, month=name} \\
 
@@ -167,8 +167,8 @@ La struttura delle attività principali è la seguente:
 
 \ganttbar[name=prev]{Preventivo Costi e Impegni}{2026-03-13}{2026-03-26} \\
 \ganttbar[name=valcap]{Valutazione Capitolati}{2026-03-17}{2026-03-26} \\
-\ganttbar[name=ndp]{Norme di Progetto}{2026-03-13}{2026-06-16} \\
-\ganttbar[name=gloss]{Glossario}{2026-03-13}{2026-06-16} \\
+\ganttbar[name=ndp]{Norme di Progetto}{2026-03-13}{2026-06-23} \\
+\ganttbar[name=gloss]{Glossario}{2026-03-13}{2026-06-23} \\
 \ganttmilestone[name=lettera]{Lettera di Presentazione CC}{2026-03-27} \\
 
 \ganttlink[link type=f-s]{valcap}{lettera}
@@ -183,15 +183,15 @@ La struttura delle attività principali è la seguente:
 % ============================================================
 % FASE RTB
 % ============================================================
-\ganttgroup{Fase RTB}{2026-04-02}{2026-06-16} \\
+\ganttgroup{Fase RTB}{2026-04-02}{2026-06-23} \\
 
 \ganttbar[name=adr]{Analisi dei Requisiti}{2026-04-08}{2026-05-26} \\
-\ganttbar[name=pdp]{Piano di Progetto}{2026-04-09}{2026-06-16} \\
-\ganttbar[name=pdq]{Piano di Qualifica}{2026-05-11}{2026-06-16} \\
+\ganttbar[name=pdp]{Piano di Progetto}{2026-04-09}{2026-06-23} \\
+\ganttbar[name=pdq]{Piano di Qualifica}{2026-05-11}{2026-06-23} \\
 \ganttbar[name=soa]{Analisi Stato dell'Arte}{2026-05-13}{2026-05-26} \\
 \ganttmilestone[name=validazione]{Validazione AdR e Stato dell'Arte}{2026-05-26} \\
 \ganttbar[name=pocsetup]{Setup Proof of Concept}{2026-05-27}{2026-06-01} \\
-\ganttbar[name=pocimpl]{Implementazione Proof of Concept}{2026-06-02}{2026-06-16} \\
+\ganttbar[name=pocimpl]{Implementazione Proof of Concept}{2026-06-02}{2026-06-23} \\
 
 % ============================================================
 % DIPENDENZE RTB
@@ -212,7 +212,7 @@ La struttura delle attività principali è la seguente:
 % ============================================================
 % MILESTONE FINALE RTB
 % ============================================================
-\ganttmilestone[name=msrtb]{Revisione RTB}{2026-06-16} \\
+\ganttmilestone[name=msrtb]{Revisione RTB}{2026-06-23} \\
 \ganttlink{pdp}{msrtb}
 \ganttlink{pdq}{msrtb}
 \ganttlink{validazione}{msrtb}
