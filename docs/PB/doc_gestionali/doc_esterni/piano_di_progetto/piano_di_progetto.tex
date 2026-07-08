@@ -1,0 +1,65 @@
+\documentclass[11pt, a4paper]{article}
+
+% 1. RICHIAMA LA CONFIGURAZIONE CONDIVISA
+\input{../../../../template/shared/configurazione.tex}
+
+% 2. CONFIGURAZIONI LOGHI E IMMAGINI
+\graphicspath{
+    {./use_case_diagram/} % diagrammi UC
+    {../../../../template/shared/loghi/}
+}
+
+\hypersetup{
+	pdfauthor={Synergo Unit}
+}
+
+\pagestyle{fancy}
+\fancyhf{} 
+\fancyhead[L]{\textcolor{primarycolor}{\textbf{Synergo Unit}}}
+\fancyhead[R]{Piano di Progetto v1.18.1 - 2026-06-27}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\setlength{\headheight}{15pt}
+
+\begin{document}
+	
+
+	\input{frontespizio.tex}
+	\newpage
+	
+	\input{registro_modifiche.tex}
+	\newpage
+
+	\tableofcontents
+	\newpage
+	\listoftables
+	\newpage
+
+	\input{introduzione.tex}
+	\newpage
+	
+	\input{analisi_rischi.tex}
+	\newpage
+	
+	\input{modello_sviluppo.tex}
+	\newpage
+
+	\input{definition_of_done.tex}
+	\newpage
+	
+	\input{pianificazione.tex}
+	\newpage
+	
+	\input{preventivo.tex}
+	\newpage
+
+	\input{sprint.tex}
+	\newpage
+	
+	\input{preventivo_a_finire.tex}
+	\newpage
+	
+	\input{organigramma.tex}
+	
+\end{document}

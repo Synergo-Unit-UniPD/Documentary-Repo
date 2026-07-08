@@ -1,0 +1,434 @@
+% =======================================================
+% 2. ANALISI DEI RISCHI\textsubscript{G}
+% =======================================================
+\section{Analisi dei Rischi}
+\subsection{Nomenclatura e lettura della tabella}
+Ogni rischio è identificato da un codice composto da due lettere indicanti la categoria e un numero progressivo:
+\begin{itemize}
+	\item \textbf{RR}: Rischi legati ai Requisiti (ambiguità, scope creep\textsubscript{G}, qualità, scadenze)
+	\item \textbf{RT}: Rischi Tecnici (tecnologie, integrazione, strumenti, debito tecnico\textsubscript{G})
+	\item \textbf{RO}: Rischi Organizzativi (disponibilità, comunicazione, carico, motivazione, comprensione)
+\end{itemize}
+
+Per ciascun rischio vengono indicati:
+\begin{itemize}
+    \item \textbf{Codice:}  Identificativo univoco del rischio (es. RR1, RT2, RO5).
+    \item \textbf{Descrizione:}  Descrizione sintetica del rischio.
+    \item \textbf{Probabilità di occorrenza:}  Valutazione della probabilità che il rischio si manifesti (Alta / Media / Bassa).
+    \item \textbf{Impatto:}  Valutazione dell'impatto che il rischio avrebbe sul progetto (Alta / Media / Bassa).
+	\item \textbf{Piano di mitigazione:} Azioni preventive volte a ridurre la probabilità o l'impatto del rischio.
+	\item \textbf{Piano di contingenza:} Azioni da intraprendere nel caso in cui il rischio si verifichi.
+\end{itemize}
+
+\subsection{RR - Rischi Legati ai Requisiti}
+
+\begin{table}[H]
+	\centering
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabularx}{\textwidth}{|c|X|}
+		\hline
+		\textbf{Codice} & \textbf{RR1} \\
+		\hline
+		\textbf{Descrizione} & Requisiti ambigui o cambiamenti frequenti da parte del committente \\
+		\hline
+		\textbf{Probabilità / Impatto} & Media/Alta \\
+		\hline
+		\textbf{Piano di Mitigazione} & Versionare i requisiti nel VCS; approvare formalmente le baseline; mantenere confronto continuo con il proponente \\
+		\hline
+		\textbf{Piano di Contingenza} & Attivazione del processo di change request\textsubscript{G}; revisione backlog\textsubscript{G}; rinegoziazione delle priorità e della pianificazione \\
+		\hline
+	\end{tabularx}
+	\caption{Scheda rischio RR1}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabularx}{\textwidth}{|c|X|}
+		\hline
+		\textbf{Codice} & \textbf{RR2} \\
+		\hline
+		\textbf{Descrizione} & Scope creep: aggiunta incontrollata di funzionalità \\
+		\hline
+		\textbf{Probabilità / Impatto} & Alta/Alta \\
+		\hline
+		\textbf{Piano di Mitigazione} & Definizione chiara dello scope RTB; backlog prioritizzato; approvazione preventiva delle nuove feature \\
+		\hline
+		\textbf{Piano di Contingenza} & Posticipo delle funzionalità non essenziali alla PB; riduzione dello scope MVP\textsubscript{G} \\		
+		\hline
+	\end{tabularx}
+	\caption{Scheda rischio RR2}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabularx}{\textwidth}{|c|X|}
+		\hline
+		\textbf{Codice} & \textbf{RR3} \\
+		\hline
+		\textbf{Descrizione} & Qualità insufficiente degli artefatti prodotti o del Proof of Concept\textsubscript{G} \\
+		\hline
+		\textbf{Probabilità / Impatto} & Media/Alta \\
+		\hline
+		\textbf{Piano di Mitigazione} & Applicazione della Definition of Done\textsubscript{G}; review obbligatoria tramite Pull Request\textsubscript{G}; verifica documentale e verifica manuale del PoC secondo le Norme di Progetto \\
+		\hline
+		\textbf{Piano di Contingenza} & Apertura di issue\textsubscript{G} correttive; riallocazione del tempo verso attività di verifica, consolidamento e risoluzione delle non conformità\textsubscript{G} \\
+		\hline
+	\end{tabularx}
+	\caption{Scheda rischio RR3}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabularx}{\textwidth}{|c|X|}
+		\hline
+		\textbf{Codice} & \textbf{RR4} \\
+		\hline
+		\textbf{Descrizione} & Mancato rispetto delle scadenze (RTB o PB) \\
+		\hline
+		\textbf{Probabilità / Impatto} & Media/Alta \\
+		\hline
+		\textbf{Piano di Mitigazione} & Pianificazione conservativa con buffer temporali; monitoraggio settimanale dell'avanzamento e della burndown chart\textsubscript{G} \\
+		\hline
+		\textbf{Piano di Contingenza} & Riduzione dello scope MVP; rinegoziazione delle milestone interne; riallocazione delle risorse \\
+		\hline
+	\end{tabularx}
+	\caption{Scheda rischio RR4}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabularx}{\textwidth}{|c|X|}
+		\hline
+		\textbf{Codice} & \textbf{RR5} \\
+		\hline
+		\textbf{Descrizione} & Ritardo nella validazione dei requisiti da parte del proponente \\
+		\hline
+		\textbf{Probabilità / Impatto} & Media/Alta \\
+		\hline
+		\textbf{Piano di Mitigazione} & Organizzare incontri periodici di validazione incrementale; condividere frequentemente gli avanzamenti \\
+		\hline
+		\textbf{Piano di Contingenza} & Congelamento temporaneo dei requisiti già condivisi; prosecuzione dello sviluppo sulle funzionalità validate \\
+		\hline
+	\end{tabularx}
+	\caption{Scheda rischio RR5}
+\end{table}
+
+\subsection{RT - Rischi Tecnici}
+\begin{table}[H]
+	\centering
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabularx}{\textwidth}{|c|X|}
+		\hline
+		\textbf{Codice} & \textbf{RT1} \\
+		\hline
+		\textbf{Descrizione} & Inesperienza con le tecnologie scelte (framework\textsubscript{G}, librerie, API\textsubscript{G}) \\
+		\hline
+		\textbf{Probabilità / Impatto} & Media/Alta \\
+		\hline
+		\textbf{Piano di Mitigazione} & Formazione iniziale, spike tecnici e studio delle tecnologie candidate; pair programming\textsubscript{G} \\
+		\hline
+		\textbf{Piano di Contingenza} & Riduzione dello scope tecnico; sostituzione di librerie o componenti troppo complessi \\
+		\hline
+	\end{tabularx}
+	\caption{Scheda rischio RT1}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabularx}{\textwidth}{|c|X|}
+		\hline
+		\textbf{Codice} & \textbf{RT2} \\
+		\hline
+		\textbf{Descrizione} & Problemi di integrazione tra componenti (frontend/backend, API esterne) \\
+		\hline
+		\textbf{Probabilità / Impatto} & Media/Media \\
+		\hline
+		\textbf{Piano di Mitigazione} & Definizione preventiva delle interfacce e dei contratti API; utilizzo di mock e test di integrazione \\
+		\hline
+		\textbf{Piano di Contingenza} & Sessioni straordinarie di integrazione; revisione dell'architettura dei componenti coinvolti \\
+		\hline
+	\end{tabularx}
+	\caption{Scheda rischio RT2}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabularx}{\textwidth}{|c|X|}
+		\hline
+		\textbf{Codice} & \textbf{RT3} \\
+		\hline
+		\textbf{Descrizione} & Indisponibilità o instabilità degli strumenti di supporto al progetto, quali GitHub, GitHub Pages\textsubscript{G}, Google Forms\textsubscript{G} o Google Sheets \\
+		\hline
+		\textbf{Probabilità / Impatto} & Bassa/Media \\
+		\hline
+		\textbf{Piano di Mitigazione} & Mantenere copie locali aggiornate del repository\textsubscript{G}; documentare i workflow principali; predisporre strumenti alternativi per il tracciamento temporaneo delle attività \\
+		\hline
+		\textbf{Piano di Contingenza} & Prosecuzione temporanea del lavoro in locale; registrazione manuale delle attività e delle ore; aggiornamento del repository e degli strumenti condivisi al ripristino dei servizi \\
+		\hline
+	\end{tabularx}
+	\caption{Scheda rischio RT3}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabularx}{\textwidth}{|c|X|}
+		\hline
+		\textbf{Codice} & \textbf{RT4} \\
+		\hline
+		\textbf{Descrizione} & Debito tecnico accumulato che rallenta gli sprint successivi \\
+		\hline
+		\textbf{Probabilità / Impatto} & Media/Media \\
+		\hline
+		\textbf{Piano di Mitigazione} & Refactoring\textsubscript{G} incrementale continuo; code review; riserva di capacità dedicata al debito tecnico \\
+		\hline
+		\textbf{Piano di Contingenza} & Sprint dedicato alla manutenzione correttiva e al consolidamento tecnico \\
+		\hline
+	\end{tabularx}
+	\caption{Scheda rischio RT4}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabularx}{\textwidth}{|c|X|}
+		\hline
+		\textbf{Codice} & \textbf{RT5} \\
+		\hline
+		\textbf{Descrizione} & Le tecnologie selezionate potrebbero non soddisfare pienamente i requisiti del progetto \\
+		\hline
+		\textbf{Probabilità / Impatto} & Media/Alta \\
+		\hline
+		\textbf{Piano di Mitigazione} & Analisi comparativa delle tecnologie; sviluppo del PoC\textsubscript{G}; confronto continuo con il proponente \\
+		\hline
+		\textbf{Piano di Contingenza} & Sostituzione delle componenti critiche; riduzione dello scope tecnico non essenziale \\
+		\hline
+	\end{tabularx}
+	\caption{Scheda rischio RT5}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabularx}{\textwidth}{|c|X|}
+		\hline
+		\textbf{Codice} & \textbf{RT6} \\
+		\hline
+		\textbf{Descrizione} & Difficoltà nell'avvio locale o nell'integrazione minima del Proof of Concept tramite Docker Compose\textsubscript{G} \\
+		\hline
+		\textbf{Probabilità / Impatto} & Media/Alta \\
+		\hline
+		\textbf{Piano di Mitigazione} & Predisporre una struttura chiara nella cartella \texttt{poc/}; separare frontend e backend; documentare nel README\textsubscript{G} i prerequisiti, le porte utilizzate e la procedura di avvio locale \\
+		\hline
+		\textbf{Piano di Contingenza} & Ridurre temporaneamente il perimetro dimostrativo del PoC; isolare il problema sul servizio coinvolto; prevedere sessioni tecniche dedicate alla configurazione e all'integrazione \\
+		\hline
+	\end{tabularx}
+	\caption{Scheda rischio RT6}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabularx}{\textwidth}{|c|X|}
+		\hline
+		\textbf{Codice} & \textbf{RT7} \\
+		\hline
+		\textbf{Descrizione} & Inserimento accidentale nel repository di credenziali, token, file \texttt{.env} o dati sensibili durante lo sviluppo del PoC \\
+		\hline
+		\textbf{Probabilità / Impatto} & Bassa/Alta \\
+		\hline
+		\textbf{Piano di Mitigazione} & Escludere i file sensibili tramite \texttt{.gitignore}; verificare le Pull Request prima del merge; evitare l'inserimento di token o credenziali nel codice sorgente \\
+		\hline
+		\textbf{Piano di Contingenza} & Rimozione immediata del contenuto sensibile; rotazione delle credenziali eventualmente esposte; apertura di una issue correttiva e verifica straordinaria del repository \\
+		\hline
+	\end{tabularx}
+	\caption{Scheda rischio RT7}
+\end{table}
+
+\subsection{RO - Rischi Organizzativi}
+
+\begin{table}[H]
+	\centering
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabularx}{\textwidth}{|c|X|}
+		\hline
+		\textbf{Codice} & \textbf{RO1} \\
+		\hline
+		\textbf{Descrizione} & Membro del team non disponibile per malattia o impegni accademici \\
+		\hline
+		\textbf{Probabilità / Impatto} & Media/Alta \\
+		\hline
+		\textbf{Piano di Mitigazione} & Condivisione continua delle conoscenze; documentazione costante delle attività; evitare single point of failure\textsubscript{G} \\
+		\hline
+		\textbf{Piano di Contingenza} & Ridistribuzione del carico; riduzione dello scope dello sprint; aggiornamento della pianificazione \\
+		\hline
+	\end{tabularx}
+	\caption{Scheda rischio RO1}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabularx}{\textwidth}{|c|X|}
+		\hline
+		\textbf{Codice} & \textbf{RO2} \\
+		\hline
+		\textbf{Descrizione} & Conflitti interni al team o scarsa comunicazione \\
+		\hline
+		\textbf{Probabilità / Impatto} & Bassa/Alta \\
+		\hline
+		\textbf{Piano di Mitigazione} & Aggiornamenti asincroni quando utili; retrospettive periodiche; definizione di convenzioni condivise \\
+		\hline
+		\textbf{Piano di Contingenza} & Mediazione del responsabile\textsubscript{G}; eventuale coinvolgimento del docente o del proponente \\
+		\hline
+	\end{tabularx}
+	\caption{Scheda rischio RO2}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabularx}{\textwidth}{|c|X|}
+		\hline
+		\textbf{Codice} & \textbf{RO3} \\
+		\hline
+		\textbf{Descrizione} & Distribuzione sbilanciata del carico di lavoro \\
+		\hline
+		\textbf{Probabilità / Impatto} & Media/Media \\
+		\hline
+		\textbf{Piano di Mitigazione} & Monitoraggio continuo delle ore e della velocity\textsubscript{G}; revisione periodica dell'assegnazione task\textsubscript{G} \\
+		\hline
+		\textbf{Piano di Contingenza} & Ribilanciamento immediato del backlog; redistribuzione delle responsabilità \\
+		\hline
+	\end{tabularx}
+	\caption{Scheda rischio RO3}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabularx}{\textwidth}{|c|X|}
+		\hline
+		\textbf{Codice} & \textbf{RO4} \\
+		\hline
+		\textbf{Descrizione} & Perdita di motivazione o disimpegno di uno o più membri \\
+		\hline
+		\textbf{Probabilità / Impatto} & Bassa/Media \\
+		\hline
+		\textbf{Piano di Mitigazione} & Obiettivi incrementali chiari; monitoraggio del carico di lavoro; coinvolgimento continuo del team \\
+		\hline
+		\textbf{Piano di Contingenza} & Colloqui individuali; riallocazione task; supporto organizzativo del gruppo \\
+		\hline
+	\end{tabularx}
+	\caption{Scheda rischio RO4}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabularx}{\textwidth}{|c|X|}
+		\hline
+		\textbf{Codice} & \textbf{RO5} \\
+		\hline
+		\textbf{Descrizione} & Scarsa comprensione dei requisiti o della visione di progetto \\
+		\hline
+		\textbf{Probabilità / Impatto} & Media/Alta \\
+		\hline
+		\textbf{Piano di Mitigazione} & Workshop iniziali di analisi; aggiornamento continuo del glossario e dei casi d'uso\textsubscript{G}; confronto periodico con il proponente \\
+		\hline
+		\textbf{Piano di Contingenza} & Revisione straordinaria dei requisiti; riallineamento del backlog e delle priorità progettuali \\
+		\hline
+	\end{tabularx}
+	\caption{Scheda rischio RO5}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabularx}{\textwidth}{|c|X|}
+		\hline
+		\textbf{Codice} & \textbf{RO6} \\
+		\hline
+		\textbf{Descrizione} & Sottostima del carico documentale e organizzativo associato al ruolo\textsubscript{G} di Amministratore\textsubscript{G} \\
+		\hline
+		\textbf{Probabilità / Impatto} & Alta/Media \\
+		\hline
+		\textbf{Piano di Mitigazione} & Distribuzione delle attività redazionali; revisione periodica della pianificazione delle ore \\
+		\hline
+		\textbf{Piano di Contingenza} & Aggiornamento del Preventivo a Finire; riallocazione del budget\textsubscript{G} orario tra i membri del gruppo \\
+		\hline
+	\end{tabularx}
+	\caption{Scheda rischio RO6}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabularx}{\textwidth}{|c|X|}
+		\hline
+		\textbf{Codice} & \textbf{RO7} \\
+		\hline
+		\textbf{Descrizione} & Disallineamento del gruppo nell'adozione del nuovo workflow operativo previsto per le attività documentali e non documentali a partire dallo Sprint 9 \\
+		\hline
+		\textbf{Probabilità / Impatto} & Media/Media \\
+		\hline
+		\textbf{Piano di Mitigazione} & Richiamare le nuove convenzioni durante lo Sprint Planning\textsubscript{G}; distinguere esplicitamente issue documentali e non documentali; verificare naming di issue, branch\textsubscript{G} e commit\textsubscript{G} durante la Pull Request \\
+		\hline
+		\textbf{Piano di Contingenza} & Correzione delle issue o dei branch non conformi; apertura di task correttive; riallineamento del gruppo durante la riunione intermedia o la retrospettiva \\
+		\hline
+	\end{tabularx}
+	\caption{Scheda rischio RO7}
+\end{table}
+
+\subsection{Matrice dei rischi\textsubscript{G}}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5}
+
+\begin{tabular}{|c|c|c|c|}
+\hline
+\diagbox{Impatto}{Probabilità} & Bassa & Media & Alta \\
+\hline
+
+Alta
+& RT7
+& RR1, RR3, RR4, RR5, RT1, RT5, RT6, RO1, RO5
+& RR2 \\
+\hline
+
+Media
+& RT3, RO4
+& RT2, RT4, RO3, RO7
+& RO6 \\
+\hline
+
+Bassa
+& --
+& --
+& -- \\
+\hline
+
+\end{tabular}
+
+\caption{Matrice qualitativa dei rischi}
+\end{table}
+
+\subsection{Monitoraggio dei rischi}
+
+I rischi vengono rivalutati al termine di ogni Sprint Review\textsubscript{G}
+e discussi, quando necessario, durante la Sprint Retrospective\textsubscript{G}.
+Il Responsabile monitora l'evoluzione dei rischi identificati, verifica
+l'efficacia delle azioni di mitigazione adottate e aggiorna il registro dei
+rischi sulla base di eventuali nuovi elementi emersi.
+
+Qualora un rischio si manifesti o cambi significativamente il proprio profilo
+di probabilità o impatto, il gruppo valuta le azioni correttive da adottare,
+aggiorna il Piano di Progetto e, se necessario, crea issue dedicate per
+tracciare le attività conseguenti.

@@ -1,0 +1,184 @@
+% =======================================================
+% 2. QUALITA DI PROCESSO
+% =======================================================
+\section{Qualità di Processo}
+Il gruppo adotta lo standard \textbf{ISO/IEC 12207} per la gestione dei processi. La qualità è perseguita attraverso il monitoraggio costante di indicatori quantitativi calcolati al termine di ogni Sprint\textsubscript{G}.
+
+\subsection{Processi primari}
+\subsubsection{Fornitura}
+Questo processo comprende le attività volte a determinare le procedure per la pianificazione e il controllo del progetto. Il Responsabile\textsubscript{G} monitora l'avanzamento dei lavori e il consumo del budget\textsubscript{G} per garantire trasparenza alla proponente Zucchetti.
+
+\subsubsection{Sviluppo}
+Include le attività di analisi, progettazione e codifica. In questa fase di RTB, il focus è sulla stabilità dei requisiti estratti dal capitolato C6, al fine di minimizzare revisioni costose nelle fasi successive.
+
+\subsection{Processi di supporto}
+\subsubsection{Documentazione}
+Assicura che ogni documento prodotto sia leggibile e conforme agli standard fissati nelle Norme di Progetto. La qualità è misurata tramite l'indice di leggibilità e l'assenza di errori formali.
+
+\subsubsection{Gestione configurazione}
+Garantisce l'integrità dei prodotti di lavoro tramite il versionamento su repository\textsubscript{G} Git. Ogni modifica deve essere tracciabile e associata a una specifica issue\textsubscript{G}.
+
+\subsubsection{Verifica}
+Accerta che ogni attività non contenga errori tramite un processo di controllo incrociato tra i membri del gruppo. Per i documenti, la verifica manuale si focalizza su sintassi, semantica e aderenza alle norme.
+\vspace{0.5cm}
+\subsubsection*{Checklist di Ispezione Documentale}
+Per garantire uniformità e oggettività durante le attività di verifica manuale, i Verificatori si avvalgono della seguente lista di controllo strutturata. Questa tabella raggruppa le verifiche fondamentali da effettuare prima di approvare una Pull Request relativa a un documento:
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|l|X|}
+        \hline
+        \rowcolor{primarycolor!10}
+        \textbf{Elemento} & \textbf{Descrizione del Controllo} \\
+        \hline
+        \textbf{Dati di Copertina} & Verifica della corretta corrispondenza tra versione, data, autori e verificatori nel Registro delle Modifiche e nel frontespizio. \\
+        \hline
+        \textbf{Terminologia (Glossario)} & Controllo che i termini tecnici, alla loro prima occorrenza nel testo, siano rigorosamente contrassegnati dal pedice\textsubscript{G}. \\
+        \hline
+        \textbf{Didascalie e Riferimenti} & Accertamento che ogni figura e tabella inserita possieda una \textit{caption} esplicativa e sia correttamente richiamata nel testo. \\
+        \hline
+        \textbf{Struttura} & Assenza di sezioni vuote prive di contenuto o di gerarchie dei titoli errate. \\
+        \hline
+        \textbf{Leggibilità (Gulpease)} & Rilevazione di frasi eccessivamente lunghe o complesse per garantire il rispetto della soglia ottimale, con l'ausilio di script automatici. \\
+        \hline
+        \textbf{Tracciamento} (AdR / PdQ) & Verifica della bidirezionalità dei tracciamenti (es. Caso d'Uso $\leftrightarrow$ Requisito $\leftrightarrow$ Test di Sistema). \\
+        \hline
+        \textbf{Ortografia e Formattazione} & Controllo sintattico e semantico per eliminare refusi, doppi spazi e disallineamenti tipografici rispetto alle Norme di Progetto. \\
+        \hline
+    \end{tabularx}
+    \caption{Checklist per l'ispezione formale della documentazione}
+\end{table}
+
+\subsubsection{Validazione}
+Fornisce la conferma che il prodotto finale sia conforme alle attese dell'utente e della proponente. In questa fase si concentra sulla verifica che i requisiti individuati rispondano agli obiettivi del "Second Brain".
+
+\subsubsection{Accertamento della qualità}
+Monitora l'efficacia dei processi adottati e il raggiungimento degli obiettivi qualitativi definiti nel presente documento. Tale processo si basa sulla raccolta periodica delle metriche, sull'analisi degli scostamenti e sull'individuazione di eventuali azioni correttive.
+
+\subsubsection{Gestione dei cambiamenti}
+Disciplina la valutazione, l'approvazione e il tracciamento delle modifiche rilevanti a requisiti, documenti, tecnologie e processi. Ogni cambiamento significativo viene gestito tramite issue\textsubscript{G}, Pull Request\textsubscript{G} e verifica da parte di un membro diverso dall'autore.
+
+\subsubsection{Gestione delle non conformità}
+Gestisce le deviazioni rispetto alle Norme di Progetto, al Piano di Qualifica o agli accordi formalizzati nei verbali. Le non conformità vengono classificate, tracciate e risolte tramite attività correttive dedicate.
+
+\subsection{Processi organizzativi}
+\subsubsection{Gestione processo}
+Si occupa del coordinamento del team durante i cicli di Sprint. Mira a bilanciare il carico di lavoro tra i componenti del gruppo Synergo Unit per evitare colli di bottiglia\textsubscript{G}.
+
+\subsubsection{Miglioramento continuo}
+Attraverso le retrospettive di fine Sprint, il gruppo analizza le inefficienze e definisce azioni correttive immediate per ottimizzare le metodologie di lavoro.
+
+\subsubsection{Comunicazione}
+Regola i canali e le modalità di comunicazione interna ed esterna, garantendo che decisioni, chiarimenti e impegni siano tracciati tramite verbali, issue o comunicazioni ufficiali.
+
+\subsubsection{Infrastruttura}
+Definisce e mantiene gli strumenti utilizzati dal gruppo per documentazione, pianificazione, sviluppo del Proof of Concept\textsubscript{G}, pubblicazione e tracciamento delle attività.
+
+\subsubsection{Formazione}
+Supporta l'acquisizione progressiva delle competenze necessarie all'utilizzo degli strumenti, delle tecnologie e dei processi adottati. In fase RTB assume particolare rilevanza per mitigare i rischi legati all'inesperienza tecnica.
+
+\subsection{Metriche per processi}
+Le metriche di processo (MPC) vengono calcolate a ogni fine Sprint e riportate nel Cruscotto delle Metriche.
+Le metriche di processo sono inoltre utilizzate come strumenti di monitoraggio dei rischi individuati nel 
+\link{https://synergo-unit-unipd.github.io/Second-Brain/docs/PB/doc_gestionali/doc_esterni/piano_di_progetto/piano_di_progetto.pdf}{Piano di Progetto}. 
+In particolare, SPI e CPI supportano il controllo dei rischi legati a scadenze e budget; RSI consente di monitorare la stabilità dei requisiti; 
+Time Efficiency e Task Completion Rate aiutano a rilevare criticità organizzative; PR Resolution Time e Review Coverage permettono di controllare 
+l'efficacia del processo di verifica; Quality Metrics Compliance Rate fornisce una visione sintetica del livello complessivo di qualità raggiunto.
+
+\vspace{0.5cm}
+\subsubsection*{Definizione matematica delle metriche principali}
+Di seguito sono riportate le formule matematiche utilizzate per il calcolo degli indici di performance economica, temporale e di stabilità, ricavate dal foglio di tracciamento Excel:
+
+\begin{itemize}
+
+    \item \textbf{Schedule Performance Index (SPI)}: Misura l'efficienza temporale del progetto. Un valore $\geq 1$ indica che il progetto è in linea con la pianificazione o in anticipo.
+
+    \[
+    SPI = \frac{EV}{PV}
+    \]
+
+    dove:
+    \begin{itemize}
+        \item $EV$ (\textit{Earned Value}) rappresenta il valore del lavoro effettivamente completato;
+        \item $PV$ (\textit{Planned Value}) rappresenta il valore del lavoro pianificato.
+    \end{itemize}
+
+    \item \textbf{Cost Performance Index (CPI)}: Misura l'efficienza economica del progetto. Un valore $\geq 1$ indica che il costo sostenuto è inferiore o uguale al budget previsto per il lavoro svolto.
+
+    \[
+    CPI = \frac{EV}{AC}
+    \]
+
+    dove:
+    \begin{itemize}
+        \item $EV$ (\textit{Earned Value}) rappresenta il valore del lavoro effettivamente completato;
+        \item $AC$ (\textit{Actual Cost}) rappresenta il costo effettivamente sostenuto.
+    \end{itemize}
+
+    \item \textbf{Requirements Stability Index (RSI)}: Misura la stabilità dei requisiti consolidati.
+
+    \[
+    RSI = \left( 1 - \frac{N_{modifiche}}{N_{totali}} \right) \times 100
+    \]
+
+    dove:
+    \begin{itemize}
+        \item $N_{modifiche}$ rappresenta il numero di requisiti aggiunti, modificati o rimossi nel periodo considerato;
+        \item $N_{totali}$ rappresenta il numero totale di requisiti presenti all'inizio del periodo considerato.
+    \end{itemize}
+
+    \item \textbf{Quality Metrics Compliance Rate (QMCR)}: Misura la percentuale di metriche che rispettano i valori soglia definiti.
+
+    \[
+    QMCR = \frac{N_{conformi}}{N_{misurate}} \times 100
+    \]
+
+    dove:
+    \begin{itemize}
+        \item $N_{conformi}$ rappresenta il numero di metriche che rispettano i valori soglia previsti;
+        \item $N_{misurate}$ rappresenta il numero totale di metriche effettivamente misurate nel periodo considerato.
+    \end{itemize}
+
+\end{itemize}
+\vspace{0.5cm}
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|l|X|c|c|}
+        \hline
+        \rowcolor{primarycolor!10}
+        \textbf{Codice} & \textbf{Nome Metrica} & \textbf{Val. Accettabile} & \textbf{Val. Ottimale} \\
+        \hline
+        MPC01 & \textbf{Schedule Performance Index\textsubscript{G} (SPI)}: efficienza nel rispettare i tempi pianificati. & $\ge 0.9$ & $1.0$ \\
+        \hline
+        MPC02 & \textbf{Cost Performance Index\textsubscript{G} (CPI)}: efficienza nell'uso del budget allocato. & $\ge 0.9$ & $1.0$ \\
+        \hline
+        MPC03 & \textbf{Requirements Stability Index\textsubscript{G} (RSI)}: variazione dei requisiti nell'Analisi. & $\ge 80\%$ & $100\%$ \\
+        \hline
+        MPC04 & \textbf{Time Efficiency}: percentuale di ore produttive sul totale ore spese. & $\ge 75\%$ & $\ge 90\%$ \\
+        \hline
+        MPC05 & \textbf{Task\textsubscript{G} Completion Rate}: percentuale di issue chiuse rispetto a quelle pianificate. & $\ge 80\%$ & $100\%$ \\
+        \hline
+        MPC06 & \textbf{PR Resolution Time}: tempo medio per revisione\textsubscript{G} e merge\textsubscript{G} di una Pull Request\textsubscript{G}. & $\le 3 \text{ giorni}$ & $\le 1 \text{ giorno}$ \\
+        \hline
+        MPC07 & \textbf{Review Coverage}: percentuale di Pull Request approvate da un revisore diverso dall'autore. & $100\%$ & $100\%$ \\
+        \hline
+        MPC08 & \textbf{Quality Metrics Compliance Rate}: percentuale di metriche i cui valori sono almeno accettabili. & $\ge 80\%$ & $\ge 95\%$ \\
+        \hline
+    \end{tabularx}
+    \caption{Metriche di Qualità di Processo}
+\end{table}
+
+\vspace{0.5cm}
+\subsubsection*{Motivazione delle soglie metriche}
+\begin{itemize}
+    \item \textbf{MPC01 (SPI) e MPC02 (CPI)}: Un valore accettabile $\ge 0.9$ tollera un fisiologico margine di errore del 10\% nelle stime, tipico di un team con esperienza in maturazione. Il valore ottimale $1.0$ rappresenta la perfetta aderenza al piano e al budget.
+    \item \textbf{MPC03 (RSI)}: La soglia accettabile dell'80\% assorbe i naturali cambiamenti emersi durante i colloqui di chiarimento con la proponente in fase RTB. Un valore ottimale del 100\% indica un'analisi iniziale perfetta e assenza di ambiguità.
+    \item \textbf{MPC04 (Time Efficiency)}: Si accetta un $\ge 75\%$ poiché una parte del tempo deve necessariamente essere investita in auto-formazione ("ore di palestra") e coordinamento. Un valore $\ge 90\%$ indica un team pienamente a regime e con basso overhead organizzativo.
+    \item \textbf{MPC05 (Task Completion Rate)}: La soglia dell'80\% tollera che alcune task possano slittare allo sprint successivo per impedimenti non prevedibili. Il 100\% ottimale indica una pianificazione dello sprint impeccabile.
+    \item \textbf{MPC06 (PR Resolution Time)}: Un tempo accettabile di $\le 3$ giorni previene la stagnazione del codice e riduce il rischio di complessi conflitti di merge. L'ottimo $\le 1$ giorno favorisce una vera Continuous Integration.
+    \item \textbf{MPC07 (Review Coverage)}: Il 100\% è l'unico valore ammesso, sia come accettabile che come ottimale, poiché ogni Pull Request deve essere approvata da un revisore diverso dall'autore prima di poter essere integrata nel ramo principale.
+    \item \textbf{MPC08 (Quality Metrics Compliance)}: Un'accettazione all'80\% riconosce che singole metriche possano temporaneamente fallire durante uno sprint, pur mantenendo la qualità generale sotto controllo.
+\end{itemize}

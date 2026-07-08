@@ -1,0 +1,68 @@
+% =======================================================
+% 4. DEFINITION OF DONE
+% =======================================================
+\section{Definition of Done (DoD)}
+\label{sec:dod}
+
+La Definition of Done\textsubscript{G} definisce i criteri minimi che un task deve
+soddisfare per essere considerato completato.
+
+I criteri operativi della Definition of Done sono definiti nelle \link{https://synergo-unit-unipd.github.io/Second-Brain/docs/PB/doc_gestionali/doc_interni/norme_di_progetto/norme_di_progetto.pdf}{Norme di
+Progetto}, all'interno del processo di Verifica. Nel presente Piano di Progetto
+la DoD viene richiamata come criterio di chiusura dei task e degli sprint,
+evitando di duplicare regole operative già normate nel way of working del
+gruppo.
+
+Un task è considerato \textit{Done} solo se soddisfa:
+\begin{itemize}
+\item i criteri comuni previsti dalle Norme di Progetto;
+\item i criteri specifici per task documentali, nel caso di attività di
+documentazione;
+\item i criteri specifici per task di implementazione del Proof of
+Concept\textsubscript{G}, nel caso di attività di sviluppo del PoC.
+\end{itemize}
+
+La verifica del rispetto della DoD avviene durante la Pull Request\textsubscript{G}
+e viene confermata in Sprint Review\textsubscript{G}. Eventuali task non
+completati vengono riportati nel backlog\textsubscript{G} e motivati nel
+verbale interno dello sprint.
+
+% ── 4.1 Livello task ────────────────────────────────────────────────────────
+\subsection{Livello task}
+\label{sec:dod-task}
+
+A livello di task, la DoD viene applicata in base alla natura dell'attività.
+
+Per i task documentali, il completamento richiede che il contenuto sia coerente
+con lo scope della issue\textsubscript{G}, che il documento compili correttamente,
+che eventuali link e riferimenti interni siano verificati, che il Glossario sia
+aggiornato se necessario e che la Pull Request abbia ricevuto almeno una review
+positiva da un Verificatore\textsubscript{G} diverso dall'autore della modifica.
+
+Per i task di implementazione del PoC, il completamento richiede che il codice
+sia coerente con lo scope della issue, che il PoC si avvii localmente, che non
+siano presenti errori evidenti in console, credenziali, token o file sensibili
+nel repository\textsubscript{G}, e che eventuali modifiche rilevanti siano
+riflesse nei documenti coinvolti.
+
+% ── 4.2 Livello sprint ──────────────────────────────────────────────────────
+\subsection{Livello sprint}
+\label{sec:dod-sprint}
+
+Uno sprint è considerato \textit{Done} se:
+\begin{itemize}
+\item tutti i task pianificati sono conclusi secondo la DoD, oppure sono
+stati esplicitamente rimandati al backlog con motivazione riportata
+nel verbale interno;
+\item la Sprint Review ha verificato gli output prodotti rispetto agli
+obiettivi dello sprint;
+\item la Sprint Retrospective\textsubscript{G} ha individuato eventuali
+criticità e, se necessario, almeno un'azione correttiva;
+\item le eventuali azioni correttive individuate durante la Sprint
+Retrospective sono recepite nel processo di miglioramento descritto
+nelle Norme di Progetto e tracciate tramite issue o verbali interni;
+\item il registro dei rischi è stato rivalutato;
+\item le ore effettive sono state rendicontate;
+\item eventuali decisioni o modifiche operative emerse sono state tracciate
+tramite issue o verbale.
+\end{itemize}
