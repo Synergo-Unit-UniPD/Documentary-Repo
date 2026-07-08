@@ -1,0 +1,205 @@
+% --- 1. INFORMAZIONI GENERALI ---
+\section{Informazioni Generali}
+\begin{itemize}
+	\item \textbf{Azienda Coinvolta:} Zucchetti\textsubscript{G}
+	\item \textbf{Mezzo di Comunicazione:} Google Meet
+	\item \textbf{Data:} 2026-05-26
+	\item \textbf{Orario di inizio:} 12:00
+	\item \textbf{Orario di fine:} 12:40
+\end{itemize}
+
+Il presente verbale documenta l’incontro, svoltosi tramite Google Meet, 
+tra il gruppo Synergo Unit e il referente dell’azienda Zucchetti. 
+Durante la riunione sono stati presentati e discussi l’Analisi dei Requisiti (AdR),
+lo stato dell’arte delle tecnologie selezionate, il Proof of Concept (PoC) e il mockup dell’interfaccia utente.
+
+
+\vspace{0.5cm}
+\textbf{Referenti Azienda:}
+\begin{table}[ht]
+	\centering
+	\renewcommand{\arraystretch}{1.2}
+	\begin{tabularx}{\textwidth}{X l}
+		\toprule
+		\textbf{Nome e Cognome} & \textbf{Ruolo\textsubscript{G}} \\
+		\midrule
+		Gregorio Piccoli & Referente Principale \\
+		\bottomrule
+	\end{tabularx}
+\end{table}
+
+% --- 2. CHIARIMENTI TECNICI RICHIESTI ---
+\section{Chiarimenti Richiesti}
+Il gruppo ha richiesto chiarimenti sui seguenti aspetti:
+
+\begin{enumerate}
+	\item Analisi dei requisiti
+	\item Stato dell'arte
+	\item Proof of concept
+	\item Mockup dell’interfaccia
+\end{enumerate}
+
+% --- 3. RESOCONTO ---
+\section{Resoconto}
+
+\subsection{Analisi dei Requisiti}
+
+Il gruppo ha presentato le tre macroaree funzionali individuate
+nell’Analisi dei Requisiti, illustrando i diagrammi UML e il
+tracciamento dei requisiti.
+
+Sono stati inoltre discussi alcuni requisiti prestazionali
+individuati dal gruppo, tra cui:
+\begin{itemize}
+	\item il rendering in tempo reale durante la digitazione;
+	\item la segnalazione di operazioni con durata superiore ai due secondi.
+\end{itemize}
+
+Il referente aziendale ha ritenuto adeguati i requisiti presentati
+e ha approvato l’Analisi dei Requisiti.
+
+\subsection{Stato dell’arte}
+Il gruppo ha presentato le tecnologie selezionate per il progetto.
+
+In particolare:
+\begin{itemize}
+	\item CodeMirror è stato ritenuto adeguato rispetto a Monaco Editor,
+	in quanto maggiormente compatibile con il livello di complessità richiesto;
+	\item Vue.js è stato approvato per lo sviluppo del frontend;
+	\item FastAPI è stato approvato per lo sviluppo backend;
+	\item PostgreSQL è stato valutato positivamente grazie al supporto
+	per dati JSON e funzionalità embedded tramite plugin.
+\end{itemize}
+
+Le scelte tecnologiche presentate sono state approvate.
+
+\subsection{Proof of concept}
+
+Il gruppo ha presentato il perimetro del Proof of Concept,
+illustrando un editor aperto su una nota Markdown esistente.
+
+Durante la dimostrazione sono state presentate le seguenti funzionalità:
+\begin{itemize}
+	\item importazione e salvataggio di file Markdown;
+	\item applicazione di formattazione testuale;
+	\item visualizzazione split editor/render;
+	\item interazione con LLM tramite suggerimenti accettabili o rifiutabili;
+	\item suggerimenti contestuali su selezione di testo;
+	\item funzionalità di distant writing tramite prompt utente.
+\end{itemize}
+
+Il referente aziendale ha valutato positivamente il PoC,
+ritenendolo coerente con gli obiettivi del capitolato.
+
+\subsection{Mockup dell’interfaccia}
+
+È stato inoltre presentato un mockup preliminare dell’interfaccia
+utente, progettato come versione semplificata del futuro MVP.
+
+Il mockup è stato approvato dal referente aziendale.
+
+\newpage
+% --- 4. DECISIONI FORMALI ---
+\section{Decisioni Formali}
+Nella seguente tabella sono tracciate le decisioni adottate a seguito
+dei chiarimenti ricevuti.
+
+\renewcommand{\arraystretch}{1.3}
+\vspace{-0.3cm}
+\noindent
+\begin{longtable}{c p{12cm}}
+	\toprule
+	\textbf{Codice} & \textbf{Decisione} \\
+	\midrule
+	\endfirsthead
+
+	\toprule
+	\textbf{Codice} & \textbf{Decisione} \\
+	\midrule
+	\endhead
+
+	\midrule
+	\multicolumn{2}{r}{\textit{Continua nella pagina successiva}} \\
+	\midrule
+	\endfoot
+
+	\bottomrule
+	\endlastfoot
+
+	\textbf{VE-6.1}
+		& Scelte riguardo l'AdR approvate \\[4pt]
+
+	\textbf{VE-6.2}
+		& Scelte riguardo lo stato dell'arte approvate \\[4pt]
+
+	\textbf{VE-6.3}
+		& Scelte riguardo il PoC approvate \\[4pt]
+
+	\textbf{VE-6.4}
+		& Mockup dell'interfaccia approvato \\[4pt]
+\end{longtable}
+
+\newpage
+% --- 5. AZIONI (TODO) ---
+\section{Azioni da Svolgere (To-Do)}
+
+Le seguenti attività sono state individuate come conseguenza
+delle decisioni adottate durante la riunione.
+
+\renewcommand{\arraystretch}{1.3}
+\begin{longtable}{c c p{5cm} p{3cm} l}
+	\toprule
+	\textbf{Codice} & \textbf{Rif. Decisione} & \textbf{Descrizione Task} & \textbf{Assegnatario} & \textbf{Scadenza} \\
+	\midrule
+	\endfirsthead
+
+	\toprule
+	\textbf{Codice} & \textbf{Rif. Decisione} & \textbf{Descrizione Task} & \textbf{Assegnatario} & \textbf{Scadenza} \\
+	\midrule
+	\endhead
+
+	\midrule
+	\multicolumn{5}{r}{\textit{Continua nella pagina successiva}} \\
+	\midrule
+	\endfoot
+
+	\bottomrule
+	\endlastfoot
+
+	\ghissue{193}
+		& VE-6.3, VE-6.4
+		& Creazione del setup iniziale del PoC.
+		& Gruppo Synergo Unit
+		& 2026-06-02 \\[4pt]
+
+\end{longtable}
+
+% --- 6. FIRME ---
+\section*{Approvazione e Firme}
+Con le seguenti firme, i rappresentanti approvano formalmente il contenuto
+del presente verbale e le decisioni adottate.
+
+\vspace{2.5cm}
+
+\noindent
+\begin{minipage}[c]{0.45\textwidth}
+	\begin{center}
+		\rule{6cm}{0.4pt} \\
+		\vspace{0.2cm}
+		\textbf{Per il Gruppo Synergo Unit} \\
+		Armando Moda Scarati \\
+		\textit{Responsabile\textsubscript{G} di Progetto}
+	\end{center}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.45\textwidth}
+	\begin{center}
+		\rule{6cm}{0.4pt} \\
+		\vspace{0.2cm}
+		\textbf{Per l'Azienda Zucchetti} \\
+		Gregorio Piccoli \\
+		\textit{Referente Aziendale}
+	\end{center}
+\end{minipage}
+
+\vspace{2cm}

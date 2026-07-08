@@ -1,0 +1,199 @@
+\section{Requisiti}
+I requisiti individuati sono classificati e identificati da un codice univoco nel formato \textbf{R[ID]-[Tipo]-[Importanza]}:
+\begin{itemize}
+	\item \textbf{ID}: Identificativo numerico progressivo.
+	\item \textbf{Tipo}: \textbf{F} (Funzionale), \textbf{Q} (Qualità), \textbf{V} (Vincolo), \textbf{P} (Prestazionale).
+	\item \textbf{Importanza}: \textbf{O} (Obbligatorio), \textbf{D} (Desiderabile), \textbf{Op} (Opzionale).
+\end{itemize}
+
+La classificazione dei requisiti è stata effettuata sulla base delle
+informazioni raccolte dal capitolato, dai verbali esterni con la
+proponente e dall'analisi del dominio applicativo.
+
+\subsection{Requisiti funzionali}
+\renewcommand{\arraystretch}{1.5}
+\begin{longtable}{|p{2.5cm}|p{2.2cm}|p{6.8cm}|p{2.7cm}|}
+	\caption{Requisiti Funzionali} \\
+	\hline
+	\rowcolor{primarycolor!10}
+	\textbf{Codice} & \textbf{Importanza} & \textbf{Descrizione} & \textbf{UC, Fonti} \\
+	\hline
+	\endfirsthead
+	\hline
+	\rowcolor{primarycolor!10}
+	\textbf{Codice} & \textbf{Importanza} & \textbf{Descrizione} & \textbf{UC, Fonti} \\
+	\hline
+	\endhead
+
+	% ---- Scrittura e clipboard ----
+	\textbf{R1-F-O} & Obbligatorio & Il sistema deve permettere la scrittura libera di testo nell'editor tramite tastiera. & \hyperlink{uc1}{UC1}, Capitolato \\ \hline
+	\textbf{R2-F-O} & Obbligatorio & Il sistema deve permettere la copia di una porzione di testo selezionata negli appunti di sistema. & \hyperlink{uc2}{UC2}, Analisi del dominio \\ \hline
+	\textbf{R3-F-O} & Obbligatorio & Il sistema deve permettere di tagliare una porzione di testo selezionata, rimuovendola dall'editor e copiandola negli appunti. & \hyperlink{uc3}{UC3}, Analisi del dominio \\ \hline
+	\textbf{R4-F-O} & Obbligatorio & Il sistema deve permettere di incollare il contenuto degli appunti nella posizione corrente del cursore. & \hyperlink{uc4}{UC4}, Analisi del dominio \\ \hline
+
+	% ---- Formattazione inline ----
+	\textbf{R5-F-O} & Obbligatorio & Il sistema deve permettere l'attivazione della formattazione grassetto per il testo digitato successivamente. & \hyperlink{uc5}{UC5}, Capitolato, VE-5.1 \\ \hline
+	\textbf{R6-F-O} & Obbligatorio & Il sistema deve permettere l'applicazione della formattazione grassetto a una porzione di testo già selezionata. & \hyperlink{uc6}{UC6}, Capitolato, VE-5.1 \\ \hline
+	\textbf{R7-F-O} & Obbligatorio & Il sistema deve permettere la disattivazione della formattazione grassetto durante la digitazione. & \hyperlink{uc7}{UC7}, Capitolato \\ \hline
+	\textbf{R8-F-O} & Obbligatorio & Il sistema deve permettere la rimozione della formattazione grassetto da una porzione di testo selezionata. & \hyperlink{uc8}{UC8}, Capitolato \\ \hline
+	\textbf{R9-F-O} & Obbligatorio & Il sistema deve permettere l'attivazione della formattazione corsivo per il testo digitato successivamente. & \hyperlink{uc9}{UC9}, Capitolato, VE-5.1 \\ \hline
+	\textbf{R10-F-O} & Obbligatorio & Il sistema deve permettere l'applicazione della formattazione corsivo a una porzione di testo già selezionata. & \hyperlink{uc10}{UC10}, Capitolato, VE-5.1 \\ \hline
+	\textbf{R11-F-O} & Obbligatorio & Il sistema deve permettere la disattivazione della formattazione corsivo durante la digitazione. & \hyperlink{uc11}{UC11}, Capitolato \\ \hline
+	\textbf{R12-F-O} & Obbligatorio & Il sistema deve permettere la rimozione della formattazione corsivo da una porzione di testo selezionata. & \hyperlink{uc12}{UC12}, Capitolato \\ \hline
+	\textbf{R13-F-O} & Obbligatorio & Il sistema deve permettere l'attivazione della formattazione sottolineato per il testo digitato successivamente. & \hyperlink{uc13}{UC13}, Capitolato, VE-5.1 \\ \hline
+	\textbf{R14-F-O} & Obbligatorio & Il sistema deve permettere l'applicazione della formattazione sottolineato a una porzione di testo già selezionata. & \hyperlink{uc14}{UC14}, Capitolato, VE-5.1 \\ \hline
+	\textbf{R15-F-O} & Obbligatorio & Il sistema deve permettere la disattivazione della formattazione sottolineato durante la digitazione. & \hyperlink{uc15}{UC15}, Capitolato \\ \hline
+	\textbf{R16-F-O} & Obbligatorio & Il sistema deve permettere la rimozione della formattazione sottolineato da una porzione di testo selezionata. & \hyperlink{uc16}{UC16}, Capitolato \\ \hline
+	\textbf{R17-F-O} & Obbligatorio & Il sistema deve permettere l'attivazione della formattazione barrato per il testo digitato successivamente. & \hyperlink{uc17}{UC17}, Capitolato, VE-5.1 \\ \hline
+	\textbf{R18-F-O} & Obbligatorio & Il sistema deve permettere l'applicazione della formattazione barrato a una porzione di testo già selezionata. & \hyperlink{uc18}{UC18}, Capitolato, VE-5.1 \\ \hline
+	\textbf{R19-F-O} & Obbligatorio & Il sistema deve permettere la disattivazione della formattazione barrato durante la digitazione. & \hyperlink{uc19}{UC19}, Capitolato \\ \hline
+	\textbf{R20-F-O} & Obbligatorio & Il sistema deve permettere la rimozione della formattazione barrato da una porzione di testo selezionata. & \hyperlink{uc20}{UC20}, Capitolato \\ \hline
+	\textbf{R21-F-O} & Obbligatorio & Il sistema deve permettere l'attivazione della formattazione citazione (blockquote) per il testo digitato successivamente. & \hyperlink{uc21}{UC21}, Capitolato, VE-5.1 \\ \hline
+	\textbf{R22-F-O} & Obbligatorio & Il sistema deve permettere l'applicazione della formattazione citazione a una porzione di testo già selezionata. & \hyperlink{uc22}{UC22}, Capitolato, VE-5.1 \\ \hline
+	\textbf{R23-F-O} & Obbligatorio & Il sistema deve permettere la disattivazione della formattazione citazione durante la digitazione. & \hyperlink{uc23}{UC23}, Capitolato \\ \hline
+	\textbf{R24-F-O} & Obbligatorio & Il sistema deve permettere la rimozione della formattazione citazione da una porzione di testo selezionata. & \hyperlink{uc24}{UC24}, Capitolato \\ \hline
+
+	% ---- Elementi strutturali ----
+	\textbf{R25-F-O} & Obbligatorio & Il sistema deve permettere l'inserimento di intestazioni Markdown (livelli H1--H6) per il testo digitato successivamente. & \hyperlink{uc25}{UC25}, Capitolato, VE-5.1 \\ \hline
+	\textbf{R26-F-O} & Obbligatorio & Il sistema deve permettere l'applicazione della formattazione intestazione a una riga di testo già selezionata. & \hyperlink{uc26}{UC26}, Capitolato, VE-5.1 \\ \hline
+	\textbf{R27-F-O} & Obbligatorio & Il sistema deve permettere la disattivazione della formattazione intestazione durante la digitazione. & \hyperlink{uc27}{UC27}, Capitolato \\ \hline
+	\textbf{R28-F-O} & Obbligatorio & Il sistema deve permettere la rimozione della formattazione intestazione da una riga di testo selezionata, ripristinando il testo normale. & \hyperlink{uc28}{UC28}, Capitolato \\ \hline
+	\textbf{R29-F-O} & Obbligatorio & Il sistema deve permettere l'inserimento di un link ipertestuale con testo di visualizzazione e URL. & \hyperlink{uc29}{UC29}, Capitolato, VE-5.1 \\ \hline
+	\textbf{R30-F-O} & Obbligatorio & Il sistema deve permettere la modifica di un link ipertestuale esistente. & \hyperlink{uc30}{UC30}, Capitolato \\ \hline
+	\textbf{R31-F-O} & Obbligatorio & Il sistema deve permettere la rimozione di un link ipertestuale, mantenendo il testo di visualizzazione come testo normale. & \hyperlink{uc31}{UC31}, Capitolato \\ \hline
+	\textbf{R32-F-O} & Obbligatorio & Il sistema deve permettere l'inserimento di un elenco puntato o numerato. & \hyperlink{uc32}{UC32}, Capitolato, VE-5.1 \\ \hline
+	\textbf{R33-F-O} & Obbligatorio & Il sistema deve permettere la modifica di un elenco esistente. & \hyperlink{uc33}{UC33}, Capitolato \\ \hline
+	\textbf{R34-F-O} & Obbligatorio & Il sistema deve permettere la disattivazione dell'elenco durante la digitazione. & \hyperlink{uc34}{UC34}, Capitolato \\ \hline
+	\textbf{R35-F-O} & Obbligatorio & Il sistema deve permettere la rimozione della formattazione elenco da una porzione di testo selezionata, ripristinando il testo normale. & \hyperlink{uc35}{UC35}, Capitolato \\ \hline
+
+	% ---- Tabelle ----
+	\textbf{R36-F-O} & Obbligatorio & Il sistema deve permettere l'inserimento di una tabella Markdown specificando numero di righe e colonne; i parametri non validi devono essere segnalati con un messaggio di errore. & \hyperlink{uc36}{UC36}, \hyperlink{uc36.1}{UC36.1}, Capitolato, VE-5.1 \\ \hline
+	\textbf{R37-F-O} & Obbligatorio & Il sistema deve permettere la modifica del contenuto di una cella di una tabella esistente. & \hyperlink{uc37}{UC37}, Capitolato \\ \hline
+	\textbf{R38-F-O} & Obbligatorio & Il sistema deve permettere l'inserimento di una nuova riga in una tabella esistente. & \hyperlink{uc38}{UC38}, Capitolato \\ \hline
+	\textbf{R39-F-O} & Obbligatorio & Il sistema deve permettere l'eliminazione di una riga da una tabella esistente. & \hyperlink{uc39}{UC39}, Capitolato \\ \hline
+	\textbf{R40-F-O} & Obbligatorio & Il sistema deve permettere l'inserimento di una nuova colonna in una tabella esistente. & \hyperlink{uc40}{UC40}, Capitolato \\ \hline
+	\textbf{R41-F-O} & Obbligatorio & Il sistema deve permettere l'eliminazione di una colonna da una tabella esistente. & \hyperlink{uc41}{UC41}, Capitolato \\ \hline
+	\textbf{R42-F-O} & Obbligatorio & Il sistema deve permettere l'eliminazione di un'intera tabella dal documento. & \hyperlink{uc42}{UC42}, Capitolato \\ \hline
+
+	% ---- Cronologia modifiche ----
+	\textbf{R43-F-O} & Obbligatorio & Il sistema deve permettere l'annullamento dell'ultima modifica apportata al documento (Undo). & \hyperlink{uc43}{UC43}, Analisi del dominio \\ \hline
+	\textbf{R44-F-O} & Obbligatorio & Il sistema deve permettere il ripristino dell'ultima modifica annullata (Redo). & \hyperlink{uc44}{UC44}, Analisi del dominio \\ \hline
+
+	% ---- Visualizzazione ----
+	\textbf{R45-F-O} & Obbligatorio & Il sistema deve permettere la visualizzazione esclusiva dell'area di scrittura Markdown (Solo Editor). & \hyperlink{uc45}{UC45}, Capitolato \\ \hline
+	\textbf{R46-F-O} & Obbligatorio & Il sistema deve permettere la visualizzazione esclusiva dell'anteprima formattata (Solo Render). & \hyperlink{uc46}{UC46}, Capitolato \\ \hline
+	\textbf{R47-F-O} & Obbligatorio & Il sistema deve permettere la visualizzazione affiancata di editor e anteprima (Split View). & \hyperlink{uc47}{UC47}, Capitolato \\ \hline
+
+	% ---- Funzionalità AI base ----
+	\textbf{R48-F-O} & Obbligatorio & Il sistema deve permettere la generazione di un riassunto del testo selezionato tramite LLM. & \hyperlink{uc48}{UC48}, Capitolato \\ \hline
+	\textbf{R49-F-O} & Obbligatorio & Il sistema deve notificare l'utente in caso di errore nella comunicazione con i servizi AI durante il riassunto. & \hyperlink{uc48.1}{UC48.1}, Analisi del dominio \\ \hline
+	\textbf{R50-F-O} & Obbligatorio & Il sistema deve permettere la traduzione del testo selezionato nelle lingue Inglese, Francese e Spagnolo tramite LLM. & \hyperlink{uc49}{UC49}, Capitolato, VE-5.2 \\ \hline
+	\textbf{R51-F-O} & Obbligatorio & Il sistema deve notificare l'utente in caso di errore nella comunicazione con i servizi AI durante la traduzione. & \hyperlink{uc49.1}{UC49.1}, Analisi del dominio \\ \hline
+	\textbf{R52-F-D} & Desiderabile & Il sistema dovrebbe supportare la traduzione in Tedesco tramite LLM come estensione facoltativa. & \hyperlink{uc49}{UC49}, VE-5.2 \\ \hline
+	\textbf{R53-F-O} & Obbligatorio & Il sistema deve permettere la riscrittura del testo selezionato tramite LLM. & \hyperlink{uc50}{UC50}, Capitolato \\ \hline
+	\textbf{R54-F-O} & Obbligatorio & Il sistema deve notificare l'utente in caso di errore nella comunicazione con i servizi AI durante la riscrittura. & \hyperlink{uc50.1}{UC50.1}, Analisi del dominio \\ \hline
+	\textbf{R55-F-O} & Obbligatorio & Il sistema deve permettere la generazione di testo a partire da un prompt utente (Distant Writing) tramite LLM. & \hyperlink{uc51}{UC51}, Capitolato \\ \hline
+	\textbf{R56-F-O} & Obbligatorio & Il sistema deve notificare l'utente in caso di errore nella comunicazione con i servizi AI durante la generazione da prompt. & \hyperlink{uc51.1}{UC51.1}, Analisi del dominio \\ \hline
+
+	% ---- Sei Cappelli ----
+	\textbf{R57-F-O} & Obbligatorio & Il sistema deve permettere l'analisi critica del testo selezionato secondo la prospettiva Cappello Bianco (dati e fatti). & \hyperlink{uc52}{UC52}, Capitolato \\ \hline
+	\textbf{R58-F-O} & Obbligatorio & Il sistema deve notificare l'utente in caso di errore AI durante l'analisi Cappello Bianco. & \hyperlink{uc52.1}{UC52.1}, Analisi del dominio \\ \hline
+	\textbf{R59-F-O} & Obbligatorio & Il sistema deve permettere l'analisi critica del testo selezionato secondo la prospettiva Cappello Rosso (emozioni). & \hyperlink{uc53}{UC53}, Capitolato \\ \hline
+	\textbf{R60-F-O} & Obbligatorio & Il sistema deve notificare l'utente in caso di errore AI durante l'analisi Cappello Rosso. & \hyperlink{uc53.1}{UC53.1}, Analisi del dominio \\ \hline
+	\textbf{R61-F-O} & Obbligatorio & Il sistema deve permettere l'analisi critica del testo selezionato secondo la prospettiva Cappello Nero (rischi). & \hyperlink{uc54}{UC54}, Capitolato \\ \hline
+	\textbf{R62-F-O} & Obbligatorio & Il sistema deve notificare l'utente in caso di errore AI durante l'analisi Cappello Nero. & \hyperlink{uc54.1}{UC54.1}, Analisi del dominio \\ \hline
+	\textbf{R63-F-O} & Obbligatorio & Il sistema deve permettere l'analisi critica del testo selezionato secondo la prospettiva Cappello Giallo (opportunità). & \hyperlink{uc55}{UC55}, Capitolato \\ \hline
+	\textbf{R64-F-O} & Obbligatorio & Il sistema deve notificare l'utente in caso di errore AI durante l'analisi Cappello Giallo. & \hyperlink{uc55.1}{UC55.1}, Analisi del dominio \\ \hline
+	\textbf{R65-F-O} & Obbligatorio & Il sistema deve permettere l'analisi critica del testo selezionato secondo la prospettiva Cappello Verde (creatività). & \hyperlink{uc56}{UC56}, Capitolato \\ \hline
+	\textbf{R66-F-O} & Obbligatorio & Il sistema deve notificare l'utente in caso di errore AI durante l'analisi Cappello Verde. & \hyperlink{uc56.1}{UC56.1}, Analisi del dominio \\ \hline
+	\textbf{R67-F-O} & Obbligatorio & Il sistema deve permettere l'analisi critica del testo selezionato secondo la prospettiva Cappello Blu (logica/controllo). & \hyperlink{uc57}{UC57}, Capitolato \\ \hline
+	\textbf{R68-F-O} & Obbligatorio & Il sistema deve notificare l'utente in caso di errore AI durante l'analisi Cappello Blu. & \hyperlink{uc57.1}{UC57.1}, Analisi del dominio \\ \hline
+
+	% ---- Gestione proposta AI ----
+	\textbf{R69-F-O} & Obbligatorio & Il sistema deve permettere all'utente di accettare la proposta generata dall'AI, inserendola nel documento. & \hyperlink{uc58}{UC58}, Capitolato, VE-3.2 \\ \hline
+	\textbf{R70-F-O} & Obbligatorio & Il sistema deve permettere all'utente di rifiutare la proposta generata dall'AI, mantenendo il documento invariato. & \hyperlink{uc59}{UC59}, Capitolato, VE-3.2 \\ \hline
+	\textbf{R71-F-O} & Obbligatorio & Il sistema deve permettere all'utente di richiedere la rigenerazione di una proposta AI non soddisfacente; deve notificare in caso di errore. & \hyperlink{uc60}{UC60}, \hyperlink{uc60.1}{UC60.1}, Analisi del dominio \\ \hline
+
+	% ---- I/O e persistenza locale ----
+	\textbf{R72-F-O} & Obbligatorio & Il sistema deve permettere il salvataggio della nota corrente in un file \texttt{.md} nel file system locale; deve notificare in caso di errore. & \hyperlink{uc63}{UC63}, \hyperlink{uc63.1}{UC63.1}, Capitolato \\ \hline
+	\textbf{R73-F-O} & Obbligatorio & Il sistema deve permettere il caricamento di un file \texttt{.md} esistente dal file system locale nell'editor; deve notificare in caso di file non valido o corrotto. & \hyperlink{uc64}{UC64}, \hyperlink{uc64.1}{UC64.1}, Capitolato \\ \hline
+	\textbf{R74-F-O} & Obbligatorio & Il sistema deve permettere l'esportazione della nota nei formati PDF, HTML e JSON; deve notificare in caso di errore durante la conversione. & \hyperlink{uc65}{UC65}, \hyperlink{uc65.1}{UC65.1}, Capitolato \\ \hline
+
+	% ---- Opzionali: DB remoto ----
+	\textbf{R75-F-Op} & Opzionale & Il sistema deve permettere la creazione di una nuova nota vuota associando il titolo inserito dall'utente. & \hyperlink{uc61}{UC61}, Capitolato \\ \hline
+	\textbf{R76-F-Op} & Opzionale & Il sistema deve permettere l'eliminazione di una nota previa conferma esplicita da parte dell'utente. & \hyperlink{uc62}{UC62}, \hyperlink{uc62.1}{UC62.1}, \hyperlink{uc62.2}{UC62.2}, Capitolato \\ \hline
+	\textbf{R77-F-Op} & Opzionale & Il sistema deve notificare l'utente in caso di errore tecnico o del file system durante l'eliminazione di una nota. & \hyperlink{uc62.3}{UC62.3}, Analisi del dominio \\ \hline
+	\textbf{R78-F-Op} & Opzionale & Il sistema deve permettere la registrazione di un nuovo utente tramite email e password, con validazione dei dati inseriti. & \hyperlink{uc66}{UC66}, \hyperlink{uc66.1}{UC66.1}, \hyperlink{uc66.2}{UC66.2}, Capitolato \\ \hline
+	\textbf{R79-F-Op} & Opzionale & Il sistema deve permettere l'autenticazione dell'utente tramite credenziali; deve notificare in caso di credenziali errate. & \hyperlink{uc67}{UC67}, \hyperlink{uc67.1}{UC67.1}, Capitolato \\ \hline
+	\textbf{R80-F-Op} & Opzionale & Il sistema deve permettere il logout dell'utente autenticato. & \hyperlink{uc68}{UC68}, Capitolato \\ \hline
+	\textbf{R81-F-Op} & Opzionale & Il sistema deve permettere la visualizzazione della lista delle note salvate nel servizio remoto con nome e data di ultima modifica; deve notificare in caso di errore. & \hyperlink{uc69}{UC69}, \hyperlink{uc69.1}{UC69.1}, Capitolato \\ \hline
+	\textbf{R82-F-Op} & Opzionale & Il sistema deve permettere il salvataggio della nota corrente nello spazio remoto associato al profilo utente; deve notificare in caso di errore di sincronizzazione. & \hyperlink{uc70}{UC70}, \hyperlink{uc70.1}{UC70.1}, Capitolato \\ \hline
+	\textbf{R83-F-Op} & Opzionale & Il sistema deve permettere l'apertura di una nota dalla lista delle note salvate nel servizio remoto; deve notificare in caso di errore nel caricamento. & \hyperlink{uc71}{UC71}, \hyperlink{uc71.1}{UC71.1}, Capitolato \\ \hline
+
+\end{longtable}
+
+% -----------------------------------------------------------------------
+\subsection{Requisiti di qualità}
+\begin{longtable}{|p{2.5cm}|p{2.2cm}|p{6.8cm}|p{2.7cm}|}
+	\caption{Requisiti di Qualità} \\
+	\hline
+	\rowcolor{primarycolor!10}
+	\textbf{Codice} & \textbf{Importanza} & \textbf{Descrizione} & \textbf{UC, Fonti} \\
+	\hline
+	\endfirsthead
+	\hline
+	\rowcolor{primarycolor!10}
+	\textbf{Codice} & \textbf{Importanza} & \textbf{Descrizione} & \textbf{UC, Fonti} \\
+	\hline
+	\endhead
+
+	\textbf{R1-Q-O} & Obbligatorio & Il sistema dovrà essere corredato di test automatici con copertura adeguata dei casi d'uso principali. & Capitolato \\ \hline
+	\textbf{R2-Q-O} & Obbligatorio & L'interfaccia utente\textsubscript{G} deve risultare semplice, immediata e utilizzabile senza competenze tecniche pregresse. & Capitolato, VE-3.3, VE-5.3 \\ \hline
+	\textbf{R3-Q-O} & Obbligatorio & Il codice sorgente e la documentazione devono essere pubblicati su repository pubblico. & Capitolato \\ \hline
+	\textbf{R4-Q-D} & Desiderabile & Il progetto dovrebbe rispettare i requisiti open source dell'azienda proponente nella scelta della licenza di distribuzione. & Capitolato \\ \hline
+
+\end{longtable}
+
+% -----------------------------------------------------------------------
+\subsection{Requisiti di vincolo}
+\begin{longtable}{|p{2.5cm}|p{2.2cm}|p{6.8cm}|p{2.7cm}|}
+	\caption{Requisiti di Vincolo} \\
+	\hline
+	\rowcolor{primarycolor!10}
+	\textbf{Codice} & \textbf{Importanza} & \textbf{Descrizione} & \textbf{UC, Fonti} \\
+	\hline
+	\endfirsthead
+	\hline
+	\rowcolor{primarycolor!10}
+	\textbf{Codice} & \textbf{Importanza} & \textbf{Descrizione} & \textbf{UC, Fonti} \\
+	\hline
+	\endhead
+
+	\textbf{R1-V-O} & Obbligatorio & L'applicazione deve essere basata su tecnologie web standard ed eseguibile tramite browser, senza installazione di software aggiuntivo. & Capitolato \\ \hline
+	\textbf{R2-V-O} & Obbligatorio & L'interazione con i modelli LLM deve avvenire tramite chiamate API aderenti allo standard OpenAI. & Capitolato, VE-1.1 \\ \hline
+	\textbf{R3-V-O} & Obbligatorio & I modelli LLM di riferimento sono Gemma, ChatGPT-OSS e Qwen, messi a disposizione dall'azienda proponente; ulteriori modelli possono essere integrati successivamente. & Capitolato, VE-1.1 \\ \hline
+	\textbf{R4-V-O} & Obbligatorio & La gestione delle immagini è esclusa dai requisiti del prodotto. & VE-5.1 \\ \hline
+	\textbf{R5-V-O} & Obbligatorio & Le lingue con alfabeto non latino (es.\ Cinese, Russo, Arabo) sono escluse dalla funzionalità di traduzione. & VE-5.2 \\ \hline
+	\textbf{R6-V-Op} & Opzionale & Nel caso venga implementata la persistenza remota, il sistema dovrà supportare PostgreSQL\textsubscript{G} come DBMS di riferimento. & VE-1.4 \\ \hline
+
+\end{longtable}
+
+% -----------------------------------------------------------------------
+\subsection{Requisiti prestazionali}
+\begin{longtable}{|p{2.5cm}|p{2.2cm}|p{6.8cm}|p{2.7cm}|}
+	\caption{Requisiti Prestazionali} \\
+	\hline
+	\rowcolor{primarycolor!10}
+	\textbf{Codice} & \textbf{Importanza} & \textbf{Descrizione} & \textbf{UC, Fonti} \\
+	\hline
+	\endfirsthead
+	\hline
+	\rowcolor{primarycolor!10}
+	\textbf{Codice} & \textbf{Importanza} & \textbf{Descrizione} & \textbf{UC, Fonti} \\
+	\hline
+	\endhead
+
+	\textbf{R1-P-O} & Obbligatorio & Il rendering dell'anteprima Markdown deve aggiornarsi in tempo reale durante la digitazione, entro 1 secondo dalla modifica del contenuto dell’editor. & Capitolato, Analisi del dominio \\ \hline
+	\textbf{R2-P-O} & Obbligatorio & Il sistema deve fornire un feedback visivo (es.\ indicatore di caricamento) durante le operazioni AI la cui durata superi i 2 secondi. & Analisi del dominio, VE-6.1 \\ \hline
+
+\end{longtable}

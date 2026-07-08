@@ -1,0 +1,1407 @@
+% ================================================================
+% PROCESSI DI SUPPORTO
+% ================================================================
+
+\section{Processi di Supporto}
+\label{sec:processi-supporto}
+
+In conformità allo standard ISO/IEC~12207:1995, i processi di
+supporto comprendono le attività trasversali necessarie a garantire qualità,
+tracciabilità, coerenza e controllo degli artefatti prodotti.
+
+Nel contesto del progetto \textit{Second Brain}, e in accordo con il tailoring
+descritto nella Sezione~\ref{sec:tailoring}, il gruppo \textit{Synergo Unit} adotta
+i seguenti processi di supporto:
+
+\begin{itemize}
+    \item documentazione;
+    \item gestione della configurazione;
+    \item verifica;
+    \item validazione;
+    \item accertamento della qualità;
+    \item gestione dei cambiamenti;
+    \item gestione delle non conformità;
+\end{itemize}
+
+% ================================================================
+% DOCUMENTAZIONE
+% ================================================================
+
+\subsection{Processo di Documentazione}
+\label{sec:documentazione}
+
+\subsubsection{Descrizione}
+
+Il processo di documentazione definisce regole, strumenti e ciclo di vita per la
+produzione, la revisione, l'approvazione e la pubblicazione della documentazione
+del gruppo.
+
+Esso si applica a ogni documento gestionale o tecnico, interno o esterno, prodotto
+dal gruppo \textit{Synergo Unit}. Il Diario di Bordo\textsubscript{G} segue un template\textsubscript{G} separato
+realizzato tramite Canva e non prevede registro delle modifiche.
+
+La documentazione deve essere:
+\begin{itemize}
+    \item uniforme nella struttura;
+    \item coerente con le presenti Norme di Progetto;
+    \item verificabile tramite Pull Request\textsubscript{G};
+    \item tracciabile rispetto alle modifiche logiche effettuate;
+    \item consultabile tramite repository e sito documentale.
+\end{itemize}
+
+% ------------------------------------------------
+
+\subsubsection{Tipologia dei Documenti}
+
+\paragraph{Documentazione Gestionale Interna}
+
+\begin{itemize}
+    \item \textbf{Norme di Progetto}: definiscono processi, convenzioni, strumenti
+    e procedure operative adottate dal gruppo. Sono redatte e mantenute
+    dall'Amministratore.
+
+    \item \textbf{Glossario}: raccoglie termini tecnici, acronimi ed espressioni
+    ambigue utilizzate nella documentazione. Ogni autore può proporre nuovi
+    termini; l'Amministratore ne cura normalizzazione e coerenza.
+
+    \item \textbf{Analisi dello Stato dell'Arte}: documento che raccoglie valutazione comparativa 
+    delle tecnologie e motivazione dello stack candidato per il Proof of Concept.
+
+    \item \textbf{Verbali Interni}: documentano riunioni interne, decisioni operative,
+    retrospettive, pianificazione e assegnazione dei task\textsubscript{G}.
+\end{itemize}
+
+\paragraph{Documentazione Gestionale Esterna}
+
+\begin{itemize}
+    \item \textbf{Verbali Esterni}: documentano gli incontri con la proponente e con
+    gli stakeholder\textsubscript{G} esterni. Sono redatti dall'Amministratore e
+    condivisi con la proponente per conferma e firma.
+
+    \item \textbf{Piano di Progetto}: descrive pianificazione, consuntivazione,
+    gestione dei rischi, controllo dei costi e rotazione dei ruoli.
+
+    \item \textbf{Piano di Qualifica}: definisce strategie, metriche e attività di
+    verifica e validazione adottate dal gruppo.
+
+    \item \textbf{Diario di Bordo}: materiale gestionale usato per il confronto
+        periodico con il committente ed è redatto tramite template Canva.
+
+        Il template del Diario di Bordo deve garantire l'identificazione del materiale
+        presentato, riportando in modo chiaro almeno il gruppo, il riferimento al corso
+        e la data del Diario di Bordo.
+
+        Ogni pagina, ad eccezione del frontespizio, deve riportare un footer
+        contenente almeno:
+
+        \begin{itemize}
+            \item numero progressivo del Diario di Bordo;
+            \item data nel formato \texttt{AAAA/MM/GG};
+            \item numero di pagina e numero totale di pagine;
+            \item nome del gruppo;
+            \item numero del gruppo.
+        \end{itemize}
+
+        La struttura prevista per il footer è:
+
+        \begin{center}
+        \texttt{Diario di Bordo N\textdegree{} - AAAA/MM/GG}\\
+        \texttt{Synergo Unit - Gruppo 20} \\
+        \texttt{numero pagina / numero pagine totali}\\
+        \end{center}
+
+    \item \textbf{Sito Web}: punto di accesso alla documentazione pubblicata tramite
+    GitHub Pages.
+\end{itemize}
+
+\paragraph{Documentazione Tecnica}
+
+\begin{itemize}
+    \item \textbf{Analisi dei Requisiti}: documento tecnico esterno che formalizza
+    attori, casi d'uso, requisiti, fonti e matrici di tracciabilità.
+\end{itemize}
+
+% ------------------------------------------------
+
+\subsubsection{Strumenti di Documentazione}
+\label{sec:strumenti-doc}
+
+La documentazione viene prodotta tramite:
+
+\begin{itemize}
+    \item \textbf{\LaTeX{} con Visual Studio Code}: ambiente principale di redazione;
+
+    \item \textbf{LaTeX Workshop}: estensione utilizzata per compilare localmente i
+    documenti PDF;
+
+    \item \textbf{Repository GitHub}: archivio ufficiale della documentazione e della
+    relativa storia;
+
+    \item \textbf{GitHub Pages}: sito documentale aggiornato periodicamente tramite
+    task dedicato;
+
+    \item \textbf{Canva}: strumento utilizzato per il template dei Diari di Bordo;
+
+    \item \textbf{Script Python per Glossario}: strumento utilizzato per applicare
+    automaticamente il pedice\textsubscript{G} alla prima occorrenza dei termini
+    presenti nel Glossario.
+\end{itemize}
+
+Ogni membro lavora esclusivamente su copia locale del repository.
+
+% ------------------------------------------------
+
+\subsubsection{Convenzioni Redazionali}
+\label{sec:convenzioni}
+
+Al fine di garantire uniformità e coerenza tra i documenti, il gruppo adotta le
+seguenti convenzioni:
+
+\begin{itemize}
+    \item \textbf{Nomi dei file}: tutti i nomi devono essere scritti in minuscolo,
+    utilizzando il carattere \texttt{\_} come separatore di parola.
+    \\
+    \textit{Esempio}: \texttt{piano\_di\_progetto.tex}.
+
+    \item \textbf{Nome del file principale}: il file principale \LaTeX{} deve essere
+    nominato secondo il nome previsto per il PDF finale.
+    \\
+    \textit{Esempio}: \texttt{norme\_di\_progetto.tex} produce
+    \texttt{norme\_di\_progetto.pdf}.
+
+    \item \textbf{Titoli}: sezioni, sottosezioni e paragrafi devono utilizzare
+    Title Case\textsubscript{G} italianizzato, con maiuscola sulle parole semanticamente
+    rilevanti e minuscola su articoli, preposizioni e congiunzioni interne.
+
+    \item \textbf{Tabelle lunghe}: le tabelle che possono superare una pagina devono
+    essere realizzate tramite \texttt{xltabular} o \texttt{longtable}, in modo da
+    consentirne la spezzatura automatica.
+
+    \item \textbf{Pedice\textsubscript{G}}: la prima occorrenza, nell'intero documento, di ogni
+    termine presente nel Glossario deve essere marcata con il pedice\textsubscript{G}. Lo script riceve in ingresso la concatenazione dei file
+    \LaTeX{} delle sezioni e applica il pedice alla prima occorrenza globale.
+
+    \item \textbf{Link generici}: i collegamenti ipertestuali nel testo devono essere
+    prodotti tramite il comando \verb|\link{url}{testo}|.
+
+    \item \textbf{Link documentali in tabelle}: i collegamenti a documenti all'interno
+    di tabelle devono essere prodotti tramite il comando
+    \verb|\doclink{url}{testo}|, così da preservare leggibilità e andata a capo.
+
+    \item \textbf{Issue GitHub}: i riferimenti a issue devono essere prodotti tramite
+    il comando \verb|\ghissue{id}|.
+
+    \item \textbf{Decisioni da verbale interno}: le decisioni interne devono essere
+    identificate con codice \texttt{VI-y.x\textsubscript{G}}, dove \texttt{y} è il numero progressivo
+    del verbale e \texttt{x} è il numero progressivo della decisione.
+
+    \item \textbf{Decisioni da verbale esterno}: le decisioni esterne devono essere
+    identificate con codice \texttt{VE-y.x\textsubscript{G}}, con la stessa logica adottata per i
+    verbali interni.
+\end{itemize}
+
+% ------------------------------------------------
+
+\subsubsection{Template Documentale}
+
+Tutti i documenti, ad eccezione dei Diari di Bordo, condividono un template
+\LaTeX{} comune comprensivo di:
+
+\begin{itemize}
+    \item frontespizio;
+    \item registro delle modifiche;
+    \item indice;
+    \item sezioni specifiche del documento;
+    \item configurazioni condivise;
+    \item loghi e asset comuni.
+\end{itemize}
+
+Il template definisce inoltre:
+\begin{itemize}
+    \item margini;
+    \item colori;
+    \item profondità dell'indice;
+    \item comandi personalizzati;
+    \item configurazione dei link;
+    \item formattazione delle tabelle;
+    \item stile dei paragrafi.
+\end{itemize}
+
+% ------------------------------------------------
+
+\subsubsection{Registro delle Modifiche}
+
+Ogni documento \LaTeX{}, ad eccezione dei Diari di Bordo, deve contenere un registro
+delle modifiche.
+
+Il registro deve riportare:
+
+\begin{itemize}
+    \item \textbf{Versione};
+    \item \textbf{Data};
+    \item \textbf{Autore};
+    \item \textbf{Verificatore};
+    \item \textbf{Descrizione}.
+\end{itemize}
+
+Il registro delle modifiche è aggiornato dal Redattore.
+
+Le voci del registro devono descrivere modifiche logiche e documentali significative.
+
+% ------------------------------------------------
+
+\subsubsection{Gestione del Glossario}
+
+Il Glossario viene aggiornato in modo incrementale durante la produzione della
+documentazione.
+
+Il processo prevede:
+
+\begin{enumerate}
+    \item durante la stesura, ogni autore individua eventuali nuovi termini tecnici,
+    acronimi o espressioni ambigue;
+
+    \item al termine della stesura, l'autore inserisce i nuovi termini nel file
+    \texttt{termini.tex} del Glossario;
+
+    \item l'autore aggiorna il file \texttt{glossary.txt}, utilizzato dallo script
+    Python;
+
+    \item l'autore esegue manualmente lo script per applicare il pedice\textsubscript{G}
+     alla prima occorrenza dei termini nel documento;
+
+    \item il Verificatore controlla che i termini inseriti siano coerenti con il
+    documento e che il pedice\textsubscript{G} sia stato applicato correttamente.
+\end{enumerate}
+
+L'Amministratore può intervenire per normalizzare definizioni, duplicati,
+maiuscole/minuscole e sinonimi.
+
+% ------------------------------------------------
+
+\subsubsection{Checklist Prima della Pull Request}
+
+Prima di aprire una Pull Request, il Redattore deve verificare che:
+
+\begin{itemize}
+    \item il documento compili senza errori bloccanti;
+    \item il PDF sia generato correttamente;
+    \item il registro delle modifiche sia aggiornato, così come numero di versione e data di ultima modifica;
+    \item non siano presenti segnaposto non motivati;
+    \item i link siano funzionanti;
+    \item i riferimenti interni siano corretti;
+    \item le tabelle lunghe siano spezzabili;
+    \item il Glossario sia aggiornato, se necessario;
+    \item il pedice\textsubscript{G} sia stato applicato correttamente;
+    \item il nome del file sia conforme alle convenzioni.
+\end{itemize}
+
+% ------------------------------------------------
+
+\subsubsection{Ciclo di Vita Documentale\textsubscript{G}}
+\label{sec:ciclo-vita}
+
+Ogni documento attraversa i seguenti stati:
+
+\begin{enumerate}
+    \item \textbf{In Stesura}: il Redattore produce o modifica il contenuto su branch
+    dedicato;
+
+    \item \textbf{In Verifica}: il Redattore apre una Pull Request; il Verificatore
+    controlla il documento e può approvare o richiedere modifiche;
+
+    \item \textbf{Verificato}: il documento ha superato la verifica tramite Pull Request;
+
+    \item \textbf{Approvato}: il documento verificato viene approvato dal Responsabile,
+    eventualmente dopo review di gruppo;
+
+    \item \textbf{Rilasciato}: il documento approvato viene pubblicato nel repository
+    e reso disponibile tramite sito documentale.
+\end{enumerate}
+
+Un documento entra in baseline solo dopo approvazione del Responsabile e review
+di gruppo.
+
+% ------------------------------------------------
+
+\subsubsection{Versionamento Documentale}
+
+Il gruppo adotta il \textit{Semantic Versioning\textsubscript{G}} a tre cifre nel
+formato:
+
+\begin{center}
+    \texttt{vX.Y.Z}
+\end{center}
+
+Le versioni vengono incrementate secondo le seguenti regole:
+
+\begin{xltabular}{\textwidth}{
+    >{\raggedright\arraybackslash}p{2.5cm}
+    >{\raggedright\arraybackslash}p{3cm}
+    >{\raggedright\arraybackslash}X
+}
+    \toprule
+    \textbf{Campo} & \textbf{Incremento} & \textbf{Quando Applicarlo} \\
+    \midrule
+    \endfirsthead
+
+    \toprule
+    \textbf{Campo} & \textbf{Incremento} & \textbf{Quando Applicarlo} \\
+    \midrule
+    \endhead
+
+    \midrule
+    \multicolumn{3}{r}{\textit{Continua nella pagina successiva}} \\
+    \endfoot
+
+    \bottomrule
+    \endlastfoot
+
+    Major
+    & \texttt{+1.0.0}
+    & Ingresso in una nuova baseline o cambiamento strutturale profondo del documento. \\
+
+    Minor
+    & \texttt{+0.1.0}
+    & Aggiunta o modifica significativa di contenuti. \\
+
+    Patch
+    & \texttt{+0.0.1}
+    & Correzioni ortografiche, tipografiche o modifiche non semantiche. \\
+
+\end{xltabular}
+
+L'incremento di versione è scelto dal Redattore, controllato dal Verificatore e
+approvato dal Responsabile in caso di rilascio ufficiale.
+
+% ================================================================
+% GESTIONE DELLA CONFIGURAZIONE
+% ================================================================
+
+\subsection{Processo di Gestione della Configurazione}
+\label{sec:configurazione}
+
+\subsubsection{Descrizione}
+
+Il processo di gestione della configurazione garantisce integrità, consistenza,
+versionamento e tracciabilità degli elementi configurativi del progetto.
+
+Sono considerati elementi configurativi:
+
+\begin{itemize}
+    \item documenti \LaTeX{};
+    \item file PDF generati;
+    \item template;
+    \item asset grafici;
+    \item script di automazione;
+    \item codice del Proof of Concept, quando presente;
+    \item configurazioni del repository;
+    \item materiale pubblicato su GitHub Pages.
+\end{itemize}
+
+% ------------------------------------------------
+
+\subsubsection{Sistema di Gestione}
+
+Il gruppo utilizza GitHub come sistema principale di gestione della configurazione.
+
+Ogni modifica deve essere tracciata tramite:
+
+\begin{itemize}
+    \item issue;
+    \item branch dedicato;
+    \item commit\textsubscript{G} riferiti alla issue;
+    \item Pull Request;
+    \item review;
+    \item merge\textsubscript{G} controllato.
+\end{itemize}
+
+% ------------------------------------------------
+
+\subsubsection{Struttura del Repository}
+
+A partire dallo Sprint 9, la repository ufficiale del progetto assume il nome
+\texttt{Second-Brain} e non è più destinata esclusivamente alla documentazione.
+
+Essa contiene:
+
+\begin{itemize}
+    \item documentazione di progetto;
+    \item codice del Proof of Concept;
+    \item script di automazione;
+    \item configurazioni di supporto;
+    \item asset condivisi;
+    \item materiali pubblicati tramite GitHub Pages.
+\end{itemize}
+
+La struttura principale della repository è:
+
+\begin{verbatim}
+Second-Brain/
++-- docs/
++-- poc/
+|   +-- frontend/
+|   +-- backend/
++-- scripts/
+\end{verbatim}
+
+La cartella \texttt{docs/} contiene la documentazione di progetto.
+
+La cartella \texttt{poc/} contiene il codice del Proof of Concept, separando
+frontend e backend.
+
+La cartella \texttt{scripts/} contiene gli script di automazione già adottati dal
+gruppo, inclusi quelli a supporto del Glossario e del Piano di Qualifica.
+
+Il sito GitHub Pages pubblica la documentazione e rende disponibile una versione
+compressa del PoC per il download.
+
+La versione ufficiale e stabile di ogni elemento configurativo è quella presente
+nel branch \texttt{main}\textsubscript{G}.
+
+% ------------------------------------------------
+
+\subsubsection{Gestione delle Issue}
+
+Le issue devono essere create esclusivamente tramite Google Forms.
+
+A partire dallo Sprint 9, il form di creazione delle issue distingue tra attività
+documentali e attività non documentali.
+
+\paragraph{Issue documentali}
+
+Per le issue documentali continua a essere applicata la classificazione già
+adottata per la documentazione.
+
+Il nome logico della issue documentale deve seguire la forma:
+
+\begin{center}
+    \texttt{doc\_<categoria-uso>\_<nome-documento>}
+\end{center}
+
+dove:
+
+\begin{itemize}
+    \item \texttt{doc} identifica un'attività documentale;
+    \item \texttt{categoria-uso} identifica la natura e la destinazione del documento,
+    separando i due valori tramite trattino;
+    \item \texttt{categoria} può assumere i valori \texttt{gestionale} o
+    \texttt{tecnico};
+    \item \texttt{uso} può assumere i valori \texttt{interno} o \texttt{esterno};
+    \item \texttt{nome-documento} identifica il documento o l'artefatto documentale
+    coinvolto, con parole separate da trattini.
+\end{itemize}
+
+\textit{Esempi}:
+
+\begin{itemize}
+    \item \texttt{doc\_gestionale-interno\_norme-di-progetto};
+    \item \texttt{doc\_gestionale-esterno\_piano-di-qualifica};
+    \item \texttt{doc\_tecnico-esterno\_analisi-dei-requisiti}.
+\end{itemize}
+
+Il sito documentale è considerato un artefatto documentale quando la modifica
+riguarda contenuti, collegamenti, indici o documenti pubblicati.
+
+\paragraph{Issue non documentali}
+
+Per le issue non documentali, il form distingue il tipo di attività secondo le
+seguenti categorie:
+
+\begin{itemize}
+    \item \textbf{feature\textsubscript{G}}: nuova funzionalità del prodotto o del PoC;
+    \item \textbf{bug\textsubscript{G}}: comportamento non corretto rispetto all'atteso;
+    \item \textbf{refactor\textsubscript{G}}: miglioramento interno senza modifica del comportamento
+    osservabile;
+    \item \textbf{test}: attività relativa ai test, prevista per le attività successive
+    alla RTB.
+\end{itemize}
+
+La posizione deve essere scelta tra:
+
+\begin{itemize}
+    \item \textbf{poc};
+    \item \textbf{frontend};
+    \item \textbf{backend};
+    \item \textbf{infra};
+    \item \textbf{test}.
+\end{itemize}
+
+Il nome logico della issue non documentale deve seguire la forma:
+
+\begin{center}
+    \texttt{<tipo>\_<posizione>\_<descrizione-breve>}
+\end{center}
+
+La separazione tra i campi principali avviene tramite il carattere
+\texttt{\_}. La descrizione breve deve essere scritta in minuscolo, senza accenti
+e con parole separate da trattini.
+
+\textit{Esempi}:
+
+\begin{itemize}
+    \item \texttt{feature\_frontend\_css};
+    \item \texttt{bug\_frontend\_css};
+    \item \texttt{refactor\_infra\_aggiornamento-token};
+    \item \texttt{test\_backend\_test-chiamata-ai}.
+\end{itemize}
+
+\paragraph{Campi obbligatori}
+
+Ogni issue deve contenere:
+
+\begin{itemize}
+    \item tipo o categoria;
+    \item posizione, uso o ambito;
+    \item assegnatario;
+    \item ruolo;
+    \item priorità;
+    \item scadenza;
+    \item tempo previsto\textsubscript{G};
+    \item milestone RTB o PB;
+    \item descrizione dell'attività.
+\end{itemize}
+
+Le modifiche strutturali o configurative del sito documentale sono invece
+classificate come attività infrastrutturali con posizione \texttt{infra}.
+
+% ------------------------------------------------
+
+\subsubsection{Strategia di Branching}
+
+Il gruppo adotta un modello \textit{trunk-based development\textsubscript{G}}.
+
+Il branch \texttt{main} è l'unico branch stabile. Ogni modifica deve essere sviluppata su branch dedicato, creato a partire dalla
+sezione \textit{Development} della issue GitHub associata.
+
+A partire dallo Sprint 9, con decorrenza dal 2026-06-02, il gruppo distingue tra
+attività documentali e attività non documentali.
+
+Per tutte le nuove convenzioni di naming, il carattere \texttt{\_} separa i campi
+principali, mentre il carattere \texttt{-} separa le parole interne ai singoli
+campi composti.
+
+\paragraph{Branch documentali}
+
+Per le attività documentali, la convenzione di naming dei branch è:
+
+\begin{center}
+    \texttt{<id>\_doc\_<categoria-uso>\_<nome-documento>}
+\end{center}
+
+dove:
+
+\begin{itemize}
+    \item \texttt{id} è l'identificativo della issue;
+    \item \texttt{doc} identifica un'attività documentale;
+    \item \texttt{categoria-uso} indica natura e destinazione del documento,
+    separando i due valori tramite trattino;
+    \item \texttt{categoria} può assumere i valori \texttt{gestionale} o
+    \texttt{tecnico};
+    \item \texttt{uso} può assumere i valori \texttt{interno} o \texttt{esterno};
+    \item \texttt{nome-documento} identifica il documento o l'artefatto documentale
+    modificato, con parole separate da trattini.
+\end{itemize}
+
+\textit{Esempi}:
+
+\begin{itemize}
+    \item \texttt{146\_doc\_gestionale-interno\_norme-di-progetto};
+    \item \texttt{147\_doc\_gestionale-esterno\_piano-di-qualifica};
+    \item \texttt{148\_doc\_tecnico-esterno\_analisi-dei-requisiti}.
+\end{itemize}
+
+\paragraph{Branch non documentali}
+
+Per le attività non documentali, la convenzione di naming dei branch è:
+
+\begin{center}
+    \texttt{<id>\_<tipo>\_<posizione>\_<descrizione-breve>}
+\end{center}
+
+dove:
+
+\begin{itemize}
+    \item \texttt{id} è l'identificativo della issue;
+    \item \texttt{tipo} indica la natura dell'attività e può assumere i valori
+    \texttt{feature}, \texttt{bug}, \texttt{refactor} o \texttt{test};
+    \item \texttt{posizione} indica l'area coinvolta e può assumere i valori
+    \texttt{poc}, \texttt{frontend}, \texttt{backend}, \texttt{infra} o \texttt{test};
+    \item \texttt{descrizione-breve} sintetizza l'attività con parole minuscole,
+    senza accenti e separate da trattini.
+\end{itemize}
+
+La separazione tra i campi principali avviene tramite il carattere
+\texttt{\_}; la separazione tra le parole interne alla descrizione breve avviene
+tramite trattino.
+
+\textit{Esempi}:
+
+\begin{itemize}
+    \item \texttt{142\_feature\_frontend\_css};
+    \item \texttt{143\_bug\_frontend\_css};
+    \item \texttt{144\_refactor\_infra\_aggiornamento-token};
+    \item \texttt{145\_test\_backend\_test-chiamata-ai}.
+\end{itemize}
+
+Le issue e i branch già aperti prima dell'adozione della presente convenzione
+mantengono la nomenclatura originaria fino alla loro chiusura. Le nuove attività
+aperte a partire dallo Sprint 9 devono seguire le convenzioni aggiornate.
+
+% ------------------------------------------------
+
+\subsubsection{Commit}
+
+Ogni commit deve seguire una convenzione ispirata ai Conventional Commits\textsubscript{G},
+adattata al workflow del gruppo.
+
+La forma prescritta è:
+
+\begin{center}
+    \texttt{<tipo>(<posizione>): <messaggio> (\#id)}
+\end{center}
+
+dove:
+
+\begin{itemize}
+    \item \texttt{tipo} identifica la natura della modifica;
+    \item \texttt{posizione} indica l'area o il documento coinvolto;
+    \item \texttt{messaggio} descrive sinteticamente la modifica;
+    \item \texttt{id} è l'identificativo della issue collegata.
+\end{itemize}
+
+I tipi ammessi sono:
+
+\begin{xltabular}{\textwidth}{
+    >{\raggedright\arraybackslash}p{3cm}
+    >{\raggedright\arraybackslash}p{3cm}
+    >{\raggedright\arraybackslash}X
+}
+    \toprule
+    \textbf{Tipo Task} & \textbf{Tipo Commit} & \textbf{Significato} \\
+    \midrule
+    \endfirsthead
+
+    \toprule
+    \textbf{Tipo Task} & \textbf{Tipo Commit} & \textbf{Significato} \\
+    \midrule
+    \endhead
+
+    \midrule
+    \multicolumn{3}{r}{\textit{Continua nella pagina successiva}} \\
+    \endfoot
+
+    \bottomrule
+    \endlastfoot
+
+    feature
+    & \texttt{feat}
+    & Nuova funzionalità del prodotto o del PoC. \\
+
+    bug
+    & \texttt{fix}
+    & Correzione di un comportamento non corretto. \\
+
+    doc
+    & \texttt{docs}
+    & Modifica alla documentazione. \\
+
+    refactor
+    & \texttt{refactor}
+    & Miglioramento interno senza modifica del comportamento osservabile. \\
+
+    test
+    & \texttt{test}
+    & Aggiunta o modifica di test. \\
+
+\end{xltabular}
+
+Il tipo del commit deve essere coerente con il tipo della issue associata (per le attività documentali, il tipo di commit è sempre \texttt{docs}.).
+
+Il messaggio deve essere scritto in italiano e in forma descrittiva.
+
+Ogni commit deve riferirsi a una sola issue. Le Pull Request possono includere più
+issue solo quando le attività sono strettamente collaborative o tecnicamente
+indivisibili.
+
+\paragraph{Scope Documentali}
+
+Per i commit documentali devono essere utilizzati i seguenti scope\textsubscript{G}:
+
+\begin{itemize}
+    \item \texttt{ndp}: Norme di Progetto;
+    \item \texttt{pdq}: Piano di Qualifica;
+    \item \texttt{pdp}: Piano di Progetto;
+    \item \texttt{adr}: Analisi dei Requisiti;
+    \item \texttt{sa}: Analisi dello Stato dell'Arte;
+    \item \texttt{glo}: Glossario;
+    \item \texttt{viN}: Verbale interno numero \texttt{N};
+    \item \texttt{veN}: Verbale esterno numero \texttt{N};
+    \item \texttt{ddbN}: Diario di Bordo numero \texttt{N};
+    \item \texttt{sito}: sito documentale.
+\end{itemize}
+
+Lo scope \texttt{adr} indica l'Analisi dei Requisiti nel contesto dei commit
+documentali e non deve essere confuso con gli Architecture Decision Records.
+
+\paragraph{Esempi}
+
+\begin{itemize}
+    \item \texttt{feat(frontend): aggiunto css (\#142)};
+    \item \texttt{fix(frontend): sistemato problema padding css (\#143)};
+    \item \texttt{docs(ndp): aggiunta sezione 2 (\#144)};
+    \item \texttt{refactor(infra): aggiornato token (\#145)};
+    \item \texttt{test(backend): aggiunto test chiamata ai (\#146)}.
+\end{itemize}
+
+% ------------------------------------------------
+
+\subsubsection{Pull Request}
+
+Ogni modifica deve essere integrata tramite Pull Request.
+
+La Pull Request deve:
+
+\begin{itemize}
+    \item essere collegata alla issue corrispondente;
+    \item descrivere sinteticamente le modifiche effettuate;
+    \item essere aperta preferibilmente entro la domenica precedente la riunione del
+    martedì;
+    \item ricevere almeno una review positiva;
+    \item non essere approvata dall'autore della modifica.
+\end{itemize}
+
+In caso di modifiche sostanziali richieste dal Verificatore, il Redattore può
+segnare la Pull Request come \textit{draft} fino al completamento delle correzioni.
+
+% ------------------------------------------------
+
+\subsubsection{Branch Protection Rules}
+
+Il branch \texttt{main} è protetto tramite branch protection rules\textsubscript{G}.
+
+Le regole attive prevedono:
+
+\begin{itemize}
+    \item obbligo di almeno una review positiva;
+    \item blocco dei force push\textsubscript{G};
+    \item restrizione dell'eliminazione del branch protetto.
+\end{itemize}
+
+% ------------------------------------------------
+
+\subsubsection{Merge}
+
+Il merge su \texttt{main} può essere eseguito solo dopo approvazione della Pull
+Request da parte del Verificatore.
+
+Il merge viene eseguito dal Redattore, non dal Verificatore.
+
+Il gruppo utilizza la modalità standard di merge proposta da GitHub tramite Pull
+Request.
+
+Dopo il merge:
+
+\begin{itemize}
+    \item la issue associata viene chiusa automaticamente;
+    \item il branch di lavoro viene eliminato;
+    \item il Redattore aggiorna il tempo effettivo\textsubscript{G} nel foglio di consuntivazione.
+\end{itemize}
+
+% ------------------------------------------------
+
+\subsubsection{Generazione e Pubblicazione dei PDF}
+
+I PDF vengono generati localmente tramite LaTeX Workshop.
+
+Il sito GitHub Pages non viene aggiornato automaticamente a ogni merge su
+\texttt{main}; l'aggiornamento del sito documentale viene gestito tramite task
+periodica dedicata.
+
+% ------------------------------------------------
+
+\subsubsection{Gestione del Sito Documentale}
+
+Il sito documentale pubblicato tramite GitHub Pages costituisce un elemento
+configurativo del progetto e viene aggiornato mediante task dedicate.
+
+Le attività relative al sito documentale sono distinte in due categorie:
+
+\begin{itemize}
+\item \textbf{Aggiornamenti documentali}: comprendono la pubblicazione o
+sostituzione di documenti PDF, l'aggiornamento degli indici, dei collegamenti,
+delle pagine informative e di ogni altro contenuto documentale reso disponibile
+sul sito.
+
+Tali attività sono considerate documentali e devono seguire le convenzioni
+previste per documenti, issue e branch documentali.
+
+Per queste attività deve essere utilizzato lo scope
+\texttt{sito} nei commit.
+
+\textit{Esempi}:
+
+\begin{itemize}
+    \item branch:
+    \texttt{215\_doc\_gestionale-esterno\_sito-documentale};
+
+    \item commit:
+    \texttt{docs(sito): aggiornato indice documenti (\#215)}.
+\end{itemize}
+
+\item \textbf{Aggiornamenti infrastrutturali}: comprendono modifiche alla
+struttura del sito, alla navigazione, al tema grafico, agli script di build,
+ai workflow GitHub Pages e alle configurazioni tecniche necessarie alla
+pubblicazione.
+
+Tali attività sono considerate non documentali e devono essere classificate
+come attività di tipo \texttt{feature}, \texttt{bug} o \texttt{refactor}
+con posizione \texttt{infra}.
+
+\textit{Esempi}:
+
+\begin{itemize}
+    \item branch:
+    \texttt{216\_feature\_infra\_navbar-sito};
+
+    \item commit:
+    \texttt{feat(infra): aggiunta navbar sito (\#216)}.
+\end{itemize}
+\end{itemize}
+
+L'aggiornamento periodico del sito documentale finalizzato alla pubblicazione
+dei documenti approvati è considerato attività documentale.
+
+% ================================================================
+% VERIFICA
+% ================================================================
+
+\subsection{Processo di Verifica}
+\label{sec:verifica}
+
+\subsubsection{Descrizione}
+
+Il processo di verifica assicura che ogni artefatto prodotto sia conforme alle
+presenti norme e agli obiettivi di qualità definiti nel Piano di Qualifica.
+
+La verifica risponde alla domanda:
+
+\begin{center}
+    \textit{Il prodotto o artefatto è stato realizzato correttamente rispetto alle norme stabilite?}
+\end{center}
+
+In fase RTB e durante l'implementazione del Proof of Concept, la verifica riguarda:
+
+\begin{itemize}
+    \item documentazione;
+    \item coerenza dei riferimenti;
+    \item correttezza delle matrici di tracciabilità;
+    \item rispetto delle convenzioni;
+    \item adeguatezza del materiale relativo al Proof of Concept;
+    \item codice prodotto per il Proof of Concept;
+    \item configurazioni necessarie all'esecuzione locale del PoC.
+\end{itemize}
+
+% ------------------------------------------------
+
+\subsubsection{Responsabilità}
+
+\begin{itemize}
+    \item Il Verificatore deve essere sempre un membro diverso dal Redattore.
+    \item Nessun membro può verificare e approvare il proprio lavoro.
+    \item Il Verificatore non modifica direttamente l'artefatto verificato.
+    \item Il Verificatore segnala le modifiche richieste tramite commenti o richieste
+    di cambiamento nella Pull Request.
+    \item Il Responsabile interviene nell'approvazione finale, non nella verifica
+    puntuale dell'artefatto.
+\end{itemize}
+
+% ------------------------------------------------
+
+\subsubsection{Attività di Verifica}
+
+Per i task documentali, il Verificatore deve controllare:
+
+\begin{itemize}
+    \item correttezza linguistica;
+    \item coerenza contenutistica;
+    \item rispetto del template;
+    \item correttezza del registro delle modifiche;
+    \item correttezza dei riferimenti interni;
+    \item funzionamento dei link;
+    \item presenza del pedice\textsubscript{G} dove necessario;
+    \item coerenza con il Glossario;
+    \item conformità alle convenzioni di naming;
+    \item correttezza del versionamento;
+    \item compilazione corretta del documento PDF;
+    \item assenza di segnaposto non motivati.
+\end{itemize}
+
+Se la modifica coinvolge documenti collegati, il Verificatore deve controllare
+anche i riferimenti coinvolti.
+
+In particolare, modifiche ai requisiti devono comportare il controllo di:
+
+\begin{itemize}
+    \item Analisi dei Requisiti;
+    \item matrici di tracciabilità;
+    \item Glossario, se necessario;
+    \item eventuali riferimenti nel Piano di Qualifica.
+\end{itemize}
+
+% ------------------------------------------------
+
+\subsubsection{Verifica del Codice del Proof of Concept}
+
+Durante la fase RTB, la verifica del codice riguarda esclusivamente il codice
+prodotto per il Proof of Concept.
+
+Per le Pull Request di implementazione, il Verificatore deve controllare:
+
+\begin{itemize}
+    \item coerenza della modifica rispetto alla issue;
+    \item correttezza della convenzione di branch e commit;
+    \item avvio locale del PoC;
+    \item assenza di errori evidenti in console;
+    \item assenza di credenziali, token o file \texttt{.env} nel repository;
+    \item aggiornamento del README\textsubscript{G} se la modifica cambia la procedura di avvio;
+    \item descrizione della prova effettuata per modifiche backend o API\textsubscript{G};
+    \item coerenza con requisiti e casi d'uso collegati, se disponibili.
+\end{itemize}
+
+La verifica del codice PoC non prevede test automatici obbligatori in fase RTB.
+Tali attività saranno normate quando il gruppo introdurrà il processo di testing
+nelle fasi successive.
+
+% ------------------------------------------------
+
+\subsubsection{Esito della Verifica}
+
+La verifica può avere:
+
+\begin{itemize}
+    \item \textbf{Esito positivo}: il Verificatore approva la Pull Request;
+    \item \textbf{Esito negativo}: il Verificatore richiede modifiche tramite commenti
+    o richiesta di cambiamento.
+\end{itemize}
+
+Una richiesta di modifica può bloccare il merge finché il Redattore non ha risolto
+le osservazioni.
+
+% ------------------------------------------------
+
+\subsubsection{Definition of Done}
+\label{sec:dod}
+
+Un task è considerato \textit{Done} solo se soddisfa i criteri comuni e, in base
+alla natura dell'attività, i criteri specifici per documentazione o implementazione.
+
+\paragraph{Criteri Comuni}
+
+\begin{itemize}
+    \item il task è stato creato tramite Google Form\textsubscript{G};
+    \item il task è associato a una issue GitHub;
+    \item la issue contiene tipo, posizione, assegnatario, ruolo, priorità, scadenza
+    e tempo previsto;
+    \item il task è stato sviluppato su branch dedicato;
+    \item i commit rispettano la convenzione definita nelle presenti norme;
+    \item la Pull Request è collegata alla issue corrispondente;
+    \item la Pull Request ha ricevuto almeno una review positiva;
+    \item il Verificatore è diverso dall'autore della modifica;
+    \item il Redattore ha eseguito il merge;
+    \item la issue è stata chiusa;
+    \item il tempo effettivo è stato registrato.
+\end{itemize}
+
+\paragraph{Criteri per Task Documentali}
+
+\begin{itemize}
+    \item il contenuto è completo rispetto allo scope della issue;
+    \item il registro delle modifiche è stato aggiornato, se necessario;
+    \item il documento compila correttamente;
+    \item il PDF è stato generato senza errori bloccanti;
+    \item i link e i riferimenti interni sono corretti;
+    \item il Glossario è stato aggiornato, se necessario;
+    \item il pedice\textsubscript{G} è stato applicato correttamente.
+\end{itemize}
+
+\paragraph{Criteri per Task di Implementazione del PoC}
+
+\begin{itemize}
+    \item il codice è coerente con lo scope della issue;
+    \item il PoC si avvia localmente;
+    \item non sono presenti errori evidenti in console;
+    \item non sono presenti credenziali, token, file \texttt{.env} o dati sensibili
+    nel repository;
+    \item il README è aggiornato se la modifica cambia la procedura di avvio;
+    \item l'Analisi dei Requisiti è aggiornata se emerge una modifica funzionale;
+    \item l'Analisi dello Stato dell'Arte è aggiornata se cambia una tecnologia;
+    \item il Piano di Qualifica è aggiornato se cambiano metriche o modalità di
+    misurazione\textsubscript{G};
+    \item il Glossario è aggiornato se vengono introdotti nuovi termini tecnici;
+    \item per le issue di tipo \texttt{bug}, la Pull Request descrive la causa del
+    problema e la correzione effettuata;
+    \item per le issue di tipo \texttt{feature}, la Pull Request indica il requisito
+    o il caso d'uso collegato, se disponibile.
+\end{itemize}
+
+% ================================================================
+% VALIDAZIONE
+% ================================================================
+
+\subsection{Processo di Validazione}
+\label{sec:validazione}
+
+\subsubsection{Descrizione}
+
+Il processo di validazione ha lo scopo di accertare che quanto prodotto risponda
+alle esigenze della proponente e agli obiettivi del capitolato.
+
+La validazione risponde alla domanda:
+
+\begin{center}
+    \textit{Stiamo costruendo il prodotto giusto?}
+\end{center}
+
+In fase RTB, la validazione riguarda principalmente:
+
+\begin{itemize}
+    \item requisiti;
+    \item casi d'uso;
+    \item scelte tecnologiche;
+    \item perimetro del Proof of Concept.
+\end{itemize}
+
+% ------------------------------------------------
+
+\subsubsection{Validazione con la Proponente}
+
+Ogni incontro di validazione con la proponente deve produrre un verbale esterno.
+
+La issue relativa alla redazione del verbale esterno rimane aperta fino a quando
+il verbale non è stato firmato o confermato dalla proponente via email.
+
+Se la proponente richiede modifiche rilevanti, queste devono essere:
+
+\begin{itemize}
+    \item riportate nel verbale esterno;
+    \item tradotte in issue dedicate;
+    \item implementate tramite Pull Request;
+    \item verificate dal Verificatore;
+    \item integrate nei documenti coinvolti.
+\end{itemize}
+
+Le modifiche ai requisiti derivanti da feedback esterno devono aggiornare:
+
+\begin{itemize}
+    \item Analisi dei Requisiti;
+    \item matrici di tracciabilità;
+    \item Glossario, se necessario;
+    \item Piano di Qualifica, se impattano test, metriche o criteri di accettazione.
+\end{itemize}
+
+% ================================================================
+% ACCERTAMENTO DELLA QUALITÀ
+% ================================================================
+
+\subsection{Processo di Accertamento della Qualità}
+\label{sec:qualita}
+
+\subsubsection{Descrizione}
+
+Il processo di accertamento della qualità ha lo scopo di monitorare e migliorare
+la qualità dei processi e degli artefatti prodotti.
+
+A differenza della verifica, che controlla puntualmente un artefatto, l'accertamento
+della qualità monitora l'efficacia e l'efficienza del way of working.
+
+% ------------------------------------------------
+
+\subsubsection{Modello di Miglioramento}
+
+Il gruppo adotta il ciclo PDCA\textsubscript{G} come riferimento per il miglioramento
+continuo:
+
+\begin{itemize}
+    \item \textbf{Plan}: definizione di obiettivi, metriche e procedure;
+    \item \textbf{Do}: applicazione dei processi definiti;
+    \item \textbf{Check}: misurazione dei risultati e analisi degli scostamenti;
+    \item \textbf{Act}: introduzione di azioni correttive e aggiornamento del way of working.
+\end{itemize}
+
+% ------------------------------------------------
+
+\subsubsection{Metriche e Piano di Qualifica}
+
+Il Piano di Qualifica definisce le metriche, le soglie e il cruscotto di qualità\textsubscript{G}
+utilizzati dal gruppo per monitorare qualità di processo e qualità di prodotto.
+
+Le Norme di Progetto disciplinano il processo di raccolta, aggiornamento e gestione
+delle metriche; formule, soglie, valori rilevati e rappresentazioni grafiche sono
+riportati nel \link{https://synergo-unit-unipd.github.io/Second-Brain/docs/PB/doc_gestionali/doc_esterni/piano_di_qualifica/piano_di_qualifica.pdf}{Piano di Qualifica}.
+
+L'Amministratore assegnato alla relativa task raccoglie i dati necessari, aggiorna
+il file di tracciamento e mantiene il cruscotto delle metriche.
+
+Le metriche vengono rilevate e aggiornate al termine di ogni Sprint, integrando i dati raccolti nello
+sprint concluso e aggiornando le rappresentazioni tabellari e grafiche presenti
+nel Piano di Qualifica.
+
+Le metriche relative al codice vengono calcolate solo sul codice mergiato nel
+branch \texttt{main}.
+
+Se una metrica risulta fuori soglia, il gruppo ne discute durante la retrospective.
+L'esito della discussione viene verbalizzato e, qualora richieda una modifica
+operativa, viene creata una issue dedicata.
+
+\paragraph{Metriche di qualità di processo}
+
+Le metriche di qualità di processo misurano l'efficienza, la stabilità e la
+controllabilità del way of working adottato dal gruppo.
+
+Il Piano di Qualifica definisce le seguenti metriche di processo:
+
+\begin{xltabular}{\textwidth}{
+    >{\raggedright\arraybackslash}p{2.5cm}
+    >{\raggedright\arraybackslash}X
+    >{\raggedright\arraybackslash}p{6cm}
+}
+    \toprule
+    \textbf{Codice} & \textbf{Metrica} & \textbf{Finalità} \\
+    \midrule
+    \endfirsthead
+
+    \toprule
+    \textbf{Codice} & \textbf{Metrica} & \textbf{Finalità} \\
+    \midrule
+    \endhead
+
+    \midrule
+    \multicolumn{3}{r}{\textit{Continua nella pagina successiva}} \\
+    \endfoot
+
+    \bottomrule
+    \endlastfoot
+
+    MPC01
+    & Schedule Performance Index\textsubscript{G} (SPI\textsubscript{G})
+    & Misurare l'efficienza nel rispetto dei tempi pianificati. \\
+
+    MPC02
+    & Cost Performance Index\textsubscript{G} (CPI\textsubscript{G})
+    & Misurare l'efficienza nell'utilizzo del budget allocato. \\
+
+    MPC03
+    & Requirements Stability Index\textsubscript{G} (RSI\textsubscript{G})
+    & Monitorare la stabilità dei requisiti e le variazioni introdotte nell'Analisi dei Requisiti. \\
+
+    MPC04
+    & Time Efficiency\textsubscript{G}
+    & Misurare la percentuale di ore produttive rispetto al totale delle ore spese. \\
+
+    MPC05
+    & Task Completion Rate\textsubscript{G}
+    & Misurare la percentuale di issue chiuse rispetto a quelle pianificate. \\
+
+    MPC06
+    & PR Resolution Time
+    & Misurare il tempo medio necessario per la revisione e il merge di una Pull Request. \\
+
+    MPC07
+    & Review Coverage\textsubscript{G}
+    & Misurare la percentuale di Pull Request approvate da un revisore diverso dall'autore. \\
+
+    MPC08
+    & Quality Metrics Compliance Rate\textsubscript{G}
+    & Misurare la percentuale di metriche di qualità il cui valore rilevato è almeno accettabile rispetto alle soglie definite. \\
+
+\end{xltabular}
+
+\paragraph{Metriche di qualità di prodotto}
+
+Le metriche di qualità di prodotto misurano la qualità degli artefatti prodotti,
+sia documentali sia software.
+
+Il Piano di Qualifica definisce le seguenti metriche di prodotto:
+
+\begin{xltabular}{\textwidth}{
+    >{\raggedright\arraybackslash}p{2.5cm}
+    >{\raggedright\arraybackslash}X
+    >{\raggedright\arraybackslash}p{6cm}
+}
+    \toprule
+    \textbf{Codice} & \textbf{Metrica} & \textbf{Finalità} \\
+    \midrule
+    \endfirsthead
+
+    \toprule
+    \textbf{Codice} & \textbf{Metrica} & \textbf{Finalità} \\
+    \midrule
+    \endhead
+
+    \midrule
+    \multicolumn{3}{r}{\textit{Continua nella pagina successiva}} \\
+    \endfoot
+
+    \bottomrule
+    \endlastfoot
+
+    MPD01
+    & Soddisfacimento Requisiti Obbligatori
+    & Misurare la percentuale di requisiti obbligatori implementati. \\
+
+    MPD02
+    & Comment Density\textsubscript{G}
+    & Misurare il rapporto tra righe di commento e righe di codice totali. \\
+
+    MPD03
+    & Browser Compatibility\textsubscript{G}
+    & Misurare il numero di browser target su cui il sistema è testato. \\
+
+    MPD04
+    & Errori Ortografici
+    & Misurare il numero di errori ortografici rilevati per pagina di documento. \\
+
+    MPD05
+    & Complessità Ciclomatica\textsubscript{G}
+    & Misurare la complessità dei flussi di controllo delle funzioni del codice frontend e backend. \\
+
+    MPD06
+    & Tempo Iniziale di Caricamento del Programma\textsubscript{G}
+    & Misurare il tempo necessario affinché l'interfaccia principale del PoC risulti disponibile e utilizzabile. \\
+
+    MPD07
+    & Indice di Gulpease\textsubscript{G}
+    & Misurare la leggibilità dei documenti in lingua italiana. \\
+
+\end{xltabular}
+
+Le formule, gli strumenti di dettaglio, le soglie e le modalità operative di
+misurazione sono riportati nel Piano di Qualifica.
+
+% ================================================================
+% GESTIONE DEI CAMBIAMENTI
+% ================================================================
+
+\subsection{Processo di Gestione dei Cambiamenti}
+\label{sec:cambiamenti}
+
+\subsubsection{Descrizione}
+
+Il processo di gestione dei cambiamenti disciplina la valutazione, l'approvazione,
+l'implementazione e la verifica delle modifiche rilevanti a documenti, requisiti,
+tecnologie e processi.
+
+Ogni cambiamento rilevante deve essere tracciato.
+
+% ------------------------------------------------
+
+\subsubsection{Tipologie di Cambiamento}
+
+I cambiamenti vengono distinti in:
+
+\begin{itemize}
+    \item \textbf{documentali}: modifiche a struttura o contenuto dei documenti;
+    \item \textbf{di requisito}: modifiche a requisiti, casi d'uso o matrici di tracciabilità;
+    \item \textbf{tecnologici}: modifiche allo stack o alle tecnologie candidate;
+    \item \textbf{di processo}: modifiche al way of working o alle presenti norme.
+\end{itemize}
+
+% ------------------------------------------------
+
+\subsubsection{Procedura}
+
+Ogni cambiamento segue la seguente procedura:
+
+\begin{enumerate}
+    \item \textbf{Richiesta}: il cambiamento emerge da verbale interno, verbale esterno,
+      retrospettiva, feedback della proponente o revisione esterna;
+
+    \item \textbf{Valutazione Di Impatto}: il gruppo valuta impatto su documenti,
+    requisiti, tempi, costi, tecnologie o processi;
+
+    \item \textbf{Approvazione}: il cambiamento viene approvato dal ruolo competente;
+
+    \item \textbf{Implementazione}: viene creata una issue e il cambiamento viene
+    implementato tramite branch e Pull Request;
+
+    \item \textbf{Verifica}: il Verificatore controlla la conformità della modifica;
+
+    \item \textbf{Chiusura}: la issue viene chiusa dopo merge e aggiornamento del
+    tempo effettivo.
+\end{enumerate}
+
+% ------------------------------------------------
+
+\subsubsection{Responsabilità di Approvazione}
+
+\begin{itemize}
+    \item I cambiamenti documentali ordinari sono approvati tramite verifica della
+    Pull Request.
+
+    \item I cambiamenti ai requisiti sono approvati dall'Analista e dal Responsabile;
+    se incidono sul perimetro funzionale, devono essere validati con la proponente.
+
+    \item I cambiamenti tecnologici sono approvati dal Progettista e dal Responsabile;
+    se rilevanti, devono essere discussi con la proponente.
+
+    \item I cambiamenti alle Norme di Progetto sono approvati dall'Amministratore e
+    dal Responsabile.
+\end{itemize}
+
+% ================================================================
+% GESTIONE DELLE NON CONFORMITÀ
+% ================================================================
+
+\subsection{Processo di Gestione delle Non Conformità}
+\label{sec:non-conformita}
+
+\subsubsection{Descrizione}
+
+Una non conformità è una deviazione rispetto alle presenti norme, al template, al
+Piano di Qualifica o agli accordi formalizzati nei verbali.
+
+Le non conformità possono emergere durante:
+
+\begin{itemize}
+    \item verifica tramite Pull Request;
+    \item review di sprint;
+    \item retrospettiva;
+    \item revisione con committente;
+    \item incontro con la proponente;
+    \item controllo di un documento già rilasciato.
+\end{itemize}
+
+% ------------------------------------------------
+
+\subsubsection{Classificazione}
+
+Le non conformità vengono classificate in:
+
+\begin{itemize}
+    \item \textbf{Bloccante}: impedisce il merge, il rilascio o l'ingresso in baseline
+    dell'artefatto;
+
+    \item \textbf{Non Bloccante}: non impedisce il merge immediato, ma deve essere
+    corretta tramite task tracciato nello sprint corrente o successivo.
+\end{itemize}
+
+% ------------------------------------------------
+
+\subsubsection{Gestione}
+
+Se la non conformità viene individuata prima del merge, il Verificatore la segnala
+nella Pull Request tramite commento o richiesta di cambiamento.
+
+Se la non conformità viene individuata dopo il rilascio, essa deve essere:
+
+\begin{itemize}
+    \item verbalizzata nella riunione successiva;
+    \item trasformata in task;
+    \item corretta tramite issue dedicata;
+    \item verificata tramite Pull Request;
+    \item registrata nel changelog del documento, se comporta modifica documentale.
+\end{itemize}
+
+Una non conformità bloccante può impedire il rilascio di una baseline fino alla
+sua risoluzione.

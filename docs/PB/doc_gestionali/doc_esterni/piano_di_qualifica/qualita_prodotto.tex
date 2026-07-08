@@ -1,0 +1,88 @@
+% =======================================================
+% 3. QUALITA DI PRODOTTO
+% =======================================================
+\section{Qualità di Prodotto}
+
+\subsection{Modello di qualità ISO/IEC 25010}
+Per valutare la qualità del sistema \textit{Second Brain}, il gruppo si rifà allo standard \textbf{ISO/IEC 25010}, selezionando le seguenti caratteristiche rilevanti:
+\begin{itemize}
+	\item \textbf{Adeguatezza Funzionale}: capacità del software di fornire le funzioni LLM richieste.
+	\item \textbf{Affidabilità}: capacità di mantenere le prestazioni nel tempo.
+	\item \textbf{Usabilità\textsubscript{G}}: facilità d'uso dell'interfaccia Markdown e delle funzionalità di supporto alla scrittura.
+	\item \textbf{Efficienza}: tempi di risposta delle chiamate alle API\textsubscript{G} dell'LLM.
+	\item \textbf{Manutenibilità}: facilità di modifica e aggiornamento del codice.
+	\item \textbf{Portabilità}: capacità di operare su diversi browser o ambienti.
+\end{itemize}
+
+\subsection{Metriche di qualità}
+
+\subsubsection{Funzionalità}
+Si misura la capacità del prodotto di soddisfare tutti i requisiti (obbligatori, desiderabili, opzionali) emersi durante l'Analisi dei Requisiti.
+
+\subsubsection{Affidabilità}
+Monitora la frequenza dei fallimenti del sistema e la sua capacità di ripristino. In fase di sviluppo si concretizza nella percentuale di test superati.
+
+\subsubsection{Usabilità}
+Per la documentazione, si utilizza l'indice di leggibilità. Per il software, si valuta la facilità di apprendimento e la chiarezza dell'interfaccia di editing, anteprima e gestione note.
+
+\subsubsection{Efficienza}
+Data la natura del progetto (integrazione LLM), è critica la gestione dei tempi di latenza delle API esterne e l'occupazione di risorse nel browser.
+
+\subsubsection{Manutenibilità}
+Riguarda la leggibilità del codice sorgente e la facilità di estensione delle funzionalità LLM, misurata tramite densità dei commenti e complessità del codice.
+
+\subsubsection{Portabilità}
+Il sistema deve garantire un comportamento coerente sui principali browser web come richiesto dal capitolato.
+
+\subsection{Obiettivi quantitativi}
+Di seguito sono definite le metriche di prodotto (MPD).
+
+\vspace{0.5cm}
+\subsubsection*{Definizione matematica delle metriche principali}
+Di seguito sono esplicitate le formule matematiche utilizzate per il calcolo quantitativo della qualità del prodotto e della documentazione redatta:
+
+\begin{itemize}
+    \item \textbf{Soddisfacimento Requisiti Obbligatori}: Misura la completezza dell'implementazione rispetto a quanto concordato nel capitolato.
+    \[ SRO = \frac{Req_{soddisfatti}}{Req_{totali}} \times 100 \]
+    \item \textbf{Indice di Gulpease}: Misura la leggibilità della documentazione in lingua italiana. Valori tra 40 e 60 indicano testi tecnici facilmente comprensibili con licenza superiore.
+    \[ IG = 89 + \frac{300 \times (\text{numero di frasi}) - 10 \times (\text{numero di lettere})}{\text{numero di parole}} \]
+\end{itemize}
+\vspace{0.5cm}
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|l|X|c|c|}
+        \hline
+        \rowcolor{primarycolor!10}
+        \textbf{Codice} & \textbf{Nome Metrica} & \textbf{Val. Accettabile} & \textbf{Val. Ottimale} \\
+        \hline
+        MPD01 & \textbf{Soddisfacimento Requisiti Obbligatori}: percentuale di requisiti "Must" implementati. & $100\%$ & $100\%$ \\
+        \hline
+        MPD02 & \textbf{Comment Density}: rapporto tra righe di commento e righe di codice totali. & $\ge 15\%$ & $\ge 25\%$ \\
+        \hline
+        MPD03 & \textbf{Browser Compatibility}: numero di browser target su cui il sistema è testato. & $\ge 2$ & $\ge 3$ \\
+        \hline
+        MPD04 & \textbf{Errori Ortografici}: numero di errori rilevati per pagina di documento. & $\le 2$ & $0$ \\
+        \hline
+        MPD05 & \textbf{Complessità Ciclomatica}: valore medio dell'indice di complessità ciclomatica dei metodi. & $\le 10$ & $\le 5$\\
+        \hline
+        MPD06 & \textbf{Tempo di Caricamento Iniziale}: tempo medio dall'avvio dell'applicazione al momento in cui l'interfaccia diventa utilizzabile. & $\le 5 \text{ s}$ & $\le 2 \text{ s}$ \\
+        \hline
+        MPD07 & \textbf{Indice di Gulpease}: indice di leggibilità dei documenti in lingua italiana. & $\ge 40$ & $\ge 60$ \\
+        \hline
+    \end{tabularx}
+    \caption{Metriche di Qualità di Prodotto}
+\end{table}
+
+\vspace{0.5cm}
+\subsubsection*{Motivazione delle soglie metriche}
+\begin{itemize}
+    \item \textbf{MPD01 (Requisiti Obbligatori)}: Il 100\% è sia il valore accettabile che ottimale. I requisiti obbligatori sono vincolanti per l'utilizzo base del sistema e non implementarli renderebbe il prodotto non conforme alle richieste della proponente.
+    \item \textbf{MPD02 (Comment Density)}: Un livello $\ge 15\%$ garantisce la documentazione della logica di base del codice. L'ottimo $\ge 25\%$ assicura un'eccellente manutenibilità per sviluppi futuri.
+    \item \textbf{MPD03 (Browser Compatibility)}: La soglia $\ge 2$ garantisce il funzionamento multipiattaforma di base, mentre l'ottimo $\ge 3$ copre l'intero spettro del mercato mainstream (es. Chrome, Firefox, Brave).
+    \item \textbf{MPD04 (Errori Ortografici)}: Si tollerano $\le 2$ refusi per pagina in fase di stesura, ma l'obiettivo ottimale è 0, indispensabile per una documentazione formale destinata agli stakeholder.
+    \item \textbf{MPD05 (Complessità Ciclomatica)}: Un valore $\le 10$ evita codice "spaghetti" troppo nidificato, ma si punta a un ottimale $\le 5$ per garantire metodi coesi, semplici e facilmente testabili.
+    \item \textbf{MPD06 (Tempo di Caricamento)}: Un tempo $\le 5$ secondi previene l'abbandono da parte dell'utente. Un valore $\le 2$ secondi offre un'esperienza utente istantanea e fluida.
+    \item \textbf{MPD07 (Indice di Gulpease)}: La soglia $\ge 40$ assicura che concetti ingegneristici complessi siano comunque comprensibili da utenti con un diploma superiore, bilanciando il rigore tecnico con la chiarezza espositiva.
+\end{itemize}

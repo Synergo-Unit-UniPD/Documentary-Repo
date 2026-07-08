@@ -1,0 +1,57 @@
+\documentclass[11pt, a4paper]{article}
+
+% 1. RICHIAMA LA CONFIGURAZIONE CONDIVISA
+\input{../../../../template/shared/configurazione.tex}
+
+% 2. CONFIGURAZIONI LOGHI E IMMAGINI
+\graphicspath{
+    {./use_case_diagram/} % diagrammi UC
+    {../../../../template/shared/loghi/}
+}
+
+\hypersetup{
+	pdfauthor={Synergo Unit}
+}
+
+\pagestyle{fancy}
+\fancyhf{} 
+\fancyhead[L]{\textcolor{primarycolor}{\textbf{Synergo Unit}}}
+\fancyhead[R]{Analisi dei Requisiti v1.0.0 - 2026-05-26}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\setlength{\headheight}{15pt}
+
+\begin{document}
+	
+	\input{frontespizio.tex}
+	\newpage
+	
+	\input{registro_modifiche.tex}
+	\newpage
+	
+	\tableofcontents
+	\newpage
+	\listoffigures
+	\newpage
+	\listoftables
+	\newpage
+	
+	\input{introduzione.tex}
+	\newpage
+	
+	\input{descrizione_generale.tex}
+	\newpage
+	
+	\input{casi_d_uso.tex}
+	\newpage
+	
+	\input{requisiti.tex}
+	\newpage
+	
+	\input{tracciamento.tex}
+	\newpage
+	
+	\input{riepilogo.tex}
+
+\end{document}
