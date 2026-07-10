@@ -752,15 +752,15 @@
 
 %---------------ELENCHI----------------
 
-% UC 32 - Inserimento elenco
+% UC 32 - Inserimento elenco puntato
 \hypertarget{uc32}{}
-\subsubsection{UC 32: Inserimento elenco}
+\subsubsection{UC 32: Inserimento elenco puntato}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{inserimento_elenco.png}
-    \caption{UC 32 – Inserimento elenco}
+    \includegraphics[width=0.5\textwidth, draft]{inserimento_elenco_puntato.png}
+    \caption{UC 32 – Inserimento elenco puntato}
 \end{figure}
 
 \begin{itemize}
@@ -768,24 +768,116 @@
     \item \textbf{Precondizioni}: L'editor è attivo ed è presente una nota aperta nell'editor.
     \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente attiva il comando "Elenco".
-        \item Il sistema abilita la modalità di inserimento elenco.
-        \item L'utente seleziona il tipo di elenco desiderato (puntato o numerato).
-        \item L'utente inserisce il contenuto dell'elenco.
+        \item L'utente attiva il comando "Elenco puntato".
+        \item Il sistema abilita la modalità di inserimento elenco puntato.
+        \item L'utente inserisce il contenuto del primo elemento.
     \end{enumerate}
-    \item \textbf{Postcondizioni}: Il testo inserito successivamente viene formattato come elenco del tipo selezionato.
-    \item \textbf{Trigger}: L'utente desidera creare un elenco nel documento.
+    \item \textbf{Postcondizioni}: Il testo inserito viene formattato come primo elemento di un elenco puntato.
+    \item \textbf{Trigger}: L'utente desidera creare un elenco puntato nel documento.
 \end{itemize}
 
-% UC 33 - Modifica elenco
+% UC 33 - Inserimento elenco numerato
 \hypertarget{uc33}{}
-\subsubsection{UC 33: Modifica elenco}
+\subsubsection{UC 33: Inserimento elenco numerato}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth, draft]{inserimento_elenco_numerato.png}
+    \caption{UC 33 – Inserimento elenco numerato}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: L'editor è attivo ed è presente una nota aperta nell'editor.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando "Elenco numerato".
+        \item Il sistema abilita la modalità di inserimento elenco numerato.
+        \item L'utente inserisce il contenuto del primo elemento.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Il testo inserito viene formattato come primo elemento (numero 1) di un elenco numerato.
+    \item \textbf{Trigger}: L'utente desidera creare un elenco numerato nel documento.
+\end{itemize}
+
+% UC 34 - Aggiunta elemento elenco
+\hypertarget{uc34}{}
+\subsubsection{UC 34: Aggiunta elemento elenco}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth, draft]{aggiunta_elemento_elenco.png}
+    \caption{UC 34 – Aggiunta elemento elenco}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: L'utente sta scrivendo all'interno di un elenco (puntato o numerato) attivo.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente richiede l'inserimento di un nuovo blocco di testo (es. premendo Invio).
+        \item Il sistema aggiunge un nuovo marcatore di elenco (punto o numero successivo) alla riga seguente.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Un nuovo elemento vuoto viene aggiunto all'elenco corrente.
+    \item \textbf{Trigger}: L'utente desidera aggiungere una nuova voce all'elenco.
+\end{itemize}
+
+% UC 35 - Incremento livello elemento elenco
+\hypertarget{uc35}{}
+\subsubsection{UC 35: Incremento livello elemento elenco}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth, draft]{incremento_livello_elenco.png}
+    \caption{UC 35 – Incremento livello elemento elenco}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: Il cursore si trova su un elemento di un elenco esistente.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando di indentazione (incremento livello).
+        \item Il sistema sposta l'elemento corrente al livello di annidamento successivo.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'elemento dell'elenco risulta annidato (sotto-elenco) rispetto al livello precedente.
+    \item \textbf{Trigger}: L'utente desidera creare un sotto-elemento nell'elenco.
+\end{itemize}
+
+% UC 36 - Riduzione livello elemento elenco
+\hypertarget{uc36}{}
+\subsubsection{UC 36: Riduzione livello elemento elenco}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth, draft]{riduzione_livello_elenco.png}
+    \caption{UC 36 – Riduzione livello elemento elenco}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: Il cursore si trova su un elemento annidato di un elenco.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando di riduzione indentazione (riduzione livello).
+        \item Il sistema riporta l'elemento corrente al livello di annidamento precedente.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Il livello di annidamento dell'elemento risulta ridotto.
+    \item \textbf{Trigger}: L'utente desidera riportare un sotto-elemento a un livello gerarchico superiore.
+\end{itemize}
+
+% UC 37 - Modifica elenco
+\hypertarget{uc37}{}
+\subsubsection{UC 37: Modifica elenco}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{modifica_elenco.png}
-    \caption{UC 33 – Modifica elenco}
+    \caption{UC 37 – Modifica elenco}
 \end{figure}
 
 \begin{itemize}
@@ -801,15 +893,15 @@
     \item \textbf{Trigger}: L'utente desidera modificare un elenco esistente.
 \end{itemize}
 
-% UC 34 - Disattivazione elenco
-\hypertarget{uc34}{}
-\subsubsection{UC 34: Disattivazione elenco}
+% UC 38 - Disattivazione modalità elenco
+\hypertarget{uc38}{}
+\subsubsection{UC 38: Disattivazione modalità elenco}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{disattivazione_elenco.png}
-    \caption{UC 34 – Disattivazione elenco}
+    \caption{UC 38 – Disattivazione modalità elenco}
 \end{figure}
 
 \begin{itemize}
@@ -824,15 +916,15 @@
     \item \textbf{Trigger}: L'utente desidera interrompere la modalità di inserimento elenco.
 \end{itemize}
 
-% UC 35 - Rimozione formattazione elenco da testo selezionato
-\hypertarget{uc35}{}
-\subsubsection{UC 35: Rimozione formattazione elenco da testo selezionato}
+% UC 39 - Rimozione formattazione elenco da testo selezionato
+\hypertarget{uc39}{}
+\subsubsection{UC 39: Rimozione formattazione elenco da testo selezionato}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{rimozione_elenco.png}
-    \caption{UC 35 – Rimozione formattazione elenco da testo selezionato}
+    \caption{UC 39 – Rimozione formattazione elenco da testo selezionato}
 \end{figure}
 
 \begin{itemize}
@@ -849,14 +941,14 @@
 
 %---------------GESTIONE TABELLE--------------------
 
-% UC36 - Inserimento tabella
-\hypertarget{uc36}{}
-\subsubsection{UC 36: Inserimento tabella}
+% UC40 - Inserimento tabella
+\hypertarget{uc40}{}
+\subsubsection{UC 40: Inserimento tabella}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{inserimento_tabella.png}
-    \caption{UC 36 – Inserimento tabella}
+    \caption{UC 40 – Inserimento tabella}
 \end{figure}
 
 \begin{itemize}
@@ -874,18 +966,19 @@
     \item \textbf{Trigger}: L'utente desidera inserire una tabella nella nota.
     \item \textbf{Estensioni}:
     \begin{itemize}
-        \item \hyperlink{uc36.1}{UC 36.1: Visualizzazione errore parametri tabella}: parametri non validi al passo 3.
+        \item \hyperlink{uc40.1}{UC 40.1: Visualizzazione errore numero righe tabella} $\rightarrow$ Condizione: numero di righe non valido al passo 3.
+        \item \hyperlink{uc40.2}{UC 40.2: Visualizzazione errore numero colonne tabella} $\rightarrow$ Condizione: numero di colonne non valido al passo 3.
     \end{itemize}
 \end{itemize}
 
-% UC36.1 - Visualizzazione errore parametri tabella
-\hypertarget{uc36.1}{}
-\subsubsection{UC 36.1: Visualizzazione errore parametri tabella}\mbox{}\\
+% UC40.1 - Visualizzazione errore numero righe tabella
+\hypertarget{uc40.1}{}
+\subsubsection{UC 40.1: Visualizzazione errore numero righe tabella}\mbox{}\\
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{errore_parametri_tabella.png}
-    \caption{UC 36.1 – Visualizzazione errore parametri tabella}
+    \includegraphics[width=0.6\textwidth, draft]{errore_righe_tabella.png}
+    \caption{UC 40.1 – Visualizzazione errore numero righe tabella}
 \end{figure}
 
 \begin{itemize}
@@ -893,21 +986,43 @@
     \item \textbf{Precondizioni}: È in corso la creazione di una tabella.
     \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item Il sistema rileva valori non validi per righe o colonne.
+        \item Il sistema rileva un valore non valido per il numero di righe.
         \item Il sistema mostra un messaggio di errore all'utente.
     \end{enumerate}
     \item \textbf{Postcondizioni}: La tabella non viene generata.
-    \item \textbf{Trigger}: Inserimento di parametri non validi.
+    \item \textbf{Trigger}: Inserimento di un parametro non valido per le righe.
 \end{itemize}
 
-% UC37 - Modifica contenuto cella tabella
-\hypertarget{uc37}{}
-\subsubsection{UC 37: Modifica contenuto cella tabella}
+% UC40.2 - Visualizzazione errore numero colonne tabella
+\hypertarget{uc40.2}{}
+\subsubsection{UC 40.2: Visualizzazione errore numero colonne tabella}\mbox{}\\
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth, draft]{errore_colonne_tabella.png}
+    \caption{UC 40.2 – Visualizzazione errore numero colonne tabella}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: È in corso la creazione di una tabella.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema rileva un valore non valido per il numero di colonne.
+        \item Il sistema mostra un messaggio di errore all'utente.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La tabella non viene generata.
+    \item \textbf{Trigger}: Inserimento di un parametro non valido per le colonne.
+\end{itemize}
+
+% UC41 - Modifica contenuto cella tabella
+\hypertarget{uc41}{}
+\subsubsection{UC 41: Modifica contenuto cella tabella}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{modifica_cella_tabella.png}
-    \caption{UC 37 – Modifica contenuto cella tabella}
+    \caption{UC 41 – Modifica contenuto cella tabella}
 \end{figure}
 
 \begin{itemize}
@@ -923,14 +1038,14 @@
     \item \textbf{Trigger}: L'utente desidera modificare una cella della tabella.
 \end{itemize}
 
-% UC38 - Inserimento riga tabella
-\hypertarget{uc38}{}
-\subsubsection{UC 38: Inserimento riga tabella}
+% UC42 - Inserimento riga tabella
+\hypertarget{uc42}{}
+\subsubsection{UC 42: Inserimento riga tabella}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{inserimento_riga_tabella.png}
-    \caption{UC 38 – Inserimento riga tabella}
+    \caption{UC 42 – Inserimento riga tabella}
 \end{figure}
 
 \begin{itemize}
@@ -946,14 +1061,14 @@
     \item \textbf{Trigger}: L'utente desidera aggiungere una riga alla tabella.
 \end{itemize}
 
-% UC39 - Eliminazione riga tabella
-\hypertarget{uc39}{}
-\subsubsection{UC 39: Eliminazione riga tabella}
+% UC43 - Eliminazione riga tabella
+\hypertarget{uc43}{}
+\subsubsection{UC 43: Eliminazione riga tabella}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{eliminazione_riga_tabella.png}
-    \caption{UC 39 – Eliminazione riga tabella}
+    \caption{UC 43 – Eliminazione riga tabella}
 \end{figure}
 
 \begin{itemize}
@@ -969,14 +1084,14 @@
     \item \textbf{Trigger}: L'utente desidera eliminare una riga della tabella.
 \end{itemize}
 
-% UC40 - Inserimento colonna tabella
-\hypertarget{uc40}{}
-\subsubsection{UC 40: Inserimento colonna tabella}
+% UC44 - Inserimento colonna tabella
+\hypertarget{uc44}{}
+\subsubsection{UC 44: Inserimento colonna tabella}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{inserimento_colonna_tabella.png}
-    \caption{UC 40 – Inserimento colonna tabella}
+    \caption{UC 44 – Inserimento colonna tabella}
 \end{figure}
 
 \begin{itemize}
@@ -992,14 +1107,14 @@
     \item \textbf{Trigger}: L'utente desidera aggiungere una colonna alla tabella.
 \end{itemize}
 
-% UC41 - Eliminazione colonna tabella
-\hypertarget{uc41}{}
-\subsubsection{UC 41: Eliminazione colonna tabella}
+% UC45 - Eliminazione colonna tabella
+\hypertarget{uc45}{}
+\subsubsection{UC 45: Eliminazione colonna tabella}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{eliminazione_colonna_tabella.png}
-    \caption{UC 41 – Eliminazione colonna tabella}
+    \caption{UC 45 – Eliminazione colonna tabella}
 \end{figure}
 
 \begin{itemize}
@@ -1015,14 +1130,14 @@
     \item \textbf{Trigger}: L'utente desidera eliminare una colonna della tabella.
 \end{itemize}
 
-% UC42 - Eliminazione tabella
-\hypertarget{uc42}{}
-\subsubsection{UC 42: Eliminazione tabella}
+% UC46 - Eliminazione tabella
+\hypertarget{uc46}{}
+\subsubsection{UC 46: Eliminazione tabella}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{eliminazione_tabella.png}
-    \caption{UC 42 – Eliminazione tabella}
+    \caption{UC 46 – Eliminazione tabella}
 \end{figure}
 
 \begin{itemize}
@@ -1040,15 +1155,15 @@
 
 %---------------GESTIONE MODIFICHE------------------
 
-% UC43 - Azione di Undo
-\hypertarget{uc43}{}
-\subsubsection{UC 43: Azione di Undo\textsubscript{G}}
+% UC47 - Azione di Undo
+\hypertarget{uc47}{}
+\subsubsection{UC 47: Azione di Undo\textsubscript{G}}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{azione_undo.png}
-    \caption{UC 43 – Azione di Undo}
+    \caption{UC 47 – Azione di Undo}
 \end{figure}
 
 \begin{itemize}
@@ -1063,15 +1178,15 @@
     \item \textbf{Trigger}: L'utente desidera annullare un'operazione eseguita.
 \end{itemize}
 
-% UC44 - Azione di Redo
-\hypertarget{uc44}{}
-\subsubsection{UC 44: Azione di Redo\textsubscript{G}}
+% UC48 - Azione di Redo
+\hypertarget{uc48}{}
+\subsubsection{UC 48: Azione di Redo\textsubscript{G}}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{azione_redo.png}
-    \caption{UC 44 – Azione di Redo}
+    \caption{UC 48 – Azione di Redo}
 \end{figure}
 
 \begin{itemize}
@@ -1088,15 +1203,15 @@
 
 %---------------GESTIONE VISUALIZZAZIONE----------------
 
-% UC45 - Visualizzazione esclusiva Editor
-\hypertarget{uc45}{}
-\subsubsection{UC 45: Visualizzazione esclusiva Editor}
+% UC49 - Visualizzazione esclusiva Editor
+\hypertarget{uc49}{}
+\subsubsection{UC 49: Visualizzazione esclusiva Editor}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{visualizzazione_editor.png}
-    \caption{UC 45 – Visualizzazione esclusiva Editor}
+    \caption{UC 49 – Visualizzazione esclusiva Editor}
 \end{figure}
 
 \begin{itemize}
@@ -1111,15 +1226,15 @@
     \item \textbf{Trigger}: L'utente desidera concentrarsi esclusivamente sulla scrittura del documento.
 \end{itemize}
 
-% UC 46 - Visualizzazione esclusiva Render\textsubscript{G}
-\hypertarget{uc46}{}
-\subsubsection{UC 46: Visualizzazione esclusiva Render}
+% UC 50 - Visualizzazione esclusiva Render\textsubscript{G}
+\hypertarget{uc50}{}
+\subsubsection{UC 50: Visualizzazione esclusiva Render}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{visualizzazione_render.png}
-    \caption{UC 46 – Visualizzazione esclusiva Render}
+    \caption{UC 50 – Visualizzazione esclusiva Render}
 \end{figure}
 
 \begin{itemize}
@@ -1134,15 +1249,15 @@
     \item \textbf{Trigger}: L'utente desidera visualizzare il risultato finale del documento.
 \end{itemize}
 
-% UC 47 - Visualizzazione Split View\textsubscript{G}
-\hypertarget{uc47}{}
-\subsubsection{UC 47: Visualizzazione Split View}
+% UC 51 - Visualizzazione Split View\textsubscript{G}
+\hypertarget{uc51}{}
+\subsubsection{UC 51: Visualizzazione Split View}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{visualizzazione_split_view.png}
-    \caption{UC 47 – Visualizzazione Split View}
+    \caption{UC 51 – Visualizzazione Split View}
 \end{figure}
 
 \begin{itemize}
