@@ -10,8 +10,8 @@
 
 Il presente verbale documenta l’incontro, svoltosi tramite Google Meet, 
 tra il gruppo Synergo Unit e il referente dell’azienda Zucchetti. 
-Durante la riunione sono stati presentati e discussi l’Analisi dei Requisiti (AdR),
-lo stato dell’arte delle tecnologie selezionate, il Proof of Concept (PoC) e il mockup dell’interfaccia utente.
+Durante la riunione sono stati presentati e discussi il PoC(Proof of Concept), i problemi dell'infastruttura, i requisiti non funzionali e la disponibilità dell'azienda Zucchetti durante il periodo estivo.
+
 
 
 \vspace{0.5cm}
@@ -33,71 +33,35 @@ lo stato dell’arte delle tecnologie selezionate, il Proof of Concept (PoC) e i
 Il gruppo ha richiesto chiarimenti sui seguenti aspetti:
 
 \begin{enumerate}
-	\item Analisi dei requisiti
-	\item Stato dell'arte
-	\item Proof of concept
-	\item Mockup dell’interfaccia
+	\item Proof of Concept
+	\item Problemi dell'infastruttura
+	\item Requisiti non funzionali
+	\item Disponibilità dell'azienda durante il periodo estivo
 \end{enumerate}
 
 % --- 3. RESOCONTO ---
 \section{Resoconto}
 
-\subsection{Analisi dei Requisiti}
+\subsection{Proof of Concept}
 
-Il gruppo ha presentato le tre macroaree funzionali individuate
-nell’Analisi dei Requisiti, illustrando i diagrammi UML e il
-tracciamento dei requisiti.
+Il Proof of Concept è stato visionato e approvato.
 
-Sono stati inoltre discussi alcuni requisiti prestazionali
-individuati dal gruppo, tra cui:
+\subsection{Problemi dell'infastruttura}
+
+Per quanto riguarda l’infrastruttura attuale, è stato suggerito di utilizzare inizialmente il modello *gemma4:12b*. Eventualmente, potranno essere ampliati i nostri permessi per consentire l’utilizzo del modello *Qwen3.6-35B-A3B*, ritenuto più stabile e con prestazioni superiori. È stato inoltre raccomandato di evitare chiamate a cascata tra modelli, in quanto l’infrastruttura prevede il ricaricamento del modello ad ogni richiesta, con conseguente perdita di efficienza.
+
+
+\subsection{Requisiti non funzionali}
+I requisiti non funzionali dovranno essere ampliati e resi maggiormente misurabili. In particolare:
 \begin{itemize}
-	\item il rendering in tempo reale durante la digitazione;
-	\item la segnalazione di operazioni con durata superiore ai due secondi.
+    \item \textbf{Compatibilità browser:} è necessario definire i browser ufficialmente supportati e le eventuali versioni minime. Browser come Edge, Safari e Chrome condividono la stessa base tecnologica e non dovrebbero presentare criticità rilevanti; al contrario, Firefox utilizza un motore differente e richiede test specifici, così come Safari su macOS.
+    \item \textbf{Prestazioni AI:} occorre chiarire quale tempo di attesa sia considerato accettabile per la generazione di una proposta AI. In precedenza era stato indicato un tempo minimo di 2 secondi; si è deciso tuttavia di non fissare un limite massimo, introducendo invece un meccanismo di interruzione manuale che consenta all’utente di interrompere l’elaborazione.
+    \item \textbf{Persistenza opzionale:} è stato chiarito che il requisito opzionale relativo al database comprende funzionalità complete di autenticazione e gestione delle note (visualizzazione elenco, apertura, aggiornamento ed eliminazione), e non la sola memorizzazione. L'eliminazione delle note è considerata meno rilevante in quanto rappresenta una funzionalità standard che non introduce elementi di particolare innovazione.
 \end{itemize}
 
-Il referente aziendale ha ritenuto adeguati i requisiti presentati
-e ha approvato l’Analisi dei Requisiti.
+\subsection{Disponibilità dell'azienda durante il periodo estivo}
 
-\subsection{Stato dell’arte}
-Il gruppo ha presentato le tecnologie selezionate per il progetto.
-
-In particolare:
-\begin{itemize}
-	\item CodeMirror è stato ritenuto adeguato rispetto a Monaco Editor,
-	in quanto maggiormente compatibile con il livello di complessità richiesto;
-	\item Vue.js è stato approvato per lo sviluppo del frontend;
-	\item FastAPI è stato approvato per lo sviluppo backend;
-	\item PostgreSQL è stato valutato positivamente grazie al supporto
-	per dati JSON e funzionalità embedded tramite plugin.
-\end{itemize}
-
-Le scelte tecnologiche presentate sono state approvate.
-
-\subsection{Proof of concept}
-
-Il gruppo ha presentato il perimetro del Proof of Concept,
-illustrando un editor aperto su una nota Markdown esistente.
-
-Durante la dimostrazione sono state presentate le seguenti funzionalità:
-\begin{itemize}
-	\item importazione e salvataggio di file Markdown;
-	\item applicazione di formattazione testuale;
-	\item visualizzazione split editor/render;
-	\item interazione con LLM tramite suggerimenti accettabili o rifiutabili;
-	\item suggerimenti contestuali su selezione di testo;
-	\item funzionalità di distant writing tramite prompt utente.
-\end{itemize}
-
-Il referente aziendale ha valutato positivamente il PoC,
-ritenendolo coerente con gli obiettivi del capitolato.
-
-\subsection{Mockup dell’interfaccia}
-
-È stato inoltre presentato un mockup preliminare dell’interfaccia
-utente, progettato come versione semplificata del futuro MVP.
-
-Il mockup è stato approvato dal referente aziendale.
-
+Per quanto riguarda il periodo estivo, considerata la presenza di ferie, il docente ha suggerito di valutare la possibilità di individuare preventivamente degli slot di comunicazione, al fine di evitare ritardi dovuti a difficoltà di coordinamento. È stato inoltre comunicato che l’azienda resterà chiusa nelle due settimane centrali di agosto e che il referente sarà assente per l’intero mese. Si raccomanda pertanto di concentrare le comunicazioni entro la fine di luglio e l’inizio di settembre, mantenendo come eventuali finestre operative la prima e l’ultima settimana di agosto in caso di necessità.
 \newpage
 % --- 4. DECISIONI FORMALI ---
 \section{Decisioni Formali}
@@ -126,17 +90,17 @@ dei chiarimenti ricevuti.
 	\bottomrule
 	\endlastfoot
 
-	\textbf{VE-6.1}
-		& Scelte riguardo l'AdR approvate \\[4pt]
+	\textbf{VE-7.1}
+		& Proof of Concept approvato \\[4pt]
 
-	\textbf{VE-6.2}
-		& Scelte riguardo lo stato dell'arte approvate \\[4pt]
+	\textbf{VE-7.2}
+		& Scelte riguardo i problemi dell'infastruttura \\[4pt]
 
-	\textbf{VE-6.3}
-		& Scelte riguardo il PoC approvate \\[4pt]
+	\textbf{VE-7.3}
+		& Scelte riguardo i requisiti funzionali \\[4pt]
 
-	\textbf{VE-6.4}
-		& Mockup dell'interfaccia approvato \\[4pt]
+	\textbf{VE-7.4}
+		& Discussione della disponibilità aziendale nel periodo estivo \\[4pt]
 \end{longtable}
 
 \newpage
@@ -165,12 +129,6 @@ delle decisioni adottate durante la riunione.
 
 	\bottomrule
 	\endlastfoot
-
-	\ghissue{193}
-		& VE-6.3, VE-6.4
-		& Creazione del setup iniziale del PoC.
-		& Gruppo Synergo Unit
-		& 2026-06-02 \\[4pt]
 
 \end{longtable}
 
