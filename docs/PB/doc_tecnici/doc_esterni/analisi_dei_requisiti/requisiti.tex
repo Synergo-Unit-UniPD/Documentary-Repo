@@ -114,21 +114,26 @@ proponente e dall'analisi del dominio applicativo.
 	\textbf{R70-F-O} & Obbligatorio & Il sistema deve permettere all'utente di rifiutare la proposta generata dall'AI, mantenendo il documento invariato. & \hyperlink{uc59}{UC59}, Capitolato, VE-3.2 \\ \hline
 	\textbf{R71-F-O} & Obbligatorio & Il sistema deve permettere all'utente di richiedere la rigenerazione di una proposta AI non soddisfacente; deve notificare in caso di errore. & \hyperlink{uc60}{UC60}, \hyperlink{uc60.1}{UC60.1}, Analisi del dominio \\ \hline
 
+	% ---- Gestione elaborazione AI (Nuovi) ----
+	\textbf{R72-F-O} & Obbligatorio & Il sistema deve mostrare all'utente una visualizzazione continua dello stato di avanzamento durante l'elaborazione AI. & \hyperlink{uc...}{UC...}, Analisi del dominio \\ \hline
+	\textbf{R73-F-O} & Obbligatorio & Il sistema deve permettere all'utente di interrompere manualmente una richiesta in corso inviata al modello LLM. & \hyperlink{uc...}{UC...}, Verbale Esterno \\ \hline
+	\textbf{R74-F-O} & Obbligatorio & Il sistema deve visualizzare la proposta generata dall'AI all'interno di un modale dedicato, separato dal testo della nota. & \hyperlink{uc...}{UC...}, Capitolato \\ \hline
+
 	% ---- I/O e persistenza locale ----
-	\textbf{R72-F-O} & Obbligatorio & Il sistema deve permettere il salvataggio della nota corrente in un file \texttt{.md} nel file system locale; deve notificare in caso di errore. & \hyperlink{uc63}{UC63}, \hyperlink{uc63.1}{UC63.1}, Capitolato \\ \hline
-	\textbf{R73-F-O} & Obbligatorio & Il sistema deve permettere il caricamento di un file \texttt{.md} esistente dal file system locale nell'editor; deve notificare in caso di file non valido o corrotto. & \hyperlink{uc64}{UC64}, \hyperlink{uc64.1}{UC64.1}, Capitolato \\ \hline
-	\textbf{R74-F-O} & Obbligatorio & Il sistema deve permettere l'esportazione della nota nei formati PDF, HTML e JSON; deve notificare in caso di errore durante la conversione. & \hyperlink{uc65}{UC65}, \hyperlink{uc65.1}{UC65.1}, Capitolato \\ \hline
+	\textbf{R75-F-O} & Obbligatorio & Il sistema deve permettere il salvataggio della nota corrente in un file \texttt{.md} nel file system locale; deve notificare in caso di errore. & \hyperlink{uc63}{UC63}, \hyperlink{uc63.1}{UC63.1}, Capitolato \\ \hline
+	\textbf{R76-F-O} & Obbligatorio & Il sistema deve permettere il caricamento di un file \texttt{.md} esistente dal file system locale nell'editor; deve notificare in caso di file non valido o corrotto. & \hyperlink{uc64}{UC64}, \hyperlink{uc64.1}{UC64.1}, Capitolato \\ \hline
+	\textbf{R77-F-O} & Obbligatorio & Il sistema deve permettere l'esportazione della nota nei formati PDF, HTML e JSON; deve notificare in caso di errore durante la conversione. & \hyperlink{uc65}{UC65}, \hyperlink{uc65.1}{UC65.1}, Capitolato \\ \hline
 
 	% ---- Opzionali: DB remoto ----
-	\textbf{R75-F-Op} & Opzionale & Il sistema deve permettere la creazione di una nuova nota vuota associando il titolo inserito dall'utente. & \hyperlink{uc61}{UC61}, Capitolato \\ \hline
-	\textbf{R76-F-Op} & Opzionale & Il sistema deve permettere l'eliminazione di una nota previa conferma esplicita da parte dell'utente. & \hyperlink{uc62}{UC62}, \hyperlink{uc62.1}{UC62.1}, \hyperlink{uc62.2}{UC62.2}, Capitolato \\ \hline
-	\textbf{R77-F-Op} & Opzionale & Il sistema deve notificare l'utente in caso di errore tecnico o del file system durante l'eliminazione di una nota. & \hyperlink{uc62.3}{UC62.3}, Analisi del dominio \\ \hline
-	\textbf{R78-F-Op} & Opzionale & Il sistema deve permettere la registrazione di un nuovo utente tramite email e password, con validazione dei dati inseriti. & \hyperlink{uc66}{UC66}, \hyperlink{uc66.1}{UC66.1}, \hyperlink{uc66.2}{UC66.2}, Capitolato \\ \hline
-	\textbf{R79-F-Op} & Opzionale & Il sistema deve permettere l'autenticazione dell'utente tramite credenziali; deve notificare in caso di credenziali errate. & \hyperlink{uc67}{UC67}, \hyperlink{uc67.1}{UC67.1}, Capitolato \\ \hline
-	\textbf{R80-F-Op} & Opzionale & Il sistema deve permettere il logout dell'utente autenticato. & \hyperlink{uc68}{UC68}, Capitolato \\ \hline
-	\textbf{R81-F-Op} & Opzionale & Il sistema deve permettere la visualizzazione della lista delle note salvate nel servizio remoto con nome e data di ultima modifica; deve notificare in caso di errore. & \hyperlink{uc69}{UC69}, \hyperlink{uc69.1}{UC69.1}, Capitolato \\ \hline
-	\textbf{R82-F-Op} & Opzionale & Il sistema deve permettere il salvataggio della nota corrente nello spazio remoto associato al profilo utente; deve notificare in caso di errore di sincronizzazione. & \hyperlink{uc70}{UC70}, \hyperlink{uc70.1}{UC70.1}, Capitolato \\ \hline
-	\textbf{R83-F-Op} & Opzionale & Il sistema deve permettere l'apertura di una nota dalla lista delle note salvate nel servizio remoto; deve notificare in caso di errore nel caricamento. & \hyperlink{uc71}{UC71}, \hyperlink{uc71.1}{UC71.1}, Capitolato \\ \hline
+	\textbf{R78-F-Op} & Opzionale & Il sistema deve permettere la creazione di una nuova nota vuota associando il titolo inserito dall'utente. & \hyperlink{uc61}{UC61}, Capitolato \\ \hline
+	\textbf{R79-F-Op} & Opzionale & Il sistema deve permettere l'eliminazione di una nota previa conferma esplicita da parte dell'utente. & \hyperlink{uc62}{UC62}, \hyperlink{uc62.1}{UC62.1}, \hyperlink{uc62.2}{UC62.2}, Capitolato \\ \hline
+	\textbf{R80-F-Op} & Opzionale & Il sistema deve notificare l'utente in caso di errore tecnico o del file system durante l'eliminazione di una nota. & \hyperlink{uc62.3}{UC62.3}, Analisi del dominio \\ \hline
+	\textbf{R81-F-Op} & Opzionale & Il sistema deve permettere la registrazione di un nuovo utente tramite email e password, con validazione dei dati inseriti. & \hyperlink{uc66}{UC66}, \hyperlink{uc66.1}{UC66.1}, \hyperlink{uc66.2}{UC66.2}, Capitolato \\ \hline
+	\textbf{R82-F-Op} & Opzionale & Il sistema deve permettere l'autenticazione dell'utente tramite credenziali; deve notificare in caso di credenziali errate. & \hyperlink{uc67}{UC67}, \hyperlink{uc67.1}{UC67.1}, Capitolato \\ \hline
+	\textbf{R83-F-Op} & Opzionale & Il sistema deve permettere il logout dell'utente autenticato. & \hyperlink{uc68}{UC68}, Capitolato \\ \hline
+	\textbf{R84-F-Op} & Opzionale & Il sistema deve permettere la visualizzazione della lista delle note salvate nel servizio remoto con nome e data di ultima modifica; deve notificare in caso di errore. & \hyperlink{uc69}{UC69}, \hyperlink{uc69.1}{UC69.1}, Capitolato \\ \hline
+	\textbf{R85-F-Op} & Opzionale & Il sistema deve permettere il salvataggio della nota corrente nello spazio remoto associato al profilo utente; deve notificare in caso di errore di sincronizzazione. & \hyperlink{uc70}{UC70}, \hyperlink{uc70.1}{UC70.1}, Capitolato \\ \hline
+	\textbf{R86-F-Op} & Opzionale & Il sistema deve permettere l'apertura di una nota dalla lista delle note salvate nel servizio remoto; deve notificare in caso di errore nel caricamento. & \hyperlink{uc71}{UC71}, \hyperlink{uc71.1}{UC71.1}, Capitolato \\ \hline
 
 \end{longtable}
 
@@ -147,10 +152,9 @@ proponente e dall'analisi del dominio applicativo.
 	\hline
 	\endhead
 
-	\textbf{R1-Q-O} & Obbligatorio & Il sistema dovrà essere corredato di test automatici con copertura adeguata dei casi d'uso principali. & Capitolato \\ \hline
-	\textbf{R2-Q-O} & Obbligatorio & L'interfaccia utente\textsubscript{G} deve risultare semplice, immediata e utilizzabile senza competenze tecniche pregresse. & Capitolato, VE-3.3, VE-5.3 \\ \hline
-	\textbf{R3-Q-O} & Obbligatorio & Il codice sorgente e la documentazione devono essere pubblicati su repository pubblico. & Capitolato \\ \hline
-	\textbf{R4-Q-D} & Desiderabile & Il progetto dovrebbe rispettare i requisiti open source dell'azienda proponente nella scelta della licenza di distribuzione. & Capitolato \\ \hline
+	\textbf{R1-Q-O} & Obbligatorio & Il sistema dovrà essere corredato di test automatici con una code coverage minima dell'80\% sui casi d'uso principali. & Capitolato \\ \hline
+	\textbf{R2-Q-O} & Obbligatorio & Il codice sorgente e la documentazione devono essere pubblicati su repository pubblico. & Capitolato \\ \hline
+	\textbf{R3-Q-D} & Desiderabile & Il progetto dovrebbe rispettare i requisiti open source dell'azienda proponente nella scelta della licenza di distribuzione. & Capitolato \\ \hline
 
 \end{longtable}
 
@@ -169,12 +173,11 @@ proponente e dall'analisi del dominio applicativo.
 	\hline
 	\endhead
 
-	\textbf{R1-V-O} & Obbligatorio & L'applicazione deve essere basata su tecnologie web standard ed eseguibile tramite browser, senza installazione di software aggiuntivo. & Capitolato \\ \hline
+	\textbf{R1-V-O} & Obbligatorio & L'applicazione deve essere basata su tecnologie web standard (HTML5, CSS3, JavaScript/TypeScript) ed eseguibile tramite browser, senza installazione di software aggiuntivo. & Capitolato \\ \hline
 	\textbf{R2-V-O} & Obbligatorio & L'interazione con i modelli LLM deve avvenire tramite chiamate API aderenti allo standard OpenAI. & Capitolato, VE-1.1 \\ \hline
 	\textbf{R3-V-O} & Obbligatorio & I modelli LLM di riferimento sono Gemma, ChatGPT-OSS e Qwen, messi a disposizione dall'azienda proponente; ulteriori modelli possono essere integrati successivamente. & Capitolato, VE-1.1 \\ \hline
-	\textbf{R4-V-O} & Obbligatorio & La gestione delle immagini è esclusa dai requisiti del prodotto. & VE-5.1 \\ \hline
-	\textbf{R5-V-O} & Obbligatorio & Le lingue con alfabeto non latino (es.\ Cinese, Russo, Arabo) sono escluse dalla funzionalità di traduzione. & VE-5.2 \\ \hline
-	\textbf{R6-V-Op} & Opzionale & Nel caso venga implementata la persistenza remota, il sistema dovrà supportare PostgreSQL\textsubscript{G} come DBMS di riferimento. & VE-1.4 \\ \hline
+	\textbf{R4-V-Op} & Opzionale & Il sistema utilizza un database PostgreSQL\textsubscript{G} configurato a livello applicativo per la memorizzazione remota delle note. & VE-1.4, VE-7.1 \\ \hline
+	\textbf{R5-V-O} & Obbligatorio & L'applicazione deve essere compatibile e pienamente supportata sui seguenti browser: Google Chrome (e derivati Chromium come Edge), Mozilla Firefox e Apple Safari. & VE-7.1 \\ \hline
 
 \end{longtable}
 
@@ -194,6 +197,6 @@ proponente e dall'analisi del dominio applicativo.
 	\endhead
 
 	\textbf{R1-P-O} & Obbligatorio & Il rendering dell'anteprima Markdown deve aggiornarsi in tempo reale durante la digitazione, entro 1 secondo dalla modifica del contenuto dell’editor. & Capitolato, Analisi del dominio \\ \hline
-	\textbf{R2-P-O} & Obbligatorio & Il sistema deve fornire un feedback visivo (es.\ indicatore di caricamento) durante le operazioni AI la cui durata superi i 2 secondi. & Analisi del dominio, VE-6.1 \\ \hline
+	\textbf{R2-P-O} & Obbligatorio & A fronte di una connessione di rete stabile verso le API, il sistema deve garantire una visualizzazione continua e reattiva dello stato di caricamento per l'intera durata dell'elaborazione AI, indipendentemente dai tempi di risposta del modello. & Analisi del dominio, VE-6.1 \\ \hline
 
 \end{longtable}
