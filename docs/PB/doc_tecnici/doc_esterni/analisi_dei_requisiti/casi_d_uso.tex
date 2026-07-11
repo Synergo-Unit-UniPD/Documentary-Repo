@@ -2179,7 +2179,7 @@ Le funzionalità di salvataggio, importazione, esportazione e persistenza operan
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth, draft]{esportazione_pdf.png}
+    \includegraphics[width=0.5\textwidth]{esportazione_pdf.png}
     \caption{UC 148 – Esportazione nota in formato PDF}
 \end{figure}
 
@@ -2206,7 +2206,7 @@ Le funzionalità di salvataggio, importazione, esportazione e persistenza operan
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth, draft]{errore_esportazione_pdf.png}
+    \includegraphics[width=0.6\textwidth]{errore_esportazione_pdf.png}
     \caption{UC 148.1 – Visualizzazione errore esportazione PDF}
 \end{figure}
 
@@ -2228,7 +2228,7 @@ Le funzionalità di salvataggio, importazione, esportazione e persistenza operan
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth, draft]{esportazione_html.png}
+    \includegraphics[width=0.5\textwidth]{esportazione_html.png}
     \caption{UC 149 – Esportazione nota in formato HTML}
 \end{figure}
 
@@ -2255,7 +2255,7 @@ Le funzionalità di salvataggio, importazione, esportazione e persistenza operan
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth, draft]{errore_esportazione_html.png}
+    \includegraphics[width=0.6\textwidth]{errore_esportazione_html.png}
     \caption{UC 149.1 – Visualizzazione errore esportazione HTML}
 \end{figure}
 
@@ -2277,7 +2277,7 @@ Le funzionalità di salvataggio, importazione, esportazione e persistenza operan
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth, draft]{esportazione_json.png}
+    \includegraphics[width=0.5\textwidth]{esportazione_json.png}
     \caption{UC 150 – Esportazione nota in formato JSON}
 \end{figure}
 
@@ -2304,7 +2304,7 @@ Le funzionalità di salvataggio, importazione, esportazione e persistenza operan
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth, draft]{errore_esportazione_json.png}
+    \includegraphics[width=0.6\textwidth]{errore_esportazione_json.png}
     \caption{UC 150.1 – Visualizzazione errore esportazione JSON}
 \end{figure}
 
@@ -2541,6 +2541,13 @@ Le funzionalità di salvataggio, importazione, esportazione e persistenza operan
 % UC154.1 - Visualizzazione titolo nota remota
 \hypertarget{uc154.1}{}
 \subsubsection{UC 154.1: Visualizzazione titolo nota remota}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{visualizzazione_titolo_remota.png}
+    \caption{UC 154.1 – Visualizzazione titolo nota remota}
+\end{figure}
+
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
     \item \textbf{Precondizioni}: Il sistema sta mostrando un elemento all'interno dell'elenco delle note archiviate.
@@ -2555,6 +2562,13 @@ Le funzionalità di salvataggio, importazione, esportazione e persistenza operan
 % UC154.2 - Visualizzazione data ultima modifica nota remota
 \hypertarget{uc154.2}{}
 \subsubsection{UC 154.2: Visualizzazione data ultima modifica nota remota}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{visualizzazione_data_remota.png}
+    \caption{UC 154.2 – Visualizzazione data ultima modifica nota remota}
+\end{figure}
+
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
     \item \textbf{Precondizioni}: Il sistema sta mostrando un elemento all'interno dell'elenco delle note archiviate.
@@ -2569,6 +2583,13 @@ Le funzionalità di salvataggio, importazione, esportazione e persistenza operan
 % UC154.3 - Visualizzazione anteprima contenuto nota remota
 \hypertarget{uc154.3}{}
 \subsubsection{UC 154.3: Visualizzazione anteprima contenuto nota remota}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{visualizzazione_anteprima_remota.png}
+    \caption{UC 154.3 – Visualizzazione anteprima contenuto nota remota}
+\end{figure}
+
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
     \item \textbf{Precondizioni}: Il sistema sta mostrando un elemento all'interno dell'elenco delle note archiviate.
@@ -2672,7 +2693,7 @@ Le funzionalità di salvataggio, importazione, esportazione e persistenza operan
         \item Il sistema carica la nota nell'editor.
     \end{enumerate}
     \item \textbf{Postcondizioni}: La nota selezionata è aperta nell'editor.
-    \item \textbf{Trigger}: L'utente desidera aprire una nota salvata nello spazio remoto.
+    \item \textbf{Trigger}: L'utente desidera aprire una nota salvata nel database remoto.
     \item \textbf{Estensioni}:
     \begin{itemize}
         \item \hyperlink{uc156.1}{UC 156.1: Visualizzazione errore apertura nota remota} $ \rightarrow $ Condizione: errore durante il recupero della nota al passo 2.
@@ -2698,7 +2719,7 @@ Le funzionalità di salvataggio, importazione, esportazione e persistenza operan
         \item Il sistema mostra un messaggio di errore all'utente.
     \end{enumerate}
     \item \textbf{Postcondizioni}: L'editor rimane invariato.
-    \item \textbf{Trigger}: Problemi di connessione o indisponibilità del servizio remoto.
+    \item \textbf{Trigger}: Problemi di connessione o indisponibilità del database remoto.
 \end{itemize}
 
 \begin{comment}
