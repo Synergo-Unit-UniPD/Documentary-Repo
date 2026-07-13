@@ -1,7 +1,7 @@
 % --- 1. INFORMAZIONI GENERALI ---
 \section{Informazioni Generali}
 \begin{itemize}
-	\item \textbf{Azienda Coinvolta:} Zucchetti\textsubscript{G}
+	\item \textbf{Azienda Coinvolta:} Zucchetti
 	\item \textbf{Mezzo di Comunicazione:} Google Meet
 	\item \textbf{Data:} 2026-07-06
 	\item \textbf{Orario di inizio:} 15:00
@@ -10,7 +10,7 @@
 
 Il presente verbale documenta l’incontro, svoltosi tramite Google Meet, 
 tra il gruppo Synergo Unit e il referente dell’azienda Zucchetti. 
-Durante la riunione sono stati presentati e discussi il PoC(Proof of Concept), i problemi dell'infastruttura, i requisiti non funzionali e la disponibilità dell'azienda Zucchetti durante il periodo estivo.
+Durante la riunione sono stati presentati e discussi il PoC\textsubscript{G} (Proof of Concept\textsubscript{G}), le criticità dell'infastruttura LLM\textsubscript{G}, alcuni requisiti non funzionali e gli aspetti organizzativi relativi alla disponibilità dell'azienda durante il periodo estivo.
 
 
 
@@ -34,7 +34,7 @@ Il gruppo ha richiesto chiarimenti sui seguenti aspetti:
 
 \begin{enumerate}
 	\item Proof of Concept
-	\item Problemi dell'infastruttura
+	\item Criticità dell'infrastruttura LLM
 	\item Requisiti non funzionali
 	\item Disponibilità dell'azienda durante il periodo estivo
 \end{enumerate}
@@ -46,22 +46,22 @@ Il gruppo ha richiesto chiarimenti sui seguenti aspetti:
 
 Il Proof of Concept è stato visionato e approvato.
 
-\subsection{Problemi dell'infastruttura}
+\subsection{Criticità dell'infrastruttura LLM}
 
-Per quanto riguarda l’infrastruttura attuale, è stato suggerito di utilizzare inizialmente il modello *gemma4:12b*. Eventualmente, potranno essere ampliati i nostri permessi per consentire l’utilizzo del modello *Qwen3.6-35B-A3B*, ritenuto più stabile e con prestazioni superiori. È stato inoltre raccomandato di evitare chiamate a cascata tra modelli, in quanto l’infrastruttura prevede il ricaricamento del modello ad ogni richiesta, con conseguente perdita di efficienza.
+Per quanto riguarda l’infrastruttura attuale, è stato suggerito di utilizzare inizialmente il modello  \texttt{gemma4:12b}. Qualora necessario, potranno essere ampliati i permessi di accesso per consentire l’utilizzo del modello \texttt{Qwen3.6-35B-A3B}, ritenuto più stabile e con prestazioni superiori. È stato inoltre raccomandato di evitare chiamate a cascata tra modelli, in quanto l’infrastruttura prevede il ricaricamento del modello ad ogni richiesta, con conseguente perdita di efficienza.
 
 
 \subsection{Requisiti non funzionali}
 I requisiti non funzionali dovranno essere ampliati e resi maggiormente misurabili. In particolare:
 \begin{itemize}
     \item \textbf{Compatibilità browser:} è necessario definire i browser ufficialmente supportati e le eventuali versioni minime. Browser come Edge, Safari e Chrome condividono la stessa base tecnologica e non dovrebbero presentare criticità rilevanti; al contrario, Firefox utilizza un motore differente e richiede test specifici, così come Safari su macOS.
-    \item \textbf{Prestazioni AI:} occorre chiarire quale tempo di attesa sia considerato accettabile per la generazione di una proposta AI. In precedenza era stato indicato un tempo minimo di 2 secondi; si è deciso tuttavia di non fissare un limite massimo, introducendo invece un meccanismo di interruzione manuale che consenta all’utente di interrompere l’elaborazione.
-    \item \textbf{Persistenza opzionale:} è stato chiarito che il requisito opzionale relativo al database comprende funzionalità complete di autenticazione e gestione delle note (visualizzazione elenco, apertura, aggiornamento ed eliminazione), e non la sola memorizzazione. L'eliminazione delle note è considerata meno rilevante in quanto rappresenta una funzionalità standard che non introduce elementi di particolare innovazione.
+    \item \textbf{Prestazioni AI:} occorre chiarire quale tempo di attesa sia considerato accettabile per la generazione di una proposta AI. È stato confermato il tempo minimo di visualizzazione dell'indicatore di caricamento pari a circa 2 secondi, mentre si è deciso di non imporre un tempo massimo di elaborazione, introducendo invece un meccanismo di interruzione manuale che consenta all'utente di arrestare la generazione della proposta in qualsiasi momento.
+    \item \textbf{Persistenza opzionale:} è stato chiarito che il requisito opzionale relativo al database comprende funzionalità complete di autenticazione e gestione delle note (visualizzazione elenco, apertura, aggiornamento ed eliminazione), e non la sola memorizzazione. È stato inoltre evidenziato che tali funzionalità, pur essendo necessarie per una gestione completa della persistenza, rappresentano caratteristiche standard e non costituiscono gli elementi di maggiore innovazione del progetto, che rimangono invece le funzionalità di supporto alla scrittura basate su IA.
 \end{itemize}
 
 \subsection{Disponibilità dell'azienda durante il periodo estivo}
 
-Per quanto riguarda il periodo estivo, considerata la presenza di ferie, il docente ha suggerito di valutare la possibilità di individuare preventivamente degli slot di comunicazione, al fine di evitare ritardi dovuti a difficoltà di coordinamento. È stato inoltre comunicato che l’azienda resterà chiusa nelle due settimane centrali di agosto e che il referente sarà assente per l’intero mese. Si raccomanda pertanto di concentrare le comunicazioni entro la fine di luglio e l’inizio di settembre, mantenendo come eventuali finestre operative la prima e l’ultima settimana di agosto in caso di necessità.
+Per quanto riguarda il periodo estivo, il gruppo ha verificato con il referente la disponibilità dell'azienda, in linea con quanto pianificato internamente per individuare preventivamente finestre temporali dedicate alle comunicazioni e ridurre il rischio di ritardi dovuti al periodo di ferie. È stato comunicato che l'azienda resterà chiusa nelle due settimane centrali di agosto e che il referente sarà assente per l'intero mese. Di conseguenza, è stato concordato di concentrare le comunicazioni entro la fine di luglio e a partire dall'inizio di settembre, mantenendo come eventuali finestre operative la prima e l'ultima settimana di agosto in caso di necessità.
 \newpage
 % --- 4. DECISIONI FORMALI ---
 \section{Decisioni Formali}
@@ -94,7 +94,7 @@ dei chiarimenti ricevuti.
 		& Proof of Concept approvato \\[4pt]
 
 	\textbf{VE-7.2}
-		& Scelte riguardo i problemi dell'infastruttura \\[4pt]
+		& Adozione del modello \texttt{gemma4:12b} come riferimento iniziale e valutazione di un futuro utilizzo del modello \texttt{Qwen3.6-35B-A3B}.  \\[4pt]
 
 	\textbf{VE-7.3}
 		& Scelte riguardo i requisiti funzionali \\[4pt]
@@ -113,7 +113,7 @@ delle decisioni adottate durante la riunione.
 \renewcommand{\arraystretch}{1.3}
 \begin{longtable}{c c p{5cm} p{3cm} l}
 	\toprule
-	\textbf{Codice} & \textbf{Rif. Decisione} & \textbf{Descrizione Task} & \textbf{Assegnatario} & \textbf{Scadenza} \\
+	\textbf{Codice} & \textbf{Rif. Decisione} & \textbf{Descrizione Task\textsubscript{G}} & \textbf{Assegnatario} & \textbf{Scadenza} \\
 	\midrule
 	\endfirsthead
 
@@ -130,6 +130,19 @@ delle decisioni adottate durante la riunione.
 	\bottomrule
 	\endlastfoot
 
+	\ghissue{282}
+		& VE-7.3
+		& Correzione e integrazione AdR Macroarea 1 e 3
+		& Armando Moda Scarati
+		& 2026-07-14 \\[4pt]
+		
+	\ghissue{283}
+		& VE-7.3
+		& Correzione e integrazione AdR Macroarea 2
+		& Filippo Idiometri
+		& 2026-07-14 \\[4pt]
+
+
 \end{longtable}
 
 % --- 6. FIRME ---
@@ -145,7 +158,7 @@ del presente verbale e le decisioni adottate.
 		\rule{6cm}{0.4pt} \\
 		\vspace{0.2cm}
 		\textbf{Per il Gruppo Synergo Unit} \\
-		Armando Moda Scarati \\
+		Roberto Mariano Doroftei \\
 		\textit{Responsabile\textsubscript{G} di Progetto}
 	\end{center}
 \end{minipage}
