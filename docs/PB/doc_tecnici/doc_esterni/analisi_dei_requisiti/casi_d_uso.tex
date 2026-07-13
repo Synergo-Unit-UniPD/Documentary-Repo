@@ -752,15 +752,15 @@
 
 %---------------ELENCHI----------------
 
-% UC 32 - Inserimento elenco
+% UC 32 - Inserimento elenco puntato
 \hypertarget{uc32}{}
-\subsubsection{UC 32: Inserimento elenco}
+\subsubsection{UC 32: Inserimento elenco puntato}
 
 % use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{inserimento_elenco.png}
-    \caption{UC 32 – Inserimento elenco}
+    \includegraphics[width=0.5\textwidth]{inserimento_elenco_puntato.png}
+    \caption{UC 32 – Inserimento elenco puntato}
 \end{figure}
 
 \begin{itemize}
@@ -768,24 +768,116 @@
     \item \textbf{Precondizioni}: L'editor è attivo ed è presente una nota aperta nell'editor.
     \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente attiva il comando "Elenco".
-        \item Il sistema abilita la modalità di inserimento elenco.
-        \item L'utente seleziona il tipo di elenco desiderato (puntato o numerato).
-        \item L'utente inserisce il contenuto dell'elenco.
+        \item L'utente attiva il comando "Elenco puntato".
+        \item Il sistema abilita la modalità di inserimento elenco puntato.
+        \item L'utente inserisce il contenuto del primo elemento.
     \end{enumerate}
-    \item \textbf{Postcondizioni}: Il testo inserito successivamente viene formattato come elenco del tipo selezionato.
-    \item \textbf{Trigger}: L'utente desidera creare un elenco nel documento.
+    \item \textbf{Postcondizioni}: Il testo inserito viene formattato come primo elemento di un elenco puntato.
+    \item \textbf{Trigger}: L'utente desidera creare un elenco puntato nel documento.
 \end{itemize}
 
-% UC 33 - Modifica elenco
+% UC 33 - Inserimento elenco numerato
 \hypertarget{uc33}{}
-\subsubsection{UC 33: Modifica elenco}
+\subsubsection{UC 33: Inserimento elenco numerato}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{inserimento_elenco_numerato.png}
+    \caption{UC 33 – Inserimento elenco numerato}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: L'editor è attivo ed è presente una nota aperta nell'editor.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando "Elenco numerato".
+        \item Il sistema abilita la modalità di inserimento elenco numerato.
+        \item L'utente inserisce il contenuto del primo elemento.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Il testo inserito viene formattato come primo elemento (numero 1) di un elenco numerato.
+    \item \textbf{Trigger}: L'utente desidera creare un elenco numerato nel documento.
+\end{itemize}
+
+% UC 34 - Aggiunta elemento elenco
+\hypertarget{uc34}{}
+\subsubsection{UC 34: Aggiunta elemento elenco}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{aggiunta_elemento_elenco.png}
+    \caption{UC 34 – Aggiunta elemento elenco}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: L'utente sta scrivendo all'interno di un elenco (puntato o numerato) attivo.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente richiede l'inserimento di un nuovo blocco di testo (es. premendo Invio).
+        \item Il sistema aggiunge un nuovo marcatore di elenco (punto o numero successivo) alla riga seguente.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Un nuovo elemento vuoto viene aggiunto all'elenco corrente.
+    \item \textbf{Trigger}: L'utente desidera aggiungere una nuova voce all'elenco.
+\end{itemize}
+
+% UC 35 - Incremento livello elemento elenco
+\hypertarget{uc35}{}
+\subsubsection{UC 35: Incremento livello elemento elenco}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{incremento_livello_elenco.png}
+    \caption{UC 35 – Incremento livello elemento elenco}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: Il cursore si trova su un elemento di un elenco esistente.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando di indentazione (incremento livello).
+        \item Il sistema sposta l'elemento corrente al livello di annidamento successivo.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'elemento dell'elenco risulta annidato (sotto-elenco) rispetto al livello precedente.
+    \item \textbf{Trigger}: L'utente desidera creare un sotto-elemento nell'elenco.
+\end{itemize}
+
+% UC 36 - Riduzione livello elemento elenco
+\hypertarget{uc36}{}
+\subsubsection{UC 36: Riduzione livello elemento elenco}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{riduzione_livello_elenco.png}
+    \caption{UC 36 – Riduzione livello elemento elenco}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: Il cursore si trova su un elemento annidato di un elenco.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando di riduzione indentazione (riduzione livello).
+        \item Il sistema riporta l'elemento corrente al livello di annidamento precedente.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Il livello di annidamento dell'elemento risulta ridotto.
+    \item \textbf{Trigger}: L'utente desidera riportare un sotto-elemento a un livello gerarchico superiore.
+\end{itemize}
+
+% UC 37 - Modifica elenco
+\hypertarget{uc37}{}
+\subsubsection{UC 37: Modifica elenco}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{modifica_elenco.png}
-    \caption{UC 33 – Modifica elenco}
+    \caption{UC 37 – Modifica elenco}
 \end{figure}
 
 \begin{itemize}
@@ -794,22 +886,22 @@
     \item \textbf{Scenario Principale}:
     \begin{enumerate}
         \item L'utente seleziona un elenco esistente.
-        \item L'utente modifica le proprietà dell'elenco.
+        \item L'utente modifica la tipologia dell'elenco.
         \item Il sistema aggiorna l'elenco.
     \end{enumerate}
     \item \textbf{Postcondizioni}: L'elenco presenta le nuove proprietà impostate.
     \item \textbf{Trigger}: L'utente desidera modificare un elenco esistente.
 \end{itemize}
 
-% UC 34 - Disattivazione elenco
-\hypertarget{uc34}{}
-\subsubsection{UC 34: Disattivazione elenco}
+% UC 38 - Disattivazione modalità elenco
+\hypertarget{uc38}{}
+\subsubsection{UC 38: Disattivazione modalità elenco}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{disattivazione_elenco.png}
-    \caption{UC 34 – Disattivazione elenco}
+    \caption{UC 38 – Disattivazione modalità elenco}
 \end{figure}
 
 \begin{itemize}
@@ -824,15 +916,15 @@
     \item \textbf{Trigger}: L'utente desidera interrompere la modalità di inserimento elenco.
 \end{itemize}
 
-% UC 35 - Rimozione formattazione elenco da testo selezionato
-\hypertarget{uc35}{}
-\subsubsection{UC 35: Rimozione formattazione elenco da testo selezionato}
+% UC 39 - Rimozione formattazione elenco da testo selezionato
+\hypertarget{uc39}{}
+\subsubsection{UC 39: Rimozione formattazione elenco da testo selezionato}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{rimozione_elenco.png}
-    \caption{UC 35 – Rimozione formattazione elenco da testo selezionato}
+    \caption{UC 39 – Rimozione formattazione elenco da testo selezionato}
 \end{figure}
 
 \begin{itemize}
@@ -849,14 +941,14 @@
 
 %---------------GESTIONE TABELLE--------------------
 
-% UC36 - Inserimento tabella
-\hypertarget{uc36}{}
-\subsubsection{UC 36: Inserimento tabella}
+% UC40 - Inserimento tabella
+\hypertarget{uc40}{}
+\subsubsection{UC 40: Inserimento tabella}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{inserimento_tabella.png}
-    \caption{UC 36 – Inserimento tabella}
+    \caption{UC 40 – Inserimento tabella}
 \end{figure}
 
 \begin{itemize}
@@ -874,18 +966,19 @@
     \item \textbf{Trigger}: L'utente desidera inserire una tabella nella nota.
     \item \textbf{Estensioni}:
     \begin{itemize}
-        \item \hyperlink{uc36.1}{UC 36.1: Visualizzazione errore parametri tabella}: parametri non validi al passo 3.
+        \item \hyperlink{uc40.1}{UC 40.1: Visualizzazione errore numero righe tabella} $\rightarrow$ Condizione: numero di righe non valido al passo 3.
+        \item \hyperlink{uc40.2}{UC 40.2: Visualizzazione errore numero colonne tabella} $\rightarrow$ Condizione: numero di colonne non valido al passo 3.
     \end{itemize}
 \end{itemize}
 
-% UC36.1 - Visualizzazione errore parametri tabella
-\hypertarget{uc36.1}{}
-\subsubsection{UC 36.1: Visualizzazione errore parametri tabella}\mbox{}\\
+% UC40.1 - Visualizzazione errore numero righe tabella
+\hypertarget{uc40.1}{}
+\subsubsection{UC 40.1: Visualizzazione errore numero righe tabella}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{errore_parametri_tabella.png}
-    \caption{UC 36.1 – Visualizzazione errore parametri tabella}
+    \includegraphics[width=0.6\textwidth]{errore_righe_tabella.png}
+    \caption{UC 40.1 – Visualizzazione errore numero righe tabella}
 \end{figure}
 
 \begin{itemize}
@@ -893,21 +986,43 @@
     \item \textbf{Precondizioni}: È in corso la creazione di una tabella.
     \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item Il sistema rileva valori non validi per righe o colonne.
+        \item Il sistema rileva un valore non valido per il numero di righe.
         \item Il sistema mostra un messaggio di errore all'utente.
     \end{enumerate}
     \item \textbf{Postcondizioni}: La tabella non viene generata.
-    \item \textbf{Trigger}: Inserimento di parametri non validi.
+    \item \textbf{Trigger}: Inserimento di un parametro non valido per le righe.
 \end{itemize}
 
-% UC37 - Modifica contenuto cella tabella
-\hypertarget{uc37}{}
-\subsubsection{UC 37: Modifica contenuto cella tabella}
+% UC40.2 - Visualizzazione errore numero colonne tabella
+\hypertarget{uc40.2}{}
+\subsubsection{UC 40.2: Visualizzazione errore numero colonne tabella}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{errore_colonne_tabella.png}
+    \caption{UC 40.2 – Visualizzazione errore numero colonne tabella}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: È in corso la creazione di una tabella.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema rileva un valore non valido per il numero di colonne.
+        \item Il sistema mostra un messaggio di errore all'utente.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La tabella non viene generata.
+    \item \textbf{Trigger}: Inserimento di un parametro non valido per le colonne.
+\end{itemize}
+
+% UC41 - Modifica contenuto cella tabella
+\hypertarget{uc41}{}
+\subsubsection{UC 41: Modifica contenuto cella tabella}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{modifica_cella_tabella.png}
-    \caption{UC 37 – Modifica contenuto cella tabella}
+    \caption{UC 41 – Modifica contenuto cella tabella}
 \end{figure}
 
 \begin{itemize}
@@ -923,14 +1038,14 @@
     \item \textbf{Trigger}: L'utente desidera modificare una cella della tabella.
 \end{itemize}
 
-% UC38 - Inserimento riga tabella
-\hypertarget{uc38}{}
-\subsubsection{UC 38: Inserimento riga tabella}
+% UC42 - Inserimento riga tabella
+\hypertarget{uc42}{}
+\subsubsection{UC 42: Inserimento riga tabella}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{inserimento_riga_tabella.png}
-    \caption{UC 38 – Inserimento riga tabella}
+    \caption{UC 42 – Inserimento riga tabella}
 \end{figure}
 
 \begin{itemize}
@@ -946,14 +1061,14 @@
     \item \textbf{Trigger}: L'utente desidera aggiungere una riga alla tabella.
 \end{itemize}
 
-% UC39 - Eliminazione riga tabella
-\hypertarget{uc39}{}
-\subsubsection{UC 39: Eliminazione riga tabella}
+% UC43 - Eliminazione riga tabella
+\hypertarget{uc43}{}
+\subsubsection{UC 43: Eliminazione riga tabella}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{eliminazione_riga_tabella.png}
-    \caption{UC 39 – Eliminazione riga tabella}
+    \caption{UC 43 – Eliminazione riga tabella}
 \end{figure}
 
 \begin{itemize}
@@ -969,14 +1084,14 @@
     \item \textbf{Trigger}: L'utente desidera eliminare una riga della tabella.
 \end{itemize}
 
-% UC40 - Inserimento colonna tabella
-\hypertarget{uc40}{}
-\subsubsection{UC 40: Inserimento colonna tabella}
+% UC44 - Inserimento colonna tabella
+\hypertarget{uc44}{}
+\subsubsection{UC 44: Inserimento colonna tabella}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{inserimento_colonna_tabella.png}
-    \caption{UC 40 – Inserimento colonna tabella}
+    \caption{UC 44 – Inserimento colonna tabella}
 \end{figure}
 
 \begin{itemize}
@@ -992,14 +1107,14 @@
     \item \textbf{Trigger}: L'utente desidera aggiungere una colonna alla tabella.
 \end{itemize}
 
-% UC41 - Eliminazione colonna tabella
-\hypertarget{uc41}{}
-\subsubsection{UC 41: Eliminazione colonna tabella}
+% UC45 - Eliminazione colonna tabella
+\hypertarget{uc45}{}
+\subsubsection{UC 45: Eliminazione colonna tabella}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{eliminazione_colonna_tabella.png}
-    \caption{UC 41 – Eliminazione colonna tabella}
+    \caption{UC 45 – Eliminazione colonna tabella}
 \end{figure}
 
 \begin{itemize}
@@ -1015,14 +1130,14 @@
     \item \textbf{Trigger}: L'utente desidera eliminare una colonna della tabella.
 \end{itemize}
 
-% UC42 - Eliminazione tabella
-\hypertarget{uc42}{}
-\subsubsection{UC 42: Eliminazione tabella}
+% UC46 - Eliminazione tabella
+\hypertarget{uc46}{}
+\subsubsection{UC 46: Eliminazione tabella}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{eliminazione_tabella.png}
-    \caption{UC 42 – Eliminazione tabella}
+    \caption{UC 46 – Eliminazione tabella}
 \end{figure}
 
 \begin{itemize}
@@ -1040,15 +1155,15 @@
 
 %---------------GESTIONE MODIFICHE------------------
 
-% UC43 - Azione di Undo
-\hypertarget{uc43}{}
-\subsubsection{UC 43: Azione di Undo\textsubscript{G}}
+% UC47 - Azione di Undo
+\hypertarget{uc47}{}
+\subsubsection{UC 47: Azione di Undo\textsubscript{G}}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{azione_undo.png}
-    \caption{UC 43 – Azione di Undo}
+    \caption{UC 47 – Azione di Undo}
 \end{figure}
 
 \begin{itemize}
@@ -1063,15 +1178,15 @@
     \item \textbf{Trigger}: L'utente desidera annullare un'operazione eseguita.
 \end{itemize}
 
-% UC44 - Azione di Redo
-\hypertarget{uc44}{}
-\subsubsection{UC 44: Azione di Redo\textsubscript{G}}
+% UC48 - Azione di Redo
+\hypertarget{uc48}{}
+\subsubsection{UC 48: Azione di Redo\textsubscript{G}}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{azione_redo.png}
-    \caption{UC 44 – Azione di Redo}
+    \caption{UC 48 – Azione di Redo}
 \end{figure}
 
 \begin{itemize}
@@ -1088,15 +1203,15 @@
 
 %---------------GESTIONE VISUALIZZAZIONE----------------
 
-% UC45 - Visualizzazione esclusiva Editor
-\hypertarget{uc45}{}
-\subsubsection{UC 45: Visualizzazione esclusiva Editor}
+% UC49 - Visualizzazione esclusiva Editor
+\hypertarget{uc49}{}
+\subsubsection{UC 49: Visualizzazione esclusiva Editor}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{visualizzazione_editor.png}
-    \caption{UC 45 – Visualizzazione esclusiva Editor}
+    \caption{UC 49 – Visualizzazione esclusiva Editor}
 \end{figure}
 
 \begin{itemize}
@@ -1111,15 +1226,15 @@
     \item \textbf{Trigger}: L'utente desidera concentrarsi esclusivamente sulla scrittura del documento.
 \end{itemize}
 
-% UC 46 - Visualizzazione esclusiva Render\textsubscript{G}
-\hypertarget{uc46}{}
-\subsubsection{UC 46: Visualizzazione esclusiva Render}
+% UC 50 - Visualizzazione esclusiva Render\textsubscript{G}
+\hypertarget{uc50}{}
+\subsubsection{UC 50: Visualizzazione esclusiva Render}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{visualizzazione_render.png}
-    \caption{UC 46 – Visualizzazione esclusiva Render}
+    \caption{UC 50 – Visualizzazione esclusiva Render}
 \end{figure}
 
 \begin{itemize}
@@ -1134,15 +1249,15 @@
     \item \textbf{Trigger}: L'utente desidera visualizzare il risultato finale del documento.
 \end{itemize}
 
-% UC 47 - Visualizzazione Split View\textsubscript{G}
-\hypertarget{uc47}{}
-\subsubsection{UC 47: Visualizzazione Split View}
+% UC 51 - Visualizzazione Split View\textsubscript{G}
+\hypertarget{uc51}{}
+\subsubsection{UC 51: Visualizzazione Split View}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{visualizzazione_split_view.png}
-    \caption{UC 47 – Visualizzazione Split View}
+    \caption{UC 51 – Visualizzazione Split View}
 \end{figure}
 
 \begin{itemize}
@@ -1810,15 +1925,30 @@
 \subsection{Macroarea 3 — Gestione I/O e Persistenza}
 \textit{Importazione, esportazione e persistenza delle note.}
 
-% UC61 - Creazione di una nuova nota vuota
-\hypertarget{uc61}{}
-\subsubsection{UC 61: (Opzionale) Creazione di una nuova nota vuota}
+\vspace{0.3cm}
+\noindent
+\fcolorbox{primarycolor!50}{primarycolor!5}{%
+\begin{minipage}{\dimexpr\textwidth-2\fboxsep-2\fboxrule\relax}
+\vspace{0.2cm}
+\textbf{\textcolor{primarycolor}{Nota Esplicativa}} \\
+\vspace{-0.1cm}
+
+Una nota aperta nell'editor è modificabile tramite tutte le funzionalità descritte nella Macroarea 1 e nella Macroarea 2. 
+Le funzionalità di salvataggio, importazione, esportazione e persistenza operano sul contenuto corrente della nota aperta nell'editor.
+\vspace{0.1cm}
+\end{minipage}%
+}
+\vspace{0.3cm}
+
+% UC144 - Creazione di una nuova nota vuota
+\hypertarget{uc144}{}
+\subsubsection{UC 144: (Opzionale) Creazione di una nuova nota vuota}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{creazione_nota.png}
-    \caption{UC 61 – Creazione di una nuova nota}
+    \caption{UC 144 – Creazione di una nuova nota}
 \end{figure}
 
 \begin{itemize}
@@ -1836,15 +1966,15 @@
     \item \textbf{Trigger}: L'utente desidera creare una nuova nota.
 \end{itemize}
 
-% UC62 - Eliminazione di una nota
-\hypertarget{uc62}{}
-\subsubsection{UC 62: (Opzionale) Eliminazione di una nota}
+% UC145 - Eliminazione di una nota
+\hypertarget{uc145}{}
+\subsubsection{UC 145: (Opzionale) Eliminazione di una nota}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{eliminazione_nota.png}
-    \caption{UC 62 – Eliminazione di una nota}
+    \caption{UC 145 – Eliminazione di una nota}
 \end{figure}
 
 \begin{itemize}
@@ -1862,25 +1992,25 @@
     
     \item \textbf{Inclusioni}:
     \begin{itemize}
-        \item \hyperlink{uc62.1}{UC 62.1: Conferma eliminazione}
+        \item \hyperlink{uc145.1}{UC 145.1: Conferma eliminazione}
     \end{itemize}
 
     \item \textbf{Estensioni}: 
     \begin{itemize}
-        \item \hyperlink{uc62.2}{UC 62.2: Annullamento eliminazione} $\rightarrow$ Condizione: risposta negativa al dialogo di conferma.
-        \item \hyperlink{uc62.3}{UC 62.3: Visualizzazione errore eliminazione} $\rightarrow$ Condizione: errore tecnico durante l'esecuzione dell'eliminazione al passo 4.
+        \item \hyperlink{uc145.2}{UC 145.2: Annullamento eliminazione} $\rightarrow$ Condizione: risposta negativa al dialogo di conferma.
+        \item \hyperlink{uc145.3}{UC 145.3: Visualizzazione errore eliminazione} $\rightarrow$ Condizione: errore tecnico durante l'esecuzione dell'eliminazione al passo 4.
     \end{itemize}
 \end{itemize}
 
-% UC62.1 - Conferma eliminazione
-\hypertarget{uc62.1}{}
-\subsubsection{UC 62.1: Conferma eliminazione}
+% UC145.1 - Conferma eliminazione
+\hypertarget{uc145.1}{}
+\subsubsection{UC 145.1: Conferma eliminazione}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{conferma_eliminazione.png}
-    \caption{UC 62.1 – Conferma eliminazione}
+    \caption{UC 145.1 – Conferma eliminazione}
 \end{figure}
 
 \begin{itemize}
@@ -1895,15 +2025,15 @@
     \item \textbf{Trigger}: Il sistema richiede una conferma esplicita prima di un'operazione distruttiva.
 \end{itemize}
 
-% UC62.2 - Annullamento eliminazione
-\hypertarget{uc62.2}{}
-\subsubsection{UC 62.2: Annullamento eliminazione}
+% UC145.2 - Annullamento eliminazione
+\hypertarget{uc145.2}{}
+\subsubsection{UC 145.2: Annullamento eliminazione}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{annullamento_eliminazione.png}
-    \caption{UC 62.2 – Annullamento eliminazione}
+    \caption{UC 145.2 – Annullamento eliminazione}
 \end{figure}
 
 \begin{itemize}
@@ -1918,15 +2048,15 @@
     \item \textbf{Trigger}: L'utente decide di non procedere con l'eliminazione.
 \end{itemize}
 
-% UC62.3 - Visualizzazione errore eliminazione
-\hypertarget{uc62.3}{}
-\subsubsection{UC 62.3: Visualizzazione errore eliminazione}
+% UC145.3 - Visualizzazione errore eliminazione
+\hypertarget{uc145.3}{}
+\subsubsection{UC 145.3: Visualizzazione errore eliminazione}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{errore_eliminazione.png}
-    \caption{UC 62.3 – Visualizzazione errore eliminazione}
+    \caption{UC 145.3 – Visualizzazione errore eliminazione}
 \end{figure}
 
 \begin{itemize}
@@ -1941,15 +2071,15 @@
     \item \textbf{Trigger}: Il sistema operativo o il file system\textsubscript{G} impediscono la cancellazione del file.
 \end{itemize}
 
-% UC63 - Salvataggio della nota in formato Markdown
-\hypertarget{uc63}{}
-\subsubsection{UC 63: Salvataggio della nota in formato Markdown}
+% UC146 - Salvataggio della nota in formato Markdown
+\hypertarget{uc146}{}
+\subsubsection{UC 146: Salvataggio della nota in formato Markdown}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{download_nota.png}
-    \caption{UC 63 – Salvataggio della nota in formato Markdown}
+    \caption{UC 146 – Salvataggio della nota in formato Markdown}
 \end{figure}
 
 \begin{itemize}
@@ -1965,18 +2095,18 @@
     \item \textbf{Trigger}: L'utente desidera salvare localmente la nota corrente.
     \item \textbf{Estensioni}:
     \begin{itemize}
-        \item \hyperlink{uc63.1}{UC 63.1: Visualizzazione errore salvataggio} $ \rightarrow $ Condizione: si verifica un errore durante la procedura di salvataggio.
+        \item \hyperlink{uc146.1}{UC 146.1: Visualizzazione errore salvataggio} $ \rightarrow $ Condizione: si verifica un errore durante la procedura di salvataggio.
     \end{itemize}
 \end{itemize}
 
-% UC63.1 - Visualizzazione errore salvataggio
-\hypertarget{uc63.1}{}
-\subsubsection{UC 63.1: Visualizzazione errore salvataggio}\
+% UC146.1 - Visualizzazione errore salvataggio
+\hypertarget{uc146.1}{}
+\subsubsection{UC 146.1: Visualizzazione errore salvataggio}\
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{errore_download.png}
-    \caption{UC 63.1 – Visualizzazione errore salvataggio}
+    \caption{UC 146.1 – Visualizzazione errore salvataggio}
 \end{figure}
 
 \begin{itemize}
@@ -1991,15 +2121,15 @@
     \item \textbf{Trigger}: Errore durante la procedura di salvataggio.
 \end{itemize}
 
-% UC64 - Importazione nota locale
-\hypertarget{uc64}{}
-\subsubsection{UC 64: Importazione di una nota locale}
+% UC147 - Importazione nota locale
+\hypertarget{uc147}{}
+\subsubsection{UC 147: Importazione di una nota locale}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{upload_nota.png}
-    \caption{UC 64 – Importazione di una nota locale}
+    \caption{UC 147 – Importazione di una nota locale}
 \end{figure}
 
 \begin{itemize}
@@ -2016,19 +2146,19 @@
     \item \textbf{Trigger}: L'utente desidera aprire una nota salvata localmente.
     \item \textbf{Estensioni}:
     \begin{itemize}
-        \item \hyperlink{uc64.1}{UC 64.1: Visualizzazione errore formato file} $ \rightarrow $ Condizione: il file selezionato non è compatibile o è corrotto.
+        \item \hyperlink{uc147.1}{UC 147.1: Visualizzazione errore formato file} $ \rightarrow $ Condizione: il file selezionato non è compatibile o è corrotto.
     \end{itemize}
 \end{itemize}
 
-% UC64.1 - Visualizzazione errore formato file
-\hypertarget{uc64.1}{}
-\subsubsection{UC 64.1: Visualizzazione errore formato file}
+% UC147.1 - Visualizzazione errore formato file
+\hypertarget{uc147.1}{}
+\subsubsection{UC 147.1: Visualizzazione errore formato file}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{errore_formato_file.png}
-    \caption{UC 64.1 – Visualizzazione errore formato file}
+    \caption{UC 147.1 – Visualizzazione errore formato file}
 \end{figure}
 
 \begin{itemize}
@@ -2043,15 +2173,14 @@
     \item \textbf{Trigger}: L'utente seleziona un file non valido.
 \end{itemize}
 
-% UC65 - Esportazione della nota 
-\hypertarget{uc65}{}
-\subsubsection{UC 65: Esportazione della nota}
+% UC148 - Esportazione nota in formato PDF
+\hypertarget{uc148}{}
+\subsubsection{UC 148: Esportazione nota in formato PDF}
 
-% use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{esportazione_nota.png}
-    \caption{UC 65 – Esportazione della nota}
+    \includegraphics[width=0.5\textwidth]{esportazione_pdf.png}
+    \caption{UC 148 – Esportazione nota in formato PDF}
 \end{figure}
 
 \begin{itemize}
@@ -2059,54 +2188,150 @@
     \item \textbf{Precondizioni}: Una nota è aperta nell'editor.
     \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente seleziona la funzione di esportazione.
-        \item L'utente sceglie il formato desiderato (PDF, JSON\textsubscript{G} o HTML).
-        \item Il sistema converte la nota nel formato selezionato.
+        \item L'utente seleziona la funzione di esportazione in formato PDF.
+        \item Il sistema converte la nota in formato PDF.
         \item Il sistema avvia il download del file esportato.
     \end{enumerate}
-    \item \textbf{Postcondizioni}: L'utente ottiene una copia della nota nel formato selezionato.
-    \item \textbf{Trigger}: L'utente desidera esportare la nota corrente.
+    \item \textbf{Postcondizioni}: L'utente ottiene una copia della nota in formato PDF.
+    \item \textbf{Trigger}: L'utente desidera esportare la nota corrente come documento PDF.
     \item \textbf{Estensioni}:
     \begin{itemize}
-        \item \hyperlink{uc65.1}{UC 65.1: Visualizzazione errore esportazione} $ \rightarrow $ Condizione: si verifica un errore durante la procedura di esportazione.
+        \item \hyperlink{uc148.1}{UC 148.1: Visualizzazione errore esportazione PDF} $ \rightarrow $ Condizione: si verifica un errore durante la conversione o il salvataggio in PDF.
     \end{itemize}
 \end{itemize}
 
-% UC65.1 - Visualizzazione errore esportazione
-\hypertarget{uc65.1}{}
-\subsubsection{UC 65.1: Visualizzazione errore esportazione}
+% UC148.1 - Visualizzazione errore esportazione PDF
+\hypertarget{uc148.1}{}
+\subsubsection{UC 148.1: Visualizzazione errore esportazione PDF}
 
-% use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{errore_esportazione.png}
-    \caption{UC 65.1 – Visualizzazione errore esportazione}
+    \includegraphics[width=0.6\textwidth]{errore_esportazione_pdf.png}
+    \caption{UC 148.1 – Visualizzazione errore esportazione PDF}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: È in corso una procedura di esportazione.
+    \item \textbf{Precondizioni}: È in corso una procedura di esportazione in PDF.
     \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item Il sistema rileva un errore durante la conversione o il download del file.
-        \item Il sistema mostra un messaggio di errore.
+        \item Il sistema rileva un errore durante la conversione o il download del file PDF.
+        \item Il sistema mostra un messaggio di errore all'utente.
     \end{enumerate}
-    \item \textbf{Postcondizioni}: L'esportazione non viene completata.
-    \item \textbf{Trigger}: Errore durante la procedura di esportazione.
+    \item \textbf{Postcondizioni}: L'esportazione in PDF non viene completata.
+    \item \textbf{Trigger}: Errore durante la conversione del file in PDF.
+\end{itemize}
+
+% UC149 - Esportazione nota in formato HTML
+\hypertarget{uc149}{}
+\subsubsection{UC 149: Esportazione nota in formato HTML}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{esportazione_html.png}
+    \caption{UC 149 – Esportazione nota in formato HTML}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: Una nota è aperta nell'editor.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente seleziona la funzione di esportazione in formato HTML.
+        \item Il sistema converte la nota in formato HTML.
+        \item Il sistema avvia il download del file esportato.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'utente ottiene una copia della nota in formato HTML.
+    \item \textbf{Trigger}: L'utente desidera esportare la nota corrente come pagina web HTML.
+    \item \textbf{Estensioni}:
+    \begin{itemize}
+        \item \hyperlink{uc149.1}{UC 149.1: Visualizzazione errore esportazione HTML} $ \rightarrow $ Condizione: si verifica un errore durante la conversione o il salvataggio in HTML.
+    \end{itemize}
+\end{itemize}
+
+% UC149.1 - Visualizzazione errore esportazione HTML
+\hypertarget{uc149.1}{}
+\subsubsection{UC 149.1: Visualizzazione errore esportazione HTML}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{errore_esportazione_html.png}
+    \caption{UC 149.1 – Visualizzazione errore esportazione HTML}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: È in corso una procedura di esportazione in HTML.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema rileva un errore durante la conversione o il download del file HTML.
+        \item Il sistema mostra un messaggio di errore all'utente.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'esportazione in HTML non viene completata.
+    \item \textbf{Trigger}: Errore durante la conversione del file in HTML.
+\end{itemize}
+
+% UC150 - Esportazione nota in formato JSON
+\hypertarget{uc150}{}
+\subsubsection{UC 150: Esportazione nota in formato JSON}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{esportazione_json.png}
+    \caption{UC 150 – Esportazione nota in formato JSON}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: Una nota è aperta nell'editor.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente seleziona la funzione di esportazione in formato JSON.
+        \item Il sistema converte i metadati e il contenuto della nota in formato JSON.
+        \item Il sistema avvia il download del file esportato.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'utente ottiene una copia della nota in formato JSON.
+    \item \textbf{Trigger}: L'utente desidera esportare la nota corrente come oggetto JSON.
+    \item \textbf{Estensioni}:
+    \begin{itemize}
+        \item \hyperlink{uc150.1}{UC 150.1: Visualizzazione errore esportazione JSON} $ \rightarrow $ Condizione: si verifica un errore durante la conversione o il salvataggio in JSON.
+    \end{itemize}
+\end{itemize}
+
+% UC150.1 - Visualizzazione errore esportazione JSON
+\hypertarget{uc150.1}{}
+\subsubsection{UC 150.1: Visualizzazione errore esportazione JSON}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{errore_esportazione_json.png}
+    \caption{UC 150.1 – Visualizzazione errore esportazione JSON}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: È in corso una procedura di esportazione in JSON.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema rileva un errore durante la generazione o il download del file JSON.
+        \item Il sistema mostra un messaggio di errore all'utente.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'esportazione in JSON non viene completata.
+    \item \textbf{Trigger}: Errore durante la conversione del file in JSON.
 \end{itemize}
 
 % --------------------------------------------------------------------------
 % Funzionalità opzionali di persistenza remota
 % --------------------------------------------------------------------------
 
-% UC66 - Registrazione utente 
-\hypertarget{uc66}{}
-\subsubsection{UC 66: (Opzionale) Registrazione utente}
+% UC151 - Registrazione utente 
+\hypertarget{uc151}{}
+\subsubsection{UC 151: (Opzionale) Registrazione utente}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{registrazione_utente.png}
-    \caption{UC 66 – Registrazione utente}
+    \caption{UC 151 – Registrazione utente}
 \end{figure}
 
 \begin{itemize}
@@ -2125,19 +2350,19 @@
     \item \textbf{Trigger}: L'utente desidera accedere alle funzionalità di sincronizzazione remota.
     \item \textbf{Estensioni}:
     \begin{itemize}
-        \item \hyperlink{uc66.1}{UC 66.1: Visualizzazione errore email registrazione} $ \rightarrow $ Condizione: email non valida o già registrata al passo 4.
-        \item \hyperlink{uc66.2}{UC 66.2: Visualizzazione errore password registrazione} $ \rightarrow $ Condizione: password non conforme ai requisiti al passo 4.
+        \item \hyperlink{uc151.1}{UC 151.1: Visualizzazione errore email registrazione} $ \rightarrow $ Condizione: email non valida o già registrata al passo 4.
+        \item \hyperlink{uc151.2}{UC 151.2: Visualizzazione errore password registrazione} $ \rightarrow $ Condizione: password non conforme ai requisiti al passo 4.
     \end{itemize}
 \end{itemize}
 
-% UC66.1 - Visualizzazione errore email registrazione
-\hypertarget{uc66.1}{}
-\subsubsection{UC 66.1: Visualizzazione errore email registrazione}\
+% UC151.1 - Visualizzazione errore email registrazione
+\hypertarget{uc151.1}{}
+\subsubsection{UC 151.1: Visualizzazione errore email registrazione}\
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{errore_email_registrazione.png}
-    \caption{UC 66.1 – Visualizzazione errore email registrazione}
+    \caption{UC 151.1 – Visualizzazione errore email registrazione}
 \end{figure}
 
 \begin{itemize}
@@ -2152,14 +2377,14 @@
     \item \textbf{Trigger}: Inserimento di email non valida o già presente nel sistema.
 \end{itemize}
 
-% UC66.2 - Visualizzazione errore password registrazione
-\hypertarget{uc66.2}{}
-\subsubsection{UC 66.2: Visualizzazione errore password registrazione}\
+% UC151.2 - Visualizzazione errore password registrazione
+\hypertarget{uc151.2}{}
+\subsubsection{UC 151.2: Visualizzazione errore password registrazione}\
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{errore_password_registrazione.png}
-    \caption{UC 66.2 – Visualizzazione errore password registrazione}
+    \caption{UC 151.2 – Visualizzazione errore password registrazione}
 \end{figure}
 
 \begin{itemize}
@@ -2174,14 +2399,14 @@
     \item \textbf{Trigger}: Inserimento di password non conforme ai requisiti di sicurezza.
 \end{itemize}
 
-% UC67 - Autenticazione utente
-\hypertarget{uc67}{}
-\subsubsection{UC 67: (Opzionale) Autenticazione utente}
+% UC152 - Autenticazione utente
+\hypertarget{uc152}{}
+\subsubsection{UC 152: Autenticazione utente}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{autenticazione_utente.png}
-    \caption{UC 67 – Autenticazione utente}
+    \caption{UC 152 – Autenticazione utente}
 \end{figure}
 
 \begin{itemize}
@@ -2191,27 +2416,28 @@
     \begin{enumerate}
         \item L'utente seleziona la funzione di accesso.
         \item Il sistema mostra il modulo di autenticazione.
-        \item L'utente inserisce le proprie credenziali.
-        \item Il sistema verifica le credenziali inserite.
+        \item L'utente inserisce l'indirizzo email associato all'account.
+        \item L'utente inserisce la password associata all'account.
+        \item Il sistema verifica la corrispondenza tra indirizzo email e password.
         \item Il sistema autentica l'utente e abilita le funzionalità di persistenza remota.
     \end{enumerate}
     \item \textbf{Postcondizioni}: L'utente risulta autenticato nel sistema.
     \item \textbf{Trigger}: L'utente desidera accedere alle funzionalità remote.
     \item \textbf{Estensioni}:
     \begin{itemize}
-        \item \hyperlink{uc67.1}{UC 67.1: Visualizzazione errore autenticazione} $ \rightarrow $ Condizione: credenziali non valide al passo 4.
-        %\item \hyperlink{uc67.2}{UC 67.2: Visualizzazione errore utente non registrato} $ \rightarrow $ Condizione: utente non registrato al passo 4.
+        \item \hyperlink{uc152.1}{UC 152.1: Visualizzazione errore autenticazione} $ \rightarrow $ Condizione: credenziali non valide al passo 4.
+        %\item \hyperlink{uc152.2}{UC 152.2: Visualizzazione errore utente non registrato} $ \rightarrow $ Condizione: utente non registrato al passo 4.
     \end{itemize}
 \end{itemize}
 
-% UC67.1 - Visualizzazione errore autenticazione
-\hypertarget{uc67.1}{}
-\subsubsection{UC 67.1: Visualizzazione errore autenticazione}\
+% UC152.1 - Visualizzazione errore autenticazione
+\hypertarget{uc152.1}{}
+\subsubsection{UC 152.1: Visualizzazione errore autenticazione}\
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{errore_autenticazione.png}
-    \caption{UC 67.1 – Visualizzazione errore autenticazione}
+    \caption{UC 152.1 – Visualizzazione errore autenticazione}
 \end{figure}
 
 \begin{itemize}
@@ -2226,18 +2452,18 @@
     \item \textbf{Trigger}: Inserimento di credenziali non valide.
 \end{itemize}
 
-% UC67.2 - Visualizzazione errore utente non registrato
+% UC152.2 - Visualizzazione errore utente non registrato
 
 % Utente non registrato è un tipo di credenziale non valida
 \begin{comment}
     
-\hypertarget{uc67.2}{}
-\subsubsection{UC 67.2: Visualizzazione errore utente non registrato}\
+\hypertarget{uc152.2}{}
+\subsubsection{UC 152.2: Visualizzazione errore utente non registrato}\
 
 \begin{figure}[H]
     \centering
     %\includegraphics[width=0.6\textwidth]{errore_utente_non_registrato.png}
-    \caption{UC 67.2 – Visualizzazione errore utente non registrato}
+    \caption{UC 152.2 – Visualizzazione errore utente non registrato}
 \end{figure}
 
 \begin{itemize}
@@ -2252,14 +2478,15 @@
     \item \textbf{Trigger}: Tentativo di autenticazione con account inesistente.
 \end{itemize}
 \end{comment}
-% UC68 - Logout utente
-\hypertarget{uc68}{}
-\subsubsection{UC 68: (Opzionale) Logout\textsubscript{G} utente}
+
+% UC153 - Logout utente
+\hypertarget{uc153}{}
+\subsubsection{UC 153: (Opzionale) Logout\textsubscript{G} utente}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{logout_utente.png}
-    \caption{UC 68 – Logout utente}
+    \caption{UC 153 – Logout utente}
 \end{figure}
 
 \begin{itemize}
@@ -2276,46 +2503,111 @@
     \item \textbf{Trigger}: L'utente desidera terminare la sessione autenticata.
 \end{itemize}
 
-% UC69 - Visualizzazione lista note salvate
-\hypertarget{uc69}{}
-\subsubsection{UC 69: (Opzionale) Visualizzazione lista note salvate}
+% UC154 - Visualizzazione elenco note archiviate
+\hypertarget{uc154}{}
+\subsubsection{UC 154: (Opzionale) Visualizzazione elenco note archiviate}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{lista_note_salvate.png}
-    \caption{UC 69 – Visualizzazione lista note salvate}
+    \caption{UC 154 – Visualizzazione elenco note archiviate}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: L'utente è autenticato e il servizio remoto è disponibile.
+    \item \textbf{Precondizioni}: L'utente è autenticato e il database remoto è disponibile.
     \item \textbf{Scenario Principale}:
     \begin{enumerate}
         \item L'utente accede alla sezione delle note sincronizzate.
-        \item Il sistema recupera le note associate all'account dell'utente.
-        \item Il sistema mostra l'elenco delle note, presentando per ciascuna:
-        \begin{itemize}
-            \item il titolo della nota;
-            \item la data di ultima modifica;
-            \item un'anteprima del contenuto.
-        \end{itemize}
+        \item Il sistema recupera le note associate all'account dell'utente dal database remoto.
+        \item Il sistema mostra l'elenco delle note archiviate.
     \end{enumerate}
-    \item \textbf{Postcondizioni}: L'utente visualizza la lista delle proprie note remote con le relative informazioni.
-    \item \textbf{Trigger}: L'utente desidera consultare le note salvate nello spazio remoto.
+    \item \textbf{Postcondizioni}: L'utente visualizza la lista delle proprie note archiviate.
+    \item \textbf{Trigger}: L'utente desidera consultare le note salvate nel database remoto.
+    
+    \item \textbf{Inclusioni}:
+    \begin{itemize}
+        \item \hyperlink{uc154.1}{UC 154.1: Visualizzazione titolo nota remota}
+        \item \hyperlink{uc154.2}{UC 154.2: Visualizzazione data ultima modifica nota remota}
+        \item \hyperlink{uc154.3}{UC 154.3: Visualizzazione anteprima contenuto nota remota}
+    \end{itemize}
 
     \item \textbf{Estensioni}:
     \begin{itemize}
-        \item \hyperlink{uc69.1}{UC 69.1: Visualizzazione errore recupero lista note remote} $ \rightarrow $ Condizione: errore durante il recupero delle note al passo 2.
+        \item \hyperlink{uc154.4}{UC 154.4: Visualizzazione errore recupero lista note remote} $ \rightarrow $ Condizione: errore durante il recupero delle note al passo 2.
     \end{itemize}
 \end{itemize}
 
-% UC69.1 - Visualizzazione errore recupero lista note
-\hypertarget{uc69.1}{}
-\subsubsection{UC 69.1: Visualizzazione errore recupero lista note}
+% UC154.1 - Visualizzazione titolo nota remota
+\hypertarget{uc154.1}{}
+\subsubsection{UC 154.1: Visualizzazione titolo nota remota}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{visualizzazione_titolo_remota.png}
+    \caption{UC 154.1 – Visualizzazione titolo nota remota}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: Il sistema sta mostrando un elemento all'interno dell'elenco delle note archiviate.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema presenta il titolo testuale della nota recuperata dal database remoto.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Il titolo della nota è visibile all'utente.
+    \item \textbf{Trigger}: Generazione della lista delle note archiviate.
+\end{itemize}
+
+% UC154.2 - Visualizzazione data ultima modifica nota remota
+\hypertarget{uc154.2}{}
+\subsubsection{UC 154.2: Visualizzazione data ultima modifica nota remota}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{visualizzazione_data_remota.png}
+    \caption{UC 154.2 – Visualizzazione data ultima modifica nota remota}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: Il sistema sta mostrando un elemento all'interno dell'elenco delle note archiviate.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema presenta il timestamp o la data formattata relativa all'ultimo salvataggio della nota nel database remoto.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La data di ultima modifica della nota è visibile all'utente.
+    \item \textbf{Trigger}: Generazione della lista delle note archiviate.
+\end{itemize}
+
+% UC154.3 - Visualizzazione anteprima contenuto nota remota
+\hypertarget{uc154.3}{}
+\subsubsection{UC 154.3: Visualizzazione anteprima contenuto nota remota}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{visualizzazione_anteprima_remota.png}
+    \caption{UC 154.3 – Visualizzazione anteprima contenuto nota remota}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: Il sistema sta mostrando un elemento all'interno dell'elenco delle note archiviate.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema estrapola e presenta i primi caratteri del contenuto testuale della nota remota per fornire un breve riassunto visivo.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Una porzione di anteprima del testo della nota è visibile all'utente.
+    \item \textbf{Trigger}: Generazione della lista delle note archiviate.
+\end{itemize}
+
+% UC154.4 - Visualizzazione errore recupero lista note remote
+\hypertarget{uc154.4}{}
+\subsubsection{UC 154.4: Visualizzazione errore recupero lista note remote}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{errore_lista_note_remote.png}
-    \caption{UC 69.1 – Visualizzazione errore recupero lista note}
+    \caption{UC 154.4 – Visualizzazione errore recupero lista note remote}
 \end{figure}
 
 \begin{itemize}
@@ -2323,50 +2615,50 @@
     \item \textbf{Precondizioni}: È in corso il recupero delle note remote.
     \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item Il sistema rileva un errore durante il recupero delle note associate all'utente.
+        \item Il sistema rileva un errore di comunicazione con il database PostgreSQL o un errore applicativo durante il recupero.
         \item Il sistema mostra un messaggio di errore all'utente.
     \end{enumerate}
     \item \textbf{Postcondizioni}: La lista delle note non viene visualizzata.
-    \item \textbf{Trigger}: Problemi di connessione o indisponibilità del servizio remoto.
+    \item \textbf{Trigger}: Problemi di connessione o indisponibilità del database remoto.
 \end{itemize}
 
-% UC70 - Salvataggio nota su spazio remoto
-\hypertarget{uc70}{}
-\subsubsection{UC 70: (Opzionale) Salvataggio nota su spazio remoto}
+% UC155 - Salvataggio nota su database remoto
+\hypertarget{uc155}{}
+\subsubsection{UC 155: (Opzionale) Salvataggio nota su database remoto}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{salvataggio_db.png}
-    \caption{UC 70 – Salvataggio nota su spazio remoto}
+    \caption{UC 155 – Salvataggio nota su database remoto}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: L'utente è autenticato e una nota è aperta nell'editor.
+    \item \textbf{Precondizioni}: L'utente è autenticato e una nota è aperta nell'editor. Il sistema utilizza un database PostgreSQL configurato a livello applicativo per la memorizzazione remota delle note.
     \item \textbf{Scenario Principale}:
     \begin{enumerate}
         \item L'utente seleziona la funzione di salvataggio remoto.
-        \item Il sistema sincronizza il contenuto della nota con lo spazio remoto associato all'utente.
+        \item Il sistema sincronizza il contenuto della nota con il database remoto associato all'utente.
         \item Il sistema conferma l'avvenuto salvataggio.
     \end{enumerate}
-    \item \textbf{Postcondizioni}: La nota viene salvata nello spazio remoto dell'utente.
+    \item \textbf{Postcondizioni}: La nota viene salvata nel database remoto dell'utente.
     \item \textbf{Trigger}: L'utente desidera sincronizzare la nota corrente.
     \item \textbf{Estensioni}:
     \begin{itemize}
-        \item \hyperlink{uc70.1}{UC 70.1: Visualizzazione errore sincronizzazione remota} $ \rightarrow $ Condizione: errore di sincronizzazione al passo 2.
+        \item \hyperlink{uc155.1}{UC 155.1: Visualizzazione errore sincronizzazione remota} $ \rightarrow $ Condizione: errore di sincronizzazione al passo 2.
     \end{itemize}
 \end{itemize}
 
-% UC70.1 - Visualizzazione errore sincronizzazione remota
-\hypertarget{uc70.1}{}
-\subsubsection{UC 70.1: Visualizzazione errore sincronizzazione remota}
+% UC155.1 - Visualizzazione errore sincronizzazione remota
+\hypertarget{uc155.1}{}
+\subsubsection{UC 155.1: Visualizzazione errore sincronizzazione remota}
 
 % use case diagram
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{errore_salvataggio_db.png}
-    \caption{UC 70.1 – Visualizzazione errore sincronizzazione remota}
+    \caption{UC 155.1 – Visualizzazione errore sincronizzazione remota}
 \end{figure}
 
 \begin{itemize}
@@ -2374,21 +2666,21 @@
     \item \textbf{Precondizioni}: È in corso il salvataggio remoto della nota.
     \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item Il sistema rileva un errore durante la sincronizzazione della nota.
+        \item Il sistema rileva un errore durante la comunicazione con il database PostgreSQL per la sincronizzazione della nota.
         \item Il sistema mostra un messaggio di errore all'utente.
     \end{enumerate}
-    \item \textbf{Postcondizioni}: La nota non viene salvata nello spazio remoto.
-    \item \textbf{Trigger}: Problemi di connessione o indisponibilità del servizio remoto.
+    \item \textbf{Postcondizioni}: La nota non viene salvata nel database remoto.
+    \item \textbf{Trigger}: Problemi di connessione o indisponibilità del database remoto.
 \end{itemize}
 
-% UC71 - Apertura nota da lista note salvate
-\hypertarget{uc71}{}
-\subsubsection{UC 71: (Opzionale) Apertura nota da lista note salvate}
+% UC156 - Apertura nota da lista note salvate
+\hypertarget{uc156}{}
+\subsubsection{UC 156: (Opzionale) Apertura nota da lista note salvate}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{apertura_nota_remota.png}
-    \caption{UC 71 – Apertura nota da lista note salvate}
+    \caption{UC 156 – Apertura nota da lista note salvate}
 \end{figure}
 
 \begin{itemize}
@@ -2401,21 +2693,21 @@
         \item Il sistema carica la nota nell'editor.
     \end{enumerate}
     \item \textbf{Postcondizioni}: La nota selezionata è aperta nell'editor.
-    \item \textbf{Trigger}: L'utente desidera aprire una nota salvata nello spazio remoto.
+    \item \textbf{Trigger}: L'utente desidera aprire una nota salvata nel database remoto.
     \item \textbf{Estensioni}:
     \begin{itemize}
-        \item \hyperlink{uc71.1}{UC 71.1: Visualizzazione errore apertura nota remota} $ \rightarrow $ Condizione: errore durante il recupero della nota al passo 2.
+        \item \hyperlink{uc156.1}{UC 156.1: Visualizzazione errore apertura nota remota} $ \rightarrow $ Condizione: errore durante il recupero della nota al passo 2.
     \end{itemize}
 \end{itemize}
 
-% UC71.1 - Visualizzazione errore apertura nota remota
-\hypertarget{uc71.1}{}
-\subsubsection{UC 71.1: Visualizzazione errore apertura nota remota}\
+% UC156.1 - Visualizzazione errore apertura nota remota
+\hypertarget{uc156.1}{}
+\subsubsection{UC 156.1: Visualizzazione errore apertura nota remota}\
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{errore_apertura_remota.png}
-    \caption{UC 71.1 – Visualizzazione errore apertura nota remota}
+    \caption{UC 156.1 – Visualizzazione errore apertura nota remota}
 \end{figure}
 
 \begin{itemize}
@@ -2427,7 +2719,7 @@
         \item Il sistema mostra un messaggio di errore all'utente.
     \end{enumerate}
     \item \textbf{Postcondizioni}: L'editor rimane invariato.
-    \item \textbf{Trigger}: Problemi di connessione o indisponibilità del servizio remoto.
+    \item \textbf{Trigger}: Problemi di connessione o indisponibilità del database remoto.
 \end{itemize}
 
 \begin{comment}
