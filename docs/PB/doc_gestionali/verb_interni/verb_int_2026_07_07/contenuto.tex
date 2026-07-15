@@ -2,9 +2,9 @@
 \section{Informazioni Generali}
 \begin{itemize}
     \item \textbf{Luogo/Piattaforma:} Server Discord\textsubscript{G}
-    \item \textbf{Data:} 2026-06-30
-    \item \textbf{Orario di inizio:} 14:30
-    \item \textbf{Orario di fine:} 15:40
+    \item \textbf{Data:} 2026-07-07
+    \item \textbf{Orario di inizio:} 14:00
+    \item \textbf{Orario di fine:} 14:50
     \item \textbf{Responsabile\textsubscript{G}:} Armando Moda Scarati
     \item \textbf{Scriba:} Sofia De Blasi
 \end{itemize}
@@ -20,9 +20,9 @@
         \midrule
         Sofia De Blasi & 2111014 \\
         Roberto Mariano Doroftei & 2111031 \\
-        Filippo Idiometri & 2035617 \\
         Armando Moda Scarati & 2082864 \\
         Anton Ricardo Rupi & 2054304 \\
+        Filippo Idiometri & 2035617 \\
         \bottomrule
     \end{tabularx}
 \end{table}
@@ -47,31 +47,26 @@
 Gli argomenti previsti per la riunione odierna sono:
 
 \begin{enumerate}
-	\item Sprint\textsubscript{G} review e retrospective.
-	\item Allineamento sulle automazioni CI/CD\textsubscript{G} e metriche di codice e test.
-	\item Stesura documenti (Verbale Interno, Diario di Bordo\textsubscript{G}, PdP, PdQ).
-	\item Applicazione delle correzioni sull'AdR ed e-mail per Zucchetti\textsubscript{G}.
-	\item Pianificazione dello sprint e assegnazione ruoli.
+    \item Sprint review e retrospective.
+    \item Allineamento sulle automazioni CI/CD e metriche di codice e test.
+    \item Applicazione delle correzioni ai documenti a seguito dell'esito RTB
+    \item Preparazione della comunicazione con Zucchetti.
+    \item Pianificazione dello sprint e assegnazione ruoli.
 \end{enumerate}
 
 
 % --- 3. RESOCONTO E DISCUSSIONE ---
+
 \section{Resoconto della Riunione}
 
-\subsection{Sprint review\textsubscript{G} e retrospective}
-Il gruppo ha effettuato la verifica dello sprint appena concluso, constatando che tutte le attività previste sono state ultimate correttamente. Durante l'analisi retrospettiva, è emerso un rallentamento nel lavoro di preparazione alla Product Baseline\textsubscript{G} (PB\textsubscript{G}), causato principalmente dall'intensificarsi degli impegni universitari e dalla sessione d'esami dei membri. Come azione correttiva, il team ha deciso di sfruttare il periodo di stallo in attesa dei colloqui e dei ricevimenti ufficiali per concentrare il tempo disponibile sulle attività più imminenti. Nello specifico, ci si focalizzerà sulle comunicazioni aziendali e sulle attività gestionali (stesura verbali, aggiornamento PdP e PdQ).
+\subsection{Revisione dello sprint e retrospettiva}
+Il gruppo ha effettuato la revisione dello sprint appena concluso, constatando che le attività previste sono state completate correttamente. Durante la retrospettiva è emersa la necessità di adottare una gestione più rigorosa del ciclo di lavoro, seguendo la sequenza consuntivo del periodo, retrospettiva, misure correttive con aggiornamento dei rischi, miglioramento della pianificazione futura e preventivo a finire. A seguito dell'esito positivo della revisione RTB, è stato stabilito l’avvio effettivo della Product Baseline in data 07/07, con l’obiettivo di definire le attività da inserire nel backlog e le relative priorità.
 
-\subsection{Aggiornamenti operativi e comunicazioni aziendali}
-Si è discusso della necessità di apportare correzioni all'Analisi dei Requisiti\textsubscript{G}, definendo un'attività di "palestra" per comprenderle appieno e preparare le relative domande da sottoporre all'azienda proponente. Questa attività formativa non impatterà sul monte ore rendicontato. È stato inoltre stabilito di redigere un'e-mail da inviare a Zucchetti per finalizzare una data per il colloquio. Il team ha poi proseguito con l'organizzazione delle attività per il setup dell'ambiente di Continuous Integration/Continuous Deployment (CI/CD) e la selezione delle metriche necessarie per la valutazione della qualità del codice e dei test. 
+Nel corso della discussione sono state affrontate le correzioni all’Analisi dei Requisiti emerse durante la revisione RTB, riguardanti l'aggiornamento dei requisiti prestazionali, delle tabelle di tracciamento, delle fonti e della numerazione dei Casi d’Uso, che verrà rivista al termine della stesura definitiva. È stato inoltre stabilito che i registri delle modifiche non dovranno più essere inclusi nei verbali. Il gruppo ha concordato di redigere un’e-mail per Zucchetti e di strutturare il verbale esterno includendo decisioni puntuali e informazioni utili come fonti dei Casi d’Uso. Infine, è stato evidenziato il bisogno di allinearsi sugli impegni personali dei membri per stimare correttamente il carico di lavoro individuale e pianificare la ripresa a pieno regime.
 
 \subsection{Pianificazione dello sprint successivo e assegnazione dei ruoli}
-Il gruppo ha definito l'assegnazione dei ruoli per garantire una copertura adeguata delle task\textsubscript{G} previste nel breve termine, mantenendo basso il carico orario ove necessario a causa degli esami:
-\begin{itemize}
-    \item \textbf{Responsabile:} Armando Moda Scarati, incaricato di redigere il verbale interno e il Diario di Bordo.
-    \item \textbf{Analista\textsubscript{G}:} Sofia De Blasi, con l'obiettivo di svolgere attività non rendicontate (palestra) per la comprensione delle correzioni da applicare all'AdR e la stesura delle domande per Zucchetti.
-    \item \textbf{Amministratori (divisi in 3 flussi):} Roberto Mariano Doroftei si occuperà dell'aggiornamento del PdQ e della stesura dell'e-mail per Zucchetti; Filippo Idiometri seguirà il setup delle automazioni e delle metriche; Francesco Marcon avrà il compito\textsubscript{G} di aggiornare il PdP.
-    \item \textbf{Verificatore\textsubscript{G}:} Anton Ricardo Rupi.
-\end{itemize}
+Il gruppo ha definito la suddivisione delle attività per lo sprint successivo, assegnando compiti specifici ai membri in base alle necessità operative emerse. Armando si occuperà delle macroaree 1 e 3, mentre Filippo seguirà la macroarea 2; entrambi contribuiranno al ragionamento sui requisiti non funzionali. Roberto curerà il verbale interno, mentre Ricardo gestirà il verbale esterno e le attività collegate. È stato inoltre stabilito di avviare una sperimentazione sul setup delle automazioni CI/CD tramite un branch dedicato, e di approfondire le attività da svolgere nella Product Baseline. Il gruppo ha concordato di procedere con le correzioni del PdP e del PdQ secondo le indicazioni ricevute, includendo una revisione del modello di sviluppo e una migliore interpretazione della retrospettiva.
+
 
 % --- 4. DECISIONI PRESE ---
 \section{Decisioni Prese}
@@ -98,9 +93,22 @@ Il gruppo ha definito l'assegnazione dei ruoli per garantire una copertura adegu
     \bottomrule
     \endlastfoot
 
-    \textbf{VI-20.1} & {Ricalibrazione del carico di lavoro nel periodo di stallo per privilegiare attività prioritarie di gestione e comunicazione, a causa degli impegni universitari del team.} \\
-	\textbf{VI-20.2} & {Assegnazione di attività di 'palestra' per l'Analista, finalizzate allo studio delle correzioni AdR e alla stesura di quesiti per la proponente.} \\
-	\textbf{VI-20.3} & {Divisione del ruolo\textsubscript{G} di Amministratore\textsubscript{G} in tre flussi di lavoro separati per ottimizzare la stesura dei documenti (PdP, PdQ), le configurazioni di CI/CD e le comunicazioni esterne.}
+    
+
+    \textbf{VI-21.1} & Avvio effettivo della Product Baseline in data 07/07, con definizione delle attività da inserire nel backlog e delle priorità iniziali. \\
+
+    \textbf{VI-21.2} & Adozione del ciclo di lavoro indicato dal docente: consuntivo del periodo, retrospettiva, misure correttive con aggiornamento dei rischi, miglioramento della pianificazione futura e preventivo a finire. \\
+
+    \textbf{VI-21.3} & Strutturazione del verbale esterno per Zucchetti includendo decisioni puntuali, valutazioni tecniche e informazioni utili come fonti dei Casi d’Uso. \\
+
+    \textbf{VI-21.4} & Aggiornamento dell’Analisi dei Requisiti con revisione dei requisiti prestazionali, delle tabelle di tracciamento e delle fonti. \\
+
+    \textbf{VI-21.5} & Revisione della numerazione dei Casi d’Uso al completamento della stesura definitiva. \\
+
+    \textbf{VI-21.6} & Rimozione dei registri delle modifiche dai verbali, come stabilito dall’esito RTB. \\
+
+    \textbf{VI-21.7} & Avvio della sperimentazione sul setup delle automazioni CI/CD tramite branch dedicato, con analisi delle metriche di qualità del codice e dei test. \\
+
 \end{longtable}
 
 % --- 5. AZIONI (TODO) ---
@@ -126,23 +134,26 @@ Il gruppo ha definito l'assegnazione dei ruoli per garantire una copertura adegu
     \bottomrule
     \endlastfoot
 
-    \ghissue{271} & - & Stesura del Diario di Bordo e del Verbale Interno odierno (VI N. 20) & Armando M. Scarati & 2026-07-07 \\[4pt]
-	
-	\ghissue{273} & VI-17.3 & Aggiornamento del PdQ e stesura e-mail di allineamento per Zucchetti & Roberto M. Doroftei & 2026-07-07 \\[4pt]
+    \ghissue{281} & VI-21.6 & Stesura verbale esterno Zucchetti & Anton Ricardo Rupi & 2026-07-07 \\[4pt]
 
-    \ghissue{276} & VI-17.3 & Stesura e-mail di allineamento per Zucchetti & Roberto M. Doroftei & 2026-07-07 \\[4pt]
-	
-	\ghissue{272} & VI-17.2 & Palestra (non rendicontata): studio correzioni AdR e quesiti proponente & Sofia De Blasi & 2026-07-07 \\[4pt]
-	
-	\ghissue{275} & VI-17.3 & Configurazione\textsubscript{G} iniziale CI/CD e definizione delle metriche di codice/test & Filippo Idiometri & 2026-07-07 \\[4pt]
-	
-	\ghissue{274} & VI-17.3 & Aggiornamento del Piano di Progetto\textsubscript{G} (PdP) & Francesco Marcon & 2026-07-07 \\[4pt]
+    \ghissue{282} & VI-21.4 & Revisione dell’Analisi dei Requisiti con aggiornamento dei use case della macroarea 1 e 3 & Armando Moda Scarati & 2026-07-07 \\[4pt]
+
+    \ghissue{283} & VI-21.4 & Revisione dell’Analisi dei Requisiti con aggiornamento dei use case della macroarea 2 & Filippo Idiometri & 2026-07-07 \\[4pt]
+
+    \ghissue{284} & VI-21.6 & Stesura del Verbale Interno & Roberto M. Doroftei & 2026-07-07 \\[4pt]
+
+    \ghissue{285} & - & Aggiornamento del Piano di Qualifica & Anton Ricardo Rupi & 2026-07-07 \\[4pt]
+
+    \ghissue{288} & - & Aggiornamento del Piano di Progetto & Francesco Marcon & 2026-07-07 \\[4pt]   
+
+    \ghissue{292} & VI-21.7 & Sperimentazione delle automazioni CI/CD e raccolta delle metriche di qualità & Francesco Marcon & 2026-07-14 \\[4pt]
+
 \end{longtable}
 
 % --- 6. PROSSIMA RIUNIONE ---
 \section{Prossima Riunione}
 \begin{itemize}
-	\item \textbf{Data:} 2026-07-07
+	\item \textbf{Data:} 2026-07-14
 	\item \textbf{Ora:} 14:30
 	\item \textbf{OdG preliminare\textsubscript{G}:}
 	\begin{itemize}
