@@ -1,0 +1,43 @@
+% =======================================================
+% 7. TRACCIAMENTO E STATO DEI REQUISITI
+% =======================================================
+\section{Tracciamento e Stato dei Requisiti}
+Al fine di garantire che l'architettura progettata e le tecnologie scelte soddisfino le funzionalità concordate, si fornisce di seguito lo stato di implementazione dei requisiti emersi in fase di Analisi.
+
+\subsection{Tabella Tracciamento Componenti-Requisiti}
+[Inserire tabelle o riferimenti su come le singole componenti o i package descritti in architettura vadano a coprire i requisiti del capitolato].
+
+\subsection{Stato di Soddisfacimento dei Requisiti}
+La tabella seguente riassume lo stato finale dei requisiti funzionali e prestazionali richiesti dall'appalto.
+
+\renewcommand{\arraystretch}{1.3}
+\begin{xltabular}{\textwidth}{|c|X|c|c|}
+    \caption{Stato dei Requisiti} \label{tab:stato-req} \\
+    \hline
+    \rowcolor{primarycolor!10}
+    \textbf{Codice} & \textbf{Descrizione} & \textbf{Tipo} & \textbf{Stato} \\
+    \hline
+    \endfirsthead
+    
+    \multicolumn{4}{c}%
+    {{\bfseries \tablename\ \thetable{} -- Continua dalla pagina precedente}} \\
+    \hline
+    \rowcolor{primarycolor!10}
+    \textbf{Codice} & \textbf{Descrizione} & \textbf{Tipo} & \textbf{Stato} \\
+    \hline
+    \endhead
+
+    \hline
+    \multicolumn{4}{|r|}{{Continua nella pagina successiva...}} \\
+    \hline
+    \endfoot
+
+    \hline
+    \endlastfoot
+
+    % Esempi basati sulle esigenze del progetto Second Brain
+    RO-F-1 & Il sistema deve fornire un'area per l'editing di testo con supporto Markdown. & Obbligatorio & Soddisfatto \\ \hline
+    RO-F-2 & Il sistema deve permettere la generazione di testo tramite LLM (Distant Writing). & Obbligatorio & Soddisfatto \\ \hline
+    RO-F-3 & Il sistema deve permettere l'analisi del testo secondo i "Sei Cappelli di De Bono". & Obbligatorio & Soddisfatto \\ \hline
+    RO-V-1 & Il sistema deve operare su un'architettura client-server accessibile via web. & Vincolo & Soddisfatto \\ \hline
+\end{xltabular}

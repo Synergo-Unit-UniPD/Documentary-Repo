@@ -1,0 +1,17 @@
+% =======================================================
+% 6. FLUSSO DEI DATI (DATA FLOW)
+% =======================================================
+\section{Flusso dei Dati (Data Flow)}
+Questa sezione illustra il ciclo di vita delle informazioni all'interno del sistema, partendo dall'interazione dell'utente fino all'ottenimento del risultato generato dall'Intelligenza Artificiale.
+
+\subsection{Flusso di esecuzione: Elaborazione AI (es. Distant Writing o Analisi)}
+[Inserire un diagramma di sequenza UML o di attività]
+
+\begin{enumerate}
+    \item \textbf{Interazione Utente (Frontend):} L'utente seleziona una porzione di testo nell'editor Markdown e richiede un'operazione specifica (es. "Riscrivi in stile formale").
+    \item \textbf{Creazione Richiesta:} Il Frontend impacchetta il contesto e il comando e lo invia al Backend tramite chiamata API.
+    \item \textbf{Validazione e Costruzione Prompt (Backend):} Il Backend riceve la richiesta, determina la strategia appropriata e costruisce un prompt strutturato (System + User context).
+    \item \textbf{Chiamata Esterna:} Il Backend contatta il servizio LLM esterno tramite l'apposito Adapter.
+    \item \textbf{Parsing e Restituzione:} Il Backend riceve il testo, esegue operazioni di parsing (es. rimozione metadati o tag Markdown spuri) e restituisce il payload normalizzato al Frontend.
+    \item \textbf{Aggiornamento UI:} L'interfaccia mostra la proposta all'utente, permettendone l'accettazione, il rifiuto o la rigenerazione.
+\end{enumerate}
