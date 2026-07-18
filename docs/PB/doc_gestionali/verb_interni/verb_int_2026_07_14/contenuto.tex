@@ -1,0 +1,158 @@
+% --- 1. INFORMAZIONI GENERALI ---
+\section{Informazioni Generali}
+\begin{itemize}
+    \item \textbf{Luogo/Piattaforma:} Server Discord\textsubscript{G}
+    \item \textbf{Data:} 2026-07-14
+    \item \textbf{Orario di inizio:} 14:30
+    \item \textbf{Orario di fine:} 15:05
+    \item \textbf{Responsabile\textsubscript{G}:} Anton Ricardo Rupi
+    \item \textbf{Scriba:} Sofia De Blasi
+\end{itemize}
+
+\vspace{0.5cm}
+\textbf{Partecipanti presenti:}
+\begin{table}[ht]
+    \centering
+    \renewcommand{\arraystretch}{1.2}
+    \begin{tabularx}{\textwidth}{X l}
+        \toprule
+        \textbf{Nome e Cognome} & \textbf{Matricola} \\
+        \midrule
+        Sofia De Blasi & 2111014 \\
+        Roberto Mariano Doroftei & 2111031 \\
+        Armando Moda Scarati & 2082864 \\
+        Anton Ricardo Rupi & 2054304 \\
+        Filippo Idiometri & 2035617 \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\vspace{0.5cm}
+\textbf{Partecipanti assenti:}
+\begin{table}[ht]
+	\centering
+	\renewcommand{\arraystretch}{1.2}
+	\begin{tabularx}{\textwidth}{X l}
+		\toprule
+		\textbf{Nome e Cognome} & \textbf{Matricola} \\
+		\midrule
+		Nessuno & - \\
+		\bottomrule
+	\end{tabularx}
+\end{table}
+
+
+% --- 2. ORDINE DEL GIORNO ---
+\section{Ordine del Giorno}
+
+Gli argomenti previsti per la riunione odierna sono:
+
+\begin{enumerate}
+    \item Sprint review e retrospective.
+    \item Pianificazione dello sprint e assegnazione ruoli.
+\end{enumerate}
+
+
+% --- 3. RESOCONTO E DISCUSSIONE ---
+
+\section{Resoconto della Riunione}
+
+\subsection{Revisione dello sprint e retrospettiva}
+Il gruppo ha effettuato la revisione dello sprint appena concluso, constatando che le attività previste sono state completate correttamente. Per quanto riguarda l’analisi dei requisiti, è necessario colmare il gap numerico e revisionare sia la coerenza complessiva sia la definizione dei requisiti.
+Per quanto riguarda la retrospective, è emerso che il lavoro collaborativo su uno stesso documento rende difficile garantire la coerenza complessiva e svolgere una revisione completa ed efficace. Per questo motivo, si prevede di inserire nello sprint successivo un task dedicato, assegnato a una persona terza, con l’obiettivo di verificare e migliorare la coerenza dell’intero documento.
+Tale criticità dovrà inoltre essere formalizzata come un nuovo rischio, da includere sia nello sprint sia nell’analisi dei rischi, aggiornando di conseguenza anche la relativa tabella di riepilogo.
+
+
+\subsection{Pianificazione dello sprint successivo e assegnazione dei ruoli}
+Il gruppo ha definito la suddivisione delle attività per lo sprint successivo, assegnando compiti specifici ai membri in base alle necessità operative emerse. Armando si occuperà dell’aggiornamento del sito e del readme, nonché della stesura dei template relative al PB. Francesco si occuperà dell’aggiornamento del PdP e del PdQ, della redazione dell’email all’azienda Zucchetti relativa al verbale esterno del 06/07/2026 e della configurazione delle automazioni CI/CD.
+Ricardo curerà il verbale interno, mentre Roberto si occuperà di studiare e abbozzare design e architettura. Sofia si occuperà di rivedere l'AdR aggiornato lo sprint precedente.
+
+
+% --- 4. DECISIONI PRESE ---
+\section{Decisioni Prese}
+
+\renewcommand{\arraystretch}{1.3}
+\vspace{-0.3cm}
+\noindent
+\begin{longtable}{c p{12cm}}
+    \toprule
+    \textbf{Codice} & \textbf{Decisione} \\
+    \midrule
+    \endfirsthead
+
+    \toprule
+    \textbf{Codice} & \textbf{Decisione} \\
+    \midrule
+    \endhead
+
+    \midrule
+    \multicolumn{2}{r}{\textit{Continua nella pagina successiva}} \\
+    \midrule
+    \endfoot
+
+    \bottomrule
+    \endlastfoot
+
+    
+
+    \textbf{VI-22.1} & Aggiornamento del readme nella directory docs/PB, con l’aggiunta della cartella alla struttura generale e alla suddivisione per fasi di progetto. \\
+
+    \textbf{VI-22.2} & Invio email all'azienda Zucchetti per far firmare il verbale esterno dell'incontro del 07/06 \\
+
+\end{longtable}
+
+% --- 5. AZIONI (TODO) ---
+\section{Azioni da Svolgere (To-Do)}
+
+\renewcommand{\arraystretch}{1.3}
+\begin{longtable}{p{2.3cm} c p{4.5cm} p{3cm} l}
+    \toprule
+    \textbf{Codice} & \textbf{Rif. Decisione} & \textbf{Descrizione Task\textsubscript{G}} & \textbf{Assegnatario} & \textbf{Scadenza} \\
+    \midrule
+    \endfirsthead
+
+    \toprule
+    \textbf{Codice} & \textbf{Rif. Decisione} & \textbf{Descrizione Task} & \textbf{Assegnatario} & \textbf{Scadenza} \\
+    \midrule
+    \endhead
+
+    \midrule
+    \multicolumn{5}{r}{\textit{Continua nella pagina successiva}} \\
+    \midrule
+    \endfoot
+
+    \bottomrule
+    \endlastfoot
+
+    \ghissue{292} & - & setup CI/CD & Francesco Marcon & 2026-07-21 \\[4pt]
+
+    \ghissue{296} & - & Stesura verbale interno del 14/07 & Anton R. Rupi & 2026-07-21 \\[4pt]
+
+    \ghissue{297} & VI-22.2 & Invio email per firma verbale esterno & Francesco Marcon & 2026-07-21 \\[4pt]
+
+    \ghissue{298} & - & Aggiornamento del Piano di Progetto & Francesco Marcon & 2026-07-21 \\[4pt]
+
+    \ghissue{299} & - & Aggiornamento del Piano di Qualifica & Francesco Marcon & 2026-07-21 \\[4pt]
+
+    \ghissue{300} & - & Revisione dell'Analisi dei Requisiti & Sofia De Blasi & 2026-07-21 \\[4pt]   
+
+    \ghissue{301} & - & Stesura template specifica tecnica e manuale utente & Armando M. Scarati & 2026-07-21 \\[4pt]
+
+    \ghissue{302} & - & Studio dell'architettura e design & Roberto M. Doroftei & 2026-07-21 \\[4pt]
+
+    \ghissue{303} & VI-22.1 & Aggiornamento del sito e readme della fase PB & Armando M. Scarati & 2026-07-21 \\[4pt]
+\end{longtable}
+
+% --- 6. PROSSIMA RIUNIONE ---
+\section{Prossima Riunione}
+\begin{itemize}
+	\item \textbf{Data:} 2026-07-21
+	\item \textbf{Ora:} 14:30
+	\item \textbf{OdG preliminare\textsubscript{G}:}
+	\begin{itemize}
+		\item Verifica dei task assegnati per lo sprint corrente.
+		\item Discussione sull'esito della comunicazione con Zucchetti.
+		\item Pianificazione dello sprint successivo e assegnazione dei ruoli.
+	\end{itemize}
+\end{itemize}
+
