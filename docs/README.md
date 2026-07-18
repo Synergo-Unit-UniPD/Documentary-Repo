@@ -10,6 +10,7 @@ La struttura è organizzata per fase di avanzamento e per tipologia di documento
 docs/
 ├── CC/
 ├── RTB/
+├── PB/
 ├── template/
 └── rif_norm_ISO/
 ```
@@ -23,6 +24,10 @@ Contiene la documentazione relativa alla fase di **Candidatura Capitolati**, ded
 ### `RTB`
 
 Contiene la documentazione relativa alla fase di **Requirements and Technology Baseline**, dedicata alla definizione dei requisiti, delle tecnologie e della pianificazione del progetto.
+
+### `PB`
+
+Contiene la documentazione relativa alla fase di **Product Baseline**, dedicata alla progettazione dell'architettura e del design di dettaglio, all'implementazione e al completamento del prodotto finale.
 
 ## Organizzazione dei documenti
 
