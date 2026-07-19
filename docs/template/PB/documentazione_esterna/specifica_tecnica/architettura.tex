@@ -1,0 +1,34 @@
+% =======================================================
+% 3. ARCHITETTURA DEL SISTEMA
+% =======================================================
+\section{Architettura del Sistema}
+
+\subsection{Architettura Generale}
+Il sistema \textit{Second Brain} è basato su un'architettura di tipo Client-Server per garantire la separazione delle responsabilità (Separation of Concerns) tra la gestione dell'interfaccia utente (editor Markdown) e l'orchestrazione delle chiamate ai Modelli di Linguaggio di Grande Scala (LLM).
+[Inserire diagramma architettura di alto livello]
+
+\subsection{Architettura di Deployment}
+[Descrizione della strategia di containerizzazione scelta (es. Docker). Specificare come vengono deployati il Frontend, il Backend e l'eventuale strato di persistenza dati/database].
+
+\subsection{Architettura del Frontend}
+Il Frontend gestisce l'interazione dell'utente con l'editor Markdown e la visualizzazione dello stato delle operazioni AI.
+[Descrivere il pattern architetturale scelto per il frontend, es. MVVM, Architettura a Componenti, ecc.]
+
+\subsubsection{Gestione dello Stato e dell'Editor}
+[Descrivere come il sistema mantiene lo stato dell'editor (testo inserito, renderizzazione Markdown) e come viene garantita la sincronizzazione dei dati per l'auto-salvataggio o la persistenza locale].
+
+\subsubsection{Gestione Interazioni AI (Widget/Pannello AI)}
+[Descrivere l'architettura dei componenti responsabili di inviare il prompt, mostrare lo stato di caricamento (es. spinner o streaming del testo) e permettere l'inserimento/scarto della risposta dell'LLM].
+
+\subsection{Architettura del Backend}
+Il Backend funge da orchestratore centrale e da strato di astrazione verso i provider LLM esterni.
+[Descrivere il pattern architetturale scelto per il backend, es. Architettura a Livelli (Layered), Architettura Esagonale (Ports and Adapters), ecc.]
+
+\subsubsection{Livello di Presentazione / Controller}
+[Descrizione di come il backend riceve le richieste dal client relative a operazioni testuali o di AI].
+
+\subsubsection{Livello di Business Logic (Core LLM)}
+[Descrizione del motore centrale: come il backend costruisce dinamicamente i prompt, come gestisce le logiche dei "Sei Cappelli di De Bono", del "Distant Writing" e della traduzione].
+
+\subsubsection{Livello di Integrazione / Infrastructure}
+[Descrizione di come il backend maschera le dipendenze specifiche dei provider LLM (es. OpenAI, modelli locali) e gestisce la formattazione delle risposte per il client].
