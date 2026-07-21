@@ -1,0 +1,24 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ "main", "develop" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del codice
+        uses: actions/checkout@v4
+
+      - name: Build dei servizi Docker
+        run: docker compose build
+
+      - name: Esegui test Backend (FastAPI)
+        run: docker compose run --rm backend pytest
+
+      - name: Esegui test Frontend (Vue.js)
+        run: docker compose run --rm frontend npm run test:unit
