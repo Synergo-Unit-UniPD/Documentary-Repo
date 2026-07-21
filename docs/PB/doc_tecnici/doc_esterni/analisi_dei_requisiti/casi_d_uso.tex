@@ -1279,15 +1279,22 @@
 \subsection{Macroarea 2 — Interazione AI (LLM)}
 \textit{Elaborazione del testo tramite modelli linguistici e gestione degli output generati.}
 
-% UC48 - Generazione riassunto del testo
-\hypertarget{uc48}{}
-\subsubsection{UC 48: Generazione riassunto del testo}
+\noindent
+Per tutte le funzionalità basate su LLM, il sistema visualizza durante l'elaborazione
+un indicatore di caricamento e rende disponibile un comando di interruzione.
+Al completamento, la proposta generata viene mostrata in una finestra modale dedicata,
+dalla quale l'utente può accettarla, rifiutarla o richiederne la rigenerazione.
+Nessuna proposta viene applicata automaticamente al contenuto della nota.
 
-% use case diagram
+
+% UC52 - Richiesta riassunto
+\hypertarget{uc52}{}
+\subsubsection{UC 52: Richiesta riassunto}
+
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{generazione_riassunto_testo.png}
-    \caption{UC 48 – Riassunto del testo}
+    \includegraphics[width=0.6\textwidth]{richiesta_riassunto.png}
+    \caption{UC 52 – Richiesta riassunto}
 \end{figure}
 
 \begin{itemize}
@@ -1297,482 +1304,217 @@
     \item \textbf{Scenario Principale}:
     \begin{enumerate}
         \item L'utente richiede la generazione di un riassunto del testo selezionato.
-        \item Il sistema invia la richiesta al servizio AI.
-        \item Il servizio AI genera il riassunto richiesto.
-        \item Il sistema rende disponibile il riassunto generato all'utente, senza modificare il contenuto della nota.
+        \item Il sistema acquisisce la richiesta dell'utente.
     \end{enumerate}
-    \item \textbf{Postcondizioni}: Una proposta di riassunto del testo selezionato è disponibile all'utente; il contenuto 
-      della nota rimane invariato.
+    \item \textbf{Postcondizioni}: La richiesta di riassunto è stata acquisita dal sistema.
     \item \textbf{Trigger}: L'utente desidera ottenere una sintesi del testo selezionato.
-    \item \textbf{Estensioni}:
-    \begin{itemize}
-        \item \hyperlink{uc48.1}{UC 48.1: Visualizzazione errore generazione riassunto} $ \rightarrow $ Condizione: si verifica un errore durante la comunicazione con il servizio AI.
-    \end{itemize}
 \end{itemize}
 
-% UC48.1 - Visualizzazione errore generazione riassunto
-\hypertarget{uc48.1}{}
-\subsubsection{UC 48.1: Visualizzazione errore generazione riassunto}
 
-% use case diagram
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{errore_ai_UC48.1.png}
-    \caption{UC 48.1 – Visualizzazione errore generazione riassunto}
-\end{figure}
-
-\begin{itemize}
-    \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: È in corso una richiesta di generazione del riassunto.
-    \item \textbf{Scenario Principale}:
-    \begin{enumerate}
-        \item Si verifica un errore durante l'elaborazione della richiesta.
-        \item Il sistema segnala il mancato completamento della richiesta di generazione del riassunto.
-    \end{enumerate}
-    \item \textbf{Postcondizioni}: L'utente viene informato del mancato completamento dell'operazione di generazione del riassunto.
-    \item \textbf{Trigger}: Si verifica un errore durante la comunicazione con il servizio AI.
-\end{itemize}
-
-% UC49 - Traduzione del testo
-\hypertarget{uc49}{}
-\subsubsection{UC 49: Traduzione del testo}
-
-% use case diagram
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{traduzione_testo.png}
-    \caption{UC 49 – Traduzione del testo}
-\end{figure}
-
-
-\begin{itemize}
-    \item \textbf{Attore Principale}: Utente
-    \item \textbf{Attore Secondario}: LLM
-    \item \textbf{Precondizioni}: Una porzione di testo è selezionata nell'editor e il servizio AI è disponibile.
-    \item \textbf{Scenario Principale}:
-    \begin{enumerate}
-        \item L'utente richiede la traduzione del testo selezionato.
-        \item L'utente seleziona la lingua di destinazione.
-        \item Il sistema invia la richiesta al servizio AI.
-        \item Il servizio AI genera la traduzione richiesta.
-        \item Il sistema rende disponibile il testo tradotto all'utente, senza modificare il contenuto della nota.
-    \end{enumerate}
-    \item \textbf{Postcondizioni}: Una proposta di traduzione del testo selezionato è disponibile all'utente; il contenuto 
-      della nota rimane invariato.
-    \item \textbf{Trigger}: L'utente desidera tradurre il testo selezionato in un'altra lingua.
-    \item \textbf{Estensioni}:
-    \begin{itemize}
-        \item \hyperlink{uc49.1}{UC 49.1: Visualizzazione errore traduzione testo} $ \rightarrow $ Condizione: si verifica un errore durante la comunicazione con il servizio AI.
-    \end{itemize}
-\end{itemize}
-
-% UC49.1 - Visualizzazione errore traduzione testo
-\hypertarget{uc49.1}{}
-\subsubsection{UC 49.1: Visualizzazione errore traduzione testo}
-
-% use case diagram
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{errore_ai_UC49.1.png}
-    \caption{UC 49.1 – Visualizzazione errore traduzione testo}
-\end{figure}
-
-\begin{itemize}
-    \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: È in corso una richiesta di traduzione del testo.
-    \item \textbf{Scenario Principale}:
-    \begin{enumerate}
-        \item Si verifica un errore durante l'elaborazione della richiesta.
-        \item Il sistema segnala il mancato completamento della richiesta di traduzione del testo.
-    \end{enumerate}
-    \item \textbf{Postcondizioni}: L'utente viene informato del mancato completamento dell'operazione di traduzione del testo.
-    \item \textbf{Trigger}: Si verifica un errore durante la comunicazione con il servizio AI.
-\end{itemize}
-
-% UC50 - Riscrittura del testo
-\hypertarget{uc50}{}
-\subsubsection{UC 50: Riscrittura del testo}
-
-% use case diagram
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{riscrittura_testo.png}
-    \caption{UC 50 – Riscrittura del testo}
-\end{figure}
-
-\begin{itemize}
-    \item \textbf{Attore Principale}: Utente
-    \item \textbf{Attore Secondario}: LLM
-    \item \textbf{Precondizioni}: Una porzione di testo è selezionata nell'editor e il servizio AI è disponibile.
-    \item \textbf{Scenario Principale}:
-    \begin{enumerate}
-        \item L'utente richiede la riscrittura del testo selezionato.
-        \item Il sistema invia la richiesta al servizio AI.
-        \item Il servizio AI genera una nuova versione del testo.
-        \item Il sistema rende disponibile il testo rielaborato all'utente, senza modificare il contenuto della nota.
-    \end{enumerate}
-    \item \textbf{Postcondizioni}: Una proposta di riscrittura del testo selezionato è disponibile all'utente; il contenuto 
-      della nota rimane invariato.
-    \item \textbf{Trigger}: L'utente desidera rielaborare il testo selezionato.
-    \item \textbf{Estensioni}:
-    \begin{itemize}
-        \item \hyperlink{uc50.1}{UC 50.1: Visualizzazione errore riscrittura testo} $ \rightarrow $ Condizione: si verifica un errore durante la comunicazione con il servizio AI.
-    \end{itemize}
-\end{itemize}
-
-% UC50.1 - Visualizzazione errore riscrittura testo
-\hypertarget{uc50.1}{}
-\subsubsection{UC 50.1: Visualizzazione errore riscrittura testo}
-
-% use case diagram
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{errore_ai_UC50.1.png}
-    \caption{UC 50.1 – Visualizzazione errore riscrittura testo}
-\end{figure}
-
-\begin{itemize}
-    \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: È in corso una richiesta di riscrittura del testo.
-    \item \textbf{Scenario Principale}:
-    \begin{enumerate}
-        \item Si verifica un errore durante l'elaborazione della richiesta.
-        \item Il sistema segnala il mancato completamento della richiesta di riscrittura del testo.
-    \end{enumerate}
-    \item \textbf{Postcondizioni}: L'utente viene informato del mancato completamento dell'operazione di riscrittura del testo.
-    \item \textbf{Trigger}: Si verifica un errore durante la comunicazione con il servizio AI.
-\end{itemize}
-
-% UC51 - Generazione automatica da prompt (Distant Writing)
-\hypertarget{uc51}{}
-\subsubsection{UC 51: Generazione automatica da prompt (Distant Writing)}
-
-% use case diagram
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{generazione_automatica_prompt.png}
-    \caption{UC 51 – Generazione automatica da prompt (Distant Writing)}
-\end{figure}
-
-\begin{itemize}
-    \item \textbf{Attore Principale}: Utente
-    \item \textbf{Attore Secondario}: LLM
-    \item \textbf{Precondizioni}: Il servizio AI è disponibile.
-    \item \textbf{Scenario Principale}:
-    \begin{enumerate}
-        \item L'utente inserisce un prompt testuale.
-        \item Il sistema invia il prompt al servizio AI.
-        \item Il servizio AI genera il testo richiesto.
-        \item Il sistema rende disponibile il testo generato all'utente, senza modificare il contenuto della nota.
-    \end{enumerate}
-    \item \textbf{Postcondizioni}: Una proposta di testo generata dal servizio AI è disponibile all'utente; il contenuto 
-      della nota rimane invariato.
-    \item \textbf{Trigger}: L'utente desidera generare automaticamente un nuovo contenuto testuale.
-    \item \textbf{Estensioni}:
-    \begin{itemize}
-        \item \hyperlink{uc51.1}{UC 51.1: Visualizzazione errore generazione testo} $ \rightarrow $ Condizione: si verifica un errore durante la comunicazione con il servizio AI.
-    \end{itemize}
-\end{itemize}
-
-% UC51.1 - Visualizzazione errore generazione testo
-\hypertarget{uc51.1}{}
-\subsubsection{UC 51.1: Visualizzazione errore generazione testo}
-
-% use case diagram
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{errore_ai_UC51.1.png}
-    \caption{UC51.1 – Visualizzazione errore generazione testo}
-\end{figure}
-
-\begin{itemize}
-    \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: È in corso una richiesta di generazione testo (Distant Writing).
-    \item \textbf{Scenario Principale}:
-    \begin{enumerate}
-        \item Si verifica un errore durante l'elaborazione della richiesta.
-        \item Il sistema segnala il mancato completamento della richiesta di generazione testo.
-    \end{enumerate}
-    \item \textbf{Postcondizioni}: L'utente viene informato del mancato completamento dell'operazione di generazione testo.
-    \item \textbf{Trigger}: Si verifica un errore durante la comunicazione con il servizio AI.
-\end{itemize}
-
-%---------------SEI CAPPELLI PER PENSARE------------------
-
-% UC52 - Analisi Cappello Bianco (Dati e fatti)
-\hypertarget{uc52}{}
-\subsubsection{UC 52: Analisi Cappello Bianco (Dati e fatti)}
-
-% use case diagram
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{critica_testo_sei_cappelli_pensare_bianco.png}
-    \caption{UC 52 – Analisi Cappello Bianco (Dati e fatti)}
-\end{figure}
-
-\begin{itemize}
-    \item \textbf{Attore Principale}: Utente
-    \item \textbf{Attore Secondario}: LLM
-    \item \textbf{Precondizioni}: Una porzione di testo è selezionata nell'editor e il servizio AI è disponibile.
-    \item \textbf{Scenario Principale}:
-    \begin{enumerate}
-        \item L'utente richiede un'analisi del testo secondo il Cappello Bianco.
-        \item Il sistema invia la richiesta al servizio AI.
-        \item Il servizio AI analizza informazioni oggettive, dati e lacune informative presenti nel testo.
-        \item Il sistema rende disponibile l'analisi generata all'utente, senza modificare il contenuto della nota.
-    \end{enumerate}
-    \item \textbf{Postcondizioni}: Una proposta di analisi oggettiva del testo selezionato è disponibile all'utente; il contenuto 
-      della nota rimane invariato.
-    \item \textbf{Trigger}: L'utente desidera verificare dati, fatti e oggettività del testo selezionato.
-    \item \textbf{Estensioni}:
-    \begin{itemize}
-        \item \hyperlink{uc52.1}{UC 52.1: Visualizzazione errore analisi Cappello Bianco} $ \rightarrow $ Condizione: si verifica un errore durante la comunicazione con il servizio AI.
-    \end{itemize}
-\end{itemize}
-
-% UC52.1 - Visualizzazione errore analisi Cappello Bianco
-\hypertarget{uc52.1}{}
-\subsubsection{UC 52.1: Visualizzazione errore analisi Cappello Bianco}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{errore_ai_UC52.1.png}
-    \caption{UC 52.1 – Visualizzazione errore analisi Cappello Bianco}
-\end{figure}
-
-\begin{itemize}
-    \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: È in corso una richiesta di analisi secondo il Cappello Bianco.
-    \item \textbf{Scenario Principale}:
-    \begin{enumerate}
-        \item Si verifica un errore durante l'elaborazione della richiesta.
-        \item Il sistema segnala il mancato completamento della richiesta di analisi.
-    \end{enumerate}
-    \item \textbf{Postcondizioni}: L'utente viene informato del mancato completamento dell'analisi.
-    \item \textbf{Trigger}: Si verifica un errore durante la comunicazione con il servizio AI.
-\end{itemize}
-
-% UC53 - Analisi Cappello Rosso (Emozioni)
+% UC53 - Generazione riassunto
 \hypertarget{uc53}{}
-\subsubsection{UC 53: Analisi Cappello Rosso (Emozioni)}
+\subsubsection{UC 53: Generazione riassunto}
 
-% use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{critica_testo_sei_cappelli_pensare_rosso.png}
-    \caption{UC 53 – Analisi Cappello Rosso (Emozioni)}
+    \includegraphics[width=0.6\textwidth]{generazione_riassunto.png}
+    \caption{UC 53 – Generazione riassunto}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
     \item \textbf{Attore Secondario}: LLM
-    \item \textbf{Precondizioni}: Una porzione di testo è selezionata nell'editor e il servizio AI è disponibile.
+    \item \textbf{Precondizioni}: La richiesta di riassunto è stata acquisita dal sistema.
     \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente richiede un'analisi del testo secondo il Cappello Rosso.
-        \item Il sistema invia la richiesta al servizio AI.
-        \item Il servizio AI analizza emozioni, impressioni e reazioni trasmesse dal testo.
-        \item Il sistema rende disponibile l'analisi generata all'utente, senza modificare il contenuto della nota.
+        \item Il sistema inoltra al servizio LLM la richiesta di riassunto.
+        \item Il servizio LLM prende in carico la richiesta e avvia l'elaborazione.
     \end{enumerate}
-    \item \textbf{Postcondizioni}: Una proposta di analisi emotiva del testo selezionato è disponibile all'utente; il contenuto 
-      della nota rimane invariato.
-    \item \textbf{Trigger}: L'utente desidera valutare l'impatto emotivo del testo selezionato.
-    \item \textbf{Estensioni}:
-    \begin{itemize}
-        \item \hyperlink{uc53.1}{UC 53.1: Visualizzazione errore analisi Cappello Rosso} $ \rightarrow $ Condizione: si verifica un errore durante la comunicazione con il servizio AI.
-    \end{itemize}
+    \item \textbf{Postcondizioni}: La richiesta di riassunto è in elaborazione presso il servizio LLM.
+    \item \textbf{Trigger}: Il sistema ha acquisito la richiesta di riassunto.
 \end{itemize}
 
-% UC53.1 - Visualizzazione errore analisi Cappello Rosso
-\hypertarget{uc53.1}{}
-\subsubsection{UC 53.1: Visualizzazione errore analisi Cappello Rosso}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{errore_ai_UC53.png}
-    \caption{UC 53.1 – Visualizzazione errore analisi Cappello Rosso}
-\end{figure}
-
-\begin{itemize}
-    \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: È in corso una richiesta di analisi secondo il Cappello Rosso.
-    \item \textbf{Scenario Principale}:
-    \begin{enumerate}
-        \item Si verifica un errore durante l'elaborazione della richiesta.
-        \item Il sistema segnala il mancato completamento della richiesta di analisi.
-    \end{enumerate}
-    \item \textbf{Postcondizioni}: L'utente viene informato del mancato completamento dell'analisi.
-    \item \textbf{Trigger}: Si verifica un errore durante la comunicazione con il servizio AI.
-\end{itemize}
-
-% UC54 - Analisi Cappello Nero (Rischi)
+% UC54 - Visualizzazione elaborazione riassunto
 \hypertarget{uc54}{}
-\subsubsection{UC 54: Analisi Cappello Nero (Rischi)}
+\subsubsection{UC 54: Visualizzazione elaborazione riassunto}
 
-% use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{critica_testo_sei_cappelli_pensare_nero.png}
-    \caption{UC 54 – Analisi Cappello Nero (Rischi)}
+    \includegraphics[width=0.6\textwidth]{elaborazione_riassunto.png}
+    \caption{UC 54 – Visualizzazione elaborazione riassunto}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Attore Secondario}: LLM
-    \item \textbf{Precondizioni}: Una porzione di testo è selezionata nell'editor e il servizio AI è disponibile.
+    \item \textbf{Precondizioni}: La richiesta di riassunto è in elaborazione presso il servizio LLM.
     \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente richiede un'analisi del testo secondo il Cappello Nero.
-        \item Il sistema invia la richiesta al servizio AI.
-        \item Il servizio AI individua criticità, rischi e incongruenze presenti nel testo.
-        \item Il sistema rende disponibile l'analisi generata all'utente, senza modificare il contenuto della nota.
+        \item Il sistema visualizza una finestra modale contenente un indicatore di caricamento.
+        \item Il sistema rende disponibile il comando ``Interrompi''.
     \end{enumerate}
-    \item \textbf{Postcondizioni}: Una proposta di analisi critica del testo selezionato è disponibile all'utente; il contenuto 
-      della nota rimane invariato.
-    \item \textbf{Trigger}: L'utente desidera individuare rischi, criticità e punti deboli del testo selezionato.
-    \item \textbf{Estensioni}:
-    \begin{itemize}
-        \item \hyperlink{uc54.1}{UC 54.1: Visualizzazione errore analisi Cappello Nero} $ \rightarrow $ Condizione: si verifica un errore durante la comunicazione con il servizio AI.
-    \end{itemize}
+    \item \textbf{Postcondizioni}: La finestra modale di elaborazione è visualizzata e la richiesta è ancora in corso.
+    \item \textbf{Trigger}: Il servizio LLM ha avviato l'elaborazione della richiesta di riassunto.
 \end{itemize}
 
-% UC54.1 - Visualizzazione errore analisi Cappello Nero
-\hypertarget{uc54.1}{}
-\subsubsection{UC 54.1: Visualizzazione errore analisi Cappello Nero}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{errore_ai_UC54.png}
-    \caption{UC 54.1 – Visualizzazione errore analisi Cappello Nero}
-\end{figure}
-
-\begin{itemize}
-    \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: È in corso una richiesta di analisi secondo il Cappello Nero.
-    \item \textbf{Scenario Principale}:
-    \begin{enumerate}
-        \item Si verifica un errore durante l'elaborazione della richiesta.
-        \item Il sistema segnala il mancato completamento della richiesta di analisi.
-    \end{enumerate}
-    \item \textbf{Postcondizioni}: L'utente viene informato del mancato completamento dell'analisi.
-    \item \textbf{Trigger}: Si verifica un errore durante la comunicazione con il servizio AI.
-\end{itemize}
-
-% UC55 - Analisi Cappello Giallo (Opportunità)
+% UC55 - Interruzione elaborazione riassunto
 \hypertarget{uc55}{}
-\subsubsection{UC 55: Analisi Cappello Giallo (Opportunità)}
+\subsubsection{UC 55: Interruzione elaborazione riassunto}
 
-% use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{critica_testo_sei_cappelli_pensare_giallo.png}
-    \caption{UC 55 – Analisi Cappello Giallo (Opportunità)}
+    \includegraphics[width=0.6\textwidth]{interruzione_riassunto.png}
+    \caption{UC 55 – Interruzione elaborazione riassunto}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
     \item \textbf{Attore Secondario}: LLM
-    \item \textbf{Precondizioni}: Una porzione di testo è selezionata nell'editor e il servizio AI è disponibile.
+    \item \textbf{Precondizioni}: La finestra modale di elaborazione è visualizzata e la richiesta è ancora in corso.
     \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente richiede un'analisi del testo secondo il Cappello Giallo.
-        \item Il sistema invia la richiesta al servizio AI.
-        \item Il servizio AI evidenzia vantaggi, benefici e opportunità presenti nel testo.
-        \item Il sistema rende disponibile l'analisi generata all'utente, senza modificare il contenuto della nota.
+        \item L'utente attiva il comando ``Interrompi''.
+        \item Il sistema richiede al servizio LLM l'interruzione dell'elaborazione.
+        \item Il sistema chiude la finestra modale di elaborazione.
     \end{enumerate}
-    \item \textbf{Postcondizioni}: Una proposta di analisi positiva del testo selezionato è disponibile all'utente; il contenuto 
-      della nota rimane invariato.
-    \item \textbf{Trigger}: L'utente desidera individuare vantaggi e opportunità del testo selezionato.
-    \item \textbf{Estensioni}:
-    \begin{itemize}
-        \item \hyperlink{uc55.1}{UC 55.1: Visualizzazione errore analisi Cappello Giallo} $ \rightarrow $ Condizione: si verifica un errore durante la comunicazione con il servizio AI.
-    \end{itemize}
+    \item \textbf{Postcondizioni}: L'elaborazione è interrotta e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: L'utente desidera interrompere la richiesta ancora in elaborazione.
 \end{itemize}
 
-% UC55.1 - Visualizzazione errore analisi Cappello Giallo
-\hypertarget{uc55.1}{}
-\subsubsection{UC 55.1: Visualizzazione errore analisi Cappello Giallo}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{errore_ai_UC55.png}
-    \caption{UC 55.1 – Visualizzazione errore analisi Cappello Giallo}
-\end{figure}
-
-\begin{itemize}
-    \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: È in corso una richiesta di analisi secondo il Cappello Giallo.
-    \item \textbf{Scenario Principale}:
-    \begin{enumerate}
-        \item Si verifica un errore durante l'elaborazione della richiesta.
-        \item Il sistema segnala il mancato completamento della richiesta di analisi.
-    \end{enumerate}
-    \item \textbf{Postcondizioni}: L'utente viene informato del mancato completamento dell'analisi.
-    \item \textbf{Trigger}: Si verifica un errore durante la comunicazione con il servizio AI.
-\end{itemize}
-
-% UC56 - Analisi Cappello Verde (Creatività)
+% UC56 - Visualizzazione proposta riassunto
 \hypertarget{uc56}{}
-\subsubsection{UC 56: Analisi Cappello Verde (Creatività)}
+\subsubsection{UC 56: Visualizzazione proposta riassunto}
 
-% use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{critica_testo_sei_cappelli_pensare_verde.png}
-    \caption{UC 56 – Analisi Cappello Verde (Creatività)}
+    \includegraphics[width=0.6\textwidth]{proposta_riassunto.png}
+    \caption{UC 56 – Visualizzazione proposta riassunto}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Attore Secondario}: LLM
-    \item \textbf{Precondizioni}: Una porzione di testo è selezionata nell'editor e il servizio AI è disponibile.
+    \item \textbf{Precondizioni}: Il servizio LLM ha completato la generazione della proposta di riassunto.
     \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente richiede un'analisi del testo secondo il Cappello Verde.
-        \item Il sistema invia la richiesta al servizio AI.
-        \item Il servizio AI propone idee alternative, spunti creativi e possibili innovazioni relative al contenuto selezionato.
-        \item Il sistema rende disponibile l'analisi generata all'utente, senza modificare il contenuto della nota.
+        \item Il sistema chiude la finestra modale di elaborazione.
+        \item Il sistema visualizza il riassunto del testo in una finestra modale dedicata.
+        \item Il sistema rende disponibili i comandi ``Accetta'', ``Rifiuta'' e ``Rigenera''.
     \end{enumerate}
-    \item \textbf{Postcondizioni}: Una proposta di analisi creativa del testo selezionato è disponibile all'utente; il contenuto 
-      della nota rimane invariato.
-    \item \textbf{Trigger}:  L'utente desidera esplorare nuove idee, alternative e prospettive creative sul testo selezionato.
-    \item \textbf{Estensioni}:
-    \begin{itemize}
-        \item \hyperlink{uc56.1}{UC 56.1: Visualizzazione errore analisi Cappello Verde} $ \rightarrow $ Condizione: si verifica un errore durante la comunicazione con il servizio AI.
-    \end{itemize}
+    \item \textbf{Postcondizioni}: La proposta è visualizzata e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: Il servizio LLM ha restituito la proposta di riassunto.
 \end{itemize}
 
-% UC56.1 - Visualizzazione errore analisi Cappello Verde
-\hypertarget{uc56.1}{}
-\subsubsection{UC 56.1: Visualizzazione errore analisi Cappello Verde}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{errore_ai_UC56.png}
-    \caption{UC 56.1 – Visualizzazione errore analisi Cappello Verde}
-\end{figure}
-
-\begin{itemize}
-    \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: È in corso una richiesta di analisi secondo il Cappello Verde.
-    \item \textbf{Scenario Principale}:
-    \begin{enumerate}
-        \item Si verifica un errore durante l'elaborazione della richiesta.
-        \item Il sistema segnala il mancato completamento della richiesta di analisi.
-    \end{enumerate}
-    \item \textbf{Postcondizioni}: L'utente viene informato del mancato completamento dell'analisi.
-    \item \textbf{Trigger}: Si verifica un errore durante la comunicazione con il servizio AI.
-\end{itemize}
-
-% UC57 - Analisi Cappello Blu (Logica/Controllo)
+% UC57 - Accettazione proposta riassunto
 \hypertarget{uc57}{}
-\subsubsection{UC 57: Analisi Cappello Blu (Logica/Controllo)}
+\subsubsection{UC 57: Accettazione proposta riassunto}
 
-% use case diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{critica_testo_sei_cappelli_pensare_blu.png}
-    \caption{UC 57 – Analisi Cappello Blu (Logica/Controllo)}
+    \includegraphics[width=0.6\textwidth]{accettazione_riassunto.png}
+    \caption{UC 57 – Accettazione proposta riassunto}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: La finestra modale contenente la proposta di riassunto è visualizzata.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando ``Accetta''.
+        \item Il sistema sostituisce il testo inizialmente selezionato con il riassunto del testo proposto.
+        \item Il sistema chiude la finestra modale della proposta.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Il testo inizialmente selezionato è sostituito con il riassunto del testo accettato e la finestra modale è chiusa.
+    \item \textbf{Trigger}: L'utente desidera applicare la proposta visualizzata.
+\end{itemize}
+
+
+% UC58 - Rifiuto proposta riassunto
+\hypertarget{uc58}{}
+\subsubsection{UC 58: Rifiuto proposta riassunto}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{rifiuto_riassunto.png}
+    \caption{UC 58 – Rifiuto proposta riassunto}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: La finestra modale contenente la proposta di riassunto è visualizzata.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando ``Rifiuta''.
+        \item Il sistema scarta la proposta visualizzata.
+        \item Il sistema chiude la finestra modale della proposta.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La proposta è scartata, la finestra modale è chiusa e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: L'utente non desidera applicare la proposta visualizzata.
+\end{itemize}
+
+
+% UC59 - Rigenerazione proposta riassunto
+\hypertarget{uc59}{}
+\subsubsection{UC 59: Rigenerazione proposta riassunto}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{rigenerazione_riassunto.png}
+    \caption{UC 59 – Rigenerazione proposta riassunto}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Precondizioni}: La finestra modale contenente la proposta di riassunto è visualizzata.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando ``Rigenera''.
+        \item Il sistema scarta la proposta visualizzata.
+        \item Il sistema inoltra al servizio LLM una nuova richiesta di riassunto.
+        \item Il sistema visualizza nuovamente la finestra modale di elaborazione.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Una nuova richiesta è in elaborazione e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: L'utente desidera ottenere una proposta differente.
+\end{itemize}
+
+
+% UC60 - Visualizzazione errore generazione riassunto
+\hypertarget{uc60}{}
+\subsubsection{UC 60: Visualizzazione errore generazione riassunto}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{errore_riassunto.png}
+    \caption{UC 60 – Visualizzazione errore generazione riassunto}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: È in corso una richiesta di riassunto.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Si verifica un errore durante la comunicazione con il servizio LLM o durante l'elaborazione della richiesta.
+        \item Il sistema chiude la finestra modale di elaborazione.
+        \item Il sistema visualizza un messaggio che segnala il mancato completamento della richiesta.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'utente è informato dell'errore e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: Si verifica un errore prima del completamento della richiesta di riassunto.
+\end{itemize}
+
+% __________________________________________________%
+
+
+% UC61 - Richiesta traduzione
+\hypertarget{uc61}{}
+\subsubsection{UC 61: Richiesta traduzione}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{richiesta_traduzione.png}
+    \caption{UC 61 – Richiesta traduzione}
 \end{figure}
 
 \begin{itemize}
@@ -1781,142 +1523,1968 @@
     \item \textbf{Precondizioni}: Una porzione di testo è selezionata nell'editor e il servizio AI è disponibile.
     \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente richiede un'analisi del testo secondo il Cappello Blu.
-        \item Il sistema invia la richiesta al servizio AI.
-        \item Il servizio AI valuta la struttura logica, la coerenza del ragionamento e l’organizzazione complessiva del testo.
-        \item Il sistema rende disponibile l'analisi generata all'utente, senza modificare il contenuto della nota.
+        \item L'utente richiede la generazione di una traduzione del testo selezionato.
+        \item Il sistema acquisisce la richiesta dell'utente.
     \end{enumerate}
-    \item \textbf{Postcondizioni}: Una proposta di riorganizzazione logica e strutturale del testo selezionato è disponibile all’utente; il contenuto 
-      della nota rimane invariato.
-    \item \textbf{Trigger}:  L'utente desidera analizzare la coerenza logica e la struttura del testo selezionato.
-    \item \textbf{Estensioni}:
-    \begin{itemize}
-        \item \hyperlink{uc57.1}{UC 57.1: Visualizzazione errore analisi Cappello Blu} $ \rightarrow $ Condizione: si verifica un errore durante la comunicazione con il servizio AI.
-    \end{itemize}
+    \item \textbf{Postcondizioni}: La richiesta di traduzione è stata acquisita dal sistema.
+    \item \textbf{Trigger}: L'utente desidera ottenere una traduzione del testo selezionato.
 \end{itemize}
 
-% UC57.1 - Visualizzazione errore analisi Cappello Blu
-\hypertarget{uc57.1}{}
-\subsubsection{UC 57.1: Visualizzazione errore analisi Cappello Blu}
+
+% UC62 - Generazione traduzione
+\hypertarget{uc62}{}
+\subsubsection{UC 62: Generazione traduzione}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{errore_ai_UC57.png}
-    \caption{UC 57.1 – Visualizzazione errore analisi Cappello Blu}
-\end{figure}
-
-\begin{itemize}
-    \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: È in corso una richiesta di analisi secondo il Cappello Blu.
-    \item \textbf{Scenario Principale}:
-    \begin{enumerate}
-        \item Si verifica un errore durante l'elaborazione della richiesta.
-        \item Il sistema segnala il mancato completamento della richiesta di analisi.
-    \end{enumerate}
-    \item \textbf{Postcondizioni}: L'utente viene informato del mancato completamento dell'analisi.
-    \item \textbf{Trigger}: Si verifica un errore durante la comunicazione con il servizio AI.
-\end{itemize}
-
-%--------------GESTIONE PROPOSTE AI------------------
-
-% UC58 - Accettazione proposta AI
-\hypertarget{uc58}{}
-\subsubsection{UC 58: Accettazione proposta AI}
-
-% use case diagram
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{accettazione_proposta_ai.png}
-    \caption{UC 58 – Accettazione proposta AI}
-\end{figure}
-
-\begin{itemize}
-    \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: Una proposta generata dall'AI è visualizzata.
-    \item \textbf{Scenario Principale}:
-    \begin{enumerate}
-        \item L'utente accetta la proposta generata.
-        \item Il sistema applica la proposta AI aggiornando il contenuto dell'editor.
-    \end{enumerate}
-    \item \textbf{Postcondizioni}: Il contenuto dell'editor viene aggiornato con il testo generato dall'AI.
-    \item \textbf{Trigger}: L'utente ritiene valida la proposta generata dall'AI.
-\end{itemize}
-
-% UC59 - Rifiuto proposta AI
-\hypertarget{uc59}{}
-\subsubsection{UC 59: Rifiuto proposta AI}
-
-% use case diagram 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{rifiuto_proposta_ai.png}
-    \caption{UC 59 – Rifiuto proposta AI}
-\end{figure}
-
-\begin{itemize}
-    \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: Una proposta generata dall'AI è visualizzata.
-    \item \textbf{Scenario Principale}:
-    \begin{enumerate}
-        \item L'utente rifiuta la proposta generata.
-        \item Il sistema elimina la proposta visualizzata.
-    \end{enumerate}
-    \item \textbf{Postcondizioni}: Il documento rimane invariato.
-    \item \textbf{Trigger}: L'utente non ritiene valida la proposta generata dall'AI.
-\end{itemize}
-
-% UC60 - Rigenerazione proposta AI
-\hypertarget{uc60}{}
-\subsubsection{UC 60: Rigenerazione proposta AI}
-
-% use case diagram
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{rigenerazione_proposta_ai.png}
-    \caption{UC 60 – Rigenerazione proposta AI}
+    \includegraphics[width=0.6\textwidth]{generazione_traduzione.png}
+    \caption{UC 62 – Generazione traduzione}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
     \item \textbf{Attore Secondario}: LLM
-    \item \textbf{Precondizioni}: Una proposta generata dall'AI è visualizzata.
+    \item \textbf{Precondizioni}: La richiesta di traduzione è stata acquisita dal sistema.
     \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item L'utente richiede la rigenerazione della proposta.
-        \item Il sistema invia nuovamente la richiesta al servizio AI.
-        \item Il servizio AI genera una nuova proposta.
-        \item Il sistema sostituisce la proposta precedente con quella nuova.
+        \item Il sistema inoltra al servizio LLM la richiesta di traduzione.
+        \item Il servizio LLM prende in carico la richiesta e avvia l'elaborazione.
     \end{enumerate}
-    \item \textbf{Postcondizioni}: Una nuova proposta AI viene visualizzata all'utente.
-    \item \textbf{Trigger}: L'utente desidera ottenere una versione alternativa della proposta generata.
-    \item \textbf{Estensioni}:
-    \begin{itemize}
-        \item \hyperlink{uc60.1}{UC 60.1: Visualizzazione errore rigenerazione proposta AI} $ \rightarrow $ Condizione: si verifica un errore durante la comunicazione con il servizio AI.
-    \end{itemize}
+    \item \textbf{Postcondizioni}: La richiesta di traduzione è in elaborazione presso il servizio LLM.
+    \item \textbf{Trigger}: Il sistema ha acquisito la richiesta di traduzione.
 \end{itemize}
 
-% UC60.1 - Visualizzazione errore rigenerazione proposta AI
-\hypertarget{uc60.1}{}
-\subsubsection{UC 60.1: Visualizzazione errore rigenerazione proposta AI}
 
-% use case diagram
+% UC63 - Visualizzazione elaborazione traduzione
+\hypertarget{uc63}{}
+\subsubsection{UC 63: Visualizzazione elaborazione traduzione}
+
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{errore_ai_UC60.png}
-    \caption{UC 60.1 – Visualizzazione errore rigenerazione proposta AI}
+    \includegraphics[width=0.6\textwidth]{elaborazione_traduzione.png}
+    \caption{UC 63 – Visualizzazione elaborazione traduzione}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore Principale}: Utente
-    \item \textbf{Precondizioni}: È in corso una richiesta di rigenerazione della proposta AI.
+    \item \textbf{Precondizioni}: La richiesta di traduzione è in elaborazione presso il servizio LLM.
     \item \textbf{Scenario Principale}:
     \begin{enumerate}
-        \item Si verifica un errore durante l'elaborazione della richiesta.
-        \item Il sistema segnala il mancato completamento della richiesta di rigenerazione della proposta AI.
+        \item Il sistema visualizza una finestra modale contenente un indicatore di caricamento.
+        \item Il sistema rende disponibile il comando ``Interrompi''.
     \end{enumerate}
-    \item \textbf{Postcondizioni}: L'utente viene informato del mancato completamento della rigenerazione.
-    \item \textbf{Trigger}: Si verifica un errore durante la comunicazione con il servizio AI.
+    \item \textbf{Postcondizioni}: La finestra modale di elaborazione è visualizzata e la richiesta è ancora in corso.
+    \item \textbf{Trigger}: Il servizio LLM ha avviato l'elaborazione della richiesta di traduzione.
 \end{itemize}
+
+
+% UC64 - Interruzione elaborazione traduzione
+\hypertarget{uc64}{}
+\subsubsection{UC 64: Interruzione elaborazione traduzione}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{interruzione_traduzione.png}
+    \caption{UC 64 – Interruzione elaborazione traduzione}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Precondizioni}: La finestra modale di elaborazione è visualizzata e la richiesta è ancora in corso.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando ``Interrompi''.
+        \item Il sistema richiede al servizio LLM l'interruzione dell'elaborazione.
+        \item Il sistema chiude la finestra modale di elaborazione.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'elaborazione è interrotta e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: L'utente desidera interrompere la richiesta ancora in elaborazione.
+\end{itemize}
+
+
+% UC65 - Visualizzazione proposta traduzione
+\hypertarget{uc65}{}
+\subsubsection{UC 65: Visualizzazione proposta traduzione}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{proposta_traduzione.png}
+    \caption{UC 65 – Visualizzazione proposta traduzione}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: Il servizio LLM ha completato la generazione della proposta di traduzione.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema chiude la finestra modale di elaborazione.
+        \item Il sistema visualizza la traduzione del testo in una finestra modale dedicata.
+        \item Il sistema rende disponibili i comandi ``Accetta'', ``Rifiuta'' e ``Rigenera''.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La proposta è visualizzata e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: Il servizio LLM ha restituito la proposta di traduzione.
+\end{itemize}
+
+
+% UC66 - Accettazione proposta traduzione
+\hypertarget{uc66}{}
+\subsubsection{UC 66: Accettazione proposta traduzione}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{accettazione_traduzione.png}
+    \caption{UC 66 – Accettazione proposta traduzione}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: La finestra modale contenente la proposta di traduzione è visualizzata.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando ``Accetta''.
+        \item Il sistema sostituisce il testo inizialmente selezionato con la traduzione del testo proposto.
+        \item Il sistema chiude la finestra modale della proposta.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Il testo inizialmente selezionato è sostituito con la traduzione del testo accettata e la finestra modale è chiusa.
+    \item \textbf{Trigger}: L'utente desidera applicare la proposta visualizzata.
+\end{itemize}
+
+
+% UC67 - Rifiuto proposta traduzione
+\hypertarget{uc67}{}
+\subsubsection{UC 67: Rifiuto proposta traduzione}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{rifiuto_traduzione.png}
+    \caption{UC 67 – Rifiuto proposta traduzione}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: La finestra modale contenente la proposta di traduzione è visualizzata.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando ``Rifiuta''.
+        \item Il sistema scarta la proposta visualizzata.
+        \item Il sistema chiude la finestra modale della proposta.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La proposta è scartata, la finestra modale è chiusa e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: L'utente non desidera applicare la proposta visualizzata.
+\end{itemize}
+
+
+% UC68 - Rigenerazione proposta traduzione
+\hypertarget{uc68}{}
+\subsubsection{UC 68: Rigenerazione proposta traduzione}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{rigenerazione_traduzione.png}
+    \caption{UC 68 – Rigenerazione proposta traduzione}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Precondizioni}: La finestra modale contenente la proposta di traduzione è visualizzata.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando ``Rigenera''.
+        \item Il sistema scarta la proposta visualizzata.
+        \item Il sistema inoltra al servizio LLM una nuova richiesta di traduzione.
+        \item Il sistema visualizza nuovamente la finestra modale di elaborazione.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Una nuova richiesta è in elaborazione e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: L'utente desidera ottenere una proposta differente.
+\end{itemize}
+
+
+% UC69 - Visualizzazione errore generazione traduzione
+\hypertarget{uc69}{}
+\subsubsection{UC 69: Visualizzazione errore generazione traduzione}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{errore_traduzione.png}
+    \caption{UC 69 – Visualizzazione errore generazione traduzione}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: È in corso una richiesta di traduzione.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Si verifica un errore durante la comunicazione con il servizio LLM o durante l'elaborazione della richiesta.
+        \item Il sistema chiude la finestra modale di elaborazione.
+        \item Il sistema visualizza un messaggio che segnala il mancato completamento della richiesta.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'utente è informato dell'errore e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: Si verifica un errore prima del completamento della richiesta di traduzione.
+\end{itemize}
+
+% __________________________________________________%
+
+
+% UC70 - Richiesta riscrittura
+\hypertarget{uc70}{}
+\subsubsection{UC 70: Richiesta riscrittura}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{richiesta_riscrittura.png}
+    \caption{UC 70 – Richiesta riscrittura}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Precondizioni}: Una porzione di testo è selezionata nell'editor e il servizio AI è disponibile.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente richiede la generazione di una riscrittura del testo selezionato.
+        \item Il sistema acquisisce la richiesta dell'utente.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La richiesta di riscrittura è stata acquisita dal sistema.
+    \item \textbf{Trigger}: L'utente desidera ottenere una riscrittura del testo selezionato.
+\end{itemize}
+
+
+% UC71 - Generazione riscrittura
+\hypertarget{uc71}{}
+\subsubsection{UC 71: Generazione riscrittura}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{generazione_riscrittura.png}
+    \caption{UC 71 – Generazione riscrittura}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Precondizioni}: La richiesta di riscrittura è stata acquisita dal sistema.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema inoltra al servizio LLM la richiesta di riscrittura.
+        \item Il servizio LLM prende in carico la richiesta e avvia l'elaborazione.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La richiesta di riscrittura è in elaborazione presso il servizio LLM.
+    \item \textbf{Trigger}: Il sistema ha acquisito la richiesta di riscrittura.
+\end{itemize}
+
+
+% UC72 - Visualizzazione elaborazione riscrittura
+\hypertarget{uc72}{}
+\subsubsection{UC 72: Visualizzazione elaborazione riscrittura}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{elaborazione_riscrittura.png}
+    \caption{UC 72 – Visualizzazione elaborazione riscrittura}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: La richiesta di riscrittura è in elaborazione presso il servizio LLM.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema visualizza una finestra modale contenente un indicatore di caricamento.
+        \item Il sistema rende disponibile il comando ``Interrompi''.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La finestra modale di elaborazione è visualizzata e la richiesta è ancora in corso.
+    \item \textbf{Trigger}: Il servizio LLM ha avviato l'elaborazione della richiesta di riscrittura.
+\end{itemize}
+
+
+% UC73 - Interruzione elaborazione riscrittura
+\hypertarget{uc73}{}
+\subsubsection{UC 73: Interruzione elaborazione riscrittura}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{interruzione_riscrittura.png}
+    \caption{UC 73 – Interruzione elaborazione riscrittura}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Precondizioni}: La finestra modale di elaborazione è visualizzata e la richiesta è ancora in corso.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando ``Interrompi''.
+        \item Il sistema richiede al servizio LLM l'interruzione dell'elaborazione.
+        \item Il sistema chiude la finestra modale di elaborazione.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'elaborazione è interrotta e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: L'utente desidera interrompere la richiesta ancora in elaborazione.
+\end{itemize}
+
+
+% UC74 - Visualizzazione proposta riscrittura
+\hypertarget{uc74}{}
+\subsubsection{UC 74: Visualizzazione proposta riscrittura}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{proposta_riscrittura.png}
+    \caption{UC 74 – Visualizzazione proposta riscrittura}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: Il servizio LLM ha completato la generazione della proposta di riscrittura.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema chiude la finestra modale di elaborazione.
+        \item Il sistema visualizza la riscrittura del testo in una finestra modale dedicata.
+        \item Il sistema rende disponibili i comandi ``Accetta'', ``Rifiuta'' e ``Rigenera''.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La proposta è visualizzata e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: Il servizio LLM ha restituito la proposta di riscrittura.
+\end{itemize}
+
+
+% UC75 - Accettazione proposta riscrittura
+\hypertarget{uc75}{}
+\subsubsection{UC 75: Accettazione proposta riscrittura}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{accettazione_riscrittura.png}
+    \caption{UC 75 – Accettazione proposta riscrittura}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: La finestra modale contenente la proposta di riscrittura è visualizzata.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando ``Accetta''.
+        \item Il sistema sostituisce il testo inizialmente selezionato con la riscrittura del testo proposto.
+        \item Il sistema chiude la finestra modale della proposta.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Il testo inizialmente selezionato è sostituito con la riscrittura del testo accettata e la finestra modale è chiusa.
+    \item \textbf{Trigger}: L'utente desidera applicare la proposta visualizzata.
+\end{itemize}
+
+
+% UC76 - Rifiuto proposta riscrittura
+\hypertarget{uc76}{}
+\subsubsection{UC 76: Rifiuto proposta riscrittura}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{rifiuto_riscrittura.png}
+    \caption{UC 76 – Rifiuto proposta riscrittura}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: La finestra modale contenente la proposta di riscrittura è visualizzata.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando ``Rifiuta''.
+        \item Il sistema scarta la proposta visualizzata.
+        \item Il sistema chiude la finestra modale della proposta.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La proposta è scartata, la finestra modale è chiusa e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: L'utente non desidera applicare la proposta visualizzata.
+\end{itemize}
+
+
+% UC77 - Rigenerazione proposta riscrittura
+\hypertarget{uc77}{}
+\subsubsection{UC 77: Rigenerazione proposta riscrittura}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{rigenerazione_riscrittura.png}
+    \caption{UC 77 – Rigenerazione proposta riscrittura}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Precondizioni}: La finestra modale contenente la proposta di riscrittura è visualizzata.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando ``Rigenera''.
+        \item Il sistema scarta la proposta visualizzata.
+        \item Il sistema inoltra al servizio LLM una nuova richiesta di riscrittura.
+        \item Il sistema visualizza nuovamente la finestra modale di elaborazione.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Una nuova richiesta è in elaborazione e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: L'utente desidera ottenere una proposta differente.
+\end{itemize}
+
+
+% UC78 - Visualizzazione errore generazione riscrittura
+\hypertarget{uc78}{}
+\subsubsection{UC 78: Visualizzazione errore generazione riscrittura}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{errore_riscrittura.png}
+    \caption{UC 78 – Visualizzazione errore generazione riscrittura}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: È in corso una richiesta di riscrittura.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Si verifica un errore durante la comunicazione con il servizio LLM o durante l'elaborazione della richiesta.
+        \item Il sistema chiude la finestra modale di elaborazione.
+        \item Il sistema visualizza un messaggio che segnala il mancato completamento della richiesta.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'utente è informato dell'errore e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: Si verifica un errore prima del completamento della richiesta di riscrittura.
+\end{itemize}
+
+% __________________________________________________%
+
+
+% UC79 - Richiesta Distant Writing
+\hypertarget{uc79}{}
+\subsubsection{UC 79: Richiesta Distant Writing}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{richiesta_distant_writing.png}
+    \caption{UC 79 – Richiesta Distant Writing}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Precondizioni}: Una nota è aperta nell'editor, la finestra dedicata al Distant Writing è visualizzata e il servizio AI è disponibile.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente inserisce un prompt nella finestra dedicata e richiede la generazione di un testo mediante Distant Writing.
+        \item Il sistema acquisisce la richiesta dell'utente.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La richiesta di Distant Writing è stata acquisita dal sistema.
+    \item \textbf{Trigger}: L'utente desidera ottenere nuovo contenuto mediante Distant Writing.
+\end{itemize}
+
+
+% UC80 - Generazione Distant Writing
+\hypertarget{uc80}{}
+\subsubsection{UC 80: Generazione Distant Writing}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{generazione_distant_writing.png}
+    \caption{UC 80 – Generazione Distant Writing}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Precondizioni}: La richiesta di Distant Writing è stata acquisita dal sistema.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema inoltra al servizio LLM la richiesta di Distant Writing.
+        \item Il servizio LLM prende in carico la richiesta e avvia l'elaborazione.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La richiesta di Distant Writing è in elaborazione presso il servizio LLM.
+    \item \textbf{Trigger}: Il sistema ha acquisito la richiesta di Distant Writing.
+\end{itemize}
+
+
+% UC81 - Visualizzazione elaborazione Distant Writing
+\hypertarget{uc81}{}
+\subsubsection{UC 81: Visualizzazione elaborazione Distant Writing}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{elaborazione_distant_writing.png}
+    \caption{UC 81 – Visualizzazione elaborazione Distant Writing}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: La richiesta di Distant Writing è in elaborazione presso il servizio LLM.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema visualizza una finestra modale contenente un indicatore di caricamento.
+        \item Il sistema rende disponibile il comando ``Interrompi''.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La finestra modale di elaborazione è visualizzata e la richiesta è ancora in corso.
+    \item \textbf{Trigger}: Il servizio LLM ha avviato l'elaborazione della richiesta di Distant Writing.
+\end{itemize}
+
+
+% UC82 - Interruzione elaborazione Distant Writing
+\hypertarget{uc82}{}
+\subsubsection{UC 82: Interruzione elaborazione Distant Writing}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{interruzione_distant_writing.png}
+    \caption{UC 82 – Interruzione elaborazione Distant Writing}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Precondizioni}: La finestra modale di elaborazione è visualizzata e la richiesta è ancora in corso.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando ``Interrompi''.
+        \item Il sistema richiede al servizio LLM l'interruzione dell'elaborazione.
+        \item Il sistema chiude la finestra modale di elaborazione.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'elaborazione è interrotta e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: L'utente desidera interrompere la richiesta ancora in elaborazione.
+\end{itemize}
+
+
+% UC83 - Visualizzazione proposta Distant Writing
+\hypertarget{uc83}{}
+\subsubsection{UC 83: Visualizzazione proposta Distant Writing}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{proposta_distant_writing.png}
+    \caption{UC 83 – Visualizzazione proposta Distant Writing}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: Il servizio LLM ha completato la generazione della proposta di Distant Writing.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema chiude la finestra modale di elaborazione.
+        \item Il sistema visualizza il testo generato mediante Distant Writing in una finestra modale dedicata.
+        \item Il sistema rende disponibili i comandi ``Accetta'', ``Rifiuta'' e ``Rigenera''.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La proposta è visualizzata e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: Il servizio LLM ha restituito la proposta di Distant Writing.
+\end{itemize}
+
+
+% UC84 - Accettazione proposta Distant Writing
+\hypertarget{uc84}{}
+\subsubsection{UC 84: Accettazione proposta Distant Writing}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{accettazione_distant_writing.png}
+    \caption{UC 84 – Accettazione proposta Distant Writing}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: La finestra modale contenente la proposta di Distant Writing è visualizzata.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando ``Accetta''.
+        \item Il sistema inserisce il testo generato mediante Distant Writing nella posizione corrente del cursore.
+        \item Il sistema chiude la finestra modale della proposta.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Il testo generato mediante Distant Writing è inserito nella nota e la finestra modale è chiusa.
+    \item \textbf{Trigger}: L'utente desidera applicare la proposta visualizzata.
+\end{itemize}
+
+
+% UC85 - Rifiuto proposta Distant Writing
+\hypertarget{uc85}{}
+\subsubsection{UC 85: Rifiuto proposta Distant Writing}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{rifiuto_distant_writing.png}
+    \caption{UC 85 – Rifiuto proposta Distant Writing}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: La finestra modale contenente la proposta di Distant Writing è visualizzata.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando ``Rifiuta''.
+        \item Il sistema scarta la proposta visualizzata.
+        \item Il sistema chiude la finestra modale della proposta.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La proposta è scartata, la finestra modale è chiusa e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: L'utente non desidera applicare la proposta visualizzata.
+\end{itemize}
+
+
+% UC86 - Rigenerazione proposta Distant Writing
+\hypertarget{uc86}{}
+\subsubsection{UC 86: Rigenerazione proposta Distant Writing}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{rigenerazione_distant_writing.png}
+    \caption{UC 86 – Rigenerazione proposta Distant Writing}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Precondizioni}: La finestra modale contenente la proposta di Distant Writing è visualizzata.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando ``Rigenera''.
+        \item Il sistema scarta la proposta visualizzata.
+        \item Il sistema inoltra al servizio LLM una nuova richiesta di Distant Writing.
+        \item Il sistema visualizza nuovamente la finestra modale di elaborazione.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Una nuova richiesta è in elaborazione e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: L'utente desidera ottenere una proposta differente.
+\end{itemize}
+
+
+% UC87 - Visualizzazione errore generazione Distant Writing
+\hypertarget{uc87}{}
+\subsubsection{UC 87: Visualizzazione errore generazione Distant Writing}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{errore_distant_writing.png}
+    \caption{UC 87 – Visualizzazione errore generazione Distant Writing}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: È in corso una richiesta di Distant Writing.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Si verifica un errore durante la comunicazione con il servizio LLM o durante l'elaborazione della richiesta.
+        \item Il sistema chiude la finestra modale di elaborazione.
+        \item Il sistema visualizza un messaggio che segnala il mancato completamento della richiesta.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'utente è informato dell'errore e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: Si verifica un errore prima del completamento della richiesta di Distant Writing.
+\end{itemize}
+
+% __________________________________________________%
+
+
+% UC88 - Richiesta analisi secondo il cappello bianco
+\hypertarget{uc88}{}
+\subsubsection{UC 88: Richiesta analisi secondo il cappello bianco}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{richiesta_cappello_bianco.png}
+    \caption{UC 88 – Richiesta analisi secondo il cappello bianco}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Precondizioni}: Una porzione di testo è selezionata nell'editor e il servizio AI è disponibile.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente richiede un'analisi del testo selezionato secondo il cappello bianco.
+        \item Il sistema acquisisce la richiesta dell'utente.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La richiesta di analisi secondo il cappello bianco è stata acquisita dal sistema.
+    \item \textbf{Trigger}: L'utente desidera verificare dati, fatti e oggettività del testo selezionato.
+\end{itemize}
+
+
+% UC89 - Generazione analisi secondo il cappello bianco
+\hypertarget{uc89}{}
+\subsubsection{UC 89: Generazione analisi secondo il cappello bianco}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{generazione_cappello_bianco.png}
+    \caption{UC 89 – Generazione analisi secondo il cappello bianco}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Precondizioni}: La richiesta di analisi secondo il cappello bianco è stata acquisita dal sistema.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema inoltra al servizio LLM la richiesta di analisi secondo il cappello bianco.
+        \item Il servizio LLM prende in carico la richiesta e avvia l'elaborazione.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La richiesta di analisi secondo il cappello bianco è in elaborazione presso il servizio LLM.
+    \item \textbf{Trigger}: Il sistema ha acquisito la richiesta di analisi secondo il cappello bianco.
+\end{itemize}
+
+
+% UC90 - Visualizzazione elaborazione analisi secondo il cappello bianco
+\hypertarget{uc90}{}
+\subsubsection{UC 90: Visualizzazione elaborazione analisi secondo il cappello bianco}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{elaborazione_cappello_bianco.png}
+    \caption{UC 90 – Visualizzazione elaborazione analisi secondo il cappello bianco}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: La richiesta di analisi secondo il cappello bianco è in elaborazione presso il servizio LLM.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema visualizza una finestra modale contenente un indicatore di caricamento.
+        \item Il sistema rende disponibile il comando ``Interrompi''.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La finestra modale di elaborazione è visualizzata e la richiesta è ancora in corso.
+    \item \textbf{Trigger}: Il servizio LLM ha avviato l'elaborazione della richiesta di analisi secondo il cappello bianco.
+\end{itemize}
+
+
+% UC91 - Interruzione elaborazione analisi secondo il cappello bianco
+\hypertarget{uc91}{}
+\subsubsection{UC 91: Interruzione elaborazione analisi secondo il cappello bianco}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{interruzione_cappello_bianco.png}
+    \caption{UC 91 – Interruzione elaborazione analisi secondo il cappello bianco}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Precondizioni}: La finestra modale di elaborazione è visualizzata e la richiesta è ancora in corso.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando ``Interrompi''.
+        \item Il sistema richiede al servizio LLM l'interruzione dell'elaborazione.
+        \item Il sistema chiude la finestra modale di elaborazione.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'elaborazione è interrotta e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: L'utente desidera interrompere la richiesta ancora in elaborazione.
+\end{itemize}
+
+
+% UC92 - Visualizzazione proposta analisi secondo il cappello bianco
+\hypertarget{uc92}{}
+\subsubsection{UC 92: Visualizzazione proposta analisi secondo il cappello bianco}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{proposta_cappello_bianco.png}
+    \caption{UC 92 – Visualizzazione proposta analisi secondo il cappello bianco}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: Il servizio LLM ha completato la generazione della proposta di analisi secondo il cappello bianco.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema chiude la finestra modale di elaborazione.
+        \item Il sistema visualizza l'analisi secondo il cappello bianco in una finestra modale dedicata.
+        \item Il sistema rende disponibili i comandi ``Accetta'', ``Rifiuta'' e ``Rigenera''.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La proposta è visualizzata e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: Il servizio LLM ha restituito la proposta di analisi secondo il cappello bianco.
+\end{itemize}
+
+
+% UC93 - Accettazione proposta analisi secondo il cappello bianco
+\hypertarget{uc93}{}
+\subsubsection{UC 93: Accettazione proposta analisi secondo il cappello bianco}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{accettazione_cappello_bianco.png}
+    \caption{UC 93 – Accettazione proposta analisi secondo il cappello bianco}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: La finestra modale contenente la proposta di analisi secondo il cappello bianco è visualizzata.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando ``Accetta''.
+        \item Il sistema sostituisce il testo inizialmente selezionato con l'analisi proposta secondo il cappello bianco.
+        \item Il sistema chiude la finestra modale della proposta.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Il testo inizialmente selezionato è sostituito con l'analisi secondo il cappello bianco accettata e la finestra modale è chiusa.
+    \item \textbf{Trigger}: L'utente desidera applicare la proposta visualizzata.
+\end{itemize}
+
+
+% UC94 - Rifiuto proposta analisi secondo il cappello bianco
+\hypertarget{uc94}{}
+\subsubsection{UC 94: Rifiuto proposta analisi secondo il cappello bianco}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{rifiuto_cappello_bianco.png}
+    \caption{UC 94 – Rifiuto proposta analisi secondo il cappello bianco}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: La finestra modale contenente la proposta di analisi secondo il cappello bianco è visualizzata.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando ``Rifiuta''.
+        \item Il sistema scarta la proposta visualizzata.
+        \item Il sistema chiude la finestra modale della proposta.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La proposta è scartata, la finestra modale è chiusa e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: L'utente non desidera applicare la proposta visualizzata.
+\end{itemize}
+
+
+% UC95 - Rigenerazione proposta analisi secondo il cappello bianco
+\hypertarget{uc95}{}
+\subsubsection{UC 95: Rigenerazione proposta analisi secondo il cappello bianco}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{rigenerazione_cappello_bianco.png}
+    \caption{UC 95 – Rigenerazione proposta analisi secondo il cappello bianco}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Precondizioni}: La finestra modale contenente la proposta di analisi secondo il cappello bianco è visualizzata.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando ``Rigenera''.
+        \item Il sistema scarta la proposta visualizzata.
+        \item Il sistema inoltra al servizio LLM una nuova richiesta di analisi secondo il cappello bianco.
+        \item Il sistema visualizza nuovamente la finestra modale di elaborazione.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Una nuova richiesta è in elaborazione e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: L'utente desidera ottenere una proposta differente.
+\end{itemize}
+
+
+% UC96 - Visualizzazione errore generazione analisi secondo il cappello bianco
+\hypertarget{uc96}{}
+\subsubsection{UC 96: Visualizzazione errore generazione analisi secondo il cappello bianco}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{errore_cappello_bianco.png}
+    \caption{UC 96 – Visualizzazione errore generazione analisi secondo il cappello bianco}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: È in corso una richiesta di analisi secondo il cappello bianco.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Si verifica un errore durante la comunicazione con il servizio LLM o durante l'elaborazione della richiesta.
+        \item Il sistema chiude la finestra modale di elaborazione.
+        \item Il sistema visualizza un messaggio che segnala il mancato completamento della richiesta.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'utente è informato dell'errore e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: Si verifica un errore prima del completamento della richiesta di analisi secondo il cappello bianco.
+\end{itemize}
+
+% __________________________________________________%
+
+
+% UC97 - Richiesta analisi secondo il cappello rosso
+\hypertarget{uc97}{}
+\subsubsection{UC 97: Richiesta analisi secondo il cappello rosso}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{richiesta_cappello_rosso.png}
+    \caption{UC 97 – Richiesta analisi secondo il cappello rosso}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Precondizioni}: Una porzione di testo è selezionata nell'editor e il servizio AI è disponibile.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente richiede un'analisi del testo selezionato secondo il cappello rosso.
+        \item Il sistema acquisisce la richiesta dell'utente.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La richiesta di analisi secondo il cappello rosso è stata acquisita dal sistema.
+    \item \textbf{Trigger}: L'utente desidera valutare l'impatto emotivo del testo selezionato.
+\end{itemize}
+
+
+% UC98 - Generazione analisi secondo il cappello rosso
+\hypertarget{uc98}{}
+\subsubsection{UC 98: Generazione analisi secondo il cappello rosso}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{generazione_cappello_rosso.png}
+    \caption{UC 98 – Generazione analisi secondo il cappello rosso}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Precondizioni}: La richiesta di analisi secondo il cappello rosso è stata acquisita dal sistema.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema inoltra al servizio LLM la richiesta di analisi secondo il cappello rosso.
+        \item Il servizio LLM prende in carico la richiesta e avvia l'elaborazione.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La richiesta di analisi secondo il cappello rosso è in elaborazione presso il servizio LLM.
+    \item \textbf{Trigger}: Il sistema ha acquisito la richiesta di analisi secondo il cappello rosso.
+\end{itemize}
+
+
+% UC99 - Visualizzazione elaborazione analisi secondo il cappello rosso
+\hypertarget{uc99}{}
+\subsubsection{UC 99: Visualizzazione elaborazione analisi secondo il cappello rosso}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{elaborazione_cappello_rosso.png}
+    \caption{UC 99 – Visualizzazione elaborazione analisi secondo il cappello rosso}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: La richiesta di analisi secondo il cappello rosso è in elaborazione presso il servizio LLM.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema visualizza una finestra modale contenente un indicatore di caricamento.
+        \item Il sistema rende disponibile il comando ``Interrompi''.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La finestra modale di elaborazione è visualizzata e la richiesta è ancora in corso.
+    \item \textbf{Trigger}: Il servizio LLM ha avviato l'elaborazione della richiesta di analisi secondo il cappello rosso.
+\end{itemize}
+
+
+% UC100 - Interruzione elaborazione analisi secondo il cappello rosso
+\hypertarget{uc100}{}
+\subsubsection{UC 100: Interruzione elaborazione analisi secondo il cappello rosso}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{interruzione_cappello_rosso.png}
+    \caption{UC 100 – Interruzione elaborazione analisi secondo il cappello rosso}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Precondizioni}: La finestra modale di elaborazione è visualizzata e la richiesta è ancora in corso.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando ``Interrompi''.
+        \item Il sistema richiede al servizio LLM l'interruzione dell'elaborazione.
+        \item Il sistema chiude la finestra modale di elaborazione.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'elaborazione è interrotta e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: L'utente desidera interrompere la richiesta ancora in elaborazione.
+\end{itemize}
+
+
+% UC101 - Visualizzazione proposta analisi secondo il cappello rosso
+\hypertarget{uc101}{}
+\subsubsection{UC 101: Visualizzazione proposta analisi secondo il cappello rosso}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{proposta_cappello_rosso.png}
+    \caption{UC 101 – Visualizzazione proposta analisi secondo il cappello rosso}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: Il servizio LLM ha completato la generazione della proposta di analisi secondo il cappello rosso.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema chiude la finestra modale di elaborazione.
+        \item Il sistema visualizza l'analisi secondo il cappello rosso in una finestra modale dedicata.
+        \item Il sistema rende disponibili i comandi ``Accetta'', ``Rifiuta'' e ``Rigenera''.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La proposta è visualizzata e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: Il servizio LLM ha restituito la proposta di analisi secondo il cappello rosso.
+\end{itemize}
+
+
+% UC102 - Accettazione proposta analisi secondo il cappello rosso
+\hypertarget{uc102}{}
+\subsubsection{UC 102: Accettazione proposta analisi secondo il cappello rosso}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{accettazione_cappello_rosso.png}
+    \caption{UC 102 – Accettazione proposta analisi secondo il cappello rosso}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: La finestra modale contenente la proposta di analisi secondo il cappello rosso è visualizzata.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando ``Accetta''.
+        \item Il sistema sostituisce il testo inizialmente selezionato con l'analisi proposta secondo il cappello rosso.
+        \item Il sistema chiude la finestra modale della proposta.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Il testo inizialmente selezionato è sostituito con l'analisi secondo il cappello rosso accettata e la finestra modale è chiusa.
+    \item \textbf{Trigger}: L'utente desidera applicare la proposta visualizzata.
+\end{itemize}
+
+
+% UC103 - Rifiuto proposta analisi secondo il cappello rosso
+\hypertarget{uc103}{}
+\subsubsection{UC 103: Rifiuto proposta analisi secondo il cappello rosso}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{rifiuto_cappello_rosso.png}
+    \caption{UC 103 – Rifiuto proposta analisi secondo il cappello rosso}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: La finestra modale contenente la proposta di analisi secondo il cappello rosso è visualizzata.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando ``Rifiuta''.
+        \item Il sistema scarta la proposta visualizzata.
+        \item Il sistema chiude la finestra modale della proposta.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La proposta è scartata, la finestra modale è chiusa e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: L'utente non desidera applicare la proposta visualizzata.
+\end{itemize}
+
+
+% UC104 - Rigenerazione proposta analisi secondo il cappello rosso
+\hypertarget{uc104}{}
+\subsubsection{UC 104: Rigenerazione proposta analisi secondo il cappello rosso}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{rigenerazione_cappello_rosso.png}
+    \caption{UC 104 – Rigenerazione proposta analisi secondo il cappello rosso}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Precondizioni}: La finestra modale contenente la proposta di analisi secondo il cappello rosso è visualizzata.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando ``Rigenera''.
+        \item Il sistema scarta la proposta visualizzata.
+        \item Il sistema inoltra al servizio LLM una nuova richiesta di analisi secondo il cappello rosso.
+        \item Il sistema visualizza nuovamente la finestra modale di elaborazione.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Una nuova richiesta è in elaborazione e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: L'utente desidera ottenere una proposta differente.
+\end{itemize}
+
+
+% UC105 - Visualizzazione errore generazione analisi secondo il cappello rosso
+\hypertarget{uc105}{}
+\subsubsection{UC 105: Visualizzazione errore generazione analisi secondo il cappello rosso}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{errore_cappello_rosso.png}
+    \caption{UC 105 – Visualizzazione errore generazione analisi secondo il cappello rosso}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: È in corso una richiesta di analisi secondo il cappello rosso.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Si verifica un errore durante la comunicazione con il servizio LLM o durante l'elaborazione della richiesta.
+        \item Il sistema chiude la finestra modale di elaborazione.
+        \item Il sistema visualizza un messaggio che segnala il mancato completamento della richiesta.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'utente è informato dell'errore e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: Si verifica un errore prima del completamento della richiesta di analisi secondo il cappello rosso.
+\end{itemize}
+
+% __________________________________________________%
+
+
+% UC106 - Richiesta analisi secondo il cappello nero
+\hypertarget{uc106}{}
+\subsubsection{UC 106: Richiesta analisi secondo il cappello nero}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{richiesta_cappello_nero.png}
+    \caption{UC 106 – Richiesta analisi secondo il cappello nero}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Precondizioni}: Una porzione di testo è selezionata nell'editor e il servizio AI è disponibile.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente richiede un'analisi del testo selezionato secondo il cappello nero.
+        \item Il sistema acquisisce la richiesta dell'utente.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La richiesta di analisi secondo il cappello nero è stata acquisita dal sistema.
+    \item \textbf{Trigger}: L'utente desidera individuare rischi, criticità e punti deboli del testo selezionato.
+\end{itemize}
+
+
+% UC107 - Generazione analisi secondo il cappello nero
+\hypertarget{uc107}{}
+\subsubsection{UC 107: Generazione analisi secondo il cappello nero}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{generazione_cappello_nero.png}
+    \caption{UC 107 – Generazione analisi secondo il cappello nero}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Precondizioni}: La richiesta di analisi secondo il cappello nero è stata acquisita dal sistema.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema inoltra al servizio LLM la richiesta di analisi secondo il cappello nero.
+        \item Il servizio LLM prende in carico la richiesta e avvia l'elaborazione.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La richiesta di analisi secondo il cappello nero è in elaborazione presso il servizio LLM.
+    \item \textbf{Trigger}: Il sistema ha acquisito la richiesta di analisi secondo il cappello nero.
+\end{itemize}
+
+
+% UC108 - Visualizzazione elaborazione analisi secondo il cappello nero
+\hypertarget{uc108}{}
+\subsubsection{UC 108: Visualizzazione elaborazione analisi secondo il cappello nero}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{elaborazione_cappello_nero.png}
+    \caption{UC 108 – Visualizzazione elaborazione analisi secondo il cappello nero}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: La richiesta di analisi secondo il cappello nero è in elaborazione presso il servizio LLM.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema visualizza una finestra modale contenente un indicatore di caricamento.
+        \item Il sistema rende disponibile il comando ``Interrompi''.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La finestra modale di elaborazione è visualizzata e la richiesta è ancora in corso.
+    \item \textbf{Trigger}: Il servizio LLM ha avviato l'elaborazione della richiesta di analisi secondo il cappello nero.
+\end{itemize}
+
+
+% UC109 - Interruzione elaborazione analisi secondo il cappello nero
+\hypertarget{uc109}{}
+\subsubsection{UC 109: Interruzione elaborazione analisi secondo il cappello nero}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{interruzione_cappello_nero.png}
+    \caption{UC 109 – Interruzione elaborazione analisi secondo il cappello nero}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Precondizioni}: La finestra modale di elaborazione è visualizzata e la richiesta è ancora in corso.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando ``Interrompi''.
+        \item Il sistema richiede al servizio LLM l'interruzione dell'elaborazione.
+        \item Il sistema chiude la finestra modale di elaborazione.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'elaborazione è interrotta e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: L'utente desidera interrompere la richiesta ancora in elaborazione.
+\end{itemize}
+
+
+% UC110 - Visualizzazione proposta analisi secondo il cappello nero
+\hypertarget{uc110}{}
+\subsubsection{UC 110: Visualizzazione proposta analisi secondo il cappello nero}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{proposta_cappello_nero.png}
+    \caption{UC 110 – Visualizzazione proposta analisi secondo il cappello nero}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: Il servizio LLM ha completato la generazione della proposta di analisi secondo il cappello nero.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema chiude la finestra modale di elaborazione.
+        \item Il sistema visualizza l'analisi secondo il cappello nero in una finestra modale dedicata.
+        \item Il sistema rende disponibili i comandi ``Accetta'', ``Rifiuta'' e ``Rigenera''.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La proposta è visualizzata e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: Il servizio LLM ha restituito la proposta di analisi secondo il cappello nero.
+\end{itemize}
+
+
+% UC111 - Accettazione proposta analisi secondo il cappello nero
+\hypertarget{uc111}{}
+\subsubsection{UC 111: Accettazione proposta analisi secondo il cappello nero}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{accettazione_cappello_nero.png}
+    \caption{UC 111 – Accettazione proposta analisi secondo il cappello nero}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: La finestra modale contenente la proposta di analisi secondo il cappello nero è visualizzata.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando ``Accetta''.
+        \item Il sistema sostituisce il testo inizialmente selezionato con l'analisi proposta secondo il cappello nero.
+        \item Il sistema chiude la finestra modale della proposta.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Il testo inizialmente selezionato è sostituito con l'analisi secondo il cappello nero accettata e la finestra modale è chiusa.
+    \item \textbf{Trigger}: L'utente desidera applicare la proposta visualizzata.
+\end{itemize}
+
+
+% UC112 - Rifiuto proposta analisi secondo il cappello nero
+\hypertarget{uc112}{}
+\subsubsection{UC 112: Rifiuto proposta analisi secondo il cappello nero}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{rifiuto_cappello_nero.png}
+    \caption{UC 112 – Rifiuto proposta analisi secondo il cappello nero}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: La finestra modale contenente la proposta di analisi secondo il cappello nero è visualizzata.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando ``Rifiuta''.
+        \item Il sistema scarta la proposta visualizzata.
+        \item Il sistema chiude la finestra modale della proposta.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La proposta è scartata, la finestra modale è chiusa e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: L'utente non desidera applicare la proposta visualizzata.
+\end{itemize}
+
+
+% UC113 - Rigenerazione proposta analisi secondo il cappello nero
+\hypertarget{uc113}{}
+\subsubsection{UC 113: Rigenerazione proposta analisi secondo il cappello nero}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{rigenerazione_cappello_nero.png}
+    \caption{UC 113 – Rigenerazione proposta analisi secondo il cappello nero}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Precondizioni}: La finestra modale contenente la proposta di analisi secondo il cappello nero è visualizzata.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando ``Rigenera''.
+        \item Il sistema scarta la proposta visualizzata.
+        \item Il sistema inoltra al servizio LLM una nuova richiesta di analisi secondo il cappello nero.
+        \item Il sistema visualizza nuovamente la finestra modale di elaborazione.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Una nuova richiesta è in elaborazione e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: L'utente desidera ottenere una proposta differente.
+\end{itemize}
+
+
+% UC114 - Visualizzazione errore generazione analisi secondo il cappello nero
+\hypertarget{uc114}{}
+\subsubsection{UC 114: Visualizzazione errore generazione analisi secondo il cappello nero}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{errore_cappello_nero.png}
+    \caption{UC 114 – Visualizzazione errore generazione analisi secondo il cappello nero}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: È in corso una richiesta di analisi secondo il cappello nero.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Si verifica un errore durante la comunicazione con il servizio LLM o durante l'elaborazione della richiesta.
+        \item Il sistema chiude la finestra modale di elaborazione.
+        \item Il sistema visualizza un messaggio che segnala il mancato completamento della richiesta.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'utente è informato dell'errore e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: Si verifica un errore prima del completamento della richiesta di analisi secondo il cappello nero.
+\end{itemize}
+
+% __________________________________________________%
+
+
+% UC115 - Richiesta analisi secondo il cappello giallo
+\hypertarget{uc115}{}
+\subsubsection{UC 115: Richiesta analisi secondo il cappello giallo}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{richiesta_cappello_giallo.png}
+    \caption{UC 115 – Richiesta analisi secondo il cappello giallo}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Precondizioni}: Una porzione di testo è selezionata nell'editor e il servizio AI è disponibile.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente richiede un'analisi del testo selezionato secondo il cappello giallo.
+        \item Il sistema acquisisce la richiesta dell'utente.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La richiesta di analisi secondo il cappello giallo è stata acquisita dal sistema.
+    \item \textbf{Trigger}: L'utente desidera individuare vantaggi e opportunità del testo selezionato.
+\end{itemize}
+
+
+% UC116 - Generazione analisi secondo il cappello giallo
+\hypertarget{uc116}{}
+\subsubsection{UC 116: Generazione analisi secondo il cappello giallo}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{generazione_cappello_giallo.png}
+    \caption{UC 116 – Generazione analisi secondo il cappello giallo}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Precondizioni}: La richiesta di analisi secondo il cappello giallo è stata acquisita dal sistema.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema inoltra al servizio LLM la richiesta di analisi secondo il cappello giallo.
+        \item Il servizio LLM prende in carico la richiesta e avvia l'elaborazione.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La richiesta di analisi secondo il cappello giallo è in elaborazione presso il servizio LLM.
+    \item \textbf{Trigger}: Il sistema ha acquisito la richiesta di analisi secondo il cappello giallo.
+\end{itemize}
+
+
+% UC117 - Visualizzazione elaborazione analisi secondo il cappello giallo
+\hypertarget{uc117}{}
+\subsubsection{UC 117: Visualizzazione elaborazione analisi secondo il cappello giallo}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{elaborazione_cappello_giallo.png}
+    \caption{UC 117 – Visualizzazione elaborazione analisi secondo il cappello giallo}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: La richiesta di analisi secondo il cappello giallo è in elaborazione presso il servizio LLM.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema visualizza una finestra modale contenente un indicatore di caricamento.
+        \item Il sistema rende disponibile il comando ``Interrompi''.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La finestra modale di elaborazione è visualizzata e la richiesta è ancora in corso.
+    \item \textbf{Trigger}: Il servizio LLM ha avviato l'elaborazione della richiesta di analisi secondo il cappello giallo.
+\end{itemize}
+
+
+% UC118 - Interruzione elaborazione analisi secondo il cappello giallo
+\hypertarget{uc118}{}
+\subsubsection{UC 118: Interruzione elaborazione analisi secondo il cappello giallo}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{interruzione_cappello_giallo.png}
+    \caption{UC 118 – Interruzione elaborazione analisi secondo il cappello giallo}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Precondizioni}: La finestra modale di elaborazione è visualizzata e la richiesta è ancora in corso.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando ``Interrompi''.
+        \item Il sistema richiede al servizio LLM l'interruzione dell'elaborazione.
+        \item Il sistema chiude la finestra modale di elaborazione.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'elaborazione è interrotta e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: L'utente desidera interrompere la richiesta ancora in elaborazione.
+\end{itemize}
+
+
+% UC119 - Visualizzazione proposta analisi secondo il cappello giallo
+\hypertarget{uc119}{}
+\subsubsection{UC 119: Visualizzazione proposta analisi secondo il cappello giallo}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{proposta_cappello_giallo.png}
+    \caption{UC 119 – Visualizzazione proposta analisi secondo il cappello giallo}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: Il servizio LLM ha completato la generazione della proposta di analisi secondo il cappello giallo.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema chiude la finestra modale di elaborazione.
+        \item Il sistema visualizza l'analisi secondo il cappello giallo in una finestra modale dedicata.
+        \item Il sistema rende disponibili i comandi ``Accetta'', ``Rifiuta'' e ``Rigenera''.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La proposta è visualizzata e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: Il servizio LLM ha restituito la proposta di analisi secondo il cappello giallo.
+\end{itemize}
+
+
+% UC120 - Accettazione proposta analisi secondo il cappello giallo
+\hypertarget{uc120}{}
+\subsubsection{UC 120: Accettazione proposta analisi secondo il cappello giallo}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{accettazione_cappello_giallo.png}
+    \caption{UC 120 – Accettazione proposta analisi secondo il cappello giallo}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: La finestra modale contenente la proposta di analisi secondo il cappello giallo è visualizzata.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando ``Accetta''.
+        \item Il sistema sostituisce il testo inizialmente selezionato con l'analisi proposta secondo il cappello giallo.
+        \item Il sistema chiude la finestra modale della proposta.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Il testo inizialmente selezionato è sostituito con l'analisi secondo il cappello giallo accettata e la finestra modale è chiusa.
+    \item \textbf{Trigger}: L'utente desidera applicare la proposta visualizzata.
+\end{itemize}
+
+
+% UC121 - Rifiuto proposta analisi secondo il cappello giallo
+\hypertarget{uc121}{}
+\subsubsection{UC 121: Rifiuto proposta analisi secondo il cappello giallo}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{rifiuto_cappello_giallo.png}
+    \caption{UC 121 – Rifiuto proposta analisi secondo il cappello giallo}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: La finestra modale contenente la proposta di analisi secondo il cappello giallo è visualizzata.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando ``Rifiuta''.
+        \item Il sistema scarta la proposta visualizzata.
+        \item Il sistema chiude la finestra modale della proposta.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La proposta è scartata, la finestra modale è chiusa e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: L'utente non desidera applicare la proposta visualizzata.
+\end{itemize}
+
+
+% UC122 - Rigenerazione proposta analisi secondo il cappello giallo
+\hypertarget{uc122}{}
+\subsubsection{UC 122: Rigenerazione proposta analisi secondo il cappello giallo}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{rigenerazione_cappello_giallo.png}
+    \caption{UC 122 – Rigenerazione proposta analisi secondo il cappello giallo}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Precondizioni}: La finestra modale contenente la proposta di analisi secondo il cappello giallo è visualizzata.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando ``Rigenera''.
+        \item Il sistema scarta la proposta visualizzata.
+        \item Il sistema inoltra al servizio LLM una nuova richiesta di analisi secondo il cappello giallo.
+        \item Il sistema visualizza nuovamente la finestra modale di elaborazione.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Una nuova richiesta è in elaborazione e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: L'utente desidera ottenere una proposta differente.
+\end{itemize}
+
+
+% UC123 - Visualizzazione errore generazione analisi secondo il cappello giallo
+\hypertarget{uc123}{}
+\subsubsection{UC 123: Visualizzazione errore generazione analisi secondo il cappello giallo}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{errore_cappello_giallo.png}
+    \caption{UC 123 – Visualizzazione errore generazione analisi secondo il cappello giallo}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: È in corso una richiesta di analisi secondo il cappello giallo.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Si verifica un errore durante la comunicazione con il servizio LLM o durante l'elaborazione della richiesta.
+        \item Il sistema chiude la finestra modale di elaborazione.
+        \item Il sistema visualizza un messaggio che segnala il mancato completamento della richiesta.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'utente è informato dell'errore e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: Si verifica un errore prima del completamento della richiesta di analisi secondo il cappello giallo.
+\end{itemize}
+
+% __________________________________________________%
+
+
+% UC124 - Richiesta analisi secondo il cappello verde
+\hypertarget{uc124}{}
+\subsubsection{UC 124: Richiesta analisi secondo il cappello verde}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{richiesta_cappello_verde.png}
+    \caption{UC 124 – Richiesta analisi secondo il cappello verde}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Precondizioni}: Una porzione di testo è selezionata nell'editor e il servizio AI è disponibile.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente richiede un'analisi del testo selezionato secondo il cappello verde.
+        \item Il sistema acquisisce la richiesta dell'utente.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La richiesta di analisi secondo il cappello verde è stata acquisita dal sistema.
+    \item \textbf{Trigger}: L'utente desidera esplorare nuove idee, alternative e prospettive creative del testo selezionato.
+\end{itemize}
+
+
+% UC125 - Generazione analisi secondo il cappello verde
+\hypertarget{uc125}{}
+\subsubsection{UC 125: Generazione analisi secondo il cappello verde}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{generazione_cappello_verde.png}
+    \caption{UC 125 – Generazione analisi secondo il cappello verde}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Precondizioni}: La richiesta di analisi secondo il cappello verde è stata acquisita dal sistema.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema inoltra al servizio LLM la richiesta di analisi secondo il cappello verde.
+        \item Il servizio LLM prende in carico la richiesta e avvia l'elaborazione.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La richiesta di analisi secondo il cappello verde è in elaborazione presso il servizio LLM.
+    \item \textbf{Trigger}: Il sistema ha acquisito la richiesta di analisi secondo il cappello verde.
+\end{itemize}
+
+
+% UC126 - Visualizzazione elaborazione analisi secondo il cappello verde
+\hypertarget{uc126}{}
+\subsubsection{UC 126: Visualizzazione elaborazione analisi secondo il cappello verde}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{elaborazione_cappello_verde.png}
+    \caption{UC 126 – Visualizzazione elaborazione analisi secondo il cappello verde}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: La richiesta di analisi secondo il cappello verde è in elaborazione presso il servizio LLM.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema visualizza una finestra modale contenente un indicatore di caricamento.
+        \item Il sistema rende disponibile il comando ``Interrompi''.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La finestra modale di elaborazione è visualizzata e la richiesta è ancora in corso.
+    \item \textbf{Trigger}: Il servizio LLM ha avviato l'elaborazione della richiesta di analisi secondo il cappello verde.
+\end{itemize}
+
+
+% UC127 - Interruzione elaborazione analisi secondo il cappello verde
+\hypertarget{uc127}{}
+\subsubsection{UC 127: Interruzione elaborazione analisi secondo il cappello verde}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{interruzione_cappello_verde.png}
+    \caption{UC 127 – Interruzione elaborazione analisi secondo il cappello verde}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Precondizioni}: La finestra modale di elaborazione è visualizzata e la richiesta è ancora in corso.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando ``Interrompi''.
+        \item Il sistema richiede al servizio LLM l'interruzione dell'elaborazione.
+        \item Il sistema chiude la finestra modale di elaborazione.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'elaborazione è interrotta e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: L'utente desidera interrompere la richiesta ancora in elaborazione.
+\end{itemize}
+
+
+% UC128 - Visualizzazione proposta analisi secondo il cappello verde
+\hypertarget{uc128}{}
+\subsubsection{UC 128: Visualizzazione proposta analisi secondo il cappello verde}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{proposta_cappello_verde.png}
+    \caption{UC 128 – Visualizzazione proposta analisi secondo il cappello verde}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: Il servizio LLM ha completato la generazione della proposta di analisi secondo il cappello verde.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema chiude la finestra modale di elaborazione.
+        \item Il sistema visualizza l'analisi secondo il cappello verde in una finestra modale dedicata.
+        \item Il sistema rende disponibili i comandi ``Accetta'', ``Rifiuta'' e ``Rigenera''.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La proposta è visualizzata e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: Il servizio LLM ha restituito la proposta di analisi secondo il cappello verde.
+\end{itemize}
+
+
+% UC129 - Accettazione proposta analisi secondo il cappello verde
+\hypertarget{uc129}{}
+\subsubsection{UC 129: Accettazione proposta analisi secondo il cappello verde}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{accettazione_cappello_verde.png}
+    \caption{UC 129 – Accettazione proposta analisi secondo il cappello verde}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: La finestra modale contenente la proposta di analisi secondo il cappello verde è visualizzata.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando ``Accetta''.
+        \item Il sistema sostituisce il testo inizialmente selezionato con l'analisi proposta secondo il cappello verde.
+        \item Il sistema chiude la finestra modale della proposta.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Il testo inizialmente selezionato è sostituito con l'analisi secondo il cappello verde accettata e la finestra modale è chiusa.
+    \item \textbf{Trigger}: L'utente desidera applicare la proposta visualizzata.
+\end{itemize}
+
+
+% UC130 - Rifiuto proposta analisi secondo il cappello verde
+\hypertarget{uc130}{}
+\subsubsection{UC 130: Rifiuto proposta analisi secondo il cappello verde}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{rifiuto_cappello_verde.png}
+    \caption{UC 130 – Rifiuto proposta analisi secondo il cappello verde}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: La finestra modale contenente la proposta di analisi secondo il cappello verde è visualizzata.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando ``Rifiuta''.
+        \item Il sistema scarta la proposta visualizzata.
+        \item Il sistema chiude la finestra modale della proposta.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La proposta è scartata, la finestra modale è chiusa e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: L'utente non desidera applicare la proposta visualizzata.
+\end{itemize}
+
+
+% UC131 - Rigenerazione proposta analisi secondo il cappello verde
+\hypertarget{uc131}{}
+\subsubsection{UC 131: Rigenerazione proposta analisi secondo il cappello verde}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{rigenerazione_cappello_verde.png}
+    \caption{UC 131 – Rigenerazione proposta analisi secondo il cappello verde}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Precondizioni}: La finestra modale contenente la proposta di analisi secondo il cappello verde è visualizzata.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando ``Rigenera''.
+        \item Il sistema scarta la proposta visualizzata.
+        \item Il sistema inoltra al servizio LLM una nuova richiesta di analisi secondo il cappello verde.
+        \item Il sistema visualizza nuovamente la finestra modale di elaborazione.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Una nuova richiesta è in elaborazione e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: L'utente desidera ottenere una proposta differente.
+\end{itemize}
+
+
+% UC132 - Visualizzazione errore generazione analisi secondo il cappello verde
+\hypertarget{uc132}{}
+\subsubsection{UC 132: Visualizzazione errore generazione analisi secondo il cappello verde}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{errore_cappello_verde.png}
+    \caption{UC 132 – Visualizzazione errore generazione analisi secondo il cappello verde}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: È in corso una richiesta di analisi secondo il cappello verde.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Si verifica un errore durante la comunicazione con il servizio LLM o durante l'elaborazione della richiesta.
+        \item Il sistema chiude la finestra modale di elaborazione.
+        \item Il sistema visualizza un messaggio che segnala il mancato completamento della richiesta.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'utente è informato dell'errore e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: Si verifica un errore prima del completamento della richiesta di analisi secondo il cappello verde.
+\end{itemize}
+
+% __________________________________________________%
+
+
+% UC133 - Richiesta analisi secondo il cappello blu
+\hypertarget{uc133}{}
+\subsubsection{UC 133: Richiesta analisi secondo il cappello blu}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{richiesta_cappello_blu.png}
+    \caption{UC 133 – Richiesta analisi secondo il cappello blu}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Precondizioni}: Una porzione di testo è selezionata nell'editor e il servizio AI è disponibile.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente richiede un'analisi del testo selezionato secondo il cappello blu.
+        \item Il sistema acquisisce la richiesta dell'utente.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La richiesta di analisi secondo il cappello blu è stata acquisita dal sistema.
+    \item \textbf{Trigger}: L'utente desidera analizzare la coerenza logica e la struttura del testo selezionato.
+\end{itemize}
+
+
+% UC134 - Generazione analisi secondo il cappello blu
+\hypertarget{uc134}{}
+\subsubsection{UC 134: Generazione analisi secondo il cappello blu}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{generazione_cappello_blu.png}
+    \caption{UC 134 – Generazione analisi secondo il cappello blu}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Precondizioni}: La richiesta di analisi secondo il cappello blu è stata acquisita dal sistema.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema inoltra al servizio LLM la richiesta di analisi secondo il cappello blu.
+        \item Il servizio LLM prende in carico la richiesta e avvia l'elaborazione.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La richiesta di analisi secondo il cappello blu è in elaborazione presso il servizio LLM.
+    \item \textbf{Trigger}: Il sistema ha acquisito la richiesta di analisi secondo il cappello blu.
+\end{itemize}
+
+
+% UC135 - Visualizzazione elaborazione analisi secondo il cappello blu
+\hypertarget{uc135}{}
+\subsubsection{UC 135: Visualizzazione elaborazione analisi secondo il cappello blu}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{elaborazione_cappello_blu.png}
+    \caption{UC 135 – Visualizzazione elaborazione analisi secondo il cappello blu}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: La richiesta di analisi secondo il cappello blu è in elaborazione presso il servizio LLM.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema visualizza una finestra modale contenente un indicatore di caricamento.
+        \item Il sistema rende disponibile il comando ``Interrompi''.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La finestra modale di elaborazione è visualizzata e la richiesta è ancora in corso.
+    \item \textbf{Trigger}: Il servizio LLM ha avviato l'elaborazione della richiesta di analisi secondo il cappello blu.
+\end{itemize}
+
+
+% UC136 - Interruzione elaborazione analisi secondo il cappello blu
+\hypertarget{uc136}{}
+\subsubsection{UC 136: Interruzione elaborazione analisi secondo il cappello blu}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{interruzione_cappello_blu.png}
+    \caption{UC 136 – Interruzione elaborazione analisi secondo il cappello blu}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Precondizioni}: La finestra modale di elaborazione è visualizzata e la richiesta è ancora in corso.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando ``Interrompi''.
+        \item Il sistema richiede al servizio LLM l'interruzione dell'elaborazione.
+        \item Il sistema chiude la finestra modale di elaborazione.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'elaborazione è interrotta e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: L'utente desidera interrompere la richiesta ancora in elaborazione.
+\end{itemize}
+
+
+% UC137 - Visualizzazione proposta analisi secondo il cappello blu
+\hypertarget{uc137}{}
+\subsubsection{UC 137: Visualizzazione proposta analisi secondo il cappello blu}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{proposta_cappello_blu.png}
+    \caption{UC 137 – Visualizzazione proposta analisi secondo il cappello blu}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: Il servizio LLM ha completato la generazione della proposta di analisi secondo il cappello blu.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema chiude la finestra modale di elaborazione.
+        \item Il sistema visualizza l'analisi secondo il cappello blu in una finestra modale dedicata.
+        \item Il sistema rende disponibili i comandi ``Accetta'', ``Rifiuta'' e ``Rigenera''.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La proposta è visualizzata e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: Il servizio LLM ha restituito la proposta di analisi secondo il cappello blu.
+\end{itemize}
+
+
+% UC138 - Accettazione proposta analisi secondo il cappello blu
+\hypertarget{uc138}{}
+\subsubsection{UC 138: Accettazione proposta analisi secondo il cappello blu}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{accettazione_cappello_blu.png}
+    \caption{UC 138 – Accettazione proposta analisi secondo il cappello blu}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: La finestra modale contenente la proposta di analisi secondo il cappello blu è visualizzata.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando ``Accetta''.
+        \item Il sistema sostituisce il testo inizialmente selezionato con l'analisi proposta secondo il cappello blu.
+        \item Il sistema chiude la finestra modale della proposta.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Il testo inizialmente selezionato è sostituito con l'analisi secondo il cappello blu accettata e la finestra modale è chiusa.
+    \item \textbf{Trigger}: L'utente desidera applicare la proposta visualizzata.
+\end{itemize}
+
+
+% UC139 - Rifiuto proposta analisi secondo il cappello blu
+\hypertarget{uc139}{}
+\subsubsection{UC 139: Rifiuto proposta analisi secondo il cappello blu}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{rifiuto_cappello_blu.png}
+    \caption{UC 139 – Rifiuto proposta analisi secondo il cappello blu}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: La finestra modale contenente la proposta di analisi secondo il cappello blu è visualizzata.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando ``Rifiuta''.
+        \item Il sistema scarta la proposta visualizzata.
+        \item Il sistema chiude la finestra modale della proposta.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: La proposta è scartata, la finestra modale è chiusa e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: L'utente non desidera applicare la proposta visualizzata.
+\end{itemize}
+
+
+% UC140 - Rigenerazione proposta analisi secondo il cappello blu
+\hypertarget{uc140}{}
+\subsubsection{UC 140: Rigenerazione proposta analisi secondo il cappello blu}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{rigenerazione_cappello_blu.png}
+    \caption{UC 140 – Rigenerazione proposta analisi secondo il cappello blu}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Attore Secondario}: LLM
+    \item \textbf{Precondizioni}: La finestra modale contenente la proposta di analisi secondo il cappello blu è visualizzata.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente attiva il comando ``Rigenera''.
+        \item Il sistema scarta la proposta visualizzata.
+        \item Il sistema inoltra al servizio LLM una nuova richiesta di analisi secondo il cappello blu.
+        \item Il sistema visualizza nuovamente la finestra modale di elaborazione.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Una nuova richiesta è in elaborazione e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: L'utente desidera ottenere una proposta differente.
+\end{itemize}
+
+
+% UC141 - Visualizzazione errore generazione analisi secondo il cappello blu
+\hypertarget{uc141}{}
+\subsubsection{UC 141: Visualizzazione errore generazione analisi secondo il cappello blu}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{errore_cappello_blu.png}
+    \caption{UC 141 – Visualizzazione errore generazione analisi secondo il cappello blu}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: È in corso una richiesta di analisi secondo il cappello blu.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Si verifica un errore durante la comunicazione con il servizio LLM o durante l'elaborazione della richiesta.
+        \item Il sistema chiude la finestra modale di elaborazione.
+        \item Il sistema visualizza un messaggio che segnala il mancato completamento della richiesta.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'utente è informato dell'errore e il contenuto della nota rimane invariato.
+    \item \textbf{Trigger}: Si verifica un errore prima del completamento della richiesta di analisi secondo il cappello blu.
+\end{itemize}
+
+% __________________________________________________%
 
 % --------------------------------------------------------------------------
 % 3. Macroarea 3: Gestione I/O e Persistenza
