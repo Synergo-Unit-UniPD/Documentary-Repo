@@ -2,9 +2,9 @@ name: CI Pipeline
 
 on:
   push:
-    branches: [ "main", "develop" ]
-  pull_request:
-    branches: [ "main" ]
+    branches: [ "292-feature_infra_setup-ci-cd" ]
+  # pull_request:
+  #   branches: [ "main" ]
 
 jobs:
   test:
