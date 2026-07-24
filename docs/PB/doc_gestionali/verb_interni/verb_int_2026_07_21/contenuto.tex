@@ -5,7 +5,7 @@
 	\item \textbf{Data:} 2026-07-21
 	\item \textbf{Orario di inizio:} 14:30
 	\item \textbf{Orario di fine:} 15:30
-	\item \textbf{Responsabile:} Armando Moda Scarati
+	\item \textbf{Responsabile\textsubscript{G}:} Armando Moda Scarati
 	\item \textbf{Scriba:} Sofia De Blasi
 \end{itemize}
 
@@ -46,36 +46,36 @@
 \section{Ordine del Giorno}
 Gli argomenti previsti per la riunione odierna sono:
 \begin{enumerate}
-	\item Sprint review e retrospective.
-	\item Aggiornamenti dei documenti: correzioni e allineamenti post-RTB (AdR, PdP, PdQ, NdP).
-	\item Definizione dello stato dell'ambiente CI/CD (Continuous Integration/Continuous Deployment).
+	\item Sprint\textsubscript{G} review e retrospective.
+	\item Aggiornamenti dei documenti: correzioni e allineamenti post-RTB\textsubscript{G} (AdR, PdP, PdQ, NdP).
+	\item Definizione dello stato dell'ambiente CI/CD\textsubscript{G} (Continuous Integration/Continuous Deployment).
 	\item Analisi delle strategie di progettazione (struttura layer vs esagonale).
-	\item Pianificazione dello Sprint 15 e assegnazione delle task.
+	\item Pianificazione dello Sprint 15 e assegnazione delle task\textsubscript{G}.
 \end{enumerate}
 
 % --- 3. RESOCONTO E DISCUSSIONE ---
 \section{Resoconto della Riunione}
 
-\subsection{Sprint review e retrospective}
+\subsection{Sprint review\textsubscript{G} e retrospective}
 L'andamento dello sprint precedente (Sprint 14) è stato verificato positivamente, con tutte le attività gestionali completate. Tuttavia, nella retrospective è emersa una forte necessità di allineamento tecnico prima di procedere alla scrittura vera e propria del codice. È stato rilevato il rischio di iniziare la stesura in modo affrettato, con la potenziale conseguenza di incorrere in errori architetturali gravi difficili da correggere in un secondo momento. Pertanto, il gruppo ha deciso che lo Sprint 15 sarà interamente dedicato allo studio della progettazione, rimandando allo Sprint 16 l'inizio della stesura effettiva dei diagrammi delle classi.
 
 \subsection{Aggiornamenti documentali e CI/CD}
-È stata approvata l'integrazione di due nuovi Use Case e l'aggiunta dei requisiti non funzionali nell'Analisi dei Requisiti, con il conseguente aggiornamento dei tracciamenti. Di riflesso, il cruscotto e il numero totale dei requisiti nel Piano di Qualifica sono stati allineati.
-Per quanto riguarda le Norme di Progetto, si è deciso di applicare le correzioni suggerite in sede di RTB, rivedendo in particolare la modellazione del ciclo di sviluppo per renderlo più conforme allo standard 12207 di riferimento, eliminando attività non previste originariamente.
-Sul fronte dell'infrastruttura, il gruppo ha discusso lo stato della Continuous Integration: l'obiettivo imminente è definire uno standard chiaro per i test e concludere il setup preventivo dell'analisi statica (es. Linting frontend/backend e Type checking), includendo anche la gestione del ciclo build per il deploy Docker.
+È stata approvata l'integrazione di due nuovi Use Case e l'aggiunta dei requisiti non funzionali nell'Analisi dei Requisiti\textsubscript{G}, con il conseguente aggiornamento dei tracciamenti. Di riflesso, il cruscotto e il numero totale dei requisiti nel Piano di Qualifica\textsubscript{G} sono stati allineati.
+Per quanto riguarda le Norme di Progetto\textsubscript{G}, si è deciso di applicare le correzioni suggerite in sede di RTB, rivedendo in particolare la modellazione del ciclo di sviluppo per renderlo più conforme allo standard 12207 di riferimento, eliminando attività non previste originariamente.
+Sul fronte dell'infrastruttura, il gruppo ha discusso lo stato della Continuous Integration: l'obiettivo imminente è definire uno standard chiaro per i test e concludere il setup preventivo dell'analisi statica (es. Linting frontend\textsubscript{G}/backend\textsubscript{G} e Type checking), includendo anche la gestione del ciclo build per il deploy Docker\textsubscript{G}.
 
-\subsection{Decisioni progettuali e perimetro MVP per la Product Baseline}
-Il gruppo ha effettuato una valutazione sulla struttura del progetto, discutendo l'adozione potenziale di un'architettura esagonale accoppiata a un design a livelli. Per la Product Baseline, è stata presa una decisione chiave in merito al perimetro del Minimum Viable Product. Sono stati inclusi esclusivamente i requisiti centrali, ovvero: editor Markdown, funzionalità di formattazione e preview, importazione ed esportazione locale, integrazione dei modelli LLM e gestione delle proposte. 
+\subsection{Decisioni progettuali e perimetro MVP\textsubscript{G} per la Product Baseline\textsubscript{G}\textsubscript{G}}
+Il gruppo ha effettuato una valutazione sulla struttura del progetto, discutendo l'adozione potenziale di un'architettura esagonale accoppiata a un design a livelli. Per la Product Baseline, è stata presa una decisione chiave in merito al perimetro del Minimum Viable Product\textsubscript{G}. Sono stati inclusi esclusivamente i requisiti centrali, ovvero: editor Markdown\textsubscript{G}, funzionalità di formattazione\textsubscript{G} e preview, importazione ed esportazione locale, integrazione dei modelli LLM\textsubscript{G} e gestione delle proposte. 
 Si è scelto di \textbf{escludere esplicitamente} dal perimetro la gestione del database remoto, l'autenticazione degli utenti e la creazione di un grafo per i collegamenti tra note. La motivazione risiede nel fatto che tali funzionalità derivano da requisiti opzionali (in particolare la parte di database, che il capitolato lega strettamente alla memorizzazione remota e alle relazioni tra le note). La realizzazione indiscriminata dei requisiti opzionali richiederebbe tempistiche non sostenibili e distoglierebbe l'attenzione dalla dimostrazione del valore centrale del prodotto.
 
 \subsection{Pianificazione dello sprint successivo e assegnazione dei ruoli}
 Il team ha stabilito la seguente distribuzione per lo Sprint 15:
 \begin{itemize}
-    \item \textbf{Amministratori (due flussi):} Anton Ricardo Rupi aggiornerà le NdP; Francesco Marcon (Amministratore 2) curerà l'aggiornamento dei nuovi UC nel PdQ e seguirà le fasi della CI preventiva, oltre alla decisione degli standard per il testing.
-    \item \textbf{Analista:} Sofia De Blasi continuerà a revisionare l'AdR per finalizzare i requisiti non funzionali e il tracciamento.
-    \item \textbf{Responsabile:} Armando Moda Scarati redigerà il presente Verbale e si occuperà del Diario di Bordo.
-    \item \textbf{Progettista:} Filippo Idiometri analizzerà in dettaglio la proposta di progettazione e documenterà le motivazioni per le singole scelte tecniche (Design e Architettura).
-    \item \textbf{Verificatore:} Roberto Mariano Doroftei.
+    \item \textbf{Amministratori (due flussi):} Anton Ricardo Rupi aggiornerà le NdP; Francesco Marcon (Amministratore\textsubscript{G} 2) curerà l'aggiornamento dei nuovi UC nel PdQ e seguirà le fasi della CI preventiva, oltre alla decisione degli standard per il testing.
+    \item \textbf{Analista\textsubscript{G}:} Sofia De Blasi continuerà a revisionare l'AdR per finalizzare i requisiti non funzionali e il tracciamento.
+    \item \textbf{Responsabile:} Armando Moda Scarati redigerà il presente Verbale e si occuperà del Diario di Bordo\textsubscript{G}.
+    \item \textbf{Progettista\textsubscript{G}:} Filippo Idiometri analizzerà in dettaglio la proposta di progettazione e documenterà le motivazioni per le singole scelte tecniche (Design e Architettura).
+    \item \textbf{Verificatore\textsubscript{G}:} Roberto Mariano Doroftei.
 \end{itemize}
 
 % --- 4. DECISIONI PRESE ---
@@ -140,7 +140,7 @@ Il team ha stabilito la seguente distribuzione per lo Sprint 15:
 	
 	\ghissue{310} &  & Aggiornamento del PdQ & Francesco Marcon & 2026-07-28 \\[4pt]
 	
-	\ghissue{313} & VI-23.2 & Revisione NdP e aggiornamento cicli di sviluppo (standarizzazione) & Anton Ricardo Rupi & 2026-07-28 \\[4pt]
+	\ghissue{313} & VI-23.2 & Revisione\textsubscript{G} NdP e aggiornamento cicli di sviluppo (standarizzazione) & Anton Ricardo Rupi & 2026-07-28 \\[4pt]
 	
 	\ghissue{314} & - & Revisione tracciamento AdR e completamento requisiti non funzionali & Sofia De Blasi & 2026-07-28 \\[4pt]
 	
@@ -155,7 +155,7 @@ Il team ha stabilito la seguente distribuzione per lo Sprint 15:
 \begin{itemize}
 	\item \textbf{Data:} 2026-07-28
 	\item \textbf{Ora:} 14:30
-	\item \textbf{OdG preliminare:}
+	\item \textbf{OdG preliminare\textsubscript{G}:}
 	\begin{itemize}
 		\item Analisi dell'elenco delle decisioni architetturali redatto e successiva approvazione.
 		\item Verifica e review del setup dell'analisi statica per la CI e degli standard di testing selezionati.
