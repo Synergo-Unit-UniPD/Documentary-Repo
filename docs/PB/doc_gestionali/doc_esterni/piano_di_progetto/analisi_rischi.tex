@@ -109,7 +109,7 @@ Per ciascun rischio vengono indicati:
 		\hline
 		\textbf{Probabilità / Impatto} & Media/Alta \\
 		\hline
-		\textbf{Piano di Mitigazione} & Organizzare incontri periodici di validazione incrementale; condividere frequentemente gli avanzamenti \\
+		\textbf{Piano di Mitigazione} & Organizzare incontri periodici di validazione; condividere frequentemente gli avanzamenti e recepire i feedback nei successivi aggiornamenti della pianificazione \\
 		\hline
 		\textbf{Piano di Contingenza} & Congelamento temporaneo dei requisiti già condivisi; prosecuzione dello sviluppo sulle funzionalità validate \\
 		\hline
@@ -186,7 +186,7 @@ Per ciascun rischio vengono indicati:
 		\hline
 		\textbf{Probabilità / Impatto} & Media/Media \\
 		\hline
-		\textbf{Piano di Mitigazione} & Refactoring\textsubscript{G} incrementale continuo; code review; riserva di capacità dedicata al debito tecnico \\
+		\textbf{Piano di Mitigazione} & Refactoring\textsubscript{G} mirato sulla base delle criticità rilevate; code review; riserva di capacità dedicata al debito tecnico \\
 		\hline
 		\textbf{Piano di Contingenza} & Sprint dedicato alla manutenzione correttiva e al consolidamento tecnico \\
 		\hline
@@ -321,7 +321,7 @@ Per ciascun rischio vengono indicati:
 		\hline
 		\textbf{Probabilità / Impatto} & Bassa/Media \\
 		\hline
-		\textbf{Piano di Mitigazione} & Obiettivi incrementali chiari; monitoraggio del carico di lavoro; coinvolgimento continuo del team \\
+		\textbf{Piano di Mitigazione} & Obiettivi di sprint chiari e verificabili; monitoraggio del carico di lavoro; coinvolgimento continuo del team \\
 		\hline
 		\textbf{Piano di Contingenza} & Colloqui individuali; riallocazione task; supporto organizzativo del gruppo \\
 		\hline
@@ -361,7 +361,7 @@ Per ciascun rischio vengono indicati:
 		\hline
 		\textbf{Piano di Mitigazione} & Distribuzione delle attività redazionali; revisione periodica della pianificazione delle ore \\
 		\hline
-		\textbf{Piano di Contingenza} & Aggiornamento del Preventivo a Finire; riallocazione del budget\textsubscript{G} orario tra i membri del gruppo \\
+		\textbf{Piano di Contingenza} & Aggiornamento del Preventivo a Finire; ribilanciamento delle ore residue tra ruoli e membri, mantenendo invariato il vincolo economico complessivo \\
 		\hline
 	\end{tabularx}
 	\caption{Scheda rischio RO6}
@@ -422,13 +422,17 @@ Bassa
 
 \subsection{Monitoraggio dei rischi}
 
-I rischi vengono rivalutati al termine di ogni Sprint Review\textsubscript{G}
-e discussi, quando necessario, durante la Sprint Retrospective\textsubscript{G}.
-Il Responsabile monitora l'evoluzione dei rischi identificati, verifica
-l'efficacia delle azioni di mitigazione adottate e aggiorna il registro dei
-rischi sulla base di eventuali nuovi elementi emersi.
+I rischi vengono rivalutati al termine di ogni sprint, a partire dal consuntivo
+di periodo e a valle della Sprint Retrospective\textsubscript{G}. Il consuntivo
+permette di rilevare attività svolte, consumi effettivi e scostamenti rispetto al
+preventivo; la retrospettiva permette invece di individuare le cause degli
+scostamenti e delle criticità emerse.
 
-Qualora un rischio si manifesti o cambi significativamente il proprio profilo
-di probabilità o impatto, il gruppo valuta le azioni correttive da adottare,
-aggiorna il Piano di Progetto e, se necessario, crea issue dedicate per
-tracciare le attività conseguenti.
+Tali evidenze vengono utilizzate per aggiornare il registro dei rischi, definire
+eventuali misure correttive, aprire issue\textsubscript{G} dedicate e migliorare
+la pianificazione futura.
+
+Qualora un rischio si manifesti o cambi significativamente il proprio profilo di
+probabilità o impatto, il gruppo aggiorna il Piano di Progetto, rivede la
+pianificazione a breve o lungo termine e recepisce l'effetto della correzione nel
+Preventivo a Finire.
