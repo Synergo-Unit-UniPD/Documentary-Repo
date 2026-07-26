@@ -1,0 +1,165 @@
+% --- 1. INFORMAZIONI GENERALI ---
+\section{Informazioni Generali}
+\begin{itemize}
+	\item \textbf{Luogo/Piattaforma:} Google Meet
+	\item \textbf{Data:} 2026-07-21
+	\item \textbf{Orario di inizio:} 14:30
+	\item \textbf{Orario di fine:} 15:30
+	\item \textbf{Responsabile\textsubscript{G}:} Armando Moda Scarati
+	\item \textbf{Scriba:} Sofia De Blasi
+\end{itemize}
+
+\vspace{0.5cm}
+\textbf{Partecipanti presenti:}
+\begin{table}[ht]
+	\centering
+	\renewcommand{\arraystretch}{1.2}
+	\begin{tabularx}{\textwidth}{X l}
+		\toprule
+		\textbf{Nome e Cognome} & \textbf{Matricola} \\
+		\midrule
+		Sofia De Blasi & 2111014 \\
+		Roberto Mariano Doroftei & 2111031 \\
+		Filippo Idiometri & 2035617 \\
+		Francesco Marcon & 2110990 \\
+		Armando Moda Scarati & 2082864 \\
+		Anton Ricardo Rupi & 2054304 \\
+		\bottomrule
+	\end{tabularx}
+\\ \end{table}
+
+\vspace{0.5cm}
+\textbf{Partecipanti assenti:}
+\begin{table}[ht]
+	\centering
+	\renewcommand{\arraystretch}{1.2}
+	\begin{tabularx}{\textwidth}{X l}
+		\toprule
+		\textbf{Nome e Cognome} & \textbf{Matricola} \\
+		\midrule
+		Nessuno & - \\
+		\bottomrule
+	\end{tabularx}
+\end{table}
+
+% --- 2. ORDINE DEL GIORNO ---
+\section{Ordine del Giorno}
+Gli argomenti previsti per la riunione odierna sono:
+\begin{enumerate}
+	\item Sprint\textsubscript{G} review e retrospective.
+	\item Aggiornamenti dei documenti: correzioni e allineamenti post-RTB\textsubscript{G} (AdR, PdP, PdQ, NdP).
+	\item Definizione dello stato dell'ambiente CI/CD\textsubscript{G} (Continuous Integration/Continuous Deployment).
+	\item Analisi delle strategie di progettazione (struttura layer vs esagonale).
+	\item Pianificazione dello Sprint 15 e assegnazione delle task\textsubscript{G}.
+\end{enumerate}
+
+% --- 3. RESOCONTO E DISCUSSIONE ---
+\section{Resoconto della Riunione}
+
+\subsection{Sprint review\textsubscript{G} e retrospective}
+L'andamento dello sprint precedente (Sprint 14) è stato verificato positivamente, con tutte le attività gestionali completate. Tuttavia, nella retrospective è emersa una forte necessità di allineamento tecnico prima di procedere alla scrittura vera e propria del codice. È stato rilevato il rischio di iniziare la stesura in modo affrettato, con la potenziale conseguenza di incorrere in errori architetturali gravi difficili da correggere in un secondo momento. Pertanto, il gruppo ha deciso che lo Sprint 15 sarà interamente dedicato allo studio della progettazione, rimandando allo Sprint 16 l'inizio della stesura effettiva dei diagrammi delle classi.
+
+\subsection{Aggiornamenti documentali e CI/CD}
+È stata approvata l'integrazione di due nuovi Use Case e l'aggiunta dei requisiti non funzionali nell'Analisi dei Requisiti\textsubscript{G}, con il conseguente aggiornamento dei tracciamenti. Di riflesso, il cruscotto e il numero totale dei requisiti nel Piano di Qualifica\textsubscript{G} sono stati allineati.
+Per quanto riguarda le Norme di Progetto\textsubscript{G}, si è deciso di applicare le correzioni suggerite in sede di RTB, rivedendo in particolare la modellazione del ciclo di sviluppo per renderlo più conforme allo standard 12207 di riferimento, eliminando attività non previste originariamente.
+Sul fronte dell'infrastruttura, il gruppo ha discusso lo stato della Continuous Integration: l'obiettivo imminente è definire uno standard chiaro per i test e concludere il setup preventivo dell'analisi statica (es. Linting frontend\textsubscript{G}/backend\textsubscript{G} e Type checking), includendo anche la gestione del ciclo build per il deploy Docker\textsubscript{G}.
+
+\subsection{Decisioni progettuali e perimetro MVP\textsubscript{G} per la Product Baseline\textsubscript{G}\textsubscript{G}}
+Il gruppo ha effettuato una valutazione sulla struttura del progetto, discutendo l'adozione potenziale di un'architettura esagonale accoppiata a un design a livelli. Per la Product Baseline, è stata presa una decisione chiave in merito al perimetro del Minimum Viable Product\textsubscript{G}. Sono stati inclusi esclusivamente i requisiti centrali, ovvero: editor Markdown\textsubscript{G}, funzionalità di formattazione\textsubscript{G} e preview, importazione ed esportazione locale, integrazione dei modelli LLM\textsubscript{G} e gestione delle proposte. 
+Si è scelto di \textbf{escludere esplicitamente} dal perimetro la gestione del database remoto, l'autenticazione degli utenti e la creazione di un grafo per i collegamenti tra note. La motivazione risiede nel fatto che tali funzionalità derivano da requisiti opzionali (in particolare la parte di database, che il capitolato lega strettamente alla memorizzazione remota e alle relazioni tra le note). La realizzazione indiscriminata dei requisiti opzionali richiederebbe tempistiche non sostenibili e distoglierebbe l'attenzione dalla dimostrazione del valore centrale del prodotto.
+
+\subsection{Pianificazione dello sprint successivo e assegnazione dei ruoli}
+Il team ha stabilito la seguente distribuzione per lo Sprint 15:
+\begin{itemize}
+    \item \textbf{Amministratori (due flussi):} Anton Ricardo Rupi aggiornerà le NdP; Francesco Marcon (Amministratore\textsubscript{G} 2) curerà l'aggiornamento dei nuovi UC nel PdQ e seguirà le fasi della CI preventiva, oltre alla decisione degli standard per il testing.
+    \item \textbf{Analista\textsubscript{G}:} Sofia De Blasi continuerà a revisionare l'AdR per finalizzare i requisiti non funzionali e il tracciamento.
+    \item \textbf{Responsabile:} Armando Moda Scarati redigerà il presente Verbale e si occuperà del Diario di Bordo\textsubscript{G}.
+    \item \textbf{Progettista\textsubscript{G}:} Filippo Idiometri analizzerà in dettaglio la proposta di progettazione e documenterà le motivazioni per le singole scelte tecniche (Design e Architettura).
+    \item \textbf{Verificatore\textsubscript{G}:} Roberto Mariano Doroftei.
+\end{itemize}
+
+% --- 4. DECISIONI PRESE ---
+\section{Decisioni Prese}
+
+\renewcommand{\arraystretch}{1.3}
+\vspace{-0.3cm}
+\noindent
+\begin{longtable}{c p{12cm}}
+	\toprule
+	\textbf{Codice} & \textbf{Decisione} \\
+	\midrule
+	\endfirsthead
+
+	\toprule
+	\textbf{Codice} & \textbf{Decisione} \\
+	\midrule
+	\endhead
+
+	\midrule
+	\multicolumn{2}{r}{\textit{Continua nella pagina successiva}} \\
+	\midrule
+	\endfoot
+
+	\bottomrule
+	\endlastfoot
+
+	\textbf{VI-23.1} & {Dedizione dell'intero Sprint 15 allo studio progettuale propedeutico, ritardando l'avvio della stesura dei diagrammi delle classi per scongiurare errori strutturali gravi.} \\
+	\textbf{VI-23.2} & {Allineamento delle NdP agli standard di sviluppo ISO per il ciclo di vita del software, rimuovendo attività non canoniche precedentemente inventate.} \\
+	\textbf{VI-23.3} & {Esclusione formale di database remoto, log-in e grafo delle note dal perimetro MVP della Product Baseline, per focalizzare gli sforzi sui requisiti obbligatori di base dell'editor Markdown arricchito.} \\
+
+\end{longtable}
+
+% --- 5. AZIONI (TODO) ---
+\section{Azioni da Svolgere (To-Do)}
+
+\renewcommand{\arraystretch}{1.3}
+\begin{longtable}{p{2.3cm} c p{4.5cm} p{3cm} l}
+	\toprule
+	\textbf{Codice} & \textbf{Rif. Decisione} & \textbf{Descrizione Task} & \textbf{Assegnatario} & \textbf{Scadenza} \\
+	\midrule
+	\endfirsthead
+
+	\toprule
+	\textbf{Codice} & \textbf{Rif. Decisione} & \textbf{Descrizione Task} & \textbf{Assegnatario} & \textbf{Scadenza} \\
+	\midrule
+	\endhead
+
+	\midrule
+	\multicolumn{5}{r}{\textit{Continua nella pagina successiva}} \\
+	\midrule
+	\endfoot
+
+	\bottomrule
+	\endlastfoot
+
+	\ghissue{312} & - & Stesura del Diario di Bordo & Armando M. Scarati & 2026-07-24 \\[4pt]
+	
+	\ghissue{311} & - & Stesura del Verbale Interno odierno (VI N. 23) & Armando M. Scarati & 2026-07-28 \\[4pt]
+	
+	\ghissue{315} &  & Aggiornamento del PdP & Anton Ricardo Rupi & 2026-07-28 \\[4pt]
+	
+	\ghissue{310} &  & Aggiornamento del PdQ & Francesco Marcon & 2026-07-28 \\[4pt]
+	
+	\ghissue{313} & VI-23.2 & Revisione\textsubscript{G} NdP e aggiornamento cicli di sviluppo (standarizzazione) & Anton Ricardo Rupi & 2026-07-28 \\[4pt]
+	
+	\ghissue{314} & - & Revisione tracciamento AdR e completamento requisiti non funzionali & Sofia De Blasi & 2026-07-28 \\[4pt]
+	
+	\ghissue{317} & - & Setup analisi statica CI preventiva, decisione standard per i test e aggiunta di 2 UC nel PdQ & Francesco Marcon & 2026-07-28 \\[4pt]
+	
+	\ghissue{316} & VI-23.1 & Revisione bozza progettazione e redazione elenco delle decisioni architetturali con relative motivazioni & Filippo Idiometri & 2026-07-28 \\[4pt]
+
+\end{longtable}
+
+% --- 6. PROSSIMA RIUNIONE ---
+\section{Prossima Riunione}
+\begin{itemize}
+	\item \textbf{Data:} 2026-07-28
+	\item \textbf{Ora:} 14:30
+	\item \textbf{OdG preliminare\textsubscript{G}:}
+	\begin{itemize}
+		\item Analisi dell'elenco delle decisioni architetturali redatto e successiva approvazione.
+		\item Verifica e review del setup dell'analisi statica per la CI e degli standard di testing selezionati.
+		\item Avvio della stesura dei diagrammi delle classi per la documentazione.
+		\item Pianificazione del prossimo sprint e assegnazione dei ruoli.
+	\end{itemize}
+\end{itemize}
