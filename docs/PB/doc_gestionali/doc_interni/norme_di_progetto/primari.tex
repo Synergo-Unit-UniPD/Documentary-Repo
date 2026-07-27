@@ -448,10 +448,19 @@ e alla progressiva realizzazione del prodotto software.
 In fase RTB risultano attive le seguenti attività:
 
 \begin{itemize}
-    \item analisi dei requisiti;
-    \item analisi dello stato dell'arte;
-    \item progettazione architetturale preliminare;
-    \item implementazione dimostrativa del Proof of Concept.
+  \item Implementazione del processo (Process implementation);
+  \item Analisi dei requisiti di sistema (System requirements analysis);
+  \item Progettazione dell'architettura di sistema (System architectural design);
+  \item Analisi dei requisiti software (Software requirements analysis);
+  \item Progettazione dell'architettura software (Software architectural design);
+  \item Progettazione dettagliata del software (Software detailed design);
+  \item Codifica e test del software (Software coding and testing);
+  \item Integrazione del software (Software integration);
+  \item Test di qualifica del software (Software qualification testing);
+  \item Integrazione del sistema (System integration);
+  \item Test di qualifica del sistema (System qualification testing);
+  \item Installazione del software (Software installation);
+  \item Supporto all'accettazione del software (Software acceptance support).
 \end{itemize}
 
 Con l'avvio dello Sprint 9, a partire dal 2026-06-02, il processo di sviluppo
@@ -465,7 +474,7 @@ successiva progettazione di dettaglio.
 
 % ------------------------------------------------
 
-\subsubsection{Modello di Sviluppo}
+\subsubsection{Implementazione del processo}
 
 Il gruppo adotta un modello organizzativo incrementale ispirato a Scrum,
 basato su sprint settimanali con cadenza da martedì a martedì.
@@ -484,10 +493,6 @@ Il workflow prevede:
 La pianificazione dettagliata degli sprint, la rotazione dei ruoli e le milestone
 sono riportate nel \link{https://synergo-unit-unipd.github.io/Second-Brain/docs/PB/doc_gestionali/doc_esterni/piano_di_progetto/piano_di_progetto.pdf}{Piano di Progetto}.
 
-% ------------------------------------------------
-
-\subsubsection{Approccio Incrementale}
-
 Il gruppo adotta un approccio incrementale alla progettazione e allo sviluppo.
 
 Le decisioni tecniche e architetturali vengono raffinate progressivamente sulla base di:
@@ -505,12 +510,12 @@ requisiti, tecnologie e architettura.
 
 % ------------------------------------------------
 
-\subsubsection{Analisi dei Requisiti}
+\subsubsection{Analisi dei Requisiti di sistema}
 
 \paragraph{Scopo}
 
-L'analisi dei requisiti ha lo scopo di identificare, classificare, tracciare e mantenere
-aggiornati i requisiti del prodotto software.
+L'analisi dei requisiti di sistema ha lo scopo di identificare, classificare, tracciare e mantenere
+aggiornati i requisiti del progetto Second Brain.
 
 \paragraph{Raccolta dei requisiti}
 
@@ -532,6 +537,39 @@ I requisiti vengono classificati secondo:
     \item fonte;
     \item casi d'uso associati.
 \end{itemize}
+
+\paragraph{Gestione delle modifiche}
+
+Le modifiche ai requisiti devono:
+
+\begin{itemize}
+    \item essere discusse internamente;
+    \item essere tracciate tramite issue;
+    \item mantenere consistenti le matrici di tracciabilità;
+    \item essere riportate nei verbali quando derivano da incontri esterni;
+    \item essere validate dalla proponente quando incidono sul perimetro funzionale
+    o sui vincoli del prodotto.
+\end{itemize}
+
+% ------------------------------------------------
+
+\subsubsection{Progettazione dell'architettura di sistema}
+
+\paragraph{Scopo}
+
+La progettazione dell'architettura di sistema ha lo scopo di identificare le componenti hardware, software e le operazioni manuali
+
+Il nostro progetto è prettamente software e non identifica componenti hardware.
+
+% ------------------------------------------------
+
+\subsubsection{Analisi dei requisiti software}
+
+\paragraph{Scopo}
+
+L'analisi dei requisiti software ha lo scopo di stabilire e documentare le specifiche tecniche, funzionali, di qualità e di interfaccia necessarie alla progettazione e alla realizzazione di ogni componente software del sistema
+
+
 
 \paragraph{Nomenclatura dei requisiti}
 
@@ -584,22 +622,7 @@ La tracciabilità deve garantire:
     \item supporto alla successiva attività di verifica e validazione.
 \end{itemize}
 
-\paragraph{Gestione delle modifiche}
-
-Le modifiche ai requisiti devono:
-
-\begin{itemize}
-    \item essere discusse internamente;
-    \item essere tracciate tramite issue;
-    \item mantenere consistenti le matrici di tracciabilità;
-    \item essere riportate nei verbali quando derivano da incontri esterni;
-    \item essere validate dalla proponente quando incidono sul perimetro funzionale
-    o sui vincoli del prodotto.
-\end{itemize}
-
-% ------------------------------------------------
-
-\subsubsection{Gestione dei Casi d'Uso}
+\paragraph{Gestione dei Casi d'Uso}
 
 I casi d'uso costituiscono il principale strumento di descrizione delle interazioni
 tra utente e sistema nella fase RTB.
@@ -643,66 +666,37 @@ I casi d'uso adottano le seguenti convenzioni:
 
 % ------------------------------------------------
 
-\subsubsection{Analisi dello Stato dell'Arte}
+\subsubsection{Progettazione dell'architettura software}
 
 \paragraph{Scopo}
 
-L'analisi dello stato dell'arte ha lo scopo di individuare, confrontare e motivare
-le tecnologie maggiormente adatte allo sviluppo del prodotto.
-
-\paragraph{Criteri di valutazione}
-
-La valutazione delle tecnologie considera:
-
-\begin{itemize}
-    \item compatibilità con il capitolato;
-    \item semplicità manutentiva;
-    \item maturità tecnologica;
-    \item integrazione con lo stack applicativo;
-    \item disponibilità di documentazione;
-    \item curva di apprendimento;
-    \item adeguatezza rispetto al Proof of Concept.
-\end{itemize}
-
-\paragraph{Ruoli coinvolti}
-
-La gestione delle tecnologie prevede una responsabilità distinta:
-
-\begin{itemize}
-    \item l'\textbf{Analista} cura la valutazione comparativa delle alternative;
-    \item il \textbf{Progettista} seleziona le tecnologie sulla base delle esigenze
-    architetturali, previa validazione interna del gruppo.
-\end{itemize}
-
-\paragraph{Stack tecnologico individuato}
-
-Lo stack tecnologico\textsubscript{G} attualmente individuato per il Proof of Concept comprende:
-
-\begin{itemize}
-    \item \textbf{Frontend\textsubscript{G}}: Vue.js con CodeMirror\textsubscript{G};
-    \item \textbf{Backend\textsubscript{G}}: Python con FastAPI;
-    \item \textbf{Containerizzazione}: Docker\textsubscript{G} e Docker Compose\textsubscript{G}.
-\end{itemize}
-
-In fase RTB il Proof of Concept non prevede persistenza su database. L'eventuale
-adozione di PostgreSQL\textsubscript{G} rimane collegata ai requisiti opzionali e
-sarà rivalutata nella fase PB, in base alle decisioni progettuali successive e
-al confronto con la proponente.
-
-% ------------------------------------------------
-
-\subsubsection{Progettazione Architetturale Preliminare}
-
-La progettazione architetturale preliminare ha lo scopo di individuare una prima
+La progettazione dell'architettura software ha lo scopo di individuare una prima
 struttura del sistema, coerente con i requisiti e con le tecnologie selezionate.
+Tale attività trasforma i requisiti software in un'architettura
+che ne descrive la struttura top-level e identifica i componenti software necessari.
 
 In fase RTB, tale attività ha carattere esplorativo e mira a:
 
 \begin{itemize}
     \item individuare i principali moduli del sistema;
-    \item valutare le interazioni tra frontend, backend e servizi AI;    \item evidenziare rischi tecnici;
+    \item valutare le interazioni tra frontend, backend e servizi AI;
+    \item giustificare la selezione dello stack tecnologico sulla base dell'Analisi dello Stato dell'Arte;
+    \item evidenziare rischi tecnici;
     \item preparare il perimetro del Proof of Concept;
     \item raccogliere elementi utili per la progettazione di dettaglio in PB.
+\end{itemize}
+
+\paragraph{Integrazione dello Stato dell'Arte e selezione tecnologica}
+
+La definizione dell'architettura si fonda sui risultati dell'Analisi dello Stato dell'Arte,
+che funge da motore decisionale per la scelta dei componenti. L'architettura viene valutata secondo criteri di appropriatezza
+dei metodi e degli standard di progettazione.
+
+Il processo di selezione prevede la collaborazione tra:
+
+\begin{itemize}
+    \item Analista: cura la valutazione comparativa delle alternative tecnologiche basandosi su maturità, supporto della comunità e compatibilità con il capitolato;
+    \item Progettista: seleziona le tecnologie (attualmente individuate in Vue.js, FastAPI e Docker) che meglio rispondono alle esigenze di modularità e integrazione dei servizi AI individuate nel design.
 \end{itemize}
 
 Le decisioni architetturali definitive verranno consolidate nella fase PB. Gli ADR
@@ -712,9 +706,20 @@ rilevanti, le alternative valutate e le motivazioni della decisione finale.
 
 % ------------------------------------------------
 
-\subsubsection{Implementazione del Proof of Concept}
+\subsubsection{Progettazione dettagliata del software}
 
 \paragraph{Scopo}
+
+La progettazione dettagliata del software definisce il design di ogni unità software in modo che possa essere codificata.
+
+% ------------------------------------------------
+
+\subsubsection{Codifica e test del software}
+
+\paragraph{Scopo}
+
+La codifica e test del software riguarda lo sviluppo delle unità software, dei database e delle relative procedure di test
+
 
 Con l'avvio dello Sprint 9, a partire dal 2026-06-02, il gruppo avvia
 l'implementazione dimostrativa del Proof of Concept.
@@ -803,3 +808,87 @@ I risultati del Proof of Concept devono:
 
 Eventuali osservazioni della proponente devono essere riportate in verbale esterno
 e, se producono modifiche operative, trasformate in issue.
+
+% ------------------------------------------------
+
+\subsubsection{Integrazione del software}
+
+\paragraph{Scopo}
+
+Integrazione delle unità software nel "software item" completo e relativi test.
+
+\paragraph{Workflow Git e CI/CD}
+L'integrazione delle unità software avviene attraverso il modello di trunk-based development, nel quale le modifiche apportate ai vari moduli confluiscono nel branch stabile main esclusivamente tramite Pull Request verificate. A partire dagli Sprint 12 e 13, viene avviato il setup dell'ambiente di Continuous Integration/Continuous Deployment (CI/CD) per automatizzare i processi di build e verifica.
+
+\paragraph{Test di Integrazione (TI)}
+L'efficacia dell'unione dei moduli è validata tramite appositi Test di Integrazione (TI) volti a controllare la comunicazione tra le unità (es. frontend e backend), la cui pianificazione di dettaglio è prevista per la fase di Product Baseline (PB).
+
+% ------------------------------------------------
+
+\subsubsection{Test di qualifica del software}
+
+\paragraph{Scopo}
+
+Il test di qualifica del software verifica che il prodotto software soddisfi i propri requisiti.
+
+\paragraph{Mappatura UC-Test}
+
+La verifica dei requisiti software si basa sulla Mappatura Test di Sistema - Casi d’Uso, che definisce un collegamento univoco tra ogni funzionalità individuata nell'Analisi dei Requisiti e uno specifico test di sistema (TS). 
+
+\paragraph{Metriche di Prodotto}
+
+Il superamento di tali test deve essere accompagnato dal monitoraggio di metriche oggettive, tra cui il Soddisfacimento dei Requisiti Obbligatori (MPD01), il cui valore deve attestarsi tassativamente al 100\% per garantire la piena conformità del prodotto alle specifiche concordate con la proponente.
+
+% ------------------------------------------------
+
+\subsubsection{Integrazione del sistema}
+
+\paragraph{Scopo}
+
+Integrazione del software con hardware e altre componenti di sistema. 
+
+\paragraph{Interazione con attori esterni}
+
+Sebbene il progetto sia prettamente software, l'integrazione di sistema riguarda la connessione sinergica tra Frontend (Vue.js), Backend (FastAPI) e i servizi LLM esterni (Gemma, ChatGPT-OSS o Qwen) tramite API aderenti allo standard OpenAI.
+
+\paragraph{Containerizzazione}
+
+Tale processo è facilitato e validato attraverso l'uso di Docker Compose, che permette l'esecuzione coordinata dei diversi servizi in ambienti containerizzati isolati e riproducibili.
+
+% ------------------------------------------------
+
+\subsubsection{Test di qualifica del sistema}
+
+\paragraph{Scopo}
+
+Il test di qualifica del sistema è il test finale per dimostrare che il sistema completo è pronto per la consegna.
+
+\paragraph{Validazione della Technology Baseline}
+
+I test di qualifica del sistema in fase RTB sono finalizzati alla validazione della Technology Baseline. Essi dimostrano che l'intera infrastruttura (interfaccia utente, logica di backend e interazione AI) funzioni correttamente secondo gli scenari d'uso principali descritti nell'Analisi dei Requisiti.
+
+% ------------------------------------------------
+
+\subsubsection{Installazione del software}
+
+\paragraph{Scopo}
+
+L'installazione del software è la pianificazione ed esecuzione dell'installazione nell'ambiente target.
+
+\paragraph{Manuale Tecnico (README)}
+
+La procedura di installazione e configurazione nell'ambiente target è documentata nel file README presente nella cartella poc/ del repository. Tale documento riporta i prerequisiti necessari, la procedura di avvio tramite Docker Compose e le modalità di verifica del corretto funzionamento dell'intero sistema su host locale.
+
+% ------------------------------------------------
+
+\subsubsection{Supporto all'accettazione del software}
+
+\paragraph{Scopo}
+
+Il supporto all'accettazione del software riguarda l'attività di supporto al cliente durante le revisioni e i test di accettazione finale.
+
+\paragraph{Validazione con la Proponente}
+
+Il processo prevede inoltre incontri di validazione periodici con la proponente Zucchetti, i cui esiti (accordi e correzioni richieste) sono formalizzati in appositi verbali esterni per guidare l'approvazione finale del prodotto.
+
+
