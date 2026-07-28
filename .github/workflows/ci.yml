@@ -23,8 +23,8 @@ jobs:
 
       - name: Esegui test Backend (FastAPI)
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        run: docker compose run -e OPENAI_API_KEY --rm backend pytest
+          ZUCCHETTI_LLM_API_KEY: ${{ secrets.ZUCCHETTI_LLM_API_KEY }}
+        run: docker compose run -e ZUCCHETTI_LLM_API_KEY --rm backend pytest
 
       - name: Esegui test Frontend (Vue.js)
         run: docker compose run --rm frontend npm run test:unit
