@@ -24,6 +24,7 @@ jobs:
       - name: Esegui test Backend (FastAPI)
         env:
           ZUCCHETTI_LLM_API_KEY: ${{ secrets.ZUCCHETTI_LLM_API_KEY }}
+          ZUCCHETTI_LLM_BASE_URL: ${{ secrets.ZUCCHETTI_LLM_BASE_URL }}
         run: docker compose run --rm backend pytest
 
       - name: Esegui test Frontend (Vue.js)
