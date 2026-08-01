@@ -709,13 +709,28 @@ verranno introdotti quando il gruppo avrà stabilizzato il processo decisionale
 architetturale e saranno utilizzati per documentare in modo tracciabile le scelte
 rilevanti, le alternative valutate e le motivazioni della decisione finale.
 
+\paragraph{Stile Architetturale (Fase PB)}
+A seguito del consolidamento delle decisioni nella fase PB, il sistema adotta un'architettura ibrida a due stili combinati, separati da un confine REST:
+\begin{itemize}
+    \item \textbf{Frontend:} adotta il pattern MVC (Model-View-Controller) con Observer in modalità \textit{pull}. Questa scelta risolve la coordinazione tra editor, anteprima e proposte AI senza accoppiare le View tra loro.
+    \item \textbf{Backend:} adotta una \textit{Layered Architecture} (Presentation / Business / Persistence). Tale scelta garantisce l'indipendenza del dominio (AI, orchestrazione note) rispetto al provider LLM e al tipo di storage, limitando la complessità rispetto a un'architettura esagonale, come concordato con la proponente.
+\end{itemize}
+
 % ------------------------------------------------
 
 \subsubsection{Progettazione dettagliata del software}
 
 \paragraph{Scopo}
 
-La progettazione dettagliata del software definisce il design di ogni unità software in modo che possa essere codificata.
+La progettazione dettagliata del software definisce il design di ogni unità software in modo che possa essere codificata. Nella fase PB, questa attività stabilisce i pattern implementativi e la gestione delle interazioni tra componenti.
+
+\paragraph{Gestione delle Dipendenze (Dependency Injection)}
+
+Per rispettare il principio \textit{Composition over Inheritance}, nessuna classe applicativa crea le proprie dipendenze direttamente.
+\begin{itemize}
+    \item \textbf{Backend:} l'iniezione delle dipendenze avviene tramite la funzione \texttt{Depends()} di FastAPI, con provider centralizzati nel package \texttt{app/di/}.
+    \item \textbf{Frontend:} in assenza di un container DI nativo in Vue, l'iniezione è manuale e centralizzata nel modulo \texttt{src/bootstrap/composition.ts}, mantenendo il dominio TypeScript puro e isolato dal framework.
+\end{itemize}
 
 % ------------------------------------------------
 
@@ -813,6 +828,20 @@ I risultati del Proof of Concept devono:
 
 Eventuali osservazioni della proponente devono essere riportate in verbale esterno
 e, se producono modifiche operative, trasformate in issue.
+
+\paragraph{Sviluppo del Prodotto (Fase PB)}
+Con l'ingresso nella fase PB, l'attività di codifica si estende allo sviluppo del prodotto finale (Minimum Viable Product). Per garantire uniformità e coerenza nello sviluppo collaborativo, il gruppo ha formalizzato regole ferree per la stesura del codice.
+
+\paragraph{Convenzioni di Nomenclatura (Naming)}
+Tutti i membri, nel ruolo di Programmatore, devono attenersi rigorosamente alle seguenti convenzioni:
+\begin{itemize}
+    \item \textbf{Classi (TS e Python):} \texttt{PascalCase}.
+    \item \textbf{Interfacce/Servizi (TS):} Nome del ruolo, senza prefisso "I" o suffissi tecnici (es. \texttt{NoteService}, non \texttt{INoteService}).
+    \item \textbf{Adapter e Repository:} Suffisso \texttt{Adapter} o \texttt{Repository} in base al pattern (es. \texttt{OpenAIAdapter}, \texttt{NoteRepository}). Un'eccezione è il pattern \texttt{Proxy} per il frontend (es. \texttt{NoteServiceProxy}).
+    \item \textbf{Metodi e Variabili (TypeScript):} \texttt{camelCase}.
+    \item \textbf{Moduli e Funzioni (Python):} \texttt{snake\_case} in accordo allo standard PEP8.
+    \item \textbf{File di Test:} Devono avere lo stesso nome della classe testata, con suffisso \texttt{.test.ts} per il frontend e prefisso \texttt{test\_*.py} per il backend.
+\end{itemize}
 
 % ------------------------------------------------
 

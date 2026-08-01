@@ -154,8 +154,9 @@ I costi orari adottati sono quelli previsti dal Regolamento del Progetto Didatti
 
     Programmatore
     & 15\,\euro{}/h
-    & Svolge attività di codifica. In RTB opera solo su eventuali parti di codice
-    necessarie al Proof of Concept. \\
+    & Svolge attività di codifica. In fase PB implementa le funzionalità del Minimum 
+    Viable Product, scrive i test automatici e assicura che il codice rispetti le 
+    metriche di analisi statica. \\
 
     Verificatore
     & 15\,\euro{}/h
@@ -625,6 +626,7 @@ Gli strumenti e le tecnologie tecniche adottati per il Proof of Concept includon
     \item Docker Compose;
     \item GitHub;
     \item LucidSpark con elementi UML di LucidChart.
+    \item StarUML
 \end{itemize}
 
 In fase RTB il Proof of Concept non prevede persistenza su database. L'eventuale
@@ -666,6 +668,34 @@ Il README deve contenere almeno:
 Il README tecnico del PoC è mantenuto dal Progettista quando riguarda scelte
 tecniche o architetturali, e dal Programmatore quando riguarda comandi operativi,
 setup ed esecuzione locale.
+
+% ------------------------------------------------
+
+\subsubsection{Struttura del Repository di Sviluppo}
+
+In fase PB, il codice sorgente è organizzato all'interno del repository in due macro-cartelle principali, al fine di garantire una netta separazione delle responsabilità tra i due domini.
+
+\paragraph{Frontend (Vue.js / TypeScript)}
+L'applicazione lato client è organizzata secondo il pattern MVC. La struttura interna dei package, situata all'interno della cartella \texttt{src/}, è la seguente:
+\begin{itemize}
+    \item \textbf{\texttt{model/}}: contiene lo stato applicativo e la logica dei dati;
+    \item \textbf{\texttt{view/}}: contiene i componenti grafici e di presentazione Vue;
+    \item \textbf{\texttt{controller/}}: gestisce e smista gli eventi generati dall'utente;
+    \item \textbf{\texttt{proxy/}}: implementa le interfacce di servizio traducendo le chiamate verso il backend;
+    \item \textbf{\texttt{bootstrap/}}: gestisce la composizione manuale e l'iniezione delle dipendenze.
+\end{itemize}
+
+\paragraph{Backend (FastAPI / Python)}
+L'applicazione lato server adotta una \textit{Layered Architecture}. La struttura interna dei package, situata all'interno della cartella \texttt{app/}, è la seguente:
+\begin{itemize}
+    \item \textbf{\texttt{api/}}: \textit{Presentation Layer} per l'esposizione degli endpoint REST e la validazione;
+    \item \textbf{\texttt{service/}}: \textit{Business Layer} per l'orchestrazione dei casi d'uso;
+    \item \textbf{\texttt{domain/}}: contiene le entità di dominio, i modelli e le operazioni AI;
+    \item \textbf{\texttt{llm/}}: contiene le interfacce e gli adapter per comunicare con i provider LLM;
+    \item \textbf{\texttt{repository/}}: \textit{Persistence Layer} dedicato all'accesso e al salvataggio dei dati;
+    \item \textbf{\texttt{export/}}: gestisce le implementazioni per i vari formati di esportazione;
+    \item \textbf{\texttt{di/}}: contiene i provider per la Dependency Injection.
+\end{itemize}
 
 % ------------------------------------------------
 
