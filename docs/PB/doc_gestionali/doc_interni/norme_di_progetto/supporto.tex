@@ -988,7 +988,8 @@ In fase PB, il codice prodotto è soggetto ad analisi statica e testing automati
     \item \textbf{Testing Automatico:} \texttt{pytest} per il backend e \texttt{vitest} per il frontend.
     \item \textbf{Code Coverage:} È fissata una soglia minima di copertura dei test pari all'\textbf{80\%}.
 \end{itemize}
-Tali controlli sono automatizzati tramite pipeline di Continuous Integration.
+Tali controlli sono automatizzati tramite pipeline di Continuous Integration. 
+Per ottimizzare i tempi, la pipeline di Continuous Integration è configurata per attivarsi esclusivamente in seguito a modifiche all'interno delle directory del codice sorgente (es. \texttt{frontend/}, \texttt{backend/}), ignorando i commit puramente documentali.
 
 % ------------------------------------------------
 
