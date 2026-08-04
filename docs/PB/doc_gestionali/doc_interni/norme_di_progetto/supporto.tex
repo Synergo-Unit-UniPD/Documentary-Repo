@@ -774,6 +774,12 @@ La Pull Request deve:
 In caso di modifiche sostanziali richieste dal Verificatore, il Redattore può
 segnare la Pull Request come \textit{draft} fino al completamento delle correzioni.
 
+In fase PB, la \textit{Pull Request Policy} viene rafforzata:
+\begin{itemize}
+    \item È obbligatoria l'approvazione di almeno \textbf{1 reviewer} diverso dall'autore del codice. 
+    \item Il reviewer ha l'esplicito compito di verificare non solo la logica funzionale, ma anche il rigoroso rispetto delle regole di dipendenza tra gli strati architetturali.
+\end{itemize}
+
 % ------------------------------------------------
 
 \subsubsection{Branch Protection Rules}
@@ -975,6 +981,18 @@ nelle fasi successive.
 
 % ------------------------------------------------
 
+\subsubsection{Verifica del Codice (Analisi Statica e Testing)}
+In fase PB, il codice prodotto è soggetto ad analisi statica e testing automatico prima di poter essere integrato:
+\begin{itemize}
+    \item \textbf{Analisi Statica (Linting/Formattazione):} \texttt{ruff} per il backend (Python) e la combinazione \texttt{eslint + prettier} per il frontend (TypeScript/Vue).
+    \item \textbf{Testing Automatico:} \texttt{pytest} per il backend e \texttt{vitest} per il frontend.
+    \item \textbf{Code Coverage:} È fissata una soglia minima di copertura dei test pari all'\textbf{80\%}.
+\end{itemize}
+Tali controlli sono automatizzati tramite pipeline di Continuous Integration. 
+Per ottimizzare i tempi, la pipeline di Continuous Integration è configurata per attivarsi esclusivamente in seguito a modifiche all'interno delle directory del codice sorgente (es. \texttt{frontend/}, \texttt{backend/}), ignorando i commit puramente documentali.
+
+% ------------------------------------------------
+
 \subsubsection{Esito della Verifica}
 
 La verifica può avere:
@@ -1043,6 +1061,18 @@ alla natura dell'attività, i criteri specifici per documentazione o implementaz
     problema e la correzione effettuata;
     \item per le issue di tipo \texttt{feature}, la Pull Request indica il requisito
     o il caso d'uso collegato, se disponibile.
+\end{itemize}
+
+\paragraph{Criteri per Task di Sviluppo (Fase PB)}
+
+Oltre ai criteri comuni, un task di sviluppo del prodotto finale si considera completato solo se:
+\begin{itemize}
+    \item il codice compila e non sono presenti errori rilevati dai tool di analisi statica (linting);
+    \item i test di unità sono stati scritti e risultano eseguiti con successo;
+    \item la \textit{code coverage} del modulo modificato o aggiunto è $\ge$ 80\%;
+    \item la Pull Request è approvata da almeno un revisore, che ha controllato il rispetto dei layer architetturali;
+    \item in caso di modifiche a interfacce condivise tra componenti, la modifica è stata supervisionata dall'architetto o referente di coerenza;
+    \item la pipeline di Continuous Integration è passata con successo.
 \end{itemize}
 
 % ================================================================
