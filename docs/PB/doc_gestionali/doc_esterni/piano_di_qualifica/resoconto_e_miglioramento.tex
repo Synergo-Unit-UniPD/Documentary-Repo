@@ -10,7 +10,9 @@ La verifica della documentazione (Analisi dei Requisiti, Norme di Progetto, Pian
 Tutti i documenti pubblicati hanno superato il controllo di qualità, raggiungendo un indice di leggibilità conforme ai parametri accettabili.
 
 \subsection{Verifica codice}
-Durante la fase RTB non sono previsti test automatici obbligatori sul codice. La verifica del codice riguarda esclusivamente il Proof of Concept e viene svolta manualmente tramite Pull Request, controllando la coerenza con la issue, l'avvio locale, l'assenza di errori evidenti e l'assenza di credenziali o file sensibili nel repository.
+A partire dalla fase PB, la verifica del codice includerà test automatizzati eseguiti con pytest per il backend
+ e vitest per il frontend e controlli di qualità statica tramite eslint e prettier. Tali strumenti saranno
+ integrati nella pipeline di CI per garantire il rispetto delle soglie di copertura e delle regole di stile.
 
 \subsection{Copertura test}
 Durante la RTB, la copertura riguarda esclusivamente la tracciabilità tra i Casi d'Uso e i Test di Sistema definiti nella sezione precedente. Il 100\% degli UC individuati è stato coperto da almeno un Test di Sistema (stato NI).

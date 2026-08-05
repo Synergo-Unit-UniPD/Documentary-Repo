@@ -12,6 +12,21 @@ Lo stato del test è indicato come:
     \item \textbf{S}: Superato.
 \end{itemize}
 
+\subsection{Strategia di Test}
+Per garantire la qualità del prodotto il gruppo adotta una strategia di test suddivisa per strato architetturale,
+ utilizzando framework e tool specifici:
+ \begin{itemize}
+    \item Backend (Python): pytest.
+    \item Frontend (JavaScript/Typescript):
+        \begin{itemize}
+            \item vitest per test unitari,
+            \item eslint e prettier per analisi statica e formattazione.
+        \end{itemize}
+ \end{itemize}
+
+I tool di analisi statica verranno eseguiti automaticamente in CI (GitHub Actions) per prevenire
+ l'integrazione di codice non conforme.
+
 \subsection{Test di unità (TU)}
 Verificano il corretto funzionamento delle singole unità logiche del codice. Saranno implementati nella fase di Product Baseline\textsubscript{G} (PB).
 
