@@ -2336,3 +2336,148 @@ Azioni correttive emerse:
 \begin{itemize}
     \item \textbf{Necessità di studio e allineamento:} Durante la retrospective è emersa una significativa necessità di studio e allineamento per impostare correttamente la progettazione. Il gruppo ha deciso quindi di dedicare ampio tempo di palestra da parte dei vari componenti per lo studio individuale in modo da poter prendere decisioni migliori.
 \end{itemize}
+
+% ── Sprint 17 ─────────────────────────────────────────────────
+\subsection{Sprint 17 -- 28/07/2026 -- 4/08/2026}
+\label{sec:sprint15}
+
+\subsubsection{Ruoli assegnati}
+\begin{itemize}
+    \item Sofia De Blasi: Progettista 
+    \item Francesco Marcon: Programmatore
+    \item Roberto Mariano Doroftei: Responsabile
+    \item Armando Moda Scarati: Amministratore
+    \item Anton Ricardo Rupi: Verificatore
+    \item Filippo Idiometri: Amministratore
+\end{itemize}
+
+\subsubsection{Obiettivi}
+\begin{itemize}
+    \item \textbf{Architettura:} Finalizzare le scelte architetturali e avviare la produzione dei diagrammi UML dei componenti principali.
+    
+    \item \textbf{Convenzioni:} Integrare nelle NdP le nuove regole su naming, package, DI, branching, PR policy e DoD.
+    
+    \item \textbf{Testing e CI/CD:} Definire la strategia di test per strato, completare il setup dell'analisi statica e consolidare la pipeline CI.
+    
+    \item \textbf{Documentazione:} Aggiornare PdP e PdQ con consuntivi, rischi, parte architetturale e requisiti non funzionali; mantenere allineati AdR e NdP.
+    
+    \item \textbf{Comunicazioni:} Richiedere all'azienda la preferenza architetturale backend tra layer ed esagonale e garantire l'allineamento tecnico del gruppo.
+\end{itemize}
+
+\subsubsection{Preventivo}
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|X|c|c|r|}
+        \hline
+        \textbf{Membro} & \textbf{Ruolo} & \textbf{Ore prev.} & \textbf{Costo prev.} \\
+        \hline
+        Sofia De Blasi       & PJ & 5,00 & 125{,}00~\euro \\
+        Francesco Marcon     & PR & 3,00 & 45{,}00~\euro \\
+        Roberto M. Doroftei  & RE & 1,50 & 45{,}00~\euro \\
+        Armando M. Scarati   & AM & 3,33 & 66{,}67~\euro \\
+        Anton Ricardo Rupi   & VE & 3,00 & 45{,}00~\euro \\
+        Filippo Idiometri    & AM & 3.00 & 60{,}50~\euro \\
+        \hline
+        \textbf{Totale}      &    & \textbf{18,83} & \textbf{386,67~\euro} \\
+        \hline
+    \end{tabularx}
+    \caption{Tabella Preventivo Sprint 17} 
+\end{table}
+
+\subsubsection{Rischi Previsti}
+\begin{itemize}
+    \item \textbf{Allineamento tecnico:} Possibili rallentamenti dovuti allo studio necessario per impostare correttamente la progettazione.
+    \item \textbf{Organizzativo:} Possibili difficoltà a coordinare la disponibilità di tutti i membri.
+\end{itemize}
+
+\subsubsection{Consuntivo}
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|X|c|c|c|c|c|r|}
+        \hline
+        \textbf{Membro} & \textbf{Ruolo} & \textbf{Ore prev.} &
+        \textbf{Ore eff.} & \textbf{$\Delta$ ore} &
+        \textbf{Costo eff.} & \textbf{$\Delta$ costo} \\
+        \hline
+        Sofia De Blasi       & PJ & 5,00 & 5,00 & {\color{green}(0,00)}  & 125{,}00~\euro & {\color{green}(0{,}00~\euro)} \\
+        Francesco Marcon     & PR & 3,00 & 3,33 & {\color{red}(0,33)}  & 50{,}00~\euro & {\color{red}(5{,}00~\euro)} \\
+        Roberto M. Doroftei  & RE & 1,50 & 1,67 & {\color{red}(0,17)} & 50{,}00~\euro & {\color{red}(5{,}00~\euro)} \\
+        Armando M. Scarati   & AM & 3,33 & 2,00 & {\color{green}(1,33)} & 40{,}00~\euro & {\color{green}(26{,}67~\euro)} \\
+        Anton Ricardo Rupi   & VE & 3,00 & 3,00 & {\color{green}(0,00)} & 45{,}00~\euro & {\color{green}(00{,}00~\euro)} \\
+        Filippo Idiometri    & AM & 3,00 & 1,00 & {\color{green}(2,00)} & 20{,}00~\euro & {\color{green}(40{,}00~\euro)} \\
+        \hline
+        \textbf{Totale} & & \textbf{18,83} & \textbf{16,00} & {\color{green}(2,83)} & \textbf{330{,}00~\euro} & {\color{green}(56{,}67~\euro)} \\
+        \hline
+    \end{tabularx}
+    \caption{Tabella Consuntivo Sprint 17}
+\end{table}
+
+\subsubsection{Prospetto risorse residue per ruolo}
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|X|c|c|r|}
+        \hline
+        \textbf{Ruolo} & \textbf{Ore Residue} & \textbf{Costo Orario} &
+        \textbf{Costo Totale Residuo} \\
+        \hline
+        Responsabile   & 26,75 & 30~\euro & 802{,}50~\euro \\
+        Amministratore & -38,42 & 20~\euro & -768{,}33~\euro \\
+        Analista       & 54,67 & 25~\euro & 1.366{,}67~\euro \\
+        Progettista    & 105,50 & 25~\euro & 2.637{,}50~\euro \\
+        Programmatore  & 67,17 & 15~\euro & 1.007{,}50~\euro \\
+        Verificatore   & 55,50 & 15~\euro & 832{,}50~\euro \\
+        \hline
+        \textbf{Totale Residuo} & \textbf{271,17} & &
+        \textbf{5.878{,}33~\euro} \\
+        \hline
+    \end{tabularx}
+    \caption{Tabella Risorse Residue per Ruolo dopo Sprint 17}
+\end{table}
+
+\subsubsection{Prospetto ore residue per membro}
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|X|c|c|c|c|c|c|c|}
+        \hline
+        \textbf{Membro} & \textbf{Re} & \textbf{Am} & \textbf{An} &
+        \textbf{Pj} & \textbf{Pr} & \textbf{Ve} & \textbf{Totale} \\
+        \hline
+        Sofia De Blasi       &  5,67 & -17,67 &  -2,00 & 10,00 & 10,50 & 12,08 & \textbf{18,58} \\
+        Francesco Marcon     &  3,92 &  -10,33 & 15,75 & 19,00 &  -0,33 & 14,00 & \textbf{42,00} \\
+        Roberto M. Doroftei  &  1,42 &  -0,17 & 14,17 & 17,00 & 16,00 &  7,33 & \textbf{55,75} \\
+        Armando Moda Scarati &  3,08 &  -2,92 &  5,67 & 21,00 & 15,00 & 10,33 & \textbf{52,17} \\
+        Anton Ricardo Rupi   &  4,92 &  -8,33 & 13,83 & 22,00 & 15,00 &  -1,75 & \textbf{45,67} \\
+        Filippo Idiometri    &  7,75 &   1,00 &  7,25 & 16,50 & 11,00 & 13,50 & \textbf{57,00} \\
+        \hline
+        \textbf{Totale} &
+        \textbf{26,75} & \textbf{-38,42} & \textbf{54,67} &
+        \textbf{105,50} & \textbf{67,17} & \textbf{55,50} &
+        \textbf{271,17} \\
+        \hline
+    \end{tabularx}
+    \begin{minipage}{\textwidth}
+        \smallskip
+        \footnotesize\textit{Legenda: RE=Responsabile, AM=Amministratore,
+        AN=Analista, PJ=Progettista, PR=Programmatore, VE=Verificatore.}
+    \end{minipage}
+    \caption{Tabella Risorse Residue per Membro dopo Sprint 17}
+\end{table}
+
+\subsubsection{Sprint Review}
+Attività svolte e output prodotti:
+\begin{itemize}
+    \item \textbf{Documentazione:} Aggiornati AdR e NdP con requisiti non funzionali e nuove convenzioni; aggiornati PdP e PdQ con consuntivi, rischi e parte architetturale.
+    \item \textbf{Progettazione:} Definita l’architettura complessiva e avviata la produzione dei diagrammi UML.
+    \item \textbf{CI/CD e testing:} Individuati requisiti CI, scelti framework di test e strumenti di analisi statica .
+    \item \textbf{Comunicazioni:} Preparata la richiesta a Zucchetti per chiarimenti sull’architettura backend.
+\end{itemize}
+
+\subsubsection{Sprint Retrospective}
+Azioni correttive emerse:
+\begin{itemize}
+    \item \textbf{Allineamento tecnico:} Rilevato rallentamento dovuto allo studio individuale necessario per impostare correttamente la progettazione; deciso di dedicare tempo strutturato all’approfondimento tecnico per ridurre incertezze e prevenire errori architetturali.
+\end{itemize}
