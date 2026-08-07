@@ -1,0 +1,13 @@
+services:
+  frontend:
+    container_name: frontend_mvp
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    stdin_open: true
+    tty: true
