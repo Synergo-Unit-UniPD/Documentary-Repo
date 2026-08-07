@@ -1,0 +1,47 @@
+% =======================================================
+% 4. INTERFACCIA API E COMUNICAZIONE
+% =======================================================
+\section{Interfaccia API e Comunicazione}
+\label{sec:interfaccia-api}
+
+Al fine di garantire il disaccoppiamento tra l'editor Markdown (Frontend) e l'elaboratore di prompt (Backend), la comunicazione avviene tramite API \textbf{REST} su JSON, esposta dal Backend FastAPI e consumata dal Frontend tramite il pattern Proxy (Sezione~\ref{sec:design-pattern}).
+
+\subsection{Struttura dei Payload AI}
+La comunicazione relativa alle operazioni di Intelligenza Artificiale (riassunto, traduzione, riscrittura, Sei Cappelli, Distant Writing) è normalizzata su un'unica struttura di richiesta e di risposta, validata da FastAPI tramite modelli tipizzati (\texttt{api/schemas}), indipendentemente dall'operazione richiesta.
+
+\renewcommand{\arraystretch}{1.3}
+\begin{center}
+\begin{tabular}{l l p{7cm}}
+	\toprule
+	\textbf{DTO} & \textbf{Campo} & \textbf{Descrizione} \\
+	\midrule
+	\multirow{3}{*}{\texttt{AIOperationRequest}}
+	 & \texttt{type} & Tipo di operazione richiesta (es. \texttt{summarize}, \texttt{translate}, \texttt{rewrite}, \texttt{distant\_writing}, \texttt{hat\_white}, \dots), risolto dinamicamente da \texttt{AIOperationFactory}. \\
+	 & \texttt{text} & Testo selezionato dall'utente su cui operare (contesto). \\
+	 & \texttt{params} & Parametri aggiuntivi specifici dell'operazione (es. lingua di destinazione per la traduzione, prompt utente per il Distant Writing). \\
+	\midrule
+	\multirow{3}{*}{\texttt{AIOperationResponse}}
+	 & \texttt{content} & Testo generato dall'LLM, restituito come proposta. \\
+	 & \texttt{operation\_type} & Tipo di operazione a cui la risposta si riferisce, per consentire al Frontend di associare correttamente la proposta alla richiesta. \\
+	 & \texttt{created\_at} & Timestamp di generazione, utile per l'ordinamento e l'eventuale invalidazione della proposta. \\
+	\midrule
+	\texttt{ExportRequest} & \texttt{content} & Contenuto Markdown della nota da convertire nel formato di esportazione richiesto (PDF, HTML o JSON). \\
+	\bottomrule
+\end{tabular}
+\end{center}
+
+Questa struttura unificata consente di aggiungere nuove operazioni AI (rispettando l'Open/Closed Principle, Sezione~\ref{sec:design-pattern}) senza introdurre nuovi endpoint o nuovi contratti di comunicazione: è sufficiente registrare una nuova strategia lato Backend.
+
+\subsection{Gestione degli Errori e Fallback}
+\label{sec:gestione-errori}
+Le anomalie sono modellate come una gerarchia di eccezioni di dominio (\texttt{AIDomainError}), distinta dalle eccezioni tecniche di rete o di parsing:
+\begin{itemize}
+	\item \texttt{LLMUnavailableError}: il servizio LLM esterno non è raggiungibile (assenza di connettività o servizio non configurato);
+	\item \texttt{LLMTimeoutError}: la richiesta al modello LLM eccede il timeout configurato;
+	\item \texttt{UnknownOperationError}: il tipo di operazione richiesto non è registrato in \texttt{AIOperationFactory}.
+\end{itemize}
+Un gestore di eccezioni centralizzato (\texttt{ErrorHandlers}) intercetta queste eccezioni all'interno dei router e le traduce in risposte HTTP normalizzate (codice di stato e messaggio), che il Frontend interpreta per notificare l'utente in caso di errore durante una qualsiasi delle operazioni AI (R49-F-O, R51-F-O, R54-F-O, R56-F-O, R58-F-O, R60-F-O, R62-F-O, R64-F-O, R66-F-O, R68-F-O), mantenendo il documento invariato e permettendo il rifiuto o la rigenerazione della proposta (R70-F-O, R71-F-O).
+
+Coerentemente con il vincolo R6-V-O, ogni richiesta di elaborazione AI è indirizzata a un singolo modello LLM per l'intera durata della richiesta: il Backend non concatena chiamate a modelli differenti all'interno della stessa operazione.
+
+\FloatBarrier

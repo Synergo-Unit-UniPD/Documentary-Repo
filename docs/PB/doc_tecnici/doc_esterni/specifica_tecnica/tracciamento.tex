@@ -1,0 +1,106 @@
+% =======================================================
+% 7. TRACCIAMENTO E STATO DEI REQUISITI
+% =======================================================
+\section{Tracciamento e Stato dei Requisiti}
+\label{sec:tracciamento}
+Al fine di garantire che l'architettura progettata e le tecnologie scelte soddisfino le funzionalità concordate, si fornisce di seguito la tracciabilità tra le componenti architetturali descritte in questo documento e i requisiti individuati in \link{link_analisi_requisiti}{Analisi dei Requisiti} v1.8.0, Sezione 4 -- Requisiti, a cui si rimanda per la descrizione testuale completa di ciascun requisito.
+
+\subsection{Tabella Tracciamento Componenti-Requisiti}
+
+\renewcommand{\arraystretch}{1.3}
+\begin{xltabular}{\textwidth}{|>{\raggedright\arraybackslash\small}p{3.4cm}|X|>{\raggedright\arraybackslash\small}p{2.6cm}|}
+	\caption{Tracciamento Componenti $\rightarrow$ Requisiti} \label{tab:tracciamento-componenti} \\
+	\hline
+	\rowcolor{primarycolor!10}
+	\textbf{Componente} & \textbf{Responsabilità} & \textbf{Requisiti coperti} \\
+	\hline
+	\endfirsthead
+
+	\multicolumn{3}{c}{{\bfseries \tablename\ \thetable{} -- Continua dalla pagina precedente}} \\
+	\hline
+	\rowcolor{primarycolor!10}
+	\textbf{Componente} & \textbf{Responsabilità} & \textbf{Requisiti coperti} \\
+	\hline
+	\endhead
+
+	\hline
+	\multicolumn{3}{|r|}{{Continua nella pagina successiva...}} \\
+	\hline
+	\endfoot
+
+	\hline
+	\endlastfoot
+
+	\texttt{MarkdownContent-}\newline\texttt{Editor},\newline \texttt{EditorView}/\newline\texttt{EditorController} & Scrittura libera, copia/taglia/incolla, formattazione (grassetto, corsivo, sottolineato, barrato, citazione, intestazione), link, elenchi e tabelle & R1--R42 \\ \hline
+	\texttt{EditCommand} (famiglia),\newline \texttt{CommandHistory} & Annullamento e ripristino delle modifiche & R43-F-O, R44-F-O \\ \hline
+	\texttt{EditorView}\newline (modalità di visualizzazione) & Visualizzazione esclusiva editor/render o affiancata (Split View) & R45--R47 \\ \hline
+	\texttt{AIRouter}, \texttt{AIService},\newline \texttt{AIOperationFactory},\newline operazioni Strategy & Riassunto, traduzione, riscrittura, Distant Writing e analisi Sei Cappelli tramite LLM & R48, R50, R52, R53, R55, R57, R59, R61, R63, R65, R67 \\ \hline
+	\texttt{ErrorHandlers},\newline gerarchia \texttt{AIDomainError} & Notifica degli errori di comunicazione con i servizi AI & R49, R51, R54, R56, R58, R60, R62, R64, R66, R68 \\ \hline
+	\texttt{AIRequestModel},\newline \texttt{AIPanelView},\newline \texttt{AIController} & Accettazione/rifiuto/rigenerazione della proposta, interruzione manuale, stato di avanzamento continuo & R69--R74 \\ \hline
+	\texttt{NoteModel},\newline \texttt{NoteService}/\newline\texttt{NoteServiceProxy} & Salvataggio e caricamento della nota in formato Markdown dal file system locale & R75-F-O, R76-F-O \\ \hline
+	\texttt{ExportRouter},\newline esportatori per formato (Template Method) & Esportazione della nota in PDF, HTML e JSON & R77-F-O \\ \hline
+	Suite di test\newline automatici, pipeline CI & Copertura di test, documentazione tecnica e di qualifica & R1-Q-O -- R9-Q-D \\ \hline
+	Architettura\newline Client-Server,\newline adapter LLM & Esecuzione via browser, standard API OpenAI, modelli Gemma/ChatGPT-OSS/Qwen & R1-V-O -- R7-V-O \\ \hline
+	Rendering reattivo\newline Vue.js, stato\newline \texttt{AIRequestState} & Aggiornamento anteprima entro 1s, indicatore di caricamento continuo & R1-P-O, R2-P-O \\ \hline
+\end{xltabular}
+
+I requisiti opzionali R4-V-Op e R78--R86 (persistenza remota, gestione utenti) non compaiono in questa tabella poiché il gruppo ha deciso di non implementarli in questa fase (si veda Sezione~7.2 per lo stato dettagliato e la motivazione): non esiste quindi alcun componente architetturale a cui tracciarli.
+
+\subsection{Stato di Soddisfacimento dei Requisiti}
+La tabella seguente riassume, per macro-gruppo, lo stato di implementazione dei requisiti funzionali, di qualità, di vincolo e prestazionali rispetto all'architettura descritta in questo documento. I gruppi ricalcano la struttura di \link{link_analisi_requisiti}{Analisi dei Requisiti}, Sezione 4; il numero di requisiti obbligatori (90), desiderabili (2) e opzionali (12) è riepilogato nello stesso documento, Sezione 6 -- Riepilogo.
+
+I requisiti opzionali relativi alla persistenza remota e alla gestione utenti (R4-V-Op, R7-Q-Op, R8-Q-Op, R78--R86) sono stati valutati e volutamente esclusi dallo scope della release corrente: il gruppo ha scelto di concentrare le risorse disponibili sul consolidamento e sulla qualità dei requisiti obbligatori, rimandando un'eventuale implementazione a fasi successive del progetto qualora il tempo residuo lo consenta. Sono pertanto riportati con stato \textit{Non implementato}.
+
+\renewcommand{\arraystretch}{1.3}
+\begin{xltabular}{\textwidth}{|>{\centering\arraybackslash}p{2.6cm}|X|c|c|}
+	\caption{Stato dei Requisiti} \label{tab:stato-req} \\
+	\hline
+	\rowcolor{primarycolor!10}
+	\textbf{Codici} & \textbf{Descrizione} & \textbf{Tipo} & \textbf{Stato} \\
+	\hline
+	\endfirsthead
+	
+	\multicolumn{4}{c}%
+	{{\bfseries \tablename\ \thetable{} -- Continua dalla pagina precedente}} \\
+	\hline
+	\rowcolor{primarycolor!10}
+	\textbf{Codici} & \textbf{Descrizione} & \textbf{Tipo} & \textbf{Stato} \\
+	\hline
+	\endhead
+
+	\hline
+	\multicolumn{4}{|r|}{{Continua nella pagina successiva...}} \\
+	\hline
+	\endfoot
+
+	\hline
+	\endlastfoot
+
+	R1--R4 & Scrittura, copia, taglia, incolla di testo nell'editor. & Obbligatorio & Soddisfatto \\ \hline
+	R5--R28 & Attivazione / applicazione / disattivazione / rimozione delle formattazioni grassetto, corsivo, sottolineato, barrato, citazione e intestazione. & Obbligatorio & Soddisfatto \\ \hline
+	R29--R31 & Inserimento, modifica e rimozione di link ipertestuali. & Obbligatorio & Soddisfatto \\ \hline
+	R32--R35 & Inserimento, modifica, disattivazione e rimozione di elenchi puntati e numerati. & Obbligatorio & Soddisfatto \\ \hline
+	R36--R42 & Inserimento e modifica di tabelle Markdown, con validazione dei parametri. & Obbligatorio & Soddisfatto \\ \hline
+	R43, R44 & Annullamento (Undo) e ripristino (Redo) dell'ultima modifica. & Obbligatorio & Soddisfatto \\ \hline
+	R45--R47 & Visualizzazione esclusiva editor, render o affiancata (Split View). & Obbligatorio & Soddisfatto \\ \hline
+	R48, R49 & Generazione riassunto tramite LLM e notifica di errore. & Obbligatorio & Soddisfatto \\ \hline
+	R50, R51 & Traduzione (Inglese, Francese, Spagnolo) tramite LLM e notifica di errore. & Obbligatorio & Soddisfatto \\ \hline
+	R52 & Traduzione in Tedesco come estensione facoltativa. & Desiderabile & Soddisfatto \\ \hline
+	R53, R54 & Riscrittura del testo tramite LLM e notifica di errore. & Obbligatorio & Soddisfatto \\ \hline
+	R55, R56 & Distant Writing da prompt utente e notifica di errore. & Obbligatorio & Soddisfatto \\ \hline
+	R57--R68 & Analisi critica secondo le sei prospettive dei Cappelli di De Bono e relative notifiche di errore. & Obbligatorio & Soddisfatto \\ \hline
+	R69--R71 & Accettazione, rifiuto e rigenerazione della proposta AI. & Obbligatorio & Soddisfatto \\ \hline
+	R72, R73 & Visualizzazione continua dello stato di avanzamento e interruzione manuale della richiesta AI. & Obbligatorio & Soddisfatto \\ \hline
+	R74 & Visualizzazione della proposta AI in un modale dedicato. & Obbligatorio & Soddisfatto \\ \hline
+	R75, R76 & Salvataggio e caricamento della nota in formato Markdown su file system locale. & Obbligatorio & Soddisfatto \\ \hline
+	R77 & Esportazione della nota in PDF, HTML e JSON. & Obbligatorio & In corso \\ \hline
+	R78--R86 & Creazione/eliminazione nota, registrazione/autenticazione utente, gestione note remote. & Opzionale & Non implementato \\ \hline
+	R1-Q-O -- R6-Q-O & Copertura di test, documentazione tecnica, versionamento Git, test di integrazione con i servizi LLM. & Obbligatorio & In corso \\ \hline
+	R7-Q-Op, R8-Q-Op & Test di integrazione e autenticazione del modulo opzionale di persistenza remota. & Opzionale & Non implementato \\ \hline
+	R9-Q-D & Adozione di una licenza open source permissiva. & Desiderabile & Soddisfatto \\ \hline
+	R1-V-O -- R3-V-O & Esecuzione via browser standard e interazione con i modelli LLM tramite API compatibile OpenAI. & Obbligatorio & Soddisfatto \\ \hline
+	R4-V-Op & Persistenza remota tramite un database server-side. & Opzionale & Non implementato \\ \hline
+	R5-V-O -- R7-V-O & Compatibilità browser, singolo modello LLM per richiesta, repository pubblico. & Obbligatorio & Soddisfatto \\ \hline
+	R1-P-O & Aggiornamento dell'anteprima Markdown entro 1 secondo dalla modifica. & Obbligatorio & Soddisfatto \\ \hline
+	R2-P-O & Visualizzazione continua e reattiva dello stato di caricamento durante l'elaborazione AI. & Obbligatorio & Soddisfatto \\ \hline
+\end{xltabular}

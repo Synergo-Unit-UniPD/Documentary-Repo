@@ -1,0 +1,53 @@
+% =======================================================
+% 6. FLUSSO DEI DATI (DATA FLOW)
+% =======================================================
+\section{Flusso dei Dati (Data Flow)}
+Questa sezione illustra il ciclo di vita delle informazioni all'interno del sistema, partendo dall'interazione dell'utente fino all'ottenimento del risultato generato dall'Intelligenza Artificiale o alla persistenza della nota.
+
+\subsection{Flusso di esecuzione: Elaborazione AI (es. riassunto)}
+Il flusso è illustrato in due diagrammi di sequenza complementari: il tratto Frontend (Figura~\ref{fig:seq-richiesta-ai-frontend}), dalla selezione del testo fino all'invio asincrono della richiesta, e il tratto REST $\rightarrow$ LLM (Figura~\ref{fig:seq-richiesta-ai}), dal router REST fino al servizio LLM esterno, che attraversa in un unico flusso i pattern Strategy, Builder, Factory Method, Decorator e Adapter descritti in Sezione~\ref{sec:design-pattern}.
+
+\begin{enumerate}
+	\item \textbf{Interazione Utente (Frontend):} l'utente seleziona una porzione di testo nell'editor Markdown e richiede un'operazione specifica (es. ``Riassumi'').
+	\item \textbf{Creazione Richiesta:} la View notifica il Controller, che invoca il metodo \texttt{requestAIOperation()} di \texttt{AIRequestModel}; il Model invia la richiesta al Backend tramite l'\texttt{AIServiceProxy} (chiamata asincrona), mentre l'interfaccia mostra uno stato di caricamento (R72-F-O).
+	\item \textbf{Validazione e Costruzione Prompt (Backend):} \texttt{AIRouter} riceve la richiesta e la inoltra ad \texttt{AIService}, che risolve la strategia corretta tramite \texttt{AIOperationFactory} e costruisce un \texttt{Prompt} strutturato tramite \texttt{PromptBuilder}.
+	\item \textbf{Chiamata Esterna:} \texttt{AIService} invoca \texttt{LLMService.complete()}; la richiesta attraversa la catena di decorator (cache, logging) fino all'adapter che contatta il servizio LLM esterno tramite l'API compatibile con lo standard OpenAI.
+	\item \textbf{Parsing e Restituzione:} il Backend costruisce una \texttt{Proposal} a partire dal testo ricevuto e la restituisce come \texttt{AIOperationResponse} al Frontend.
+	\item \textbf{Aggiornamento UI:} l'interfaccia mostra la proposta all'utente in un modale dedicato (R74-F-O), permettendone l'accettazione, il rifiuto o la rigenerazione (R69--R71).
+\end{enumerate}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\textwidth]{seq_richiesta_ai_frontend.png}
+	\caption{Diagramma di sequenza: richiesta di un'operazione AI, tratto Frontend.}
+	\label{fig:seq-richiesta-ai-frontend}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{seq_richiesta_ai.png}
+	\caption{Diagramma di sequenza: richiesta di un'operazione AI, tratto REST $\rightarrow$ LLM.}
+	\label{fig:seq-richiesta-ai}
+\end{figure}
+
+\subsection{Flusso di esecuzione: Editing con Undo}
+Il pattern Command consente di trattare in modo uniforme operazioni di editing eterogenee e il relativo annullamento. La Figura~\ref{fig:seq-undo} mostra la formattazione di un testo selezionato e il successivo Undo: la View registra la richiesta dell'utente, si auto-notifica, il Controller la preleva e crea il comando corrispondente, che viene eseguito e archiviato da \texttt{CommandHistory}. L'Undo riesegue in ordine inverso l'ultimo comando in pila, ripristinando il contenuto precedente tramite lo stesso oggetto comando.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\textwidth]{seq_formattazione_undo.png}
+	\caption{Diagramma di sequenza: formattazione di un testo e relativo Undo.}
+	\label{fig:seq-undo}
+\end{figure}
+
+\subsection{Flusso di esecuzione: Salvataggio locale della nota}
+La Figura~\ref{fig:seq-salvataggio} mostra il salvataggio della nota corrente (R75-F-O): il Controller richiama \texttt{NoteModel.save()}, che delega tramite l'interfaccia \texttt{NoteService} al Proxy locale, responsabile dell'accesso al file system del browser. In caso di errore di I/O, l'eccezione risale fino alla View, che notifica l'utente mantenendo la nota invariata (R75-F-O).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\textwidth]{seq_salvataggio_nota.png}
+	\caption{Diagramma di sequenza: salvataggio di una nota in locale.}
+	\label{fig:seq-salvataggio}
+\end{figure}
+
+\FloatBarrier
