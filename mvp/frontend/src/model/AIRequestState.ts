@@ -1,6 +1,10 @@
+import { IdleState } from './IdleState';
+import { ProcessingState } from './ProcessingState';
+import { ProposalReadyState } from './ProposalReadyState';
+import { ErrorState } from './ErrorState';
+
 /**
- * Rappresenta lo stato in cui è in corso una specifica richiesta verso i servizi AI/LLM.
+ * Discriminated union che rappresenta lo stato mutuamente esclusivo 
+ * della richiesta AI in un dato momento.
  */
-export class AIRequestState {
-    constructor() {}
-}
+export type AIRequestState = IdleState | ProcessingState | ProposalReadyState | ErrorState;
