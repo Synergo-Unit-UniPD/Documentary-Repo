@@ -7,12 +7,20 @@ import { EditCommand } from './EditCommand';
 import { Observer } from './Observer';
 import { Note } from './Note';
 
-// Mock delle dipendenze
-class MockEditor implements MarkdownContentEditor {}
+class MockEditor extends MarkdownContentEditor {
+    private mockContent = 'Testo della nota';
+    
+    override getContent(): string {
+        return this.mockContent;
+    }
+    override setContent(content: string): void {
+        this.mockContent = content;
+    }
+}
 
 class MockNoteService implements NoteService {
     save = vi.fn().mockResolvedValue(undefined);
-    open = vi.fn().mockResolvedValue(new Note('note-1', 'Testo della nota'));
+    open = vi.fn().mockResolvedValue(new Note('note-1', 'Testo caricato'));
 }
 
 class MockCommand implements EditCommand {
@@ -70,5 +78,6 @@ describe('NoteModel', () => {
         expect(service.open).toHaveBeenCalledTimes(1);
         expect(historySpy).toHaveBeenCalledTimes(1);
         expect(model.getIsDirty()).toBe(false);
+        expect(editor.getContent()).toBe('Testo caricato');
     });
 });

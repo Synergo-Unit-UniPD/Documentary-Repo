@@ -22,11 +22,14 @@ export class FormatTextCommand implements EditCommand {
     public execute(): void {
         this.previousContent = this.editor.getContent();
         
-        const newContent = this.editor.removeFormat(this.range, this.formatType);
+        // Step 11: execute -> Step 12: applyFormat(range, BOLD)
+        const newContent = this.editor.applyFormat(this.range, this.formatType);
         this.editor.setContent(newContent);
     }
 
     public undo(): void {
-        this.editor.setContent(this.previousContent);
+        // Step 28: undo -> Step 29: removeFormat(range, BOLD)
+        const restoredContent = this.editor.removeFormat(this.range, this.formatType);
+        this.editor.setContent(restoredContent);
     }
 }

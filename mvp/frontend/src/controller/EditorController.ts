@@ -28,13 +28,24 @@ export class EditorController implements Observer {
     }
 
     public update(): void {
+        // Step 4 e Step 22: update() riceve la notifica dalla View
+
         if (this.view.consumeSaveRequest()) this.onSaveCommand();
         if (this.view.consumeOpenRequest()) this.onOpenCommand();
-        if (this.view.consumeUndoRequest()) this.onUndoCommand();
+        
+        // Step 23: consumeUndoRequest
+        if (this.view.consumeUndoRequest()) {
+            this.onUndoCommand(); // Step 25
+        }
+        
         if (this.view.consumeRedoRequest()) this.onRedoCommand();
 
+        // Step 5: getLastFormatRequest
         const formatReq = this.view.getLastFormatRequest();
-        if (formatReq) this.onFormatCommand(formatReq);
+        if (formatReq) {
+            // Step 7: onFormatCommand
+            this.onFormatCommand(formatReq);
+        }
 
         const tableReq = this.view.getLastTableRequest();
         if (tableReq) this.onTableCommand(tableReq);
@@ -59,7 +70,9 @@ export class EditorController implements Observer {
 
     private onFormatCommand(type: FormatType): void {
         const range = new TextRange(0, 0); 
+        // Step 8: new FormatTextCommand
         const command = new FormatTextCommand(this.model, range, type, this.getEditorReceiver());
+        // Step 9: executeCommand(command)
         this.model.executeCommand(command);
     }
 
@@ -81,6 +94,7 @@ export class EditorController implements Observer {
     }
 
     private onUndoCommand(): void {
+        // Step 26: undo
         this.model.undo();
     }
 

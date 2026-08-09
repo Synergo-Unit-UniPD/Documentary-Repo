@@ -8,7 +8,6 @@ import { ListActionRequest } from '../model/ListActionRequest';
 import { LinkActionRequest } from '../model/LinkActionRequest';
 import { TextRange } from '../model/TextRange';
 
-
 export interface CodeMirrorInstance {}
 
 /**
@@ -51,11 +50,16 @@ export class EditorView implements Observer, Subject {
 
     public notify(): void {
         for (const observer of this.observers) {
+            // Step 4 e Step 22: update sul Controller
             observer.update();
         }
     }
 
     public update(): void {
+        // Step 15 e Step 32: update riceve la notifica dal Model
+        // Step 16: getContent
+        const currentText = this.model.getContent();
+        // Step 18: mostra testo formattato
         this.render();
     }
 
@@ -77,6 +81,7 @@ export class EditorView implements Observer, Subject {
     }
 
     public getLastInputEvent(): InputEvent | undefined { return this.lastInputEvent; }
+    // Step 5: getLastFormatRequest
     public getLastFormatRequest(): FormatType | undefined { return this.lastFormatRequest; }
     public getLastTableRequest(): TableActionRequest | undefined { return this.lastTableRequest; }
     public getLastListRequest(): ListActionRequest | undefined { return this.lastListRequest; }
@@ -95,6 +100,7 @@ export class EditorView implements Observer, Subject {
     }
 
     public consumeUndoRequest(): boolean {
+        // Step 23: consumeUndoRequest -> Step 24: true
         const req = this.undoRequested;
         this.undoRequested = false;
         return req;
@@ -111,7 +117,10 @@ export class EditorView implements Observer, Subject {
     }
 
     public simulateFormatAction(type: FormatType): void {
+        // Step 1: seleziona testo, click "Grassetto"
+        // Step 2: lastFormatRequest = BOLD
         this.lastFormatRequest = type;
+        // Step 3: notify
         this.notify();
         this.lastFormatRequest = undefined;
     }
@@ -119,8 +128,14 @@ export class EditorView implements Observer, Subject {
     public simulateAction(action: 'save' | 'open' | 'undo' | 'redo'): void {
         if (action === 'save') this.saveRequested = true;
         if (action === 'open') this.openRequested = true;
-        if (action === 'undo') this.undoRequested = true;
+        if (action === 'undo') {
+            // Step 19: click "Undo"
+            // Step 20: undoRequested = true
+            this.undoRequested = true;
+        }
         if (action === 'redo') this.redoRequested = true;
+        
+        // Step 21: notify
         this.notify();
     }
 }

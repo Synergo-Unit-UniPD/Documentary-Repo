@@ -36,18 +36,23 @@ export class NoteModel implements Subject {
 
     public notify(): void {
         for (const observer of this.observers) {
-            observer.update();
+            observer.update(); // Usato allo Step 15 e Step 32
         }
     }
 
     public executeCommand(c: EditCommand): void {
-        c.execute();
+        // Step 10: push(command)
         this.history.push(c);
+        // Step 11: execute
+        c.execute();
+        // Step 13: markDirtyAndNotify
         this.markDirtyAndNotify();
     }
 
     public undo(): void {
+        // Step 27: undo
         this.history.undo();
+        // Step 30: markDirtyAndNotify
         this.markDirtyAndNotify();
     }
 
@@ -57,8 +62,8 @@ export class NoteModel implements Subject {
     }
 
     public getContent(): string {
-        // Da implementare
-        return "";
+        // Step 16: getContent
+        return this.contentEditor.getContent();
     }
 
     public getIsDirty(): boolean {
@@ -75,6 +80,7 @@ export class NoteModel implements Subject {
     public async openNote(): Promise<void> {
         const note = await this.noteService.open();
         this.noteId = note.id;
+        this.contentEditor.setContent(note.content);
         this.history.clear();
         this.isDirty = false;
         this.notify();
@@ -82,6 +88,7 @@ export class NoteModel implements Subject {
 
     public markDirtyAndNotify(): void {
         this.isDirty = true;
+        // Step 14 / Step 31: notify
         this.notify();
     }
 }

@@ -7,29 +7,53 @@ import { CommandHistory } from '../model/CommandHistory';
 import { NoteService } from '../proxy/NoteService';
 import { FormatType } from '../model/FormatType';
 import { Note } from '../model/Note';
+import { FormatTextCommand } from '../model/FormatTextCommand';
 
 const mockNoteService: NoteService = {
     save: vi.fn().mockResolvedValue(undefined),
     open: vi.fn().mockResolvedValue(new Note('1', ''))
 };
 
-describe('EditorController', () => {
-    it('dovrebbe istanziare i comandi e passarli al model in risposta agli eventi della View', () => {
+describe('EditorController - Formattazione con Undo', () => {
+    it('dovrebbe eseguire il flusso di formattazione e undo secondo il diagramma di sequenza', () => {
         const markdownEditor = new MarkdownContentEditor();
-        const model = new NoteModel(markdownEditor, new CommandHistory(), mockNoteService);
+        // Mock dei metodi chiamati dal comando come da SD (Step 12 e 29)
+        const applyFormatSpy = vi.spyOn(markdownEditor, 'applyFormat').mockReturnValue('**testo**');
+        const removeFormatSpy = vi.spyOn(markdownEditor, 'removeFormat').mockReturnValue('testo');
+
+        const history = new CommandHistory();
+        const pushSpy = vi.spyOn(history, 'push');
+        const historyUndoSpy = vi.spyOn(history, 'undo');
+
+        const model = new NoteModel(markdownEditor, history, mockNoteService);
+        const executeCommandSpy = vi.spyOn(model, 'executeCommand');
+        const modelUndoSpy = vi.spyOn(model, 'undo');
+        const markDirtySpy = vi.spyOn(model, 'markDirtyAndNotify');
+
         const view = new EditorView(model, {} as any);
-        
-        const executeSpy = vi.spyOn(model, 'executeCommand');
-        const saveSpy = vi.spyOn(model, 'save');
+        const updateSpy = vi.spyOn(view, 'update');
 
         const controller = new EditorController(model, view);
 
-        // Simuliamo la formattazione
+        // SIMULAZIONE: Step 1-3: seleziona testo, click "Grassetto" -> notify
         view.simulateFormatAction(FormatType.BOLD);
-        expect(executeSpy).toHaveBeenCalledTimes(1);
-        
-        // Simuliamo il salvataggio
-        view.simulateAction('save');
-        expect(saveSpy).toHaveBeenCalledTimes(1);
+
+        // VERIFICA Flusso Formattazione
+        expect(executeCommandSpy).toHaveBeenCalledTimes(1);
+        expect(executeCommandSpy).toHaveBeenCalledWith(expect.any(FormatTextCommand));
+        expect(pushSpy).toHaveBeenCalledTimes(1); // Step 10
+        expect(applyFormatSpy).toHaveBeenCalledTimes(1); // Step 12
+        expect(markDirtySpy).toHaveBeenCalledTimes(1); // Step 13
+        expect(updateSpy).toHaveBeenCalled(); // Step 15
+
+        // SIMULAZIONE: Step 19-21: click "Undo" -> notify
+        view.simulateAction('undo');
+
+        // VERIFICA Flusso Undo
+        expect(modelUndoSpy).toHaveBeenCalledTimes(1); // Step 26
+        expect(historyUndoSpy).toHaveBeenCalledTimes(1); // Step 27
+        expect(removeFormatSpy).toHaveBeenCalledTimes(1); // Step 29
+        expect(markDirtySpy).toHaveBeenCalledTimes(2); // Step 30
+        expect(updateSpy).toHaveBeenCalledTimes(2); // Step 32
     });
 });

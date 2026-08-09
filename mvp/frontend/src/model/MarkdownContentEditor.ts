@@ -24,6 +24,10 @@ export class MarkdownContentEditor {
         return this.content;
     }
 
+    public applyFormat(range: TextRange, type: FormatType): string {
+        return this.content;
+    }
+
     public removeFormat(range: TextRange, type: FormatType): string {
         return this.content;
     }
