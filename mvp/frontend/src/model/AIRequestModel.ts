@@ -2,6 +2,9 @@ import { Subject } from './Subject';
 import { Observer } from './Observer';
 import { AIRequestState } from './AIRequestState';
 import { IdleState } from './IdleState';
+import { ProcessingState } from './ProcessingState';
+import { ProposalReadyState } from './ProposalReadyState';
+import { ErrorState } from './ErrorState';
 import { AIService } from '../proxy/AIService';
 
 /**
@@ -38,23 +41,44 @@ export class AIRequestModel implements Subject {
     }
 
     public async requestAIOperation(type: string, text: string, params: object): Promise<void> {
-        // Implementazione temporanea vuota per validazione firme
+        try {
+            // Stato transitorio di caricamento
+            this.aiState = new ProcessingState();
+            this.notify();
+            
+            // passi di Ricezione proposta AI (tratto Frontend).jpg
+            // 1: Risoluzione Promise di requestOperation
+            const proposal = await this.aiService.requestOperation(type, text, params);
+            
+            // 2: aiState = ProposalReadyState(proposal)
+            this.aiState = new ProposalReadyState(proposal);
+            
+            // 3: notify
+            this.notify();
+        } catch (error: any) {
+            this.aiState = new ErrorState(error.message || "Errore durante l'operazione AI");
+            this.notify();
+        }
     }
 
     public interruptAIOperation(): void {
-        // Implementazione temporanea vuota
+        this.aiState = new IdleState();
+        this.notify();
     }
 
     public acceptProposal(): void {
-        // Implementazione temporanea vuota
+        this.aiState = new IdleState();
+        this.notify();
     }
 
     public rejectProposal(): void {
-        // Implementazione temporanea vuota
+        this.aiState = new IdleState();
+        this.notify();
     }
 
     public regenerateProposal(): void {
-        // Implementazione temporanea vuota
+        this.aiState = new IdleState();
+        this.notify();
     }
 
     public async listOperations(): Promise<string[]> {

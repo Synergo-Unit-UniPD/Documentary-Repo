@@ -3,6 +3,7 @@ import { Subject } from '../model/Subject';
 import { AIRequestModel } from '../model/AIRequestModel';
 import { RequestedOperation } from '../model/RequestedOperation';
 import { ProposalActionType } from '../model/ProposalActionType';
+import { ProposalReadyState } from '../model/ProposalReadyState';
 
 /**
  * Vista del pannello AI. Osserva il Model per i cambiamenti di stato
@@ -35,12 +36,21 @@ export class AIPanelView implements Observer, Subject {
         }
     }
 
+    // passi di Ricezione proposta AI (tratto Frontend).jpg
+    // 4: update() richiamato dal notify() di AIRequestModel
     public update(): void {
         this.render();
     }
 
     public render(): void {
-        // Logica di rendering (in Vue sarà delegata alla reattività del framework)
+        // 5 e 6: getAIState per recuperare lo stato aggiornato
+        const currentState = this.model.getAIState();
+
+        // 7: mostra proposta; pulsanti Accept, Reject, Regenerate
+        if (currentState instanceof ProposalReadyState) {
+            // Qui avverrà il rendering reattivo gestito da Vue.js
+            // currentState.proposal conterrà il dato da visualizzare.
+        }
     }
 
     public getLastRequestedOperation(): RequestedOperation | undefined {
@@ -51,11 +61,9 @@ export class AIPanelView implements Observer, Subject {
         return this.lastProposalAction;
     }
 
-    // Metodi per permettere i test
-    // Vue di simulare gli input dell'utente e notificare il controller.
     public simulateSubmitRequest(op: RequestedOperation): void {
         this.lastRequestedOperation = op;
-        this.lastProposalAction = undefined; // Resetta l'azione precedente
+        this.lastProposalAction = undefined;
         this.notify();
     }
 
