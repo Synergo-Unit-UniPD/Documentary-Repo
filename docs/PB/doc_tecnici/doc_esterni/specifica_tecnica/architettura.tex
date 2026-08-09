@@ -4,33 +4,40 @@
 \section{Architettura del Sistema}
 
 \subsection{Architettura Generale}
-Il sistema \textit{Second Brain} è basato su un'architettura di tipo Client-Server per garantire la separazione delle responsabilità (Separation of Concerns) tra la gestione dell'interfaccia utente (editor Markdown) e l'orchestrazione delle chiamate ai Modelli di Linguaggio di Grande Scala (LLM), in linea con il vincolo R1-V-O.
+Il sistema \textit{Second Brain} è basato su un'architettura di tipo Client-Server per garantire la separazione delle responsabilità (\textit{Separation of Concerns}) tra la gestione dell'interfaccia utente (editor Markdown) e l'orchestrazione delle chiamate agli LLM.
 
-Il Frontend Vue.js gestisce l'intera interazione con l'utente e non comunica mai direttamente con il servizio LLM: ogni richiesta di elaborazione AI transita dal Backend FastAPI, che funge da unico punto di orchestrazione verso il provider esterno. Questa scelta, oltre a rispettare il vincolo R2-V-O sullo standard delle chiamate API, evita di esporre nel browser eventuali credenziali di accesso al servizio LLM.
+Il sistema è composto da due soli componenti software: \texttt{Web Application} (Frontend) e \texttt{Backend API}, che comunicano tramite un'unica interfaccia REST (\texttt{IBackendREST}). Il Frontend non comunica mai direttamente con il servizio LLM: infatti, ogni richiesta di elaborazione AI transita dal Backend, che funge da unico punto di orchestrazione verso il provider esterno. Questa scelta, oltre a rispettare il vincolo R2-V-O sullo standard delle chiamate API, evita di esporre nel browser eventuali credenziali di accesso al servizio LLM.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.85\textwidth]{deployment.png}
-	\caption{Architettura di alto livello e di deployment del sistema.}
-	\label{fig:arch-generale}
+	\includegraphics[width=0.85\textwidth]{ComponentDiagram.png}
+	\caption{Diagramma dei componenti del sistema.}
+	\label{fig:component}
 \end{figure}
 
 \subsection{Architettura di Deployment}
 \label{sec:arch-deployment}
-Frontend e Backend sono eseguiti in due container Docker distinti, orchestrati tramite Docker Compose (Figura~\ref{fig:arch-generale}):
+Frontend e Backend sono eseguiti in due container Docker distinti, orchestrati tramite Docker Compose:
 \begin{itemize}
-	\item \textbf{frontend}: applicazione Vue.js, servita in sviluppo dal dev server Vite e in produzione da un web server statico;
-	\item \textbf{backend}: servizio FastAPI eseguito tramite Uvicorn, espone le API REST consumate dal frontend e contatta il servizio LLM esterno tramite HTTPS, con la relativa API key iniettata come variabile d'ambiente.
+	\item \textbf{frontend}: applicazione Vue.js, servita in sviluppo dal dev server Vite sulla porta 5173;
+	\item \textbf{backend}: servizio FastAPI eseguito tramite Uvicorn sulla porta 8000, espone le API REST consumate dal frontend e contatta il servizio LLM esterno tramite HTTPS, con la relativa API key iniettata come variabile d'ambiente.
 \end{itemize}
-Non è presente alcun container di persistenza: come descritto in Sezione~\ref{sec:persistenza}, il gruppo ha deciso di non implementare la persistenza remota, funzionalità opzionale del capitolato (R4-V-Op, R78--R86); tutti i dati sono gestiti tramite il file system locale del browser, senza alcun componente server-side stateful.
+Il server di sviluppo Vite del container \texttt{frontend} inoltra le richieste verso \texttt{/api} al container \texttt{backend} attraverso la rete Docker interna; non è presente un reverse proxy dedicato (es. Nginx) in questa fase, né alcun container di persistenza, coerentemente con la scelta descritta in Sezione~2.4 di non implementare la persistenza remota (R4-V-Op, R78--R86).
 
-Coerentemente con quanto indicato in \link{link_analisi_stato_arte}{Analisi dello Stato dell'Arte}, Sezione 4, la separazione in container non costituisce di per sé una scelta architetturale definitiva quanto piuttosto uno strumento per rendere l'ambiente di esecuzione riproducibile, portabile e semplice da avviare con un unico comando.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\textwidth]{DeploymentDiagram.png}
+	\caption{Diagramma UML di Deployment.}
+	\label{fig:deployment}
+\end{figure}
 
 \subsection{Architettura del Frontend}
 \label{sec:arch-frontend}
-Il Frontend gestisce l'interazione dell'utente con l'editor Markdown e la visualizzazione dello stato delle operazioni AI. Il pattern architetturale adottato è \textbf{Model-View-Controller} nella forma basata su Observer: il Model realizza un'interfaccia \texttt{Subject} (Observable); la View realizza sia \texttt{Subject} sia \texttt{Observer}, potendo quindi essere osservata a sua volta dal Controller; il Controller realizza \texttt{Observer}. Il Controller osserva la View, la View osserva il Model; il Controller mantiene inoltre un riferimento diretto al Model per invocare comandi, senza però riceverne le notifiche direttamente.
+Il Frontend gestisce l'interazione dell'utente con l'editor Markdown e la visualizzazione dello stato delle operazioni AI. Il pattern architetturale adottato è \textbf{Model-View-Controller} nella versione \textit{Pull Model}.
 
-Questa separazione esplicita, indipendente dal framework di rendering, mantiene la logica di dominio (Model e Controller) testabile in isolamento: i componenti Vue.js costituiscono l'implementazione concreta della View, limitandosi a riflettere nel template lo stato esposto dal relativo oggetto View e a inoltrare gli eventi dell'utente, senza contenere essi stessi logica applicativa.
+Questa separazione esplicita, indipendente dal framework di rendering, mantiene la logica di dominio (Model e Controller) testabile in isolamento: i componenti Vue.js costituiscono l'implementazione concreta della View, limitandosi a riflettere nel template lo stato esposto dal relativo oggetto View e a inoltrare gli eventi dell'utente, senza contenere essi stessi logica applicativa. 
+
+Vue.js è stato scelto consapevoli che, a differenza di framework più strutturati, non fornisce nativamente un sistema di Dependency Injection né impone pattern architetturali quindi questi sono stati progettati e introdotti autonomamente dal gruppo (Sezione~\ref{sec:design-pattern}).
 
 \begin{figure}[H]
 	\centering
@@ -40,27 +47,42 @@ Questa separazione esplicita, indipendente dal framework di rendering, mantiene 
 \end{figure}
 
 \subsubsection{Gestione dello Stato e dell'Editor}
-Il \texttt{NoteModel} mantiene lo stato osservabile della nota corrente (contenuto, identificativo, flag di modifica non salvata) e delega la manipolazione testuale a un \texttt{MarkdownContentEditor}. Ogni modifica (formattazione, tabelle, elenchi, link, inserimento di testo) è incapsulata in un comando (Sezione~\ref{sec:design-pattern}) eseguito tramite \texttt{NoteModel.executeCommand()}, che aggiorna una \texttt{CommandHistory} a due pile per supportare Undo/Redo (R43-F-O, R44-F-O) in modo uniforme per tutte le operazioni di editing. Il salvataggio e l'apertura della nota (R75-F-O, R76-F-O) sono delegati tramite l'interfaccia \texttt{NoteService} a un'implementazione basata sul File System locale, così da non vincolare il Model a un meccanismo di persistenza specifico.
+Il \texttt{NoteModel} mantiene lo stato osservabile della nota corrente (contenuto, identificativo, flag di modifica non salvata) e delega la manipolazione testuale a un \texttt{MarkdownContentEditor}. Ogni modifica (formattazione, tabelle, elenchi, link, inserimento di testo) è incapsulata in un comando (Sezione~\ref{sec:design-pattern}) eseguito tramite \texttt{NoteModel.executeCommand()}, che aggiorna una \texttt{CommandHistory} a due pile per supportare Undo/Redo (R43-F-O, R44-F-O) in modo uniforme per tutte le operazioni di editing. 
+
+Il salvataggio e l'apertura della nota (R75-F-O, R76-F-O) sono delegati tramite l'interfaccia \texttt{NoteService} a un'implementazione basata sul File System locale, così da non vincolare il Model a un meccanismo di persistenza specifico; la scelta tra creazione di un nuovo file (\texttt{showSaveFilePicker}) e sovrascrittura di un file già aperto è gestita internamente al \texttt{NoteModel} in base alla presenza di un identificativo di nota.
 
 \subsubsection{Gestione Interazioni AI (Widget/Pannello AI)}
-L'\texttt{AIRequestModel} mantiene lo stato della richiesta AI corrente come union type (\texttt{Idle}, \texttt{Processing}, \texttt{ProposalReady}, \texttt{Error}), riflesso dal componente \texttt{AIPanelView} tramite il meccanismo Observer (R72-F-O: visualizzazione continua dello stato di avanzamento). L'utente può accettare, rifiutare, rigenerare o interrompere manualmente una proposta AI (R69--R71, R73-F-O): l'accettazione riusa lo stesso meccanismo di comando dell'editing manuale, inserendo il testo proposto tramite un comando eseguito su \texttt{NoteModel} (Sezione~\ref{sec:design-pattern}, pattern Command). Le richieste verso il Backend sono mediate dall'interfaccia \texttt{AIService}, la cui implementazione concreta (Proxy) incapsula i dettagli della chiamata REST.
+L'\texttt{AIRequestModel} mantiene lo stato della richiesta AI corrente come un tipo dato algebrico (union discriminata TypeScript) con quattro varianti: \texttt{IdleState}, \texttt{ProcessingState}, \texttt{ProposalReadyState} (con la \texttt{Proposal} generata) ed \texttt{ErrorState}. Abbiamo preferito un'unione discriminata al pattern State GoF, che avrebbe introdotto una gerarchia di classi senza incapsulare alcun comportamento reale: le varianti (\texttt{IdleState}, \texttt{ProcessingState}, \texttt{ProposalReadyState}, \texttt{ErrorState}) sono semplici contenitori di dati privi di metodi polimorfici, mentre la logica di transizione resta centralizzata in \texttt{AIRequestModel}.
+
+Il ciclo di vita di una richiesta AI attraversa tre fasi distinte, ciascuna illustrata da un diagramma di sequenza dedicato in Sezione~6: 
+\begin{enumerate}
+	\item l'utente avvia la richiesta e riceve un riscontro visivo immediato (stato \texttt{Processing}, R72-F-O) con l'opzione di interruzione manuale (R73-F-O); 
+	\item il Backend elabora la richiesta interagendo con l'LLM;
+	\item una volta risolta la Promise di \texttt{AIServiceProxy.requestOperation()}, aggiorna lo stato a \texttt{ProposalReadyState} e la View mostra la proposta con le azioni disponibili. 
+\end{enumerate}
+
+L'utente può quindi accettare, rifiutare o rigenerare la proposta (R69--R71): l'accettazione riusa lo stesso meccanismo di comando dell'editing manuale, inserendo il testo proposto tramite un comando eseguito su \texttt{NoteModel} (pattern Command). 
+
+Le richieste verso il Backend sono mediate dall'interfaccia \texttt{AIService}, la cui implementazione concreta (Proxy) incapsula i dettagli della chiamata REST.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{class_frontend_model.png}
-	\caption{Diagramma delle classi del livello Model del Frontend.}
-	\label{fig:class-frontend-model}
+	\includegraphics[width=\textwidth]{frontend_core.png}
+	\caption{Diagramma delle classi del Frontend (Model, View, Controller, Proxy).}
+	\label{fig:class-frontend}
 \end{figure}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{class_frontend_vcp.png}
-	\caption{Diagramma delle classi dei livelli View, Controller e Proxy del Frontend.}
-	\label{fig:class-frontend-vcp}
-\end{figure}
-
+\FloatBarrier
 \subsection{Architettura del Backend}
-Il Backend funge da orchestratore centrale e da strato di astrazione verso i provider LLM esterni. È organizzato in due package Python distinti: il livello applicativo/di presentazione (router REST, DTO, Dependency Injection) e il dominio AI (\texttt{AI\_Domain}), che contiene la logica di costruzione dei prompt e di interazione con l'LLM indipendente dal framework web.
+\label{sec:arch-backend}
+Il Backend funge da orchestratore centrale e da strato di astrazione verso i provider LLM esterni. È organizzato secondo un'architettura a livelli, articolata in due livelli principali:
+\begin{enumerate}
+	\item \textbf{Livello di Presentazione} (package \texttt{backend\_API\_business\_layer}): router REST, DTO, Dependency Injection;
+	\item \textbf{Livello di Business Logic} (package \texttt{AI\_Domain}): logica di costruzione dei prompt e di integrazione con il servizio LLM esterno, indipendente dal framework web.
+\end{enumerate}
+A questi si affianca il package \texttt{Export}, che non fa parte della catena di elaborazione delle richieste AI, bensì implementa in modo isolato e autosufficiente la conversione della nota nei formati richiesti, riusando lo stesso principio di separazione delle responsabilità senza costituire un ulteriore livello architetturale.
+
+La scomposizione a livelli, senza porte/adapter espliciti verso l'esterno, riflette la scala contenuta del sistema: non è un'architettura esagonale in senso stretto, ma una separazione sufficiente a mantenere il dominio AI indipendente sia dal framework HTTP sia dal provider LLM concreto.
 
 \begin{figure}[H]
 	\centering
@@ -69,34 +91,38 @@ Il Backend funge da orchestratore centrale e da strato di astrazione verso i pro
 	\label{fig:pkg-backend}
 \end{figure}
 
-\subsubsection{Livello di Presentazione / Controller}
-I router FastAPI (\texttt{AIRouter}, \texttt{ExportRouter}) ricevono le richieste dal client, le validano tramite i DTO di \texttt{api/schemas} (\texttt{AIOperationRequest}, \texttt{ExportRequest}) e delegano l'elaborazione ai servizi applicativi, ottenuti tramite Dependency Injection (\texttt{DIProviders}). Un gestore di errori centralizzato (\texttt{ErrorHandlers}) traduce le eccezioni di dominio in risposte HTTP coerenti (Sezione~\ref{sec:gestione-errori}).
+\subsubsection{Livello di Presentazione}
+I router FastAPI (\texttt{AIRouter}, \texttt{ExportRouter}) ricevono le richieste dal client, le validano tramite i DTO di \texttt{api/schemas} (\texttt{AIOperationRequest}, \texttt{ExportRequest}) e delegano l'elaborazione ai servizi applicativi, ottenuti tramite Dependency Injection (\texttt{DIProviders}). Un gestore di errori centralizzato (\texttt{ErrorHandlers}) traduce le eccezioni di dominio (\texttt{AIDomainError}, \texttt{ExportError}) in risposte HTTP coerenti (Sezione~\ref{sec:gestione-errori}). I router non contengono logica di dominio: traducono richieste HTTP in chiamate al livello di Business Logic e le risposte in schemi Pydantic.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.85\textwidth]{class_backend_api_layer.png}
-	\caption{Diagramma delle classi del livello di presentazione e DI del Backend.}
-	\label{fig:class-backend-api}
+	\includegraphics[width=0.85\textwidth]{backend_API_business_layer.png}
+	\caption{Diagramma delle classi del livello di Presentazione e DI del Backend.}
+	\label{fig:class-business-layer}
 \end{figure}
 
 \subsubsection{Livello di Business Logic (Core LLM)}
-L'\texttt{AIService} è il motore centrale del dominio AI: riceve il tipo di operazione richiesta (riassunto, traduzione, riscrittura, Distant Writing, o una delle sei prospettive dei ``Cappelli di De Bono''), la risolve tramite un'\texttt{AIOperationFactory} auto-registrante, e ne invoca \texttt{build\_prompt()} in modo polimorfico. Ogni operazione costruisce il proprio \texttt{Prompt} tramite un \texttt{PromptBuilder} fluente, isolando la logica specifica di ciascuna trasformazione testuale (Sezione~\ref{sec:design-pattern}, pattern Strategy, Factory Method e Builder).
+L'\texttt{AIService} è il motore centrale del dominio AI: riceve il tipo di operazione richiesta (riassunto, traduzione, riscrittura, Distant Writing, o una delle sei prospettive dei ``Cappelli di De Bono''), la risolve tramite un'\texttt{AIOperationFactory} auto-registrante, e ne invoca \texttt{build\_prompt()} in modo polimorfico. Ogni operazione costruisce il proprio \texttt{Prompt} tramite un \texttt{PromptBuilder} fluente, isolando la logica specifica di ciascuna trasformazione testuale (Sezione~\ref{sec:design-pattern}, pattern Strategy, Builder e Simple Factory). 
+
+Il pacchetto \texttt{AI\_Domain/llm}, incluso nello stesso diagramma, maschera le specificità del provider LLM concreto dietro l'interfaccia \texttt{LLMService}: una catena di decorator (\texttt{CachingLLMAdapter}, \texttt{LoggingLLMAdapter}) aggiunge funzionalità trasversali di caching e logging senza modificare l'implementazione di base; l'ultimo anello della catena è l'\texttt{OpenAIAdapter}, verso l'API compatibile con lo standard OpenAI (R2-V-O, R3-V-O).
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{class_ai_domain_operations.png}
-	\caption{Diagramma delle classi: operazioni AI e costruzione dei prompt (\texttt{AI\_Domain/domain}).}
-	\label{fig:class-ai-domain-ops}
+	\includegraphics[width=\textwidth]{ai_domain.png}
+	\caption{Diagramma delle classi del dominio AI: operazioni, costruzione dei prompt e integrazione con il servizio LLM.}
+	\label{fig:class-ai-domain}
 \end{figure}
 
-\subsubsection{Livello di Integrazione / Infrastructure}
-Il pacchetto \texttt{AI\_Domain/llm} maschera le specificità del provider LLM concreto dietro l'interfaccia \texttt{LLMService}. Una catena di decorator (\texttt{CachingLLMAdapter}, \texttt{LoggingLLMAdapter}) aggiunge funzionalità trasversali di caching e logging senza modificare l'implementazione di base; l'ultimo anello della catena è un adapter verso l'API compatibile con lo standard OpenAI (modelli Gemma, ChatGPT-OSS o Qwen, R2-V-O, R3-V-O), configurabile tramite \texttt{base\_url} per puntare all'endpoint messo a disposizione dall'azienda proponente.
+\FloatBarrier
+
+\subsubsection{Componente di Esportazione (Export)}
+La conversione della nota nei formati di esportazione richiesti (PDF, HTML, JSON)(R77-F-O) è isolata nel package \texttt{Export}, strutturato attorno al pattern Template Method (Sezione~\ref{sec:design-pattern}): la classe astratta \texttt{Exporter} fissa i passi comuni dell'esportazione (\texttt{export()}, \texttt{prepare\_content()}) mentre delega alle sottoclassi (\texttt{PdfExporter}, \texttt{HtmlExporter}, \texttt{JsonExporter}) solo la conversione nel formato finale (\texttt{convert\_format()}). \texttt{DIProviders.get\_exporter(format)} risolve l'esportatore concreto in base al formato richiesto da \texttt{ExportRouter}, senza che \texttt{Export} debba conoscere né il livello di Presentazione né quello di Business Logic.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\textwidth]{class_ai_domain_llm.png}
-	\caption{Diagramma delle classi: integrazione con il servizio LLM (\texttt{AI\_Domain/llm}).}
-	\label{fig:class-ai-domain-llm}
+	\includegraphics[width=0.75\textwidth]{export.png}
+	\caption{Diagramma delle classi del package Export (Template Method).}
+	\label{fig:class-export}
 \end{figure}
 
 \FloatBarrier
