@@ -2,39 +2,110 @@
 % 2. TECNOLOGIE UTILIZZATE
 % =======================================================
 \section{Tecnologie Utilizzate}
-Le tecnologie qui descritte confermano e consolidano le scelte motivate in dettaglio in \link{link_analisi_stato_arte}{Analisi dello Stato dell'Arte}, Sezioni 2--3, a cui si rimanda per l'analisi comparativa completa delle alternative scartate.
+Le tecnologie adottate sono state selezionate secondo i criteri motivati in dettaglio in 
+\\ \link{https://github.com/Synergo-Unit-UniPD/Second-Brain/blob/main/docs/RTB/doc_gestionali/doc_interni/analisi_stato_arte/analisi_stato_arte.pdf}{Analisi dello Stato dell'Arte} (Sezioni 2--3), a cui si rimanda per l'analisi comparativa delle alternative scartate. Le versioni riportate corrispondono ai valori definiti nei file di lock del progetto (\texttt{package-lock.json}, \texttt{requirements.txt}) alla data di redazione di questo documento.
 
-\subsection{Linguaggi di programmazione}
-Il Frontend è sviluppato in \textbf{TypeScript}, per la tipizzazione statica che riduce gli errori di integrazione con le interfacce dei payload AI. Il Backend è sviluppato in \textbf{Python}, scelto per la maturità del suo ecosistema nell'integrazione con strumenti di intelligenza artificiale e NLP e per la conoscenza pregressa del linguaggio da parte di alcuni membri del gruppo.
+\subsection{Linguaggi, runtime e framework}
+\renewcommand{\arraystretch}{1.3}
+\begin{center}
+\begin{tabularx}{\textwidth}{|l|l|X|}
+	\hline
+	\rowcolor{primarycolor!10}
+	\textbf{Tecnologia} & \textbf{Versione} & \textbf{Descrizione} \\
+	\hline
+	TypeScript & 6.0.x & Linguaggio principale del Frontend; la tipizzazione statica riduce gli errori di integrazione con le interfacce dei payload AI. \\
+	\hline
+	\textbf{\link{https://vuejs.org/guide/essentials/reactivity-fundamentals.html}{Vue.js}} & 3.5.x & Framework a componenti del Frontend, scelto per la progressività e la bassa curva di apprendimento (Sezione 2 di \link{https://github.com/Synergo-Unit-UniPD/Second-Brain/blob/main/docs/RTB/doc_gestionali/doc_interni/analisi_stato_arte/analisi_stato_arte.pdf}{Analisi dello Stato dell'Arte}). \\
+	\hline
+	Python & 3.11 & Linguaggio del Backend, scelto per la maturità del suo ecosistema nell'integrazione con strumenti di intelligenza artificiale e NLP per per la pregressa conoscenza da parte di alcuni membri del gruppo. \\
+	\hline
+	\textbf{\link{https://fastapi.tiangolo.com/tutorial/dependencies/}{FastAPI}} & 0.136.3 & Framework Backend per API REST asincrone; espone i router \texttt{AIRouter} ed \texttt{ExportRouter} (Sezione~\ref{sec:interfaccia-api}). \\
+	\hline
+\end{tabularx}
+\end{center}
 
-\subsection{Framework}
-\begin{itemize}
-	\item \textbf{\link{https://vuejs.org/guide/essentials/reactivity-fundamentals.html}{Vue.js}} (Frontend): framework a componenti scelto per la progressività (si parte da codice semplice, aggiungendo complessità solo dove necessario), la separazione netta tra struttura HTML e styling CSS e la bassa curva di apprendimento, coerente con l'esigenza di un'interfaccia semplice e intuitiva anche per utenti non tecnici.
-	\item \textbf{\link{https://fastapi.tiangolo.com/tutorial/dependencies/}{FastAPI}} (Backend): framework per API REST asincrono, scelto per le prestazioni elevate e il supporto nativo alle chiamate asincrone, fondamentale per non bloccare il servizio durante l'attesa delle risposte dell'LLM. Fornisce inoltre validazione dei dati integrata, generazione automatica della documentazione (Swagger/OpenAPI) e gestione di middleware per logging, sicurezza e rate limiting.
-\end{itemize}
+\subsection{Librerie Frontend}
+\renewcommand{\arraystretch}{1.3}
+\begin{center}
+\begin{tabularx}{\textwidth}{|l|l|X|}
+	\hline
+	\rowcolor{primarycolor!10}
+	\textbf{Libreria} & \textbf{Versione} & \textbf{Descrizione} \\
+	\hline
+	Pinia & 3.0.4 & Libreria di gestione dello stato globale dell'applicazione Vue.js. \\
+	\hline
+	vue-router & 5.1.0 & Libreria di routing lato client tra le viste dell'applicazione. \\
+	\hline
+	\textbf{\link{https://codemirror.net/docs/guide/}{CodeMirror}} & 6.0.2 & Componente editor di testo integrato nel Frontend (Sezione 2 di \link{https://github.com/Synergo-Unit-UniPD/Second-Brain/blob/main/docs/RTB/doc_gestionali/doc_interni/analisi_stato_arte/analisi_stato_arte.pdf}{Analisi dello Stato dell'Arte}). \\
+	\hline
+	vue-codemirror6 & 1.5.2 & Binding Vue.js per l'integrazione di CodeMirror come componente reattivo. \\
+	\hline
+	marked & 18.0.4 & Conversione del contenuto Markdown della nota in HTML per l'anteprima. \\
+	\hline
+	DOMPurify & 3.4.8 & Sanitizzazione dell'HTML generato da \texttt{marked} prima del rendering, a protezione da XSS. \\
+	\hline
+\end{tabularx}
+\end{center}
 
-\subsection{Librerie}
-\begin{itemize}
-	\item \textbf{\link{https://codemirror.net/docs/guide/}{CodeMirror}}: componente editor di testo integrato nel Frontend, scelto per il bilanciamento tra leggerezza ed estensibilità. Fornisce un ecosistema di estensioni pronte per Markdown, syntax highlighting e keybinding, oltre alla possibilità di integrare comandi personalizzati per l'interazione diretta con l'LLM dalla finestra di scrittura.
-	\item Librerie di validazione dati e generazione di schemi (integrate in FastAPI tramite Pydantic) per la definizione tipizzata dei payload delle operazioni AI (Sezione~\ref{sec:interfaccia-api}).
-\end{itemize}
+\subsection{Librerie Backend}
+\renewcommand{\arraystretch}{1.3}
+\begin{center}
+\begin{tabularx}{\textwidth}{|l|l|X|}
+	\hline
+	\rowcolor{primarycolor!10}
+	\textbf{Libreria} & \textbf{Versione} & \textbf{Descrizione} \\
+	\hline
+	Pydantic & 2.13.4 & Validazione dei dati e definizione tipizzata dei DTO delle operazioni AI (\texttt{AIOperationRequest}, \texttt{AIOperationResponse}, \texttt{ExportRequest}; Sezione~\ref{sec:interfaccia-api}), integrata nativamente in FastAPI. \\
+	\hline
+	openai & 2.41.0 & Client ufficiale per l'API compatibile con lo standard OpenAI (R2-V-O, R3-V-O); configurato con \texttt{base\_url} verso l'endpoint fornito dall'azienda proponente. \\
+	\hline
+	httpx & 0.28.1 & Libreria HTTP asincrona, dipendenza di \texttt{openai} per le chiamate al servizio LLM esterno. \\
+	\hline
+	Uvicorn & 0.49.0 & Server ASGI su cui viene eseguito il Backend FastAPI. \\
+	\hline
+	python-dotenv & 1.2.2 & Caricamento delle variabili d'ambiente (\texttt{ZUCCHETTI\_LLM\_BASE\_URL}, \texttt{ZUCCHETTI\_LLM\_API\_KEY}) da file \texttt{.env}, per non includere credenziali nel codice sorgente. \\
+	\hline
+\end{tabularx}
+\end{center}
 
 \subsection{Persistenza dei dati}
 \label{sec:persistenza}
-Il gruppo ha scelto di non implementare alcun sistema di persistenza server-side in questa fase: la gestione dei dati si basa esclusivamente sul file system locale del browser (salvataggio, apertura ed esportazione della nota, R75--R77), che copre i requisiti obbligatori del capitolato. La persistenza remota delle note e la gestione di utenti autenticati sono funzionalità opzionali (R4-V-Op, R78--R86) che il gruppo ha deciso di non realizzare, per concentrare le risorse disponibili sul consolidamento dei requisiti obbligatori; non è pertanto presente alcun database nello stack tecnologico né nell'architettura di deployment (Sezione~\ref{sec:arch-deployment}). Lo stato di questi requisiti opzionali è riportato in dettaglio in Sezione~\ref{sec:tracciamento}.
+Il gruppo ha scelto di non implementare alcun sistema di persistenza server-side in questa fase: 
+la gestione dei dati si basa esclusivamente sul file system locale del browser (salvataggio, apertura ed 
+esportazione della nota, R75--R77), che copre i requisiti obbligatori del capitolato. 
 
-\subsection{Strumenti di sviluppo}
-\begin{itemize}
-	\item \textbf{\link{https://docs.docker.com/compose/}{Docker Compose}} per la containerizzazione e l'esecuzione coordinata di Frontend e Backend, scelto rispetto a un'installazione manuale (poco riproducibile) o a una macchina virtuale (overhead eccessivo per le esigenze del progetto); riduce le differenze tra ambienti locali e semplifica l'avvio del sistema con un unico comando.
-	\item \textbf{Git} come strumento di versionamento del codice, con tracciamento delle attività tramite issue (requisito R5-Q-O).
-	\item \textbf{StarUML} per la modellazione UML e la produzione dei diagrammi architetturali.
-\end{itemize}
+La persistenza remota delle note e la gestione di utenti autenticati sono funzionalità opzionali (R4-V-Op, R78--R86) che il gruppo ha deciso di non realizzare, per concentrare le risorse disponibili sul consolidamento dei requisiti obbligatori; non è pertanto presente alcun database nello stack tecnologico né nell'architettura di deployment (Sezione~\ref{sec:arch-deployment}). Lo stato di questi requisiti opzionali è riportato in dettaglio in Sezione~\ref{sec:tracciamento}.
 
-\subsection{Motivazioni delle scelte tecnologiche}
-Le alternative scartate e i relativi motivi sono riportati integralmente in \link{link_analisi_stato_arte}{Analisi dello Stato dell'Arte}, Sezioni 2--3; si riepilogano qui i punti salienti:
-\begin{itemize}
-	\item \textbf{Angular} e \textbf{React} sono stati scartati a favore di Vue.js rispettivamente per l'eccessivo peso/complessità rispetto agli obiettivi del sistema e per il rischio di debito tecnico iniziale dato dall'assenza di standard architetturali consolidati nel team. La contropartita di questa scelta è che Vue.js, a differenza di Angular, non fornisce nativamente un sistema di Dependency Injection né impone pattern architetturali: la struttura MVC/Observer descritta in Sezione~\ref{sec:arch-frontend} è stata quindi progettata e implementata interamente dal gruppo, senza supporto diretto dal framework;
-	\item \textbf{Monaco Editor} è stato scartato a favore di CodeMirror per l'elevato consumo di risorse e la configurazione più complessa;
-	\item \textbf{Django} e \textbf{Flask} sono stati scartati a favore di FastAPI: Django per la natura sincrona e il peso eccessivo rispetto a un sistema che deve restare semplice, Flask per la mancanza nativa di validazione dei dati e supporto asincrono.
-\end{itemize}
-Un vincolo trasversale a tutte le scelte tecnologiche è l'interazione con i modelli LLM (Gemma, ChatGPT-OSS, Qwen) tramite API aderenti allo \link{https://platform.openai.com/docs/api-reference/chat/create}{standard OpenAI} (R2-V-O, R3-V-O): questo vincolo, unito alla necessità di poter sostituire il provider LLM senza impatti sul resto del sistema, ha guidato l'adozione del pattern Adapter descritto in Sezione~\ref{sec:design-pattern}.
+\subsection{Testing}
+\renewcommand{\arraystretch}{1.3}
+\begin{center}
+\begin{tabularx}{\textwidth}{|l|X|}
+	\hline
+	\rowcolor{primarycolor!10}
+	\textbf{Framework} & \textbf{Descrizione} \\
+	\hline
+	Vitest & Framework di test per il Frontend TypeScript/Vue.js. \\
+	\hline
+	pytest & Framework di test per il Backend Python. \\
+	\hline
+\end{tabularx}
+\end{center}
+
+\subsection{Infrastruttura e strumenti di sviluppo}
+\renewcommand{\arraystretch}{1.3}
+\begin{center}
+\begin{tabularx}{\textwidth}{|l|X|}
+	\hline
+	\rowcolor{primarycolor!10}
+	\textbf{Strumento} & \textbf{Descrizione} \\
+	\hline
+	\textbf{\link{https://docs.docker.com/compose/}{Docker Compose}} & Orchestrazione dei container \texttt{frontend} e \texttt{backend} (Sezione~\ref{sec:arch-deployment}). Il server di sviluppo Vite del container \texttt{frontend} inoltra le richieste verso \texttt{/api} al container \texttt{backend} (\texttt{http://backend:8000}); non è presente un reverse proxy dedicato (es. Nginx) in questa fase. \\
+	\hline
+	Git e GitHub & Versionamento del codice e gestione collaborativa del repository, con tracciamento delle attività tramite issue (requisito R5-Q-O). \\
+	\hline
+	GitHub Actions & Automazione di build, esecuzione dei test e controlli di qualità a ogni push/pull request (requisiti R1-Q-O, R6-Q-O). \\
+	\hline
+	StarUML & Modellazione UML e produzione dei diagrammi architetturali. \\
+	\hline
+\end{tabularx}
+\end{center}
