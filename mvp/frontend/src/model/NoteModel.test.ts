@@ -50,7 +50,7 @@ describe('NoteModel', () => {
         expect(observer.update).toHaveBeenCalledTimes(1);
     });
 
-    it('dovrebbe salvare la nota reimpostando isDirty a false', async () => {
+    it('dovrebbe salvare la nota controllando noteId e reimpostando isDirty a false (Step 8-20)', async () => {
         const editor = new MockEditor();
         const history = new CommandHistory();
         const service = new MockNoteService();
@@ -62,6 +62,8 @@ describe('NoteModel', () => {
         await model.save();
         
         expect(service.save).toHaveBeenCalledTimes(1);
+        // Verifica che se noteId è null, venga passata una nota con ID vuoto (NoteVuota)
+        expect(service.save).toHaveBeenCalledWith(expect.objectContaining({ id: "" }));
         expect(model.getIsDirty()).toBe(false);
     });
 
