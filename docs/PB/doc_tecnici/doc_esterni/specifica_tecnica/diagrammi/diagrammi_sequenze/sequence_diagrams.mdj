@@ -85,7 +85,7 @@
 											],
 											"font": "Arial;13;0",
 											"parentStyle": false,
-											"width": 1144,
+											"width": 1024,
 											"height": 632,
 											"nameLabel": {
 												"$ref": "AAAAAAGfx45VHVDYijY="
@@ -2452,37 +2452,6 @@
 											"activation": {
 												"$ref": "AAAAAAGfx/FMkluD8UY="
 											}
-										},
-										{
-											"_type": "UMLNoteView",
-											"_id": "AAAAAAGfx/ICT1uUg1g=",
-											"_parent": {
-												"$ref": "AAAAAAGfx45VHVDWqJE="
-											},
-											"font": "Arial;13;0",
-											"parentStyle": false,
-											"left": 976,
-											"top": 584,
-											"width": 144,
-											"height": 38,
-											"text": "\tcontinua in Sequenza 1b"
-										},
-										{
-											"_type": "UMLNoteLinkView",
-											"_id": "AAAAAAGfx/JC11ub3y4=",
-											"_parent": {
-												"$ref": "AAAAAAGfx45VHVDWqJE="
-											},
-											"font": "Arial;13;0",
-											"parentStyle": false,
-											"head": {
-												"$ref": "AAAAAAGfx/ICT1uUg1g="
-											},
-											"tail": {
-												"$ref": "AAAAAAGfx5FpzFFtLhA="
-											},
-											"lineStyle": 1,
-											"points": "1012:495;1041:583"
 										}
 									]
 								}
@@ -2845,58 +2814,6 @@
 									},
 									"name": "Richiesta AI (tratto REST→LLM)",
 									"ownedViews": [
-										{
-											"_type": "UMLFrameView",
-											"_id": "AAAAAAGfx56iOVMXRdg=",
-											"_parent": {
-												"$ref": "AAAAAAGfx56iOVMWUF8="
-											},
-											"model": {
-												"$ref": "AAAAAAGfx56iOVMWUF8="
-											},
-											"subViews": [
-												{
-													"_type": "LabelView",
-													"_id": "AAAAAAGfx56iOVMYYI0=",
-													"_parent": {
-														"$ref": "AAAAAAGfx56iOVMXRdg="
-													},
-													"font": "Arial;13;0",
-													"parentStyle": true,
-													"left": 32.72998046875,
-													"top": 13,
-													"width": 187.8271484375,
-													"height": 13,
-													"text": "Richiesta AI (tratto REST→LLM)"
-												},
-												{
-													"_type": "LabelView",
-													"_id": "AAAAAAGfx56iOVMZUlY=",
-													"_parent": {
-														"$ref": "AAAAAAGfx56iOVMXRdg="
-													},
-													"font": "Arial;13;1",
-													"parentStyle": true,
-													"left": 13,
-													"top": 13,
-													"width": 13.72998046875,
-													"height": 13,
-													"text": "sd"
-												}
-											],
-											"font": "Arial;13;0",
-											"parentStyle": false,
-											"left": 8,
-											"top": 8,
-											"width": 1824,
-											"height": 816,
-											"nameLabel": {
-												"$ref": "AAAAAAGfx56iOVMYYI0="
-											},
-											"frameTypeLabel": {
-												"$ref": "AAAAAAGfx56iOVMZUlY="
-											}
-										},
 										{
 											"_type": "UMLSeqLifelineView",
 											"_id": "AAAAAAGfx59ED1Mm2tc=",
@@ -7930,9 +7847,9 @@
 													},
 													"font": "Arial;13;0",
 													"parentStyle": true,
-													"left": 32.72998046875,
+													"left": 30.55908203125,
 													"top": 13,
-													"width": 224.7197265625,
+													"width": 206.49560546875,
 													"height": 13,
 													"text": "Ricezione proposta AI (tratto Frontend)"
 												},
@@ -7946,7 +7863,7 @@
 													"parentStyle": true,
 													"left": 13,
 													"top": 13,
-													"width": 13.72998046875,
+													"width": 11.55908203125,
 													"height": 13,
 													"text": "sd"
 												}
@@ -9437,7 +9354,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGf5a1TOn7hJl8="
 							},
-							"name": "Role1"
+							"name": "Role1",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -9445,7 +9363,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGf5a1TOn7hJl8="
 							},
-							"name": "Role2"
+							"name": "Role2",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -9453,7 +9372,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGf5a1TOn7hJl8="
 							},
-							"name": "Role3"
+							"name": "Role3",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -9461,7 +9381,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGf5a1TOn7hJl8="
 							},
-							"name": "Role4"
+							"name": "Role4",
+							"type": ""
 						}
 					]
 				}
@@ -9517,9 +9438,9 @@
 													},
 													"font": "Arial;13;0",
 													"parentStyle": true,
-													"left": 32.72998046875,
+													"left": 30.55908203125,
 													"top": 13,
-													"width": 142.3525390625,
+													"width": 129.24462890625,
 													"height": 13,
 													"text": "Formattazione con Undo"
 												},
@@ -9533,7 +9454,7 @@
 													"parentStyle": true,
 													"left": 13,
 													"top": 13,
-													"width": 13.72998046875,
+													"width": 11.55908203125,
 													"height": 13,
 													"text": "sd"
 												}
@@ -14733,7 +14654,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGfx7c0ZVcmXoM="
 							},
-							"name": "Role6"
+							"name": "Role6",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -14788,9 +14710,9 @@
 													},
 													"font": "Arial;13;0",
 													"parentStyle": true,
-													"left": 32.72998046875,
+													"left": 30.55908203125,
 													"top": 13,
-													"width": 218.22607421875,
+													"width": 199.99560546875,
 													"height": 13,
 													"text": "Redo (pt. redo in formattazione Undo)"
 												},
@@ -14804,7 +14726,7 @@
 													"parentStyle": true,
 													"left": 13,
 													"top": 13,
-													"width": 13.72998046875,
+													"width": 11.55908203125,
 													"height": 13,
 													"text": "sd"
 												}
@@ -17710,9 +17632,9 @@
 													},
 													"font": "Arial;13;0",
 													"parentStyle": true,
-													"left": 32.72998046875,
+													"left": 30.55908203125,
 													"top": 13,
-													"width": 179.17529296875,
+													"width": 166.2578125,
 													"height": 13,
 													"text": "Export PDF (Template Method)"
 												},
@@ -17726,7 +17648,7 @@
 													"parentStyle": true,
 													"left": 13,
 													"top": 13,
-													"width": 13.72998046875,
+													"width": 11.55908203125,
 													"height": 13,
 													"text": "sd"
 												}
@@ -19026,9 +18948,9 @@
 													},
 													"font": "Arial;13;0",
 													"parentStyle": true,
-													"left": 24.72998046875,
+													"left": 22.55908203125,
 													"top": 5,
-													"width": 134.4306640625,
+													"width": 121.291015625,
 													"height": 13,
 													"text": "Salvataggio nota locale"
 												},
@@ -19042,7 +18964,7 @@
 													"parentStyle": true,
 													"left": 5,
 													"top": 5,
-													"width": 13.72998046875,
+													"width": 11.55908203125,
 													"height": 13,
 													"text": "sd"
 												}
@@ -20739,9 +20661,9 @@
 													},
 													"font": "Arial;13;0",
 													"parentStyle": true,
-													"left": 392.72998046875,
+													"left": 391.99365234375,
 													"top": 309,
-													"width": 38.3017578125,
+													"width": 36.09912109375,
 													"height": 13,
 													"text": "noteID"
 												},
@@ -20755,7 +20677,7 @@
 													"parentStyle": true,
 													"left": 373,
 													"top": 309,
-													"width": 13.72998046875,
+													"width": 12.99365234375,
 													"height": 13,
 													"text": "alt"
 												},
@@ -20789,7 +20711,7 @@
 																	"parentStyle": true,
 																	"left": 388,
 																	"top": 342,
-																	"width": 69.37353515625,
+																	"width": 68.23095703125,
 																	"height": 13,
 																	"text": "[noteID null]"
 																}
@@ -20824,7 +20746,7 @@
 																	"parentStyle": true,
 																	"left": 388,
 																	"top": 463,
-																	"width": 97.56982421875,
+																	"width": 88.42919921875,
 																	"height": 13,
 																	"text": "[noteId presente]"
 																}
@@ -22843,7 +22765,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGfyC/XB2JJNx0="
 							},
-							"name": "Role6"
+							"name": "Role6",
+							"type": ""
 						}
 					]
 				}
@@ -22899,9 +22822,9 @@
 													},
 													"font": "Arial;13;0",
 													"parentStyle": true,
-													"left": 32.72998046875,
+													"left": 30.55908203125,
 													"top": 13,
-													"width": 296.96875,
+													"width": 276.1865234375,
 													"height": 13,
 													"text": "Elenco operazioni disponibili (OCP/self-registration)"
 												},
@@ -22915,7 +22838,7 @@
 													"parentStyle": true,
 													"left": 13,
 													"top": 13,
-													"width": 13.72998046875,
+													"width": 11.55908203125,
 													"height": 13,
 													"text": "sd"
 												}
@@ -25023,9 +24946,9 @@
 													},
 													"font": "Arial;13;0",
 													"parentStyle": true,
-													"left": 72.72998046875,
+													"left": 70.55908203125,
 													"top": 13,
-													"width": 217.47705078125,
+													"width": 200.001953125,
 													"height": 13,
 													"text": "Accetta proposta AI (riuso Command)"
 												},
@@ -25039,7 +24962,7 @@
 													"parentStyle": true,
 													"left": 53,
 													"top": 13,
-													"width": 13.72998046875,
+													"width": 11.55908203125,
 													"height": 13,
 													"text": "sd"
 												}
@@ -29559,9 +29482,9 @@
 													},
 													"font": "Arial;13;0",
 													"parentStyle": true,
-													"left": 32.72998046875,
+													"left": 30.55908203125,
 													"top": 13,
-													"width": 130.7998046875,
+													"width": 117.6728515625,
 													"height": 13,
 													"text": "Salvataggio con errore"
 												},
@@ -29575,7 +29498,7 @@
 													"parentStyle": true,
 													"left": 13,
 													"top": 13,
-													"width": 13.72998046875,
+													"width": 11.55908203125,
 													"height": 13,
 													"text": "sd"
 												}
@@ -32473,9 +32396,9 @@
 													},
 													"font": "Arial;13;0",
 													"parentStyle": true,
-													"left": 32.72998046875,
+													"left": 30.55908203125,
 													"top": 13,
-													"width": 203.06787109375,
+													"width": 185.173828125,
 													"height": 13,
 													"text": "Inserimento tabella con validazione"
 												},
@@ -32489,7 +32412,7 @@
 													"parentStyle": true,
 													"left": 13,
 													"top": 13,
-													"width": 13.72998046875,
+													"width": 11.55908203125,
 													"height": 13,
 													"text": "sd"
 												}
@@ -34307,9 +34230,9 @@
 													},
 													"font": "Arial;13;0",
 													"parentStyle": true,
-													"left": 103.9599609375,
+													"left": 100.3291015625,
 													"top": 397,
-													"width": 121.39892578125,
+													"width": 111.9345703125,
 													"height": 13,
 													"text": "rowCount e colCount"
 												},
@@ -34323,7 +34246,7 @@
 													"parentStyle": true,
 													"left": 77,
 													"top": 397,
-													"width": 20.9599609375,
+													"width": 17.3291015625,
 													"height": 13,
 													"text": "seq"
 												},
@@ -34357,7 +34280,7 @@
 																	"parentStyle": true,
 																	"left": 92,
 																	"top": 430,
-																	"width": 176.31884765625,
+																	"width": 167.5400390625,
 																	"height": 13,
 																	"text": "[rowCount/colCount non validi]"
 																}
@@ -34392,7 +34315,7 @@
 																	"parentStyle": true,
 																	"left": 92,
 																	"top": 535,
-																	"width": 151.01708984375,
+																	"width": 144.7900390625,
 																	"height": 13,
 																	"text": "[rowCount/colCount validi]"
 																}
@@ -36239,9 +36162,9 @@
 													},
 													"font": "Arial;13;0",
 													"parentStyle": true,
-													"left": 32.72998046875,
+													"left": 30.55908203125,
 													"top": 13,
-													"width": 119.22802734375,
+													"width": 110.82373046875,
 													"height": 13,
 													"text": "Import/Apertura nota"
 												},
@@ -36255,7 +36178,7 @@
 													"parentStyle": true,
 													"left": 13,
 													"top": 13,
-													"width": 13.72998046875,
+													"width": 11.55908203125,
 													"height": 13,
 													"text": "sd"
 												}
