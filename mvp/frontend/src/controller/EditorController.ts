@@ -12,6 +12,7 @@ import { LinkCommand } from '../model/LinkCommand';
 import { TextRange } from '../model/TextRange';
 import { MarkdownContentEditor } from '../model/MarkdownContentEditor';
 import { InvalidTableDimensionError } from '../model/InvalidTableDimensionError';
+import { NoteIOError } from '../model/NoteIOError';
 
 /**
  * Controller principale dell'editor. Gestisce gli input provenienti dall'EditorView,
@@ -29,7 +30,10 @@ export class EditorController implements Observer {
     }
 
     public update(): void {
-        if (this.view.consumeSaveRequest()) this.onSaveCommand();
+        if (this.view.consumeSaveRequest()) {
+            this.onSaveCommand();
+        }
+        
         if (this.view.consumeOpenRequest()) this.onOpenCommand();
         
         if (this.view.consumeUndoRequest()) {
@@ -45,10 +49,9 @@ export class EditorController implements Observer {
             this.onFormatCommand(formatReq);
         }
 
-        // Step 5 e 6: getLastTableRequest
         const tableReq = this.view.getLastTableRequest();
         if (tableReq) {
-            this.onTableCommand(tableReq); // Step 7
+            this.onTableCommand(tableReq);
         }
 
         const listReq = this.view.getLastListRequest();
@@ -76,19 +79,15 @@ export class EditorController implements Observer {
     }
 
     public onTableCommand(request: TableActionRequest): void {
-        // Step 8: new TableCommand
         const command = new TableCommand(this.model, request, this.getEditorReceiver());
         
         try {
-            // Step 9: executeCommand su NoteModel
             this.model.executeCommand(command);
         } catch (error: any) {
-            // Step 14: cattura InvalidTableDimensionError dal comando
             if (error instanceof InvalidTableDimensionError) {
-                // Step 15: displayError
                 this.view.displayError(error.message);
             } else {
-                throw error; // Se è un altro errore, lo lascia passare
+                throw error;
             }
         }
     }
@@ -113,8 +112,20 @@ export class EditorController implements Observer {
         this.model.redo();
     }
 
-    private onSaveCommand(): void {
-        this.model.save();
+    private async onSaveCommand(): Promise<void> {
+        try {
+            // Step 8: save
+            await this.model.save();
+        } catch (error: any) {
+            // Step 13: NoteIOError intercettato
+            if (error instanceof NoteIOError) {
+                // Step 14: displayError(message)
+                this.view.displayError(error.message);
+            } else {
+                // Fail-safe per altri tipi di errore non previsti a UML
+                this.view.displayError("Errore imprevisto durante il salvataggio");
+            }
+        }
     }
 
     private onOpenCommand(): void {

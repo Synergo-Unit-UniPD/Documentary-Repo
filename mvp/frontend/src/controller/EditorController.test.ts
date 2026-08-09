@@ -9,6 +9,7 @@ import { FormatType } from '../model/FormatType';
 import { Note } from '../model/Note';
 import { FormatTextCommand } from '../model/FormatTextCommand';
 import { TableCommand } from '../model/TableCommand';
+import { NoteIOError } from '../model/NoteIOError';
 
 const mockNoteService: NoteService = {
     save: vi.fn().mockResolvedValue(undefined),
@@ -77,10 +78,8 @@ describe('EditorController - Inserimento tabella con validazione', () => {
 
         const displayErrorSpy = vi.spyOn(view, 'displayError');
         
-        // SIMULAZIONE: Step 1-3 con dimensioni non valide (es. riga negativa)
         view.simulateTableAction(-1, 0);
 
-        // VERIFICA: L'errore deve essere intercettato e inviato alla view
         expect(displayErrorSpy).toHaveBeenCalledTimes(1);
         expect(displayErrorSpy).toHaveBeenCalledWith('Dimensioni tabella non valide');
     });
@@ -97,13 +96,36 @@ describe('EditorController - Inserimento tabella con validazione', () => {
         const markDirtySpy = vi.spyOn(model, 'markDirtyAndNotify');
         const updateSpy = vi.spyOn(view, 'update');
 
-        // SIMULAZIONE: Step 1-3 con dimensioni valide
         view.simulateTableAction(3, 3);
 
-        // VERIFICA: Il flusso esegue il comando e notifica il successo
         expect(executeCommandSpy).toHaveBeenCalledWith(expect.any(TableCommand));
-        expect(applyTableSpy).toHaveBeenCalledTimes(1); // Step 12 & 16
-        expect(markDirtySpy).toHaveBeenCalledTimes(1); // Step 17
-        expect(updateSpy).toHaveBeenCalled(); // Step 19
+        expect(applyTableSpy).toHaveBeenCalledTimes(1);
+        expect(markDirtySpy).toHaveBeenCalledTimes(1);
+        expect(updateSpy).toHaveBeenCalled();
+    });
+});
+
+describe('EditorController - Salvataggio con errore', () => {
+    it('dovrebbe intercettare NoteIOError e mostrare l\'errore nella View (Step 1-15)', async () => {
+        const markdownEditor = new MarkdownContentEditor();
+        const history = new CommandHistory();
+        const model = new NoteModel(markdownEditor, history, mockNoteService);
+        const view = new EditorView(model, {} as any);
+        const controller = new EditorController(model, view);
+
+        // Simuliamo la propagazione di un errore di I/O dal Model (Step 8-12)
+        const saveSpy = vi.spyOn(model, 'save').mockRejectedValue(new NoteIOError('Scrittura fallita: utente ha annullato'));
+        const displayErrorSpy = vi.spyOn(view, 'displayError');
+
+        // SIMULAZIONE: click "Save"
+        view.simulateAction('save');
+
+        // Attendiamo che la Promise asincrona nel controller venga gestita
+        await Promise.resolve();
+
+        // VERIFICA: L'errore deve essere mostrato (Step 14)
+        expect(saveSpy).toHaveBeenCalledTimes(1);
+        expect(displayErrorSpy).toHaveBeenCalledTimes(1);
+        expect(displayErrorSpy).toHaveBeenCalledWith('Scrittura fallita: utente ha annullato');
     });
 });
