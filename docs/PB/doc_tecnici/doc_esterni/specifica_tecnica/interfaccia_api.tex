@@ -30,7 +30,7 @@ La comunicazione relativa alle operazioni di Intelligenza Artificiale (riassunto
 \end{tabular}
 \end{center}
 
-Questa struttura unificata consente di aggiungere nuove operazioni AI (rispettando l'Open/Closed Principle, Sezione~\ref{sec:design-pattern}) senza introdurre nuovi endpoint o nuovi contratti di comunicazione: è sufficiente registrare una nuova strategia lato Backend.
+Questa struttura unificata consente di aggiungere nuove operazioni AI (rispettando l'Open Closed Principle, Sezione~\ref{sec:design-pattern}) senza introdurre nuovi endpoint o nuovi contratti di comunicazione in quanto è sufficiente registrare una nuova strategia lato Backend.
 
 \subsection{Gestione degli Errori e Fallback}
 \label{sec:gestione-errori}
@@ -40,7 +40,7 @@ Le anomalie sono modellate come una gerarchia di eccezioni di dominio (\texttt{A
 	\item \texttt{LLMTimeoutError}: la richiesta al modello LLM eccede il timeout configurato;
 	\item \texttt{UnknownOperationError}: il tipo di operazione richiesto non è registrato in \texttt{AIOperationFactory}.
 \end{itemize}
-Un gestore di eccezioni centralizzato (\texttt{ErrorHandlers}) intercetta queste eccezioni all'interno dei router e le traduce in risposte HTTP normalizzate (codice di stato e messaggio), che il Frontend interpreta per notificare l'utente in caso di errore durante una qualsiasi delle operazioni AI (R49-F-O, R51-F-O, R54-F-O, R56-F-O, R58-F-O, R60-F-O, R62-F-O, R64-F-O, R66-F-O, R68-F-O), mantenendo il documento invariato e permettendo il rifiuto o la rigenerazione della proposta (R70-F-O, R71-F-O).
+Un gestore di eccezioni centralizzato (\texttt{ErrorHandlers}) intercetta queste eccezioni all'interno dei router e le traduce in risposte HTTP normalizzate (codice di stato e messaggio), che il Frontend interpreta per notificare l'utente in caso di errore durante una qualsiasi delle operazioni AI (R49-F-O, R51-F-O, R54-F-O, R56-F-O, R58-F-O, R60-F-O, R62-F-O, R64-F-O, R66-F-O, R68-F-O), mantenendo il documento invariato e permettendo il rifiuto o la rigenerazione della proposta (R70-F-O, R71-F-O). 
 
 Coerentemente con il vincolo R6-V-O, ogni richiesta di elaborazione AI è indirizzata a un singolo modello LLM per l'intera durata della richiesta: il Backend non concatena chiamate a modelli differenti all'interno della stessa operazione.
 

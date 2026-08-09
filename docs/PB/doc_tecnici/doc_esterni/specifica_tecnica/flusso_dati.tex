@@ -2,52 +2,133 @@
 % 6. FLUSSO DEI DATI (DATA FLOW)
 % =======================================================
 \section{Flusso dei Dati (Data Flow)}
-Questa sezione illustra il ciclo di vita delle informazioni all'interno del sistema, partendo dall'interazione dell'utente fino all'ottenimento del risultato generato dall'Intelligenza Artificiale o alla persistenza della nota.
+Questa sezione illustra il ciclo di vita delle informazioni all'interno del sistema, partendo dall'interazione dell'utente fino all'ottenimento del risultato generato dall'AI o alla persistenza della nota. 
 
-\subsection{Flusso di esecuzione: Elaborazione AI (es. riassunto)}
-Il flusso è illustrato in due diagrammi di sequenza complementari: il tratto Frontend (Figura~\ref{fig:seq-richiesta-ai-frontend}), dalla selezione del testo fino all'invio asincrono della richiesta, e il tratto REST $\rightarrow$ LLM (Figura~\ref{fig:seq-richiesta-ai}), dal router REST fino al servizio LLM esterno, che attraversa in un unico flusso i pattern Strategy, Builder, Factory Method, Decorator e Adapter descritti in Sezione~\ref{sec:design-pattern}.
+Le frecce continue con punta piena rappresentano chiamate sincrone, le frecce tratteggiate le risposte (reply), le frecce continue con punta stilizzata rappresentano chiamate asincrone, infine, quelle contrassegnate \guillemotleft create\guillemotright\ istanziano un nuovo oggetto comando.
+\subsection{Elaborazione di un'operazione AI}
+Il flusso, dalla richiesta dell'utente alla visualizzazione della proposta, attraversa tre diagrammi di sequenza in successione, ciascuno con una responsabilità netta: il primo e il terzo restano nel Frontend (rispettivamente l'avvio della richiesta e la ricezione della risposta), il secondo copre l'intero tratto di rete verso il Backend e l'LLM esterno.
 
-\begin{enumerate}
-	\item \textbf{Interazione Utente (Frontend):} l'utente seleziona una porzione di testo nell'editor Markdown e richiede un'operazione specifica (es. ``Riassumi'').
-	\item \textbf{Creazione Richiesta:} la View notifica il Controller, che invoca il metodo \texttt{requestAIOperation()} di \texttt{AIRequestModel}; il Model invia la richiesta al Backend tramite l'\texttt{AIServiceProxy} (chiamata asincrona), mentre l'interfaccia mostra uno stato di caricamento (R72-F-O).
-	\item \textbf{Validazione e Costruzione Prompt (Backend):} \texttt{AIRouter} riceve la richiesta e la inoltra ad \texttt{AIService}, che risolve la strategia corretta tramite \texttt{AIOperationFactory} e costruisce un \texttt{Prompt} strutturato tramite \texttt{PromptBuilder}.
-	\item \textbf{Chiamata Esterna:} \texttt{AIService} invoca \texttt{LLMService.complete()}; la richiesta attraversa la catena di decorator (cache, logging) fino all'adapter che contatta il servizio LLM esterno tramite l'API compatibile con lo standard OpenAI.
-	\item \textbf{Parsing e Restituzione:} il Backend costruisce una \texttt{Proposal} a partire dal testo ricevuto e la restituisce come \texttt{AIOperationResponse} al Frontend.
-	\item \textbf{Aggiornamento UI:} l'interfaccia mostra la proposta all'utente in un modale dedicato (R74-F-O), permettendone l'accettazione, il rifiuto o la rigenerazione (R69--R71).
-\end{enumerate}
+\paragraph*{1a -- Richiesta operazione AI (tratto Frontend).} L'utente seleziona il testo e richiede un'operazione (es. ``Riassumi''); la View notifica il Controller, che invoca il metodo 
+\\ \texttt{requestAIOperation()} di \texttt{AIRequestModel}. Il Model passa immediatamente allo stato \\ \texttt{Processing} e notifica gli observer, mostrando all'utente uno spinner e l'opzione di interruzione (R72-F-O); la richiesta viene poi inviata in modo asincrono ad \texttt{AIServiceProxy}.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.85\textwidth]{seq_richiesta_ai_frontend.png}
-	\caption{Diagramma di sequenza: richiesta di un'operazione AI, tratto Frontend.}
-	\label{fig:seq-richiesta-ai-frontend}
+	\includegraphics[width=0.9\textwidth]{diagrammi/diagrammi_sequenze/richiesat_op_ai_frontend.png}
+	\caption{Richiesta operazione AI (tratto Frontend).}
+	\label{fig:seq-1a}
 \end{figure}
 
+\paragraph*{1b -- Richiesta AI (tratto REST→LLM).} \texttt{AIRouter} riceve la richiesta e la inoltra ad \texttt{AIService}, che risolve la strategia corretta tramite la Simple Factory e costruisce un \texttt{Prompt} tramite \texttt{PromptBuilder}. La chiamata attraversa poi la catena di decorator (cache, logging) fino all'\texttt{OpenAIAdapter}, che contatta il servizio LLM esterno; la risposta risale la stessa catena fino a \texttt{AIService}, che costruisce la \texttt{Proposal} e la restituisce come \texttt{AIOperationResponse}.
+
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{seq_richiesta_ai.png}
-	\caption{Diagramma di sequenza: richiesta di un'operazione AI, tratto REST $\rightarrow$ LLM.}
-	\label{fig:seq-richiesta-ai}
+	\includegraphics[width=\textwidth]{diagrammi/diagrammi_sequenze/richiesta_ai_backend.png}
+	\caption{Richiesta AI (tratto REST→LLM): attraversa in un unico flusso i pattern Strategy, Builder, Simple Factory, Decorator e Adapter.}
+	\label{fig:seq-1b}
 \end{figure}
 
-\subsection{Flusso di esecuzione: Editing con Undo}
-Il pattern Command consente di trattare in modo uniforme operazioni di editing eterogenee e il relativo annullamento. La Figura~\ref{fig:seq-undo} mostra la formattazione di un testo selezionato e il successivo Undo: la View registra la richiesta dell'utente, si auto-notifica, il Controller la preleva e crea il comando corrispondente, che viene eseguito e archiviato da \texttt{CommandHistory}. L'Undo riesegue in ordine inverso l'ultimo comando in pila, ripristinando il contenuto precedente tramite lo stesso oggetto comando.
+\paragraph*{1c -- Ricezione proposta AI (tratto Frontend).} La risposta HTTP, una volta risolta la Promise di \texttt{AIServiceProxy.requestOperation()}, riporta il controllo al Model: \texttt{AIRequestModel} transita allo stato \texttt{ProposalReadyState(proposal)} e notifica gli observer; \texttt{AIPanelView} interroga lo stato aggiornato e mostra all'utente la proposta con le azioni disponibili (Accetta/Rifiuta/Rigenera).
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.85\textwidth]{seq_formattazione_undo.png}
-	\caption{Diagramma di sequenza: formattazione di un testo e relativo Undo.}
+	\includegraphics[width=\textwidth]{diagrammi/diagrammi_sequenze/ricezione_proposta_frontend.png}
+	\caption{Ricezione proposta AI (tratto Frontend).}
+	\label{fig:seq-1c}
+\end{figure}
+
+\FloatBarrier
+
+\subsection{Accettazione della proposta ed elenco delle operazioni}
+\paragraph*{Accetta proposta AI (riuso Command).} Se l'utente accetta la proposta, \texttt{AIController} recupera il testo da \texttt{AIRequestModel} (stato \texttt{ProposalReadyState}) e crea un \texttt{InsertTextCommand} (lo stesso comando usato per l'inserimento manuale di testo) eseguito tramite \\ \texttt{NoteModel.executeCommand()}. Il Model torna quindi allo stato \texttt{Idle} e il pannello proposta si chiude.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{diagrammi/diagrammi_sequenze/accetta_proposta.png}
+	\caption{Accetta proposta AI (riuso del pattern Command).}
+	\label{fig:seq-accetta}
+\end{figure}
+
+\paragraph*{Elenco operazioni disponibili (Simple Factory self-registration).} L'elenco delle operazioni mostrate nel selettore del Frontend non è hard-coded: \texttt{AIPanelView} lo richiede a runtime, risalendo la catena fino ad \texttt{AIOperationFactory.available\_types()}, che legge il proprio registro di auto-registrazione. Aggiungere una nuova operazione AI non richiede quindi alcuna modifica a questo flusso.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\textwidth]{diagrammi/diagrammi_sequenze/elenco_operazioni.png}
+	\caption{Elenco operazioni disponibili (Simple Factory self-registration).}
+	\label{fig:seq-elenco}
+\end{figure}
+
+\FloatBarrier
+
+\subsection{Editing del testo e Undo/Redo}
+I tre diagrammi seguenti mostrano il riuso dello stesso meccanismo Command/CommandHistory per operazioni di editing diverse (formattazione, tabelle) e per il relativo undo/redo.
+
+\paragraph*{Formattazione con Undo.} La View registra la richiesta dell'utente (es. ``Grassetto''), si auto-notifica, il Controller la preleva e crea il \texttt{FormatTextCommand} corrispondente, eseguito e archiviato da \texttt{CommandHistory}. L'Undo riesegue in ordine inverso l'ultimo comando in pila, ripristinando il contenuto precedente tramite lo stesso oggetto comando.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{diagrammi/diagrammi_sequenze/formattazione_undo.png}
+	\caption{Formattazione di un testo e relativo Undo.}
 	\label{fig:seq-undo}
 \end{figure}
 
-\subsection{Flusso di esecuzione: Salvataggio locale della nota}
-La Figura~\ref{fig:seq-salvataggio} mostra il salvataggio della nota corrente (R75-F-O): il Controller richiama \texttt{NoteModel.save()}, che delega tramite l'interfaccia \texttt{NoteService} al Proxy locale, responsabile dell'accesso al file system del browser. In caso di errore di I/O, l'eccezione risale fino alla View, che notifica l'utente mantenendo la nota invariata (R75-F-O).
+\paragraph*{Redo.} Continuazione dello scenario precedente: il Redo rieseguono l'ultimo comando spostato dalla pila di redo a quella di undo.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.85\textwidth]{seq_salvataggio_nota.png}
-	\caption{Diagramma di sequenza: salvataggio di una nota in locale.}
+	\includegraphics[width=0.85\textwidth]{diagrammi/diagrammi_sequenze/formattazione_redo.png}
+	\caption{Redo (continuazione di ``Formattazione con Undo'').}
+	\label{fig:seq-redo}
+\end{figure}
+
+\paragraph*{Inserimento tabella con validazione.} Il frame \texttt{alt} distingue due rami alternativi: se le dimensioni richieste (righe/colonne) non sono valide, \texttt{MarkdownContentEditor} solleva \\ \texttt{InvalidTableDimensionError}, propagato fino alla View che mostra l'errore senza modificare il documento; se le dimensioni sono valide, la tabella viene inserita e la nota aggiornata normalmente.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{diagrammi/diagrammi_sequenze/inserimento_tabella.png}
+	\caption{Inserimento di una tabella, con validazione delle dimensioni.}
+	\label{fig:seq-tabella}
+\end{figure}
+
+\FloatBarrier
+
+\subsection{Persistenza locale della nota}
+\paragraph*{Salvataggio nota locale.} Il frame \texttt{alt} distingue, in base alla presenza di un identificativo di nota, due casi: se la nota non ha ancora un file associato (\texttt{noteId} nullo), \texttt{NoteServiceProxy} apre il selettore di salvataggio del browser (\texttt{showSaveFilePicker}) prima di scrivere; se la nota è già associata a un file, scrive direttamente (R75-F-O).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{diagrammi/diagrammi_sequenze/salvataggio_nota.png}
+	\caption{Salvataggio di una nota in locale.}
 	\label{fig:seq-salvataggio}
+\end{figure}
+
+\paragraph*{Salvataggio con errore.} In caso di errore di I/O durante la scrittura, l'eccezione \texttt{NoteIOError} risale da \texttt{BrowserFileSystemAPI} fino alla View, che notifica l'utente mantenendo la nota invariata.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\textwidth]{diagrammi/diagrammi_sequenze/salvataggio_con_errore.png}
+	\caption{Salvataggio con errore di I/O.}
+	\label{fig:seq-salvataggio-errore}
+\end{figure}
+
+\paragraph*{Importazione/Apertura nota.} L'apertura di un file esistente (R76-F-O) passa dal selettore del browser (\texttt{showOpenFilePicker}), la lettura del contenuto, la ricostruzione dell'oggetto \texttt{Note} e l'aggiornamento di \texttt{MarkdownContentEditor}; la \texttt{CommandHistory} viene azzerata per non permettere un Undo o Redo che attraversino note diverse.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{diagrammi/diagrammi_sequenze/import_apertura_nota.png}
+	\caption{Importazione/Apertura di una nota esistente.}
+	\label{fig:seq-import}
+\end{figure}
+
+\FloatBarrier
+
+\subsection{Esportazione}
+\paragraph*{Export PDF (Template Method).} \texttt{ExportRouter} delega a \texttt{PdfExporter.export()}, che segue lo scheletro fisso definito da \texttt{Exporter}: prepara il contenuto (\texttt{prepare\_content}) e ne converte solo il formato finale (\texttt{convert\_format}), l'unico passo ridefinito dalla sottoclasse.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{diagrammi/diagrammi_sequenze/esportazione_PDF.png}
+	\caption{Esportazione di una nota in PDF (Template Method).}
+	\label{fig:seq-export}
 \end{figure}
 
 \FloatBarrier

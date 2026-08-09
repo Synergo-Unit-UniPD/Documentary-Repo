@@ -22,20 +22,20 @@ Di seguito sono illustrati i design pattern adottati per risolvere problematiche
 
 \subsection{Pattern Creazionali}
 
-\subsubsection{Factory Method (con auto-registrazione)}
+\subsubsection{Simple Factory}
 \patternTable{
-	\texttt{AIService} deve creare l'istanza dell'operazione AI corretta a partire da una stringa (il tipo di operazione richiesto dal Frontend) senza contenere un'istruzione condizionale per ogni tipo esistente, e nuove operazioni devono potersi aggiungere rispettando l'Open/Closed Principle.
+	\texttt{AIService} deve creare l'istanza dell'operazione AI corretta a partire da una stringa (il tipo di operazione richiesto dal Frontend) senza contenere un'istruzione condizionale per ogni tipo esistente, e nuove operazioni devono potersi aggiungere rispettando l'Open Closed Principle.
 }{
-	\texttt{AIOperationFactory} mantiene un registro interno e offre \texttt{register(op\_class)} per l'auto-registrazione delle classi operazione e \texttt{create(type, params)} per istanziarle; solleva \texttt{UnknownOperationError} se il tipo non è registrato.
+	\texttt{AIOperationFactory} mantiene un registro (\texttt{\_registry}) e offre \texttt{register(op\_class)} per l'auto-registrazione delle classi operazione e \texttt{create(type, params)} per istanziarle; solleva \texttt{UnknownOperationError} se il tipo non è registrato. Non è un Factory Method GoF in senso stretto: infatti, non esiste un Creator astratto con ConcreteCreator per sottoclasse e tale scelta dovuta dal fatto che la forma canonica del Factory Method raddoppierebbe le classi (una fabbrica per ogni operazione) senza eliminare il bisogno di un registro tipo→classe, che la self-registration già fornisce in modo più estendibile.
 }{
-	\texttt{AIService.request\_operation} delega alla factory il compito di istanziare l'operazione corretta a partire dal campo \texttt{type} ricevuto dall'API, per ciascuna delle undici operazioni AI previste (riassunto, traduzione, riscrittura, Distant Writing, sei Cappelli).
+	\texttt{AIService.request\_operation} delega alla factory il compito di istanziare l'operazione corretta a partire dal campo \texttt{type} ricevuto dall'API, per ciascuna delle operazioni AI previste (riassunto, traduzione, riscrittura, Distant Writing, sei Cappelli).
 }
 
 \subsubsection{Builder}
 \patternTable{
 	La costruzione di un \texttt{Prompt} richiede di comporre più parti opzionali (testo, tipo di operazione, cappello selezionato per l'analisi critica, lingua di destinazione per la traduzione) in modo incrementale, evitando costruttori con molti parametri opzionali.
 }{
-	L'interfaccia \texttt{PromptBuilder} espone metodi fluenti (\texttt{with\_text}, \texttt{with\_operation}, \texttt{with\_hat}, \texttt{with\_language}) che restituiscono il builder stesso, e un metodo \texttt{build()} che produce il \texttt{Prompt} finale.
+	L'interfaccia \texttt{PromptBuilder} espone metodi fluenti (\texttt{with\_text}, \texttt{with\_operation}, \texttt{with\_hat}, \texttt{with\_language}) che restituiscono il builder stesso, e un metodo \texttt{build()} che produce il \texttt{Prompt} finale. \texttt{StandardPromptBuilder} è l'unica implementazione concreta, usata sia come Builder che come Context della Strategy (Sezione~5.3.1): ogni \texttt{ConcreteStrategy} (operazione AI) lo invoca direttamente in \texttt{build\_prompt()}. Non è previsto un Director in quanto la sequenza di chiamate al builder varia già correttamente all'interno di ciascun \texttt{build\_prompt()} delle diverse operazioni, e un Director fisso duplicherebbe quella logica invece di semplificarla.
 }{
 	Ogni operazione AI usa il builder per assemblare il prompt in base ai soli parametri rilevanti: l'operazione di riassunto usa \texttt{with\_text}/\texttt{with\_operation}/\texttt{build}, mentre l'analisi secondo i Sei Cappelli aggiunge \texttt{with\_hat}.
 }
@@ -48,16 +48,16 @@ Di seguito sono illustrati i design pattern adottati per risolvere problematiche
 }{
 	\texttt{LLMServiceDecorator} è una classe astratta che realizza \texttt{LLMService} e mantiene un riferimento a un'istanza \texttt{wrapped: LLMService}; i decorator concreti (\texttt{CachingLLMAdapter}, \texttt{LoggingLLMAdapter}) ne arricchiscono il comportamento prima/dopo aver delegato la chiamata.
 }{
-	La catena effettiva è \texttt{CachingLLMAdapter} $\rightarrow$ \texttt{LoggingLLMAdapter} $\rightarrow$ adapter verso il provider LLM, componibile e configurabile all'avvio dell'applicazione senza toccare \texttt{AIService}.
+	La catena effettiva, visibile nel diagramma di sequenza ``Richiesta AI (tratto REST→LLM)'', è \texttt{CachingLLMAdapter} $\rightarrow$ \texttt{LoggingLLMAdapter} $\rightarrow$ \texttt{OpenAIAdapter} (il target concreto), componibile e configurabile all'avvio dell'applicazione senza toccare \texttt{AIService}.
 }
 
 \subsubsection{Adapter}
 \patternTable{
 	\texttt{AIService} deve rimanere indipendente dal provider LLM concreto; l'interfaccia esposta dal provider esterno (API compatibile con lo standard OpenAI) non coincide con l'interfaccia \texttt{LLMService} usata internamente.
 }{
-	Un adapter realizza \texttt{LLMService} e incapsula i dettagli di connessione al provider (\texttt{api\_key}, \texttt{model}, \texttt{base\_url}), traducendo \texttt{complete(prompt)} in una richiesta HTTP verso il servizio LLM e gestendo le eccezioni specifiche (\texttt{LLMUnavailableError}, \texttt{LLMTimeoutError}).
+	\texttt{OpenAIAdapter} realizza \texttt{LLMService} e incapsula i dettagli di connessione al provider (\texttt{api\_key}, \texttt{model}, \texttt{base\_url}), traducendo \texttt{complete(prompt)} in una richiesta HTTP verso il servizio LLM e gestendo le eccezioni specifiche (\texttt{LLMUnavailableError} se il provider fallisce, \texttt{LLMTimeoutError} se va in timeout).
 }{
-	Grazie a \texttt{base\_url} configurabile, l'adapter permette di puntare indifferentemente ai modelli Gemma, ChatGPT-OSS o Qwen messi a disposizione dall'azienda proponente (R2-V-O, R3-V-O), senza modifiche al resto del sistema.
+	Grazie a \texttt{base\_url} configurabile, l'adapter permette di puntare indifferentemente ai modelli Gemma, ChatGPT-OSS o Qwen messi a disposizione dall'azienda proponente, senza modifiche al resto del sistema. È al tempo stesso il concrete component su cui si applica la catena di Decorator descritta sopra.
 }
 
 \subsubsection{Proxy (remoto)}
@@ -66,18 +66,27 @@ Di seguito sono illustrati i design pattern adottati per risolvere problematiche
 }{
 	Le interfacce \texttt{NoteService} e \texttt{AIService} (lato Frontend) definiscono le operazioni disponibili; le rispettive implementazioni Proxy le realizzano incapsulando la comunicazione con, rispettivamente, il file system locale e il Backend REST.
 }{
-	\texttt{NoteModel} dipende solo dall'interfaccia \texttt{NoteService}, \texttt{AIRequestModel} solo dall'interfaccia \texttt{AIService}: nessuna delle due classi di Model conosce se l'implementazione sia locale o remota, facilitando anche il testing tramite implementazioni fittizie.
+	\texttt{NoteModel} dipende solo dall'interfaccia \texttt{NoteService}, \texttt{AIRequestModel} solo dall'interfaccia \texttt{AIService}: nessuna delle due classi di Model conosce se l'implementazione sia locale o remota, facilitando anche il testing tramite implementazioni fittizie. È importante notare che si tratta di un'omonimia intenzionale con la classe concreta \texttt{AIService} del Backend (Sezione~\ref{sec:arch-backend}): le due entità vivono a runtime in linguaggi indipendenti e non condividono alcun codice, collegate solo dal contratto REST esposto da \texttt{AIRouter}.
+}
+
+\subsubsection{Template Method}
+\patternTable{
+	L'esportazione di una nota segue sempre gli stessi passi generali (preparazione del contenuto, conversione nel formato di destinazione) ma il dettaglio della conversione dipende dal formato richiesto (PDF, HTML, JSON).
+}{
+	La classe astratta \texttt{Exporter} definisce il metodo template \texttt{export(content: str): bytes}, che fissa la sequenza \texttt{prepare\_content()} $\rightarrow$ \texttt{convert\_format()}; solo \texttt{convert\_format()} è il passo variabile, ridefinito da ciascuna sottoclasse (\texttt{PdfExporter}, \texttt{HtmlExporter}, \texttt{JsonExporter}). Un fallimento in fase di conversione solleva \texttt{ConversionError} (sottotipo di \texttt{ExportError}).
+}{
+	\texttt{ExportRouter.export\_note(format, request)} risolve tramite \texttt{DIProviders.get\_exporter(format)} l'esportatore concreto e ne invoca \texttt{export()}, senza conoscere il formato specifico: aggiungere un nuovo formato richiede solo una nuova sottoclasse di \texttt{Exporter}.
 }
 
 \subsection{Pattern Comportamentali}
 
 \subsubsection{Strategy}
 \patternTable{
-	Le undici operazioni AI condividono la stessa interfaccia di utilizzo (costruzione di un \texttt{Prompt} a partire da un testo) ma differiscono nell'algoritmo di costruzione del prompt stesso; nuove operazioni devono potersi aggiungere senza modificare \texttt{AIService}.
+	Le operazioni AI condividono la stessa interfaccia di utilizzo (costruzione di un \texttt{Prompt} a partire da un testo) ma differiscono nell'algoritmo di costruzione del prompt stesso; nuove operazioni devono potersi aggiungere senza modificare \texttt{AIService}.
 }{
-	Un'interfaccia comune per le operazioni AI definisce \texttt{build\_prompt(text, params)}; ciascuna operazione concreta (riassunto, traduzione, riscrittura, Distant Writing, le sei varianti dell'analisi critica) la implementa con la propria logica.
+	L'interfaccia \texttt{AIOperation} definisce \texttt{build\_prompt(text, params)}; ciascuna operazione concreta (riassunto, traduzione, riscrittura, Distant Writing, le sei varianti dell'analisi critica) la implementa con la propria logica, usando \texttt{StandardPromptBuilder} come contesto di costruzione.
 }{
-	\texttt{AIService} non conosce le operazioni concrete: riceve un'istanza dalla factory e la invoca in modo polimorfico, come illustrato nel diagramma di sequenza di Figura~\ref{fig:seq-richiesta-ai}.
+	\texttt{AIService} non conosce le operazioni concrete: riceve un'istanza dalla Simple Factory e la invoca in modo polimorfico, come illustrato nel diagramma di sequenza ``Richiesta AI (tratto REST→LLM)''.
 }
 
 \subsubsection{Command}
@@ -86,7 +95,7 @@ Di seguito sono illustrati i design pattern adottati per risolvere problematiche
 }{
 	Un'interfaccia \texttt{EditCommand} definisce \texttt{execute()}/\texttt{undo()}; ogni tipo di modifica la implementa incapsulando lo stato necessario per l'annullamento. Una \texttt{CommandHistory} mantiene due pile (undo/redo).
 }{
-	\texttt{NoteModel.executeCommand(c)} delega a \texttt{CommandHistory}, che esegue e archivia il comando; l'accettazione di una proposta AI riusa lo stesso meccanismo, inserendo il testo generato tramite un comando di inserimento.
+	Il metodo \texttt{executeCommand(c)} di \texttt{NoteModel} delega a \texttt{CommandHistory}, che esegue e archivia il comando; l'accettazione di una proposta AI riusa lo stesso meccanismo, inserendo il testo generato tramite un \texttt{InsertTextCommand} -- lo stesso comando usato per l'inserimento manuale di testo (diagramma di sequenza ``Accetta proposta AI'').
 }
 
 \subsubsection{Observer}
@@ -106,5 +115,3 @@ Di seguito sono illustrati i design pattern adottati per risolvere problematiche
 }{
 	\texttt{AIRouter} ed \texttt{ExportRouter} dipendono da \texttt{DIProviders} per ottenere le proprie collaborazioni a runtime, invece di istanziarle staticamente.
 }
-
-\FloatBarrier
