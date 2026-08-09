@@ -37,24 +37,17 @@ export class AIRequestModel implements Subject {
     }
 
     public getAIState(): AIRequestState {
-        return this.aiState;
+        return this.aiState; // Step 8 & 22
     }
 
     public async requestAIOperation(type: string, text: string, params: object): Promise<void> {
         try {
-            // Step 9: aiState = Processing
             this.aiState = new ProcessingState();
-            
-            // Step 10: notify
             this.notify();
             
-            // Step 15: requestOperation(SUMMARIZE, text) -> Chiamata asincrona via Proxy
             const proposal = await this.aiService.requestOperation(type, text, params);
             
-            // 2: aiState = ProposalReadyState(proposal)
             this.aiState = new ProposalReadyState(proposal);
-            
-            // 3: notify
             this.notify();
         } catch (error: any) {
             this.aiState = new ErrorState(error.message || "Errore durante l'operazione AI");
@@ -68,7 +61,9 @@ export class AIRequestModel implements Subject {
     }
 
     public acceptProposal(): void {
+        // Step 19: aiState = Idle
         this.aiState = new IdleState();
+        // Step 20: notify (-> Step 21 update su AIPanelView, Step 23 IdleState, Step 24 nasconde pannello)
         this.notify();
     }
 
