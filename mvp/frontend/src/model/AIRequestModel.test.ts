@@ -1,7 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import { AIRequestModel } from './AIRequestModel';
 import { Observer } from './Observer';
-import { IdleState } from './IdleState';
 import { ProcessingState } from './ProcessingState';
 import { ProposalReadyState } from './ProposalReadyState';
 import { ErrorState } from './ErrorState';
@@ -24,16 +23,13 @@ describe('AIRequestModel', () => {
         const observer = new MockObserver();
         model.attach(observer);
 
-        // Avvio chiamata asincrona
         const requestPromise = model.requestAIOperation('red_hat', 'testo', {});
         
-        // Verifica transizione in ProcessingState
         expect(model.getAIState()).toBeInstanceOf(ProcessingState);
         expect(observer.update).toHaveBeenCalledTimes(1);
 
         await requestPromise;
 
-        // Verifica transizione in ProposalReadyState
         const finalState = model.getAIState();
         expect(finalState).toBeInstanceOf(ProposalReadyState);
         expect((finalState as ProposalReadyState).proposal).toBe(mockProposal);
@@ -50,5 +46,19 @@ describe('AIRequestModel', () => {
         await model.requestAIOperation('red_hat', 'testo', {});
 
         expect(model.getAIState()).toBeInstanceOf(ErrorState);
+    });
+
+    it('dovrebbe delegare listOperations al proxy AIService', async () => {
+        const mockOperations = ['summary', 'distant_writing'];
+        const mockAIService: AIService = {
+            requestOperation: vi.fn(),
+            listOperations: vi.fn().mockResolvedValue(mockOperations)
+        };
+
+        const model = new AIRequestModel(mockAIService);
+        const result = await model.listOperations();
+
+        expect(mockAIService.listOperations).toHaveBeenCalledTimes(1);
+        expect(result).toEqual(mockOperations);
     });
 });
