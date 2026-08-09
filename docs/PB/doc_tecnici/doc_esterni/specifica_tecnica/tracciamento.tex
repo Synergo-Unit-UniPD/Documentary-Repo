@@ -33,7 +33,7 @@ Al fine di garantire che l'architettura progettata e le tecnologie scelte soddis
 
 	\texttt{MarkdownContent-}\newline\texttt{Editor},\newline \texttt{EditorView}/\newline\texttt{EditorController} & Scrittura libera, copia/taglia/incolla, formattazione (grassetto, corsivo, sottolineato, barrato, citazione, intestazione), link, elenchi e tabelle & R1--R42 \\ \hline
 	\texttt{EditCommand} (famiglia),\newline \texttt{CommandHistory} & Annullamento e ripristino delle modifiche & R43-F-O, R44-F-O \\ \hline
-	\texttt{EditorView}\newline (modalità di visualizzazione) & Visualizzazione esclusiva editor/render o affiancata (Split View) & R45--R47 \\ \hline
+	\texttt{EditorView}\newline (modalità di visualizzazione) & Visualizzazione esclusiva editor/render\textsubscript{G} o affiancata (Split View\textsubscript{G}) & R45--R47 \\ \hline
 	\texttt{AIRouter}, \texttt{AIService},\newline \texttt{AIOperationFactory},\newline operazioni Strategy & Riassunto, traduzione, riscrittura, Distant Writing e analisi Sei Cappelli tramite LLM & R48, R50, R52, R53, R55, R57, R59, R61, R63, R65, R67 \\ \hline
 	\texttt{ErrorHandlers},\newline gerarchia \texttt{AIDomainError} & Notifica degli errori di comunicazione con i servizi AI & R49, R51, R54, R56, R58, R60, R62, R64, R66, R68 \\ \hline
 	\texttt{AIRequestModel},\newline \texttt{AIPanelView},\newline \texttt{AIController} & Accettazione/rifiuto/rigenerazione della proposta, interruzione manuale, stato di avanzamento continuo & R69--R74 \\ \hline
@@ -49,7 +49,7 @@ I requisiti opzionali R4-V-Op e R78--R86 (persistenza remota, gestione utenti) n
 \subsection{Stato di Soddisfacimento dei Requisiti}
 La tabella seguente riassume, per macro-gruppo, lo stato di implementazione dei requisiti funzionali, di qualità, di vincolo e prestazionali rispetto all'architettura descritta in questo documento. I gruppi ricalcano la struttura di \link{link_analisi_requisiti}{Analisi dei Requisiti}, Sezione 4; il numero di requisiti obbligatori (90), desiderabili (2) e opzionali (12) è riepilogato nello stesso documento, Sezione 6 -- Riepilogo.
 
-I requisiti opzionali relativi alla persistenza remota e alla gestione utenti (R4-V-Op, R7-Q-Op, R8-Q-Op, R78--R86) sono stati valutati e volutamente esclusi dallo scope della release corrente: il gruppo ha scelto di concentrare le risorse disponibili sul consolidamento e sulla qualità dei requisiti obbligatori, rimandando un'eventuale implementazione a fasi successive del progetto qualora il tempo residuo lo consenta. Sono pertanto riportati con stato \textit{Non implementato}.
+I requisiti opzionali relativi alla persistenza remota e alla gestione utenti (R4-V-Op, R7-Q-Op, R8-Q-Op, R78--R86) sono stati valutati e volutamente esclusi dallo scope\textsubscript{G} della release corrente: il gruppo ha scelto di concentrare le risorse disponibili sul consolidamento e sulla qualità dei requisiti obbligatori, rimandando un'eventuale implementazione a fasi successive del progetto qualora il tempo residuo lo consenta. Sono pertanto riportati con stato \textit{Non implementato}.
 
 \renewcommand{\arraystretch}{1.3}
 \begin{xltabular}{\textwidth}{|>{\centering\arraybackslash}p{2.6cm}|X|c|c|}

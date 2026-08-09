@@ -4,23 +4,23 @@
 \section{Introduzione}
 
 \subsection{Scopo del documento}
-Il presente documento ha lo scopo di definire l'architettura di base e di dettaglio del sistema \textbf{Second Brain}. Vengono illustrate le scelte tecnologiche effettuate dal gruppo Synergo Unit durante la fase di Product Baseline, i pattern architetturali e di design adottati, la decomposizione in componenti del sistema e il tracciamento bidirezionale tra queste componenti e i requisiti individuati nella fase di Analisi.
+Il presente documento ha lo scopo di definire l'architettura di base e di dettaglio del sistema \textbf{Second Brain\textsubscript{G}}. Vengono illustrate le scelte tecnologiche effettuate dal gruppo Synergo Unit durante la fase di Product Baseline\textsubscript{G}, i pattern architetturali e di design adottati, la decomposizione in componenti del sistema e il tracciamento bidirezionale tra queste componenti e i requisiti individuati nella fase di Analisi.
 
-A differenza della Technology Baseline, in cui l'obiettivo era esclusivamente validare la fattibilità tecnica delle scelte effettuate tramite un Proof of Concept, questo documento consolida un'architettura definitiva, coerente con il PoC ma estesa e rifinita per coprire la totalità dei requisiti obbligatori individuati in \link{https://synergo-unit-unipd.github.io/Second-Brain/docs/PB/doc_tecnici/doc_esterni/analisi_dei_requisiti/analisi_dei_requisiti.pdf}{Analisi dei Requisiti} (Sezione 4 - Requisiti).
+A differenza della Technology Baseline\textsubscript{G}, in cui l'obiettivo era esclusivamente validare la fattibilità tecnica delle scelte effettuate tramite un Proof of Concept\textsubscript{G}, questo documento consolida un'architettura definitiva, coerente con il PoC\textsubscript{G} ma estesa e rifinita per coprire la totalità dei requisiti obbligatori individuati in \link{https://synergo-unit-unipd.github.io/Second-Brain/docs/PB/doc_tecnici/doc_esterni/analisi_dei_requisiti/analisi_dei_requisiti.pdf}{Analisi dei Requisiti}\textsubscript{G} (Sezione 4 - Requisiti).
 
 \subsection{Scopo del prodotto}
-\textit{Second Brain} è un'applicazione web per la redazione di testi in formato Markdown, pensata per superare i limiti dei classici chatbot testuali fornendo un editor integrato in cui un Large Language Model (LLM) può attivamente elaborare, criticare e generare parti di testo su richiesta dell'utente.
+\textit{Second Brain} è un'applicazione web per la redazione di testi in formato Markdown\textsubscript{G}, pensata per superare i limiti dei classici chatbot\textsubscript{G} testuali fornendo un editor integrato in cui un Large Language Model\textsubscript{G} (LLM\textsubscript{G}) può attivamente elaborare, criticare e generare parti di testo su richiesta dell'utente.
 
 Le funzionalità principali riguardano:
 \begin{itemize}
-	\item la scrittura e formattazione di testo Markdown (grassetto, corsivo, sottolineato, barrato, citazioni, intestazioni, link, elenchi, tabelle) con anteprima in tempo reale e cronologia di annullamento/ripristino;
-	\item il supporto AI alla scrittura: riassunto, traduzione (Inglese, Francese, Spagnolo) e riscrittura del testo selezionato;
-	\item l'analisi critica del testo secondo il metodo dei ``Sei Cappelli per Pensare'' di Edward de Bono (dati e fatti, emozioni, rischi, opportunità, creatività, logica/controllo);
-	\item il \textit{Distant Writing}: la generazione di interi blocchi di testo a partire da un prompt fornito dall'utente in una finestra dedicata;
-	\item la gestione dei dati: salvataggio, apertura ed esportazione (PDF, HTML, JSON) delle note come requisito obbligatorio basato sul file system locale, con gestione di note remote, autenticazione utente e persistenza server-side come estensione opzionale.
+	\item la scrittura e formattazione\textsubscript{G} di testo Markdown (grassetto, corsivo, sottolineato, barrato, citazioni, intestazioni, link, elenchi, tabelle) con anteprima in tempo reale e cronologia di annullamento/ripristino;
+	\item il supporto AI alla scrittura: riassunto, traduzione\textsubscript{G} (Inglese, Francese, Spagnolo) e riscrittura del testo selezionato;
+	\item l'analisi critica del testo secondo il metodo dei ``Sei Cappelli per Pensare\textsubscript{G}'' di Edward de Bono (dati e fatti, emozioni, rischi, opportunità, creatività, logica/controllo);
+	\item il \textit{Distant Writing\textsubscript{G}}: la generazione di interi blocchi di testo a partire da un prompt\textsubscript{G} fornito dall'utente in una finestra dedicata;
+	\item la gestione dei dati: salvataggio, apertura ed esportazione (PDF, HTML\textsubscript{G}, JSON\textsubscript{G}) delle note come requisito obbligatorio basato sul file system\textsubscript{G} locale, con gestione di note remote, autenticazione utente e persistenza server-side come estensione opzionale.
 \end{itemize}
 
-L'utente di riferimento è un individuo senza competenze tecniche pregresse (tipicamente uno studente) che utilizza l'applicazione per prendere appunti e desidera supporto nella loro elaborazione tramite LLM; l'interfaccia deve pertanto risultare semplice e intuitiva. L'unico attore secondario del sistema è il servizio LLM esterno, richiamato tramite API compatibile con lo standard OpenAI.
+L'utente di riferimento è un individuo senza competenze tecniche pregresse (tipicamente uno studente) che utilizza l'applicazione per prendere appunti\textsubscript{G} e desidera supporto nella loro elaborazione tramite LLM; l'interfaccia deve pertanto risultare semplice e intuitiva. L'unico attore\textsubscript{G} secondario del sistema è il servizio LLM esterno, richiamato tramite API\textsubscript{G} compatibile con lo standard OpenAI.
 
 \subsection{Glossario}
 Al fine di evitare ambiguità, i termini tecnici o con significato specifico sono seguiti dal pedice e definiti nel documento \link{https://synergo-unit-unipd.github.io/Second-Brain/docs/PB/doc_gestionali/doc_interni/glossario/glossario.pdf}{Glossario}.
@@ -29,24 +29,24 @@ Al fine di evitare ambiguità, i termini tecnici o con significato specifico son
 
 \subsubsection{Normativi}
 \begin{itemize}
-	\item \link{https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C6p.pdf}{Capitolato C6 -- Second Brain (Zucchetti S.p.A.)} \\
+	\item \link{https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C6p.pdf}{Capitolato C6 -- Second Brain (Zucchetti\textsubscript{G} S.p.A.)} \\
 	\textit{Ultimo accesso: 2026-08-06};
-	\item \link{https://synergo-unit-unipd.github.io/Second-Brain/docs/PB/doc_gestionali/doc_interni/norme_di_progetto/norme_di_progetto.pdf}{Norme di Progetto, v2.12.0};
+	\item \link{https://synergo-unit-unipd.github.io/Second-Brain/docs/PB/doc_gestionali/doc_interni/norme_di_progetto/norme_di_progetto.pdf}{Norme di Progetto\textsubscript{G}, v2.12.0};
 \end{itemize}
 
 \subsubsection{Informativi}
 \begin{itemize}
-	\item \link{https://synergo-unit-unipd.github.io/Second-Brain/docs/PB/doc_tecnici/doc_esterni/analisi_dei_requisiti/analisi_dei_requisiti.pdf}{Analisi dei Requisiti}, v1.8.0, in particolare la Sezione 3 (Casi d'Uso) e la Sezione 4 (Requisiti);
-	\item \link{https://synergo-unit-unipd.github.io/Second-Brain/docs/PB/doc_tecnici/doc_esterni/analisi_stato_arte/analisi_stato_arte.pdf}{Analisi dello Stato dell'Arte}, v1.0.0, in particolare la Sezione 2 (Tecnologie Frontend), la Sezione 3 (Tecnologie Backend) e la Sezione 4 (Struttura Tecnica Preliminare del Proof of Concept);
-	\item \link{https://synergo-unit-unipd.github.io/Second-Brain/docs/PB/doc_gestionali/doc_interni/piano_qualifica/piano_qualifica.pdf}{Piano di Qualifica}, v1.7.0;
+	\item \link{https://synergo-unit-unipd.github.io/Second-Brain/docs/PB/doc_tecnici/doc_esterni/analisi_dei_requisiti/analisi_dei_requisiti.pdf}{Analisi dei Requisiti}, v1.8.0, in particolare la Sezione 3 (Casi d'Uso\textsubscript{G}) e la Sezione 4 (Requisiti);
+	\item \link{https://synergo-unit-unipd.github.io/Second-Brain/docs/PB/doc_tecnici/doc_esterni/analisi_stato_arte/analisi_stato_arte.pdf}{Analisi dello Stato dell'Arte}, v1.0.0, in particolare la Sezione 2 (Tecnologie Frontend\textsubscript{G}), la Sezione 3 (Tecnologie Backend\textsubscript{G}) e la Sezione 4 (Struttura Tecnica Preliminare del Proof of Concept);
+	\item \link{https://synergo-unit-unipd.github.io/Second-Brain/docs/PB/doc_gestionali/doc_interni/piano_qualifica/piano_qualifica.pdf}{Piano di Qualifica\textsubscript{G}}, v1.7.0;
 	\item \link{https://vuejs.org/guide/essentials/reactivity-fundamentals.html}{Vue.js Guide -- Reactivity Fundamentals} \\
 	\textit{Ultimo accesso: 2026-08-06};
-	\item \link{https://codemirror.net/docs/guide/}{CodeMirror -- System Guide} \\
+	\item \link{https://codemirror.net/docs/guide/}{CodeMirror\textsubscript{G} -- System Guide} \\
 	\textit{Ultimo accesso: 2026-08-06};
 	\item \link{https://fastapi.tiangolo.com/tutorial/dependencies/}{FastAPI -- Dependencies} \\
 	\textit{Ultimo accesso: 2026-08-08};
 	\item \link{https://platform.openai.com/docs/api-reference/chat/create}{OpenAI API Reference}, pagina \textit{Create chat completion} -- standard di riferimento per l'interazione con i modelli LLM (R2-V-O) \\
 	\textit{Ultimo accesso: 2026-08-08};
-	\item \link{https://docs.docker.com/compose/}{Docker Docs -- Docker Compose} \\
+	\item \link{https://docs.docker.com/compose/}{Docker\textsubscript{G} Docs -- Docker Compose\textsubscript{G}} \\
 	\textit{Ultimo accesso: 2026-08-03};
 \end{itemize}

@@ -30,9 +30,9 @@ La comunicazione relativa alle operazioni di Intelligenza Artificiale (riassunto
 \end{tabular}
 \end{center}
 
-Questa struttura unificata consente di aggiungere nuove operazioni AI (rispettando l'Open Closed Principle, Sezione~\ref{sec:design-pattern}) senza introdurre nuovi endpoint o nuovi contratti di comunicazione in quanto è sufficiente registrare una nuova strategia lato Backend.
+Questa struttura unificata consente di aggiungere nuove operazioni AI (rispettando l'Open Closed Principle\textsubscript{G}, Sezione~\ref{sec:design-pattern}) senza introdurre nuovi endpoint o nuovi contratti di comunicazione in quanto è sufficiente registrare una nuova strategia lato Backend.
 
-\subsection{Gestione degli Errori e Fallback}
+\subsection{Gestione degli Errori e Fallback\textsubscript{G}}
 \label{sec:gestione-errori}
 Le anomalie sono modellate come una gerarchia di eccezioni di dominio (\texttt{AIDomainError}), distinta dalle eccezioni tecniche di rete o di parsing:
 \begin{itemize}

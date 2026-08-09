@@ -5,7 +5,7 @@
 Le tecnologie adottate sono state selezionate secondo i criteri motivati in dettaglio in 
 \\ \link{https://github.com/Synergo-Unit-UniPD/Second-Brain/blob/main/docs/RTB/doc_gestionali/doc_interni/analisi_stato_arte/analisi_stato_arte.pdf}{Analisi dello Stato dell'Arte} (Sezioni 2--3), a cui si rimanda per l'analisi comparativa delle alternative scartate. Le versioni riportate corrispondono ai valori definiti nei file di lock del progetto (\texttt{package-lock.json}, \texttt{requirements.txt}) alla data di redazione di questo documento.
 
-\subsection{Linguaggi, runtime e framework}
+\subsection{Linguaggi, runtime e framework\textsubscript{G}}
 \renewcommand{\arraystretch}{1.3}
 \begin{center}
 \begin{tabularx}{\textwidth}{|l|l|X|}
@@ -55,9 +55,9 @@ Le tecnologie adottate sono state selezionate secondo i criteri motivati in dett
 	\rowcolor{primarycolor!10}
 	\textbf{Libreria} & \textbf{Versione} & \textbf{Descrizione} \\
 	\hline
-	Pydantic & 2.13.4 & Validazione dei dati e definizione tipizzata dei DTO delle operazioni AI (\texttt{AIOperationRequest}, \texttt{AIOperationResponse}, \texttt{ExportRequest}; Sezione~\ref{sec:interfaccia-api}), integrata nativamente in FastAPI. \\
+	Pydantic & 2.13.4 & Validazione\textsubscript{G} dei dati e definizione tipizzata dei DTO\textsubscript{G} delle operazioni AI (\texttt{AIOperationRequest}, \texttt{AIOperationResponse}, \texttt{ExportRequest}; Sezione~\ref{sec:interfaccia-api}), integrata nativamente in FastAPI. \\
 	\hline
-	openai & 2.41.0 & Client ufficiale per l'API compatibile con lo standard OpenAI (R2-V-O, R3-V-O); configurato con \texttt{base\_url} verso l'endpoint fornito dall'azienda proponente. \\
+	openai & 2.41.0 & Client ufficiale per l'API compatibile con lo standard OpenAI (R2-V-O, R3-V-O); configurato con \texttt{base\_url} verso l'endpoint\textsubscript{G} fornito dall'azienda proponente. \\
 	\hline
 	httpx & 0.28.1 & Libreria HTTP asincrona, dipendenza di \texttt{openai} per le chiamate al servizio LLM esterno. \\
 	\hline
@@ -74,7 +74,7 @@ Il gruppo ha scelto di non implementare alcun sistema di persistenza server-side
 la gestione dei dati si basa esclusivamente sul file system locale del browser (salvataggio, apertura ed 
 esportazione della nota, R75--R77), che copre i requisiti obbligatori del capitolato. 
 
-La persistenza remota delle note e la gestione di utenti autenticati sono funzionalità opzionali (R4-V-Op, R78--R86) che il gruppo ha deciso di non realizzare, per concentrare le risorse disponibili sul consolidamento dei requisiti obbligatori; non è pertanto presente alcun database nello stack tecnologico né nell'architettura di deployment (Sezione~\ref{sec:arch-deployment}). Lo stato di questi requisiti opzionali è riportato in dettaglio in Sezione~\ref{sec:tracciamento}.
+La persistenza remota delle note e la gestione di utenti autenticati sono funzionalità opzionali (R4-V-Op, R78--R86) che il gruppo ha deciso di non realizzare, per concentrare le risorse disponibili sul consolidamento dei requisiti obbligatori; non è pertanto presente alcun database nello stack tecnologico\textsubscript{G} né nell'architettura di deployment (Sezione~\ref{sec:arch-deployment}). Lo stato di questi requisiti opzionali è riportato in dettaglio in Sezione~\ref{sec:tracciamento}.
 
 \subsection{Testing}
 \renewcommand{\arraystretch}{1.3}
@@ -99,13 +99,13 @@ La persistenza remota delle note e la gestione di utenti autenticati sono funzio
 	\rowcolor{primarycolor!10}
 	\textbf{Strumento} & \textbf{Descrizione} \\
 	\hline
-	\textbf{\link{https://docs.docker.com/compose/}{Docker Compose}} & Orchestrazione dei container \texttt{frontend} e \texttt{backend} (Sezione~\ref{sec:arch-deployment}). Il server di sviluppo Vite del container \texttt{frontend} inoltra le richieste verso \texttt{/api} al container \texttt{backend} (\texttt{http://backend:8000}); non è presente un reverse proxy dedicato (es. Nginx) in questa fase. \\
+	\textbf{\link{https://docs.docker.com/compose/}{Docker Compose}} & Orchestrazione dei container \texttt{frontend} e \texttt{backend} (Sezione~\ref{sec:arch-deployment}). Il server di sviluppo Vite del container \texttt{frontend} inoltra le richieste verso \texttt{/api} al container \texttt{backend} (\texttt{http://backend:8000}); non è presente un reverse proxy\textsubscript{G} dedicato (es. Nginx) in questa fase. \\
 	\hline
-	Git e GitHub & Versionamento del codice e gestione collaborativa del repository, con tracciamento delle attività tramite issue (requisito R5-Q-O). \\
+	Git e GitHub & Versionamento del codice e gestione collaborativa del repository\textsubscript{G}, con tracciamento delle attività tramite issue\textsubscript{G} (requisito R5-Q-O). \\
 	\hline
-	GitHub Actions & Automazione di build, esecuzione dei test e controlli di qualità a ogni push/pull request (requisiti R1-Q-O, R6-Q-O). \\
+	GitHub Actions\textsubscript{G} & Automazione di build, esecuzione dei test e controlli di qualità a ogni push/pull request\textsubscript{G} (requisiti R1-Q-O, R6-Q-O). \\
 	\hline
-	StarUML & Modellazione UML e produzione dei diagrammi architetturali. \\
+	StarUML & Modellazione UML\textsubscript{G} e produzione dei diagrammi architetturali. \\
 	\hline
 \end{tabularx}
 \end{center}
