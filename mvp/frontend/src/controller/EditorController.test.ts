@@ -17,13 +17,12 @@ describe('EditorController', () => {
     it('dovrebbe istanziare i comandi e passarli al model in risposta agli eventi della View', () => {
         const markdownEditor = new MarkdownContentEditor();
         const model = new NoteModel(markdownEditor, new CommandHistory(), mockNoteService);
-        const view = new EditorView(model, {});
+        const view = new EditorView(model, {} as any);
         
         const executeSpy = vi.spyOn(model, 'executeCommand');
         const saveSpy = vi.spyOn(model, 'save');
 
-        // Ignoriamo i parametri di costruttore perché View viene letta all'interno
-        const controller = new EditorController(model, view, markdownEditor);
+        const controller = new EditorController(model, view);
 
         // Simuliamo la formattazione
         view.simulateFormatAction(FormatType.BOLD);

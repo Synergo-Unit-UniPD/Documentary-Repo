@@ -19,12 +19,10 @@ import { MarkdownContentEditor } from '../model/MarkdownContentEditor';
 export class EditorController implements Observer {
     private model: NoteModel;
     private view: EditorView;
-    private markdownEditor: MarkdownContentEditor;
 
-    constructor(model: NoteModel, view: EditorView, markdownEditor: MarkdownContentEditor) {
+    constructor(model: NoteModel, view: EditorView) {
         this.model = model;
         this.view = view;
-        this.markdownEditor = markdownEditor;
         
         this.view.attach(this);
     }
@@ -55,26 +53,30 @@ export class EditorController implements Observer {
         // Da agganciare logicamente all'InsertTextCommand
     }
 
+    private getEditorReceiver(): MarkdownContentEditor {
+        return (this.model as any).contentEditor as MarkdownContentEditor;
+    }
+
     private onFormatCommand(type: FormatType): void {
         const range = new TextRange(0, 0); 
-        const command = new FormatTextCommand(this.model, range, type, this.markdownEditor);
+        const command = new FormatTextCommand(this.model, range, type, this.getEditorReceiver());
         this.model.executeCommand(command);
     }
 
     public onTableCommand(request: TableActionRequest): void {
-        const command = new TableCommand(this.model, request, this.markdownEditor);
+        const command = new TableCommand(this.model, request, this.getEditorReceiver());
         this.model.executeCommand(command);
     }
 
     public onListCommand(request: ListActionRequest): void {
         const range = new TextRange(0, 0);
-        const command = new ListCommand(this.model, range, request, this.markdownEditor);
+        const command = new ListCommand(this.model, range, request, this.getEditorReceiver());
         this.model.executeCommand(command);
     }
 
     public onLinkCommand(request: LinkActionRequest): void {
         const range = new TextRange(0, 0);
-        const command = new LinkCommand(this.model, range, request, this.markdownEditor);
+        const command = new LinkCommand(this.model, range, request, this.getEditorReceiver());
         this.model.executeCommand(command);
     }
 
