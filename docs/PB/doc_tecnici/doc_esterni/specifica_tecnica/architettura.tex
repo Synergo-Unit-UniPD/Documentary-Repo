@@ -22,7 +22,17 @@ Frontend e Backend sono eseguiti in due container Docker distinti, orchestrati t
 	\item \textbf{frontend}: applicazione Vue.js, servita in sviluppo dal dev server Vite sulla porta 5173;
 	\item \textbf{backend}: servizio FastAPI eseguito tramite Uvicorn sulla porta 8000, espone le API REST consumate dal frontend e contatta il servizio LLM esterno tramite HTTPS, con la relativa API key iniettata come variabile d'ambiente.
 \end{itemize}
-Il server di sviluppo Vite del container \texttt{frontend} inoltra le richieste verso \texttt{/api} al container \texttt{backend} attraverso la rete Docker interna; non è presente un reverse proxy dedicato (es. Nginx) in questa fase, né alcun container di persistenza, coerentemente con la scelta descritta in Sezione~2.4 di non implementare la persistenza remota (R4-V-Op, R78--R86).
+Questa scelta di deployment corrisponde a un'\textbf{architettura a due moduli deployabili indipendentemente (\textit{two-monolith})}, ciascuno containerizzato separatamente ma non ulteriormente suddiviso al proprio interno. 
+
+È stata preferita tale architettura piuttosto che:
+\begin{itemize}
+	\item un \textbf{monolite unico indifferenziato}, perchè avrebbe accoppiato il deploy del Frontend (statico) a quello del Backend (con dipendenze verso servizi LLM esterni), impedendo aggiornamenti o riavvii indipendenti dei due componenti;
+	\item una \textbf{scomposizione a microservizi} (es. un servizio per ciascuna operazione AI) perchè non sarebbe giustificata dalla scala del sistema, che espone un dominio applicativo singolo e un volume di richieste limitato, inoltre, introdurrebbe complessità di orchestrazione (service discovery, API gateway) senza benefici concreti, tanto più in assenza di persistenza (Sezione~2.4).
+\end{itemize}
+
+ La granularità scelta consente comunque deploy e scalabilità indipendenti dei due componenti, preservando la possibilità di un'evoluzione più granulare qualora emergessero nuovi requisiti.
+
+Il server di sviluppo Vite del container \texttt{frontend} inoltra le richieste verso \texttt{/api} al container \texttt{backend} attraverso la rete Docker interna; non è presente alcun container di persistenza, coerentemente con la scelta descritta in Sezione~2.4 di non implementare la persistenza remota (R4-V-Op, R78--R86).
 
 \begin{figure}[H]
 	\centering
@@ -38,6 +48,8 @@ Il Frontend gestisce l'interazione dell'utente con l'editor Markdown e la visual
 Questa separazione esplicita, indipendente dal framework di rendering, mantiene la logica di dominio (Model e Controller) testabile in isolamento: i componenti Vue.js costituiscono l'implementazione concreta della View, limitandosi a riflettere nel template lo stato esposto dal relativo oggetto View e a inoltrare gli eventi dell'utente, senza contenere essi stessi logica applicativa. 
 
 Vue.js è stato scelto consapevoli che, a differenza di framework più strutturati, non fornisce nativamente un sistema di Dependency Injection né impone pattern architetturali quindi questi sono stati progettati e introdotti autonomamente dal gruppo (Sezione~\ref{sec:design-pattern}).
+
+L'orchestrazione tra View e Model è affidata a due Controller distinti, coerenti con la separazione tra editing e interazioni AI: \texttt{EditorController} media tra \texttt{EditorView} e \texttt{NoteModel} (creazione ed esecuzione dei comandi di editing), mentre \texttt{AIController} media tra \texttt{AIPanelView} e \texttt{AIRequestModel} (avvio delle richieste AI e gestione delle proposte).
 
 \begin{figure}[H]
 	\centering
@@ -72,6 +84,8 @@ Le richieste verso il Backend sono mediate dall'interfaccia \texttt{AIService}, 
 	\label{fig:class-frontend}
 \end{figure}
 
+%Ciascuna classe View è avvolta da un componente Vue.js omonimo (\texttt{EditorView.vue}, \texttt{AIPanelView.vue}), responsabile unicamente del binding tra lo stato esposto dalla View (metodi \texttt{getLast\ldots()}) e il template, e dell'inoltro degli eventi utente tramite i metodi \texttt{simulate\ldots()}; questi componenti non contengono logica applicativa propria, in linea con quanto descritto in apertura di sezione.
+
 \FloatBarrier
 \subsection{Architettura del Backend}
 \label{sec:arch-backend}
@@ -82,7 +96,9 @@ Il Backend funge da orchestratore centrale e da strato di astrazione verso i pro
 \end{enumerate}
 A questi si affianca il package \texttt{Export}, che non fa parte della catena di elaborazione delle richieste AI, bensì implementa in modo isolato e autosufficiente la conversione della nota nei formati richiesti, riusando lo stesso principio di separazione delle responsabilità senza costituire un ulteriore livello architetturale.
 
-La scomposizione a livelli, senza porte/adapter espliciti verso l'esterno, riflette la scala contenuta del sistema: non è un'architettura esagonale in senso stretto, ma una separazione sufficiente a mantenere il dominio AI indipendente sia dal framework HTTP sia dal provider LLM concreto.
+La \textbf{scomposizione a livelli} riflette la scala contenuta del sistema garantendo una separazione sufficiente a mantenere il dominio AI indipendente sia dal framework HTTP che dal provider LLM concreto.
+
+La scelta tra un'architettura Esagonale e una a Layer è stata oggetto di un confronto esplicito con il referente aziendale (Zucchetti, verbale del 30/07/2026, decisione VE-8.1): sono stati messi a confronto un'architettura Esagonale, più pulita e flessibile rispetto a possibili evoluzioni future ma a fronte di una maggiore complessità realizzativa, e un'architettura a Layer, più naturale per applicazioni di questo tipo e meno onerosa da realizzare quando non sono previste evoluzioni architetturali significative. Non essendo previste, per \textit{Second Brain}, estensioni quali la persistenza remota o l'integrazione con provider LLM multipli all'interno della stessa richiesta (R4-V-Op, R6-V-O), è stata adottata l'architettura a Layer, riservando comunque, tramite la separazione tra Presentazione e Business Logic già descritta, un margine di evoluzione verso un'architettura più disaccoppiata qualora emergessero nuovi requisiti.
 
 \begin{figure}[H]
 	\centering
