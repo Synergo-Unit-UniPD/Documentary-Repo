@@ -3,11 +3,12 @@ import { NoteServiceProxy } from './NoteServiceProxy';
 import { Note } from '../model/Note';
 import { NoteIOError } from '../model/NoteIOError';
 
-describe('NoteServiceProxy - Salvataggio nota locale', () => {
+describe('NoteServiceProxy - Salvataggio e Apertura nota locale', () => {
     beforeEach(() => {
         // Mock globale della File System API del browser (cast ad any per TS)
         (globalThis as any).window = {
-            showSaveFilePicker: vi.fn()
+            showSaveFilePicker: vi.fn(),
+            showOpenFilePicker: vi.fn()
         };
     });
 
@@ -32,7 +33,6 @@ describe('NoteServiceProxy - Salvataggio nota locale', () => {
         
         await proxy.save(noteVuota);
         
-        // Verifica chiamate al BrowserFileSystem API (Step 11, 12, 13)
         expect((globalThis.window as any).showSaveFilePicker).toHaveBeenCalledTimes(1);
         expect(mockFileHandle.createWritable).toHaveBeenCalledTimes(1);
         expect(mockWritable.write).toHaveBeenCalledWith('Contenuto di test');
@@ -45,16 +45,45 @@ describe('NoteServiceProxy - Salvataggio nota locale', () => {
         
         await proxy.save(noteEsistente);
         
-        // Verifica Ramo [noteID presente]: Non deve chiedere all'utente dove salvare
         expect((globalThis.window as any).showSaveFilePicker).not.toHaveBeenCalled();
     });
     
-    it('dovrebbe lanciare NoteIOError in caso di errore della File System API', async () => {
+    it('dovrebbe lanciare NoteIOError in caso di errore della File System API al salvataggio', async () => {
         (globalThis.window as any).showSaveFilePicker.mockRejectedValue(new Error('User cancelled'));
         
         const proxy = new NoteServiceProxy('http://localhost:8000');
         const noteVuota = new Note('', 'Contenuto');
         
         await expect(proxy.save(noteVuota)).rejects.toThrowError(NoteIOError);
+    });
+
+    it('dovrebbe eseguire l\'apertura di una nota locale tramite file picker (Step 10-14)', async () => {
+        const mockFile = {
+            text: vi.fn().mockResolvedValue('Contenuto importato')
+        };
+        const mockFileHandle = {
+            getFile: vi.fn().mockResolvedValue(mockFile)
+        };
+        
+        // L'API showOpenFilePicker restituisce sempre un array di handle
+        (globalThis.window as any).showOpenFilePicker.mockResolvedValue([mockFileHandle]);
+
+        const proxy = new NoteServiceProxy('http://localhost:8000');
+        
+        const note = await proxy.open();
+        
+        expect((globalThis.window as any).showOpenFilePicker).toHaveBeenCalledTimes(1);
+        expect(mockFileHandle.getFile).toHaveBeenCalledTimes(1);
+        expect(mockFile.text).toHaveBeenCalledTimes(1);
+        expect(note.content).toBe('Contenuto importato');
+        expect(note.id).toBe(''); // ID vuoto per file importati localmente
+    });
+
+    it('dovrebbe lanciare NoteIOError in caso di errore della File System API all\'apertura', async () => {
+        (globalThis.window as any).showOpenFilePicker.mockRejectedValue(new Error('User cancelled'));
+        
+        const proxy = new NoteServiceProxy('http://localhost:8000');
+        
+        await expect(proxy.open()).rejects.toThrowError(NoteIOError);
     });
 });

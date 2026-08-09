@@ -15,14 +15,11 @@ export class NoteServiceProxy implements NoteService {
 
     public async save(note: Note): Promise<void> {
         try {
-            // alt noteID
             if (!note.id || note.id === "") {
-                // Ramo [noteID null]
                 if (!(window as any).showSaveFilePicker) {
                     throw new Error("File System API non supportata dal browser");
                 }
                 
-                // Step 11: showSaveFilePicker verso BrowserFileSystem API
                 const handle = await (window as any).showSaveFilePicker({
                     types: [{
                         description: 'Markdown',
@@ -30,29 +27,43 @@ export class NoteServiceProxy implements NoteService {
                     }],
                 });
                 
-                // Step 12: Ricezione FileHandle e apertura stream (createWritable)
                 const writable = await handle.createWritable();
-                
-                // Step 13: write(content)
                 await writable.write(note.content);
                 await writable.close();
-                
-                // Step 14: void (Ritorno implicito)
             } else {
-                // Ramo [noteID presente]
-                // Step 16: save(NoteEsistente)
-                // Step 17: write(content)
                 console.log(`Scrittura del contenuto per la nota esistente: ${note.id}`);
-                
-                // Step 18: void (Ritorno implicito)
             }
         } catch (error: any) {
-            // Viene lanciata un'eccezione di dominio catturabile dai livelli superiori
             throw new NoteIOError(error.message || "Errore durante il salvataggio della nota");
         }
     }
 
     public async open(): Promise<Note> {
-        return Promise.resolve(new Note("default-id", "Contenuto recuperato"));
+        try {
+            if (!(window as any).showOpenFilePicker) {
+                throw new Error("File System API non supportata dal browser");
+            }
+            
+            // Step 10: showOpenFilePicker verso BrowserFileSystem API
+            const [handle] = await (window as any).showOpenFilePicker({
+                types: [{
+                    description: 'Markdown',
+                    accept: { 'text/markdown': ['.md'] },
+                }],
+                multiple: false
+            });
+            
+            // Step 11: Ricezione FileHandle 
+            const file = await handle.getFile();
+            
+            // Step 12: readContent
+            const content = await file.text();
+            
+            // Step 13: content ricevuto
+            // Step 14: ritorna la Note istanziata
+            return new Note("", content);
+        } catch (error: any) {
+            throw new NoteIOError(error.message || "Errore durante l'apertura della nota");
+        }
     }
 }
