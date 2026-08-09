@@ -8,12 +8,15 @@ import { ListActionRequest } from '../model/ListActionRequest';
 import { LinkActionRequest } from '../model/LinkActionRequest';
 import { TextRange } from '../model/TextRange';
 
+
+export interface CodeMirrorInstance {}
+
 /**
  * Gestisce l'interfaccia dell'editor e l'interazione con l'istanza CodeMirror.
  * Opera come Subject per notificare i cambiamenti all'EditorController in modalità pull.
  */
 export class EditorView implements Observer, Subject {
-    private editor: any; // CodeMirrorInstance
+    private editor: CodeMirrorInstance; 
     private model: NoteModel;
     private observers: Observer[] = [];
     private viewMode: ViewMode;
@@ -29,7 +32,7 @@ export class EditorView implements Observer, Subject {
     private undoRequested: boolean = false;
     private redoRequested: boolean = false;
 
-    constructor(model: NoteModel, editorInstance: any) {
+    constructor(model: NoteModel, editorInstance: CodeMirrorInstance) {
         this.model = model;
         this.editor = editorInstance;
         this.viewMode = ViewMode.SPLIT;
@@ -61,12 +64,10 @@ export class EditorView implements Observer, Subject {
     }
 
     public toTextRange(cmPos: object): TextRange {
-        // Implementazione dummy per mappatura coordinate CodeMirror -> TextRange
         return new TextRange(0, 0);
     }
 
     public toCodeMirrorPos(range: TextRange): object {
-        // Implementazione dummy per mappatura inversa TextRange -> coordinate CodeMirror
         return {};
     }
 
@@ -75,14 +76,12 @@ export class EditorView implements Observer, Subject {
         this.render();
     }
 
-    // --- Metodi Get (Pull Pattern) ---
     public getLastInputEvent(): InputEvent | undefined { return this.lastInputEvent; }
     public getLastFormatRequest(): FormatType | undefined { return this.lastFormatRequest; }
     public getLastTableRequest(): TableActionRequest | undefined { return this.lastTableRequest; }
     public getLastListRequest(): ListActionRequest | undefined { return this.lastListRequest; }
     public getLastLinkRequest(): LinkActionRequest | undefined { return this.lastLinkRequest; }
 
-    // --- Metodi Consume (Pull Pattern) ---
     public consumeSaveRequest(): boolean {
         const req = this.saveRequested;
         this.saveRequested = false;
@@ -111,7 +110,6 @@ export class EditorView implements Observer, Subject {
         console.error(`Editor Error: ${message}`);
     }
 
-    // --- Metodi di Simulazione Interazione Utente (non a UML, necessari per i test) ---
     public simulateFormatAction(type: FormatType): void {
         this.lastFormatRequest = type;
         this.notify();

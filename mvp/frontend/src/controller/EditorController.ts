@@ -30,7 +30,6 @@ export class EditorController implements Observer {
     }
 
     public update(): void {
-        // Modalità Pull: recupero e consumo dello stato
         if (this.view.consumeSaveRequest()) this.onSaveCommand();
         if (this.view.consumeOpenRequest()) this.onOpenCommand();
         if (this.view.consumeUndoRequest()) this.onUndoCommand();
@@ -53,28 +52,27 @@ export class EditorController implements Observer {
     }
 
     private onUserInput(event: InputEvent): void {
-        // Da agganciare logicamente all'InsertTextCommand se necessario
+        // Da agganciare logicamente all'InsertTextCommand
     }
 
     private onFormatCommand(type: FormatType): void {
-        // Per il PoC/MVP usiamo un range fittizio. Verrà richiesto dalla view.
         const range = new TextRange(0, 0); 
         const command = new FormatTextCommand(this.model, range, type, this.markdownEditor);
         this.model.executeCommand(command);
     }
 
-    private onTableCommand(request: TableActionRequest): void {
+    public onTableCommand(request: TableActionRequest): void {
         const command = new TableCommand(this.model, request, this.markdownEditor);
         this.model.executeCommand(command);
     }
 
-    private onListCommand(request: ListActionRequest): void {
+    public onListCommand(request: ListActionRequest): void {
         const range = new TextRange(0, 0);
         const command = new ListCommand(this.model, range, request, this.markdownEditor);
         this.model.executeCommand(command);
     }
 
-    private onLinkCommand(request: LinkActionRequest): void {
+    public onLinkCommand(request: LinkActionRequest): void {
         const range = new TextRange(0, 0);
         const command = new LinkCommand(this.model, range, request, this.markdownEditor);
         this.model.executeCommand(command);
