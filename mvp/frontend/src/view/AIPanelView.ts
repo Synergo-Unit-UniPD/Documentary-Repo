@@ -4,6 +4,7 @@ import { AIRequestModel } from '../model/AIRequestModel';
 import { RequestedOperation } from '../model/RequestedOperation';
 import { ProposalActionType } from '../model/ProposalActionType';
 import { ProposalReadyState } from '../model/ProposalReadyState';
+import { ProcessingState } from '../model/ProcessingState';
 
 /**
  * Vista del pannello AI. Osserva il Model per i cambiamenti di stato
@@ -32,22 +33,25 @@ export class AIPanelView implements Observer, Subject {
 
     public notify(): void {
         for (const observer of this.observers) {
+            // Step 4: update sul Controller
             observer.update();
         }
     }
 
-    // passi di Ricezione proposta AI (tratto Frontend).jpg
-    // 4: update() richiamato dal notify() di AIRequestModel
     public update(): void {
+        // Step 11: update() richiamato dal notify() di AIRequestModel
         this.render();
     }
 
     public render(): void {
-        // 5 e 6: getAIState per recuperare lo stato aggiornato
-        const currentState = this.model.getAIState();
+        // Step 12: getAIState per recuperare lo stato aggiornato
+        const currentState = this.model.getAIState(); // Step 13: ProcessingState (o altri)
 
-        // 7: mostra proposta; pulsanti Accept, Reject, Regenerate
-        if (currentState instanceof ProposalReadyState) {
+        if (currentState instanceof ProcessingState) {
+            // Step 14: mostra spinner, "Interrompi"
+            // Il rendering visivo reale è delegato reattivamente al template Vue.js
+        } else if (currentState instanceof ProposalReadyState) {
+            // (Dal diagramma: Ricezione proposta AI)
             // Qui avverrà il rendering reattivo gestito da Vue.js
             // currentState.proposal conterrà il dato da visualizzare.
         }
@@ -62,8 +66,12 @@ export class AIPanelView implements Observer, Subject {
     }
 
     public simulateSubmitRequest(op: RequestedOperation): void {
+        // Step 1: L'utente seleziona testo, click "Riassumi" -> la UI di Vue chiama questo metodo
+        // Step 2: lastRequestedOperation = RequestedOperation(SUMMARIZE, params)
         this.lastRequestedOperation = op;
         this.lastProposalAction = undefined;
+        
+        // Step 3: notify
         this.notify();
     }
 

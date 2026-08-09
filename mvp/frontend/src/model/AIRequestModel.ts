@@ -42,12 +42,13 @@ export class AIRequestModel implements Subject {
 
     public async requestAIOperation(type: string, text: string, params: object): Promise<void> {
         try {
-            // Stato transitorio di caricamento
+            // Step 9: aiState = Processing
             this.aiState = new ProcessingState();
+            
+            // Step 10: notify
             this.notify();
             
-            // passi di Ricezione proposta AI (tratto Frontend).jpg
-            // 1: Risoluzione Promise di requestOperation
+            // Step 15: requestOperation(SUMMARIZE, text) -> Chiamata asincrona via Proxy
             const proposal = await this.aiService.requestOperation(type, text, params);
             
             // 2: aiState = ProposalReadyState(proposal)

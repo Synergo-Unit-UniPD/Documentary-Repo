@@ -5,6 +5,7 @@ import { AIService } from '../proxy/AIService';
 import { RequestedOperation } from '../model/RequestedOperation';
 import { ProposalActionType } from '../model/ProposalActionType';
 import { Observer } from '../model/Observer';
+import { ProcessingState } from '../model/ProcessingState';
 
 const mockAIService: AIService = {
     requestOperation: vi.fn(),
@@ -45,5 +46,22 @@ describe('AIPanelView', () => {
         
         view.update();
         expect(renderSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it('dovrebbe gestire il ProcessingState (Step 14) invocando render', () => {
+        const model = new AIRequestModel(mockAIService);
+        const view = new AIPanelView(model);
+        const renderSpy = vi.spyOn(view, 'render');
+        
+        // Forziamo lo stato a ProcessingState (Step 9)
+        (model as any).aiState = new ProcessingState();
+        
+        // Simuliamo la notifica dal Model (Step 11)
+        view.update();
+        
+        expect(renderSpy).toHaveBeenCalledTimes(1);
+        
+        const currentState = model.getAIState();
+        expect(currentState).toBeInstanceOf(ProcessingState);
     });
 });

@@ -21,8 +21,12 @@ export class AIController implements Observer {
     }
 
     public update(): void {
+        // Step 4: update() richiamato dalla AIPanelView
+        
+        // Step 5 e 6: getLastRequestedOperation
         const requestedOp = this.view.getLastRequestedOperation();
         if (requestedOp) {
+            // Step 7: onAIRequest
             this.onAIRequest(requestedOp.type, requestedOp.params);
             return;
         }
@@ -48,6 +52,7 @@ export class AIController implements Observer {
 
     private onAIRequest(type: string, params: object): void {
         const currentText = this.noteModel.getContent();
+        // Step 8: requestAIOperation(SUMMARIZE, text)
         this.model.requestAIOperation(type, currentText, params);
     }
 
