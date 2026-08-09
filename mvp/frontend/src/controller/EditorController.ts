@@ -11,6 +11,7 @@ import { ListCommand } from '../model/ListCommand';
 import { LinkCommand } from '../model/LinkCommand';
 import { TextRange } from '../model/TextRange';
 import { MarkdownContentEditor } from '../model/MarkdownContentEditor';
+import { InvalidTableDimensionError } from '../model/InvalidTableDimensionError';
 
 /**
  * Controller principale dell'editor. Gestisce gli input provenienti dall'EditorView,
@@ -28,27 +29,27 @@ export class EditorController implements Observer {
     }
 
     public update(): void {
-        // Step 4 e Step 22: update() riceve la notifica dalla View
-
         if (this.view.consumeSaveRequest()) this.onSaveCommand();
         if (this.view.consumeOpenRequest()) this.onOpenCommand();
         
-        // Step 23: consumeUndoRequest
         if (this.view.consumeUndoRequest()) {
-            this.onUndoCommand(); // Step 25
+            this.onUndoCommand(); 
         }
         
-        if (this.view.consumeRedoRequest()) this.onRedoCommand();
+        if (this.view.consumeRedoRequest()) {
+            this.onRedoCommand(); 
+        }
 
-        // Step 5: getLastFormatRequest
         const formatReq = this.view.getLastFormatRequest();
         if (formatReq) {
-            // Step 7: onFormatCommand
             this.onFormatCommand(formatReq);
         }
 
+        // Step 5 e 6: getLastTableRequest
         const tableReq = this.view.getLastTableRequest();
-        if (tableReq) this.onTableCommand(tableReq);
+        if (tableReq) {
+            this.onTableCommand(tableReq); // Step 7
+        }
 
         const listReq = this.view.getLastListRequest();
         if (listReq) this.onListCommand(listReq);
@@ -70,15 +71,26 @@ export class EditorController implements Observer {
 
     private onFormatCommand(type: FormatType): void {
         const range = new TextRange(0, 0); 
-        // Step 8: new FormatTextCommand
         const command = new FormatTextCommand(this.model, range, type, this.getEditorReceiver());
-        // Step 9: executeCommand(command)
         this.model.executeCommand(command);
     }
 
     public onTableCommand(request: TableActionRequest): void {
+        // Step 8: new TableCommand
         const command = new TableCommand(this.model, request, this.getEditorReceiver());
-        this.model.executeCommand(command);
+        
+        try {
+            // Step 9: executeCommand su NoteModel
+            this.model.executeCommand(command);
+        } catch (error: any) {
+            // Step 14: cattura InvalidTableDimensionError dal comando
+            if (error instanceof InvalidTableDimensionError) {
+                // Step 15: displayError
+                this.view.displayError(error.message);
+            } else {
+                throw error; // Se è un altro errore, lo lascia passare
+            }
+        }
     }
 
     public onListCommand(request: ListActionRequest): void {
@@ -94,7 +106,6 @@ export class EditorController implements Observer {
     }
 
     private onUndoCommand(): void {
-        // Step 26: undo
         this.model.undo();
     }
 
