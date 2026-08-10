@@ -63,7 +63,7 @@ Le tecnologie adottate sono state selezionate secondo i criteri motivati in dett
 	\hline
 	Uvicorn & 0.49.0 & Server ASGI su cui viene eseguito il Backend FastAPI. \\
 	\hline
-	python-dotenv & 1.2.2 & Caricamento delle variabili d'ambiente (\texttt{ZUCCHETTI\_LLM\_BASE\_URL}, \texttt{ZUCCHETTI\_LLM\_API\_KEY}) da file \texttt{.env}, per non includere credenziali nel codice sorgente. \\
+	python-dotenv & 1.2.2 & Caricamento delle variabili d'ambiente (\texttt{ZUCCHETTI\_LLM\_BASE\_URL}, \texttt{ZUCCHETTI\_LLM\_API\_KEY}) da file \texttt{.env}, per non includere credenziali nel codice sorgente, coerentemente con la gestione lato Backend richiesta da R8-Q-O. \\
 	\hline
 \end{tabularx}
 \end{center}
@@ -101,11 +101,23 @@ La persistenza remota delle note e la gestione di utenti autenticati sono funzio
 	\hline
 	\textbf{\link{https://docs.docker.com/compose/}{Docker Compose}} & Orchestrazione dei container \texttt{frontend} e \texttt{backend} (Sezione~\ref{sec:arch-deployment}). Il server di sviluppo Vite del container \texttt{frontend} inoltra le richieste verso \texttt{/api} al container \texttt{backend} (\texttt{http://backend:8000}); non è presente un reverse proxy\textsubscript{G} dedicato (es. Nginx) in questa fase. \\
 	\hline
-	Git e GitHub & Versionamento del codice e gestione collaborativa del repository\textsubscript{G}, con tracciamento delle attività tramite issue\textsubscript{G} (requisito R5-Q-O). \\
+	Git e GitHub & Versionamento del codice e gestione collaborativa del repository\textsubscript{G}, con tracciamento delle attività tramite issue\textsubscript{G} (requisito R2-Q-O). \\
 	\hline
-	GitHub Actions\textsubscript{G} & Automazione di build, esecuzione dei test e controlli di qualità a ogni push/pull request\textsubscript{G} (requisiti R1-Q-O, R6-Q-O). \\
+	GitHub Actions\textsubscript{G} & Automazione di build, esecuzione dei test e controlli di qualità a ogni push/pull request\textsubscript{G} (requisito R1-Q-O). \\
 	\hline
 	StarUML & Modellazione UML\textsubscript{G} e produzione dei diagrammi architetturali. \\
 	\hline
 \end{tabularx}
 \end{center}
+
+\subsection{Motivazioni delle scelte tecnologiche}
+\label{sec:motivazioni-tecnologie}
+Le tabelle precedenti riportano, tecnologia per tecnologia, la motivazione puntuale della scelta; questa sottosezione ne offre una sintesi trasversale. L'analisi comparativa completa delle alternative scartate per ciascuna tecnologia è riportata in \link{https://github.com/Synergo-Unit-UniPD/Second-Brain/blob/main/docs/RTB/doc_gestionali/doc_interni/analisi_stato_arte/analisi_stato_arte.pdf}{Analisi dello Stato dell'Arte} (Sezioni 2--3), a cui si rimanda per il dettaglio dei criteri di valutazione e dei pesi assegnati.
+
+In sintesi, tre criteri hanno guidato trasversalmente le scelte tecnologiche del gruppo:
+
+\begin{itemize}
+	\item \textbf{Coerenza con l'assenza di persistenza server-side} (Sezione~\ref{sec:persistenza}): non essendo previsto alcun database nello scope obbligatorio (R4-V-Op non implementato), lo stack Backend non include un ORM né librerie di gestione dati strutturati oltre ai DTO di validazione (Pydantic); questo ha inoltre semplificato l'architettura di deployment a due soli container (Sezione~\ref{sec:arch-deployment}).
+	\item \textbf{Aderenza ai vincoli imposti dal capitolato}: la scelta di FastAPI e dello standard di comunicazione OpenAI-compatibile discende direttamente da R2-V-O e R3-V-O; la libertà di scelta del framework Frontend, non imposta dal capitolato (R11-V-O), ha invece lasciato margine di valutazione autonoma, esercitata a favore di Vue.js per la curva di apprendimento più contenuta rispetto alle alternative considerate.
+	\item \textbf{Competenze pregresse del gruppo}: a parità di idoneità tecnica tra alternative comparabili (es. Python per il Backend), è stata data priorità alle tecnologie con cui alcuni membri del gruppo avevano già familiarità, per ridurre il rischio tecnico nelle fasi iniziali di sviluppo.
+\end{itemize}
