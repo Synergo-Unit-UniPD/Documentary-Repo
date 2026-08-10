@@ -1,4 +1,5 @@
 import pytest
+from dataclasses import FrozenInstanceError
 from export.exceptions import ExporterError, ConversionError
 from export.domain import Content
 from export.exporter import Exporter
@@ -14,9 +15,13 @@ class DummyFailExporter(Exporter):
         raise ValueError("Simulazione di errore interno")
 
 def test_content_value_object():
-    """Verifica la corretta inizializzazione del Value Object Content."""
+    """Verifica la corretta inizializzazione e l'immutabilità del Value Object Content."""
     content = Content(nodes=["node1", "node2"])
     assert content.nodes == ["node1", "node2"]
+    
+    # Verifica che la dataclass sia frozen (principio DDD)
+    with pytest.raises(FrozenInstanceError):
+        content.nodes = ["new_node"]
 
 def test_exporter_prepare_content():
     """Verifica che il passo comune prepare_content restituisca un oggetto Content."""

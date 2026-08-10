@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from typing import final
 from export.domain import Content
 from export.exceptions import ConversionError
 
@@ -7,9 +8,11 @@ class Exporter(ABC):
     Classe astratta che definisce il Template Method per l'esportazione.
     """
 
+    @final
     def export(self, content: str) -> bytes:
         """
         Template Method: definisce l'algoritmo immutabile di esportazione.
+        @final impedisce alle sottoclassi di sovrascrivere questo metodo.
         """
         # Step 3: prepare_content(content)
         ast_content = self._prepare_content(content)
