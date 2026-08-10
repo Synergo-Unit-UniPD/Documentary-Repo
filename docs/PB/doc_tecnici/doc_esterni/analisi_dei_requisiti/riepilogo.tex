@@ -1,16 +1,19 @@
-% Conteggio requisiti:
+% Conteggio requisiti (aggiornato v1.9.0 - riorganizzazione NFR post-RTB):
 % Funzionali Obbligatori: R1..R47-F-O, R48..R51-F-O, R53..R77-F-O = 76 requisiti
 % Funzionali Desiderabili: R52-F-D = 1 requisito
 % Funzionali Opzionali: R78..R86-F-Op = 9 requisiti
-% Qualità Obbligatori: R1-Q-O, R2-Q-O, R3-Q-O, R4-Q-O, R5-Q-O, R6-Q-O = 6 requisiti
-% Qualità Desiderabili: R9-Q-D = 1 requisito
-% Qualità Opzionali: R7-Q-Op, R8-Q-Op = 2 requisiti
-% Vincolo Obbligatori: R1-V-O, R2-V-O, R3-V-O, R5-V-O, R6-V-O, R7-V-O = 6 requisiti
+% Qualità Obbligatori: R1-Q-O, R2-Q-O, R3-Q-O, R8-Q-O, R10-Q-O, R11-Q-O = 6 requisiti
+% Qualità Desiderabili: R6-Q-D, R7-Q-D, R12-Q-D, R13-Q-D = 4 requisiti
+% Qualità Opzionali: R4-Q-Op, R5-Q-Op, R9-Q-Op = 3 requisiti
+% Vincolo Obbligatori: R1-V-O, R2-V-O, R3-V-O, R5-V-O, R6-V-O, R7-V-O, R8-V-O, R9-V-O, R10-V-O, R11-V-O = 10 requisiti
 % Vincolo Opzionali: R4-V-Op = 1 requisito
-% Prestazionali Obbligatori: R1-P-O, R2-P-O = 2 requisiti
-% Totale Obbligatori: 76 + 6 + 6 + 2 = 90
-% Totale Desiderabili: 1 + 1 + 0 + 0 = 2
-% Totale Opzionali: 9 + 2 + 1 + 0 = 12
+% Prestazionali Obbligatori: R1-P-O, R2-P-O, R3-P-O, R4-P-O, R5-P-O = 5 requisiti
+% Prestazionali Desiderabili: nessuno = 0 requisiti
+% Prestazionali Opzionali: R6-P-Op = 1 requisito
+% Totale Obbligatori: 76 + 6 + 10 + 5 = 97
+% Totale Desiderabili: 1 + 4 + 0 + 0 = 5
+% Totale Opzionali: 9 + 3 + 1 + 1 = 14
+% Totale complessivo: 97 + 5 + 14 = 116
 
 \section{Riepilogo}
 Nella seguente sezione viene riportato un riepilogo quantitativo dello stato dei requisiti individuati, suddivisi in base al loro grado di importanza.
@@ -28,11 +31,11 @@ Nella seguente sezione viene riportato un riepilogo quantitativo dello stato dei
 		\hline
 		Di Qualità & 6 \\
 		\hline
-		Di Vincolo & 6 \\
+		Di Vincolo & 10 \\
 		\hline
-		Prestazionali & 2 \\
+		Prestazionali & 5 \\
 		\hline
-		\textbf{Totale Obbligatori} & \textbf{90} \\
+		\textbf{Totale Obbligatori} & \textbf{97} \\
 		\hline
 	\end{tabularx}
 	\caption{Riepilogo requisiti obbligatori}
@@ -49,13 +52,13 @@ Nella seguente sezione viene riportato un riepilogo quantitativo dello stato dei
 		\hline
 		Funzionali & 1 \\
 		\hline
-		Di Qualità & 1 \\
+		Di Qualità & 4 \\
 		\hline
 		Di Vincolo & 0 \\
 		\hline
 		Prestazionali & 0 \\
 		\hline
-		\textbf{Totale Desiderabili} & \textbf{2} \\
+		\textbf{Totale Desiderabili} & \textbf{5} \\
 		\hline
 	\end{tabularx}
 	\caption{Riepilogo requisiti desiderabili}
@@ -72,13 +75,13 @@ Nella seguente sezione viene riportato un riepilogo quantitativo dello stato dei
 		\hline
 		Funzionali & 9 \\
 		\hline
-		Di Qualità & 2 \\
+		Di Qualità & 3 \\
 		\hline
 		Di Vincolo & 1 \\
 		\hline
-		Prestazionali & 0 \\
+		Prestazionali & 1 \\
 		\hline
-		\textbf{Totale Opzionali} & \textbf{12} \\
+		\textbf{Totale Opzionali} & \textbf{14} \\
 		\hline
 	\end{tabularx}
 	\caption{Riepilogo requisiti opzionali}
@@ -93,13 +96,13 @@ Nella seguente sezione viene riportato un riepilogo quantitativo dello stato dei
 		\rowcolor{primarycolor!10}
 		\textbf{Grado di Importanza} & \textbf{Totale Requisiti} \\
 		\hline
-		Obbligatori & 90 \\
+		Obbligatori & 97 \\
 		\hline
-		Desiderabili & 2 \\
+		Desiderabili & 5 \\
 		\hline
-		Opzionali & 12 \\
+		Opzionali & 14 \\
 		\hline
-		\textbf{Totale complessivo} & \textbf{104} \\
+		\textbf{Totale complessivo} & \textbf{116} \\
 		\hline
 	\end{tabularx}
 	\caption{Riepilogo generale dei requisiti}
