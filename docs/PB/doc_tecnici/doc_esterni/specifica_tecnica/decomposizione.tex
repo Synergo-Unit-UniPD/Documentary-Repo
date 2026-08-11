@@ -1,0 +1,49 @@
+% =======================================================
+% 4. DECOMPOSIZIONE DEL SISTEMA
+% =======================================================
+\section{Decomposizione del Sistema}
+\label{sec:decomposizione}
+Questa sezione raccoglie in forma tabellare le responsabilità, le interfacce esposte e le dipendenze dei componenti architetturali principali già introdotti in Sezione~\ref{sec:arch-frontend} e Sezione~\ref{sec:arch-backend}, ai fini di una consultazione rapida e uniforme. Non sostituisce i diagrammi delle classi (Figure~\ref{fig:class-frontend}, \ref{fig:class-business-layer}, \ref{fig:class-ai-domain}, \ref{fig:class-export}), a cui si rimanda per il dettaglio di attributi e metodi.
+
+\renewcommand{\arraystretch}{1.3}
+\begin{xltabular}{\textwidth}{|>{\raggedright\arraybackslash\small}p{2.8cm}|X|X|X|}
+	\caption{Componenti Architetturali di Alto Livello} \label{tab:componenti-alto-livello} \\
+	\hline
+	\rowcolor{primarycolor!10}
+	\textbf{Componente} & \textbf{Responsabilità} & \textbf{Interfacce} & \textbf{Dipendenze} \\
+	\hline
+	\endfirsthead
+
+	\multicolumn{4}{c}{{\bfseries \tablename\ \thetable{} -- Continua dalla pagina precedente}} \\
+	\hline
+	\rowcolor{primarycolor!10}
+	\textbf{Componente} & \textbf{Responsabilità} & \textbf{Interfacce} & \textbf{Dipendenze} \\
+	\hline
+	\endhead
+
+	\hline
+	\multicolumn{4}{|r|}{{Continua nella pagina successiva...}} \\
+	\hline
+	\endfoot
+
+	\hline
+	\endlastfoot
+
+	\texttt{\seqsplit{NoteModel}} & Mantiene lo stato osservabile della nota corrente ed esegue i comandi di editing tramite \texttt{\seqsplit{executeCommand()}}. & Realizza \texttt{Subject}; espone \texttt{\seqsplit{executeCommand()}}. & \texttt{\seqsplit{MarkdownContentEditor}}, \texttt{\seqsplit{CommandHistory}}, \texttt{\seqsplit{NoteService}} \\ \hline
+	\texttt{\seqsplit{AIRequestModel}} & Mantiene lo stato della richiesta AI corrente come unione discriminata\textsubscript{G} (Idle/Processing/ProposalReady/Error). & Realizza \texttt{Subject}. & \texttt{AIService} (Proxy, Frontend) \\ \hline
+	\texttt{\seqsplit{EditorView}} / \texttt{\seqsplit{AIPanelView}} & Riflettono nel template lo stato pullato dal Model; inoltrano gli eventi utente al Controller. & Realizzano \texttt{Subject} e \texttt{Observer}. & \texttt{\seqsplit{NoteModel}} / \texttt{\seqsplit{AIRequestModel}} \\ \hline
+	\texttt{\seqsplit{EditorController}} / \texttt{\seqsplit{AIController}} & Orchestrano la creazione dei comandi di editing e l'avvio delle richieste AI a partire dagli eventi della View. & Realizzano \texttt{Observer}. & \texttt{\seqsplit{EditorView}}/\texttt{\seqsplit{NoteModel}}, \texttt{\seqsplit{AIPanelView}}/\texttt{\seqsplit{AIRequestModel}} \\ \hline
+	\texttt{\seqsplit{CommandHistory}}, famiglia \texttt{\seqsplit{EditCommand}} & Eseguono e archiviano i comandi di editing in due pile, per supportare Undo/Redo uniforme su tutte le operazioni. & \texttt{execute()}, \texttt{undo()} per ogni \texttt{\seqsplit{EditCommand}}. & Nessuna dipendenza esterna al Frontend \\ \hline
+	\texttt{\seqsplit{NoteServiceProxy}} / \texttt{\seqsplit{AIServiceProxy}} & Incapsulano rispettivamente l'accesso al file system locale (\texttt{\seqsplit{showSaveFilePicker}}/\texttt{\seqsplit{showOpenFilePicker}}) e la comunicazione REST col Backend. & Implementano \texttt{\seqsplit{NoteService}} / \texttt{AIService}. & File System Access API del browser / \texttt{\seqsplit{IBackendREST}} \\ \hline
+	\texttt{\seqsplit{AIRouter}}, \texttt{\seqsplit{ExportRouter}} & Ricevono le richieste HTTP, le validano tramite i DTO e delegano l'elaborazione al livello di Business Logic. & Espongono \texttt{\seqsplit{IBackendREST}}; usano \texttt{\seqsplit{ITextProcessor}}. & \texttt{\seqsplit{DIProviders}}, DTO di \texttt{api/schemas} \\ \hline
+	\texttt{AIService} (Backend) & Risolve l'operazione richiesta tramite Simple Factory\textsubscript{G} e ne invoca \texttt{\seqsplit{build\_prompt()}} in modo polimorfico. & \texttt{\seqsplit{request\_operation()}}, \texttt{\seqsplit{list\_operations()}}. & \texttt{\seqsplit{AIOperationFactory}}, \texttt{LLMService} \\ \hline
+	\texttt{\seqsplit{AIOperationFactory}}, famiglia \texttt{\seqsplit{AIOperation}} & Auto-registrano e istanziano l'operazione AI corretta (riassunto, traduzione, riscrittura, Distant Writing, Sei Cappelli). & \texttt{register()}, \texttt{create()}; ogni \texttt{\seqsplit{AIOperation}} implementa \texttt{\seqsplit{build\_prompt()}}. & \texttt{\seqsplit{StandardPromptBuilder}} \\ \hline
+	\texttt{LLMService}, catena Decorator (\texttt{\seqsplit{CachingLLMAdapter}}, \texttt{\seqsplit{LoggingLLMAdapter}}), \texttt{\seqsplit{OpenAIAdapter}} & Mascherano le specificità del provider LLM concreto dietro un'interfaccia comune, aggiungendo caching e logging senza modificarne l'implementazione. & \texttt{complete(prompt)}. & API esterna compatibile OpenAI \\ \hline
+	\texttt{Exporter}, famiglia (\texttt{\seqsplit{PdfExporter}}, \texttt{\seqsplit{HtmlExporter}}, \texttt{\seqsplit{JsonExporter}}) & Convertono il contenuto Markdown della nota nel formato di esportazione richiesto, secondo lo scheletro fisso del Template Method\textsubscript{G}. & \texttt{export()}; ogni sottoclasse implementa \texttt{\seqsplit{convert\_format()}}. & Nessuna dipendenza dal livello di Presentazione o Business Logic \\ \hline
+	\texttt{\seqsplit{ErrorHandlers}}, gerarchia \texttt{\seqsplit{AIDomainError}} & Intercettano le eccezioni di dominio e le traducono in risposte HTTP normalizzate. & \texttt{\seqsplit{handle\_ai\_domain\_error()}}, \texttt{\seqsplit{handle\_export\_error()}}. & \texttt{\seqsplit{AIRouter}}, \texttt{\seqsplit{ExportRouter}} \\ \hline
+	\texttt{\seqsplit{DIProviders}} & Espone le funzioni fabbrica per ottenere le collaborazioni concrete (servizio AI, esportatore per formato) a runtime. & \texttt{\seqsplit{get\_ai\_service()}}, \texttt{\seqsplit{get\_exporter(format)}}. & \texttt{Settings}, Output Adapter concreti \\ \hline
+\end{xltabular}
+
+\textit{Nota: questa è una proposta di sintesi elaborata a partire dai componenti già documentati nelle sezioni precedenti; il gruppo è invitato a rivederla, correggerla ed eventualmente estenderla con componenti minori non inclusi (es. \texttt{MarkdownContentEditor}, DTO puntuali) prima della consegna finale.}
+
+\FloatBarrier

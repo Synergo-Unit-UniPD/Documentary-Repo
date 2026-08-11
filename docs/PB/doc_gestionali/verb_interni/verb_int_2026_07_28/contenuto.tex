@@ -1,0 +1,172 @@
+% --- 1. INFORMAZIONI GENERALI ---
+\section{Informazioni Generali}
+\begin{itemize}
+	\item \textbf{Luogo/Piattaforma:} Server Discord\textsubscript{G}
+	\item \textbf{Data:} 2026-07-28
+	\item \textbf{Orario di inizio:} 14:30
+	\item \textbf{Orario di fine:} 16:00
+	\item \textbf{Responsabile\textsubscript{G}:} Roberto Mariano Doroftei
+	\item \textbf{Scriba:} Sofia De Blasi
+\end{itemize}
+
+\vspace{0.5cm}
+\textbf{Partecipanti presenti:}
+\begin{table}[ht]
+	\centering
+	\renewcommand{\arraystretch}{1.2}
+	\begin{tabularx}{\textwidth}{X l}
+		\toprule
+		\textbf{Nome e Cognome} & \textbf{Matricola} \\
+		\midrule
+		Sofia De Blasi & 2111014 \\
+		Roberto Mariano Doroftei & 2111031 \\
+		Filippo Idiometri & 2035617 \\
+		Francesco Marcon & 2110990 \\
+		Armando Moda Scarati & 2082864 \\
+		Anton Ricardo Rupi & 2054304 \\
+		\bottomrule
+	\end{tabularx}
+\\ \end{table}
+
+\vspace{0.5cm}
+\textbf{Partecipanti assenti:}
+\begin{table}[ht]
+	\centering
+	\renewcommand{\arraystretch}{1.2}
+	\begin{tabularx}{\textwidth}{X l}
+		\toprule
+		\textbf{Nome e Cognome} & \textbf{Matricola} \\
+		\midrule
+		Nessuno & - \\
+		\bottomrule
+	\end{tabularx}
+\end{table}
+
+% --- 2. ORDINE DEL GIORNO ---
+\section{Ordine del Giorno}
+Gli argomenti previsti per la riunione odierna sono:
+\begin{enumerate}
+	\item Definizione dell’architettura complessiva.
+    \item Discussione delle nuove convenzioni.
+    \item Strategia di test per strato e definizione della soglia di coverage (80\%).
+    \item Aggiornamento della documentazione.
+    \item Realizzazione dei diagrammi UML dei componenti.
+    \item Comunicazione a Zucchetti per richiesta preferenza architettura backend (layer vs esagonale).
+\end{enumerate}
+
+% --- 3. RESOCONTO E DISCUSSIONE ---
+\section{Resoconto della Riunione}
+
+\subsection{Sprint review\textsubscript{G} e retrospective}  
+Nella retrospective è emerso un rallentamento generale dovuto allo studio individuale necessario per allinearsi tecnicamente prima di avviare le attività principali della Product Baseline\textsubscript{G}. Il gruppo ha evidenziato che tale fase di approfondimento è indispensabile per evitare errori architetturali e garantire una progettazione coerente e sostenibile.
+
+\subsection{Aggiornamenti documentali e CI/CD}
+Il team ha discusso le nuove convenzioni da integrare nelle Norme di Progetto\textsubscript{G}, tra cui naming, struttura dei package, politiche di branching, criteri di DoD e PR policy. È stato inoltre definito l’insieme dei framework di test e degli strumenti di linting/formatting da adottare:  
+\begin{itemize}
+    \item Backend: pytest; analisi statica con ruff (da valutare).
+    \item Frontend: vitest; analisi statica con eslint + prettier (da valutare).
+\end{itemize}
+
+Sono stati inoltre analizzati gli aggiornamenti necessari al PdP\textsubscript{G} (consuntivo sprint, rischi, DoD) e al PdQ\textsubscript{G} (parte architetturale e consuntivo, con integrazione dei nuovi requisiti non funzionali).  
+Sul fronte CI/CD\textsubscript{G}, è stata confermata la necessità di definire una strategia di test per strato, stabilire una soglia di coverage pari all’80\% e completare il setup dell’analisi statica. È stata inoltre discussa la revisione della pipeline CI e della configurazione Docker\textsubscript{G}.
+
+\subsection{Pianificazione dello sprint successivo e assegnazione dei ruoli}
+Il team ha stabilito la seguente distribuzione delle attività per lo sprint:
+\begin{itemize}
+    \item \textbf{Amministratore 1 (Armando):} aggiornamento delle Norme di Progetto con le nuove convenzioni (naming, package, DI, branching, PR policy, DoD) e integrazione dei diagrammi UML tramite StarUML, invio email a Zucchetti per chiarimenti sull’architettura backend.
+    \item \textbf{Amministratore 2 (Filippo):} aggiornamento del PdP con il consuntivo dello sprint, revisione del DoD e analisi dei rischi — 60 min; aggiornamento del PdQ con la parte architetturale e il consuntivo.
+    \item \textbf{Programmatore (Francesco):} definizione della struttura della repository (cartelle frontend/backend e package previsti), attivazione della pipeline CI e revisione Docker.
+    \item \textbf{Progettista (Sofia):} realizzazione dei diagrammi UML dei componenti AI Domain e Frontend Core, con definizione delle firme delle interfacce.
+    \item \textbf{Responsabile (Roberto):} redazione del verbale interno — 60 min; invio del DdB via email.
+    \item \textbf{Verificatore (Ricardo):} 
+\end{itemize}
+
+% --- 4. DECISIONI PRESE ---
+\section{Decisioni Prese}
+
+\renewcommand{\arraystretch}{1.3}
+\vspace{-0.3cm}
+\noindent
+\begin{longtable}{c p{12cm}}
+	\toprule
+	\textbf{Codice} & \textbf{Decisione} \\
+	\midrule
+	\endfirsthead
+
+	\toprule
+	\textbf{Codice} & \textbf{Decisione} \\
+	\midrule
+	\endhead
+
+	\midrule
+	\multicolumn{2}{r}{\textit{Continua nella pagina successiva}} \\
+	\midrule
+	\endfoot
+
+	\bottomrule
+	\endlastfoot
+
+	\textbf{VI-24.1} & {Conferma dell’allineamento dei documenti AdR e NdP, con integrazione dei nuovi requisiti non funzionali e correzioni post-RTB\textsubscript{G}. Individuati i requisiti relativi alla CI\textsubscript{G}.} \\
+    \textbf{VI-24.2} & {Definizione dell’architettura complessiva: frontend MVC pull; backend a layer con richiesta all’azienda di preferenza tra layer ed esagonale per garantire indipendenza dalle tecnologie.} \\
+    \textbf{VI-24.3} & {Introduzione delle nuove convenzioni nelle NdP\textsubscript{G}: naming, struttura dei package, DI, branching, PR policy, DoD, e integrazione dei diagrammi UML tramite StarUML.} \\
+    \textbf{VI-24.4} & {Scelta dei framework di test e degli strumenti di linting/formatting: backend con pytest e ruff; frontend con vitest, eslint e prettier e Definizione della strategia di test per strato e fissazione della soglia di coverage all’80\%.} \\
+    \textbf{VI-24.5} & {Aggiornamento del PdP\textsubscript{G} (consuntivo sprint, DoD, rischi) e del PdQ\textsubscript{G} (parte architetturale e consuntivo con nuovi requisiti non funzionali).} \\
+    \textbf{VI-24.6} & {Definizione della struttura della repository} \\
+    \textbf{VI-24.7} & {Realizzazione dei diagrammi UML dei componenti AI Domain e Frontend Core, con definizione delle firme delle interfacce necessarie.} \\
+    \textbf{VI-24.8} & {Invio email a Zucchetti per chiarimenti sulla preferenza architetturale backend (layer vs esagonale), con evidenza dei vantaggi e del livello di indipendenza dalle tecnologie.} \\
+
+\end{longtable}
+
+% --- 5. AZIONI (TODO) ---
+\section{Azioni da Svolgere (To-Do)}
+
+\renewcommand{\arraystretch}{1.3}
+\begin{longtable}{p{2.3cm} c p{4.5cm} p{3cm} l}
+	\toprule
+	\textbf{Codice} & \textbf{Rif. Decisione} & \textbf{Descrizione Task} & \textbf{Assegnatario} & \textbf{Scadenza} \\
+	\midrule
+	\endfirsthead
+
+	\toprule
+	\textbf{Codice} & \textbf{Rif. Decisione} & \textbf{Descrizione Task} & \textbf{Assegnatario} & \textbf{Scadenza} \\
+	\midrule
+	\endhead
+
+	\midrule
+	\multicolumn{5}{r}{\textit{Continua nella pagina successiva}} \\
+	\midrule
+	\endfoot
+
+	\bottomrule
+	\endlastfoot
+
+	\ghissue{324} & VI-24.3 & Aggiornamento delle Norme di Progetto con nuove convenzioni (naming, package, DI, branching, PR policy, DoD) e integrazione diagrammi UML tramite StarUML & Armando M. Scarati & 2026-08-04 \\[4pt]
+
+    \ghissue{325} & VI-24.5 & Aggiornamento del Piano di Progetto con consuntivo sprint, revisione DoD e analisi dei rischi & Filippo Idiometri & 2026-08-04 \\[4pt]
+
+    \ghissue{326} & VI-24.6 & Definizione della struttura della repository, package previsti, pipeline CI attiva, revisione Docker & Francesco Marcon & 2026-08-04 \\[4pt]
+
+    \ghissue{327} & VI-24.5 & Aggiornamento del Piano di Qualifica con parte architetturale e consuntivo, inclusione dei nuovi requisiti non funzionali & Filippo Idiometri & 2026-08-04 \\[4pt]
+
+    \ghissue{328} & VI-24.7 & Realizzazione dei diagrammi UML dei componenti AI Domain e Frontend Core, con definizione delle firme delle interfacce necessarie & Sofia De Blasi & 2026-08-04 \\[4pt]
+
+    \ghissue{329} & VI-24.8 & Invio email a Zucchetti per chiarimenti sulla preferenza architetturale backend (layer vs esagonale) e vantaggi in termini di indipendenza tecnologica & Armando M. Scarati & 2026-08-04 \\[4pt]
+
+    \ghissue{330} & VI-24.1 & Stesura del Verbale Interno con riepilogo delle decisioni e aggiornamento documentale & Roberto Mariano Doroftei & 2026-07-28 \\[4pt]
+
+    \ghissue{331} & VI-24.1 & Stesura del Diario di Bordo  & Roberto Mariano Doroftei & 2026-07-31 \\[4pt]
+
+\end{longtable}
+
+% --- 6. PROSSIMA RIUNIONE ---
+\section{Prossima Riunione}
+\begin{itemize}
+	\item \textbf{Data:} 2026-08-04
+	\item \textbf{Ora:} 14:30
+	\item \textbf{OdG preliminare\textsubscript{G}:}
+	\begin{itemize}
+		\item Analisi dell’elenco delle decisioni architetturali redatto e successiva approvazione.
+        \item Aggiornamento ultimi dettalgli della progettazione delle classi.
+        \item Pianificazione del prossimo sprint e assegnazione dei ruoli.
+	\end{itemize}
+\end{itemize}

@@ -204,3 +204,21 @@ SPI
 Schedule Performance Index
 SV
 Schedule Variance
+Adapter
+Architettura a Layer
+Architettura Esagonale
+Builder
+Client-Server
+Command
+Dependency Injection
+DTO
+Fallback
+Model-View-Controller
+Observer
+Open Closed Principle
+Proxy
+Pull Model
+Simple Factory
+Strategy
+Template Method
+Unione Discriminata
