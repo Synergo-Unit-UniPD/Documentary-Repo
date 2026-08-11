@@ -5,7 +5,7 @@
 
 % 2. CONFIGURAZIONI LOGHI E IMMAGINI
 \graphicspath{
-    {../../../../template/shared/loghi}
+    {../../../../template/shared/loghi/}
     {./diagrammi} % Cartella per i diagrammi UML di questo documento
 }
 
@@ -14,10 +14,12 @@
 	pdfauthor={Synergo Unit}
 }
 
+\usepackage{placeins}
+
 \pagestyle{fancy}
 \fancyhf{} 
 \fancyhead[L]{\textcolor{primarycolor}{\textbf{Synergo Unit}}}
-\fancyhead[R]{Specifica Tecnica v0.0.0}
+\fancyhead[R]{Specifica Tecnica v1.0.0 - 2026-08-10}
 \fancyfoot[C]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
@@ -56,6 +58,9 @@
 	\input{architettura.tex}
 	\newpage
 	
+	%\input{decomposizione.tex}
+	%\newpage
+	
 	\input{interfaccia_api.tex}
 	\newpage
 	
@@ -66,5 +71,8 @@
 	\newpage
 	
 	\input{tracciamento.tex}
+	\newpage
+	
+	\input{requisiti_sistema.tex}
 	
 \end{document}

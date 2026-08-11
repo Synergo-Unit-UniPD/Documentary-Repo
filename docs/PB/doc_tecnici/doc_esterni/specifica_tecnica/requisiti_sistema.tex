@@ -1,0 +1,36 @@
+% =======================================================
+% 8. REQUISITI DI SISTEMA
+% =======================================================
+\section{Requisiti di Sistema}
+\label{sec:requisiti-sistema}
+Questa sezione esplicita i requisiti hardware, software e di rete assunti dall'architettura descritta nel documento, a cui i requisiti prestazionali del capitolo 5 -- Requisiti dell'\link{https://synergo-unit-unipd.github.io/Second-Brain/docs/PB/doc_tecnici/doc_esterni/analisi_dei_requisiti/analisi_dei_requisiti.pdf}{Analisi dei Requisiti} (in particolare R1-P-O, R3-P-O, R4-P-O) fanno riferimento senza definirli esplicitamente.
+
+\subsection{Hardware}
+Trattandosi di un'applicazione web in cui l'elaborazione AI è interamente delegata al servizio LLM esterno (Sezione~\ref{sec:arch-backend}), il carico computazionale lato client si limita al rendering dell'editor e dell'anteprima Markdown; non sono pertanto richieste risorse hardware dedicate oltre a quelle di un dispositivo desktop o laptop di fascia standard in commercio negli ultimi 3--4 anni.
+
+\begin{itemize}
+	\item \textbf{CPU}: processore dual-core con clock $\geq$ 1.6 GHz o equivalente, sufficiente a garantire i tempi di avvio (R3-P-O) e di aggiornamento dell'anteprima (R1-P-O, R4-P-O) dichiarati.
+	\item \textbf{RAM}: 4 GB minimi consigliati per l'esecuzione del browser con una singola scheda dedicata all'applicazione, tenendo conto dell'overhead di CodeMirror\textsubscript{G} e del parsing Markdown lato client.
+	\item \textbf{Storage}: nessun requisito significativo; il sistema non mantiene alcuna persistenza locale automatica oltre ai singoli file \texttt{.md} esplicitamente salvati dall'utente (R75-F-O), la cui dimensione è trascurabile rispetto alla capacità di un qualsiasi dispositivo moderno.
+	\item \textbf{Lato server}: nessun requisito hardware specifico è imposto dal gruppo, poiché l'infrastruttura di calcolo per l'inferenza LLM è gestita e messa a disposizione dall'azienda proponente (R3-V-O); il Backend Second Brain richiede solo le risorse minime per l'esecuzione di un servizio FastAPI containerizzato (Sezione~\ref{sec:arch-deployment}).
+\end{itemize}
+
+Il degrado prestazionale sotto queste soglie non è stato misurato sistematicamente dal gruppo: i valori dichiarati in R1-P-O, R3-P-O e R4-P-O sono da intendersi validi per dispositivi conformi ai requisiti sopra indicati, mentre su hardware inferiore l'unica garanzia esplicita rimane l'assenza di blocchi o crash dell'editor (R10-Q-O).
+
+\subsection{Software}
+\begin{itemize}
+	\item \textbf{Browser}: come vincolato da R5-V-O, il sistema deve essere eseguito su Chrome 151+, Edge 150+, Firefox 153+ o Safari 26+.
+	\item \textbf{Sistema operativo}: nessun vincolo diretto oltre alla disponibilità di uno dei browser sopra indicati; l'applicazione è stata verificata su Windows, macOS e Linux.
+	\item \textbf{Dipendenza da API browser-specifiche}: le funzionalità di salvataggio e apertura locale della nota (R75-F-O, R76-F-O) si appoggiano alla \textit{File System Access API} del browser (\texttt{showSaveFilePicker}, \texttt{showOpenFilePicker}, Sezione~\ref{sec:arch-frontend}). Il supporto a questa API varia tra i browser elencati in R5-V-O: è nativo su Chrome ed Edge, mentre su Firefox e Safari il supporto è storicamente parziale o assente nelle rispettive versioni correnti. 
+    
+    %\textbf{Questo punto necessita di verifica esplicita da parte del gruppo} (es. tramite test cross-browser nel Piano di Qualifica) per accertare la piena compatibilità con R5-V-O e la coerenza con R13-Q-D (assenza di dipendenze da funzionalità non standard dei browser); in assenza di tale verifica, si raccomanda di documentarne l'esito nella prossima revisione di questo documento.
+\end{itemize}
+
+\subsection{Network}
+\begin{itemize}
+	\item \textbf{Editing locale}: le funzionalità di scrittura, formattazione e cronologia delle modifiche (R1--R47) non richiedono connettività di rete, essendo interamente gestite lato client (R10-Q-O).
+	\item \textbf{Operazioni AI}: richiedono una connessione di rete attiva tra Frontend e Backend e tra Backend e servizio LLM esterno; la comunicazione avviene su protocollo HTTPS (Sezione~\ref{sec:arch-backend}). Non è imposto un requisito esplicito di banda minima, ma il sistema applica un timeout massimo indicativo di 5 minuti per richiesta (R5-P-O), oltre il quale l'elaborazione viene interrotta con notifica di errore.
+	\item \textbf{Persistenza remota (opzionale, non implementata)}: qualora in futuro venisse realizzato il modulo opzionale di persistenza remota (R4-V-Op), andrebbe definito un requisito di rete dedicato per il caricamento della lista delle note (R6-P-Op); allo stato attuale non è applicabile.
+\end{itemize}
+
+\FloatBarrier
