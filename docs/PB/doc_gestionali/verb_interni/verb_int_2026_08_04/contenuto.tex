@@ -1,0 +1,176 @@
+% --- 1. INFORMAZIONI GENERALI ---
+\section{Informazioni Generali}
+\begin{itemize}
+	\item \textbf{Luogo/Piattaforma:} Server Discord
+	\item \textbf{Data:} 2026-08-04
+	\item \textbf{Orario di inizio:} 14:30
+	\item \textbf{Orario di fine:} 15:35
+	\item \textbf{Responsabile:} Filippo Idiometri
+	\item \textbf{Scriba:} Sofia De Blasi
+\end{itemize}
+
+\vspace{0.5cm}
+\textbf{Partecipanti presenti:}
+\begin{table}[ht]
+	\centering
+	\renewcommand{\arraystretch}{1.2}
+	\begin{tabularx}{\textwidth}{X l}
+		\toprule
+		\textbf{Nome e Cognome} & \textbf{Matricola} \\
+		\midrule
+		Sofia De Blasi & 2111014 \\
+		Filippo Idiometri & 2035617 \\
+		Francesco Marcon & 2110990 \\
+		Armando Moda Scarati & 2082864 \\
+		Anton Ricardo Rupi & 2054304 \\
+		\bottomrule
+	\end{tabularx}
+\\ \end{table}
+
+\vspace{0.5cm}
+\textbf{Partecipanti assenti:}
+\begin{table}[ht]
+	\centering
+	\renewcommand{\arraystretch}{1.2}
+	\begin{tabularx}{\textwidth}{X l}
+		\toprule
+		\textbf{Nome e Cognome} & \textbf{Matricola} \\
+		\midrule
+		Roberto Mariano Doroftei & 2111031 \\
+		\bottomrule
+	\end{tabularx}
+\end{table}
+
+% --- 2. ORDINE DEL GIORNO ---
+\section{Ordine del Giorno}
+Gli argomenti previsti per la riunione odierna sono:
+\begin{enumerate}
+	\item Sprint review e retrospective.
+	\item Aggiornamento dei documenti gestionali (NdP, PdP, PdQ).
+	\item Presentazione e validazione dei diagrammi delle classi, package e sequenze.
+	\item Pianificazione dell'avvio dello sviluppo (implementazione e test).
+	\item Impostazione delle regole per il branch protection e delle checklists per le Pull Request.
+	\item Assegnazione dei nuovi ruoli e pianificazione delle attività.
+\end{enumerate}
+
+% --- 3. RESOCONTO E DISCUSSIONE ---
+\section{Resoconto della Riunione}
+
+\subsection{Sprint review e retrospective}
+La review ha evidenziato il completamento delle attività di studio progettuale e di aggiornamento documentale. 
+In particolare, i documenti \textbf{NdP}, \textbf{PdP} e \textbf{PdQ} sono stati aggiornati in base alle decisioni 
+prese nella riunione precedente. 
+Durante la retrospective è emersa una difficoltà principale: la complessità nel coordinare la disponibilità di tutti 
+i membri del team, che ha richiesto un maggiore impegno per allineare i lavori. Nonostante ciò, l'obiettivo dello 
+sprint è stato raggiunto con successo.
+
+\subsection{Presentazione e validazione dei diagrammi}
+Il progettista ha presentato al gruppo i diagrammi delle classi, dei package e delle sequenze relativi ai flussi 
+principali del sistema. Questi documenti, elaborati durante lo sprint 15, sono stati approvati all'unanimità. 
+La loro realizzazione ha permesso di allineare la visione architetturale del team e costituirà la base di partenza 
+per l'implementazione. I diagrammi rappresentano le firme dei metodi e le interazioni tra i componenti, fornendo 
+una guida chiara per lo sviluppo.
+
+\subsection{Pianificazione dello sprint successivo e assegnazione dei ruoli}
+È stato deciso di avviare l'implementazione seguendo i diagrammi approvati. 
+Per garantire la qualità del codice, lo sviluppo sarà accompagnato dalla scrittura di test unitari per le funzioni significative. 
+I test dovranno rispettare le convenzioni di naming e le linee guida definite nelle Norme di Progetto.
+
+La distribuzione del lavoro per l'implementazione è la seguente:
+\begin{itemize}
+	\item \textbf{Programmatori (due flussi):} Armando Moda Scarati si dedicherà allo sviluppo della logica di frontend, all'implementazione 
+	delle funzionalità di esportazione e dei relativi test mentre Anton Ricardo Rupi si dedicherà all'implementazione del dominio per 
+	l'integrazione LLM, allo sviluppo delle API e dei servizi di backend e relativi test.
+	\item \textbf{Responsabile:} Filippo Idiometri redigerà il seguente verbale, il verbale esterno con la proponente e 
+	si occuperà del Diario di Bordo.
+	\item \textbf{Amministratore:} Roberto Mariano Doroftei aggiornerà \textbf{PdP} e \textbf{Pdq} ed imposterà il branch protection.
+	\item \textbf{Progettista:} Sofia de Blasi inizierà la stesura della specifica tecnica con il tracciamentodel soddisfacimento dei requisiti.
+	\item \textbf{Verificatore:} Francesco Marcon.
+\end{itemize}
+
+\subsection{Nuova convenzione per i commit}
+È stata introdotta una nuova convenzione per i messaggi di commit per migliorare la tracciabilità:
+\begin{itemize}
+    \item \textbf{st}: per commit relativi alla Specifica Tecnica.
+    \item \textbf{mu}: per commit relativi al Manuale Utente.
+\end{itemize}
+% --- 4. DECISIONI PRESE ---
+\section{Decisioni Prese}
+
+\renewcommand{\arraystretch}{1.3}
+\vspace{-0.3cm}
+\noindent
+\begin{longtable}{c p{12cm}}
+	\toprule
+	\textbf{Codice} & \textbf{Decisione} \\
+	\midrule
+	\endfirsthead
+
+	\toprule
+	\textbf{Codice} & \textbf{Decisione} \\
+	\midrule
+	\endhead
+
+	\midrule
+	\multicolumn{2}{r}{\textit{Continua nella pagina successiva}} \\
+	\midrule
+	\endfoot
+
+	\bottomrule
+	\endlastfoot
+
+	\textbf{VI-25.1} & {Avvio dell'implementazione seguendo le specifiche dei diagrammi, affiancata dalla scrittura di test unitari.} \\
+	\textbf{VI-25.2} & {Attivazione delle branch protection sul repository principale, richiedendo PR review, test e checklist.} \\
+	\textbf{VI-25.3} & {Adozione delle etichette "st" e "mu" per i commit relativi a documentazione tecnica e manuale utente.} \\
+	
+\end{longtable}
+
+% --- 5. AZIONI (TODO) ---
+\section{Azioni da Svolgere (To-Do)}
+
+\renewcommand{\arraystretch}{1.3}
+\begin{longtable}{p{2.3cm} c p{4.5cm} p{3cm} l}
+	\toprule
+	\textbf{Codice} & \textbf{Rif. Decisione} & \textbf{Descrizione Task} & \textbf{Assegnatario} & \textbf{Scadenza} \\
+	\midrule
+	\endfirsthead
+
+	\toprule
+	\textbf{Codice} & \textbf{Rif. Decisione} & \textbf{Descrizione Task} & \textbf{Assegnatario} & \textbf{Scadenza} \\
+	\midrule
+	\endhead
+
+	\midrule
+	\multicolumn{5}{r}{\textit{Continua nella pagina successiva}} \\
+	\midrule
+	\endfoot
+
+	\bottomrule
+	\endlastfoot
+
+	\ghissue{341} & - & Stesura del verbale interno odierno (VI N. 25) & Filippo Idiometri & 2026-08-11 \\[4pt]
+	\ghissue{342} & - & Stesura del Diario di Bordo & Armando M. Scarati & 2026-08-07 \\[4pt]
+	\ghissue{338} & - & Stesura del verbale esterno (VE N. 8) & Filippo Idiometri & 2026-08-11 \\[4pt]
+	\ghissue{339} & - & Aggiornamento PdP & Roberto M. Doroftei & 2026-08-11 \\[4pt]
+	\ghissue{340} & - & Aggiornamento PdQ & Roberto M. Doroftei & 2026-08-11 \\[4pt]
+	\ghissue{343} & VI-25.1 & Sviluppo frontend & Armando M. Scarati & 2026-08-11 \\[4pt]
+	\ghissue{344} & VI-25.1 & Implementazione funzionalità di esportazione & Armando M. Scarati & 2026-08-11 \\[4pt]
+	\ghissue{346} & VI-25.1 & Sviluppo api e servizi backend & Armando M. Doroftei & 2026-08-11 \\[4pt]
+	\ghissue{347} & - & Stesura della specifica tecnica & Sofia de Blasi & 2026-08-11 \\[4pt]
+	\ghissue{348} & VI-25.2 & Branch protection & Roberto M. Doroftei & 2026-08-11 \\[4pt]
+	
+\end{longtable}
+
+% --- 6. PROSSIMA RIUNIONE ---
+\section{Prossima Riunione}
+\begin{itemize}
+	\item \textbf{Data:} 2026-08-11
+	\item \textbf{Ora:} 14:30
+	\item \textbf{OdG preliminare:}
+	\begin{itemize}
+		\item Analisi dell'elenco delle decisioni architetturali redatto e successiva approvazione.
+		\item Verifica e review del setup dell'analisi statica per la CI e degli standard di testing selezionati.
+		\item Avvio della stesura dei diagrammi delle classi per la documentazione.
+		\item Pianificazione del prossimo sprint e assegnazione dei ruoli.
+	\end{itemize}
+\end{itemize}

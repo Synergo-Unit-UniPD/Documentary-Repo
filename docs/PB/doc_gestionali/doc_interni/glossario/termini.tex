@@ -10,6 +10,7 @@
 \begin{itemize}[leftmargin=*]
       \item \textbf{Actual Cost (AC):} Costo effettivamente sostenuto per il lavoro 
       svolto entro una certa data.
+      \item \textbf{Adapter:} Design pattern strutturale che permette a interfacce incompatibili di collaborare, traducendo l'interfaccia di una classe esistente in un'altra attesa dal client. Nel progetto è utilizzato per disaccoppiare il dominio applicativo dai dettagli di uno specifico provider LLM o libreria esterna.
       \item \textbf{Amministratore:} Ruolo del gruppo responsabile di assicurare
       l'efficienza di procedure, strumenti e tecnologie a supporto del
       \textit{way of working}; redige e mantiene aggiornate le Norme di
@@ -24,6 +25,8 @@
       \item \textbf{API (Application Programming Interface):} Insieme di regole e strumenti che permettono a diversi sistemi software di comunicare tra loro. Nel contesto del progetto, consente l'invocazione di servizi esterni di LLM tramite chiamate strutturate.
       \item \textbf{API Key:} Chiave di autenticazione utilizzata per autorizzare l’accesso a servizi o API esterne.
       \item \textbf{Architecture Decision Record (ADR):} Documento sintetico utilizzato per registrare una decisione architetturale rilevante, includendo il contesto, le alternative valutate, la decisione presa e le relative motivazioni. Nel progetto è previsto per la fase PB, quando le scelte architetturali saranno consolidate.
+      \item \textbf{Architettura a Layer:} Pattern architetturale che organizza il sistema in livelli sovrapposti (es. Presentazione, Business Logic), ciascuno dipendente solo dal livello sottostante. Adottata per il Backend a seguito di un confronto esplicito con l'azienda proponente (decisione VE-8.1), in alternativa all'architettura Esagonale.
+      \item \textbf{Architettura Esagonale (Ports and Adapters):} Pattern architetturale che isola la logica di dominio dai dettagli tecnologici esterni (framework, database, API) tramite porte e adapter, favorendo testabilità e sostituibilità dei componenti. Valutata come alternativa all'architettura a Layer per il Backend e scartata per la scala contenuta del progetto (decisione VE-8.1).
       \item \textbf{Artefatto:} Prodotto concreto generato durante lo svolgimento del progetto, come documento, diagramma, codice sorgente, script, file PDF, verbale o materiale di presentazione.
       \item \textbf{Appunti (Clipboard):} Area temporanea di memoria del sistema operativo utilizzata per conservare dati copiati o tagliati dall'utente, rendendoli disponibili per operazioni di incolla. Nel progetto è utilizzata per trasferire testo da e verso l'editor.
       \item \textbf{Asincrono:} Modello di esecuzione in cui operazioni e processi possono essere svolti senza bloccare il flusso principale del programma.   
@@ -63,6 +66,7 @@ browser target su cui il sistema è verificato o testato.
       \item \textbf{Budget:} Quantità di risorse economiche disponibili per il progetto o per uno specifico sprint, calcolata sulla base delle ore preventivate e dei costi orari associati ai ruoli.
       \item \textbf{Bug:} Comportamento errato o non conforme rispetto a quanto atteso
       per una funzionalità o componente software.
+      \item \textbf{Builder:} Design pattern creazionale che separa la costruzione incrementale di un oggetto complesso dalla sua rappresentazione finale, tramite metodi fluenti che restituiscono il builder stesso. Nel progetto è utilizzato per assemblare in modo incrementale il \texttt{Prompt} da inviare all'LLM.
       \item \textbf{Burndown Chart:} Grafico che mostra l'andamento del lavoro residuo nel
       corso di uno sprint o dell'intero progetto, confrontando il ritmo di avanzamento
       effettivo con quello pianificato. Utilizzata per monitorare il rischio di ritardo
@@ -83,7 +87,9 @@ browser target su cui il sistema è verificato o testato.
       \item \textbf{Casi d'uso:} Tecnica di modellazione che descrive le funzionalità del sistema tramite una "visione esterna" (come percepite dall'attore), ignorandone l'implementazione. A livello tecnico è definito come un insieme di scenari (sequenze di azioni che includono uno scenario principale e possibili scenari alternativi o di errore) che condividono lo stesso scopo finale per l'utente.
       \item  \textbf{CI/CD (Continuous Integration / Continuous Deployment):} Pratica di sviluppo software che prevede l’integrazione frequente del codice in un repository condiviso e la sua automazione di build, test e distribuzione.
       \item \textbf{Ciclo Di Vita Documentale:} Sequenza di stati attraversati da un documento dalla creazione al rilascio. Nel gruppo si articola in: In Stesura, In Verifica, Verificato, Approvato e Rilasciato.      \item \textbf{Code Coverage:} Metrica che misura la percentuale di codice sorgente eseguita durante l’esecuzione dei test automatici.
+      \item \textbf{Client-Server:} Pattern architetturale che separa un'applicazione in due componenti distinti -- il client, che gestisce l'interfaccia utente, e il server, che espone servizi e logica applicativa -- comunicanti tramite un protocollo di rete. Adottato come architettura generale del sistema per separare la gestione dell'editor (Frontend) dall'orchestrazione delle chiamate LLM (Backend).
       \item \textbf{Colli di bottiglia:} Fase o componente di un processo che rallenta l'efficienza complessiva, limitando la capacità operativa del team o del sistema.
+      \item \textbf{Command:} Design pattern comportamentale che incapsula una richiesta come oggetto, permettendo di parametrizzare, accodare o annullare operazioni in modo uniforme. Nel progetto è utilizzato per implementare Undo/Redo delle modifiche testuali, incluse quelle generate dall'AI.
       \item \textbf{Commit:} Operazione Git che registra un insieme di modifiche nel
       repository locale, associandovi un messaggio descrittivo. Nel flusso del gruppo
       ogni commit deve seguire la convenzione
@@ -135,6 +141,7 @@ browser target su cui il sistema è verificato o testato.
       RTB include criteri documentali e criteri minimi per il codice del Proof of
       Concept; nella fase PB potrà essere estesa a test automatici e copertura del
       codice.
+      \item \textbf{Dependency Injection (DI):} Pattern creazionale che implementa l'Inversion of Control fornendo le dipendenze di un componente dall'esterno (tipicamente tramite costruttore), invece di farle creare al componente stesso. Nel progetto è utilizzato sia lato Backend (tramite il meccanismo nativo di FastAPI) sia lato Frontend, dove è stato introdotto autonomamente dal gruppo in assenza di supporto nativo di Vue.js.
       \item \textbf{Deployment:} Processo di rilascio e distribuzione di un’applicazione in un ambiente di esecuzione.
       \item \textbf{Diario Di Bordo:} Momento di rendicontazione periodica al committente
       in cui il gruppo espone il rapporto tra costi sostenuti e avanzamento
@@ -148,6 +155,7 @@ browser target su cui il sistema è verificato o testato.
       tramite container.
       \item \textbf{Docker Compose:} Strumento per definire ed eseguire applicazioni
       composte da più container tramite un file di configurazione.
+      \item \textbf{DTO (Data Transfer Object):} Oggetto utilizzato per trasferire dati strutturati tra diversi livelli o componenti di un sistema, tipicamente privo di logica applicativa propria. Nel progetto i DTO validano e normalizzano i payload delle richieste/risposte API.
 \end{itemize}
  
 % ------------- E -------------
@@ -169,6 +177,7 @@ browser target su cui il sistema è verificato o testato.
 \addcontentsline{toc}{subsection}{F}
 \subsection*{F}
 \begin{itemize}[leftmargin=*]
+      \item \textbf{Fallback:} Strategia che prevede un comportamento o percorso alternativo da attivare quando l'operazione principale non va a buon fine. Nel progetto è utilizzato per la gestione degli errori di comunicazione con il servizio LLM esterno.
       \item \textbf{FastAPI:} Framework moderno Python per la creazione di API REST ad alte prestazioni, con supporto asincrono e generazione automatica della documentazione.
       \item \textbf{Feature:} Nuova funzionalità del prodotto, del Proof of Concept o di
       una sua componente.
@@ -307,6 +316,7 @@ browser target su cui il sistema è verificato o testato.
           registrati nel foglio di calcolo condiviso e utilizzati per il
           monitoraggio dell'avanzamento.
       \item \textbf{Mitigazione:} Insieme di azioni preventive adottate per ridurre la probabilità di occorrenza o l'impatto di un rischio identificato.
+      \item \textbf{Model-View-Controller (MVC):} Pattern architetturale che separa la logica di dominio (Model), la presentazione (View) e la gestione degli input utente (Controller) in tre componenti distinti e disaccoppiati. Adottato per il Frontend nella variante \textit{Pull Model}, in cui la View espone il proprio stato ed è il Controller a interrogarlo, anziché riceverlo push dal Model.
       \item \textbf{MongoDB:} Database NoSQL orientato ai documenti, open source,progettato per scalabilità orizzontale e alte prestazioni in contesti distribuiti.
       \item \textbf{MVP (Minimum Viable Product):} Versione del prodotto dotata delle
           funzionalità minime sufficienti per essere valutata dal proponente.
@@ -334,6 +344,7 @@ browser target su cui il sistema è verificato o testato.
 \addcontentsline{toc}{subsection}{O}
 \subsection*{O}
 \begin{itemize}[leftmargin=*]
+    \item \textbf{Observer:} Design pattern comportamentale che permette a un oggetto (Subject) di notificare automaticamente i propri cambiamenti di stato a una lista di osservatori (Observer) senza conoscerne il tipo concreto. Nel progetto realizza la propagazione degli aggiornamenti tra Model, View e Controller nell'architettura MVC del Frontend.
     \item \textbf{OCR (Optical Character Recognition):} Tecnologia che permette di riconoscere e convertire testo contenuto in immagini o documenti scansionati in dati testuali modificabili.
     \item \textbf{OdG Preliminare:} Acronimo di ``Ordine del Giorno Preliminare''.
           Indica l'elenco dei punti da trattare nella riunione, pubblicato dal
@@ -341,6 +352,7 @@ browser target su cui il sistema è verificato o testato.
           condiviso. Funge anche da base per la successiva redazione del verbale
           interno, in quanto nel medesimo documento vengono annotate le decisioni
           adottate durante la riunione.
+    \item \textbf{Open Closed Principle (OCP):} Principio di progettazione orientata agli oggetti secondo cui un'entità software dovrebbe essere aperta all'estensione ma chiusa alla modifica. Nel progetto guida la scelta di pattern come Strategy e Simple Factory, che permettono di aggiungere nuove operazioni AI senza modificare il codice esistente.
     \item \textbf{OWASP (Open Web Application Security Project):} Fondazione no-profit che produce standard, strumenti e linee guida per la sicurezza delle applicazioni web.
 \end{itemize}
  
@@ -404,6 +416,8 @@ browser target su cui il sistema è verificato o testato.
             utente a un sistema di intelligenza artificiale per guidarne la
             generazione di contenuto.
       \item \textbf{Prompt Engineering:} Attività di progettazione e ottimizzazione dei prompt forniti a un LLM per ottenere risposte coerenti, accurate e aderenti agli obiettivi del sistema.
+      \item \textbf{Proxy:} Design pattern strutturale che fornisce un surrogato o segnaposto per un altro oggetto, controllandone l'accesso e incapsulando dettagli come la comunicazione di rete. Nel progetto è utilizzato lato Frontend per invocare le funzionalità esposte dal Backend come se fossero locali.
+      \item \textbf{Pull Model:} Variante del pattern Observer in cui l'osservatore, ricevuta la notifica di un cambiamento, interroga attivamente il Subject per ottenere lo stato aggiornato, anziché riceverlo direttamente nella notifica (Push Model). Adottata per l'architettura MVC del Frontend.
       \item \textbf{Pull Request:} Meccanismo di GitHub utilizzato per proporre
           l'integrazione di modifiche da un branch di lavoro al branch
           \texttt{main}. Nel flusso documentale del gruppo costituisce il punto
@@ -504,6 +518,7 @@ browser target su cui il sistema è verificato o testato.
           \texttt{Y} (Minor) indica aggiunte o modifiche significative di contenuto
           e \texttt{Z} (Patch) segnala correzioni ortografiche o modifiche non
           semantiche.
+      \item \textbf{Simple Factory:} Pattern creazionale che centralizza in un'unica classe la logica di istanziazione di oggetti correlati, senza costituire un Factory Method GoF in senso stretto. Nel progetto è utilizzato per risolvere e istanziare l'operazione AI corretta a partire dal tipo richiesto, tramite un registro auto-registrante.
       \item \textbf{Single Point of Failure:} Componente o risorsa del progetto la cui
       indisponibilità causa il blocco dell'intera attività correlata. Nel contesto
       del gruppo si riferisce alla situazione in cui un task
@@ -534,6 +549,7 @@ browser target su cui il sistema è verificato o testato.
       \item \textbf{Stack Tecnologico:} Insieme delle tecnologie, strumenti e framework utilizzati per sviluppare un sistema software.
       \item \textbf{Stakeholder:} Individuo, gruppo o organizzazione che ha un interesse attivo nel progetto e può influenzarne (o esserne influenzato da) i risultati, come il proponente o il committente.
       \item \textbf{State Management:} Insieme di tecniche e strumenti utilizzati per gestire lo stato applicativo in sistemi frontend complessi.
+      \item \textbf{Strategy:} Design pattern comportamentale che definisce una famiglia di algoritmi intercambiabili, incapsulando ciascuno in una classe separata implementante un'interfaccia comune. Nel progetto è utilizzato per le operazioni AI (riassunto, traduzione, riscrittura, ecc.), ciascuna con la propria logica di costruzione del prompt.
 \end{itemize}
  
 % ------------- T -------------
@@ -561,6 +577,7 @@ browser target su cui il sistema è verificato o testato.
       \item \textbf{Template:} Struttura predefinita e condivisa utilizzata per la
             redazione di tutti i documenti del gruppo, al fine di garantire uniformità
             formale e coerenza tra i diversi elaborati.
+      \item \textbf{Template Method:} Design pattern comportamentale che definisce lo scheletro invariante di un algoritmo in una classe astratta, delegando alle sottoclassi la ridefinizione di singoli passi variabili. Nel progetto è utilizzato per l'esportazione della nota nei diversi formati (PDF, HTML, JSON).
       \item \textbf{Tempo Effettivo:} Tempo realmente impiegato da un membro del
             gruppo per completare un task, espresso in minuti. Registrato nel foglio
             di calcolo condiviso a consuntivo dell'attività.
@@ -605,6 +622,7 @@ browser target su cui il sistema è verificato o testato.
       comportamento di un sistema software. Nel contesto del progetto è
       adottato per la rappresentazione dei diagrammi dei casi d'uso.
       \item \textbf{Undo:} Funzionalità dell'editor che permette di annullare l'ultima modifica effettuata.
+      \item \textbf{Unione Discriminata (Discriminated Union):} Tipo dato algebrico, tipico di TypeScript, composto da più varianti mutuamente esclusive distinte da un campo discriminante, ciascuna contenitore di dati privo di comportamento polimorfico. Nel progetto è preferita al pattern State GoF per rappresentare lo stato di una richiesta AI, poiché la logica di transizione resta centralizzata in un'unica classe.
       \item \textbf{Usabilità:} Capacità di un sistema di essere utilizzato in modo efficace, efficiente e soddisfacente dall'utente finale.
       \item \textbf{Utenza Target:} Profilo dell'utente finale a cui il sistema
       è destinato, definito in accordo con il proponente. Nel contesto del
