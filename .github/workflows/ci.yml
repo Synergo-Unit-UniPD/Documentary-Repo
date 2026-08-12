@@ -1,0 +1,197 @@
+name: CI
+
+# La pipeline si attiva SOLO per modifiche dentro mvp/: il resto del repository
+# (documentazione, verbali, altri materiali di corso) non ha bisogno di lint,
+# test o build, quindi non deve far scattare inutilmente la CI.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "mvp/**"
+      - ".github/workflows/ci.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "mvp/**"
+      - ".github/workflows/ci.yml"
+
+jobs:
+  backend-static-analysis:
+    name: Backend - lint, format, type-check
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: mvp/backend
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: mvp/backend/requirements-dev.txt
+
+      - name: Install dependencies (runtime + dev)
+        run: pip install -r requirements-dev.txt
+
+      - name: Lint (ruff check)
+        run: ruff check .
+
+      - name: Format check (ruff format)
+        run: ruff format --check .
+
+      - name: Type-check (mypy)
+        run: mypy .
+
+  backend-test:
+    name: Backend - test, coverage
+    runs-on: ubuntu-latest
+    needs: backend-static-analysis
+    defaults:
+      run:
+        working-directory: mvp/backend
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: mvp/backend/requirements-dev.txt
+
+      - name: Install dependencies
+        run: pip install -r requirements-dev.txt
+
+      - name: Run tests with coverage
+        run: pytest -v --cov=. --cov-report=term-missing --cov-report=xml --cov-report=html --cov-report=json --cov-fail-under=90
+
+      - name: Upload coverage report (HTML + XML)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-coverage
+          path: |
+            mvp/backend/htmlcov
+            mvp/backend/coverage.xml
+          retention-days: 14
+
+      # Legge la percentuale totale dal report JSON di coverage.py, per usarla
+      # nel badge dinamico (vedi step successivo). Arrotondata a intero.
+      - name: Extract coverage percentage
+        id: coverage
+        run: |
+          PCT=$(python -c "import json; print(round(json.load(open('coverage.json'))['totals']['percent_covered']))")
+          echo "percentage=$PCT" >> "$GITHUB_OUTPUT"
+
+      # Aggiorna il badge di coverage backend (vedi mvp/README.md, sezione
+      # "Setup dei badge di coverage", per la configurazione una tantum di
+      # GIST_ID e del secret GIST_SECRET). Solo su push a main: le PR non
+      # devono sovrascrivere il badge con uno stato non ancora consolidato.
+      # `continue-on-error` evita che l'intero job fallisca finché il gist
+      # non è stato configurato: i test restano comunque il gate reale.
+      - name: Update backend coverage badge
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        continue-on-error: true
+        uses: schneegans/dynamic-badges-action@v1.7.0
+        with:
+          auth: ${{ secrets.GIST_SECRET }}
+          gistID: ${{ vars.GIST_ID }}
+          filename: second-brain-backend-coverage.json
+          label: coverage backend
+          message: ${{ steps.coverage.outputs.percentage }}%
+          valColorRange: ${{ steps.coverage.outputs.percentage }}
+          maxColorRange: 100
+          minColorRange: 0
+
+  frontend-static-analysis:
+    name: Frontend - lint, format, type-check
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: mvp/frontend
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: mvp/frontend/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint (eslint, non distruttivo)
+        run: npx eslint .
+
+      - name: Format check (prettier)
+        run: npx prettier --check "src/**/*.{ts,vue}"
+
+      - name: Type-check (vue-tsc)
+        run: npm run type-check
+
+  frontend-test:
+    name: Frontend - test, coverage, build
+    runs-on: ubuntu-latest
+    needs: frontend-static-analysis
+    defaults:
+      run:
+        working-directory: mvp/frontend
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: mvp/frontend/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests with coverage
+        run: npm run test:coverage
+
+      - name: Upload coverage report (HTML)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-coverage
+          path: mvp/frontend/coverage
+          retention-days: 14
+
+      # Legge la percentuale "lines" dal report json-summary di vitest/v8.
+      - name: Extract coverage percentage
+        id: coverage
+        run: |
+          PCT=$(node -e "console.log(Math.round(require('./coverage/coverage-summary.json').total.lines.pct))")
+          echo "percentage=$PCT" >> "$GITHUB_OUTPUT"
+
+      - name: Update frontend coverage badge
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        continue-on-error: true
+        uses: schneegans/dynamic-badges-action@v1.7.0
+        with:
+          auth: ${{ secrets.GIST_SECRET }}
+          gistID: ${{ vars.GIST_ID }}
+          filename: second-brain-frontend-coverage.json
+          label: coverage frontend
+          message: ${{ steps.coverage.outputs.percentage }}%
+          valColorRange: ${{ steps.coverage.outputs.percentage }}
+          maxColorRange: 100
+          minColorRange: 0
+
+      - name: Production build
+        run: npm run build-only

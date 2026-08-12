@@ -1,0 +1,23 @@
+# --- frontend ---
+frontend/node_modules/
+frontend/dist/
+frontend/coverage/
+frontend/.eslintcache
+frontend/*.tsbuildinfo
+frontend/.ts-build-node/
+
+# --- backend ---
+backend/__pycache__/
+backend/**/__pycache__/
+backend/.pytest_cache/
+backend/.ruff_cache/
+backend/.mypy_cache/
+backend/htmlcov/
+backend/coverage.xml
+backend/coverage.json
+backend/.coverage
+
+# --- generico ---
+.env.local
+.DS_Store
+*.log
