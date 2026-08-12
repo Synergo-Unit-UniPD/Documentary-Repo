@@ -1,8 +1,8 @@
 # Second Brain — MVP
 
-[![CI](https://github.com/<GITHUB_USERNAME>/Second-Brain/actions/workflows/ci.yml/badge.svg)](https://github.com/<GITHUB_USERNAME>/Second-Brain/actions/workflows/ci.yml)
-[![Coverage backend](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/<GITHUB_USERNAME>/<GIST_ID>/raw/second-brain-backend-coverage.json)](https://github.com/<GITHUB_USERNAME>/Second-Brain/actions/workflows/ci.yml)
-[![Coverage frontend](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/<GITHUB_USERNAME>/<GIST_ID>/raw/second-brain-frontend-coverage.json)](https://github.com/<GITHUB_USERNAME>/Second-Brain/actions/workflows/ci.yml)
+[![CI](https://github.com/Synergo-Unit-UniPD/Second-Brain/actions/workflows/ci.yml/badge.svg)](https://github.com/Synergo-Unit-UniPD/Second-Brain/actions/workflows/ci.yml)
+[![Coverage backend](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/sofdb/5a95435983605f413fb0e015f7e68deb/raw/second-brain-backend-coverage.json)](https://github.com/Synergo-Unit-UniPD/Second-Brain/actions/workflows/ci.yml)
+[![Coverage frontend](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/sofdb/5a95435983605f413fb0e015f7e68deb/raw/second-brain-frontend-coverage.json)](https://github.com/Synergo-Unit-UniPD/Second-Brain/actions/workflows/ci.yml)
 
 > I placeholder `<GITHUB_USERNAME>` e `<GIST_ID>` vanno sostituiti una volta
 > completato il setup (vedi sezione "Setup dei badge di coverage" più sotto).
