@@ -1,0 +1,10 @@
+{
+  "extends": "@tsconfig/node24/tsconfig.json",
+  "include": ["vite.config.js"],
+  "compilerOptions": {
+    "composite": true,
+    "types": ["node"],
+    "allowJs": true,
+    "outDir": ".ts-build-node"
+  }
+}
