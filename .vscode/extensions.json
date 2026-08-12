@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "charliermarsh.ruff",
+    "matangover.mypy",
+    "Vue.volar",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "vitest.explorer",
+    "yzhang.markdown-all-in-one",
+    "redhat.vscode-yaml"
+  ]
+}
