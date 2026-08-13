@@ -28,6 +28,6 @@ export class FormatTextCommand implements EditCommand {
   }
 
   public undo(): void {
-      this.editor.setContent(this.previousContent) //Non richiama toggleFormat una seconda volta per "invertire" l'operazione semplicemente ripristina la fotografia presa prima.
+    this.editor.setContent(this.previousContent) //Non richiama toggleFormat una seconda volta per "invertire" l'operazione semplicemente ripristina la fotografia presa prima.
   }
 }

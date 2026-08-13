@@ -6,7 +6,9 @@ import { ReplaceContentCommand } from '../model/ReplaceContentCommand'
 import { NoteService } from '../proxy/NoteService'
 
 class DummyNoteService implements NoteService {
-  async save(): Promise<string> { return '' }
+  async save(): Promise<string> {
+    return ''
+  }
   async open(): Promise<any> {
     return { id: '', content: '' }
   }

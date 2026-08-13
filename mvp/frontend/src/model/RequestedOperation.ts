@@ -10,7 +10,7 @@ export class RequestedOperation {
   /** Testo su cui operare (tipicamente la selezione corrente nell'editor).
    *  Se omesso, l'AIController userà l'intero contenuto della nota. */
   public text?: string // ? --> può mancare --> opzionale
-  
+
   /** Range di selezione da cui proviene `text`, usato per posizionare l'inserimento
    *  della proposta accettata nello stesso punto della richiesta originale. */
   public range?: TextRange
