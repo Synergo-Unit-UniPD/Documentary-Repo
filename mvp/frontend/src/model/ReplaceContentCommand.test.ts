@@ -3,11 +3,15 @@ import { ReplaceContentCommand } from './ReplaceContentCommand'
 import { MarkdownContentEditor } from './MarkdownContentEditor'
 import { NoteModel } from './NoteModel'
 import { CommandHistory } from './CommandHistory'
+import { NoteService } from '../proxy/NoteService'
+import { Note } from './Note'
 
-class MockNoteService {
-  async save(): Promise<void> {}
-  async open(): Promise<string> {
+class MockNoteService implements NoteService {
+  async save(): Promise<string> {
     return ''
+  }
+  async open(): Promise<Note> {
+    return new Note('', '')
   }
 }
 
