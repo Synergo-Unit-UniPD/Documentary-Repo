@@ -88,7 +88,7 @@ export class AIController implements Observer {
         command = new ReplaceContentCommand(editor, newContent)
       } else {
         // Rete di sicurezza: nessun range noto, inserisce in coda al documento.
-        command = new InsertTextCommand(this.noteModel, currentContent.length, proposal.content, editor)
+        command = new InsertTextCommand(currentContent.length, proposal.content, editor)
       }
 
       // Step 11 & 12 & 13 & 14 & 15: executeCommand sul NoteModel

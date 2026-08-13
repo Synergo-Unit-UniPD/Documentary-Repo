@@ -1,16 +1,13 @@
 import { EditCommand } from './EditCommand'
-import { NoteModel } from './NoteModel'
 import { MarkdownContentEditor } from './MarkdownContentEditor'
 
 export class InsertTextCommand implements EditCommand {
-  private model: NoteModel
   private position: number
   private text: string
   private editor: MarkdownContentEditor
   private previousContent: string
 
-  constructor(model: NoteModel, position: number, text: string, editor: MarkdownContentEditor) {
-    this.model = model
+  constructor(position: number, text: string, editor: MarkdownContentEditor) {
     this.position = position
     this.text = text
     this.editor = editor

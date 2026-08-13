@@ -74,13 +74,13 @@ export class EditorController implements Observer {
 
   private onFormatCommand(type: FormatType): void {
     const range = this.view.getLastFormatRange() ?? new TextRange(0, 0)
-    const command = new FormatTextCommand(this.model, range, type, this.getEditorReceiver())
+    const command = new FormatTextCommand(range, type, this.getEditorReceiver())
     this.model.executeCommand(command)
   }
 
   public onTableCommand(request: TableActionRequest): void {
     const range = this.view.getLastTableRange() ?? new TextRange(0, 0)
-    const command = new TableCommand(this.model, request, this.getEditorReceiver(), range)
+    const command = new TableCommand(request, this.getEditorReceiver(), range)
 
     try {
       this.model.executeCommand(command)
@@ -95,13 +95,13 @@ export class EditorController implements Observer {
 
   public onListCommand(request: ListActionRequest): void {
     const range = this.view.getLastListRange() ?? new TextRange(0, 0)
-    const command = new ListCommand(this.model, range, request, this.getEditorReceiver())
+    const command = new ListCommand(range, request, this.getEditorReceiver())
     this.model.executeCommand(command)
   }
 
   public onLinkCommand(request: LinkActionRequest): void {
     const range = this.view.getLastLinkRange() ?? new TextRange(0, 0)
-    const command = new LinkCommand(this.model, range, request, this.getEditorReceiver())
+    const command = new LinkCommand(range, request, this.getEditorReceiver())
     this.model.executeCommand(command)
   }
 

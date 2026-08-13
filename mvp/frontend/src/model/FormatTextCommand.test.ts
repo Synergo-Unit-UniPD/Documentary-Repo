@@ -1,6 +1,5 @@
 import { describe, it, expect } from 'vitest'
 import { FormatTextCommand } from './FormatTextCommand'
-import { NoteModel } from './NoteModel'
 import { MarkdownContentEditor } from './MarkdownContentEditor'
 import { TextRange } from './TextRange'
 import { FormatType } from './FormatType'
@@ -8,10 +7,9 @@ import { FormatType } from './FormatType'
 describe('FormatTextCommand', () => {
   it("dovrebbe salvare il contenuto ed eseguire l'operazione di formattazione", () => {
     const editor = new MarkdownContentEditor('Testo')
-    const model = {} as NoteModel
     const range = new TextRange(0, 5)
 
-    const command = new FormatTextCommand(model, range, FormatType.BOLD, editor)
+    const command = new FormatTextCommand(range, FormatType.BOLD, editor)
 
     command.execute()
     command.undo()
@@ -25,33 +23,31 @@ describe('FormatTextCommand', () => {
     // Dopo l'apply, App.vue riposiziona la selezione sul testo (esclusi i marcatori):
     // è QUEL range che il secondo comando riceve, non quello originale pre-wrap.
     const editor = new MarkdownContentEditor('testo selezionato')
-    const model = {} as NoteModel
     const range = new TextRange(0, 17)
     const openLength = editor.getFormatMarkerOpenLength(FormatType.BOLD)
 
-    const first = new FormatTextCommand(model, range, FormatType.BOLD, editor)
+    const first = new FormatTextCommand(range, FormatType.BOLD, editor)
     first.execute()
     expect(editor.getContent()).toBe('**testo selezionato**')
 
     const shiftedRange = new TextRange(range.start + openLength, range.end + openLength)
-    const second = new FormatTextCommand(model, shiftedRange, FormatType.BOLD, editor)
+    const second = new FormatTextCommand(shiftedRange, FormatType.BOLD, editor)
     second.execute()
     expect(editor.getContent()).toBe('testo selezionato')
   })
 
   it('funziona anche con selezione vuota (cursore): grassetto -> **|** -> grassetto -> |', () => {
     const editor = new MarkdownContentEditor('')
-    const model = {} as NoteModel
     const range = new TextRange(0, 0)
     const openLength = editor.getFormatMarkerOpenLength(FormatType.BOLD)
 
-    const first = new FormatTextCommand(model, range, FormatType.BOLD, editor)
+    const first = new FormatTextCommand(range, FormatType.BOLD, editor)
     first.execute()
     expect(editor.getContent()).toBe('****')
 
     // Dopo l'apply su selezione vuota, il cursore si sposta TRA i due marcatori.
     const cursorAfterApply = new TextRange(openLength, openLength)
-    const second = new FormatTextCommand(model, cursorAfterApply, FormatType.BOLD, editor)
+    const second = new FormatTextCommand(cursorAfterApply, FormatType.BOLD, editor)
     second.execute()
     expect(editor.getContent()).toBe('')
   })
@@ -67,18 +63,17 @@ describe('FormatTextCommand', () => {
 
     for (const [type, text] of cases) {
       const editor = new MarkdownContentEditor(text)
-      const model = {} as NoteModel
       const range = new TextRange(0, text.length)
       const openLength = editor.getFormatMarkerOpenLength(type)
 
-      const apply = new FormatTextCommand(model, range, type, editor)
+      const apply = new FormatTextCommand(range, type, editor)
       apply.execute()
       expect(editor.getContent()).not.toBe(text)
 
       // Per i tipi di riga (QUOTE/HEADING) isFormatted riconosce la riga a
       // prescindere dallo shift; per i tipi inline serve il range aggiornato.
       const removeRange = new TextRange(range.start + openLength, range.end + openLength)
-      const remove = new FormatTextCommand(model, removeRange, type, editor)
+      const remove = new FormatTextCommand(removeRange, type, editor)
       remove.execute()
       expect(editor.getContent()).toBe(text)
     }
@@ -86,16 +81,15 @@ describe('FormatTextCommand', () => {
 
   it('undo dopo un toggle di rimozione ripristina correttamente il testo ancora formattato', () => {
     const editor = new MarkdownContentEditor('testo')
-    const model = {} as NoteModel
     const range = new TextRange(0, 5)
     const openLength = editor.getFormatMarkerOpenLength(FormatType.BOLD)
 
-    const apply = new FormatTextCommand(model, range, FormatType.BOLD, editor)
+    const apply = new FormatTextCommand(range, FormatType.BOLD, editor)
     apply.execute()
     expect(editor.getContent()).toBe('**testo**')
 
     const shiftedRange = new TextRange(range.start + openLength, range.end + openLength)
-    const remove = new FormatTextCommand(model, shiftedRange, FormatType.BOLD, editor)
+    const remove = new FormatTextCommand(shiftedRange, FormatType.BOLD, editor)
     remove.execute()
     expect(editor.getContent()).toBe('testo')
 
@@ -108,17 +102,16 @@ describe('FormatTextCommand', () => {
 
   it('riproduce esattamente | -> grassetto -> **|** -> grassetto -> | con il range che la UI imposterebbe', () => {
     const editor = new MarkdownContentEditor('inizio-fine')
-    const model = {} as NoteModel
     const cursorPos = 'inizio-'.length
     const range = new TextRange(cursorPos, cursorPos)
     const openLength = editor.getFormatMarkerOpenLength(FormatType.BOLD)
 
-    const first = new FormatTextCommand(model, range, FormatType.BOLD, editor)
+    const first = new FormatTextCommand(range, FormatType.BOLD, editor)
     first.execute()
     expect(editor.getContent()).toBe('inizio-****fine')
 
     const cursorAfterApply = new TextRange(cursorPos + openLength, cursorPos + openLength)
-    const second = new FormatTextCommand(model, cursorAfterApply, FormatType.BOLD, editor)
+    const second = new FormatTextCommand(cursorAfterApply, FormatType.BOLD, editor)
     second.execute()
     expect(editor.getContent()).toBe('inizio-fine')
   })
