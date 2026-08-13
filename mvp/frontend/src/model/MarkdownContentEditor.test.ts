@@ -197,7 +197,7 @@ describe('MarkdownContentEditor - tabelle', () => {
   })
 })
 
-describe("MarkdownContentEditor - operazioni su tabelle multiple: opera su quella selezionata, non sull'ultima creata (bug segnalato)", () => {
+describe("MarkdownContentEditor - operazioni su tabelle multiple: opera su quella selezionata, non sull'ultima creata", () => {
   function buildTwoTablesDocument(): {
     editor: MarkdownContentEditor
     firstTableStart: number
@@ -314,7 +314,7 @@ describe('MarkdownContentEditor - elenchi', () => {
   })
 })
 
-describe('MarkdownContentEditor - CREATE_LIST come toggle "intelligente" (bug segnalati)', () => {
+describe('MarkdownContentEditor - CREATE_LIST come toggle "intelligente"', () => {
   it('cliccando lo stesso tipo su una riga già di quel tipo, lo RIMUOVE (toggle off)', () => {
     const editor = new MarkdownContentEditor('- elemento')
     const request = new ListActionRequest(ListOperationType.CREATE_LIST, ListType.UNORDERED)
@@ -518,7 +518,7 @@ describe('MarkdownContentEditor - getListMarkerLength (per il riposizionamento d
   })
 })
 
-describe('MarkdownContentEditor - CREATE_LIST su riga vuota (cursore, bug segnalato)', () => {
+describe('MarkdownContentEditor - CREATE_LIST su riga vuota (cursore)', () => {
   it('| -> elenco puntato -> -| : la riga vuota diventa un elemento di elenco', () => {
     const editor = new MarkdownContentEditor('')
     const request = new ListActionRequest(ListOperationType.CREATE_LIST, ListType.UNORDERED)
@@ -537,7 +537,7 @@ describe('MarkdownContentEditor - CREATE_LIST su riga vuota (cursore, bug segnal
   })
 })
 
-describe('MarkdownContentEditor - citazione e intestazione su riga vuota (cursore, bug segnalato)', () => {
+describe('MarkdownContentEditor - citazione e intestazione su riga vuota (cursore)', () => {
   it('| -> citazione -> >| : la riga vuota diventa una citazione', () => {
     const editor = new MarkdownContentEditor('')
     const range = new TextRange(0, 0)

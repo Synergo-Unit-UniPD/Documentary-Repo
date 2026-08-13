@@ -453,8 +453,7 @@ export class MarkdownContentEditor {
    * - riga già un elenco del tipo richiesto -> rimuove la formattazione (toggle off);
    * - riga già un elenco dell'ALTRO tipo -> converte al tipo richiesto.
    * Su un blocco multi-riga, la numerazione degli elementi ordinati viene
-   * assegnata in sequenza (1, 2, 3, ...) invece di ripetere sempre "1."
-   * (bug segnalato: "- ciao\n- ciao" -> numerato produceva "1.ciao\n1.ciao").
+   * assegnata in sequenza (1, 2, 3, ...).
    * La decisione (crea/converti/rimuovi) è presa una sola volta in base alla
    * PRIMA riga del blocco e applicata in modo uniforme a tutte le righe.
    */
