@@ -7,7 +7,6 @@ import { ProposalReadyState } from '../model/ProposalReadyState'
 import { InsertTextCommand } from '../model/InsertTextCommand'
 import { ReplaceContentCommand } from '../model/ReplaceContentCommand'
 import { EditCommand } from '../model/EditCommand'
-import { MarkdownContentEditor } from '../model/MarkdownContentEditor'
 import { RequestedOperation } from '../model/RequestedOperation'
 import { TextRange } from '../model/TextRange'
 
@@ -73,7 +72,7 @@ export class AIController implements Observer {
 
     if (currentState instanceof ProposalReadyState) {
       const proposal = currentState.proposal
-      const editor = (this.noteModel as any).contentEditor as MarkdownContentEditor
+      const editor = this.noteModel.getContentEditor()
       const currentContent = editor.getContent()
       const range = this.lastRequestRange
 

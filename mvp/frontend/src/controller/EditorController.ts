@@ -10,7 +10,6 @@ import { TableCommand } from '../model/TableCommand'
 import { ListCommand } from '../model/ListCommand'
 import { LinkCommand } from '../model/LinkCommand'
 import { TextRange } from '../model/TextRange'
-import { MarkdownContentEditor } from '../model/MarkdownContentEditor'
 import { InvalidTableDimensionError } from '../model/InvalidTableDimensionError'
 import { NoteIOError } from '../model/NoteIOError'
 
@@ -61,19 +60,15 @@ export class EditorController implements Observer {
     if (linkReq) this.onLinkCommand(linkReq)
   }
 
-  private getEditorReceiver(): MarkdownContentEditor {
-    return (this.model as any).contentEditor as MarkdownContentEditor
-  }
-
   private onFormatCommand(type: FormatType): void {
     const range = this.view.getLastFormatRange() ?? new TextRange(0, 0)
-    const command = new FormatTextCommand(range, type, this.getEditorReceiver())
+    const command = new FormatTextCommand(range, type, this.model.getContentEditor())
     this.model.executeCommand(command)
   }
 
   public onTableCommand(request: TableActionRequest): void {
     const range = this.view.getLastTableRange() ?? new TextRange(0, 0)
-    const command = new TableCommand(request, this.getEditorReceiver(), range)
+    const command = new TableCommand(request, this.model.getContentEditor(), range)
 
     try {
       this.model.executeCommand(command)
@@ -88,13 +83,13 @@ export class EditorController implements Observer {
 
   public onListCommand(request: ListActionRequest): void {
     const range = this.view.getLastListRange() ?? new TextRange(0, 0)
-    const command = new ListCommand(range, request, this.getEditorReceiver())
+    const command = new ListCommand(range, request, this.model.getContentEditor())
     this.model.executeCommand(command)
   }
 
   public onLinkCommand(request: LinkActionRequest): void {
     const range = this.view.getLastLinkRange() ?? new TextRange(0, 0)
-    const command = new LinkCommand(range, request, this.getEditorReceiver())
+    const command = new LinkCommand(range, request, this.model.getContentEditor())
     this.model.executeCommand(command)
   }
 

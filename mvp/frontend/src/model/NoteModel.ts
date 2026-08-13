@@ -60,6 +60,12 @@ export class NoteModel implements Subject {
     return this.contentEditor.getContent()
   }
 
+  /** Espone l'editor di dominio ai Controller che devono costruire i Command
+   *  (FormatTextCommand, TableCommand, ecc.) */
+  public getContentEditor(): MarkdownContentEditor {
+    return this.contentEditor
+  }
+
   public getIsDirty(): boolean {
     return this.isDirty
   }
