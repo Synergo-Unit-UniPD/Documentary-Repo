@@ -70,14 +70,6 @@ export class EditorView implements Observer, Subject {
     // La logica di rendering verrà gestita reattivamente da Vue/CodeMirror
   }
 
-  public toTextRange(cmPos: object): TextRange {
-    return new TextRange(0, 0)
-  }
-
-  public toCodeMirrorPos(range: TextRange): object {
-    return {}
-  }
-
   public setViewMode(mode: ViewMode): void {
     this.viewMode = mode
     this.render()
