@@ -28,7 +28,7 @@ describe('NoteServiceProxy - Salvataggio e Apertura nota locale', () => {
 
     ;(globalThis.window as any).showSaveFilePicker.mockResolvedValue(mockFileHandle)
 
-    const proxy = new NoteServiceProxy('http://localhost:8000')
+    const proxy = new NoteServiceProxy()
     const noteVuota = new Note('', 'Contenuto di test')
 
     const newId = await proxy.save(noteVuota)
@@ -50,7 +50,7 @@ describe('NoteServiceProxy - Salvataggio e Apertura nota locale', () => {
     }
     ;(globalThis.window as any).showSaveFilePicker.mockResolvedValue(mockFileHandle)
 
-    const proxy = new NoteServiceProxy('http://localhost:8000')
+    const proxy = new NoteServiceProxy()
 
     // Primo salvataggio: nota vuota, apre il picker e ottiene un id
     const firstId = await proxy.save(new Note('', 'Prima versione'))
@@ -75,7 +75,7 @@ describe('NoteServiceProxy - Salvataggio e Apertura nota locale', () => {
     }
     ;(globalThis.window as any).showSaveFilePicker.mockResolvedValue(mockFileHandle)
 
-    const proxy = new NoteServiceProxy('http://localhost:8000')
+    const proxy = new NoteServiceProxy()
     await proxy.save(new Note('id-mai-visto-da-questo-proxy', 'Contenuto'))
 
     expect((globalThis.window as any).showSaveFilePicker).toHaveBeenCalledTimes(1)
@@ -84,7 +84,7 @@ describe('NoteServiceProxy - Salvataggio e Apertura nota locale', () => {
   it('dovrebbe lanciare NoteIOError in caso di errore della File System API al salvataggio', async () => {
     ;(globalThis.window as any).showSaveFilePicker.mockRejectedValue(new Error('User cancelled'))
 
-    const proxy = new NoteServiceProxy('http://localhost:8000')
+    const proxy = new NoteServiceProxy()
     const noteVuota = new Note('', 'Contenuto')
 
     await expect(proxy.save(noteVuota)).rejects.toThrowError(NoteIOError)
@@ -101,7 +101,7 @@ describe('NoteServiceProxy - Salvataggio e Apertura nota locale', () => {
     // L'API showOpenFilePicker restituisce sempre un array di handle
     ;(globalThis.window as any).showOpenFilePicker.mockResolvedValue([mockFileHandle])
 
-    const proxy = new NoteServiceProxy('http://localhost:8000')
+    const proxy = new NoteServiceProxy()
 
     const note = await proxy.open()
 
@@ -126,7 +126,7 @@ describe('NoteServiceProxy - Salvataggio e Apertura nota locale', () => {
     }
     ;(globalThis.window as any).showOpenFilePicker.mockResolvedValue([mockFileHandle])
 
-    const proxy = new NoteServiceProxy('http://localhost:8000')
+    const proxy = new NoteServiceProxy()
     const opened = await proxy.open()
 
     await proxy.save(new Note(opened.id, "Contenuto modificato dopo l'importazione"))
@@ -139,7 +139,7 @@ describe('NoteServiceProxy - Salvataggio e Apertura nota locale', () => {
   it("dovrebbe lanciare NoteIOError in caso di errore della File System API all'apertura", async () => {
     ;(globalThis.window as any).showOpenFilePicker.mockRejectedValue(new Error('User cancelled'))
 
-    const proxy = new NoteServiceProxy('http://localhost:8000')
+    const proxy = new NoteServiceProxy()
 
     await expect(proxy.open()).rejects.toThrowError(NoteIOError)
   })

@@ -13,12 +13,7 @@ import { NoteIOError } from '../model/NoteIOError'
  * nuovo nome/percorso ogni volta (R75-F-O, R76-F-O).
  */
 export class NoteServiceProxy implements NoteService {
-  private baseUrl: string
   private fileHandles: Map<string, FileSystemFileHandle> = new Map()
-
-  constructor(baseUrl: string) {
-    this.baseUrl = baseUrl
-  }
 
   public async save(note: Note): Promise<string> {
     try {
