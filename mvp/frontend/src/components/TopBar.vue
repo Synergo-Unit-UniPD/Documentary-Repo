@@ -119,7 +119,7 @@ onBeforeUnmount(() => document.removeEventListener('click', handleDocumentClick)
         <span class="status" :class="{ unsaved: saveStatus === 'Modifiche non salvate' }">
           {{ saveStatus }}
         </span>
-        
+
         <button class="tool-button primary" title="Salva la nota" @click="emit('save')">
           <svg class="icon" viewBox="0 0 24 24" fill="none">
             <path
@@ -151,7 +151,7 @@ onBeforeUnmount(() => document.removeEventListener('click', handleDocumentClick)
             />
           </svg>
           Importa
-        </button> 
+        </button>
 
         <div class="dropdown">
           <button class="tool-button" title="Esporta la nota" @click.stop="exportMenuOpen = !exportMenuOpen">
