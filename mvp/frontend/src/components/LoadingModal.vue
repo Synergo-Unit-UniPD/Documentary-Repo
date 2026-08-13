@@ -1,24 +1,29 @@
 <script setup lang="ts">
 defineProps<{
-  title?: string
+  message: string
 }>()
 
 const emit = defineEmits<{
-  interrupt: []
+  close: []
 }>()
 </script>
 
 <template>
   <div class="modal-overlay">
-    <div class="loading-modal">
-      <div class="spinner"></div>
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Errore durante l'operazione AI</h2>
+        <button class="close-button" aria-label="Chiudi" @click="emit('close')">&times;</button>
+      </div>
 
-      <h2>{{ title ?? 'Generazione in corso...' }}</h2>
+      <p class="modal-subtitle">Il documento non è stato modificato.</p>
 
-      <p>Il modello sta elaborando la richiesta.</p>
+      <div class="result-box error-box">
+        <p>{{ message }}</p>
+      </div>
 
-      <div class="modal-actions" style="justify-content: center; margin-top: 20px">
-        <button @click="emit('interrupt')">Interrompi</button>
+      <div class="modal-actions">
+        <button class="primary" @click="emit('close')">Chiudi</button>
       </div>
     </div>
   </div>
