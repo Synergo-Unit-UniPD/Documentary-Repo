@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { ref } from 'vue'
 
 const props = defineProps<{
   initialUrl?: string
@@ -15,14 +15,6 @@ const emit = defineEmits<{
 
 const url = ref(props.initialUrl ?? '')
 const label = ref(props.initialLabel ?? '')
-
-watch(
-  () => [props.initialUrl, props.initialLabel],
-  () => {
-    url.value = props.initialUrl ?? ''
-    label.value = props.initialLabel ?? ''
-  },
-)
 
 function submit(): void {
   if (!url.value.trim()) return
