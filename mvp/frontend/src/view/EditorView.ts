@@ -24,7 +24,6 @@ export class EditorView implements Observer, Subject {
   private observers: Observer[] = []
   private viewMode: ViewMode
 
-  private lastInputEvent?: InputEvent
   private lastFormatRequest?: FormatType
   private lastFormatRange?: TextRange
   private lastTableRequest?: TableActionRequest
@@ -84,9 +83,6 @@ export class EditorView implements Observer, Subject {
     this.render()
   }
 
-  public getLastInputEvent(): InputEvent | undefined {
-    return this.lastInputEvent
-  }
   public getLastFormatRequest(): FormatType | undefined {
     return this.lastFormatRequest
   }

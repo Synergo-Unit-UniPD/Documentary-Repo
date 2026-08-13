@@ -59,13 +59,6 @@ export class EditorController implements Observer {
 
     const linkReq = this.view.getLastLinkRequest()
     if (linkReq) this.onLinkCommand(linkReq)
-
-    const inputEvent = this.view.getLastInputEvent()
-    if (inputEvent) this.onUserInput(inputEvent)
-  }
-
-  private onUserInput(event: InputEvent): void {
-    // Da agganciare logicamente all'InsertTextCommand
   }
 
   private getEditorReceiver(): MarkdownContentEditor {
