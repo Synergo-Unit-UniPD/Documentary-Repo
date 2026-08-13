@@ -14,7 +14,7 @@ describe('AIServiceProxy', () => {
     vi.clearAllMocks()
   })
 
-  it('dovrebbe recuperare la lista delle operazioni disponibili (GET api/ai-operations)', async () => {
+  it('dovrebbe recuperare la lista delle operazioni disponibili (GET api/ai/operations)', async () => {
     const mockOperations = ['summary', 'translate', 'red_hat']
 
     ;(globalThis.fetch as any).mockResolvedValue({
