@@ -16,7 +16,7 @@ import { TextRange } from '../model/TextRange'
 export class AIController implements Observer {
   private model: AIRequestModel
   private view: AIPanelView
-  public noteModel: NoteModel
+  private noteModel: NoteModel
   private lastRequestRange?: TextRange
   /** Memorizza l'ultima richiesta AI inviata, per poterla ripetere identica
    *  quando l'utente sceglie "Rigenera" sulla proposta ottenuta. */
