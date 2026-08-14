@@ -612,10 +612,6 @@ textarea {
     align-items: flex-start;
   }
 
-  .workspace {
-    grid-template-columns: 1fr;
-  }
-
   .panel {
     min-height: 420px;
   }
