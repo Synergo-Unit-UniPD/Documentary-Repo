@@ -1,6 +1,5 @@
 from functools import lru_cache
 
-import AI_Domain.domain  # noqa: F401  (side-effect: registra le AIOperation in AIOperationFactory)
 from config import settings
 from AI_Domain.domain.operation_factory import AIOperationFactory
 from export.exporter import Exporter

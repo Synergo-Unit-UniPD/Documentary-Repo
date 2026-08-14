@@ -1,6 +1,5 @@
 import pytest
 
-import AI_Domain.domain.operations  # noqa: F401  (self-registration)
 from AI_Domain.domain.errors import UnknownOperationError
 from AI_Domain.domain.operation_factory import AIOperationFactory
 from AI_Domain.domain.value_objects import Prompt
