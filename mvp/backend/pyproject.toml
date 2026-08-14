@@ -1,7 +1,7 @@
 [tool.ruff]
 line-length = 120
 target-version = "py311"
-extend-exclude = ["export/*.dotx", "__pycache__"]
+extend-exclude = ["__pycache__"]
 
 [tool.ruff.lint]
 # Set di regole scelto deliberatamente contenuto per una prima passata di CI:
