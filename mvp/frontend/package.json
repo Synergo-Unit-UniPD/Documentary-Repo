@@ -29,10 +29,8 @@
     "codemirror": "^6.0.2",
     "dompurify": "^3.2.7",
     "marked": "^18.0.4",
-    "pinia": "^3.0.4",
     "vue": "^3.5.32",
-    "vue-codemirror6": "^1.5.2",
-    "vue-router": "^5.0.4"
+    "vue-codemirror6": "^1.5.2"
   },
   "devDependencies": {
     "@tsconfig/node24": "^24.0.4",
