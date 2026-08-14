@@ -10,7 +10,7 @@ def _split_csv(value: str) -> list[str]:
 class Settings:
     llm_base_url: str = field(default_factory=lambda: os.getenv("ZUCCHETTI_LLM_BASE_URL", ""))
     llm_api_key: str = field(default_factory=lambda: os.getenv("ZUCCHETTI_LLM_API_KEY", ""))
-    llm_default_model: str = field(default_factory=lambda: os.getenv("ZUCCHETTI_LLM_MODEL", "gemma3:1b"))
+    llm_default_model: str = field(default_factory=lambda: os.getenv("ZUCCHETTI_LLM_MODEL", "gemma4:12b"))
     llm_timeout_seconds: float = field(default_factory=lambda: float(os.getenv("ZUCCHETTI_LLM_TIMEOUT", "90.0")))
 
     # origini ammesse per CORS (dev: frontend Vite passa comunque dal proxy
