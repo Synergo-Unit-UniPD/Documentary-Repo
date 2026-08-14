@@ -2,7 +2,6 @@ from abc import ABC
 
 
 class AIDomainError(ABC, Exception):
-
     def __new__(cls, *args, **kwargs):
         if cls is AIDomainError:
             raise TypeError(
@@ -17,8 +16,12 @@ class AIDomainError(ABC, Exception):
 
 
 class LLMUnavailableError(AIDomainError):
+    """Il servizio LLM esterno non è raggiungibile."""
+
 
 class LLMTimeoutError(AIDomainError):
+    """La richiesta al modello LLM ha superato il timeout configurato."""
 
 
 class UnknownOperationError(AIDomainError):
+    """Il tipo di operazione richiesto non è registrato in AIOperationFactory."""
