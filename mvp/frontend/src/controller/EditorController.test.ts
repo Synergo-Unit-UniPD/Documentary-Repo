@@ -138,7 +138,7 @@ describe('EditorController - Salvataggio con errore', () => {
     expect(displayErrorSpy).toHaveBeenCalledWith('Scrittura fallita: utente ha annullato')
   })
 
-  it("NON dovrebbe mostrare alcun errore se il salvataggio è stato semplicemente annullato dall'utente", async () => {
+  it("dovrebbe mostrare un messaggio neutro (non d'errore) se il salvataggio è stato semplicemente annullato dall'utente", async () => {
     const markdownEditor = new MarkdownContentEditor()
     const history = new CommandHistory()
     const model = new NoteModel(markdownEditor, history, mockNoteService)
@@ -152,7 +152,7 @@ describe('EditorController - Salvataggio con errore', () => {
     view.simulateAction('save')
     await Promise.resolve()
 
-    expect(displayErrorSpy).not.toHaveBeenCalled()
+    expect(displayErrorSpy).toHaveBeenCalledWith("Salvataggio annullato dall'utente", 'info')
   })
 
   it('dovrebbe mostrare un messaggio generico per errori imprevisti non di tipo NoteIOError', async () => {
@@ -191,7 +191,7 @@ describe('EditorController - Apertura con errore', () => {
     expect(displayErrorSpy).toHaveBeenCalledWith('Lettura fallita')
   })
 
-  it("NON dovrebbe mostrare alcun errore se l'apertura è stata semplicemente annullata dall'utente", async () => {
+  it("dovrebbe mostrare un messaggio neutro (non d'errore) se l'apertura è stata semplicemente annullata dall'utente", async () => {
     const markdownEditor = new MarkdownContentEditor()
     const history = new CommandHistory()
     const model = new NoteModel(markdownEditor, history, mockNoteService)
@@ -205,7 +205,7 @@ describe('EditorController - Apertura con errore', () => {
     view.simulateAction('open')
     await Promise.resolve()
 
-    expect(displayErrorSpy).not.toHaveBeenCalled()
+    expect(displayErrorSpy).toHaveBeenCalledWith("Apertura annullata dall'utente", 'info')
   })
 })
 describe('EditorController - propagazione del range di selezione', () => {

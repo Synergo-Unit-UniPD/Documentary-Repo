@@ -103,8 +103,8 @@ aiRequestModel.attach({
 // EditorView.displayError è pensato per la UI: qui lo colleghiamo al toast dedicato
 // (R14, R15: notifica dell'errore senza modificare il documento), non più al pallino
 // di stato della toolbar, che resta riservato al solo indicatore Salvato/Non salvato.
-editorView.displayError = (message: string) => {
-  showToast(message, 'error')
+editorView.displayError = (message: string, tone: 'error' | 'info' = 'error') => {
+  showToast(message, tone === 'info' ? 'info' : 'error')
 }
 
 // ---------------------------------------------------------------------------
@@ -229,11 +229,11 @@ function commitTypingBurst(): void {
 const saveStatus = computed(() => (isDirty.value ? 'Modifiche non salvate' : 'Salvato'))
 
 const toastMessage = ref('')
-const toastType = ref<'error' | 'success'>('error')
+const toastType = ref<'error' | 'success' | 'info'>('error')
 const toastVisible = ref(false)
 let toastTimer: ReturnType<typeof setTimeout> | undefined
 
-function showToast(message: string, type: 'error' | 'success' = 'error', durationMs = 3200): void {
+function showToast(message: string, type: 'error' | 'success' | 'info' = 'error', durationMs = 3200): void {
   toastMessage.value = message
   toastType.value = type
   toastVisible.value = true

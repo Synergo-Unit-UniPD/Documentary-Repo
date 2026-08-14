@@ -109,8 +109,10 @@ export class EditorController implements Observer {
       // Step 13: NoteIOError intercettato
       if (error instanceof NoteIOError) {
         // L'utente ha semplicemente annullato il selettore di file: non è un
-        // errore applicativo, non va mostrato come tale.
-        if (!error.cancelled) {
+        // errore applicativo, quindi il feedback è neutro, non un errore.
+        if (error.cancelled) {
+          this.view.displayError(error.message, 'info')
+        } else {
           // Step 14: displayError(message)
           this.view.displayError(error.message)
         }
@@ -126,7 +128,9 @@ export class EditorController implements Observer {
       await this.model.openNote()
     } catch (error: any) {
       if (error instanceof NoteIOError) {
-        if (!error.cancelled) {
+        if (error.cancelled) {
+          this.view.displayError(error.message, 'info')
+        } else {
           this.view.displayError(error.message)
         }
       } else {

@@ -126,9 +126,9 @@ export class EditorView implements Observer, Subject {
     return req
   }
 
-  public displayError(message: string): void {
+  public displayError(message: string, tone: 'error' | 'info' = 'error'): void {
     // Step 15: mostra a video l'errore generato (es. via console.error o toast di Vue)
-    console.error(`Editor Error: ${message}`)
+    console.error(`Editor ${tone === 'info' ? 'Info' : 'Error'}: ${message}`)
   }
 
   public simulateFormatAction(type: FormatType, range: TextRange = new TextRange(0, 0)): void {
