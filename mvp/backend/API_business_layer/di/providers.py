@@ -7,7 +7,7 @@ from export.exporter import Exporter
 from export.html_exporter import HtmlExporter
 from export.json_exporter import JsonExporter
 from export.pdf_exporter import PdfExporter
-from AI_Domain.llm.decorators import CachingLLMAdapter, LoggingLLMAdapter
+from AI_Domain.llm.decorators import LoggingLLMAdapter
 from AI_Domain.llm.openai_adapter import OpenAIAdapter
 from AI_Domain.service import AIService
 
@@ -27,9 +27,8 @@ def get_ai_service() -> AIService:
         timeout=settings.llm_timeout_seconds,
     )
     logging_adapter = LoggingLLMAdapter(base_adapter)
-    caching_adapter = CachingLLMAdapter(logging_adapter, max_size=settings.llm_cache_max_size)
 
-    return AIService(llm=caching_adapter, factory=AIOperationFactory())
+    return AIService(llm=logging_adapter, factory=AIOperationFactory())
 
 
 def get_exporter(format: str) -> Exporter:
