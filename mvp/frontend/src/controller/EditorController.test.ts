@@ -137,6 +137,76 @@ describe('EditorController - Salvataggio con errore', () => {
     expect(displayErrorSpy).toHaveBeenCalledTimes(1)
     expect(displayErrorSpy).toHaveBeenCalledWith('Scrittura fallita: utente ha annullato')
   })
+
+  it("NON dovrebbe mostrare alcun errore se il salvataggio è stato semplicemente annullato dall'utente", async () => {
+    const markdownEditor = new MarkdownContentEditor()
+    const history = new CommandHistory()
+    const model = new NoteModel(markdownEditor, history, mockNoteService)
+    const view = new EditorView(model, {} as any)
+    const controller = new EditorController(model, view)
+    void controller
+
+    vi.spyOn(model, 'save').mockRejectedValue(new NoteIOError("Salvataggio annullato dall'utente", true))
+    const displayErrorSpy = vi.spyOn(view, 'displayError')
+
+    view.simulateAction('save')
+    await Promise.resolve()
+
+    expect(displayErrorSpy).not.toHaveBeenCalled()
+  })
+
+  it('dovrebbe mostrare un messaggio generico per errori imprevisti non di tipo NoteIOError', async () => {
+    const markdownEditor = new MarkdownContentEditor()
+    const history = new CommandHistory()
+    const model = new NoteModel(markdownEditor, history, mockNoteService)
+    const view = new EditorView(model, {} as any)
+    const controller = new EditorController(model, view)
+    void controller
+
+    vi.spyOn(model, 'save').mockRejectedValue(new Error('qualcosa di totalmente inatteso'))
+    const displayErrorSpy = vi.spyOn(view, 'displayError')
+
+    view.simulateAction('save')
+    await Promise.resolve()
+
+    expect(displayErrorSpy).toHaveBeenCalledWith('Errore imprevisto durante il salvataggio')
+  })
+})
+
+describe('EditorController - Apertura con errore', () => {
+  it("dovrebbe intercettare NoteIOError e mostrare l'errore nella View", async () => {
+    const markdownEditor = new MarkdownContentEditor()
+    const history = new CommandHistory()
+    const model = new NoteModel(markdownEditor, history, mockNoteService)
+    const view = new EditorView(model, {} as any)
+    const controller = new EditorController(model, view)
+    void controller
+
+    vi.spyOn(model, 'openNote').mockRejectedValue(new NoteIOError('Lettura fallita'))
+    const displayErrorSpy = vi.spyOn(view, 'displayError')
+
+    view.simulateAction('open')
+    await Promise.resolve()
+
+    expect(displayErrorSpy).toHaveBeenCalledWith('Lettura fallita')
+  })
+
+  it("NON dovrebbe mostrare alcun errore se l'apertura è stata semplicemente annullata dall'utente", async () => {
+    const markdownEditor = new MarkdownContentEditor()
+    const history = new CommandHistory()
+    const model = new NoteModel(markdownEditor, history, mockNoteService)
+    const view = new EditorView(model, {} as any)
+    const controller = new EditorController(model, view)
+    void controller
+
+    vi.spyOn(model, 'openNote').mockRejectedValue(new NoteIOError("Apertura annullata dall'utente", true))
+    const displayErrorSpy = vi.spyOn(view, 'displayError')
+
+    view.simulateAction('open')
+    await Promise.resolve()
+
+    expect(displayErrorSpy).not.toHaveBeenCalled()
+  })
 })
 describe('EditorController - propagazione del range di selezione', () => {
   it('costruisce il FormatTextCommand con il range effettivamente selezionato', () => {

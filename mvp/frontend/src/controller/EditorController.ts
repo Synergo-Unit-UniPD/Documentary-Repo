@@ -108,8 +108,12 @@ export class EditorController implements Observer {
     } catch (error: any) {
       // Step 13: NoteIOError intercettato
       if (error instanceof NoteIOError) {
-        // Step 14: displayError(message)
-        this.view.displayError(error.message)
+        // L'utente ha semplicemente annullato il selettore di file: non è un
+        // errore applicativo, non va mostrato come tale.
+        if (!error.cancelled) {
+          // Step 14: displayError(message)
+          this.view.displayError(error.message)
+        }
       } else {
         // Fail-safe per altri tipi di errore non previsti a UML
         this.view.displayError('Errore imprevisto durante il salvataggio')
@@ -117,7 +121,17 @@ export class EditorController implements Observer {
     }
   }
 
-  private onOpenCommand(): void {
-    this.model.openNote()
+  private async onOpenCommand(): Promise<void> {
+    try {
+      await this.model.openNote()
+    } catch (error: any) {
+      if (error instanceof NoteIOError) {
+        if (!error.cancelled) {
+          this.view.displayError(error.message)
+        }
+      } else {
+        this.view.displayError("Errore imprevisto durante l'apertura della nota")
+      }
+    }
   }
 }

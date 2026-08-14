@@ -50,6 +50,11 @@ export class NoteServiceProxy implements NoteService {
       this.fileHandles.set(newId, handle)
       return newId
     } catch (error: any) {
+      if (error?.name === 'AbortError') {
+        // L'utente ha annullato il selettore di file: non è un errore, non va
+        // mostrato come tale al chiamante (vedi EditorController.onSaveCommand).
+        throw new NoteIOError("Salvataggio annullato dall'utente", true)
+      }
       throw new NoteIOError(error.message || 'Errore durante il salvataggio della nota')
     }
   }
@@ -87,6 +92,11 @@ export class NoteServiceProxy implements NoteService {
       // Step 14: ritorna la Note istanziata
       return new Note(id, content)
     } catch (error: any) {
+      if (error?.name === 'AbortError') {
+        // L'utente ha annullato il selettore di file: non è un errore, non va
+        // mostrato come tale al chiamante (vedi EditorController.onOpenCommand).
+        throw new NoteIOError("Apertura annullata dall'utente", true)
+      }
       throw new NoteIOError(error.message || "Errore durante l'apertura della nota")
     }
   }

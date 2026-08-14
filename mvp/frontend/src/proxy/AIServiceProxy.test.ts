@@ -33,7 +33,7 @@ describe('AIServiceProxy', () => {
     expect(operations).toEqual(mockOperations)
   })
 
-  it('dovrebbe lanciare un errore se listOperations fallisce', async () => {
+  it('dovrebbe lanciare un errore col testo grezzo se il corpo della risposta non è JSON', async () => {
     ;(globalThis.fetch as any).mockResolvedValue({
       ok: false,
       text: async () => 'Internal Server Error',
@@ -64,5 +64,52 @@ describe('AIServiceProxy', () => {
     expect(proposal).toBeInstanceOf(Proposal)
     expect(proposal.content).toBe('Testo generato')
     expect(proposal.operationType).toBe('red_hat')
+  })
+
+  it('dovrebbe tradurre LLMUnavailableError in un messaggio amichevole, non nel JSON grezzo', async () => {
+    ;(globalThis.fetch as any).mockResolvedValue({
+      ok: false,
+      text: async () =>
+        JSON.stringify({ error: 'LLMUnavailableError', message: 'LLM non raggiungibile: Connection error.' }),
+    })
+
+    const proxy = new AIServiceProxy('http://localhost:8000')
+    await expect(proxy.requestOperation('summarize', 'testo', {})).rejects.toThrow(
+      'Il servizio AI non è raggiungibile al momento. Controlla la connessione e riprova.',
+    )
+  })
+
+  it('dovrebbe tradurre LLMTimeoutError in un messaggio amichevole', async () => {
+    ;(globalThis.fetch as any).mockResolvedValue({
+      ok: false,
+      text: async () => JSON.stringify({ error: 'LLMTimeoutError', message: 'Timeout LLM' }),
+    })
+
+    const proxy = new AIServiceProxy('http://localhost:8000')
+    await expect(proxy.requestOperation('summarize', 'testo', {})).rejects.toThrow(
+      'Il modello AI ha impiegato troppo tempo a rispondere. Riprova.',
+    )
+  })
+
+  it('dovrebbe tradurre UnknownOperationError in un messaggio amichevole', async () => {
+    ;(globalThis.fetch as any).mockResolvedValue({
+      ok: false,
+      text: async () => JSON.stringify({ error: 'UnknownOperationError', message: "Operazione AI sconosciuta: 'x'" }),
+    })
+
+    const proxy = new AIServiceProxy('http://localhost:8000')
+    await expect(proxy.requestOperation('x', 'testo', {})).rejects.toThrow('Operazione AI non riconosciuta.')
+  })
+
+  it('per un tipo di errore non mappato usa il messaggio del backend, non il JSON grezzo', async () => {
+    ;(globalThis.fetch as any).mockResolvedValue({
+      ok: false,
+      text: async () => JSON.stringify({ error: 'ErroreFuturo', message: 'Dettaglio specifico del nuovo errore' }),
+    })
+
+    const proxy = new AIServiceProxy('http://localhost:8000')
+    await expect(proxy.requestOperation('summarize', 'testo', {})).rejects.toThrow(
+      'Dettaglio specifico del nuovo errore',
+    )
   })
 })

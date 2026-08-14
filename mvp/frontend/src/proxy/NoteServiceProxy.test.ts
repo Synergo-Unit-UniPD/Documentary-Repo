@@ -90,6 +90,26 @@ describe('NoteServiceProxy - Salvataggio e Apertura nota locale', () => {
     await expect(proxy.save(noteVuota)).rejects.toThrowError(NoteIOError)
   })
 
+  it("dovrebbe lanciare NoteIOError con cancelled=true se l'utente annulla il selettore di salvataggio (AbortError)", async () => {
+    ;(globalThis.window as any).showSaveFilePicker.mockRejectedValue(
+      new DOMException('The user aborted a request.', 'AbortError'),
+    )
+
+    const proxy = new NoteServiceProxy()
+    const noteVuota = new Note('', 'Contenuto')
+
+    try {
+      await proxy.save(noteVuota)
+      expect.fail('doveva sollevare NoteIOError')
+    } catch (error) {
+      expect(error).toBeInstanceOf(NoteIOError)
+      expect((error as NoteIOError).cancelled).toBe(true)
+      // Non deve mai comparire il messaggio tecnico grezzo del browser.
+      expect((error as NoteIOError).message).not.toContain('showSaveFilePicker')
+      expect((error as NoteIOError).message).not.toContain('aborted')
+    }
+  })
+
   it("dovrebbe eseguire l'apertura di una nota locale tramite file picker (Step 10-14) e restituire un id riusabile", async () => {
     const mockFile = {
       text: vi.fn().mockResolvedValue('Contenuto importato'),
@@ -142,5 +162,23 @@ describe('NoteServiceProxy - Salvataggio e Apertura nota locale', () => {
     const proxy = new NoteServiceProxy()
 
     await expect(proxy.open()).rejects.toThrowError(NoteIOError)
+  })
+
+  it("dovrebbe lanciare NoteIOError con cancelled=true se l'utente annulla il selettore di apertura (AbortError)", async () => {
+    ;(globalThis.window as any).showOpenFilePicker.mockRejectedValue(
+      new DOMException('The user aborted a request.', 'AbortError'),
+    )
+
+    const proxy = new NoteServiceProxy()
+
+    try {
+      await proxy.open()
+      expect.fail('doveva sollevare NoteIOError')
+    } catch (error) {
+      expect(error).toBeInstanceOf(NoteIOError)
+      expect((error as NoteIOError).cancelled).toBe(true)
+      expect((error as NoteIOError).message).not.toContain('showOpenFilePicker')
+      expect((error as NoteIOError).message).not.toContain('aborted')
+    }
   })
 })
