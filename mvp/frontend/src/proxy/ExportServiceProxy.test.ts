@@ -33,7 +33,7 @@ describe('ExportServiceProxy', () => {
     expect(result).toBe(mockBlob)
   })
 
-  it('solleva un errore se la risposta non è ok', async () => {
+  it('solleva un errore col testo grezzo se la risposta non è ok e il corpo non è JSON', async () => {
     ;(globalThis.fetch as any).mockResolvedValue({
       ok: false,
       text: async () => 'Formato non supportato',
@@ -42,6 +42,32 @@ describe('ExportServiceProxy', () => {
     const proxy = new ExportServiceProxy('http://localhost:8000')
     await expect(proxy.exportNote('html', 'testo')).rejects.toThrow(
       "Errore durante l'esportazione in formato html: Formato non supportato",
+    )
+  })
+
+  it('traduce ConversionError in un messaggio amichevole, non nel JSON grezzo', async () => {
+    ;(globalThis.fetch as any).mockResolvedValue({
+      ok: false,
+      text: async () =>
+        JSON.stringify({ error: 'ConversionError', message: 'xhtml2pdf ha segnalato 3 errori durante la conversione' }),
+    })
+
+    const proxy = new ExportServiceProxy('http://localhost:8000')
+    await expect(proxy.exportNote('pdf', 'testo')).rejects.toThrow(
+      'Non è stato possibile generare il file per questo formato. Riprova.',
+    )
+  })
+
+  it('usa il campo "detail" (formato standard FastAPI) se presente, senza mostrare il JSON grezzo', async () => {
+    ;(globalThis.fetch as any).mockResolvedValue({
+      ok: false,
+      text: async () =>
+        JSON.stringify({ detail: "Formato di export non supportato: 'docx'. Disponibili: ['pdf', 'html', 'json']" }),
+    })
+
+    const proxy = new ExportServiceProxy('http://localhost:8000')
+    await expect(proxy.exportNote('pdf', 'testo')).rejects.toThrow(
+      "Formato di export non supportato: 'docx'. Disponibili: ['pdf', 'html', 'json']",
     )
   })
 })
