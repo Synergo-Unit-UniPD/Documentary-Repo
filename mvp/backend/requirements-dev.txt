@@ -1,0 +1,10 @@
+-r requirements.txt
+
+# aggiunge solo gli strumenti di sviluppo (lint, type-check, coverage) che non servono mai in produzione
+
+# analisi statica (CI, Sezione 2.6 Specifica Tecnica - "linter, formatter")
+ruff==0.8.4
+mypy==1.14.1
+
+# code coverage
+pytest-cov==6.0.0
