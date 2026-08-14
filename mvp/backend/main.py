@@ -12,7 +12,7 @@ app = FastAPI(title="Second Brain API", version="0.1.0")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.cors_allowed_origins, # viene usato per decidere quali origini possono fare richieste al backend
+    allow_origins=settings.cors_allowed_origins,  # viene usato per decidere quali origini possono fare richieste al backend
     allow_methods=["*"],
     allow_headers=["*"],
 )

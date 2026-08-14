@@ -1,0 +1,55 @@
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+extend-exclude = ["export/*.dotx", "__pycache__"]
+
+[tool.ruff.lint]
+# Set di regole scelto deliberatamente contenuto per una prima passata di CI:
+# errori (E), pyflakes (F, variabili/import inutilizzati), bugbear (B, insidie
+# comuni), comprehensions (C4), e le regole "upgrade" (UP) per idiomi Python
+# moderni. Non includiamo ancora convenzioni di stile più soggettive (es.
+# docstring, import-order avanzato): si aggiungeranno gradualmente.
+select = ["E", "F", "B", "C4", "UP", "SIM"]
+ignore = [
+    "E501",   # riga troppo lunga: già controllato da line-length, ma alcune
+              # stringhe di prompt AI sono legittimamente lunghe
+    "B008",   # Depends(...) nei default degli argomenti è il pattern standard
+              # di FastAPI per la Dependency Injection (Sezione 5.3.4), non un
+              # "function call pericoloso nel default" come in codice generico
+]
+
+[tool.ruff.lint.per-file-ignores]
+"test_*.py" = ["B011"]  # negli assert di test è comune ed esplicito
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.mypy]
+python_version = "3.11"
+mypy_path = "."
+explicit_package_bases = true
+namespace_packages = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+# Il codebase non è ancora annotato in modo esaustivo (es. i field dei dataclass
+# di config.py, o alcuni parametri **kwargs interni): partiamo permissivi e
+# stringiamo gradualmente, modulo per modulo, durante la revisione.
+ignore_missing_imports = true
+disable_error_code = ["import-untyped"]
+
+[tool.coverage.run]
+branch = true
+source = ["."]
+omit = [
+    "*/test_*.py",
+    "test_*.py",
+    "*/__pycache__/*",
+]
+
+[tool.coverage.report]
+skip_empty = true
+exclude_lines = [
+    "pragma: no cover",
+    "if TYPE_CHECKING:",
+    "raise NotImplementedError",
+]
