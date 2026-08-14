@@ -134,7 +134,7 @@ jobs:
         run: npx eslint .
 
       - name: Format check (prettier)
-        run: npx prettier --check "src/**/*.{ts,vue}"
+        run: npx prettier --check "src/**/*.{ts,vue,css}"
 
       - name: Type-check (vue-tsc)
         run: npm run type-check
