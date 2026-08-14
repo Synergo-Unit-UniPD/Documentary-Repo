@@ -4,6 +4,7 @@ from xhtml2pdf import pisa
 
 from export.exporter import Exporter
 from export.domain import Content
+from export.exceptions import ConversionError
 from export.markdown_renderer import markdown_renderer
 
 _PDF_HTML_TEMPLATE = """<html>
@@ -34,6 +35,6 @@ class PdfExporter(Exporter):
         buffer = io.BytesIO()
         result = pisa.CreatePDF(src=html_string, dest=buffer, encoding="utf-8")
         if result.err:
-            raise ValueError(f"xhtml2pdf ha segnalato {result.err} errori durante la conversione")
+            raise ConversionError(f"xhtml2pdf ha segnalato {result.err} errori durante la conversione")
 
         return buffer.getvalue()
