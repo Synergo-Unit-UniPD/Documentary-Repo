@@ -32,11 +32,11 @@ format-backend:
 	cd backend && ruff format .
 
 format-frontend:
-	cd frontend && npx prettier --write "src/**/*.{ts,vue}"
+	cd frontend && npx prettier --write "src/**/*.{ts,vue,css}"
 
 format-check:
 	cd backend && ruff format --check .
-	cd frontend && npx prettier --check "src/**/*.{ts,vue}"
+	cd frontend && npx prettier --check "src/**/*.{ts,vue,css}"
 
 typecheck: typecheck-backend typecheck-frontend
 

@@ -62,13 +62,13 @@ function Format-Backend {
     Invoke-Step "Backend: ruff format" { Set-Location "$root\backend"; ruff format . }
 }
 function Format-Frontend {
-    Invoke-Step "Frontend: prettier --write" { Set-Location "$root\frontend"; npx prettier --write "src/**/*.{ts,vue}" }
+    Invoke-Step "Frontend: prettier --write" { Set-Location "$root\frontend"; npx prettier --write "src/**/*.{ts,vue,css}" }
 }
 function FormatCheck-Backend {
     Invoke-Step "Backend: ruff format --check" { Set-Location "$root\backend"; ruff format --check . }
 }
 function FormatCheck-Frontend {
-    Invoke-Step "Frontend: prettier --check" { Set-Location "$root\frontend"; npx prettier --check "src/**/*.{ts,vue}" }
+    Invoke-Step "Frontend: prettier --check" { Set-Location "$root\frontend"; npx prettier --check "src/**/*.{ts,vue,css}" }
 }
 function Typecheck-Backend {
     Invoke-Step "Backend: mypy" { Set-Location "$root\backend"; mypy . }
