@@ -253,6 +253,13 @@ function dismissToast(): void {
   toastVisible.value = false
 }
 
+function onInvalidLinkClick(): void {
+  // Il link non ha uno schema (es. "ciao" invece di "https://..."): non è
+  // una destinazione valida, non naviga da nessuna parte (vedi
+  // MarkdownPreview.vue). Feedback neutro, non un errore vero e proprio.
+  showToast('Il link non è valido', 'info')
+}
+
 async function testConnection(): Promise<void> {
   try {
     const response = await fetch('/api/status')
@@ -591,7 +598,7 @@ onMounted(async () => {
           <h2>Anteprima</h2>
         </div>
 
-        <MarkdownPreview :html="compiledMarkdown" />
+        <MarkdownPreview :html="compiledMarkdown" @invalid-link="onInvalidLinkClick" />
       </section>
     </section>
 
