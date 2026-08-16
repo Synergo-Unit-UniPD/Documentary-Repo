@@ -172,6 +172,99 @@ describe('MarkdownContentEditor - formattazione inline su selezione multi-riga',
   })
 })
 
+describe('MarkdownContentEditor - computeFormatToggleShift (riposizionamento selezione dopo toggle)', () => {
+  it('su riga singola restituisce lo stesso spostamento per inizio e fine (comportamento invariato)', () => {
+    const editor = new MarkdownContentEditor('uno')
+    const { startDelta, endDelta } = editor.computeFormatToggleShift(new TextRange(0, 3), FormatType.BOLD)
+
+    expect(startDelta).toBe(2) // "**".length
+    expect(endDelta).toBe(2)
+  })
+
+  it('su multi-riga lo spostamento di inizio e fine NON è uniforme (bug segnalato)', () => {
+    const editor = new MarkdownContentEditor('uno\ndue\ntre')
+    const range = new TextRange(0, 'uno\ndue\ntre'.length)
+    const { startDelta, endDelta } = editor.computeFormatToggleShift(range, FormatType.BOLD)
+
+    // Inizio: solo il marcatore di apertura della PRIMA riga (+2).
+    expect(startDelta).toBe(2)
+    // Fine: apertura+chiusura su OGNI riga non vuota (3 righe * 4 caratteri = 12),
+    // non un singolo +2 come prima del fix.
+    expect(endDelta).toBe(12)
+
+    // Verifica che lo spostamento calcolato corrisponda davvero al contenuto risultante:
+    // la nuova selezione copre l'intero blocco trasformato, dal primo marcatore di
+    // apertura (escluso) all'ultimo marcatore di chiusura (escluso) - include quindi
+    // anche i marcatori "interni" tra una riga e l'altra, non solo il testo originale.
+    const newContent = editor.applyFormat(range, FormatType.BOLD)
+    expect(newContent).toBe('**uno**\n**due**\n**tre**')
+    expect(newContent.slice(range.start + startDelta, range.end + endDelta)).toBe('uno**\n**due**\n**tre**')
+  })
+
+  it('in rimozione (formattazione già presente) i delta sono negativi', () => {
+    const editor = new MarkdownContentEditor('**uno**\n**due**')
+    const range = new TextRange(0, '**uno**\n**due**'.length)
+    const { startDelta, endDelta } = editor.computeFormatToggleShift(range, FormatType.BOLD)
+
+    expect(startDelta).toBe(-2)
+    expect(endDelta).toBe(-8) // 2 righe * 4 caratteri
+  })
+})
+
+describe('MarkdownContentEditor - computeListToggleShift (riposizionamento selezione dopo toggle lista)', () => {
+  it('creazione di un elenco puntato su 3 righe: la fine si sposta di 2 caratteri PER RIGA, non una sola volta', () => {
+    const editor = new MarkdownContentEditor('uno\ndue\ntre')
+    const range = new TextRange(0, 'uno\ndue\ntre'.length)
+    const { startDelta, endDelta } = editor.computeListToggleShift(range, ListType.UNORDERED)
+
+    expect(startDelta).toBe(2) // "- ".length sulla prima riga
+    expect(endDelta).toBe(6) // "- ".length * 3 righe
+  })
+
+  it('conversione da puntato a numerato su multi-riga: i marcatori numerati hanno lunghezze diverse tra loro', () => {
+    // Riproduce lo scenario segnalato: elenco puntato ("- ", 2 caratteri)
+    // convertito in numerato ("1. ", "2. ", "3. ", tutti a 3 caratteri qui,
+    // ma il punto è che lo spostamento totale è calcolato osservando OGNI
+    // riga, non stimato da un singolo valore esterno.
+    const editor = new MarkdownContentEditor('- uno\n- due\n- tre')
+    const range = new TextRange(0, '- uno\n- due\n- tre'.length)
+    const { startDelta, endDelta } = editor.computeListToggleShift(range, ListType.ORDERED)
+
+    expect(startDelta).toBe(1) // "- " (2) -> "1. " (3): +1 sulla prima riga
+    expect(endDelta).toBe(3) // +1 per ciascuna delle 3 righe
+
+    const newContent = editor.applyListOperation(
+      range,
+      new ListActionRequest(ListOperationType.CREATE_LIST, ListType.ORDERED),
+    )
+    expect(newContent).toBe('1. uno\n2. due\n3. tre')
+  })
+
+  it('rimozione (toggle off) di un elenco su multi-riga: i delta sono negativi e coerenti riga per riga', () => {
+    const editor = new MarkdownContentEditor('- uno\n- due\n- tre')
+    const range = new TextRange(0, '- uno\n- due\n- tre'.length)
+    const { startDelta, endDelta } = editor.computeListToggleShift(range, ListType.UNORDERED)
+
+    expect(startDelta).toBe(-2)
+    expect(endDelta).toBe(-6)
+  })
+
+  it('con marcatori numerati a due cifre (10., 11., ...) lo spostamento totale tiene conto della lunghezza diversa di ogni riga', () => {
+    // 9 righe: la numerazione passa da una cifra a due, il marcatore "10. "
+    // è più lungo di "1. ", quindi lo spostamento non può essere un multiplo
+    // fisso di un singolo valore.
+    const lines = Array.from({ length: 11 }, (_, i) => `riga${i + 1}`)
+    const editor = new MarkdownContentEditor(lines.join('\n'))
+    const range = new TextRange(0, editor.getContent().length)
+
+    const { endDelta } = editor.computeListToggleShift(range, ListType.ORDERED)
+
+    // Righe 1-9: marcatore "1. ".."9. " (3 caratteri) = 9*3 = 27
+    // Righe 10-11: marcatore "10. ", "11. " (4 caratteri) = 2*4 = 8
+    expect(endDelta).toBe(27 + 8)
+  })
+})
+
 describe('MarkdownContentEditor - formattazione di riga (citazione, intestazione)', () => {
   it('applyFormat(QUOTE) antepone "> " alla riga', () => {
     const editor = new MarkdownContentEditor('Una citazione')
@@ -443,19 +536,6 @@ describe('MarkdownContentEditor - CREATE_LIST come toggle "intelligente"', () =>
   })
 })
 
-describe('MarkdownContentEditor - isListOfType (per la UI: capire cosa farà il toggle)', () => {
-  it('è true se la riga è già un elenco dello stesso tipo richiesto', () => {
-    const editor = new MarkdownContentEditor('- elemento')
-    expect(editor.isListOfType(new TextRange(2, 2), ListType.UNORDERED)).toBe(true)
-    expect(editor.isListOfType(new TextRange(2, 2), ListType.ORDERED)).toBe(false)
-  })
-
-  it('è false se la riga non è ancora un elenco', () => {
-    const editor = new MarkdownContentEditor('testo normale')
-    expect(editor.isListOfType(new TextRange(0, 0), ListType.UNORDERED)).toBe(false)
-  })
-})
-
 describe('MarkdownContentEditor - link ipertestuali', () => {
   it('INSERT_LINK trasforma il testo selezionato in un link Markdown', () => {
     const editor = new MarkdownContentEditor('vedi qui per approfondire')
@@ -561,28 +641,6 @@ describe('MarkdownContentEditor - isFormatted / toggleFormat (rimovibilità dell
     editor.setContent(editor.applyFormat(new TextRange(0, 6), FormatType.HEADING))
     expect(editor.getContent()).toBe('# Titolo')
     expect(editor.isFormatted(new TextRange(2, 8), FormatType.HEADING)).toBe(true)
-  })
-})
-
-describe('MarkdownContentEditor - getListMarkerLength (per il riposizionamento del cursore)', () => {
-  it('restituisce 0 se la riga non è un elemento di un elenco', () => {
-    const editor = new MarkdownContentEditor('riga normale')
-    expect(editor.getListMarkerLength(new TextRange(0, 0))).toBe(0)
-  })
-
-  it('restituisce la lunghezza del marcatore puntato "- "', () => {
-    const editor = new MarkdownContentEditor('- elemento')
-    expect(editor.getListMarkerLength(new TextRange(2, 2))).toBe(2)
-  })
-
-  it('restituisce la lunghezza del marcatore numerato "1. "', () => {
-    const editor = new MarkdownContentEditor('1. elemento')
-    expect(editor.getListMarkerLength(new TextRange(3, 3))).toBe(3)
-  })
-
-  it('include un eventuale rientro nella lunghezza del marcatore', () => {
-    const editor = new MarkdownContentEditor('  - elemento rientrato')
-    expect(editor.getListMarkerLength(new TextRange(4, 4))).toBe(4)
   })
 })
 

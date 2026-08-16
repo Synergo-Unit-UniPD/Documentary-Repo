@@ -84,7 +84,7 @@ export class MarkdownContentEditor {
 
     // Selezione multi-riga (R5-R28): la formattazione inline va applicata a
     // ciascuna riga singolarmente, non avvolgendo l'intera selezione con
-    // un'unica coppia di marcatori, a differenza delle formattazioni di riga
+    // un'unica coppia di marcatori - a differenza delle formattazioni di riga
     // (Quote/Heading, gestite sopra da applyLinePrefix), che già ripetono
     // correttamente il proprio prefisso su ogni riga. Le righe vuote restano
     // tali, per non produrre marcatori vuoti (es. "****") privi di senso.
@@ -215,6 +215,47 @@ export class MarkdownContentEditor {
 
     const marker = INLINE_MARKERS[type]
     return marker !== undefined ? marker.open.length : 0
+  }
+
+  /**
+   * Calcola di quanto devono spostarsi l'inizio e la fine della selezione
+   * dopo un toggle di formattazione inline (grassetto/corsivo/sottolineato/
+   * barrato), PRIMA di eseguire il comando (il chiamante, App.vue, applica
+   * lo spostamento dopo che CodeMirror ha aggiornato il documento).
+   *
+   * Su una selezione a riga singola i due estremi si spostano della stessa
+   * quantità (la selezione resta "tra" i marcatori aperti/chiusi). Su una
+   * selezione multi-riga NON è più uniforme: l'inizio si sposta solo di
+   * quanto cambia sulla PRIMA riga (un solo marcatore di apertura), la fine
+   * di quanto cambia su TUTTE le righe non vuote toccate (ognuna guadagna o
+   * perde sia apertura sia chiusura) - a differenza di un singolo -openLength/
+   * +openLength applicato uniformemente, che è corretto solo nel caso a riga
+   * singola.
+   */
+  public computeFormatToggleShift(range: TextRange, type: FormatType): { startDelta: number; endDelta: number } {
+    const marker = INLINE_MARKERS[type]
+    if (marker === undefined) {
+      // Le formattazioni di riga (Quote/Heading) continuano a usare lo
+      // spostamento uniforme esistente via getFormatMarkerOpenLength.
+      return { startDelta: 0, endDelta: 0 }
+    }
+
+    const applying = !this.isFormatted(range, type)
+    const sign = applying ? 1 : -1
+    const { start, end } = this.normalizeRange(range)
+    const selected = this.content.slice(start, end)
+
+    if (!selected.includes('\n')) {
+      return { startDelta: sign * marker.open.length, endDelta: sign * marker.open.length }
+    }
+
+    const lines = selected.split('\n')
+    const perLineLength = marker.open.length + marker.close.length
+    const nonEmptyCount = lines.filter((line) => line.length > 0).length
+    const startDelta = lines[0].length > 0 ? sign * marker.open.length : 0
+    const endDelta = sign * perLineLength * nonEmptyCount
+
+    return { startDelta, endDelta }
   }
 
   private applyLinePrefix(range: TextRange, prefix: string): string {
@@ -439,7 +480,7 @@ export class MarkdownContentEditor {
         // rimuovono se è già del tipo richiesto (analogo alle formattazioni
         // di riga, R32-R35: ogni elenco deve essere rimovibile con lo stesso
         // comando usato per crearlo, sia su selezione sia su cursore vuoto).
-        return this.toggleListFormat(range, request.listType)
+        return this.toggleListFormat(range, request.listType).content
       case ListOperationType.ADD_ITEM: {
         const { lineEnd } = this.expandToLines(range)
         const marker = request.listType === ListType.ORDERED ? '1. ' : UNORDERED_MARKER
@@ -461,37 +502,6 @@ export class MarkdownContentEditor {
   }
 
   /**
-   * Lunghezza del marcatore di elenco (incluso eventuale rientro) presente
-   * all'inizio della riga toccata dal range, oppure 0 se la riga non è
-   * (ancora) un elemento di un elenco. Usata dal chiamante (App.vue) per
-   * riposizionare correttamente il cursore dopo l'inserimento o la rimozione
-   * del marcatore (es. riga vuota: | -> elenco -> -|, cursore dopo "- ").
-   */
-  public getListMarkerLength(range: TextRange): number {
-    const { lineStart, lineEnd } = this.expandToLines(range)
-    const line = this.content.slice(lineStart, lineEnd)
-    const match = line.match(LIST_ITEM_REGEX)
-    return match ? match[0].length : 0
-  }
-
-  /**
-   * Indica se la riga toccata dal range è già un elemento di elenco DELLO
-   * STESSO tipo richiesto (puntato o numerato). Usata da App.vue per capire,
-   * prima di invocare il comando, se il click sul pulsante produrrà una
-   * creazione, una conversione o una rimozione (per calcolare correttamente
-   * lo spostamento del cursore dopo l'operazione).
-   */
-  public isListOfType(range: TextRange, listType?: ListType): boolean {
-    const { lineStart, lineEnd } = this.expandToLines(range)
-    const line = this.content.slice(lineStart, lineEnd)
-    const match = line.match(LIST_ITEM_REGEX)
-    if (!match) return false
-
-    const isOrdered = ORDERED_MARKER_REGEX.test(match[2])
-    return isOrdered === (listType === ListType.ORDERED)
-  }
-
-  /**
    * Comando "intelligente" condiviso dai pulsanti Elenco puntato/numerato:
    * - riga non ancora un elenco -> crea un elemento del tipo richiesto;
    * - riga già un elenco del tipo richiesto -> rimuove la formattazione (toggle off);
@@ -501,7 +511,10 @@ export class MarkdownContentEditor {
    * La decisione (crea/converti/rimuovi) è presa una sola volta in base alla
    * PRIMA riga del blocco e applicata in modo uniforme a tutte le righe.
    */
-  private toggleListFormat(range: TextRange, listType?: ListType): string {
+  private toggleListFormat(
+    range: TextRange,
+    listType?: ListType,
+  ): { content: string; startDelta: number; totalDelta: number } {
     const { lineStart, lineEnd } = this.expandToLines(range)
     const block = this.content.slice(lineStart, lineEnd)
     const lines = block.split('\n')
@@ -513,23 +526,57 @@ export class MarkdownContentEditor {
         : false
 
     let orderedCounter = 1
-    const transformed = lines.map((line) => {
+    let startDelta = 0
+    let totalDelta = 0
+
+    const transformed = lines.map((line, index) => {
       const match = line.match(LIST_ITEM_REGEX)
+      let result: string
 
       if (firstIsRequestedType) {
         // L'intero blocco è già del tipo richiesto: rimuove il marcatore
         // da ogni riga che ne ha uno (toggle off).
-        return match ? line.slice(match[0].length) : line
+        result = match ? line.slice(match[0].length) : line
+      } else {
+        // Crea (se assente) o converte (se di tipo diverso) al tipo richiesto.
+        const indent = match ? match[1] : ''
+        const rest = match ? line.slice(match[0].length) : line
+        const marker = listType === ListType.ORDERED ? `${orderedCounter++}. ` : UNORDERED_MARKER
+        result = indent + marker + rest
       }
 
-      // Crea (se assente) o converte (se di tipo diverso) al tipo richiesto.
-      const indent = match ? match[1] : ''
-      const rest = match ? line.slice(match[0].length) : line
-      const marker = listType === ListType.ORDERED ? `${orderedCounter++}. ` : UNORDERED_MARKER
-      return indent + marker + rest
+      // La differenza di lunghezza della riga è dovuta interamente al
+      // marcatore (il resto del testo della riga non cambia): usata dal
+      // chiamante (App.vue) per riposizionare la selezione dopo l'operazione,
+      // tenendo conto che marcatori numerati di lunghezza diversa (es. "1. "
+      // a 3 caratteri, "10. " a 4) rendono lo spostamento non uniforme su un
+      // blocco multi-riga (vedi computeListToggleShift).
+      const lineDelta = result.length - line.length
+      totalDelta += lineDelta
+      if (index === 0) {
+        startDelta = lineDelta
+      }
+
+      return result
     })
 
-    return this.content.slice(0, lineStart) + transformed.join('\n') + this.content.slice(lineEnd)
+    const content = this.content.slice(0, lineStart) + transformed.join('\n') + this.content.slice(lineEnd)
+    return { content, startDelta, totalDelta }
+  }
+
+  /**
+   * Calcola di quanto devono spostarsi l'inizio e la fine della selezione
+   * dopo un'operazione CREATE_LIST (elenco puntato/numerato), PRIMA di
+   * eseguire il comando. Necessario perché, su un blocco multi-riga, ogni
+   * riga toccata può guadagnare o perdere un marcatore di lunghezza diversa
+   * dalle altre (es. "1. " vs "10. "): lo spostamento non è uniforme come
+   * per una singola formattazione, va osservato riga per riga (riusa la
+   * stessa logica di toggleListFormat, non una sua reimplementazione
+   * separata, per evitare che le due possano disallinearsi).
+   */
+  public computeListToggleShift(range: TextRange, listType?: ListType): { startDelta: number; endDelta: number } {
+    const { startDelta, totalDelta } = this.toggleListFormat(range, listType)
+    return { startDelta, endDelta: totalDelta }
   }
 
   private toggleListMarker(line: string): string {
