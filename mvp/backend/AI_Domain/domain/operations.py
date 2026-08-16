@@ -10,20 +10,13 @@ class SummarizeOperation(AIOperation):
     type = "summarize"
 
     def build_prompt(self, text: str, params: dict) -> Prompt:
-        return (
-            StandardPromptBuilder()
-            .with_operation(self.type)
-            .with_text(text)
-            .build()
-        )
+        return StandardPromptBuilder().with_operation(self.type).with_text(text).build()
 
 
 @AIOperationFactory.register
 class TranslateOperation(AIOperation):
     type = "translate"
 
-    # Lingue obbligatorie da R50; il tedesco (R52) è desiderabile e già
-    # supportabile qui senza modifiche, basta che il frontend lo proponga.
     SUPPORTED_LANGUAGES = ("en", "fr", "es", "de")
 
     def __init__(self, target_language: str = "en") -> None:
@@ -31,7 +24,13 @@ class TranslateOperation(AIOperation):
 
     @classmethod
     def from_params(cls, params: dict) -> "TranslateOperation":
-        return cls(target_language=params.get("target_language", "en"))
+        target_language = params.get("target_language", "en")
+        if target_language not in cls.SUPPORTED_LANGUAGES:
+            raise ValueError(
+                f"Lingua di destinazione non supportata: '{target_language}'. "
+                f"Disponibili: {cls.SUPPORTED_LANGUAGES}"
+            )
+        return cls(target_language=target_language)
 
     def build_prompt(self, text: str, params: dict) -> Prompt:
         return (
@@ -48,12 +47,7 @@ class RewriteOperation(AIOperation):
     type = "rewrite"
 
     def build_prompt(self, text: str, params: dict) -> Prompt:
-        return (
-            StandardPromptBuilder()
-            .with_operation(self.type)
-            .with_text(text)
-            .build()
-        )
+        return StandardPromptBuilder().with_operation(self.type).with_text(text).build()
 
 
 @AIOperationFactory.register
@@ -63,12 +57,7 @@ class DistantWritingOperation(AIOperation):
     def build_prompt(self, text: str, params: dict) -> Prompt:
         user_prompt = params.get("user_prompt", "")
         combined_text = f"Contesto della nota:\n{text}\n\nIstruzione:\n{user_prompt}" if text else user_prompt
-        return (
-            StandardPromptBuilder()
-            .with_operation(self.type)
-            .with_text(combined_text)
-            .build()
-        )
+        return StandardPromptBuilder().with_operation(self.type).with_text(combined_text).build()
 
 
 @AIOperationFactory.register
@@ -85,10 +74,4 @@ class HatAnalysisOperation(AIOperation):
         return cls(hat_type=hat_type)
 
     def build_prompt(self, text: str, params: dict) -> Prompt:
-        return (
-            StandardPromptBuilder()
-            .with_operation(self.type)
-            .with_text(text)
-            .with_hat(self._hat_type)
-            .build()
-        )
+        return StandardPromptBuilder().with_operation(self.type).with_text(text).with_hat(self._hat_type).build()
