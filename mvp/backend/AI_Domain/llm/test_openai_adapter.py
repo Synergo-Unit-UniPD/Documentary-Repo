@@ -51,6 +51,40 @@ async def test_complete_gestisce_content_none_senza_eccezioni(adapter):
 
 
 @pytest.mark.asyncio
+async def test_complete_rimuove_il_ragionamento_del_modello_quando_presente(adapter):
+    """Riproduce lo scenario segnalato: alcuni modelli (es. Gemma) possono
+    restituire, nello stesso campo "content", sia il proprio ragionamento
+    interno sia la risposta finale, separati da marcatori di canale in
+    chiaro ("<|channel>thought" / "<channel|>"). Deve rimanere solo l'ultimo
+    segmento, la vera risposta finale."""
+    raw_with_reasoning = (
+        "<|channel>thought\n"
+        "* Role: Writing assistant in a Markdown editor.\n"
+        "* Task: Translate text into English.\n"
+        "Let's go with a natural version.\n"
+        "<channel|>Hello, my name is Andrea and I am 18 years old."
+    )
+    response = _make_openai_response(raw_with_reasoning)
+
+    with patch.object(adapter._client.chat.completions, "create", new=AsyncMock(return_value=response)):
+        result = await adapter.complete(Prompt(system_text="sistema", user_text="utente"))
+
+    assert result == "Hello, my name is Andrea and I am 18 years old."
+    assert "channel" not in result
+    assert "thought" not in result
+
+
+@pytest.mark.asyncio
+async def test_complete_non_tocca_le_risposte_normali_senza_marcatori_di_canale(adapter):
+    response = _make_openai_response("Ecco il riassunto generato, nessun ragionamento visibile.")
+
+    with patch.object(adapter._client.chat.completions, "create", new=AsyncMock(return_value=response)):
+        result = await adapter.complete(Prompt(system_text="sistema", user_text="utente"))
+
+    assert result == "Ecco il riassunto generato, nessun ragionamento visibile."
+
+
+@pytest.mark.asyncio
 async def test_complete_traduce_timeout_in_llm_timeout_error(adapter):
     fake_request = httpx.Request("POST", "https://fake.test")
     timeout_error = openai.APITimeoutError(request=fake_request)
