@@ -75,13 +75,23 @@ export class MarkdownContentEditor {
     }
 
     const { start, end } = this.normalizeRange(range)
-    return (
-      this.content.slice(0, start) +
-      marker.open +
-      this.content.slice(start, end) +
-      marker.close +
-      this.content.slice(end)
-    )
+    const selected = this.content.slice(start, end)
+
+    if (!selected.includes('\n')) {
+      // Caso comune: selezione su una sola riga, avvolge l'intera selezione.
+      return this.content.slice(0, start) + marker.open + selected + marker.close + this.content.slice(end)
+    }
+
+    // Selezione multi-riga (R5-R28): la formattazione inline va applicata a
+    // ciascuna riga singolarmente, non avvolgendo l'intera selezione con
+    // un'unica coppia di marcatori, a differenza delle formattazioni di riga
+    // (Quote/Heading, gestite sopra da applyLinePrefix), che già ripetono
+    // correttamente il proprio prefisso su ogni riga. Le righe vuote restano
+    // tali, per non produrre marcatori vuoti (es. "****") privi di senso.
+    const formattedLines = selected
+      .split('\n')
+      .map((line) => (line.length === 0 ? line : marker.open + line + marker.close))
+    return this.content.slice(0, start) + formattedLines.join('\n') + this.content.slice(end)
   }
 
   public removeFormat(range: TextRange, type: FormatType): string {
@@ -95,26 +105,43 @@ export class MarkdownContentEditor {
       return this.content
     }
 
-    // Contratto "adiacente": il range rappresenta il testo/cursore ATTUALMENTE
-    // selezionato (che, dopo un apply, corrisponde al testo racchiuso tra i
-    // marcatori, non ai marcatori stessi) e i marcatori si cercano subito
-    // PRIMA dell'inizio e subito DOPO la fine del range. Questo è coerente con
-    // come App.vue riposiziona la selezione dopo ogni toggle (vedi toggleFormat).
     const { start, end } = this.normalizeRange(range)
-    const openStart = start - marker.open.length
-    const openEnd = start
-    const closeStart = end
-    const closeEnd = end + marker.close.length
+    const selected = this.content.slice(start, end)
 
-    const hasOpenMarker = openStart >= 0 && this.content.slice(openStart, openEnd) === marker.open
-    const hasCloseMarker = this.content.slice(closeStart, closeEnd) === marker.close
+    if (!selected.includes('\n')) {
+      // Contratto "adiacente": il range rappresenta il testo/cursore ATTUALMENTE
+      // selezionato (che, dopo un apply, corrisponde al testo racchiuso tra i
+      // marcatori, non ai marcatori stessi) e i marcatori si cercano subito
+      // PRIMA dell'inizio e subito DOPO la fine del range. Questo è coerente con
+      // come App.vue riposiziona la selezione dopo ogni toggle (vedi toggleFormat).
+      const openStart = start - marker.open.length
+      const openEnd = start
+      const closeStart = end
+      const closeEnd = end + marker.close.length
 
-    if (!hasOpenMarker || !hasCloseMarker) {
-      // I marcatori non sono (più) presenti nella posizione attesa: nessuna modifica.
-      return this.content
+      const hasOpenMarker = openStart >= 0 && this.content.slice(openStart, openEnd) === marker.open
+      const hasCloseMarker = this.content.slice(closeStart, closeEnd) === marker.close
+
+      if (!hasOpenMarker || !hasCloseMarker) {
+        // I marcatori non sono (più) presenti nella posizione attesa: nessuna modifica.
+        return this.content
+      }
+
+      return this.content.slice(0, openStart) + this.content.slice(openEnd, closeStart) + this.content.slice(closeEnd)
     }
 
-    return this.content.slice(0, openStart) + this.content.slice(openEnd, closeStart) + this.content.slice(closeEnd)
+    // Selezione multi-riga: rimuove i marcatori da ciascuna riga singolarmente,
+    // simmetrico rispetto a come applyFormat li ha aggiunti. Una riga viene
+    // toccata solo se ha davvero entrambi i marcatori nelle posizioni attese
+    // (comportamento "adiacente", coerente col caso a riga singola sopra).
+    const strippedLines = selected.split('\n').map((line) => {
+      const hasBothMarkers =
+        line.length >= marker.open.length + marker.close.length &&
+        line.startsWith(marker.open) &&
+        line.endsWith(marker.close)
+      return hasBothMarkers ? line.slice(marker.open.length, line.length - marker.close.length) : line
+    })
+    return this.content.slice(0, start) + strippedLines.join('\n') + this.content.slice(end)
   }
 
   /**
@@ -122,6 +149,9 @@ export class MarkdownContentEditor {
    * esattamente la stessa logica di posizionamento di removeFormat: un range è
    * "formattato" se i marcatori risultano esattamente nelle posizioni in cui
    * removeFormat li rimuoverebbe (cioè subito prima e subito dopo il range).
+   * Per una selezione multi-riga, è "formattato" solo se OGNI riga non vuota
+   * della selezione ha già entrambi i marcatori (simmetrico rispetto ad
+   * applyFormat/removeFormat sopra).
    * Serve a decidere, in toggleFormat, se applicare o rimuovere la formattazione
    * (R5-R28: ogni formattazione deve essere rimovibile con lo stesso comando
    * usato per applicarla, sia con del testo selezionato sia con selezione vuota).
@@ -139,11 +169,25 @@ export class MarkdownContentEditor {
     }
 
     const { start, end } = this.normalizeRange(range)
-    const openStart = start - marker.open.length
-    const hasOpenMarker = openStart >= 0 && this.content.slice(openStart, start) === marker.open
-    const hasCloseMarker = this.content.slice(end, end + marker.close.length) === marker.close
+    const selected = this.content.slice(start, end)
 
-    return hasOpenMarker && hasCloseMarker
+    if (!selected.includes('\n')) {
+      const openStart = start - marker.open.length
+      const hasOpenMarker = openStart >= 0 && this.content.slice(openStart, start) === marker.open
+      const hasCloseMarker = this.content.slice(end, end + marker.close.length) === marker.close
+      return hasOpenMarker && hasCloseMarker
+    }
+
+    const nonEmptyLines = selected.split('\n').filter((line) => line.length > 0)
+    if (nonEmptyLines.length === 0) {
+      return false
+    }
+    return nonEmptyLines.every(
+      (line) =>
+        line.length >= marker.open.length + marker.close.length &&
+        line.startsWith(marker.open) &&
+        line.endsWith(marker.close),
+    )
   }
 
   /**

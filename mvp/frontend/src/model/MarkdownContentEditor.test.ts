@@ -104,6 +104,74 @@ describe('MarkdownContentEditor - formattazione inline', () => {
   })
 })
 
+describe('MarkdownContentEditor - formattazione inline su selezione multi-riga', () => {
+  it("applyFormat(BOLD) su tre righe selezionate racchiude OGNI riga singolarmente, non l'intera selezione", () => {
+    const editor = new MarkdownContentEditor('uno\ndue\ntre')
+    const result = editor.applyFormat(new TextRange(0, 'uno\ndue\ntre'.length), FormatType.BOLD)
+
+    expect(result).toBe('**uno**\n**due**\n**tre**')
+  })
+
+  it('applyFormat(ITALIC) su selezione multi-riga usa il singolo asterisco per riga', () => {
+    const editor = new MarkdownContentEditor('uno\ndue')
+    const result = editor.applyFormat(new TextRange(0, 'uno\ndue'.length), FormatType.ITALIC)
+
+    expect(result).toBe('*uno*\n*due*')
+  })
+
+  it('applyFormat su selezione multi-riga non tocca le righe vuote (nessun marcatore vuoto)', () => {
+    const editor = new MarkdownContentEditor('uno\n\ntre')
+    const result = editor.applyFormat(new TextRange(0, 'uno\n\ntre'.length), FormatType.BOLD)
+
+    expect(result).toBe('**uno**\n\n**tre**')
+  })
+
+  it('applyFormat su multi-riga non corrompe un elenco numerato adiacente sulla stessa selezione', () => {
+    // Riproduce esattamente lo scenario segnalato: elenco numerato già applicato,
+    // poi grassetto sulla stessa selezione multi-riga.
+    const editor = new MarkdownContentEditor('1. uno\n2. due\n3. tre')
+    const result = editor.applyFormat(new TextRange(0, '1. uno\n2. due\n3. tre'.length), FormatType.BOLD)
+
+    // Il marcatore di apertura deve restare DOPO il prefisso numerico di ogni riga,
+    // non spostare/rompere la numerazione (a differenza del comportamento precedente,
+    // che produceva "**3. tre" con l'asterisco prima del numero).
+    expect(result).toBe('**1. uno**\n**2. due**\n**3. tre**')
+  })
+
+  it('isFormatted riconosce una selezione multi-riga come formattata solo se OGNI riga lo è', () => {
+    const editor = new MarkdownContentEditor('**uno**\n**due**\n**tre**')
+    const formatted = editor.isFormatted(new TextRange(0, '**uno**\n**due**\n**tre**'.length), FormatType.BOLD)
+
+    expect(formatted).toBe(true)
+  })
+
+  it('isFormatted è false su multi-riga se anche una sola riga non è formattata', () => {
+    const editor = new MarkdownContentEditor('**uno**\ndue\n**tre**')
+    const formatted = editor.isFormatted(new TextRange(0, '**uno**\ndue\n**tre**'.length), FormatType.BOLD)
+
+    expect(formatted).toBe(false)
+  })
+
+  it('toggleFormat su multi-riga già formattata rimuove i marcatori da ogni riga (round-trip apply/remove)', () => {
+    const editor = new MarkdownContentEditor('uno\ndue\ntre')
+    const range = new TextRange(0, 'uno\ndue\ntre'.length)
+
+    const applied = editor.toggleFormat(range, FormatType.BOLD)
+    expect(applied).toBe('**uno**\n**due**\n**tre**')
+
+    editor.setContent(applied)
+    const removed = editor.toggleFormat(new TextRange(0, applied.length), FormatType.BOLD)
+    expect(removed).toBe('uno\ndue\ntre')
+  })
+
+  it('removeFormat su multi-riga tocca solo le righe che hanno davvero entrambi i marcatori', () => {
+    const editor = new MarkdownContentEditor('**uno**\ndue\n**tre**')
+    const result = editor.removeFormat(new TextRange(0, '**uno**\ndue\n**tre**'.length), FormatType.BOLD)
+
+    expect(result).toBe('uno\ndue\ntre')
+  })
+})
+
 describe('MarkdownContentEditor - formattazione di riga (citazione, intestazione)', () => {
   it('applyFormat(QUOTE) antepone "> " alla riga', () => {
     const editor = new MarkdownContentEditor('Una citazione')
