@@ -487,3 +487,51 @@ describe("App.vue - click sui link dell'anteprima", () => {
     wrapper.unmount()
   })
 })
+
+describe('App.vue - conferma prima di uscire con modifiche non salvate', () => {
+  it('NON chiede conferma se non ci sono modifiche non salvate (stato iniziale)', async () => {
+    const wrapper = mount(App)
+    await new Promise((resolve) => setTimeout(resolve, 0))
+
+    const event = new Event('beforeunload', { cancelable: true }) as BeforeUnloadEvent
+    window.dispatchEvent(event)
+
+    expect(event.defaultPrevented).toBe(false)
+
+    wrapper.unmount()
+  })
+
+  it('chiede conferma (previene il default) se ci sono modifiche non salvate', async () => {
+    const wrapper = mount(App)
+    await new Promise((resolve) => setTimeout(resolve, 0))
+
+    const editor = wrapper.findComponent(MarkdownEditor)
+    await editor.vm.$emit('update:modelValue', 'testo modificato, non ancora salvato')
+    await new Promise((resolve) => setTimeout(resolve, 0))
+
+    expect(wrapper.text()).toContain('Modifiche non salvate')
+
+    const event = new Event('beforeunload', { cancelable: true }) as BeforeUnloadEvent
+    window.dispatchEvent(event)
+
+    expect(event.defaultPrevented).toBe(true)
+
+    wrapper.unmount()
+  })
+
+  it('rimuove il listener allo smontaggio: dopo unmount, un beforeunload successivo non fa più nulla', async () => {
+    const wrapper = mount(App)
+    await new Promise((resolve) => setTimeout(resolve, 0))
+
+    const editor = wrapper.findComponent(MarkdownEditor)
+    await editor.vm.$emit('update:modelValue', 'testo modificato')
+    await new Promise((resolve) => setTimeout(resolve, 0))
+
+    wrapper.unmount()
+
+    const event = new Event('beforeunload', { cancelable: true }) as BeforeUnloadEvent
+    window.dispatchEvent(event)
+
+    expect(event.defaultPrevented).toBe(false)
+  })
+})

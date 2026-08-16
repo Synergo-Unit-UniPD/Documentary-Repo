@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, nextTick } from 'vue'
+import { ref, computed, onMounted, onBeforeUnmount, nextTick } from 'vue'
 import { markdown } from '@codemirror/lang-markdown'
 import { languages } from '@codemirror/language-data'
 import { oneDark } from '@codemirror/theme-one-dark'
@@ -257,7 +257,7 @@ function onInvalidLinkClick(): void {
   // Il link non ha uno schema (es. "ciao" invece di "https://..."): non è
   // una destinazione valida, non naviga da nessuna parte (vedi
   // MarkdownPreview.vue). Feedback neutro, non un errore vero e proprio.
-  showToast('Il link non è valido', 'info')
+  showToast('Il link non è valido: manca lo schema (es. "https://").', 'info')
 }
 
 async function testConnection(): Promise<void> {
@@ -550,8 +550,27 @@ function dismissError(): void {
   aiPanelView.simulateProposalAction(ProposalActionType.INTERRUPT)
 }
 
+/**
+ * Chiede conferma al browser prima di chiudere la scheda/finestra o
+ * ricaricare la pagina, se ci sono modifiche non salvate. Il testo del
+ * messaggio non è personalizzabile nei browser moderni (Chrome, Firefox,
+ * Safari lo ignorano per motivi di sicurezza, mostrando sempre un messaggio
+ * generico proprio): impostare comunque `returnValue` e chiamare
+ * `preventDefault()` è quello che fa scattare il dialogo nativo.
+ */
+function onBeforeUnloadWindow(event: BeforeUnloadEvent): void {
+  if (!isDirty.value) return
+  event.preventDefault()
+  event.returnValue = ''
+}
+
 onMounted(async () => {
   await testConnection()
+  window.addEventListener('beforeunload', onBeforeUnloadWindow)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('beforeunload', onBeforeUnloadWindow)
 })
 </script>
 
