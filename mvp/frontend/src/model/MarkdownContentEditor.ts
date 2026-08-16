@@ -369,6 +369,54 @@ export class MarkdownContentEditor {
     }
   }
 
+  /**
+   * Calcola dove posizionare il cursore dopo un'operazione su una tabella,
+   * PRIMA di eseguire il comando (il chiamante, App.vue, applica la nuova
+   * posizione dopo che CodeMirror ha aggiornato il documento). Le operazioni
+   * su tabella non lasciano una selezione di testo sensata da riposizionare
+   * come per formattazione/elenchi: producono sempre un singolo punto di
+   * cursore.
+   *
+   * Senza questo calcolo il cursore resterebbe fermo alla vecchia posizione
+   * numerica, che dopo l'operazione può cadere ovunque nel nuovo contenuto
+   * (bug segnalato): per CREATE_TABLE, la tabella viene sempre creata in
+   * fondo al documento (vedi createTable), non dove si trovava il cursore
+   * prima; per le altre operazioni, se la tabella modificata cambia
+   * lunghezza e ce n'è un'altra dopo, la vecchia posizione può ricadere
+   * dentro quest'ultima invece che in quella appena toccata.
+   */
+  public computeTableOperationCursor(request: TableActionRequest, range: TextRange): number {
+    if (request.operation === TableOperationType.CREATE_TABLE) {
+      return this.applyTableOperation(request, range).length
+    }
+
+    const found = this.findTableBlockAt(range.start)
+    if (found === null) {
+      return range.start
+    }
+
+    if (request.operation === TableOperationType.DELETE_TABLE) {
+      // La tabella non c'è più: il cursore va dove il testo riprende, subito
+      // dopo l'eventuale riga vuota residua rimossa insieme al blocco (vedi
+      // withTableAt). Calcolato misurando il contenuto reale dopo la
+      // trasformazione (che non muta lo stato di questo editor), non
+      // ricalcolato separatamente, per non poter mai divergere dal
+      // comportamento vero (stessa tecnica di computeFormatToggleShift/
+      // computeListToggleShift).
+      const tailLength = this.content.length - found.end
+      const newContent = this.applyTableOperation(request, range)
+      return newContent.length - tailLength
+    }
+
+    // Per le altre operazioni (righe/colonne/cella), il cursore si posiziona
+    // sempre all'INIZIO della tabella modificata: unico punto stabile e
+    // prevedibile, indipendente da quanto sia cambiata la lunghezza della
+    // tabella. content.slice(0, found.start) non viene mai toccato da
+    // withTableAt, quindi questa posizione è già corretta senza bisogno di
+    // eseguire la trasformazione.
+    return found.start
+  }
+
   private createTable(request: TableActionRequest): string {
     const rowCount = request.rowCount
     const colCount = request.colCount

@@ -521,6 +521,69 @@ describe('MarkdownContentEditor - tabelle', () => {
   })
 })
 
+describe('MarkdownContentEditor - computeTableOperationCursor (riposizionamento cursore dopo operazioni su tabella)', () => {
+  it('CREATE_TABLE posiziona il cursore in fondo al documento, dove la tabella viene davvero creata', () => {
+    const editor = new MarkdownContentEditor('Testo prima del cursore, in mezzo al documento.')
+    const request = new TableActionRequest(TableOperationType.CREATE_TABLE, 1, 1)
+    // Il cursore (prima dell'operazione) è a metà del documento, non in fondo.
+    const range = new TextRange(5, 5)
+
+    const cursor = editor.computeTableOperationCursor(request, range)
+    const newContent = editor.applyTableOperation(request, range)
+
+    expect(cursor).toBe(newContent.length)
+  })
+
+  it("INSERT_ROW/DELETE_ROW posizionano il cursore all'INIZIO della tabella modificata, non dove si trovava prima", () => {
+    const editor = new MarkdownContentEditor('')
+    editor.setContent(editor.applyTableOperation(new TableActionRequest(TableOperationType.CREATE_TABLE, 2, 1)))
+    const tableStart = 0
+
+    const request = new TableActionRequest(TableOperationType.DELETE_ROW, undefined, undefined, 0)
+    const range = new TextRange(tableStart + 3, tableStart + 3) // cursore da qualche parte dentro la tabella
+
+    const cursor = editor.computeTableOperationCursor(request, range)
+
+    expect(cursor).toBe(tableStart)
+  })
+
+  it('con DUE tabelle, eliminare una riga dalla PRIMA posiziona il cursore lì, non dentro la seconda tabella (bug segnalato)', () => {
+    let editor = new MarkdownContentEditor('')
+    editor.setContent(editor.applyTableOperation(new TableActionRequest(TableOperationType.CREATE_TABLE, 3, 1)))
+    editor.setContent(editor.getContent() + '\nTesto tra le due tabelle.\n\n')
+    editor.setContent(editor.applyTableOperation(new TableActionRequest(TableOperationType.CREATE_TABLE, 2, 1)))
+
+    // Ricostruiamo un editor "pulito" con lo stesso contenuto, per calcolare
+    // dove inizia esattamente la prima tabella (posizione 0, dato che è la
+    // primissima cosa nel documento).
+    editor = new MarkdownContentEditor(editor.getContent())
+    const firstTableStart = 0
+
+    // Cursore dentro la PRIMA tabella (che ha più righe della seconda: la
+    // differenza di lunghezza tra le due, dopo l'eliminazione, è proprio ciò
+    // che prima faceva "saltare" il cursore nella tabella sbagliata).
+    const range = new TextRange(3, 3)
+    const request = new TableActionRequest(TableOperationType.DELETE_ROW, undefined, undefined, 0)
+
+    const cursor = editor.computeTableOperationCursor(request, range)
+
+    expect(cursor).toBe(firstTableStart)
+  })
+
+  it('DELETE_TABLE posiziona il cursore dove il testo riprende, non alla vecchia posizione numerica', () => {
+    const editor = new MarkdownContentEditor('Prima\n\n| Colonna 1 |\n| --- |\n|  |\nDopo')
+
+    const tableStart = 'Prima\n\n'.length
+    const range = new TextRange(tableStart + 2, tableStart + 2)
+    const request = new TableActionRequest(TableOperationType.DELETE_TABLE)
+
+    const cursor = editor.computeTableOperationCursor(request, range)
+    const newContent = editor.applyTableOperation(request, range)
+
+    expect(newContent.slice(cursor)).toBe('\nDopo')
+  })
+})
+
 describe("MarkdownContentEditor - operazioni su tabelle multiple: opera su quella selezionata, non sull'ultima creata", () => {
   function buildTwoTablesDocument(): {
     editor: MarkdownContentEditor

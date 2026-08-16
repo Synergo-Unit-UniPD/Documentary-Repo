@@ -373,10 +373,15 @@ async function onList(operation: ListOperationType, listType?: ListType): Promis
   cmView.value?.focus()
 }
 
-function onTableOp(operation: TableOperationType): void {
+async function onTableOp(operation: TableOperationType): Promise<void> {
   commitTypingBurst()
+  const range = currentSelection()
   try {
-    editorView.simulateTableRequest(new TableActionRequest(operation), currentSelection())
+    const request = new TableActionRequest(operation)
+    const newCursorPosition = markdownEditor.computeTableOperationCursor(request, range)
+    editorView.simulateTableRequest(request, range)
+    await nextTick()
+    setCursorPosition(newCursorPosition)
   } catch (error) {
     if (error instanceof InvalidTableDimensionError) {
       showToast(error.message)
@@ -420,10 +425,14 @@ function removeLink(): void {
 
 const showTableModal = ref(false)
 
-function submitTable(rowCount: number, colCount: number): void {
+async function submitTable(rowCount: number, colCount: number): Promise<void> {
   commitTypingBurst()
   try {
+    const request = new TableActionRequest(TableOperationType.CREATE_TABLE, rowCount, colCount)
+    const newCursorPosition = markdownEditor.computeTableOperationCursor(request, currentSelection())
     editorView.simulateTableAction(rowCount, colCount)
+    await nextTick()
+    setCursorPosition(newCursorPosition)
   } catch (error) {
     if (error instanceof InvalidTableDimensionError) {
       showToast(error.message)
