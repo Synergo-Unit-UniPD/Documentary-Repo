@@ -63,6 +63,34 @@ export class MarkdownContentEditor {
   // barrato, citazione, intestazione) - R5-R28
   // ------------------------------------------------------------------
 
+  /**
+   * Lunghezza del prefisso "strutturale" (citazione ed elenco, anche
+   * combinati come "> - ") all'inizio della riga indicata, da ESCLUDERE
+   * quando si applica/rimuove un marcatore inline su un blocco multi-riga:
+   * senza questa esclusione, il marcatore finirebbe prima del prefisso su
+   * alcune righe e dopo su altre (a seconda di dove cade il bordo grezzo
+   * della selezione, non della struttura reale della riga), producendo un
+   * risultato incoerente riga per riga e rompendo la sintassi della lista
+   * o della citazione.
+   */
+  private structuralPrefixLength(line: string): number {
+    let rest = line
+    let length = 0
+
+    const quotePrefix = LINE_PREFIXES[FormatType.QUOTE]
+    if (quotePrefix !== undefined && rest.startsWith(quotePrefix)) {
+      length += quotePrefix.length
+      rest = rest.slice(quotePrefix.length)
+    }
+
+    const listMatch = rest.match(LIST_ITEM_REGEX)
+    if (listMatch) {
+      length += listMatch[0].length
+    }
+
+    return length
+  }
+
   public applyFormat(range: TextRange, type: FormatType): string {
     const linePrefix = LINE_PREFIXES[type]
     if (linePrefix !== undefined) {
@@ -78,20 +106,32 @@ export class MarkdownContentEditor {
     const selected = this.content.slice(start, end)
 
     if (!selected.includes('\n')) {
-      // Caso comune: selezione su una sola riga, avvolge l'intera selezione.
+      // Caso comune: selezione su una sola riga, avvolge esattamente la
+      // selezione (permette di formattare anche solo una parte della riga).
       return this.content.slice(0, start) + marker.open + selected + marker.close + this.content.slice(end)
     }
 
-    // Selezione multi-riga (R5-R28): la formattazione inline va applicata a
-    // ciascuna riga singolarmente, non avvolgendo l'intera selezione con
-    // un'unica coppia di marcatori - a differenza delle formattazioni di riga
-    // (Quote/Heading, gestite sopra da applyLinePrefix), che già ripetono
-    // correttamente il proprio prefisso su ogni riga. Le righe vuote restano
-    // tali, per non produrre marcatori vuoti (es. "****") privi di senso.
-    const formattedLines = selected
-      .split('\n')
-      .map((line) => (line.length === 0 ? line : marker.open + line + marker.close))
-    return this.content.slice(0, start) + formattedLines.join('\n') + this.content.slice(end)
+    // Selezione multi-riga (R5-R28): si espande SEMPRE alle righe INTERE
+    // toccate (come già fanno Quote/Heading/Elenchi), indipendentemente da
+    // dove cade il bordo grezzo della selezione - altrimenti il risultato
+    // dipenderebbe in modo imprevedibile da dove esattamente l'utente ha
+    // iniziato/finito il trascinamento, con esiti diversi riga per riga
+    // (bug segnalato). Il marcatore va sempre subito dopo l'eventuale
+    // prefisso strutturale (elenco/citazione) e avvolge tutto il resto
+    // della riga, compresi eventuali marcatori già presenti da
+    // formattazioni precedenti applicate in un ordine diverso (es. elenco
+    // + barrato + sottolineato, in qualsiasi ordine). Le righe senza
+    // contenuto reale (vuote, o solo prefisso) restano intatte.
+    const { lineStart, lineEnd } = this.expandToLines(range)
+    const block = this.content.slice(lineStart, lineEnd)
+    const formattedLines = block.split('\n').map((line) => {
+      const prefixLen = this.structuralPrefixLength(line)
+      const prefix = line.slice(0, prefixLen)
+      const rest = line.slice(prefixLen)
+      if (rest.length === 0) return line
+      return prefix + marker.open + rest + marker.close
+    })
+    return this.content.slice(0, lineStart) + formattedLines.join('\n') + this.content.slice(lineEnd)
   }
 
   public removeFormat(range: TextRange, type: FormatType): string {
@@ -130,18 +170,28 @@ export class MarkdownContentEditor {
       return this.content.slice(0, openStart) + this.content.slice(openEnd, closeStart) + this.content.slice(closeEnd)
     }
 
-    // Selezione multi-riga: rimuove i marcatori da ciascuna riga singolarmente,
-    // simmetrico rispetto a come applyFormat li ha aggiunti. Una riga viene
-    // toccata solo se ha davvero entrambi i marcatori nelle posizioni attese
-    // (comportamento "adiacente", coerente col caso a riga singola sopra).
-    const strippedLines = selected.split('\n').map((line) => {
+    // Selezione multi-riga: stessa espansione a righe intere di applyFormat
+    // sopra, per lo stesso motivo (indipendenza dal bordo grezzo della
+    // selezione). Rimuove i marcatori da ciascuna riga singolarmente, DOPO
+    // l'eventuale prefisso strutturale: una riga viene toccata solo se, in
+    // quella posizione, ha davvero entrambi i marcatori (comportamento
+    // "adiacente", coerente col caso a riga singola sopra) - così righe con
+    // altre formattazioni annidate ma senza QUESTO specifico marcatore
+    // restano intatte.
+    const { lineStart, lineEnd } = this.expandToLines(range)
+    const block = this.content.slice(lineStart, lineEnd)
+    const strippedLines = block.split('\n').map((line) => {
+      const prefixLen = this.structuralPrefixLength(line)
+      const prefix = line.slice(0, prefixLen)
+      const rest = line.slice(prefixLen)
       const hasBothMarkers =
-        line.length >= marker.open.length + marker.close.length &&
-        line.startsWith(marker.open) &&
-        line.endsWith(marker.close)
-      return hasBothMarkers ? line.slice(marker.open.length, line.length - marker.close.length) : line
+        rest.length >= marker.open.length + marker.close.length &&
+        rest.startsWith(marker.open) &&
+        rest.endsWith(marker.close)
+      if (!hasBothMarkers) return line
+      return prefix + rest.slice(marker.open.length, rest.length - marker.close.length)
     })
-    return this.content.slice(0, start) + strippedLines.join('\n') + this.content.slice(end)
+    return this.content.slice(0, lineStart) + strippedLines.join('\n') + this.content.slice(lineEnd)
   }
 
   /**
@@ -149,9 +199,10 @@ export class MarkdownContentEditor {
    * esattamente la stessa logica di posizionamento di removeFormat: un range è
    * "formattato" se i marcatori risultano esattamente nelle posizioni in cui
    * removeFormat li rimuoverebbe (cioè subito prima e subito dopo il range).
-   * Per una selezione multi-riga, è "formattato" solo se OGNI riga non vuota
-   * della selezione ha già entrambi i marcatori (simmetrico rispetto ad
-   * applyFormat/removeFormat sopra).
+   * Per una selezione multi-riga, si espande alle righe intere (come
+   * applyFormat/removeFormat) ed è "formattato" solo se OGNI riga con
+   * contenuto reale ha già entrambi i marcatori subito dopo l'eventuale
+   * prefisso strutturale.
    * Serve a decidere, in toggleFormat, se applicare o rimuovere la formattazione
    * (R5-R28: ogni formattazione deve essere rimovibile con lo stesso comando
    * usato per applicarla, sia con del testo selezionato sia con selezione vuota).
@@ -178,15 +229,20 @@ export class MarkdownContentEditor {
       return hasOpenMarker && hasCloseMarker
     }
 
-    const nonEmptyLines = selected.split('\n').filter((line) => line.length > 0)
-    if (nonEmptyLines.length === 0) {
+    const { lineStart, lineEnd } = this.expandToLines(range)
+    const block = this.content.slice(lineStart, lineEnd)
+    const linesWithContent = block
+      .split('\n')
+      .map((line) => line.slice(this.structuralPrefixLength(line)))
+      .filter((rest) => rest.length > 0)
+    if (linesWithContent.length === 0) {
       return false
     }
-    return nonEmptyLines.every(
-      (line) =>
-        line.length >= marker.open.length + marker.close.length &&
-        line.startsWith(marker.open) &&
-        line.endsWith(marker.close),
+    return linesWithContent.every(
+      (rest) =>
+        rest.length >= marker.open.length + marker.close.length &&
+        rest.startsWith(marker.open) &&
+        rest.endsWith(marker.close),
     )
   }
 
@@ -224,13 +280,17 @@ export class MarkdownContentEditor {
    * lo spostamento dopo che CodeMirror ha aggiornato il documento).
    *
    * Su una selezione a riga singola i due estremi si spostano della stessa
-   * quantità (la selezione resta "tra" i marcatori aperti/chiusi). Su una
-   * selezione multi-riga NON è più uniforme: l'inizio si sposta solo di
-   * quanto cambia sulla PRIMA riga (un solo marcatore di apertura), la fine
-   * di quanto cambia su TUTTE le righe non vuote toccate (ognuna guadagna o
-   * perde sia apertura sia chiusura) - a differenza di un singolo -openLength/
-   * +openLength applicato uniformemente, che è corretto solo nel caso a riga
-   * singola.
+   * quantità (la selezione resta "tra" i marcatori aperti/chiusi).
+   *
+   * Su una selezione multi-riga la nuova selezione copre sempre l'intero
+   * blocco di righe intere trasformato (stesso principio di applyFormat/
+   * removeFormat: si espande alle righe intere, non alla selezione grezza).
+   * Lo spostamento viene calcolato eseguendo DAVVERO la trasformazione
+   * (toggleFormat, che non muta lo stato di questo editor - restituisce solo
+   * una nuova stringa), invece di ricalcolarla separatamente: questo
+   * garantisce che il calcolo non possa MAI divergere dal comportamento
+   * reale di apply/remove, indipendentemente da quali altre formattazioni
+   * siano già presenti sulla riga o in quale ordine siano state applicate.
    */
   public computeFormatToggleShift(range: TextRange, type: FormatType): { startDelta: number; endDelta: number } {
     const marker = INLINE_MARKERS[type]
@@ -240,22 +300,21 @@ export class MarkdownContentEditor {
       return { startDelta: 0, endDelta: 0 }
     }
 
-    const applying = !this.isFormatted(range, type)
-    const sign = applying ? 1 : -1
     const { start, end } = this.normalizeRange(range)
     const selected = this.content.slice(start, end)
 
     if (!selected.includes('\n')) {
+      const applying = !this.isFormatted(range, type)
+      const sign = applying ? 1 : -1
       return { startDelta: sign * marker.open.length, endDelta: sign * marker.open.length }
     }
 
-    const lines = selected.split('\n')
-    const perLineLength = marker.open.length + marker.close.length
-    const nonEmptyCount = lines.filter((line) => line.length > 0).length
-    const startDelta = lines[0].length > 0 ? sign * marker.open.length : 0
-    const endDelta = sign * perLineLength * nonEmptyCount
+    const { lineStart, lineEnd } = this.expandToLines(range)
+    const newContent = this.toggleFormat(range, type)
+    const tailLength = this.content.length - lineEnd
+    const newLineEnd = newContent.length - tailLength
 
-    return { startDelta, endDelta }
+    return { startDelta: lineStart - start, endDelta: newLineEnd - end }
   }
 
   private applyLinePrefix(range: TextRange, prefix: string): string {
@@ -480,7 +539,7 @@ export class MarkdownContentEditor {
         // rimuovono se è già del tipo richiesto (analogo alle formattazioni
         // di riga, R32-R35: ogni elenco deve essere rimovibile con lo stesso
         // comando usato per crearlo, sia su selezione sia su cursore vuoto).
-        return this.toggleListFormat(range, request.listType).content
+        return this.toggleListFormat(range, request.listType)
       case ListOperationType.ADD_ITEM: {
         const { lineEnd } = this.expandToLines(range)
         const marker = request.listType === ListType.ORDERED ? '1. ' : UNORDERED_MARKER
@@ -511,10 +570,7 @@ export class MarkdownContentEditor {
    * La decisione (crea/converti/rimuovi) è presa una sola volta in base alla
    * PRIMA riga del blocco e applicata in modo uniforme a tutte le righe.
    */
-  private toggleListFormat(
-    range: TextRange,
-    listType?: ListType,
-  ): { content: string; startDelta: number; totalDelta: number } {
+  private toggleListFormat(range: TextRange, listType?: ListType): string {
     const { lineStart, lineEnd } = this.expandToLines(range)
     const block = this.content.slice(lineStart, lineEnd)
     const lines = block.split('\n')
@@ -526,57 +582,45 @@ export class MarkdownContentEditor {
         : false
 
     let orderedCounter = 1
-    let startDelta = 0
-    let totalDelta = 0
 
-    const transformed = lines.map((line, index) => {
+    const transformed = lines.map((line) => {
       const match = line.match(LIST_ITEM_REGEX)
-      let result: string
 
       if (firstIsRequestedType) {
         // L'intero blocco è già del tipo richiesto: rimuove il marcatore
         // da ogni riga che ne ha uno (toggle off).
-        result = match ? line.slice(match[0].length) : line
-      } else {
-        // Crea (se assente) o converte (se di tipo diverso) al tipo richiesto.
-        const indent = match ? match[1] : ''
-        const rest = match ? line.slice(match[0].length) : line
-        const marker = listType === ListType.ORDERED ? `${orderedCounter++}. ` : UNORDERED_MARKER
-        result = indent + marker + rest
+        return match ? line.slice(match[0].length) : line
       }
 
-      // La differenza di lunghezza della riga è dovuta interamente al
-      // marcatore (il resto del testo della riga non cambia): usata dal
-      // chiamante (App.vue) per riposizionare la selezione dopo l'operazione,
-      // tenendo conto che marcatori numerati di lunghezza diversa (es. "1. "
-      // a 3 caratteri, "10. " a 4) rendono lo spostamento non uniforme su un
-      // blocco multi-riga (vedi computeListToggleShift).
-      const lineDelta = result.length - line.length
-      totalDelta += lineDelta
-      if (index === 0) {
-        startDelta = lineDelta
-      }
-
-      return result
+      // Crea (se assente) o converte (se di tipo diverso) al tipo richiesto.
+      const indent = match ? match[1] : ''
+      const rest = match ? line.slice(match[0].length) : line
+      const marker = listType === ListType.ORDERED ? `${orderedCounter++}. ` : UNORDERED_MARKER
+      return indent + marker + rest
     })
 
-    const content = this.content.slice(0, lineStart) + transformed.join('\n') + this.content.slice(lineEnd)
-    return { content, startDelta, totalDelta }
+    return this.content.slice(0, lineStart) + transformed.join('\n') + this.content.slice(lineEnd)
   }
 
   /**
    * Calcola di quanto devono spostarsi l'inizio e la fine della selezione
    * dopo un'operazione CREATE_LIST (elenco puntato/numerato), PRIMA di
-   * eseguire il comando. Necessario perché, su un blocco multi-riga, ogni
-   * riga toccata può guadagnare o perdere un marcatore di lunghezza diversa
-   * dalle altre (es. "1. " vs "10. "): lo spostamento non è uniforme come
-   * per una singola formattazione, va osservato riga per riga (riusa la
-   * stessa logica di toggleListFormat, non una sua reimplementazione
-   * separata, per evitare che le due possano disallinearsi).
+   * eseguire il comando. La nuova selezione copre sempre l'intero blocco di
+   * righe intere trasformato (stesso principio di computeFormatToggleShift):
+   * lo spostamento viene calcolato eseguendo DAVVERO la trasformazione
+   * (toggleListFormat, che non muta lo stato di questo editor), non
+   * ricalcolato separatamente - garantendo che non possa mai divergere dal
+   * comportamento reale, anche quando marcatori numerati di lunghezza
+   * diversa (es. "1. " vs "10. ") rendono lo spostamento non uniforme.
    */
   public computeListToggleShift(range: TextRange, listType?: ListType): { startDelta: number; endDelta: number } {
-    const { startDelta, totalDelta } = this.toggleListFormat(range, listType)
-    return { startDelta, endDelta: totalDelta }
+    const { start, end } = this.normalizeRange(range)
+    const { lineStart, lineEnd } = this.expandToLines(range)
+    const newContent = this.toggleListFormat(range, listType)
+    const tailLength = this.content.length - lineEnd
+    const newLineEnd = newContent.length - tailLength
+
+    return { startDelta: lineStart - start, endDelta: newLineEnd - end }
   }
 
   private toggleListMarker(line: string): string {

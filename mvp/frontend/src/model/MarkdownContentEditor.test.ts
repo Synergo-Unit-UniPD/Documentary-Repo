@@ -132,10 +132,11 @@ describe('MarkdownContentEditor - formattazione inline su selezione multi-riga',
     const editor = new MarkdownContentEditor('1. uno\n2. due\n3. tre')
     const result = editor.applyFormat(new TextRange(0, '1. uno\n2. due\n3. tre'.length), FormatType.BOLD)
 
-    // Il marcatore di apertura deve restare DOPO il prefisso numerico di ogni riga,
-    // non spostare/rompere la numerazione (a differenza del comportamento precedente,
+    // Il marcatore di apertura deve restare DOPO il prefisso numerico di ogni riga
+    // (il grassetto si applica al contenuto, non al marcatore di elenco stesso),
+    // non spostare/rompere la numerazione (a differenza del comportamento originale,
     // che produceva "**3. tre" con l'asterisco prima del numero).
-    expect(result).toBe('**1. uno**\n**2. due**\n**3. tre**')
+    expect(result).toBe('1. **uno**\n2. **due**\n3. **tre**')
   })
 
   it('isFormatted riconosce una selezione multi-riga come formattata solo se OGNI riga lo è', () => {
@@ -181,44 +182,205 @@ describe('MarkdownContentEditor - computeFormatToggleShift (riposizionamento sel
     expect(endDelta).toBe(2)
   })
 
-  it('su multi-riga lo spostamento di inizio e fine NON è uniforme (bug segnalato)', () => {
+  it("su multi-riga la nuova selezione copre SEMPRE l'intero blocco trasformato (righe intere)", () => {
     const editor = new MarkdownContentEditor('uno\ndue\ntre')
     const range = new TextRange(0, 'uno\ndue\ntre'.length)
     const { startDelta, endDelta } = editor.computeFormatToggleShift(range, FormatType.BOLD)
 
-    // Inizio: solo il marcatore di apertura della PRIMA riga (+2).
-    expect(startDelta).toBe(2)
-    // Fine: apertura+chiusura su OGNI riga non vuota (3 righe * 4 caratteri = 12),
-    // non un singolo +2 come prima del fix.
+    // range.start era già all'inizio della riga (lineStart coincide con start): nessuno spostamento.
+    expect(startDelta).toBe(0)
+    // Fine: l'intero blocco trasformato, marcatori "interni" compresi.
     expect(endDelta).toBe(12)
 
     // Verifica che lo spostamento calcolato corrisponda davvero al contenuto risultante:
-    // la nuova selezione copre l'intero blocco trasformato, dal primo marcatore di
-    // apertura (escluso) all'ultimo marcatore di chiusura (escluso) - include quindi
-    // anche i marcatori "interni" tra una riga e l'altra, non solo il testo originale.
+    // la nuova selezione copre l'INTERO blocco trasformato, marcatori compresi su ogni riga.
     const newContent = editor.applyFormat(range, FormatType.BOLD)
     expect(newContent).toBe('**uno**\n**due**\n**tre**')
-    expect(newContent.slice(range.start + startDelta, range.end + endDelta)).toBe('uno**\n**due**\n**tre**')
+    expect(newContent.slice(range.start + startDelta, range.end + endDelta)).toBe('**uno**\n**due**\n**tre**')
   })
 
-  it('in rimozione (formattazione già presente) i delta sono negativi', () => {
+  it('in rimozione (formattazione già presente) endDelta è negativo, startDelta resta 0 se già a inizio riga', () => {
     const editor = new MarkdownContentEditor('**uno**\n**due**')
     const range = new TextRange(0, '**uno**\n**due**'.length)
     const { startDelta, endDelta } = editor.computeFormatToggleShift(range, FormatType.BOLD)
 
-    expect(startDelta).toBe(-2)
+    expect(startDelta).toBe(0)
     expect(endDelta).toBe(-8) // 2 righe * 4 caratteri
+
+    const removed = editor.removeFormat(range, FormatType.BOLD)
+    expect(removed).toBe('uno\ndue')
+    expect(removed.slice(range.start + startDelta, range.end + endDelta)).toBe('uno\ndue')
+  })
+})
+
+describe('MarkdownContentEditor - formattazione inline che rispetta prefissi strutturali (elenco, citazione)', () => {
+  it('grassetto su un elenco puntato multi-riga esclude il marcatore "- " da ogni riga, in modo uniforme', () => {
+    // Riproduce esattamente lo scenario segnalato: prima riga corretta,
+    // righe successive con "**" prima del marcatore invece che dopo.
+    const editor = new MarkdownContentEditor('- uno\n- due\n- tre')
+    const result = editor.applyFormat(new TextRange(0, '- uno\n- due\n- tre'.length), FormatType.BOLD)
+
+    expect(result).toBe('- **uno**\n- **due**\n- **tre**')
+  })
+
+  it('elenco + citazione + barrato: ogni prefisso resta fuori dal marcatore, su tutte le righe allo stesso modo', () => {
+    // Riproduce lo scenario "elenco -> citazione -> barrato": prima elenco
+    // puntato, poi citazione (che antepone "> " a ogni riga, incluso il
+    // marcatore di elenco già presente), poi barrato sull'intera selezione.
+    const withList = '- uno\n- due\n- tre'
+    const withQuote = '> - uno\n> - due\n> - tre'
+    // Verifica di partenza: la citazione produce davvero "> - " su ogni riga
+    // (prerequisito dello scenario, non l'oggetto di questo test).
+    expect(new MarkdownContentEditor(withList).applyFormat(new TextRange(0, withList.length), FormatType.QUOTE)).toBe(
+      withQuote,
+    )
+
+    const editor = new MarkdownContentEditor(withQuote)
+    const result = editor.applyFormat(new TextRange(0, withQuote.length), FormatType.STRIKETHROUGH)
+
+    // Il barrato deve avvolgere SOLO il contenuto ("uno"/"due"/"tre"),
+    // lasciando "> - " intatto e fuori dai marcatori, su ogni riga.
+    expect(result).toBe('> - ~~uno~~\n> - ~~due~~\n> - ~~tre~~')
+  })
+
+  it('isFormatted riconosce correttamente il grassetto su un elenco multi-riga (prefisso escluso dal controllo)', () => {
+    const editor = new MarkdownContentEditor('- **uno**\n- **due**')
+    const formatted = editor.isFormatted(new TextRange(0, '- **uno**\n- **due**'.length), FormatType.BOLD)
+
+    expect(formatted).toBe(true)
+  })
+
+  it('toggleFormat su un elenco multi-riga: round-trip apply/remove non tocca il marcatore di elenco', () => {
+    const editor = new MarkdownContentEditor('- uno\n- due')
+    const range = new TextRange(0, '- uno\n- due'.length)
+
+    const applied = editor.toggleFormat(range, FormatType.BOLD)
+    expect(applied).toBe('- **uno**\n- **due**')
+
+    editor.setContent(applied)
+    const removed = editor.toggleFormat(new TextRange(0, applied.length), FormatType.BOLD)
+    expect(removed).toBe('- uno\n- due')
+  })
+
+  it('computeFormatToggleShift su un elenco multi-riga: il marcatore di apertura si inserisce DOPO "- ", range.start non si sposta', () => {
+    const editor = new MarkdownContentEditor('- uno\n- due')
+    const range = new TextRange(0, '- uno\n- due'.length)
+    const { startDelta, endDelta } = editor.computeFormatToggleShift(range, FormatType.BOLD)
+
+    // range.start punta a "-", che resta invariato (il "**" si inserisce dopo "- ").
+    expect(startDelta).toBe(0)
+    // 2 righe * 4 caratteri ("**"+"**") = 8.
+    expect(endDelta).toBe(8)
+
+    const newContent = editor.applyFormat(range, FormatType.BOLD)
+    expect(newContent).toBe('- **uno**\n- **due**')
+  })
+})
+
+describe('MarkdownContentEditor - combinazioni multiple di formattazione (elenco + più marcatori inline)', () => {
+  it('elenco numerato + barrato + sottolineato, in questo ordine, producono nesting coerente su ogni riga', () => {
+    // Riproduce esattamente lo scenario segnalato: 3 elementi di un elenco
+    // numerato, poi barrato, poi sottolineato, applicati sull'intera selezione
+    // multi-riga ogni volta (come fa App.vue, che riseleziona l'intero blocco
+    // dopo ogni comando tramite computeFormatToggleShift/computeListToggleShift).
+    let editor = new MarkdownContentEditor('uno\ndue\ntre')
+    let range = new TextRange(0, editor.getContent().length)
+
+    // 1. Elenco numerato
+    const listShift = editor.computeListToggleShift(range, ListType.ORDERED)
+    editor = new MarkdownContentEditor(
+      editor.applyListOperation(range, new ListActionRequest(ListOperationType.CREATE_LIST, ListType.ORDERED)),
+    )
+    range = new TextRange(range.start + listShift.startDelta, range.end + listShift.endDelta)
+    expect(editor.getContent()).toBe('1. uno\n2. due\n3. tre')
+    expect(editor.getContent().slice(range.start, range.end)).toBe('1. uno\n2. due\n3. tre')
+
+    // 2. Barrato
+    const strikeShift = editor.computeFormatToggleShift(range, FormatType.STRIKETHROUGH)
+    editor = new MarkdownContentEditor(editor.applyFormat(range, FormatType.STRIKETHROUGH))
+    range = new TextRange(range.start + strikeShift.startDelta, range.end + strikeShift.endDelta)
+    expect(editor.getContent()).toBe('1. ~~uno~~\n2. ~~due~~\n3. ~~tre~~')
+    expect(editor.getContent().slice(range.start, range.end)).toBe('1. ~~uno~~\n2. ~~due~~\n3. ~~tre~~')
+
+    // 3. Sottolineato
+    const underlineShift = editor.computeFormatToggleShift(range, FormatType.UNDERLINE)
+    editor = new MarkdownContentEditor(editor.applyFormat(range, FormatType.UNDERLINE))
+    range = new TextRange(range.start + underlineShift.startDelta, range.end + underlineShift.endDelta)
+
+    // Ogni riga deve avere lo stesso identico nesting coerente: elenco -> <u> -> ~~ -> testo,
+    // non una riga diversa dalle altre a seconda di dove cadeva un bordo di selezione.
+    expect(editor.getContent()).toBe('1. <u>~~uno~~</u>\n2. <u>~~due~~</u>\n3. <u>~~tre~~</u>')
+    expect(editor.getContent().slice(range.start, range.end)).toBe(
+      '1. <u>~~uno~~</u>\n2. <u>~~due~~</u>\n3. <u>~~tre~~</u>',
+    )
+  })
+
+  it('round-trip completo: applicare e poi rimuovere le stesse tre formattazioni riporta al testo originale', () => {
+    let editor = new MarkdownContentEditor('uno\ndue\ntre')
+    let range = new TextRange(0, editor.getContent().length)
+
+    const applyList = () => {
+      const shift = editor.computeListToggleShift(range, ListType.ORDERED)
+      editor = new MarkdownContentEditor(
+        editor.applyListOperation(range, new ListActionRequest(ListOperationType.CREATE_LIST, ListType.ORDERED)),
+      )
+      range = new TextRange(range.start + shift.startDelta, range.end + shift.endDelta)
+    }
+    const toggleFormatAndReselect = (type: FormatType) => {
+      const shift = editor.computeFormatToggleShift(range, type)
+      editor = new MarkdownContentEditor(editor.toggleFormat(range, type))
+      range = new TextRange(range.start + shift.startDelta, range.end + shift.endDelta)
+    }
+
+    applyList()
+    toggleFormatAndReselect(FormatType.STRIKETHROUGH)
+    toggleFormatAndReselect(FormatType.UNDERLINE)
+    expect(editor.getContent()).toBe('1. <u>~~uno~~</u>\n2. <u>~~due~~</u>\n3. <u>~~tre~~</u>')
+
+    // Rimuove nell'ordine inverso: sottolineato, poi barrato, poi elenco.
+    toggleFormatAndReselect(FormatType.UNDERLINE)
+    expect(editor.getContent()).toBe('1. ~~uno~~\n2. ~~due~~\n3. ~~tre~~')
+
+    toggleFormatAndReselect(FormatType.STRIKETHROUGH)
+    expect(editor.getContent()).toBe('1. uno\n2. due\n3. tre')
+
+    const listShiftOff = editor.computeListToggleShift(range, ListType.ORDERED)
+    editor = new MarkdownContentEditor(
+      editor.applyListOperation(range, new ListActionRequest(ListOperationType.CREATE_LIST, ListType.ORDERED)),
+    )
+    range = new TextRange(range.start + listShiftOff.startDelta, range.end + listShiftOff.endDelta)
+    expect(editor.getContent()).toBe('uno\ndue\ntre')
+  })
+
+  it('elenco + citazione + barrato (scenario segnalato in precedenza) resta corretto anche dopo la revisione', () => {
+    const withList = '- uno\n- due\n- tre'
+    const withQuote = new MarkdownContentEditor(withList).applyFormat(
+      new TextRange(0, withList.length),
+      FormatType.QUOTE,
+    )
+    expect(withQuote).toBe('> - uno\n> - due\n> - tre')
+
+    const editor = new MarkdownContentEditor(withQuote)
+    const result = editor.applyFormat(new TextRange(0, withQuote.length), FormatType.STRIKETHROUGH)
+    expect(result).toBe('> - ~~uno~~\n> - ~~due~~\n> - ~~tre~~')
   })
 })
 
 describe('MarkdownContentEditor - computeListToggleShift (riposizionamento selezione dopo toggle lista)', () => {
-  it('creazione di un elenco puntato su 3 righe: la fine si sposta di 2 caratteri PER RIGA, non una sola volta', () => {
+  it("creazione di un elenco puntato su 3 righe: la nuova selezione copre l'intero blocco trasformato", () => {
     const editor = new MarkdownContentEditor('uno\ndue\ntre')
     const range = new TextRange(0, 'uno\ndue\ntre'.length)
     const { startDelta, endDelta } = editor.computeListToggleShift(range, ListType.UNORDERED)
 
-    expect(startDelta).toBe(2) // "- ".length sulla prima riga
+    // range.start era già a inizio riga (lineStart coincide con start): nessuno spostamento.
+    expect(startDelta).toBe(0)
     expect(endDelta).toBe(6) // "- ".length * 3 righe
+
+    const newContent = editor.applyListOperation(
+      range,
+      new ListActionRequest(ListOperationType.CREATE_LIST, ListType.UNORDERED),
+    )
+    expect(newContent.slice(range.start + startDelta, range.end + endDelta)).toBe('- uno\n- due\n- tre')
   })
 
   it('conversione da puntato a numerato su multi-riga: i marcatori numerati hanno lunghezze diverse tra loro', () => {
@@ -230,7 +392,7 @@ describe('MarkdownContentEditor - computeListToggleShift (riposizionamento selez
     const range = new TextRange(0, '- uno\n- due\n- tre'.length)
     const { startDelta, endDelta } = editor.computeListToggleShift(range, ListType.ORDERED)
 
-    expect(startDelta).toBe(1) // "- " (2) -> "1. " (3): +1 sulla prima riga
+    expect(startDelta).toBe(0)
     expect(endDelta).toBe(3) // +1 per ciascuna delle 3 righe
 
     const newContent = editor.applyListOperation(
@@ -238,14 +400,15 @@ describe('MarkdownContentEditor - computeListToggleShift (riposizionamento selez
       new ListActionRequest(ListOperationType.CREATE_LIST, ListType.ORDERED),
     )
     expect(newContent).toBe('1. uno\n2. due\n3. tre')
+    expect(newContent.slice(range.start + startDelta, range.end + endDelta)).toBe('1. uno\n2. due\n3. tre')
   })
 
-  it('rimozione (toggle off) di un elenco su multi-riga: i delta sono negativi e coerenti riga per riga', () => {
+  it('rimozione (toggle off) di un elenco su multi-riga: endDelta è negativo, startDelta resta 0 se già a inizio riga', () => {
     const editor = new MarkdownContentEditor('- uno\n- due\n- tre')
     const range = new TextRange(0, '- uno\n- due\n- tre'.length)
     const { startDelta, endDelta } = editor.computeListToggleShift(range, ListType.UNORDERED)
 
-    expect(startDelta).toBe(-2)
+    expect(startDelta).toBe(0)
     expect(endDelta).toBe(-6)
   })
 
