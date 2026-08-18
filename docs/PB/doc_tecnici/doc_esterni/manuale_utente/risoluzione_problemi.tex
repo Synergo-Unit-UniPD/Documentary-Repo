@@ -1,0 +1,36 @@
+% =======================================================
+% 7. RISOLUZIONE DEI PROBLEMI E SUPPORTO
+% =======================================================
+\section{Risoluzione dei Problemi (FAQ)}
+Di seguito sono elencate le soluzioni ai problemi più comuni relativi all'installazione o all'utilizzo del sistema.
+
+\subsection{Problemi di Avvio e Configurazione}
+\begin{description}
+    \item[Porta già in uso durante l'avvio di Docker] \hfill \\
+    \textit{Inserire soluzione: es. come cambiare la porta nel file \texttt{.env} o nel \texttt{docker-compose.yml}.}
+    
+    \item[L'Intelligenza Artificiale non risponde (Errore API)] \hfill \\
+    \textit{Inserire soluzione: es. verificare che la chiave in \texttt{.env} sia corretta e che vi sia connessione a internet.}
+\end{description}
+
+\subsection{Gestione dei Messaggi di Errore}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|l|X|}
+    \hline
+    \rowcolor{primarycolor!10}
+    \textbf{Messaggio Visualizzato} & \textbf{Causa e Soluzione} \\
+    \hline
+    \texttt{Formato non supportato} & Si sta tentando di importare un file non valido. Utilizzare solo \texttt{.md} o \texttt{.txt}. \\
+    \hline
+    \texttt{Testo non selezionato} & È stata richiesta un'operazione AI senza selezionare il testo bersaglio e senza che il documento abbia contenuto sufficiente. Selezionare una porzione di testo e riprovare. \\
+    \hline
+    \texttt{Errore LLM / Request Timed Out} & Il provider del modello linguistico sta impiegando troppo tempo o ha rifiutato la connessione. Riprovare tra qualche istante. \\
+    \hline
+\end{tabularx}
+
+\section{Supporto Tecnico}
+Nel caso in cui le soluzioni proposte non fossero sufficienti a ripristinare il corretto funzionamento dell'applicativo, è possibile contattare il gruppo di sviluppo:
+\begin{itemize}
+    \item \textbf{Email:} \href{mailto:synergounit20@gmail.com}{synergounit20@gmail.com}
+    \item \textbf{Segnalazione Bug:} Inserire un'issue dettagliata (con screenshot e descrizione dei passaggi) sulla repository ufficiale del progetto.
+\end{itemize}

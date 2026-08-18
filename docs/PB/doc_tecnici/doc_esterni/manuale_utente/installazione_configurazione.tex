@@ -1,0 +1,26 @@
+% =======================================================
+% 2. INSTALLAZIONE E CONFIGURAZIONE
+% =======================================================
+\section{Installazione e Configurazione}
+Essendo Second Brain un'applicazione containerizzata, il processo di avvio risulta unificato indipendentemente dal sistema operativo utilizzato.
+
+\subsection{Clonazione del repository}
+[Inserire i comandi e le istruzioni per scaricare il codice sorgente tramite Git o archivio ZIP].
+
+\subsection{Configurazione delle chiavi API (LLM)}
+Affinché le funzioni di Intelligenza Artificiale siano operative, è strettamente necessario fornire al sistema le credenziali di accesso ai modelli linguistici.
+\begin{enumerate}
+    \item Individuare il file \texttt{.env.example} nella directory principale.
+    \item Rinominarlo in \texttt{.env}.
+    \item Compilare i seguenti campi obbligatori:
+    \begin{itemize}
+        \item \texttt{LLM\_API\_KEY}: [Spiegazione su dove reperire la chiave per il provider selezionato].
+        \item \texttt{LLM\_MODEL}: [Specificare il modello da utilizzare].
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Avvio dell'applicazione}
+[Inserire i comandi Docker o Make necessari per buildare l'immagine e avviare il container].
+
+\subsection{Spegnimento del sistema}
+[Inserire i comandi per interrompere l'esecuzione e rimuovere i container senza perdere i volumi dati].
