@@ -44,11 +44,7 @@ function submit(): void {
         <option v-for="lang in LANGUAGES" :key="lang.value" :value="lang.value">{{ lang.label }}</option>
       </select>
 
-      <textarea
-        v-else
-        v-model="userPrompt"
-        placeholder="Esempio: scrivi una conclusione breve e professionale..."
-      />
+      <textarea v-else v-model="userPrompt" placeholder="Esempio: scrivi una conclusione breve e professionale..." />
 
       <div class="modal-actions">
         <button @click="emit('close')">Annulla</button>

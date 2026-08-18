@@ -1,19 +1,17 @@
-import { describe, it, expect } from 'vitest';
-import { InsertTextCommand } from './InsertTextCommand';
-import { NoteModel } from './NoteModel';
-import { MarkdownContentEditor } from './MarkdownContentEditor';
+import { describe, it, expect } from 'vitest'
+import { InsertTextCommand } from './InsertTextCommand'
+import { MarkdownContentEditor } from './MarkdownContentEditor'
 
 describe('InsertTextCommand', () => {
-    it('dovrebbe salvare il contenuto precedente, eseguire l\'inserimento e permettere l\'undo', () => {
-        const editor = new MarkdownContentEditor('Testo');
-        const model = {} as NoteModel; // Mock leggero di NoteModel, non usato direttamente dall'editor in questa fase
-        
-        const command = new InsertTextCommand(model, 5, ' nuovo', editor);
-        
-        command.execute();
-        expect(editor.getContent()).toBe('Testo'); // dummy di MarkdownContentEditor non modifica realmente la stringa
-        
-        command.undo();
-        expect(editor.getContent()).toBe('Testo');
-    });
-});
+  it("dovrebbe salvare il contenuto precedente, eseguire l'inserimento e permettere l'undo", () => {
+    const editor = new MarkdownContentEditor('Testo')
+
+    const command = new InsertTextCommand(5, ' nuovo', editor)
+
+    command.execute()
+    expect(editor.getContent()).toBe('Testo nuovo')
+
+    command.undo()
+    expect(editor.getContent()).toBe('Testo')
+  })
+})

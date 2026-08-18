@@ -1,4 +1,4 @@
 export enum ListType {
-    ORDERED = 'ORDERED',
-    UNORDERED = 'UNORDERED'
+  ORDERED = 'ORDERED',
+  UNORDERED = 'UNORDERED',
 }

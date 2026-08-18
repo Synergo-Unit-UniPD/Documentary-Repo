@@ -17,7 +17,7 @@ const emit = defineEmits<{
 
       <p>Il modello sta elaborando la richiesta.</p>
 
-      <div class="modal-actions" style="justify-content: center; margin-top: 20px">
+      <div class="modal-actions">
         <button @click="emit('interrupt')">Interrompi</button>
       </div>
     </div>

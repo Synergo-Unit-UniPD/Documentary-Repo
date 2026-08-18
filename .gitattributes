@@ -1,0 +1,19 @@
+# Normalizza tutti i file di testo a fine riga LF, indipendentemente dal
+# sistema operativo di chi effettua il commit: evita differenze spurie di
+# formattazione rilevate da Prettier (frontend) e Ruff (backend) quando si
+# lavora da Windows (vedi problemi CRLF ricorrenti in style.css, ruff format
+# su export/*.py, ecc.).
+* text=auto eol=lf
+
+# File binari: mai normalizzare le terminazioni di riga, altrimenti si
+# corromperebbero.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary
