@@ -18,17 +18,13 @@ const OPERATION_LABELS: Record<string, string> = {
   distant_writing: 'Distant Writing',
   hat_analysis: 'Analisi - Sei Cappelli per Pensare',
 }
-
-function baseOperationType(type: string): string {
-  return type.split(':')[0]
-}
 </script>
 
 <template>
   <div class="modal-overlay">
     <div class="modal large-modal">
       <div class="modal-header">
-        <h2>{{ OPERATION_LABELS[baseOperationType(props.operationType)] ?? 'Proposta AI' }}</h2>
+        <h2>{{ OPERATION_LABELS[props.operationType] ?? 'Proposta AI' }}</h2>
         <button class="close-button" aria-label="Chiudi" @click="emit('close')">&times;</button>
       </div>
 

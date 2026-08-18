@@ -2,7 +2,7 @@ from fastapi import Request
 from fastapi.responses import JSONResponse
 
 from AI_Domain.domain.errors import AIDomainError, LLMTimeoutError, LLMUnavailableError, UnknownOperationError
-from export.errors import ConversionError, ExportError
+from export.exceptions import ConversionError, ExportError
 
 _AI_ERROR_STATUS: dict[type[AIDomainError], int] = {
     UnknownOperationError: 400,

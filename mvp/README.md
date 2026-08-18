@@ -29,6 +29,8 @@ Frontend: http://localhost:5173 — Backend: http://localhost:8000
 
 Configura `mvp/.env` con le credenziali del modello LLM prima di avviare (vedi `ZUCCHETTI_LLM_*` in `backend/config.py`).
 
+**Nota per lo sviluppo tramite Docker**: entrambi i container montano il codice sorgente locale come volume e ricaricano automaticamente ad ogni modifica (`--reload` per il backend, server di sviluppo Vite per il frontend) — sono pensati per lo sviluppo, non per un'immagine di produzione.
+
 ## Setup per sviluppo locale (senza Docker)
 
 Serve per lanciare lint/test/coverage con lo stesso comando usato dalla CI, **prima di fare push**.
@@ -48,6 +50,8 @@ pip install -r requirements-dev.txt   # include anche le dipendenze di runtime
 cd mvp/frontend
 npm install
 ```
+
+Richiede **Node.js 22 o superiore** (coerente con la versione usata in CI e nel Dockerfile): `jsdom`, usato dai test dei componenti Vue, non supporta versioni precedenti.
 
 ## Setup VS Code
 
@@ -118,7 +122,7 @@ pytest --cov=. --cov-report=term-missing   # test + coverage nel terminale
 # Frontend
 cd mvp/frontend
 npx eslint .               # lint
-npx prettier --check "src/**/*.{ts,vue}"   # formattazione
+npx prettier --check "src/**/*.{ts,vue,css}"   # formattazione
 npm run type-check         # type-check (vue-tsc)
 npm run test:unit          # test (esecuzione singola, non watch)
 npm run test:coverage      # test + coverage
@@ -137,8 +141,8 @@ L'analisi statica (lint/format/type-check) è un gate: se fallisce, i test non p
 
 ## Soglie di coverage attuali
 
-- **Backend**: 90% (attuale: ~95%)
-- **Frontend**: 70% linee/statement, 65% branch/funzioni (attuale: ~80%/71%/70%)
+- **Backend**: soglia 90% — attuale ~95%
+- **Frontend**: soglia 70% linee, 65% branch/funzioni — attuale ~81% linee, ~80% statement, ~73% branch, ~72% funzioni
 
 Le soglie hanno un margine rispetto alla copertura reale: l'obiettivo è che la CI fallisca se la copertura *peggiora* in modo significativo, non che debba essere aggiornata a ogni piccola modifica. Si alzeranno gradualmente durante la revisione del codice.
 

@@ -1,4 +1,4 @@
-from datetime import datetime, timezone
+from datetime import datetime, UTC
 
 from .domain.operation_factory import AIOperationFactory
 from .domain.value_objects import Proposal
@@ -17,7 +17,7 @@ class AIService:
         return Proposal(
             content=content,
             operation_type=type,
-            created_at=datetime.now(timezone.utc),
+            created_at=datetime.now(UTC),
         )
 
     def list_operations(self) -> list[str]:
