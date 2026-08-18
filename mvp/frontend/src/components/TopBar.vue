@@ -153,7 +153,7 @@ onBeforeUnmount(() => document.removeEventListener('click', handleDocumentClick)
           Importa
         </button>
 
-        <div class="dropdown">
+        <div class="dropdown dropdown-align-right">
           <button class="tool-button" title="Esporta la nota" @click.stop="exportMenuOpen = !exportMenuOpen">
             <svg class="icon" viewBox="0 0 24 24" fill="none">
               <path

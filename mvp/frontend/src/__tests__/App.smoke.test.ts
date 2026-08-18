@@ -439,3 +439,99 @@ describe('App.vue - sottomenu "Sei Cappelli per Pensare" ad accordion (nuova ric
     wrapper.unmount()
   })
 })
+
+describe("App.vue - click sui link dell'anteprima", () => {
+  it('un link con schema assoluto (https://) si apre in una nuova scheda, senza navigare via dalla SPA', async () => {
+    const windowOpenSpy = vi.spyOn(window, 'open').mockImplementation(() => null)
+
+    const wrapper = mount(App)
+    await new Promise((resolve) => setTimeout(resolve, 0))
+
+    const editor = wrapper.findComponent(MarkdownEditor)
+    await editor.vm.$emit('update:modelValue', '[esempio](https://example.com)')
+    await new Promise((resolve) => setTimeout(resolve, 0))
+
+    const link = wrapper.find('.preview-content a')
+    expect(link.exists()).toBe(true)
+
+    await link.trigger('click')
+
+    expect(windowOpenSpy).toHaveBeenCalledWith('https://example.com', '_blank', 'noopener,noreferrer')
+
+    windowOpenSpy.mockRestore()
+    wrapper.unmount()
+  })
+
+  it('un link senza schema (es. [ciao](ciao)) NON naviga da nessuna parte e mostra un avviso neutro, invece di ricaricare la pagina', async () => {
+    const windowOpenSpy = vi.spyOn(window, 'open').mockImplementation(() => null)
+
+    const wrapper = mount(App)
+    await new Promise((resolve) => setTimeout(resolve, 0))
+
+    const editor = wrapper.findComponent(MarkdownEditor)
+    await editor.vm.$emit('update:modelValue', '[ciao](ciao)')
+    await new Promise((resolve) => setTimeout(resolve, 0))
+
+    const link = wrapper.find('.preview-content a')
+    expect(link.exists()).toBe(true)
+    expect(link.attributes('href')).toBe('ciao')
+
+    await link.trigger('click')
+
+    // Nessuna navigazione, né in una nuova scheda né sulla pagina corrente.
+    expect(windowOpenSpy).not.toHaveBeenCalled()
+    expect(wrapper.find('.toast').exists()).toBe(true)
+    expect(wrapper.find('.toast').classes()).toContain('info')
+
+    windowOpenSpy.mockRestore()
+    wrapper.unmount()
+  })
+})
+
+describe('App.vue - conferma prima di uscire con modifiche non salvate', () => {
+  it('NON chiede conferma se non ci sono modifiche non salvate (stato iniziale)', async () => {
+    const wrapper = mount(App)
+    await new Promise((resolve) => setTimeout(resolve, 0))
+
+    const event = new Event('beforeunload', { cancelable: true }) as BeforeUnloadEvent
+    window.dispatchEvent(event)
+
+    expect(event.defaultPrevented).toBe(false)
+
+    wrapper.unmount()
+  })
+
+  it('chiede conferma (previene il default) se ci sono modifiche non salvate', async () => {
+    const wrapper = mount(App)
+    await new Promise((resolve) => setTimeout(resolve, 0))
+
+    const editor = wrapper.findComponent(MarkdownEditor)
+    await editor.vm.$emit('update:modelValue', 'testo modificato, non ancora salvato')
+    await new Promise((resolve) => setTimeout(resolve, 0))
+
+    expect(wrapper.text()).toContain('Modifiche non salvate')
+
+    const event = new Event('beforeunload', { cancelable: true }) as BeforeUnloadEvent
+    window.dispatchEvent(event)
+
+    expect(event.defaultPrevented).toBe(true)
+
+    wrapper.unmount()
+  })
+
+  it('rimuove il listener allo smontaggio: dopo unmount, un beforeunload successivo non fa più nulla', async () => {
+    const wrapper = mount(App)
+    await new Promise((resolve) => setTimeout(resolve, 0))
+
+    const editor = wrapper.findComponent(MarkdownEditor)
+    await editor.vm.$emit('update:modelValue', 'testo modificato')
+    await new Promise((resolve) => setTimeout(resolve, 0))
+
+    wrapper.unmount()
+
+    const event = new Event('beforeunload', { cancelable: true }) as BeforeUnloadEvent
+    window.dispatchEvent(event)
+
+    expect(event.defaultPrevented).toBe(false)
+  })
+})

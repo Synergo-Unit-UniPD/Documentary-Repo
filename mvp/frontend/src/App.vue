@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, nextTick } from 'vue'
+import { ref, computed, onMounted, onBeforeUnmount, nextTick } from 'vue'
 import { markdown } from '@codemirror/lang-markdown'
 import { languages } from '@codemirror/language-data'
 import { oneDark } from '@codemirror/theme-one-dark'
@@ -172,21 +172,25 @@ function currentSelectedText(): string {
 
 /**
  * Riposiziona la selezione di CodeMirror dopo una modifica che ha spostato il
- * testo di `delta` caratteri a partire dalla posizione `range.start` incluso
- * (es. inserimento/rimozione di marcatori di formattazione o di elenco).
+ * testo di `startDelta`/`endDelta` caratteri rispetto a `range.start`/`range.end`
+ * (es. inserimento/rimozione di marcatori di formattazione o di elenco). I due
+ * spostamenti possono essere diversi tra loro: su una selezione multi-riga,
+ * l'inizio e la fine della selezione non si spostano necessariamente della
+ * stessa quantità (vedi MarkdownContentEditor.computeFormatToggleShift /
+ * computeListToggleShift).
  * Va chiamata dopo `await nextTick()`, quando il documento di CodeMirror
  * riflette già il nuovo contenuto (altrimenti la nuova selezione potrebbe
  * cadere fuori dai limiti del documento ancora "vecchio").
  */
-function repositionSelection(range: TextRange, delta: number): void {
-  if (delta === 0) return
+function repositionSelection(range: TextRange, startDelta: number, endDelta: number = startDelta): void {
+  if (startDelta === 0 && endDelta === 0) return
   const view = cmView.value
   if (!view) return
 
   const docLength = view.state.doc.length
   const clamp = (n: number) => Math.max(0, Math.min(n, docLength))
-  const anchor = clamp(range.start + delta)
-  const head = clamp(range.end + delta)
+  const anchor = clamp(range.start + startDelta)
+  const head = clamp(range.end + endDelta)
 
   view.dispatch({ selection: { anchor, head } })
 }
@@ -247,6 +251,13 @@ function showToast(message: string, type: 'error' | 'success' | 'info' = 'error'
 function dismissToast(): void {
   clearTimeout(toastTimer)
   toastVisible.value = false
+}
+
+function onInvalidLinkClick(): void {
+  // Il link non ha uno schema (es. "ciao" invece di "https://..."): non è
+  // una destinazione valida, non naviga da nessuna parte (vedi
+  // MarkdownPreview.vue). Feedback neutro, non un errore vero e proprio.
+  showToast('Il link non è valido: manca lo schema (es. "https://").', 'info')
 }
 
 async function testConnection(): Promise<void> {
@@ -327,13 +338,20 @@ async function onPaste(): Promise<void> {
 async function onFormat(type: FormatType): Promise<void> {
   commitTypingBurst()
   const range = currentSelection()
+  const { startDelta, endDelta } = markdownEditor.computeFormatToggleShift(range, type)
   const wasFormatted = markdownEditor.isFormatted(range, type)
   const openLength = markdownEditor.getFormatMarkerOpenLength(type)
 
   editorView.simulateFormatAction(type, range)
 
   await nextTick()
-  repositionSelection(range, wasFormatted ? -openLength : openLength)
+  if (startDelta === 0 && endDelta === 0) {
+    // Formattazioni di riga (Quote/Heading): computeFormatToggleShift non le
+    // copre (restituisce {0,0}), continuano a usare lo spostamento uniforme.
+    repositionSelection(range, wasFormatted ? -openLength : openLength)
+  } else {
+    repositionSelection(range, startDelta, endDelta)
+  }
   cmView.value?.focus()
 }
 
@@ -342,20 +360,12 @@ async function onList(operation: ListOperationType, listType?: ListType): Promis
   const range = currentSelection()
 
   if (operation === ListOperationType.CREATE_LIST) {
-    const existingMarkerLength = markdownEditor.getListMarkerLength(range)
-    const wasSameType = markdownEditor.isListOfType(range, listType)
+    const { startDelta, endDelta } = markdownEditor.computeListToggleShift(range, listType)
 
     editorView.simulateListAction(new ListActionRequest(operation, listType), range)
     await nextTick()
 
-    const newMarkerLength = listType === ListType.ORDERED ? 3 : 2
-    if (existingMarkerLength === 0) {
-      repositionSelection(range, newMarkerLength)
-    } else if (wasSameType) {
-      repositionSelection(range, -existingMarkerLength)
-    } else {
-      repositionSelection(range, newMarkerLength - existingMarkerLength)
-    }
+    repositionSelection(range, startDelta, endDelta)
   } else {
     editorView.simulateListAction(new ListActionRequest(operation, listType), range)
   }
@@ -363,10 +373,15 @@ async function onList(operation: ListOperationType, listType?: ListType): Promis
   cmView.value?.focus()
 }
 
-function onTableOp(operation: TableOperationType): void {
+async function onTableOp(operation: TableOperationType): Promise<void> {
   commitTypingBurst()
+  const range = currentSelection()
   try {
-    editorView.simulateTableRequest(new TableActionRequest(operation), currentSelection())
+    const request = new TableActionRequest(operation)
+    const newCursorPosition = markdownEditor.computeTableOperationCursor(request, range)
+    editorView.simulateTableRequest(request, range)
+    await nextTick()
+    setCursorPosition(newCursorPosition)
   } catch (error) {
     if (error instanceof InvalidTableDimensionError) {
       showToast(error.message)
@@ -410,10 +425,14 @@ function removeLink(): void {
 
 const showTableModal = ref(false)
 
-function submitTable(rowCount: number, colCount: number): void {
+async function submitTable(rowCount: number, colCount: number): Promise<void> {
   commitTypingBurst()
   try {
+    const request = new TableActionRequest(TableOperationType.CREATE_TABLE, rowCount, colCount)
+    const newCursorPosition = markdownEditor.computeTableOperationCursor(request, currentSelection())
     editorView.simulateTableAction(rowCount, colCount)
+    await nextTick()
+    setCursorPosition(newCursorPosition)
   } catch (error) {
     if (error instanceof InvalidTableDimensionError) {
       showToast(error.message)
@@ -540,8 +559,27 @@ function dismissError(): void {
   aiPanelView.simulateProposalAction(ProposalActionType.INTERRUPT)
 }
 
+/**
+ * Chiede conferma al browser prima di chiudere la scheda/finestra o
+ * ricaricare la pagina, se ci sono modifiche non salvate. Il testo del
+ * messaggio non è personalizzabile nei browser moderni (Chrome, Firefox,
+ * Safari lo ignorano per motivi di sicurezza, mostrando sempre un messaggio
+ * generico proprio): impostare comunque `returnValue` e chiamare
+ * `preventDefault()` è quello che fa scattare il dialogo nativo.
+ */
+function onBeforeUnloadWindow(event: BeforeUnloadEvent): void {
+  if (!isDirty.value) return
+  event.preventDefault()
+  event.returnValue = ''
+}
+
 onMounted(async () => {
   await testConnection()
+  window.addEventListener('beforeunload', onBeforeUnloadWindow)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('beforeunload', onBeforeUnloadWindow)
 })
 </script>
 
@@ -588,7 +626,7 @@ onMounted(async () => {
           <h2>Anteprima</h2>
         </div>
 
-        <MarkdownPreview :html="compiledMarkdown" />
+        <MarkdownPreview :html="compiledMarkdown" @invalid-link="onInvalidLinkClick" />
       </section>
     </section>
 
