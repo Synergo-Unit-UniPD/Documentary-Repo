@@ -537,9 +537,19 @@ function submitAIRequestModal(params: Record<string, string>): void {
   aiPanelView.simulateSubmitRequest(new RequestedOperation(pendingAIType, params, text, range))
 }
 
-function acceptProposal(): void {
+async function acceptProposal(): Promise<void> {
   commitTypingBurst()
   aiPanelView.simulateProposalAction(ProposalActionType.ACCEPT)
+
+  const insertedRange = aiController.getLastAcceptedRange()
+  if (insertedRange) {
+    await nextTick()
+    // Riseleziona esattamente il testo appena inserito dalla proposta
+    // accettata (non più il range della selezione originaria, che può avere
+    // una lunghezza diversa), così l'utente vede subito cosa è cambiato.
+    repositionSelection(insertedRange, 0)
+  }
+
   cmView.value?.focus()
 }
 
