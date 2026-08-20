@@ -749,6 +749,14 @@ textarea {
   gap: 2px;
 }
 
+/* Il pulsante "Esporta" è l'ultimo della sua riga, vicino al bordo destro
+   dello schermo: il menu deve aprirsi verso sinistra (allineato a destra),
+   altrimenti sconfina fuori dalla finestra causando scorrimento orizzontale. */
+.dropdown-align-right .dropdown-menu {
+  left: auto;
+  right: 0;
+}
+
 .dropdown-menu button {
   width: 100%;
   text-align: left;
