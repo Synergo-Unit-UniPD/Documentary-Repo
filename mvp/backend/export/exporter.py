@@ -3,6 +3,7 @@ from typing import final
 from export.domain import Content
 from export.exceptions import ConversionError
 
+
 class Exporter(ABC):
     """
     Classe astratta che definisce il Template Method per l'esportazione.
@@ -16,7 +17,7 @@ class Exporter(ABC):
         """
         # Step 3: prepare_content(content)
         ast_content = self._prepare_content(content)
-        
+
         try:
             # Step 4: convert_format(astContent)
             return self._convert_format(ast_content)
