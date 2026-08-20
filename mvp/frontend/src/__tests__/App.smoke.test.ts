@@ -267,8 +267,8 @@ describe('App.vue - Rigenera end-to-end', () => {
     const generaButton = wrapper.findAll('.modal-actions button').find((btn) => btn.text() === 'Genera')
     await generaButton!.trigger('click')
 
-    for (let i = 0; i < 20 && !wrapper.text().includes('PRIMA proposta'); i++) {
-      await new Promise((resolve) => setTimeout(resolve, 20))
+    for (let i = 0; i < 110 && !wrapper.text().includes('PRIMA proposta'); i++) {
+      await new Promise((resolve) => setTimeout(resolve, 30))
     }
     expect(wrapper.text()).toContain('PRIMA proposta')
     expect(callCount).toBe(1)
@@ -280,8 +280,8 @@ describe('App.vue - Rigenera end-to-end', () => {
 
     expect(callCount).toBe(2)
 
-    for (let i = 0; i < 20 && !wrapper.text().includes('SECONDA proposta'); i++) {
-      await new Promise((resolve) => setTimeout(resolve, 20))
+    for (let i = 0; i < 110 && !wrapper.text().includes('SECONDA proposta'); i++) {
+      await new Promise((resolve) => setTimeout(resolve, 30))
     }
 
     expect(wrapper.text()).toContain('SECONDA proposta (rigenerata)')

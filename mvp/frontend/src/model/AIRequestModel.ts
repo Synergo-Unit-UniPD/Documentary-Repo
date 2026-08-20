@@ -20,10 +20,19 @@ export class AIRequestModel implements Subject {
    *  che arriva in ritardo da una richiesta ormai abbandonata viene ignorata
    *  invece di sovrascrivere lo stato Idle con una proposta o un errore "fantasma". */
   private requestGeneration = 0
+  /** Durata minima (ms) di visualizzazione di ProcessingState (R2-P-O, VE-7.3:
+   *  "tempo minimo di visualizzazione dell'indicatore di caricamento pari a
+   *  circa 2 secondi"), indipendentemente da quanto velocemente risponda il
+   *  servizio AI - evita un lampeggio troppo rapido del modale di
+   *  caricamento per richieste che si risolvono quasi istantaneamente.
+   *  Configurabile (default 2000ms reali) per permettere ai test di
+   *  disattivarla esplicitamente passando 0, senza dover simulare il tempo. */
+  private readonly minProcessingDurationMs: number
 
-  constructor(aiService: AIService) {
+  constructor(aiService: AIService, minProcessingDurationMs: number = 2000) {
     this.aiService = aiService
     this.aiState = new IdleState()
+    this.minProcessingDurationMs = minProcessingDurationMs
   }
 
   public attach(o: Observer): void {
@@ -48,6 +57,7 @@ export class AIRequestModel implements Subject {
 
   public async requestAIOperation(type: string, text: string, params: object): Promise<void> {
     const generation = ++this.requestGeneration
+    const startedAt = Date.now()
 
     try {
       this.aiState = new ProcessingState()
@@ -61,6 +71,14 @@ export class AIRequestModel implements Subject {
         return
       }
 
+      await this.waitForMinimumProcessingDuration(startedAt)
+
+      if (generation !== this.requestGeneration) {
+        // L'utente potrebbe aver interrotto proprio durante l'attesa residua
+        // (R2-P-O): ricontrolliamo anche dopo, non solo prima di attendere.
+        return
+      }
+
       this.aiState = new ProposalReadyState(proposal)
       this.notify()
     } catch (error: any) {
@@ -68,9 +86,30 @@ export class AIRequestModel implements Subject {
         return
       }
 
+      await this.waitForMinimumProcessingDuration(startedAt)
+
+      if (generation !== this.requestGeneration) {
+        return
+      }
+
       this.aiState = new ErrorState(error.message || "Errore durante l'operazione AI")
       this.notify()
     }
+  }
+
+  /**
+   * Attende, se necessario, il tempo residuo per raggiungere
+   * minProcessingDurationMs dall'avvio della richiesta (R2-P-O). Se il
+   * servizio AI ha già impiegato più del minimo, non introduce alcuna
+   * attesa aggiuntiva.
+   */
+  private waitForMinimumProcessingDuration(startedAt: number): Promise<void> {
+    const elapsed = Date.now() - startedAt
+    const remaining = this.minProcessingDurationMs - elapsed
+    if (remaining <= 0) {
+      return Promise.resolve()
+    }
+    return new Promise((resolve) => setTimeout(resolve, remaining))
   }
 
   public interruptAIOperation(): void {
