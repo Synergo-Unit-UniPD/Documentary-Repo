@@ -1,0 +1,342 @@
+% --- 1. INFORMAZIONI GENERALI ---
+
+\section{Informazioni Generali}
+
+\begin{itemize}
+
+\item \textbf{Luogo/Piattaforma:} Server Discord\textsubscript{G}
+
+\item \textbf{Data:} 2026-08-18
+
+\item \textbf{Orario di inizio:} 14:30
+
+\item \textbf{Orario di fine:} 15:40
+
+\item \textbf{Responsabile:} Francesco Marcon
+
+\item \textbf{Scriba:} Sofia De Blasi
+
+\end{itemize}
+
+
+\vspace{0.5cm}
+
+\textbf{Partecipanti presenti:}
+
+\begin{table}[ht]
+
+\centering
+
+\renewcommand{\arraystretch}{1.2}
+
+\begin{tabularx}{\textwidth}{X l}
+
+\toprule
+
+\textbf{Nome e Cognome} & \textbf{Matricola} \\
+
+\midrule
+
+Sofia De Blasi & 2111014 \\
+
+Roberto Mariano Doroftei & 2111031 \\
+
+Filippo Idiometri & 2035617 \\
+
+Francesco Marcon & 2110990 \\
+
+Armando Moda Scarati & 2082864 \\
+
+Anton Ricardo Rupi & 2054304 \\
+
+\bottomrule
+
+\end{tabularx}
+
+\end{table}
+
+
+\vspace{0.5cm}
+
+\textbf{Partecipanti assenti:}
+
+\begin{table}[ht]
+
+\centering
+
+\renewcommand{\arraystretch}{1.2}
+
+\begin{tabularx}{\textwidth}{X l}
+
+\toprule
+
+\textbf{Nome e Cognome} & \textbf{Matricola} \\
+
+\midrule
+
+Nessuno & - \\
+
+\bottomrule
+
+\end{tabularx}
+
+\end{table}
+
+
+% --- 2. ORDINE DEL GIORNO ---
+
+\section{Ordine del Giorno}
+
+Gli argomenti previsti per la riunione odierna sono:
+
+\begin{enumerate}
+
+\item Sprint\textsubscript{G} review e retrospective.
+
+\item Revisione\textsubscript{G} e test del funzionamento dell'MVP\textsubscript{G}.
+
+\item Aggiornamento della specifica tecnica e revisione delle ADR.
+
+\item Completamento del manuale utente e aggiornamento del glossario.
+
+\item Sviluppo test di integrazione, test di sistema e misurazioni per il PdQ.
+
+\item Aggiornamento dei documenti di progetto: PdP, PdQ e Norme di Progetto\textsubscript{G}.
+
+\item Redazione del verbale interno, verbale esterno e Diario di Bordo\textsubscript{G}.
+
+\item Assegnazione dei nuovi ruoli e pianificazione delle attività per il prossimo sprint.
+
+\end{enumerate}
+
+
+% --- 3. RESOCONTO E DISCUSSIONE ---
+
+\section{Resoconto della Riunione}
+
+
+\subsection{Sprint review e retrospective}
+
+Il gruppo ha revisionato e testato accuratamente l'MVP (Minimum Viable Product\textsubscript{G}), verificandone il corretto funzionamento complessivo.
+
+Durante la retrospective è emersa una forte dipendenza da un sistema esterno (GitHub). Tuttavia, grazie alla prassi consolidata di gestire le Pull Request\textsubscript{G} in maniera incrementale lungo tutto lo sprint, la dipendenza non ha comportato ritardi significativi, se non minimi rallentamenti nell'integrazione delle ultime modifiche.
+
+
+\subsection{Aggiornamento specifica tecnica e revisione ADR}
+
+È emersa la necessità di procedere all'aggiornamento della specifica tecnica e alla revisione dell'Analidi Dei Requisiti (ADR) per garantire il pieno allineamento con le scelte implementative effettuate.
+
+
+\subsection{Completamento del manuale utente e aggiornamento glossario}
+
+Si è stabilito di completare la stesura del manuale utente. Parallelamente alla stesura, si provvederà all'aggiornamento e all'integrazione del glossario di progetto.
+
+
+\subsection{Sviluppo test, misurazioni PdQ e verifica funzionalità}
+
+Per quanto riguarda l'avanzamento software e di qualità, si è deciso di completare lo sviluppo dei test di integrazione e di sistema. Verranno inoltre eseguite le relative misurazioni per il PdQ e verranno effettuate verifiche sul comportamento del sistema in scenari di utilizzo reale con dati complessi (es. tabelle colme di dati).
+
+
+\subsection{Aggiornamento documenti: PdP, PdQ e Norme di Progetto}
+
+È stato concordato l'aggiornamento dei seguenti documenti normativi e di pianificazione:
+\begin{itemize}
+
+\item \textbf{PdP e PdQ:} Verranno aggiornati con le nuove stime, la rendicontazione delle attività e l'inserimento delle nuove misurazioni di qualità.
+
+\item \textbf{Norme di Progetto:} Verrà effettuata una revisione complessiva per verificare la perfetta coerenza tra quanto regolamentato e l'MVP effettivo. Nello specifico, si aggiorneranno le convenzioni di naming e la struttura delle cartelle, formalizzando la gestione del codice e della Continuous Integration (CI) associata alle Pull Request verso il branch\textsubscript{G} \texttt{main\textsubscript{G}}.
+
+\end{itemize}
+
+La nuova procedura operativa per la gestione del codice e la verifica delle PR è definita nei seguenti punti:
+\begin{enumerate}
+
+\item Lo sviluppatore crea un nuovo branch dedicato a partire dalla propria issue\textsubscript{G}.
+
+\item Apre una PR in stato \textit{draft} verso il branch \texttt{main}.
+
+\item Prima di ogni push, lo sviluppatore esegue obbligatoriamente la suite dei test in locale.
+
+\item Ad ogni push, la PR in \textit{draft} attiva la pipeline automatica di CI.
+
+\item Al termine dello sviluppo, previa verfica del passaggio dei test in CI (esito verde), lo sviluppatore compila la checklist di verifica e sposta la PR nello stato \textit{ready for review}.
+
+\item Il Verificatore\textsubscript{G} approva la PR solo se la pipeline CI riscontra esito positivo. Per tutte le PR riguardanti la codifica è obbligatorio utilizzare il template\textsubscript{G} formalizzato nel file \texttt{pull\_request\_template.md}.
+
+\end{enumerate}
+
+
+\subsection{Verbali e Diario di Bordo}
+
+Si è disposta la stesura del verbale interno odierno (VI N. 27), del verbale esterno inerente alle tematiche di deploy, e l'aggiornamento del Diario di Bordo.
+
+
+
+\vspace{0.3cm}
+
+La distribuzione del lavoro e dei ruoli per il nuovo sprint è la seguente:
+
+\begin{itemize}
+
+\item \textbf{Responsabile\textsubscript{G}:} Francesco Marcon redigerà il presente verbale interno (VI N. 27), il verbale esterno sul deploy e il Diario di Bordo.
+
+\item \textbf{Amministratore\textsubscript{G}:} Roberto Mariano Doroftei si occuperà dell'aggiornamento del PdP, del PdQ (con inserimento delle nuove misurazioni) e delle Norme di Progetto.
+
+\item \textbf{Programmatore\textsubscript{G}:} Armando Moda Scarati completerà lo sviluppo dei test di integrazione e di sistema, eseguirà le misurazioni per il PdQ e testerà le funzionalità con dati estesi.
+
+\item \textbf{Progettisti (due flussi):} Anton Ricardo Rupi (Progettista\textsubscript{G} 1) si dedicherà all'aggiornamento della specifica tecnica e alla revisione delle ADR. Filippo Idiometri (Progettista 2) si occuperà del completamento del manuale utente e dell'aggiornamento del glossario.
+
+\item \textbf{Verificatore:} Sofia De Blasi svolgerà le attività di verifica sul codice, sui test e sulla documentazione prodotta.
+
+\end{itemize}
+
+
+% --- 4. DECISIONI PRESE ---
+
+\section{Decisioni Prese}
+
+
+\renewcommand{\arraystretch}{1.3}
+
+\vspace{-0.3cm}
+
+\noindent
+
+\begin{longtable}{c p{12cm}}
+
+\toprule
+
+\textbf{Codice} & \textbf{Decisione} \\
+
+\midrule
+
+\endfirsthead
+
+
+\toprule
+
+\textbf{Codice} & \textbf{Decisione} \\
+
+\midrule
+
+\endhead
+
+
+\midrule
+
+\multicolumn{2}{r}{\textit{Continua nella pagina successiva}} \\
+
+\midrule
+
+\endfoot
+
+
+\bottomrule
+
+\endlastfoot
+
+
+\textbf{VI-27.1} & {Aggiornare la specifica tecnica e revisionare le ADR.} \\
+
+\textbf{VI-27.2} & {Terminare il manuale utente e aggiornare il glossario.} \\
+
+\textbf{VI-27.3} & {Completare i test di integrazione/sistema ed effettuare le misurazioni per il PdQ.} \\
+
+\textbf{VI-27.4} & {Aggiornare le Norme di Progetto definendo naming, struttura cartelle e la prassi di PR/CI.} \\
+
+\textbf{VI-27.5} & {Aggiornare PdP e PdQ includendo le nuove misurazioni.} \\
+
+\end{longtable}
+
+
+% --- 5. AZIONI (TODO) ---
+
+\section{Azioni da Svolgere (To-Do)}
+
+
+\renewcommand{\arraystretch}{1.3}
+
+\begin{longtable}{p{2.3cm} c p{4.5cm} p{3cm} l}
+
+\toprule
+
+\textbf{Codice} & \textbf{Rif. Decisione} & \textbf{Descrizione Task} & \textbf{Assegnatario} & \textbf{Scadenza} \\
+
+\midrule
+
+\endfirsthead
+
+
+\toprule
+
+\textbf{Codice} & \textbf{Rif. Decisione} & \textbf{Descrizione Task} & \textbf{Assegnatario} & \textbf{Scadenza} \\
+
+\midrule
+
+\endhead
+
+
+\midrule
+
+\multicolumn{5}{r}{\textit{Continua nella pagina successiva}} \\
+
+\midrule
+
+\endfoot
+
+
+\bottomrule
+
+\endlastfoot
+
+
+\ghissue{377} & - & Stesura del verbale interno odierno (VI N. 27) & Francesco Marcon & 2026-08-25 \\[4pt]
+
+\ghissue{379} & - & Stesura del verbale esterno (deploy) & Francesco Marcon & 2026-08-25 \\[4pt]
+
+\ghissue{378} & - & Stesura del Diario di Bordo & Francesco Marcon & 2026-08-21 \\[4pt]
+
+\ghissue{380} & VI-27.1 & Aggiornamento specifica tecnica & Anton Ricardo Rupi & 2026-08-25 \\[4pt]
+
+\ghissue{381} & VI-27.1 & Revisione ADR & Anton Ricardo Rupi & 2026-08-25 \\[4pt]
+
+\ghissue{382} & VI-27.2 & Completamento manuale utente & Filippo Idiometri & 2026-08-25 \\[4pt]
+
+\ghissue{375} & VI-27.2 & Aggiornamento glossario & Filippo Idiometri & 2026-08-25 \\[4pt]
+
+\ghissue{383} & VI-27.3 & Sviluppo test integrazione/sistema e misurazioni PdQ & Armando M. Scarati & 2026-08-25 \\[4pt]
+
+\ghissue{386} & VI-27.4 & Aggiornamento Norme di Progetto & Roberto M. Doroftei & 2026-08-25 \\[4pt]
+
+\ghissue{384} & VI-27.5 & Aggiornamento PdP & Roberto M. Doroftei & 2026-08-25 \\[4pt]
+
+\ghissue{385} & VI-27.5 & Aggiornamento PdQ con nuove misurazioni & Roberto M. Doroftei & 2026-08-25 \\[4pt]
+
+\end{longtable}
+
+
+% --- 6. PROSSIMA RIUNIONE ---
+
+\section{Prossima Riunione}
+
+\begin{itemize}
+
+\item \textbf{Data:} 2026-08-25
+
+\item \textbf{Ora:} 14:30
+
+\item \textbf{OdG preliminare\textsubscript{G}:}
+
+\begin{itemize}
+
+\item Terminare la revisione della specifica tecnica e la stesura del manuale utente.
+
+\item Verificare l'aggiornamento di PdP, PdQ e Norme di Progetto.
+
+\item Verificare il completamento dei test e delle relative misurazioni.
+
+\item Pianificazione del prossimo sprint e assegnazione dei ruoli.
+
+\end{itemize}
+
+\end{itemize}
