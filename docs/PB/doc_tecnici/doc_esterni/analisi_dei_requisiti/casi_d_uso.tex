@@ -4359,3 +4359,135 @@ accessibili agli altri utenti.
     \item \textbf{Postcondizioni}: L'editor rimane invariato.
     \item \textbf{Trigger}: Problemi di connessione o indisponibilità del database remoto.
 \end{itemize}
+
+% -----------------------------------------------------------------------
+% UC156 - Uscita con modifiche non salvate (nuovo, requisito interno emerso
+% durante la revisione post-PB: R87-F-O)
+\hypertarget{uc156}{}
+\subsubsection{UC 156: Uscita con modifiche non salvate}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{uscita_modifiche_non_salvate.png}
+    \caption{UC 156 -- Uscita con modifiche non salvate}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: Sono presenti modifiche non salvate nella nota corrente.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente tenta di chiudere la scheda del browser, aggiornare la pagina o navigare fuori dall'applicazione.
+        \item Il sistema rileva la presenza di modifiche non salvate.
+        \item Il sistema acquisisce la conferma dell'uscita secondo UC 156.1.
+        \item Il browser procede con la chiusura o l'aggiornamento della pagina.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'applicazione viene chiusa o aggiornata, con conseguente perdita delle modifiche non salvate.
+    \item \textbf{Trigger}: L'utente tenta di lasciare l'applicazione mentre sono presenti modifiche non salvate.
+    \item \textbf{Inclusioni}:
+    \begin{itemize}
+        \item \hyperlink{uc156.1}{UC 156.1: Conferma uscita}
+    \end{itemize}
+    \item \textbf{Estensioni}:
+    \begin{itemize}
+        \item \hyperlink{uc156.2}{UC 156.2: Annullamento uscita} $\rightarrow$ Condizione: risposta negativa al dialogo di conferma del browser.
+    \end{itemize}
+\end{itemize}
+
+% UC156.1 - Conferma uscita
+\hypertarget{uc156.1}{}
+\subsubsection{UC 156.1: Conferma uscita}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{conferma_uscita.png}
+    \caption{UC 156.1 -- Conferma uscita}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: Il sistema ha rilevato modifiche non salvate e l'utente sta tentando di uscire.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il browser mostra un dialogo nativo di conferma.
+        \item L'utente conferma l'intenzione di uscire.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'uscita dall'applicazione è confermata.
+    \item \textbf{Trigger}: Il sistema ha rilevato un tentativo di uscita con modifiche non salvate.
+\end{itemize}
+
+% UC156.2 - Annullamento uscita
+\hypertarget{uc156.2}{}
+\subsubsection{UC 156.2: Annullamento uscita}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{annullamento_uscita.png}
+    \caption{UC 156.2 -- Annullamento uscita}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: Il dialogo di conferma uscita del browser è visualizzato a schermo.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente annulla l'operazione nel dialogo di conferma del browser.
+        \item Il sistema resta nello stato corrente, senza chiudere né aggiornare la pagina.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'applicazione resta aperta e le modifiche non salvate restano intatte.
+    \item \textbf{Trigger}: L'utente decide di non procedere con l'uscita.
+\end{itemize}
+
+% -----------------------------------------------------------------------
+% UC157 - Apertura di un link dalla nota (nuovo, requisito interno emerso
+% durante la revisione pre-PB: R88-F-O)
+\hypertarget{uc157}{}
+\subsubsection{UC 157: Apertura di un link dalla nota}
+
+% use case diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{apertura_link.png}
+    \caption{UC 157 -- Apertura di un link dalla nota}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: L'anteprima della nota contiene almeno un collegamento ipertestuale.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item L'utente fa clic su un collegamento ipertestuale visualizzato nell'anteprima.
+        \item Il sistema verifica che l'URL del collegamento sia assoluto e valido.
+        \item Il sistema apre il collegamento in una nuova scheda del browser.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: Il collegamento è aperto in una nuova scheda del browser, senza alterare lo stato dell'editor.
+    \item \textbf{Trigger}: L'utente desidera consultare la destinazione di un collegamento presente nella nota.
+    \item \textbf{Estensioni}:
+    \begin{itemize}
+        \item \hyperlink{uc157.1}{UC 157.1: Segnalazione link non valido} $\rightarrow$ Condizione: l'URL del collegamento non è assoluto o non è valido.
+    \end{itemize}
+\end{itemize}
+
+% UC157.1 - Segnalazione link non valido
+\hypertarget{uc157.1}{}
+\subsubsection{UC 157.1: Segnalazione link non valido}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{link_non_valido.png}
+    \caption{UC 157.1 -- Segnalazione link non valido}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore Principale}: Utente
+    \item \textbf{Precondizioni}: L'utente ha fatto clic su un collegamento ipertestuale con URL non assoluto o non valido.
+    \item \textbf{Scenario Principale}:
+    \begin{enumerate}
+        \item Il sistema rileva che l'URL del collegamento non è valido.
+        \item Il sistema non avvia alcuna navigazione, mantenendo la nota aperta nell'editor.
+        \item Il sistema mostra un messaggio informativo relativo al collegamento non valido.
+    \end{enumerate}
+    \item \textbf{Postcondizioni}: L'applicazione resta nello stato corrente, senza alcuna navigazione avvenuta, e l'utente è informato del problema.
+    \item \textbf{Trigger}: Il sistema rileva un collegamento con URL privo di uno schema valido.
+\end{itemize}
