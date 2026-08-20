@@ -195,6 +195,25 @@ function repositionSelection(range: TextRange, startDelta: number, endDelta: num
   view.dispatch({ selection: { anchor, head } })
 }
 
+/**
+ * Applica un range di selezione ASSOLUTO, già calcolato per intero dal
+ * chiamante (es. il testo appena inserito da una proposta AI accettata) -
+ * a differenza di repositionSelection, che somma un DELTA a un range
+ * preesistente e salta il dispatch se il delta è zero (ottimizzazione
+ * corretta per quel caso d'uso, ma sbagliata qui: passare 0 come "nessun
+ * delta da sommare" farebbe uscire subito repositionSelection senza mai
+ * applicare il range assoluto voluto - bug osservato: la vecchia selezione,
+ * mai sostituita, restava valida sul contenuto nuovo, selezionando una
+ * porzione sbagliata e spesso più ampia di quella attesa).
+ */
+function selectRange(range: TextRange): void {
+  const view = cmView.value
+  if (!view) return
+  const docLength = view.state.doc.length
+  const clamp = (n: number) => Math.max(0, Math.min(n, docLength))
+  view.dispatch({ selection: { anchor: clamp(range.start), head: clamp(range.end) } })
+}
+
 /** Posiziona il cursore (selezione collassata) a una posizione precisa del
  *  documento, usata da Taglia/Incolla dove non basta un semplice spostamento
  *  relativo (il testo sostituito ha una lunghezza diversa da quello originale). */
@@ -546,8 +565,9 @@ async function acceptProposal(): Promise<void> {
     await nextTick()
     // Riseleziona esattamente il testo appena inserito dalla proposta
     // accettata (non più il range della selezione originaria, che può avere
-    // una lunghezza diversa), così l'utente vede subito cosa è cambiato.
-    repositionSelection(insertedRange, 0)
+    // una lunghezza diversa): serve applicare il range ASSOLUTO calcolato,
+    // non uno spostamento relativo (vedi selectRange).
+    selectRange(insertedRange)
   }
 
   cmView.value?.focus()
@@ -591,6 +611,32 @@ onMounted(async () => {
 onBeforeUnmount(() => {
   window.removeEventListener('beforeunload', onBeforeUnloadWindow)
 })
+
+/**
+ * Selezione REALE attualmente applicata a CodeMirror (non il valore che il
+ * codice intendeva applicare: un bug può nascondersi proprio nel passaggio
+ * "calcolato correttamente ma mai davvero applicato all'editor"). Esposta
+ * solo per i test (App.smoke.test.ts); restituisce numeri semplici, non
+ * l'istanza di CodeMirror stessa, per non far trapelare i suoi tipi interni
+ * nella superficie pubblica del componente.
+ */
+function getCurrentSelectionForTesting(): { from: number; to: number } | null {
+  const view = cmView.value
+  if (!view) return null
+  const { from, to } = view.state.selection.main
+  return { from, to }
+}
+
+/** Imposta una selezione reale in CodeMirror, solo per i test: permette di
+ *  simulare "l'utente ha selezionato del testo" senza un vero trascinamento
+ *  del mouse (non disponibile in jsdom). */
+function setSelectionForTesting(from: number, to: number): void {
+  const view = cmView.value
+  if (!view) return
+  view.dispatch({ selection: { anchor: from, head: to } })
+}
+
+defineExpose({ getCurrentSelectionForTesting, setSelectionForTesting })
 </script>
 
 <template>
