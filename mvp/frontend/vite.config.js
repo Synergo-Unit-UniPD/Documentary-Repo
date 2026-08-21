@@ -35,13 +35,17 @@ export default defineConfig({
         'src/main.ts',
         'src/vite-env.d.ts',
       ],
-      // Soglia scelta in base alla copertura reale attuale (con un margine),
-      // da alzare gradualmente durante la revisione del codice modulo per modulo.
+      // Soglie allineate a R1-Q-O (line coverage minima 80% sui moduli che
+      // implementano i casi d'uso principali): fissate qualche punto sotto
+      // la copertura reale raggiunta in fase PB (87,86% lines / 86,41%
+      // statements / 86,11% functions / 81,97% branches), per lasciare
+      // margine a piccole oscillazioni senza far fallire la CI, restando
+      // comunque sempre sopra la soglia richiesta dal requisito.
       thresholds: {
-        lines: 70,
-        statements: 70,
-        functions: 65,
-        branches: 65,
+        lines: 85,
+        statements: 83,
+        functions: 78,
+        branches: 78,
       },
     },
   }
