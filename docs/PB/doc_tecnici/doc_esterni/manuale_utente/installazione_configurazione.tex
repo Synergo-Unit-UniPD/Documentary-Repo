@@ -5,12 +5,16 @@
 Essendo Second Brain un'applicazione containerizzata, il processo di avvio risulta unificato indipendentemente dal sistema operativo utilizzato.
 
 \subsection{Clonazione del repository}
-[Inserire i comandi e le istruzioni per scaricare il codice sorgente tramite Git o archivio ZIP].
+La repository può essere clonata utilizzando 
+\begin{verbatim}
+    git clone git@github.com:Synergo-Unit-UniPD/Second-Brain.git
+\end{verbatim}
+o scaricando il file .zip della repository da https://github.com/Synergo-Unit-UniPD/Second-Brain
 
 \subsection{Configurazione delle chiavi API (LLM)}
 Affinché le funzioni di Intelligenza Artificiale siano operative, è strettamente necessario fornire al sistema le credenziali di accesso ai modelli linguistici.
 \begin{enumerate}
-    \item Individuare il file \texttt{.env.example} nella directory principale.
+    \item Individuare il file \texttt{.env.example} nella directory mvp.
     \item Rinominarlo in \texttt{.env}.
     \item Compilare i seguenti campi obbligatori:
     \begin{itemize}
@@ -19,8 +23,13 @@ Affinché le funzioni di Intelligenza Artificiale siano operative, è strettamen
     \end{itemize}
 \end{enumerate}
 
-\subsection{Avvio dell'applicazione}
-[Inserire i comandi Docker o Make necessari per buildare l'immagine e avviare il container].
-
-\subsection{Spegnimento del sistema}
-[Inserire i comandi per interrompere l'esecuzione e rimuovere i container senza perdere i volumi dati].
+\subsection{Avvio e spegnimento dell'applicazione}
+Per avviare l'applicazione, una volta all'interno della directory mvp basterà utilizzare il comando
+\begin{verbatim}
+    docker compose up -d --build,
+\end{verbatim}
+dopodichè basterà copiare http://localhost:5173/ in uno dei browser descritti prima per veisualizzare l'applicazione.
+Per lo spegnimento invece usare il comando
+\begin{verbatim}
+    docker compose down.
+\end{verbatim}

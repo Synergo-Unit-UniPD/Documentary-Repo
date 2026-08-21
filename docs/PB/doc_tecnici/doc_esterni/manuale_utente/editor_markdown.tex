@@ -1,14 +1,62 @@
 % =======================================================
 % 5. SCRITTURA E FORMATTAZIONE
 % =======================================================
-\section{Scrittura e Formattazione Markdown}
-L'area centrale ospita il motore di scrittura. L'utente può avvalersi sia della digitazione manuale della sintassi, sia della barra degli strumenti rapida.
+\subsection{Scrittura e Formattazione Markdown}
+Al di sotto di visualizzazione e gestione dei file si trova la struttura principale dell'editor.
+Si trova una barra con vari bottoni divisa in quattro parti per funzionalità e sotto si trova lo spazio per scrivere.
 
-\subsection{Barra degli strumenti (Toolbar)}
-[Descrivere graficamente i bottoni della toolbar: Grassetto, Corsivo, Titoli, Citazioni, Blocchi di codice].
+\subsubsection{Stile}
+La prima parte è denominata "Stile" ed è composta da 6 bottoni i quali da sinistra a destra sono:
+\begin{enumerate}
+    \item Grassetto,
+    \item Corsivo,
+    \item Sottolineato,
+    \item Barrato,
+    \item Citazione,
+    \item Intestazione,
+\end{enumerate}
+i quali, quando vengono premuti, apllicano la loro modifica al blocco di testo selezionato, 
+nel caso non sia selezionato del testo la modifica viene applicata sul testo che verrà successivamente scritto.
+Se i bottoni vengono cliccati quando ho selezionato un testo con la modifica scelta già presente (ad 
+esemprio premo grassetto su un testo già in grassetto) la modifica verrà rimossa e il testo tornerà normale.
 
-\subsection{Sintassi Supportata}
-[Inserire una rapida tabella riassuntiva dei principali comandi Markdown utilizzabili nell'applicativo, es. \texttt{**testo**} per il grassetto].
+\subsubsection{Elenchi}
+La seconda parte è denominata "Elenchi" ed è composta da 4 bottoni i quali da sinistra a destra sono:
+\begin{enumerate}
+    \item Elenco puntato,
+    \item Elenco numerato,
+    \item Aumenta rientro,
+    \item Riduci rientro,
+\end{enumerate}
+i quali, quando premunti, creano un elenco o un rientro del tipo indicato. 
+Anche qui se prima seleziono del testo l'elenco o rientro verrà applicato a quello altrimenti 
+verra applicato al testo successivo e se cliccato nuovamente su un elenco o rientro esso verrà rimosso.
 
-\subsection{Cronologia Modifiche (Undo / Redo)}
-[Spiegare come l'utente può annullare o ripristinare le azioni di scrittura manuali].
+\subsubsection{Link e Tabelle}
+La terza parte è denominata "Link e Tabelle" ed è composta da 3 bottoni i quali da sinistra a destra sono:
+\begin{enumerate}
+    \item Inserisci link,
+    \item Inserisci tabella,
+    \item Modifica tabella.
+\end{enumerate}
+Inserisci link, quando premuto, mostra una nuova finestra con due campi da riempire, il primo è "Indirizzo" 
+nel quale bisogna inserire l'indirizzo link interessato, il secondo è "Testo visualizzato" ovvero un campo facoltativo 
+qualora si volesse visualizzare non il link per intero ma un testo diverso cliccabile per interagire con il link.
+
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{img/link.png}
+    \caption{Nuova finestra quando clicco Inserisci link}
+ \end{figure}
+
+ Inserisci tabella, quando premuto, mostra una nuova finestra con due campi che indicano le righe e le colonna che 
+ la nuova tabella dovrà avere.
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{img/tabella.png}
+    \caption{Nuova finestra quando clicco Inserisci tabella}
+ \end{figure}
+
+ Infine il bottone "Modifica tabella" quand premuto mostrerà 5 nuovi bottoni per modificare la tabella che abbiamo selezionato 
+ aggiungendo o rimuovendo sia righe che colonne o eliminando la tabella del tutto.
