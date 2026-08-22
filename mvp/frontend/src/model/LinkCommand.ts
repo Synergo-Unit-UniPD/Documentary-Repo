@@ -3,6 +3,11 @@ import { MarkdownContentEditor } from './MarkdownContentEditor'
 import { TextRange } from './TextRange'
 import { LinkActionRequest } from './LinkActionRequest'
 
+/**
+ * Comando (pattern Command) che applica un'operazione sui link Markdown
+ * (creazione, modifica o rimozione) sul testo selezionato. Conserva il
+ * contenuto precedente per l'undo.
+ */
 export class LinkCommand implements EditCommand {
   private range: TextRange
   private request: LinkActionRequest

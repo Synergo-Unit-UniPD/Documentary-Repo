@@ -1,6 +1,11 @@
 import { EditCommand } from './EditCommand'
 import { MarkdownContentEditor } from './MarkdownContentEditor'
 
+/**
+ * Comando (pattern Command) che inserisce del testo in una posizione
+ * precisa del documento (es. una proposta AI accettata senza selezione
+ * attiva). Conserva il contenuto precedente per l'undo.
+ */
 export class InsertTextCommand implements EditCommand {
   private position: number
   private text: string

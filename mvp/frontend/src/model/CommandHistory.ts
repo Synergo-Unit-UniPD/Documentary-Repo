@@ -12,6 +12,11 @@ export class CommandHistory {
     this.redoStack = [] // ogni nuovo comando svuota completamente la pila di redo
   }
 
+  /**
+   * Annulla l'ultimo comando eseguito: lo rimuove dalla pila di undo,
+   * ne invoca il metodo undo() e lo sposta sulla pila di redo, così da
+   * poterlo eventualmente rieseguire.
+   */
   public undo(): void {
     const command = this.undoStack.pop()
     if (command) {
@@ -20,6 +25,10 @@ export class CommandHistory {
     }
   }
 
+  /**
+   * Rieseguisce l'ultimo comando annullato: lo rimuove dalla pila di redo,
+   * ne invoca execute() e lo sposta di nuovo sulla pila di undo.
+   */
   public redo(): void {
     const command = this.redoStack.pop()
     if (command) {

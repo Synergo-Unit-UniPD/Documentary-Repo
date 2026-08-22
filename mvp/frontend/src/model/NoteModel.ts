@@ -40,6 +40,11 @@ export class NoteModel implements Subject {
     }
   }
 
+  /**
+   * Esegue un comando (pattern Command) sul contenuto della nota: lo
+   * accoda alla cronologia per un eventuale undo, lo esegue e segna la
+   * nota come modificata, notificando le viste.
+   */
   public executeCommand(c: EditCommand): void {
     this.history.push(c)
     c.execute()
@@ -97,6 +102,11 @@ export class NoteModel implements Subject {
     this.notify()
   }
 
+  /**
+   * Apre una nota tramite il NoteService, sostituendo contenuto e id
+   * correnti con quelli caricati e azzerando la cronologia di undo/redo,
+   * dato che non ha più senso rispetto al nuovo contenuto.
+   */
   public async openNote(): Promise<void> {
     const note = await this.noteService.open()
     this.noteId = note.id
@@ -106,6 +116,10 @@ export class NoteModel implements Subject {
     this.notify()
   }
 
+  /**
+   * Segna la nota come modificata (contenuto non salvato) e notifica le
+   * viste, tipicamente per aggiornare l'indicatore di stato nella toolbar.
+   */
   public markDirtyAndNotify(): void {
     this.isDirty = true
     this.notify()
