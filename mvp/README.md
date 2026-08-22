@@ -146,6 +146,10 @@ L'analisi statica (lint/format/type-check) è un gate: se fallisce, i test non p
 
 Le soglie hanno un margine rispetto alla copertura reale: l'obiettivo è che la CI fallisca se la copertura *peggiora* in modo significativo, non che debba essere aggiornata a ogni piccola modifica. Si alzeranno gradualmente durante la revisione del codice.
 
+## Licenza
+
+Distribuito con licenza MIT — vedi [`LICENSE`](../LICENSE) alla radice della repository.
+
 ---
 
 <sub>Nota per chi mantiene la CI: i badge di coverage leggono da un Gist pubblico aggiornato automaticamente dalla pipeline (secret `GIST_SECRET` + variabile `GIST_ID` nelle Settings del repository). Se vanno rigenerati da zero, i passaggi sono in `.github/workflows/ci.yml` (step "Update ... coverage badge").</sub>
