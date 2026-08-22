@@ -146,7 +146,7 @@ describe('TopBar - link, tabelle e menu di modifica tabella (R29-R42-F-O)', () =
   it('emette insert-link e insert-table', async () => {
     const wrapper = mountTopBar()
 
-    await wrapper.find('button[title="Inserisci link"]').trigger('click')
+    await wrapper.find('button[title="Gestisci link"]').trigger('click')
     await wrapper.find('button[title="Inserisci tabella"]').trigger('click')
 
     expect(wrapper.emitted('insert-link')).toHaveLength(1)

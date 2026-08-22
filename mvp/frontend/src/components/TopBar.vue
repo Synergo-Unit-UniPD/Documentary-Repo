@@ -248,7 +248,7 @@ onBeforeUnmount(() => document.removeEventListener('click', handleDocumentClick)
       <div class="tool-group">
         <span class="group-label">Link e tabelle</span>
         <div class="group-buttons">
-          <button class="tool-button square" title="Inserisci link" @click="emit('insert-link')">&#128279;</button>
+          <button class="tool-button square" title="Gestisci link" @click="emit('insert-link')">&#128279;</button>
           <button class="tool-button square" title="Inserisci tabella" @click="emit('insert-table')">&#9638;</button>
 
           <div class="dropdown">
