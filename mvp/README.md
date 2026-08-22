@@ -77,23 +77,16 @@ Dalla cartella `mvp/` (richiede il venv Python attivo e `npm install` già esegu
 | `make typecheck`       | Type-check backend (mypy) + frontend (vue-tsc)                       |
 | `make test`            | Esegue tutti i test (pytest + vitest), **senza** verificare le soglie di coverage |
 | `make coverage`        | Test + report di code coverage, con verifica delle soglie (vedi sotto) |
-| `make ci`              | Lint + format-check + typecheck + test + build frontend              |
+| `make ci`              | **Riproduce l'intera pipeline CI in locale** (lint + format-check + typecheck + coverage + build), nello stesso ordine e con le stesse verifiche della pipeline reale |
 
-> **Attenzione**: `make ci` (e l'equivalente `.\ci.ps1`) **non include lo step
-> di coverage**. La pipeline reale su GitHub Actions, invece, verifica sempre
-> le soglie di coverage nei job `backend-test` e `frontend-test`. Questo
-> significa che `make ci` può uscire con codice 0 anche se la coverage è
-> scesa sotto soglia: per essere sicuri che la CI passi davvero, lanciate
-> anche `make coverage` prima del push (vedi sotto).
-
-**Prima di ogni push**, il modo più affidabile per sapere se la CI passerà è:
+**Prima di ogni push**, il modo più veloce per sapere se la CI passerà è:
 
 ```bash
 cd mvp
-make ci && make coverage
+make ci
 ```
 
-I report di coverage HTML restano in `backend/htmlcov/index.html` e `frontend/coverage/index.html` dopo aver lanciato `make coverage`.
+Se `make ci` esce con codice 0, la pipeline su GitHub Actions dovrebbe passare: include già la verifica delle soglie di coverage (`make coverage`), non serve lanciarla separatamente. I report di coverage HTML restano comunque in `backend/htmlcov/index.html` e `frontend/coverage/index.html` al termine.
 
 ### Windows senza `make`
 
@@ -101,12 +94,12 @@ Se sei su Windows e non hai `make` installato, usa lo script PowerShell incluso,
 
 ```powershell
 cd mvp
-.\ci.ps1              # equivalente a "make ci" (senza coverage, vedi nota sopra)
+.\ci.ps1              # equivalente a "make ci": lint + format-check + typecheck + coverage + build
 .\ci.ps1 lint
 .\ci.ps1 format-check
 .\ci.ps1 typecheck
 .\ci.ps1 test
-.\ci.ps1 coverage      # da lanciare comunque prima del push, vedi nota sopra
+.\ci.ps1 coverage
 ```
 
 Se PowerShell rifiuta di eseguirlo (Execution Policy — capita di default su molti sistemi), lancialo così, vale solo per quella sessione di terminale:

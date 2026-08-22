@@ -6,7 +6,7 @@
 
 .USAGE
     Da dentro la cartella mvp/:
-        .\ci.ps1              # equivalente a "make ci": lint + format-check + typecheck + test + build
+        .\ci.ps1              # equivalente a "make ci": lint + format-check + typecheck + coverage (con test) + build
         .\ci.ps1 lint
         .\ci.ps1 format
         .\ci.ps1 format-check
@@ -128,14 +128,17 @@ switch ($Target) {
     }
     'ci' {
         # Stesso ordine della pipeline CI: analisi statica prima dei test.
+        # Usa Coverage-* (non Test-*) perche' la CI reale esegue SEMPRE i
+        # test con verifica delle soglie di coverage: Coverage-* include
+        # gia' l'esecuzione di tutti i test, quindi non serve farlo due volte.
         Lint-Backend
         Lint-Frontend
         FormatCheck-Backend
         FormatCheck-Frontend
         Typecheck-Backend
         Typecheck-Frontend
-        Test-Backend
-        Test-Frontend
+        Coverage-Backend
+        Coverage-Frontend
         Build-Frontend
     }
 }
