@@ -579,33 +579,43 @@ export class MarkdownContentEditor {
   // Elenchi puntati e numerati - R32-R35
   // ------------------------------------------------------------------
 
+  // Tabella di dispatch per operazioni su elenco (stesso idiom di
+  // INLINE_MARKERS/LINE_PREFIXES): ogni voce è un handler autonomo, così
+  // la complessità della singola operazione non si somma alle altre in
+  // un unico switch. Il tipo di ritorno è union invece di solo string per
+  // permettere all'handler più complesso (ADD_ITEM) di delegare a un
+  // metodo dedicato senza forzare gli altri a farlo.
+  private readonly listOperationHandlers: Record<
+    ListOperationType,
+    (range: TextRange, request: ListActionRequest) => string
+  > = {
+    // "Elenco puntato"/"Elenco numerato" sono pulsanti toggle "intelligenti":
+    // creano l'elenco se assente, lo convertono se è dell'altro tipo, lo
+    // rimuovono se è già del tipo richiesto (analogo alle formattazioni
+    // di riga, R32-R35: ogni elenco deve essere rimovibile con lo stesso
+    // comando usato per crearlo, sia su selezione sia su cursore vuoto).
+    [ListOperationType.CREATE_LIST]: (range, request) => this.toggleListFormat(range, request.listType),
+    [ListOperationType.ADD_ITEM]: (range, request) => this.addListItem(range, request),
+    [ListOperationType.INDENT_ITEM]: (range) => this.transformLines(range, (line) => '  ' + line),
+    [ListOperationType.OUTDENT_ITEM]: (range) => this.transformLines(range, (line) => line.replace(/^ {1,2}/, '')),
+    [ListOperationType.TOGGLE_LIST_TYPE]: (range) => this.transformLines(range, (line) => this.toggleListMarker(line)),
+    [ListOperationType.DEACTIVATE_LIST_MODE]: (range) =>
+      this.transformLines(range, (line) => line.replace(LIST_ITEM_REGEX, '$1')),
+    [ListOperationType.REMOVE_LIST]: (range) =>
+      this.transformLines(range, (line) => line.replace(LIST_ITEM_REGEX, '$1')),
+  }
+
   public applyListOperation(range: TextRange, request: ListActionRequest): string {
-    switch (request.operation) {
-      case ListOperationType.CREATE_LIST:
-        // "Elenco puntato"/"Elenco numerato" sono pulsanti toggle "intelligenti":
-        // creano l'elenco se assente, lo convertono se è dell'altro tipo, lo
-        // rimuovono se è già del tipo richiesto (analogo alle formattazioni
-        // di riga, R32-R35: ogni elenco deve essere rimovibile con lo stesso
-        // comando usato per crearlo, sia su selezione sia su cursore vuoto).
-        return this.toggleListFormat(range, request.listType)
-      case ListOperationType.ADD_ITEM: {
-        const { lineEnd } = this.expandToLines(range)
-        const marker = request.listType === ListType.ORDERED ? '1. ' : UNORDERED_MARKER
-        const insertion = (this.content[lineEnd - 1] === '\n' || lineEnd === 0 ? '' : '\n') + marker
-        return this.content.slice(0, lineEnd) + insertion + this.content.slice(lineEnd)
-      }
-      case ListOperationType.INDENT_ITEM:
-        return this.transformLines(range, (line) => '  ' + line)
-      case ListOperationType.OUTDENT_ITEM:
-        return this.transformLines(range, (line) => line.replace(/^ {1,2}/, ''))
-      case ListOperationType.TOGGLE_LIST_TYPE:
-        return this.transformLines(range, (line) => this.toggleListMarker(line))
-      case ListOperationType.DEACTIVATE_LIST_MODE:
-      case ListOperationType.REMOVE_LIST:
-        return this.transformLines(range, (line) => line.replace(LIST_ITEM_REGEX, '$1'))
-      default:
-        return this.content
-    }
+    return this.listOperationHandlers[request.operation]?.(range, request) ?? this.content
+  }
+
+  /** Inserisce un nuovo elemento di elenco vuoto subito dopo la riga corrente. */
+  private addListItem(range: TextRange, request: ListActionRequest): string {
+    const { lineEnd } = this.expandToLines(range)
+    const marker = request.listType === ListType.ORDERED ? '1. ' : UNORDERED_MARKER
+    const atLineStart = this.content[lineEnd - 1] === '\n' || lineEnd === 0
+    const insertion = (atLineStart ? '' : '\n') + marker
+    return this.content.slice(0, lineEnd) + insertion + this.content.slice(lineEnd)
   }
 
   /**
@@ -689,28 +699,40 @@ export class MarkdownContentEditor {
     const { start, end } = this.normalizeRange(range)
 
     switch (request.operation) {
-      case LinkOperationType.INSERT_LINK: {
-        const label = request.label ?? this.content.slice(start, end) ?? request.url ?? ''
-        const url = request.url ?? ''
-        const markdown = `[${label}](${url})`
-        return this.content.slice(0, start) + markdown + this.content.slice(end)
-      }
-      case LinkOperationType.EDIT_LINK: {
-        const existing = this.findLinkAt(start, end)
-        if (existing === null) return this.content
-        const label = request.label ?? existing.label
-        const url = request.url ?? existing.url
-        const markdown = `[${label}](${url})`
-        return this.content.slice(0, existing.start) + markdown + this.content.slice(existing.end)
-      }
-      case LinkOperationType.REMOVE_LINK: {
-        const existing = this.findLinkAt(start, end)
-        if (existing === null) return this.content
-        return this.content.slice(0, existing.start) + existing.label + this.content.slice(existing.end)
-      }
+      case LinkOperationType.INSERT_LINK:
+        return this.insertLink(start, end, request)
+      case LinkOperationType.EDIT_LINK:
+        return this.editLink(start, end, request)
+      case LinkOperationType.REMOVE_LINK:
+        return this.removeLink(start, end)
       default:
         return this.content
     }
+  }
+
+  /** Inserisce un nuovo link Markdown al posto della selezione (o alla posizione del cursore). */
+  private insertLink(start: number, end: number, request: LinkActionRequest): string {
+    const label = request.label ?? this.content.slice(start, end) ?? request.url ?? ''
+    const url = request.url ?? ''
+    const markdown = `[${label}](${url})`
+    return this.content.slice(0, start) + markdown + this.content.slice(end)
+  }
+
+  /** Sostituisce label e/o url del link esistente sotto la selezione, se presente. */
+  private editLink(start: number, end: number, request: LinkActionRequest): string {
+    const existing = this.findLinkAt(start, end)
+    if (existing === null) return this.content
+    const label = request.label ?? existing.label
+    const url = request.url ?? existing.url
+    const markdown = `[${label}](${url})`
+    return this.content.slice(0, existing.start) + markdown + this.content.slice(existing.end)
+  }
+
+  /** Rimuove il link esistente sotto la selezione, mantenendo la sola etichetta come testo normale. */
+  private removeLink(start: number, end: number): string {
+    const existing = this.findLinkAt(start, end)
+    if (existing === null) return this.content
+    return this.content.slice(0, existing.start) + existing.label + this.content.slice(existing.end)
   }
 
   public getLinkAt(range: TextRange): LinkActionRequest {

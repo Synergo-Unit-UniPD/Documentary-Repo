@@ -1,4 +1,9 @@
 <script setup lang="ts">
+// Modale dedicato che mostra la proposta generata dall'AI separata dal
+// testo della nota (R74-F-O), da cui l'utente può accettarla (R69-F-O),
+// rifiutarla lasciando il documento invariato ("close", R70-F-O) o
+// richiederne una nuova generazione (R71-F-O). È lo stesso componente per
+// tutte le operazioni AI: cambia solo l'etichetta mostrata in intestazione.
 const props = defineProps<{
   operationType: string
   selectedText: string
@@ -11,6 +16,10 @@ const emit = defineEmits<{
   regenerate: []
 }>()
 
+// Etichetta leggibile per ciascun tipo di operazione (allineata alle
+// classi AIOperation registrate in backend/AI_Domain/domain/operations.py).
+// Se operationType non è mappato, si mostra un titolo generico invece di
+// lasciare l'intestazione vuota.
 const OPERATION_LABELS: Record<string, string> = {
   summarize: 'Riassunto',
   translate: 'Traduzione',
