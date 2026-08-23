@@ -3,7 +3,7 @@
 % =======================================================
 \subsection{Scrittura e Formattazione Markdown}
 Al di sotto di visualizzazione e gestione dei file si trova la struttura principale dell'editor.
-Si trova una barra con vari bottoni divisa in quattro parti per funzionalità e sotto si trova lo spazio per scrivere.
+Si trova una barra con vari bottoni divisa in cinque parti per funzionalità e sotto si trova lo spazio per scrivere.
 
 \subsubsection{Stile}
 La prima parte è denominata "Stile" ed è composta da 6 bottoni i quali da sinistra a destra sono:
@@ -15,6 +15,7 @@ La prima parte è denominata "Stile" ed è composta da 6 bottoni i quali da sini
     \item Citazione,
     \item Intestazione,
 \end{enumerate}
+
 i quali, quando vengono premuti, apllicano la loro modifica al blocco di testo selezionato, 
 nel caso non sia selezionato del testo la modifica viene applicata sul testo che verrà successivamente scritto.
 Se i bottoni vengono cliccati quando ho selezionato un testo con la modifica scelta già presente (ad 
@@ -28,35 +29,68 @@ La seconda parte è denominata "Elenchi" ed è composta da 4 bottoni i quali da 
     \item Aumenta rientro,
     \item Riduci rientro,
 \end{enumerate}
-i quali, quando premunti, creano un elenco o un rientro del tipo indicato. 
-Anche qui se prima seleziono del testo l'elenco o rientro verrà applicato a quello altrimenti 
-verra applicato al testo successivo e se cliccato nuovamente su un elenco o rientro esso verrà rimosso.
+
+\paragraph{Elenco puntato e numerato} Se applicati a del testo non ancora in un elenco, ne creano uno del tipo scelto (puntato 
+o numerato); se applicati a un elenco già dello stesso tipo, rimuovono la formattazione (il testo torna normale); se applicati 
+a un elenco esistente ma dell'altro tipo, lo convertono al tipo appena cliccato (es. da puntato a numerato), invece di rimuoverlo. 
+Se prima seleziono del testo l'elenco verrà applicato a quello, altrimenti verrà applicato al testo successivo.
+
+\paragraph{Aumenta e riduci rientro} A differenza dei due bottoni precedenti, questi due \textbf{non} sono un toggle: ogni click 
+su "Aumenta rientro" aggiunge un ulteriore livello di rientro all'elemento selezionato, permettendo di creare elenchi annidati 
+su più livelli premendo il bottone più volte; ogni click su "Riduci rientro" riduce il rientro di un livello, fino a riportarlo 
+a zero. Nessuno dei due rimuove l'elenco in sé.
 
 \subsubsection{Link e Tabelle}
 La terza parte è denominata "Link e Tabelle" ed è composta da 3 bottoni i quali da sinistra a destra sono:
 \begin{enumerate}
-    \item Inserisci link,
+    \item Gestisci link,
     \item Inserisci tabella,
     \item Modifica tabella.
 \end{enumerate}
-Inserisci link, quando premuto, mostra una nuova finestra con due campi da riempire, il primo è "Indirizzo" 
+
+\paragraph{Inserimento di un link}
+"Gestisci link", quando premuto, mostra una nuova finestra con due campi da riempire, il primo è "Indirizzo" 
 nel quale bisogna inserire l'indirizzo link interessato, il secondo è "Testo visualizzato" ovvero un campo facoltativo 
 qualora si volesse visualizzare non il link per intero ma un testo diverso cliccabile per interagire con il link.
 
  \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{img/link.png}
-    \caption{Nuova finestra quando clicco Inserisci link}
+    \caption{Finestra di inserimento o modifica di un link}
  \end{figure}
 
- Inserisci tabella, quando premuto, mostra una nuova finestra con due campi che indicano le righe e le colonna che 
+\paragraph{Modifica di un link} Il pulsante "Gestisci link" è lo stesso usato anche per la modifica: se, nel momento in cui 
+viene premuto, il cursore si trova posizionato sopra o all'interno di un link già presente nel testo (anche senza una vera 
+selezione, basta il cursore lampeggiante), la finestra si apre con il titolo "Modifica link" e con i campi "Indirizzo" e 
+"Testo visualizzato" già precompilati con i valori correnti: è possibile modificarli e confermare, oppure premere il pulsante 
+"Rimuovi link" per eliminare il link mantenendo il solo testo visualizzato come testo normale. Se invece il cursore non si 
+trova su alcun link, la finestra si apre vuota in modalità inserimento.
+
+\paragraph{Inserimento di una tabella} Inserisci tabella, quando premuto, mostra una nuova finestra con due campi che indicano le righe e le colonna che 
  la nuova tabella dovrà avere.
 
   \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{img/tabella.png}
-    \caption{Nuova finestra quando clicco Inserisci tabella}
+    \caption{Finestra di inserimento di una tabella}
  \end{figure}
 
+\paragraph{Modifica di una tabella}
  Infine il bottone "Modifica tabella" quand premuto mostrerà 5 nuovi bottoni per modificare la tabella che abbiamo selezionato 
  aggiungendo o rimuovendo sia righe che colonne o eliminando la tabella del tutto.
+
+\subsubsection{Modifica}
+La quarta parte è denominata "Modifica" ed è composta da 5 bottoni i quali da sinistra a destra sono:
+\begin{enumerate}
+    \item Copia,
+    \item Taglia,
+    \item Incolla,
+    \item Annulla,
+    \item Ripeti.
+\end{enumerate}
+
+I primi tre operano sulla porzione di testo selezionata copiandola, tagliandola o incollando negli appunti\textsubscript{G} di 
+sistema il contenuto testuale eventualmente copiato in precedenza, nella posizione corrente del cursore.
+Annulla e Ripeti permettono rispettivamente di annullare l'ultima modifica apportata al documento (Undo\textsubscript{G}) e di 
+ripristinare l'ultima modifica annullata (Redo\textsubscript{G}); sono disattivati quando non c'è alcuna modifica da annullare o 
+da ripristinare.

@@ -1,35 +1,50 @@
 % =======================================================
-% 2. INSTALLAZIONE E CONFIGURAZIONE
+% 2. INSTALLAZIONE E CONFIGURAZIONE\textsubscript{G}
 % =======================================================
 \section{Installazione e Configurazione}
-Essendo Second Brain un'applicazione containerizzata, il processo di avvio risulta unificato indipendentemente dal sistema operativo utilizzato.
+Essendo Second Brain\textsubscript{G} un'applicazione containerizzata, il processo di avvio risulta unificato indipendentemente dal sistema operativo utilizzato.
 
 \subsection{Clonazione del repository}
 La repository può essere clonata utilizzando 
 \begin{verbatim}
     git clone git@github.com:Synergo-Unit-UniPD/Second-Brain.git
 \end{verbatim}
-o scaricando il file .zip della repository da https://github.com/Synergo-Unit-UniPD/Second-Brain
+oppure, se si desidera solo il codice dell'MVP\textsubscript{G} senza clonare l'intera repository, scaricando direttamente lo
+% ATTENZIONE - DA VERIFICARE E RISOLVERE PRIMA DELLA CONSEGNA:
+% l'URL sottostante punta alla pagina "blob" di GitHub, che mostra l'ANTEPRIMA del file, non lo scarica.
+% Se il file è tracciato normalmente nel repository, sostituire con il link "raw":
+%   https://raw.githubusercontent.com/Synergo-Unit-UniPD/Second-Brain/main\textsubscript{G}/mvp/minimum_product_viable.zip
+% Se invece è pubblicato come asset di una Release, usare il link della Release:
+%   https://github.com/Synergo-Unit-UniPD/Second-Brain/releases/download/<TAG>/minimum_product_viable.zip
+zip dell'MVP \href{https://github.com/Synergo-Unit-UniPD/Second-Brain/mvp/minimum_product_viable.zip}{\texttt{minimum\_product\_viable.zip}}.
 
 \subsection{Configurazione delle chiavi API (LLM)}
 Affinché le funzioni di Intelligenza Artificiale siano operative, è strettamente necessario fornire al sistema le credenziali di accesso ai modelli linguistici.
 \begin{enumerate}
-    \item Individuare il file \texttt{.env.example} nella directory mvp.
-    \item Rinominarlo in \texttt{.env}.
+    \item Creare un file \texttt{.env} nella directory \texttt{mvp}: non è incluso nella repository (per motivi di sicurezza, le credenziali non vanno mai versionate), quindi dopo la clonazione o il download non è presente e va creato manualmente, ad esempio con il seguente contenuto:
+    \begin{verbatim}
+    ZUCCHETTI_LLM_BASE_URL=<indirizzo fornito dalla proponente>
+    ZUCCHETTI_LLM_API_KEY=<chiave fornita dalla proponente>
+    ZUCCHETTI_LLM_MODEL=gemma4:12b
+    \end{verbatim}
     \item Compilare i seguenti campi obbligatori:
     \begin{itemize}
-        \item \texttt{LLM\_API\_KEY}: [Spiegazione su dove reperire la chiave per il provider selezionato].
-        \item \texttt{LLM\_MODEL}: [Specificare il modello da utilizzare].
+        \item \texttt{ZUCCHETTI\textsubscript{G}\_LLM\_BASE\_URL}: indirizzo dell'endpoint\textsubscript{G} LLM, compatibile con lo standard API OpenAI, messo a disposizione dall'azienda proponente Zucchetti S.p.A.\ per l'infrastruttura del progetto.
+        \item \texttt{ZUCCHETTI\_LLM\_API\_KEY}: chiave di autenticazione per l'endpoint sopra. Non è una chiave generabile autonomamente (come per un servizio pubblico): viene assegnata dalla proponente insieme all'indirizzo dell'endpoint, ed è personale del gruppo di sviluppo. \textbf{Non condividerla né pubblicarla} (non deve mai comparire nel codice sorgente, nei log o in commit\textsubscript{G} pubblici).
+        \item \texttt{ZUCCHETTI\_LLM\_MODEL}: uno dei modelli resi disponibili dalla proponente (Gemma, ChatGPT-OSS o Qwen); se omesso, il sistema usa di default \texttt{gemma4:12b}.
     \end{itemize}
+    Facoltativamente è possibile impostare anche \texttt{ZUCCHETTI\_LLM\_TIMEOUT} (in secondi, default 900) per modificare il tempo massimo di attesa di una risposta dal modello.
 \end{enumerate}
+Le credenziali (\texttt{ZUCCHETTI\_LLM\_BASE\_URL} e \texttt{ZUCCHETTI\_LLM\_API\_KEY}) vengono comunicate direttamente dalla proponente 
+al momento dell'assegnazione dell'ambiente di test; non sono reperibili autonomamente né documentate altrove per motivi di sicurezza.
 
 \subsection{Avvio e spegnimento dell'applicazione}
 Per avviare l'applicazione, una volta all'interno della directory mvp basterà utilizzare il comando
 \begin{verbatim}
-    docker compose up -d --build,
+    docker\textsubscript{G} compose up -d --build
 \end{verbatim}
-dopodichè basterà copiare http://localhost:5173/ in uno dei browser descritti prima per veisualizzare l'applicazione.
+dopodichè basterà copiare http://localhost:5173/ in uno dei browser descritti prima per visualizzare l'applicazione.
 Per lo spegnimento invece usare il comando
 \begin{verbatim}
-    docker compose down.
+    docker compose\textsubscript{G} down
 \end{verbatim}
