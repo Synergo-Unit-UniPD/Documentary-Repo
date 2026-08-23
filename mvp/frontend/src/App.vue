@@ -60,7 +60,8 @@ import type { AIRequestState } from './model/AIRequestState'
 const markdownEditor = new MarkdownContentEditor('')
 const commandHistory = new CommandHistory()
 const noteService = new NoteServiceProxy()
-const noteModel = new NoteModel(markdownEditor, commandHistory, noteService)
+const exportService = new ExportServiceProxy('')
+const noteModel = new NoteModel(markdownEditor, commandHistory, noteService, exportService)
 
 const editorView = new AppEditorView(noteModel, {})
 const editorController = new EditorController(noteModel, editorView)
@@ -71,8 +72,6 @@ const aiRequestModel = new AIRequestModel(aiService)
 const aiPanelView = new AIPanelView(aiRequestModel)
 const aiController = new AIController(aiRequestModel, aiPanelView, noteModel)
 void aiController
-
-const exportService = new ExportServiceProxy('')
 
 // ---------------------------------------------------------------------------
 // Stato reattivo Vue: aggiornato tramite Observer agganciati direttamente ai
@@ -491,7 +490,7 @@ function onViewMode(mode: ViewMode): void {
 
 async function onExport(format: ExportFormat): Promise<void> {
   try {
-    const blob = await exportService.exportNote(format, content.value)
+    const blob = await noteModel.exportContent(format)
     const url = URL.createObjectURL(blob)
     const link = document.createElement('a')
     link.href = url

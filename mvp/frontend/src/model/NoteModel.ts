@@ -4,6 +4,7 @@ import { CommandHistory } from './CommandHistory'
 import { EditCommand } from './EditCommand'
 import { MarkdownContentEditor } from './MarkdownContentEditor'
 import { NoteService } from '../proxy/NoteService'
+import { ExportService, ExportFormat } from '../proxy/ExportService'
 import { Note } from './Note'
 
 /**
@@ -15,13 +16,23 @@ export class NoteModel implements Subject {
   private history: CommandHistory
   private observers: Observer[] = []
   private noteService: NoteService
+  /** Opzionale (a differenza di noteService): l'esportazione è una funzionalità
+   *  accessoria, non indispensabile al funzionamento del resto del Model, quindi
+   *  non tutti i chiamanti (es. i test che non la esercitano) devono fornirla. */
+  private exportService?: ExportService
   private noteId: string | undefined
   private isDirty: boolean = false
 
-  constructor(contentEditor: MarkdownContentEditor, history: CommandHistory, noteService: NoteService) {
+  constructor(
+    contentEditor: MarkdownContentEditor,
+    history: CommandHistory,
+    noteService: NoteService,
+    exportService?: ExportService,
+  ) {
     this.contentEditor = contentEditor
     this.history = history
     this.noteService = noteService
+    this.exportService = exportService
   }
 
   public attach(o: Observer): void {
@@ -40,11 +51,6 @@ export class NoteModel implements Subject {
     }
   }
 
-  /**
-   * Esegue un comando (pattern Command) sul contenuto della nota: lo
-   * accoda alla cronologia per un eventuale undo, lo esegue e segna la
-   * nota come modificata, notificando le viste.
-   */
   public executeCommand(c: EditCommand): void {
     this.history.push(c)
     c.execute()
@@ -102,11 +108,6 @@ export class NoteModel implements Subject {
     this.notify()
   }
 
-  /**
-   * Apre una nota tramite il NoteService, sostituendo contenuto e id
-   * correnti con quelli caricati e azzerando la cronologia di undo/redo,
-   * dato che non ha più senso rispetto al nuovo contenuto.
-   */
   public async openNote(): Promise<void> {
     const note = await this.noteService.open()
     this.noteId = note.id
@@ -117,9 +118,19 @@ export class NoteModel implements Subject {
   }
 
   /**
-   * Segna la nota come modificata (contenuto non salvato) e notifica le
-   * viste, tipicamente per aggiornare l'indicatore di stato nella toolbar.
+   * Esporta il contenuto corrente della nota nel formato richiesto (R77-F-O),
+   * delegando a ExportService. Instrada l'esportazione attraverso il Model,
+   * invece di far chiamare ExportServiceProxy direttamente da App.vue, per
+   * coerenza con come NoteService e AIService sono già iniettati rispettivamente
+   * in NoteModel e AIRequestModel.
    */
+  public async exportContent(format: ExportFormat): Promise<Blob> {
+    if (!this.exportService) {
+      throw new Error('Servizio di esportazione non configurato')
+    }
+    return this.exportService.exportNote(format, this.getContent())
+  }
+
   public markDirtyAndNotify(): void {
     this.isDirty = true
     this.notify()
