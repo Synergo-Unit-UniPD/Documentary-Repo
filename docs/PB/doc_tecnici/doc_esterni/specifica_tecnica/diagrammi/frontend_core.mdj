@@ -39790,8 +39790,8 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"parentStyle": false,
-											"left": 1082,
-											"top": 1384,
+											"left": 1089,
+											"top": 1388,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 15,
@@ -39812,8 +39812,8 @@
 											"visible": null,
 											"font": "Arial;13;0",
 											"parentStyle": false,
-											"left": 1095,
-											"top": 1391,
+											"left": 1099,
+											"top": 1399,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 30,
@@ -39834,8 +39834,8 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"parentStyle": false,
-											"left": 1055,
-											"top": 1369,
+											"left": 1070,
+											"top": 1365,
 											"height": 13,
 											"alpha": -1.5707963267948966,
 											"distance": 15,
@@ -53279,7 +53279,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGgKW6LE8DZQWM="
 									},
-									"name": "trasform; string"
+									"name": "trasform; string",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -76037,37 +76038,6 @@
 							"headQualifiersCompartment": {
 								"$ref": "AAAAAAGgLpjFe/Ihdh0="
 							}
-						},
-						{
-							"_type": "UMLNoteView",
-							"_id": "AAAAAAGgLpjFe/IifME=",
-							"_parent": {
-								"$ref": "AAAAAAGgLopqt+Ti7Ds="
-							},
-							"font": "Arial;13;0",
-							"parentStyle": false,
-							"left": 1264,
-							"top": 1056,
-							"width": 100,
-							"height": 51,
-							"text": "per gestire Accept come InsertText"
-						},
-						{
-							"_type": "UMLNoteLinkView",
-							"_id": "AAAAAAGgLpjFe/Ij1EA=",
-							"_parent": {
-								"$ref": "AAAAAAGgLopqt+Ti7Ds="
-							},
-							"font": "Arial;13;0",
-							"parentStyle": false,
-							"head": {
-								"$ref": "AAAAAAGgLpjFe/IifME="
-							},
-							"tail": {
-								"$ref": "AAAAAAGgLpjFe/IWqAE="
-							},
-							"lineStyle": 1,
-							"points": "1416:1101;1365:1091"
 						},
 						{
 							"_type": "UMLClassView",
