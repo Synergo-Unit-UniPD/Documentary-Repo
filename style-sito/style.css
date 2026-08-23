@@ -23,6 +23,13 @@ body {
     --azzurro: #cfe5ff;
 }
 
+.note {
+    font-size: 0.75rem;
+    color: var(--viola);
+    display: block;
+    margin-top: 0.5em;
+}
+
 /* ------------------------------
    HEADER (VERSIONE CHIARA)
 ------------------------------ */

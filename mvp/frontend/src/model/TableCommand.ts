@@ -3,6 +3,11 @@ import { MarkdownContentEditor } from './MarkdownContentEditor'
 import { TableActionRequest } from './TableActionRequest'
 import { TextRange } from './TextRange'
 
+/**
+ * Comando (pattern Command) che applica un'operazione su una tabella
+ * Markdown (inserimento/rimozione riga o colonna, modifica cella) e
+ * ne conserva il contenuto precedente per un eventuale undo.
+ */
 export class TableCommand implements EditCommand {
   private request: TableActionRequest
   private range: TextRange

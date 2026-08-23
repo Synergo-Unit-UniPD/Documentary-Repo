@@ -12,6 +12,12 @@ class MockObserver implements Observer {
   update = vi.fn()
 }
 
+// Nei test sotto, il secondo argomento del costruttore (0) disattiva
+// l'attesa minima di visualizzazione di ProcessingState (R2-P-O, default
+// 2000ms reali): qui si verifica la logica di transizione degli stati, non
+// la temporizzazione, quindi i test restano veloci e deterministici. Il
+// comportamento reale della durata minima è verificato a parte, con i timer
+// finti di Vitest, nel blocco "R2-P-O" più sotto.
 describe('AIRequestModel', () => {
   it('dovrebbe seguire il diagramma di sequenza durante requestAIOperation', async () => {
     const mockProposal = new Proposal('Testo generato', 'red_hat', new Date())
@@ -20,7 +26,7 @@ describe('AIRequestModel', () => {
       listOperations: vi.fn().mockResolvedValue([]),
     }
 
-    const model = new AIRequestModel(mockAIService)
+    const model = new AIRequestModel(mockAIService, 0)
     const observer = new MockObserver()
     model.attach(observer)
 
@@ -43,7 +49,7 @@ describe('AIRequestModel', () => {
       listOperations: vi.fn().mockResolvedValue([]),
     }
 
-    const model = new AIRequestModel(mockAIService)
+    const model = new AIRequestModel(mockAIService, 0)
     await model.requestAIOperation('red_hat', 'testo', {})
 
     expect(model.getAIState()).toBeInstanceOf(ErrorState)
@@ -56,7 +62,7 @@ describe('AIRequestModel', () => {
       listOperations: vi.fn().mockResolvedValue(mockOperations),
     }
 
-    const model = new AIRequestModel(mockAIService)
+    const model = new AIRequestModel(mockAIService, 0)
     const result = await model.listOperations()
 
     expect(mockAIService.listOperations).toHaveBeenCalledTimes(1)
@@ -70,7 +76,7 @@ describe('AIRequestModel - interruzione (R73-F-O) e condizione di gara con rispo
       listOperations: vi.fn().mockResolvedValue([]),
     }
 
-    const model = new AIRequestModel(mockAIService)
+    const model = new AIRequestModel(mockAIService, 0)
     model.interruptAIOperation()
 
     expect(model.getAIState()).toBeInstanceOf(IdleState)
@@ -87,7 +93,7 @@ describe('AIRequestModel - interruzione (R73-F-O) e condizione di gara con rispo
       listOperations: vi.fn().mockResolvedValue([]),
     }
 
-    const model = new AIRequestModel(mockAIService)
+    const model = new AIRequestModel(mockAIService, 0)
     const observer = new MockObserver()
     model.attach(observer)
 
@@ -117,7 +123,7 @@ describe('AIRequestModel - interruzione (R73-F-O) e condizione di gara con rispo
       listOperations: vi.fn().mockResolvedValue([]),
     }
 
-    const model = new AIRequestModel(mockAIService)
+    const model = new AIRequestModel(mockAIService, 0)
     const requestPromise = model.requestAIOperation('summarize', 'testo', {})
 
     model.interruptAIOperation()
@@ -143,7 +149,7 @@ describe('AIRequestModel - interruzione (R73-F-O) e condizione di gara con rispo
       listOperations: vi.fn().mockResolvedValue([]),
     }
 
-    const model = new AIRequestModel(mockAIService)
+    const model = new AIRequestModel(mockAIService, 0)
 
     const firstRequest = model.requestAIOperation('summarize', 'primo testo', {})
     const secondRequest = model.requestAIOperation('rewrite', 'secondo testo', {})
@@ -157,5 +163,111 @@ describe('AIRequestModel - interruzione (R73-F-O) e condizione di gara con rispo
     await firstRequest
 
     expect((model.getAIState() as ProposalReadyState).proposal).toBe(secondProposal)
+  })
+})
+
+describe('AIRequestModel - durata minima di ProcessingState (R2-P-O, VE-7.3)', () => {
+  it('con il servizio che risponde quasi istantaneamente, resta in ProcessingState finché non trascorrono ~2000ms', async () => {
+    vi.useFakeTimers()
+    try {
+      const mockProposal = new Proposal('Testo generato', 'summarize', new Date())
+      const mockAIService: AIService = {
+        requestOperation: vi.fn().mockResolvedValue(mockProposal),
+        listOperations: vi.fn().mockResolvedValue([]),
+      }
+
+      const model = new AIRequestModel(mockAIService) // durata minima di default (2000ms)
+      const requestPromise = model.requestAIOperation('summarize', 'testo', {})
+
+      // Il servizio si è già "risolto" (microtask), ma la durata minima non è
+      // ancora trascorsa: lo stato deve restare ProcessingState.
+      await vi.advanceTimersByTimeAsync(500)
+      expect(model.getAIState()).toBeInstanceOf(ProcessingState)
+
+      await vi.advanceTimersByTimeAsync(1600) // totale ~2100ms
+      await requestPromise
+
+      expect(model.getAIState()).toBeInstanceOf(ProposalReadyState)
+    } finally {
+      vi.useRealTimers()
+    }
+  })
+
+  it('se il servizio impiega già più della durata minima, non introduce alcuna attesa aggiuntiva', async () => {
+    vi.useFakeTimers()
+    try {
+      const mockProposal = new Proposal('Testo generato', 'summarize', new Date())
+      let resolveRequest: (proposal: Proposal) => void
+      const pending = new Promise<Proposal>((resolve) => {
+        resolveRequest = resolve
+      })
+      const mockAIService: AIService = {
+        requestOperation: vi.fn().mockReturnValue(pending),
+        listOperations: vi.fn().mockResolvedValue([]),
+      }
+
+      const model = new AIRequestModel(mockAIService)
+      const requestPromise = model.requestAIOperation('summarize', 'testo', {})
+
+      await vi.advanceTimersByTimeAsync(5000) // ben oltre la durata minima
+      resolveRequest!(mockProposal)
+      await requestPromise
+
+      // Nessuna attesa residua da aggiungere: la transizione avviene subito.
+      expect(model.getAIState()).toBeInstanceOf(ProposalReadyState)
+    } finally {
+      vi.useRealTimers()
+    }
+  })
+
+  it("un'interruzione manuale durante l'attesa residua (R73-F-O) resta valida: nessuna proposta appare dopo", async () => {
+    vi.useFakeTimers()
+    try {
+      const mockProposal = new Proposal('Testo generato', 'summarize', new Date())
+      const mockAIService: AIService = {
+        requestOperation: vi.fn().mockResolvedValue(mockProposal),
+        listOperations: vi.fn().mockResolvedValue([]),
+      }
+
+      const model = new AIRequestModel(mockAIService)
+      const requestPromise = model.requestAIOperation('summarize', 'testo', {})
+
+      await vi.advanceTimersByTimeAsync(500)
+      // L'utente interrompe MENTRE si sta ancora attendendo il tempo minimo.
+      model.interruptAIOperation()
+      expect(model.getAIState()).toBeInstanceOf(IdleState)
+
+      await vi.advanceTimersByTimeAsync(2000)
+      await requestPromise
+
+      // Lo stato deve restare Idle: l'interruzione non deve essere "ripresa"
+      // dalla logica di attesa minima una volta trascorso il tempo.
+      expect(model.getAIState()).toBeInstanceOf(IdleState)
+    } finally {
+      vi.useRealTimers()
+    }
+  })
+
+  it('la durata minima si applica anche al percorso di errore', async () => {
+    vi.useFakeTimers()
+    try {
+      const mockAIService: AIService = {
+        requestOperation: vi.fn().mockRejectedValue(new Error('LLM non raggiungibile')),
+        listOperations: vi.fn().mockResolvedValue([]),
+      }
+
+      const model = new AIRequestModel(mockAIService)
+      const requestPromise = model.requestAIOperation('summarize', 'testo', {})
+
+      await vi.advanceTimersByTimeAsync(500)
+      expect(model.getAIState()).toBeInstanceOf(ProcessingState)
+
+      await vi.advanceTimersByTimeAsync(1600)
+      await requestPromise
+
+      expect(model.getAIState()).toBeInstanceOf(ErrorState)
+    } finally {
+      vi.useRealTimers()
+    }
   })
 })

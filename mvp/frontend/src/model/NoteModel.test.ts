@@ -3,6 +3,7 @@ import { NoteModel } from './NoteModel'
 import { CommandHistory } from './CommandHistory'
 import { MarkdownContentEditor } from './MarkdownContentEditor'
 import { NoteService } from '../proxy/NoteService'
+import { ExportService } from '../proxy/ExportService'
 import { EditCommand } from './EditCommand'
 import { Observer } from './Observer'
 import { Note } from './Note'
@@ -21,6 +22,10 @@ class MockEditor extends MarkdownContentEditor {
 class MockNoteService implements NoteService {
   save = vi.fn().mockResolvedValue(undefined)
   open = vi.fn().mockResolvedValue(new Note('note-1', 'Testo caricato'))
+}
+
+class MockExportService implements ExportService {
+  exportNote = vi.fn().mockResolvedValue(new Blob(['contenuto'], { type: 'application/pdf' }))
 }
 
 class MockCommand implements EditCommand {
@@ -100,5 +105,43 @@ describe('NoteModel - canUndo / canRedo', () => {
     model.undo()
     expect(model.canUndo()).toBe(false)
     expect(model.canRedo()).toBe(true)
+  })
+})
+
+describe('NoteModel - exportContent', () => {
+  it('delega a ExportService, passando il formato richiesto e il contenuto corrente', async () => {
+    const editor = new MockEditor()
+    const history = new CommandHistory()
+    const service = new MockNoteService()
+    const exportService = new MockExportService()
+    const model = new NoteModel(editor, history, service, exportService)
+
+    const blob = await model.exportContent('pdf')
+
+    expect(exportService.exportNote).toHaveBeenCalledTimes(1)
+    expect(exportService.exportNote).toHaveBeenCalledWith('pdf', 'Testo della nota')
+    expect(blob).toBeInstanceOf(Blob)
+  })
+
+  it('rifiuta la Promise se ExportService non è stato iniettato', async () => {
+    const editor = new MockEditor()
+    const history = new CommandHistory()
+    const service = new MockNoteService()
+    // Nessun exportService passato: coerente con gli altri test NoteModel che
+    // non esercitano l'export e non devono fornirlo (parametro opzionale).
+    const model = new NoteModel(editor, history, service)
+
+    await expect(model.exportContent('html')).rejects.toThrow('Servizio di esportazione non configurato')
+  })
+
+  it("propaga l'errore se ExportService fallisce", async () => {
+    const editor = new MockEditor()
+    const history = new CommandHistory()
+    const service = new MockNoteService()
+    const exportService = new MockExportService()
+    exportService.exportNote = vi.fn().mockRejectedValue(new Error('Errore di esportazione'))
+    const model = new NoteModel(editor, history, service, exportService)
+
+    await expect(model.exportContent('json')).rejects.toThrow('Errore di esportazione')
   })
 })

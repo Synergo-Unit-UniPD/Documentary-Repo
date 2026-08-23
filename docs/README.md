@@ -58,6 +58,14 @@ dove:
 * `verb_interni/` contiene i verbali degli incontri interni;
 * `verb_esterni/` contiene i verbali degli incontri con proponente, committente o altri soggetti esterni.
 
+> **Nota sulla licenza**: le sottocartelle `doc_tecnici/` delle fasi`RTB`, `PB` 
+> contengono documentazione tecnica del software e sono
+> rilasciate sotto la stessa licenza MIT del codice in `mvp/` — vedi
+> [`LICENSE`](../LICENSE) alla radice della repository. Le cartelle
+> `doc_gestionali/`, `verb_interni/`, `verb_esterni/`, `slides/` e
+> `template/` restano materiale prodotto per finalità didattiche, non
+> coperto da tale licenza.
+
 ## Slide
 
 Il materiale di presentazione è contenuto nella cartella:

@@ -75,9 +75,9 @@ Dalla cartella `mvp/` (richiede il venv Python attivo e `npm install` già esegu
 | `make format`          | Formatta backend (ruff format) + frontend (prettier)                 |
 | `make format-check`    | Verifica la formattazione senza modificare nulla (quello usato in CI)|
 | `make typecheck`       | Type-check backend (mypy) + frontend (vue-tsc)                       |
-| `make test`            | Esegue tutti i test (pytest + vitest)                                |
-| `make coverage`        | Test + report di code coverage (soglie: 90% backend, 70% frontend)   |
-| `make ci`              | **Riproduce l'intera pipeline CI in locale**, nello stesso ordine    |
+| `make test`            | Esegue tutti i test (pytest + vitest), **senza** verificare le soglie di coverage |
+| `make coverage`        | Test + report di code coverage, con verifica delle soglie (vedi sotto) |
+| `make ci`              | **Riproduce l'intera pipeline CI in locale** (lint + format-check + typecheck + coverage + build), nello stesso ordine e con le stesse verifiche della pipeline reale |
 
 **Prima di ogni push**, il modo più veloce per sapere se la CI passerà è:
 
@@ -86,7 +86,7 @@ cd mvp
 make ci
 ```
 
-Se `make ci` esce con codice 0, la pipeline su GitHub Actions dovrebbe passare. I report di coverage HTML restano in `backend/htmlcov/index.html` e `frontend/coverage/index.html` dopo aver lanciato `make coverage`.
+Se `make ci` esce con codice 0, la pipeline su GitHub Actions dovrebbe passare: include già la verifica delle soglie di coverage (`make coverage`), non serve lanciarla separatamente. I report di coverage HTML restano comunque in `backend/htmlcov/index.html` e `frontend/coverage/index.html` al termine.
 
 ### Windows senza `make`
 
@@ -94,7 +94,7 @@ Se sei su Windows e non hai `make` installato, usa lo script PowerShell incluso,
 
 ```powershell
 cd mvp
-.\ci.ps1              # equivalente a "make ci"
+.\ci.ps1              # equivalente a "make ci": lint + format-check + typecheck + coverage + build
 .\ci.ps1 lint
 .\ci.ps1 format-check
 .\ci.ps1 typecheck
@@ -142,9 +142,13 @@ L'analisi statica (lint/format/type-check) è un gate: se fallisce, i test non p
 ## Soglie di coverage attuali
 
 - **Backend**: soglia 90% — attuale ~95%
-- **Frontend**: soglia 70% linee, 65% branch/funzioni — attuale ~81% linee, ~80% statement, ~73% branch, ~72% funzioni
+- **Frontend**: soglia 85% linee, 83% statement, 78% funzioni, 78% branch — attuale ~87,9% linee, ~86,4% statement, ~86,1% funzioni, ~82% branch
 
-Le soglie hanno un margine rispetto alla copertura reale: l'obiettivo è che la CI fallisca se la copertura *peggiora* in modo significativo, non che debba essere aggiornata a ogni piccola modifica. Si alzeranno gradualmente durante la revisione del codice.
+Le soglie hanno un margine rispetto alla copertura reale: l'obiettivo è che la CI fallisca se la copertura *peggiora* in modo significativo, non che debba essere aggiornata a ogni piccola modifica. Sono state alzate gradualmente durante la revisione del codice (vedi `frontend/vite.config.js` per i valori sorgente e il dettaglio dei moduli esclusi).
+
+## Licenza
+
+Distribuito con licenza MIT — vedi [`LICENSE`](../LICENSE) alla radice della repository.
 
 ---
 

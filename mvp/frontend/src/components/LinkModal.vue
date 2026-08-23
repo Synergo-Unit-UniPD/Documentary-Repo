@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
+// Modale unico per inserimento e modifica di un link (R29-F-O, R30-F-O):
+// isEditing distingue le due modalità (titolo, campi precompilati con
+// initialUrl/initialLabel, pulsante "Rimuovi link" per R31-F-O visibile
+// solo in modifica).
 const props = defineProps<{
   initialUrl?: string
   initialLabel?: string
@@ -17,6 +21,9 @@ const url = ref(props.initialUrl ?? '')
 const label = ref(props.initialLabel ?? '')
 
 function submit(): void {
+  // L'URL è obbligatorio (un link senza indirizzo non ha senso); la label
+  // è invece facoltativa nel form, ma non nel Markdown risultante: se
+  // lasciata vuota si usa l'URL stesso come testo visualizzato.
   if (!url.value.trim()) return
   emit('submit', url.value.trim(), label.value.trim() || url.value.trim())
 }

@@ -14,10 +14,15 @@ defineProps<{
 }>()
 
 const emit = defineEmits<{
+  /** Applica una formattazione (grassetto, corsivo, ecc.) alla selezione corrente. */
   format: [type: FormatType]
+  /** Applica un'operazione di elenco (puntato/numerato o cambio livello) alla selezione. */
   list: [operation: ListOperationType, listType?: ListType]
+  /** Applica un'operazione sulla tabella corrente (inserimento/rimozione riga o colonna). */
   'table-op': [operation: TableOperationType]
+  /** Apre il modale per l'inserimento di un link. */
   'insert-link': []
+  /** Apre il modale per l'inserimento di una tabella. */
   'insert-table': []
   copy: []
   cut: []
@@ -27,7 +32,9 @@ const emit = defineEmits<{
   save: []
   open: []
   export: [format: 'pdf' | 'html' | 'json']
+  /** Richiede l'esecuzione di un'operazione AI (riassunto, traduzione, ecc.). */
   'ai-operation': [type: string]
+  /** Cambia la modalità di visualizzazione (solo editor / split / solo anteprima). */
   'view-mode': [mode: ViewMode]
 }>()
 
@@ -241,7 +248,7 @@ onBeforeUnmount(() => document.removeEventListener('click', handleDocumentClick)
       <div class="tool-group">
         <span class="group-label">Link e tabelle</span>
         <div class="group-buttons">
-          <button class="tool-button square" title="Inserisci link" @click="emit('insert-link')">&#128279;</button>
+          <button class="tool-button square" title="Gestisci link" @click="emit('insert-link')">&#128279;</button>
           <button class="tool-button square" title="Inserisci tabella" @click="emit('insert-table')">&#9638;</button>
 
           <div class="dropdown">
