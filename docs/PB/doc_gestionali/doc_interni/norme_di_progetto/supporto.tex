@@ -426,8 +426,10 @@ A partire dallo Sprint 9, la repository ufficiale del progetto assume il nome
 Essa contiene:
 
 \begin{itemize}
+    \item instruzioni per la CI
     \item documentazione di progetto;
     \item codice del Proof of Concept;
+    \item documentazione del MVP;
     \item script di automazione;
     \item configurazioni di supporto;
     \item asset condivisi;
@@ -438,17 +440,26 @@ La struttura principale della repository è:
 
 \begin{verbatim}
 Second-Brain/
++-- .github/
 +-- docs/
 +-- poc/
+|   +-- frontend/
+|   +-- backend/
++-- mvp
 |   +-- frontend/
 |   +-- backend/
 +-- scripts/
 \end{verbatim}
 
+La cartella \texttt{.github/} contiene la checklist e le instruzioni per la CI
+
 La cartella \texttt{docs/} contiene la documentazione di progetto.
 
 La cartella \texttt{poc/} contiene il codice del Proof of Concept, separando
 frontend e backend.
+
+La cartella \texttt{mvp/} contine il codice del MVP suddiviso in 
+frontend, backend e test.
 
 La cartella \texttt{scripts/} contiene gli script di automazione già adottati dal
 gruppo, inclusi quelli a supporto del Glossario e del Piano di Qualifica.
@@ -739,6 +750,8 @@ Per i commit documentali devono essere utilizzati i seguenti scope\textsubscript
     \item \texttt{veN}: Verbale esterno numero \texttt{N};
     \item \texttt{ddbN}: Diario di Bordo numero \texttt{N};
     \item \texttt{sito}: sito documentale.
+    \item \texttt{st}: Specifica tecnica.
+    \item \texttt{mu}: Manuale utente.
 \end{itemize}
 
 Lo scope \texttt{adr} indica l'Analisi dei Requisiti nel contesto dei commit
@@ -779,6 +792,22 @@ In fase PB, la \textit{Pull Request Policy} viene rafforzata:
     \item È obbligatoria l'approvazione di almeno \textbf{1 reviewer} diverso dall'autore del codice. 
     \item Il reviewer ha l'esplicito compito di verificare non solo la logica funzionale, ma anche il rigoroso rispetto delle regole di dipendenza tra gli strati architetturali.
 \end{itemize}
+
+% ------------------------------------------------
+
+\paragraph{Pull Request per branch ci codice}
+
+Per i branch di codice la prassi in ordine è:
+
+\begin{itemize}
+    \item creazione del branch per lo sviluppo
+    \item creare la PR in draft verso il main
+    \item prima di ogni push bisogna fare i test in locale
+    \item se si passsano i test in locale si fa il push e la PR in draft fa partire la CI
+    \item terminato lo sviluppo e compilata la checklist, si mette in ready per la review
+    \item il verificatore fa la review e approva solo se tutto è in verde nella pipeline
+\end{itemize}
+
 
 % ------------------------------------------------
 

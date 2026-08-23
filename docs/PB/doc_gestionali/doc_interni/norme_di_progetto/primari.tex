@@ -852,7 +852,7 @@ Tutti i membri, nel ruolo di Programmatore, devono attenersi rigorosamente alle 
 Integrazione delle unità software nel "software item" completo e relativi test.
 
 \paragraph{Workflow Git e CI/CD}
-L'integrazione delle unità software avviene attraverso il modello di trunk-based development, nel quale le modifiche apportate ai vari moduli confluiscono nel branch stabile main esclusivamente tramite Pull Request verificate. A partire dagli Sprint 12 e 13, viene avviato il setup dell'ambiente di Continuous Integration/Continuous Deployment (CI/CD) per automatizzare i processi di build e verifica.
+L'integrazione delle unità software avviene attraverso il modello di trunk-based development, nel quale le modifiche apportate ai vari moduli confluiscono nel branch, dove prima di fare la push verso il main vengono fatti i test in locale e solo una volta passati avviene il push e la PR in draft fa partire la CI; infine, a termine dello sviluppo, viene compilata la checklist e solo dopo avviene l'azzione di verifica del verificatore, che accettera solo se è tutto in verde nella pipeline. A partire dagli Sprint 12 e 13, viene avviato il setup dell'ambiente di Continuous Integration/Continuous Deployment (CI/CD) per automatizzare i processi di build e verifica.
 
 \paragraph{Test di Integrazione (TI)}
 L'efficacia dell'unione dei moduli è validata tramite appositi Test di Integrazione (TI) volti a controllare la comunicazione tra le unità (es. frontend e backend), la cui pianificazione di dettaglio è prevista per la fase di Product Baseline (PB).
