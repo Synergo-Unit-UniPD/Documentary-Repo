@@ -73,18 +73,18 @@ Verificano il corretto funzionamento delle singole unità logiche del codice, is
         \hline
         components -- componenti Vue (modali, TopBar) & 6 & 68 & S \\
         \hline
-        test trasversali (smoke\textsubscript{G}, regressione Undo/Redo) & 3 & 32 & S \\
+        test trasversali (smoke\textsubscript{G}, regressione Undo/Redo) & 3 & 27 & S \\
         \hline
-        \textbf{Totale frontend} & \textbf{45} & \textbf{298} & \textbf{298/298 S} \\
+        \textbf{Totale frontend} & \textbf{45} & \textbf{293} & \textbf{293/293 S} \\
         \hline
         \rowcolor{primarycolor!10}
-        \textbf{Totale complessivo TU} & \textbf{57} & \textbf{356} & \textbf{356/356 S} \\
+        \textbf{Totale complessivo TU} & \textbf{57} & \textbf{351} & \textbf{351/351 S} \\
         \hline
     \end{tabularx}
     \caption{Test di Unità -- riepilogo per componente (esecuzione verificata alla data di redazione)}
 \end{table}
-
-Copertura di codice risultante: \textbf{95\%} sul backend (soglia CI 90\%) e \textbf{89,75\% linee / 88,51\% statement / 89,72\% funzioni / 83,61\% branch} sul frontend, calcolata sull'intera suite (TU + Test di Sistema, ora eseguiti insieme -- si veda la nota di integrazione sopra), a fronte di una soglia CI del 70\% complessivo e dell'85\%/78\%/78\% sulle soglie puntuali di R1-Q-O: entrambe verificate rieseguendo \texttt{make coverage} in sede di stesura del documento.
+ 
+Copertura di codice risultante: \textbf{95\%} sul backend (soglia CI 90\%) e \textbf{89,75\% linee / 88,51\% statement / 89,72\% funzioni / 83,76\% branch} sul frontend (soglie CI rispettivamente 85\%/83\%/78\%/78\%), entrambe verificate rieseguendo \texttt{make coverage} in sede di stesura del documento.
 
 \subsection{Test di integrazione (TI)}
 I test di integrazione verificano la corretta comunicazione tra i moduli del sistema, senza sostituire dipendenze interne (a differenza dei TU).
