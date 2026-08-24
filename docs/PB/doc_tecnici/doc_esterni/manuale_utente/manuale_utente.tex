@@ -3,23 +3,21 @@
 % 1. RICHIAMA LA CONFIGURAZIONE CONDIVISA
 \input{../../../../template/shared/configurazione.tex}
 
-\setcounter{secnumdepth}{4}
-\setcounter{tocdepth}{4}
-
 % 2. CONFIGURAZIONI LOGHI E IMMAGINI
 \graphicspath{
     {../../../../template/shared/loghi/}
+    {./img/} % Cartella per gli screenshot dell'interfaccia
 }
 
 \hypersetup{
-	pdftitle={Piano di Qualifica - Synergo Unit},
+	pdftitle={Manuale Utente - Synergo Unit},
 	pdfauthor={Synergo Unit}
 }
 
 \pagestyle{fancy}
 \fancyhf{} 
 \fancyhead[L]{\textcolor{primarycolor}{\textbf{Synergo Unit}}}
-\fancyhead[R]{Piano di Qualifica v2.0.0 - 2026-08-24}
+\fancyhead[R]{Manuale Utente v1.0.0 - 2026-08-24}
 \fancyfoot[C]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
@@ -45,22 +43,24 @@
 	\newpage
 	\listoffigures
 	\newpage
-	\listoftables
-	\newpage
 	
 	% Contenuto diviso in moduli
-	\input{introduzione.tex}
+	\input{introduzione_e_requisiti.tex}
+	
+	\input{installazione_configurazione.tex}
+
+	
+	\input{interfaccia_utente.tex}
+
+	
+	\input{gestione_note.tex}
+
+	\input{editor_markdown.tex}
+
+
+	\input{funzionalita_ai.tex}
 	\newpage
 	
-	\input{qualita_processo.tex}
-	\newpage
-	
-	\input{qualita_prodotto.tex}
-	\newpage
-	
-	\input{specifica_test.tex}
-	\newpage
-	
-	\input{resoconto_e_miglioramento.tex}
+	\input{risoluzione_problemi.tex}
 	
 \end{document}

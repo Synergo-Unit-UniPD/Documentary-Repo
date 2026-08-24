@@ -10,65 +10,113 @@ Il suo scopo è fornire una stima aggiornata del costo complessivo del progetto,
 
 \subsection{Analisi scostamenti}
 
-L'avanzamento del progetto ha evidenziato uno scostamento nella distribuzione delle ore tra i ruoli rispetto alla preventivazione iniziale. In particolare, il carico associato alle attività di Amministrazione è risultato superiore a quanto previsto, a causa della necessità di mantenere aggiornati continuativamente gli strumenti di gestione, la documentazione di progetto, il tracciamento delle attività, i consuntivi di sprint e le risorse residue.
+Il monitoraggio delle ore residue per ruolo, aggiornato al termine dello
+Sprint 19, evidenzia una distribuzione non uniforme degli scostamenti rispetto
+alla preventivazione iniziale:
 
-Parallelamente, l'andamento delle attività ha permesso di rivedere la
-distribuzione delle ore residue tra i ruoli, mantenendo il costo complessivo
-stimato entro il budget iniziale. Lo scostamento rilevato riguarda quindi
-principalmente la distribuzione interna delle ore tra ruoli e membri del gruppo,
-non il superamento del budget economico preventivato.
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{l r r}
+\toprule
+\textbf{Ruolo} & \textbf{Ore residue} & \textbf{Costo residuo} \\
+\midrule
+Responsabile   & 23{,}33 & 700{,}00~\euro \\
+Amministratore & \color{red}{-43{,}83} & \color{red}{-876{,}67~\euro} \\
+Analista       & 54{,}67 & 1.366{,}67~\euro \\
+Progettista    & 98{,}17 & 2.454{,}17~\euro \\
+Programmatore  & 42{,}00 & 630{,}00~\euro \\
+Verificatore   & 51{,}17 & 767{,}50~\euro \\
+\midrule
+\textbf{Totale} & \textbf{225{,}51} & \textbf{5.041{,}67~\euro} \\
+\bottomrule
+\end{tabular}
+\caption{Ore e costo residuo per ruolo dopo lo Sprint 19}
+\end{table}
 
-La scelta di mantenere invariato il costo complessivo stimato deriva dalla
-capacità del gruppo di assorbire gli scostamenti osservati attraverso una
-redistribuzione delle ore residue tra ruoli e attività. Gli scostamenti rilevati
-non compromettono pertanto il raggiungimento degli obiettivi previsti né la
-sostenibilità economica del progetto.
+Il ruolo di Amministratore\textsubscript{G} è l'unico a presentare un residuo
+negativo (-43,83 ore, pari a -876,67~\euro): il gruppo ha impiegato più ore di
+quelle preventivate per mantenere aggiornati gli strumenti di gestione, la
+documentazione di progetto, il tracciamento delle attività e i consuntivi di
+sprint. Questo scostamento, già rilevato in fase RTB\textsubscript{G} (Sez.
+RR/RO6 dell'Analisi dei Rischi), è di origine prevalentemente RTB: nel periodo
+di implementazione dell'MVP (Sprint 12 -- Sprint 19), la somma dei
+$\Delta$~ore di Amministratore sui singoli sprint è pari a -0,01 ore, cioè
+sostanzialmente nulla. Il deficit non si è quindi aggravato durante la PB, ma
+nemmeno riassorbito: resta un debito ereditato dalla RTB, non un problema
+ricorrente della fase corrente.
+
+Nello stesso periodo (Sprint 12 -- Sprint 19) emergono due scostamenti minori
+e coerenti con la natura della fase: Progettista e Programmatore registrano
+entrambi un $\Delta$ cumulato di +1,00 ora sugli otto sprint, riconducibile
+all'intensificarsi delle attività di progettazione architetturale e codifica
+dell'MVP; Verificatore registra un $\Delta$ cumulato di +0,16 ore, segno che
+il carico aggiuntivo dovuto all'introduzione della suite di test automatizzati
+e della pipeline di CI\textsubscript{G} è stato assorbito senza scostamenti
+significativi. Analista e Responsabile risultano invece sostanzialmente in
+linea con il preventivo nello stesso periodo ($\Delta$ cumulato pari a 0,00
+ore per entrambi), poiché le attività di analisi si sono consolidate dopo la
+validazione RTB dell'Analisi dei Requisiti.
+
+Il residuo complessivo (225,51 ore, pari a 5.041,67~\euro) resta ampiamente
+positivo: il deficit di Amministratore viene compensato dai residui positivi
+degli altri ruoli, in particolare Progettista e Analista, senza che ciò
+comporti un superamento del budget economico complessivo preventivato in fase
+di candidatura.
 
 \subsection{Ripianificazione}
 
-A seguito degli scostamenti osservati, il gruppo ha aggiornato la pianificazione
-delle attività rimanenti mantenendo invariato il vincolo economico complessivo
-definito nel preventivo iniziale.
+A seguito degli scostamenti descritti, il gruppo ha ribilanciato nel corso
+della PB\textsubscript{G} la distribuzione delle ore residue tra ruoli,
+mantenendo invariato il vincolo economico complessivo definito nel preventivo
+iniziale. In particolare:
+\begin{itemize}
+    \item il debito di ore di Amministratore ereditato dalla RTB\textsubscript{G}
+    non è stato ricostituito durante la PB (delta netto sostanzialmente nullo
+    su Sprint 12 -- Sprint 19), grazie a una più attenta pianificazione delle
+    attività amministrative in sede di Sprint Planning\textsubscript{G};
+    \item le ore residue del ruolo di Analista, resesi disponibili dal
+    consolidamento dell'Analisi dei Requisiti dopo la validazione RTB, sono
+    state impiegate nella pianificazione delle attività rimanenti, con
+    particolare attenzione alla verifica e all'aggiornamento della
+    documentazione tecnica per la PB (Specifica Tecnica, Manuale Utente);
+    \item i lievi sovraccarichi di Progettista e Programmatore, coerenti con
+    l'intensità delle attività di progettazione e codifica dell'MVP\textsubscript{G},
+    sono stati assorbiti dal residuo positivo accumulato su questi ruoli
+    (rispettivamente 98,17 e 42,00 ore residue a fine Sprint 19) senza
+    necessità di ulteriori interventi correttivi.
+\end{itemize}
 
-La ripianificazione prevede un ribilanciamento delle ore residue tra ruoli,
-tenendo conto dell'effettivo andamento del progetto e delle attività ancora da
-completare. In particolare, viene riconosciuta la necessità di pianificare con
-maggiore attenzione le attività di Amministrazione, necessarie per il
-coordinamento operativo, la gestione degli strumenti, l'aggiornamento della
-documentazione e il monitoraggio delle risorse.
+Per gli sprint rimanenti fino alla Revisione PB (2026-09-10), il gruppo
+continua a monitorare le ore residue per ruolo al termine di ogni sprint,
+confermando il budget iniziale come vincolo massimo non superabile. Il
+residuo disponibile (225,51 ore, 5.041,67~\euro) è ritenuto sufficiente per
+completare le attività pianificate: redazione finale della documentazione
+di PB, eventuali correzioni emerse dalla Validazione MVP\textsubscript{G} con
+la proponente e preparazione della Revisione PB, senza necessità di
+un'ulteriore ripianificazione strutturale.
 
-Contestualmente, parte delle ore residue inizialmente assegnate al ruolo di
-Analista risultano non più necessarie nella misura prevista in fase di
-candidatura, poiché le attività di analisi per la RTB\textsubscript{G} sono state
-consolidate. Tali risorse vengono quindi riconsiderate nella pianificazione delle
-attività rimanenti, con particolare attenzione alla verifica, alla gestione e alla
-preparazione della Product Baseline\textsubscript{G}.
-
-Tale ribilanciamento non comporta un aumento del costo totale stimato. Il gruppo
-continua a considerare il budget iniziale come vincolo non superabile e mantiene
-il monitoraggio delle ore residue per ruolo e per componente al termine di ogni
-sprint.
-
-Eventuali ulteriori scostamenti verranno valutati nelle successive
+Eventuali ulteriori scostamenti verranno comunque valutati nelle successive
 retrospettive e recepiti nel Preventivo a Finire, aggiornando la stima delle
 risorse residue senza modificare il perimetro economico complessivo del progetto.
 
-Le principali azioni correttive previste sono:
+Le azioni correttive adottate durante la PB, confermate efficaci dai dati di
+Sprint 12 -- Sprint 19, sono:
 \begin{itemize}
     \item maggiore attenzione alla pianificazione delle attività amministrative e
-    di gestione, evitando che vengano considerate attività accessorie o non
-    preventivate;
-    \item maggiore controllo delle stime durante lo Sprint Planning\textsubscript{G};
+    di gestione durante lo Sprint Planning, evitando che vengano considerate
+    attività accessorie o non preventivate;
     \item monitoraggio più frequente delle ore effettive tramite gli strumenti di
-    consuntivazione;
+    consuntivazione, con verifica del residuo per ruolo al termine di ogni sprint;
     \item mantenimento del budget complessivo iniziale come vincolo massimo non
-    superabile.
+    superabile, anche in presenza di scostamenti localizzati su singoli ruoli.
 \end{itemize}
 
 Tali azioni risultano coerenti con le strategie di mitigazione definite nel
-Piano di Progetto e sono finalizzate a ridurre il rischio di ulteriori
-scostamenti nella distribuzione delle ore, preservando il rispetto delle scadenze
-e del budget complessivo.
+Piano di Progetto e hanno permesso di stabilizzare lo scostamento di
+Amministratore durante la PB, pur senza riassorbire il debito ereditato dalla
+RTB, preservando in ogni caso il rispetto delle scadenze e del budget
+complessivo.
 
 \subsection{Quadro economico aggiornato}
 
@@ -80,13 +128,13 @@ e del budget complessivo.
 \textbf{Voce} & \textbf{Importo} \\
 \midrule
 Budget iniziale preventivato  & 11.665{,}00~\euro \\
-Costo sostenuto finora        & 6.332{,}49~\euro \\
-Costo stimato per completare  & 5.332{,}51~\euro \\
+Costo sostenuto finora        & 6.623{,}32~\euro \\
+Costo stimato per completare  & 5.041{,}68~\euro \\
 \midrule
 \textbf{Nuovo totale stimato} & \textbf{11.665{,}00~\euro} \\
 \bottomrule
 \end{tabular}
-\caption{Quadro economico aggiornato del Preventivo a Finire dopo lo Sprint 18}
+\caption{Quadro economico aggiornato del Preventivo a Finire dopo lo Sprint 19}
 \end{table}
 
-Al termine dello Sprint 18 risultano sostenuti 6.332{,}49~\euro, pari a circa il 54{,}3\% del budget complessivo preventivato. Le risorse residue, pari a 5.332{,}51~\euro, sono ritenute sufficienti per completare le attività pianificate senza superare il costo massimo accettato in fase di candidatura.
+Al termine dello Sprint 19 risultano sostenuti 6.623{,}32~\euro, pari a circa il 56{,}8\% del budget complessivo preventivato. Le risorse residue, pari a 5.041{,}68~\euro, sono ritenute sufficienti per completare le attività pianificate senza superare il costo massimo accettato in fase di candidatura.

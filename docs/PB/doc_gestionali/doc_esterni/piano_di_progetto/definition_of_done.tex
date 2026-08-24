@@ -7,7 +7,7 @@
 La Definition of Done\textsubscript{G} definisce i criteri minimi che un task deve
 soddisfare per essere considerato completato.
 
-I criteri operativi della Definition of Done sono definiti nelle \link{https://synergo-unit-unipd.github.io/Second-Brain/docs/RTB/doc_gestionali/doc_interni/norme_di_progetto/norme_di_progetto.pdf}{Norme di
+I criteri operativi della Definition of Done sono definiti nelle \link{https://synergo-unit-unipd.github.io/Second-Brain/docs/PB/doc_gestionali/doc_interni/norme_di_progetto/norme_di_progetto.pdf}{Norme di
 Progetto}, all'interno del processo di Verifica. Nel presente Piano di Progetto
 la DoD viene richiamata come criterio di chiusura dei task e degli sprint,
 evitando di duplicare regole operative già normate nel way of working del
@@ -18,14 +18,20 @@ Un task è considerato \textit{Done} solo se soddisfa:
 \item i criteri comuni previsti dalle Norme di Progetto;
 \item i criteri specifici per task documentali, nel caso di attività di
 documentazione;
-\item i criteri specifici per task di implementazione del Proof of
-Concept\textsubscript{G}, nel caso di attività di sviluppo del PoC.
+\item i criteri specifici per task di implementazione, nel caso di attività
+di sviluppo del prodotto software.
 \end{itemize}
 
 La verifica del rispetto della DoD avviene durante la Pull Request\textsubscript{G}
 e viene confermata in Sprint Review\textsubscript{G}. Eventuali task non
 completati vengono riportati nel backlog\textsubscript{G} e motivati nel
 verbale interno dello sprint.
+
+I criteri per i task di implementazione sono aumentati passando dalla RTB\textsubscript{G}
+alla PB\textsubscript{G}, coerentemente con la maturità crescente richiesta al
+prodotto (Proof of Concept\textsubscript{G} in RTB, Minimum Viable
+Product\textsubscript{G} in PB): la Sezione~\ref{sec:dod-task} descrive i
+criteri correntemente in vigore.
 
 % ── 4.1 Livello task ────────────────────────────────────────────────────────
 \subsection{Livello task}
@@ -39,11 +45,19 @@ che eventuali link e riferimenti interni siano verificati, che il Glossario sia
 aggiornato se necessario e che la Pull Request abbia ricevuto almeno una review
 positiva da un Verificatore\textsubscript{G} diverso dall'autore della modifica.
 
-Per i task di implementazione del PoC, il completamento richiede che il codice
-sia coerente con lo scope della issue, che il PoC si avvii localmente, che non
-siano presenti errori evidenti in console, credenziali, token o file sensibili
-nel repository\textsubscript{G}, e che eventuali modifiche rilevanti siano
-riflesse nei documenti coinvolti.
+Per i task di implementazione, il completamento richiede che il codice sia
+coerente con lo scope della issue e con le Norme di Progetto (naming,
+formattazione, organizzazione dei moduli), che non siano presenti errori
+evidenti in console, credenziali, token o file sensibili nel
+repository\textsubscript{G}, che eventuali modifiche rilevanti siano riflesse
+nei documenti coinvolti (in particolare Specifica Tecnica e tracciamento
+componenti--requisiti) e che siano stati scritti test automatizzati per la
+funzionalità introdotta o modificata, almeno di unità e, quando la modifica
+coinvolge più componenti architetturali, anche di integrazione o di sistema.
+La pipeline di CI\textsubscript{G} (\texttt{make ci}: analisi statica, type
+check, test e verifica delle soglie di copertura) deve risultare verde prima
+del merge; la Pull Request deve inoltre aver ricevuto almeno una review
+positiva da un Verificatore diverso dall'autore della modifica.
 
 % ── 4.2 Livello sprint ──────────────────────────────────────────────────────
 \subsection{Livello sprint}
