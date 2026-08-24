@@ -19,7 +19,7 @@ import { TextRange } from "../frontend/src/model/TextRange";
 
 const mockNoteService: NoteService = {
   save: vi.fn(),
-  open: vi.fn().mockResolvedValue(new Note("1", ""))
+  open: vi.fn().mockResolvedValue(new Note("1", "")),
 };
 
 function createDeferred<T>() {
@@ -35,7 +35,9 @@ function createDeferred<T>() {
 function makeMockAIService(): AIService {
   return {
     requestOperation: vi.fn(),
-    listOperations: vi.fn().mockResolvedValue(["summarize", "translate", "rewrite"]),
+    listOperations: vi
+      .fn()
+      .mockResolvedValue(["summarize", "translate", "rewrite"]),
   };
 }
 
@@ -64,7 +66,11 @@ describe("Generazione riscrittura", () => {
     void model.requestAIOperation("rewrite", "testo selezionato", {});
 
     expect(aiService.requestOperation).toHaveBeenCalledTimes(1);
-    expect(aiService.requestOperation).toHaveBeenCalledWith("rewrite", "testo selezionato", {});
+    expect(aiService.requestOperation).toHaveBeenCalledWith(
+      "rewrite",
+      "testo selezionato",
+      {},
+    );
   });
 });
 
@@ -124,7 +130,10 @@ describe("Interruzione elaborazione riscrittura", () => {
 describe("Visualizzazione proposta riscrittura", () => {
   it("porta lo stato a ProposalReady con la proposta restituita dall'LLM", async () => {
     const aiService = makeMockAIService();
-    const proposal = new Proposal("Questa è la riscrittura generata.", "rewrite");
+    const proposal = new Proposal(
+      "Questa è la riscrittura generata.",
+      "rewrite",
+    );
     (aiService.requestOperation as any).mockResolvedValue(proposal);
 
     const model = new AIRequestModel(aiService);
@@ -136,7 +145,9 @@ describe("Visualizzazione proposta riscrittura", () => {
     const state = model.getAIState();
     expect(state).toBeInstanceOf(ProposalReadyState);
     expect((state as ProposalReadyState).proposal).toBe(proposal);
-    expect((state as ProposalReadyState).proposal.content).toBe("Questa è la riscrittura generata.");
+    expect((state as ProposalReadyState).proposal.content).toBe(
+      "Questa è la riscrittura generata.",
+    );
     expect(observer.update).toHaveBeenCalledTimes(2);
   });
 });
@@ -150,13 +161,13 @@ describe("Accettazione proposta riscrittura", () => {
     const noteModel = new NoteModel(
       new MarkdownContentEditor("Questo è il testo originale"),
       new CommandHistory(),
-      mockNoteService
+      mockNoteService,
     );
 
     const aiView = {
       attach: vi.fn(),
       getLastRequestedOperation: vi.fn(),
-      getLastProposalAction: vi.fn()
+      getLastProposalAction: vi.fn(),
     } as unknown as AIPanelView;
 
     const model = new AIRequestModel(aiService);
@@ -168,14 +179,20 @@ describe("Accettazione proposta riscrittura", () => {
       type: "rewrite",
       text: undefined,
       params: {},
-      range: selectionRange
+      range: selectionRange,
     });
 
+    // Vedi nota in TS13: la soglia minima di ~2s di ProcessingState (R2-P-O)
+    // richiede di avanzare i fake timer, non un semplice microtask flush.
+    vi.useFakeTimers();
     controller.update();
-    await Promise.resolve();
+    await vi.advanceTimersByTimeAsync(2100);
+    vi.useRealTimers();
 
     aiView.getLastRequestedOperation = vi.fn().mockReturnValue(undefined);
-    aiView.getLastProposalAction = vi.fn().mockReturnValue(ProposalActionType.ACCEPT);
+    aiView.getLastProposalAction = vi
+      .fn()
+      .mockReturnValue(ProposalActionType.ACCEPT);
 
     controller.update();
 
@@ -213,7 +230,9 @@ describe("Rigenerazione proposta riscrittura", () => {
 
     const model = new AIRequestModel(aiService);
     await model.requestAIOperation("rewrite", "testo selezionato", {});
-    expect((model.getAIState() as ProposalReadyState).proposal).toBe(firstProposal);
+    expect((model.getAIState() as ProposalReadyState).proposal).toBe(
+      firstProposal,
+    );
 
     model.rejectProposal();
     expect(model.getAIState()).toBeInstanceOf(IdleState);
@@ -221,16 +240,24 @@ describe("Rigenerazione proposta riscrittura", () => {
     await model.requestAIOperation("rewrite", "testo selezionato", {});
 
     expect(aiService.requestOperation).toHaveBeenCalledTimes(2);
-    expect(aiService.requestOperation).toHaveBeenNthCalledWith(2, "rewrite", "testo selezionato", {});
-    expect((model.getAIState() as ProposalReadyState).proposal).toBe(secondProposal);
+    expect(aiService.requestOperation).toHaveBeenNthCalledWith(
+      2,
+      "rewrite",
+      "testo selezionato",
+      {},
+    );
+    expect((model.getAIState() as ProposalReadyState).proposal).toBe(
+      secondProposal,
+    );
   });
 });
-
 
 describe("Visualizzazione errore generazione riscrittura", () => {
   it("porta lo stato a Error quando il servizio LLM restituisce un errore", async () => {
     const aiService = makeMockAIService();
-    (aiService.requestOperation as any).mockRejectedValue(new Error("Servizio LLM non disponibile"));
+    (aiService.requestOperation as any).mockRejectedValue(
+      new Error("Servizio LLM non disponibile"),
+    );
 
     const model = new AIRequestModel(aiService);
     const observer = { update: vi.fn() };

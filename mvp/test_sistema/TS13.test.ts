@@ -1,6 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
 
-
 import { AIController } from "../frontend/src/controller/AIController";
 import { AIPanelView } from "../frontend/src/view/AIPanelView";
 import { NoteModel } from "../frontend/src/model/NoteModel";
@@ -20,7 +19,7 @@ import { TextRange } from "../frontend/src/model/TextRange";
 
 const mockNoteService: NoteService = {
   save: vi.fn(),
-  open: vi.fn().mockResolvedValue(new Note("1", ""))
+  open: vi.fn().mockResolvedValue(new Note("1", "")),
 };
 
 function createDeferred<T>() {
@@ -36,7 +35,9 @@ function createDeferred<T>() {
 function makeMockAIService(): AIService {
   return {
     requestOperation: vi.fn(),
-    listOperations: vi.fn().mockResolvedValue(["summarize", "translate", "rewrite"]),
+    listOperations: vi
+      .fn()
+      .mockResolvedValue(["summarize", "translate", "rewrite"]),
   };
 }
 
@@ -66,7 +67,11 @@ describe("Generazione riassunto", () => {
     void model.requestAIOperation("summarize", "testo selezionato", {});
 
     expect(aiService.requestOperation).toHaveBeenCalledTimes(1);
-    expect(aiService.requestOperation).toHaveBeenCalledWith("summarize", "testo selezionato", {});
+    expect(aiService.requestOperation).toHaveBeenCalledWith(
+      "summarize",
+      "testo selezionato",
+      {},
+    );
   });
 });
 
@@ -126,7 +131,10 @@ describe("Interruzione elaborazione riassunto", () => {
 describe("Visualizzazione proposta riassunto", () => {
   it("porta lo stato a ProposalReady con la proposta restituita dall'LLM", async () => {
     const aiService = makeMockAIService();
-    const proposal = new Proposal("Questo è il riassunto generato.", "summarize");
+    const proposal = new Proposal(
+      "Questo è il riassunto generato.",
+      "summarize",
+    );
     (aiService.requestOperation as any).mockResolvedValue(proposal);
 
     const model = new AIRequestModel(aiService);
@@ -138,7 +146,9 @@ describe("Visualizzazione proposta riassunto", () => {
     const state = model.getAIState();
     expect(state).toBeInstanceOf(ProposalReadyState);
     expect((state as ProposalReadyState).proposal).toBe(proposal);
-    expect((state as ProposalReadyState).proposal.content).toBe("Questo è il riassunto generato.");
+    expect((state as ProposalReadyState).proposal.content).toBe(
+      "Questo è il riassunto generato.",
+    );
     expect(observer.update).toHaveBeenCalledTimes(2);
   });
 });
@@ -152,13 +162,13 @@ describe("Accettazione proposta riassunto", () => {
     const noteModel = new NoteModel(
       new MarkdownContentEditor("Questo è il testo originale"),
       new CommandHistory(),
-      mockNoteService
+      mockNoteService,
     );
 
     const aiView = {
       attach: vi.fn(),
       getLastRequestedOperation: vi.fn(),
-      getLastProposalAction: vi.fn()
+      getLastProposalAction: vi.fn(),
     } as unknown as AIPanelView;
 
     const model = new AIRequestModel(aiService);
@@ -170,15 +180,25 @@ describe("Accettazione proposta riassunto", () => {
       type: "summarize",
       text: undefined,
       params: {},
-      range: selectionRange
+      range: selectionRange,
     });
 
+    // La richiesta AI parte con lo stato ProcessingState, che per R2-P-O
+    // resta visibile per almeno ~2s reali (AIRequestModel.minProcessingDurationMs)
+    // anche se l'LLM risponde prima. Un singolo `await Promise.resolve()` flush
+    // solo un tick di microtask e non è sufficiente a raggiungere ProposalReadyState:
+    // si usano i fake timer per avanzare deterministicamente oltre quella soglia,
+    // senza rallentare realmente il test.
+    vi.useFakeTimers();
     controller.update();
-    await Promise.resolve();
+    await vi.advanceTimersByTimeAsync(2100);
+    vi.useRealTimers();
 
     aiView.getLastRequestedOperation = vi.fn().mockReturnValue(undefined);
 
-    aiView.getLastProposalAction = vi.fn().mockReturnValue(ProposalActionType.ACCEPT);
+    aiView.getLastProposalAction = vi
+      .fn()
+      .mockReturnValue(ProposalActionType.ACCEPT);
 
     controller.update();
 
@@ -186,9 +206,6 @@ describe("Accettazione proposta riassunto", () => {
     expect(model.getAIState()).toBeInstanceOf(IdleState);
   });
 });
-
-
-
 
 describe("Rifiuto proposta riassunto", () => {
   it("elimina la proposta visualizzata e torna allo stato Idle senza alterare la nota", async () => {
@@ -219,7 +236,9 @@ describe("Rigenerazione proposta riassunto", () => {
 
     const model = new AIRequestModel(aiService);
     await model.requestAIOperation("summarize", "testo selezionato", {});
-    expect((model.getAIState() as ProposalReadyState).proposal).toBe(firstProposal);
+    expect((model.getAIState() as ProposalReadyState).proposal).toBe(
+      firstProposal,
+    );
 
     model.rejectProposal();
     expect(model.getAIState()).toBeInstanceOf(IdleState);
@@ -227,15 +246,24 @@ describe("Rigenerazione proposta riassunto", () => {
     await model.requestAIOperation("summarize", "testo selezionato", {});
 
     expect(aiService.requestOperation).toHaveBeenCalledTimes(2);
-    expect(aiService.requestOperation).toHaveBeenNthCalledWith(2, "summarize", "testo selezionato", {});
-    expect((model.getAIState() as ProposalReadyState).proposal).toBe(secondProposal);
+    expect(aiService.requestOperation).toHaveBeenNthCalledWith(
+      2,
+      "summarize",
+      "testo selezionato",
+      {},
+    );
+    expect((model.getAIState() as ProposalReadyState).proposal).toBe(
+      secondProposal,
+    );
   });
 });
 
 describe("Visualizzazione errore generazione riassunto", () => {
   it("porta lo stato a Error quando il servizio LLM restituisce un errore", async () => {
     const aiService = makeMockAIService();
-    (aiService.requestOperation as any).mockRejectedValue(new Error("Servizio LLM non disponibile"));
+    (aiService.requestOperation as any).mockRejectedValue(
+      new Error("Servizio LLM non disponibile"),
+    );
 
     const model = new AIRequestModel(aiService);
     const observer = { update: vi.fn() };
