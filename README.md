@@ -33,4 +33,13 @@ Anno Accademico 2025/2026
 
 ## Licenza
 
-Il materiale contenuto nella repository è prodotto per finalità didattiche nell'ambito del corso di Ingegneria del Software dell'Università degli Studi di Padova.
+Il contenuto della repository ha ambiti di licenza distinti:
+
+- **`mvp/`** (codice sorgente) e le sottocartelle **`doc_tecnici/`** all'interno
+  di `docs/RTB` e `docs/PB` (Specifica Tecnica, Analisi dei
+  Requisiti, Manuale Utente e altra documentazione tecnica
+  del prodotto) sono rilasciati sotto licenza **MIT** — vedi [`LICENSE`](LICENSE).
+- Il resto della documentazione (materiale gestionale, verbali, slide,
+  template, riferimenti normativi) è prodotto per finalità didattiche
+  nell'ambito del corso di Ingegneria del Software dell'Università degli
+  Studi di Padova e non è coperto dalla licenza MIT.

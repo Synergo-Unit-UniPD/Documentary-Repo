@@ -60,12 +60,22 @@ export class EditorController implements Observer {
     if (linkReq) this.onLinkCommand(linkReq)
   }
 
+  /**
+   * Costruisce ed esegue un FormatTextCommand (grassetto, corsivo, ecc.)
+   * sulla selezione corrente riportata dalla View.
+   */
   private onFormatCommand(type: FormatType): void {
     const range = this.view.getLastFormatRange() ?? new TextRange(0, 0)
     const command = new FormatTextCommand(range, type, this.model.getContentEditor())
     this.model.executeCommand(command)
   }
 
+  /**
+   * Costruisce ed esegue un TableCommand a partire dalla richiesta ricevuta
+   * dalla View. Se le dimensioni della tabella richiesta non sono valide
+   * (InvalidTableDimensionError), l'errore viene mostrato all'utente invece
+   * di propagarsi; altri errori non gestiti vengono rilanciati.
+   */
   public onTableCommand(request: TableActionRequest): void {
     const range = this.view.getLastTableRange() ?? new TextRange(0, 0)
     const command = new TableCommand(request, this.model.getContentEditor(), range)
@@ -81,12 +91,20 @@ export class EditorController implements Observer {
     }
   }
 
+  /**
+   * Costruisce ed esegue un ListCommand a partire dalla richiesta di
+   * formattazione a elenco ricevuta dalla View.
+   */
   public onListCommand(request: ListActionRequest): void {
     const range = this.view.getLastListRange() ?? new TextRange(0, 0)
     const command = new ListCommand(range, request, this.model.getContentEditor())
     this.model.executeCommand(command)
   }
 
+  /**
+   * Costruisce ed esegue un LinkCommand a partire dalla richiesta di
+   * gestione link ricevuta dalla View.
+   */
   public onLinkCommand(request: LinkActionRequest): void {
     const range = this.view.getLastLinkRange() ?? new TextRange(0, 0)
     const command = new LinkCommand(range, request, this.model.getContentEditor())
