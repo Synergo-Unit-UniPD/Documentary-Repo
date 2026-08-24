@@ -3,8 +3,8 @@
 % =======================================================
 \subsection{Strumenti di Intelligenza Artificiale}
 \label{sec:strumenti-ai}
-La quinta ed ultima parte è denominata Assistente AI con un singolo bottone dallo stesso nome. 
-Quando cliccato appariranno 5 bottoni:
+La quinta ed ultima parte è denominata "Assistente AI" con un singolo bottone dallo stesso nome. 
+Quando cliccato, appaiono 5 bottoni:
 \begin{enumerate}
     \item Riassumi,
     \item Traduci,
@@ -12,14 +12,19 @@ Quando cliccato appariranno 5 bottoni:
     \item Distant Writing\textsubscript{G},
     \item Sei Cappelli per Pensare\textsubscript{G}.
 \end{enumerate}
-I primi tre, così come "Sei Cappelli per Pensare", richiedono di selezionare preventivamente un blocco di testo: se si clicca uno di questi 
-bottoni senza aver selezionato nulla, il sistema mostra un messaggio di avviso temporaneo (\emph{Seleziona del testo prima di richiedere 
-questa operazione}, oppure \emph{Seleziona del testo da tradurre prima di continuare} nel caso della traduzione\textsubscript{G}) e la richiesta non viene 
-inviata. Una volta selezionato del testo valido, l'operazione interrogherà l'LLM\textsubscript{G} con la richiesta scelta, e apparirà una nuova finestra 
+"Riassumi", "Riscrivi" e "Sei Cappelli per Pensare" richiedono di selezionare preventivamente un blocco di testo: se uno di questi bottoni viene premuto
+senza che nulla sia stato selezionato, il sistema mostra immediatamente un messaggio di avviso temporaneo (\emph{Seleziona del testo prima di richiedere 
+ e la richiesta non viene 
+inviata. 
+
+"Traduci" richiede anch'esso una selezione di testo, ma il controllo avviene in un momento diverso: il bottone apre sempre la finestra di scelta della lingua di destinazione; solo alla conferma, se non è stato selezionato alcun testo, compare l'avviso \emph{Seleziona del testo da tradurre prima di continuare} e la richiesta non viene inviata.
+
+Una volta soddisfatta la condizione di selezione, l'operazione interroga l'LLM\textsubscript{G} con la richiesta scelta, e appare una finestra 
 di attesa per la risposta dell'elaborazione da parte dell'LLM.
 \textbf{Distant Writing è l'unica eccezione}: non richiede alcuna selezione di testo, in quanto genera contenuto nuovo a partire da un 
 prompt\textsubscript{G} inserito dall'utente (vedi Sezione~\ref{sec:distant-writing}).
-La traduzione inoltre permette la scelta della lingua in cui tradurre il testo tra inglese, francese, spagnolo e tedesco.
+
+La traduzione inoltre permette la scelta della lingua di destinazione tra inglese, francese, spagnolo e tedesco.
 
 \begin{figure}[H]
     \centering
@@ -27,9 +32,9 @@ La traduzione inoltre permette la scelta della lingua in cui tradurre il testo t
     \caption{Finestra durante l'elaborazione della richiesta all'LLM}
  \end{figure}
 
- Se la richiesta va a buon fine si presenterà un'altra finestra con la proposta dell'LLM la quale può essere rifiutata, rigenerata o accettata.
- Se accettata essa verrà inserita nell'editor, se rigenerata verrà fatta una nuova richiesta all'LLM mentre se rifiutata si chiuderà semplicemente 
- la finestra senza alcuna modifica al file.
+ Se la richiesta va a buon fine si apre un'altra finestra contentente la proposta dell'LLM,  la quale può essere rifiutata, rigenerata o accettata.
+
+Se accettata, viene inserita nell'editor; se rigenerata, viene effettuata una nuova richiesta all'LLM; mentre se rifiutata, la finestra si chiude semplicemente, senza alcuna modifica al file.
 
  \begin{figure}[H]
     \centering
@@ -48,7 +53,7 @@ Il distant Writing è una funzionalità che permette la generazione di testo da 
  \end{figure}
 
 \subsubsection{Analisi Critica: I "Sei Cappelli di De Bono"}
-L'ultimo bottone ovvero "Sei cappelli per pensare" se cliccato ne presenta altri che sono:
+L'ultimo bottone, "Sei cappelli per pensare", se cliccato ne presenta altri sei:
 \begin{itemize}
     \item Bianco - fatti e dati,
     \item Rosso - emozioni,
@@ -57,6 +62,6 @@ L'ultimo bottone ovvero "Sei cappelli per pensare" se cliccato ne presenta altri
     \item Verde - creatività,
     \item Blu - visione d'insieme.
 \end{itemize}
-Essi si basano sui "Sei cappelli per pensare" di Edward de Bono. 
-Dopo aver selezionato del testo, quando clicco un cappello viene fatta una richiesta all'LLM di interpretare il testo selezionato 
-dal punto di vista del cappello selezionato.
+Essi si basano sul metodo dei "Sei cappelli per pensare" di Edward de Bono. 
+Dopo aver selezionato del testo, cliccando un cappello viene fatta una richiesta all'LLM di interpretare il testo selezionato 
+dal punto di vista del cappello scelto.
