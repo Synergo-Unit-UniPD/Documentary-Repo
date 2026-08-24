@@ -30,3 +30,13 @@ services:
       - ZUCCHETTI_LLM_API_KEY=${ZUCCHETTI_LLM_API_KEY}
       - ZUCCHETTI_LLM_MODEL=${ZUCCHETTI_LLM_MODEL:-gemma4:12b}
       - CORS_ALLOWED_ORIGINS=${CORS_ALLOWED_ORIGINS:-*}
+
+  cloc:
+    image: alpine:3.20
+    container_name: cloc_mvp
+    volumes:
+      - ./backend:/code/backend:ro
+      - ./frontend/src:/code/frontend/src:ro
+    entrypoint: sh -c "apk add --no-cache cloc > /dev/null && cloc /code"
+    profiles:
+      - tools

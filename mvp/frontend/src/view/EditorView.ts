@@ -61,6 +61,10 @@ export class EditorView implements Observer, Subject {
     }
   }
 
+  /**
+   * Reagisce ai cambiamenti del NoteModel (pattern Observer, modalità pull):
+   * recupera il contenuto aggiornato e richiede un nuovo rendering.
+   */
   public update(): void {
     const currentText = this.model.getContent()
     this.render()
@@ -131,6 +135,12 @@ export class EditorView implements Observer, Subject {
     console.error(`Editor ${tone === 'info' ? 'Info' : 'Error'}: ${message}`)
   }
 
+  /**
+   * Simula una richiesta di formattazione da parte dell'utente (grassetto,
+   * corsivo, ecc.), impostando la richiesta e il range interessato, poi
+   * notificando l'EditorController. Usato sia dai test sia come punto di
+   * ingresso reale collegato ai pulsanti della toolbar in App.vue.
+   */
   public simulateFormatAction(type: FormatType, range: TextRange = new TextRange(0, 0)): void {
     this.lastFormatRequest = type
     this.lastFormatRange = range
@@ -139,6 +149,10 @@ export class EditorView implements Observer, Subject {
     this.lastFormatRange = undefined
   }
 
+  /**
+   * Simula una richiesta di operazione su elenco (puntato/numerato o
+   * cambio di livello), notificando l'EditorController.
+   */
   public simulateListAction(request: ListActionRequest, range: TextRange = new TextRange(0, 0)): void {
     this.lastListRequest = request
     this.lastListRange = range
@@ -147,6 +161,10 @@ export class EditorView implements Observer, Subject {
     this.lastListRange = undefined
   }
 
+  /**
+   * Simula una richiesta di gestione link (creazione, modifica o rimozione),
+   * notificando l'EditorController.
+   */
   public simulateLinkAction(request: LinkActionRequest, range: TextRange = new TextRange(0, 0)): void {
     this.lastLinkRequest = request
     this.lastLinkRange = range
@@ -174,6 +192,11 @@ export class EditorView implements Observer, Subject {
     this.lastTableRange = undefined
   }
 
+  /**
+   * Simula una richiesta di azione generica sul documento (salvataggio,
+   * apertura, undo o redo), impostando il relativo flag "requested" letto
+   * poi dall'EditorController tramite i metodi consumeXRequest().
+   */
   public simulateAction(action: 'save' | 'open' | 'undo' | 'redo'): void {
     if (action === 'save') this.saveRequested = true
     if (action === 'open') this.openRequested = true

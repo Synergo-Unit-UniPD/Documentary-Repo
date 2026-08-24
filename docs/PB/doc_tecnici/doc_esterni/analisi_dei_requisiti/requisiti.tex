@@ -136,6 +136,10 @@ interne al team di sviluppo (indicate come "Interno").
 	\textbf{R85-F-Op} & Opzionale & Il sistema deve permettere il salvataggio della nota corrente nello spazio remoto associato al profilo utente; deve notificare in caso di errore di sincronizzazione. & \hyperlink{uc154}{UC154}, \hyperlink{uc154.1}{UC154.1}, Capitolato \\ \hline
 	\textbf{R86-F-Op} & Opzionale & Il sistema deve permettere l'apertura di una nota dalla lista delle note salvate nel servizio remoto; deve notificare in caso di errore nel caricamento. & \hyperlink{uc155}{UC155}, \hyperlink{uc155.1}{UC155.1}, Capitolato \\ \hline
 
+	% ---- Aggiunti in fase PB: emersi durante la revisione del codice, mai coperti da un requisito esplicito ----
+	\textbf{R87-F-O} & Obbligatorio & Il sistema deve richiedere conferma all'utente prima di chiudere la scheda del browser, aggiornare la pagina o navigare fuori dall'applicazione, qualora siano presenti modifiche non salvate nella nota corrente. & \hyperlink{uc156}{UC156}, \hyperlink{uc156.1}{UC156.1}, \hyperlink{uc156.2}{UC156.2}, Interno \\ \hline
+	\textbf{R88-F-O} & Obbligatorio & Il sistema deve aprire in una nuova scheda del browser i collegamenti ipertestuali con URL assoluto presenti nell'anteprima della nota, e deve segnalare all'utente, senza effettuare alcuna navigazione, i collegamenti con URL non valido o incompleto. & \hyperlink{uc157}{UC157}, \hyperlink{uc157.1}{UC157.1}, Interno \\ \hline
+
 \end{longtable}
 
 % -----------------------------------------------------------------------
@@ -154,21 +158,34 @@ interne al team di sviluppo (indicate come "Interno").
 	\endhead
 
 	\textbf{R1-Q-O} & Obbligatorio & Il sistema deve essere corredato da una suite di test automatici che garantisca una line coverage minima dell'80\% sui moduli che implementano i casi d'uso principali, verificabile tramite il report di copertura generato dal framework di test adottato. & Capitolato \\ \hline
-	\textbf{R2-Q-O} & Obbligatorio & È necessario produrre il documento di Specifica Tecnica, contenente i diagrammi e la descrizione dell'architettura del software. & Capitolato \\ \hline
-	\textbf{R3-Q-O} & Obbligatorio & È necessario produrre una documentazione dettagliata riguardante i test previsti ed eseguiti (Piano di Qualifica). & Capitolato \\ \hline
-	\textbf{R4-Q-O} & Obbligatorio & È necessario produrre il documento "Manuale Utente", con indicazioni chiare riguardanti l'utilizzo del software lato utente. & Capitolato \\ \hline
-	\textbf{R5-Q-O} & Obbligatorio & Il progetto deve essere sviluppato utilizzando Git\textsubscript{G} come strumento di versionamento del codice, con tracciamento delle attività tramite issue. & Interno \\ \hline
-	\textbf{R6-Q-O} & Obbligatorio & È necessario eseguire test di integrazione che verifichino la corretta comunicazione tra l'applicazione e i servizi LLM esterni, assicurando che le richieste e le risposte vengano scambiate correttamente. & Analisi del dominio \\ \hline
-	\textbf{R7-Q-Op} & Opzionale & È necessario eseguire test di integrazione che verifichino la corretta sincronizzazione dei dati tra il client e il servizio di persistenza remota, qualora il modulo opzionale sia implementato. & Analisi del dominio \\ \hline
-	\textbf{R8-Q-Op} & Opzionale & È necessario eseguire test che verifichino la corretta applicazione dei meccanismi di autenticazione e autorizzazione nel modulo opzionale di gestione utente. & Analisi del dominio \\ \hline
-	\textbf{R9-Q-D} & Desiderabile & Il progetto dovrebbe adottare una licenza open source permissiva (ad esempio MIT o Apache License 2.0), in linea con le indicazioni dell'azienda proponente sulla natura open source del software rilasciato. & Capitolato \\ \hline
+	\textbf{R2-Q-O} & Obbligatorio & Il progetto deve essere sviluppato utilizzando Git\textsubscript{G} come strumento di versionamento del codice, con tracciamento delle attività tramite issue. & Interno \\ \hline
+	\textbf{R3-Q-O} & Obbligatorio & È necessario eseguire test di integrazione che verifichino la corretta comunicazione tra l'applicazione e i servizi LLM esterni, assicurando che le richieste e le risposte vengano scambiate correttamente. & Analisi del dominio \\ \hline
+	\textbf{R4-Q-Op} & Opzionale & È necessario eseguire test di integrazione che verifichino la corretta sincronizzazione dei dati tra il client e il servizio di persistenza remota, qualora il modulo opzionale sia implementato. & Analisi del dominio \\ \hline
+	\textbf{R5-Q-Op} & Opzionale & È necessario eseguire test che verifichino la corretta applicazione dei meccanismi di autenticazione e autorizzazione nel modulo opzionale di gestione utente. & Analisi del dominio \\ \hline
+	\textbf{R6-Q-D} & Desiderabile & Il progetto dovrebbe adottare una licenza open source permissiva (ad esempio MIT o Apache License 2.0), in linea con le indicazioni dell'azienda proponente sulla natura open source del software rilasciato. & Capitolato \\ \hline
+
+	% ---- Usabilità / Accessibilità ----
+	\textbf{R7-Q-D} & Desiderabile & L'interfaccia dell'editor deve rispettare criteri minimi di usabilità (contrasto testo/sfondo adeguato, dimensione del font leggibile, indicatori di focus visibili per la navigazione da tastiera), coerentemente con il target di utenti non esperti dichiarato per il prodotto. & Analisi del dominio \\ \hline
+
+	% ---- Sicurezza ----
+	\textbf{R8-Q-O} & Obbligatorio & Le API key di accesso ai servizi LLM devono essere gestite esclusivamente lato backend, tramite l'adapter di integrazione, e non devono mai essere trasmesse al client, esposte nel codice sorgente in chiaro o registrate nei log applicativi. & Interno \\ \hline
+	\textbf{R9-Q-Op} & Opzionale & Per il modulo opzionale di autenticazione, le password degli utenti devono essere memorizzate esclusivamente in forma hashata con un algoritmo sicuro (es. bcrypt, Argon2), mai in chiaro. & \hyperlink{uc150}{UC150}, \hyperlink{uc151}{UC151}, Interno \\ \hline
+
+	% ---- Affidabilità ----
+	\textbf{R10-Q-O} & Obbligatorio & In caso di indisponibilità dei servizi LLM esterni, il sistema deve continuare a garantire le funzionalità di editing e formattazione locale del testo, senza blocchi, crash o perdita del contenuto già inserito. & Analisi del dominio \\ \hline
+	\textbf{R11-Q-O} & Obbligatorio & Ogni errore di comunicazione con servizi esterni (LLM, database remoto) deve essere gestito in modo non bloccante, mostrando un messaggio comprensibile all'utente e mantenendo l'editor in uno stato coerente e utilizzabile. & Analisi del dominio \\ \hline
+
+	% ---- Manutenibilità / Portabilità ----
+	\textbf{R12-Q-D} & Desiderabile & Il codice deve essere organizzato secondo un'architettura modulare che consenta la sostituzione o l'aggiunta di un provider LLM senza impatti significativi sul resto del sistema. & Interno \\ \hline
+	\textbf{R13-Q-D} & Desiderabile & Il sistema non deve dipendere da funzionalità proprietarie o non standard dei browser, per mantenere la portabilità sulle versioni indicate in R5-V-O. & Interno \\ \hline
 
 \end{longtable}
 
 % -----------------------------------------------------------------------
 \subsection{Requisiti di vincolo}
+\label{sec:req-vincolo}
 \begin{longtable}{|p{2.5cm}|p{2.2cm}|p{6.8cm}|p{2.7cm}|}
-	\caption{Requisiti di Vincolo} \\
+	\caption{Requisiti di Vincolo\label{tab:req-vincolo}} \\
 	\hline
 	\rowcolor{primarycolor!10}
 	\textbf{Codice} & \textbf{Importanza} & \textbf{Descrizione} & \textbf{UC, Fonti} \\
@@ -187,6 +204,14 @@ interne al team di sviluppo (indicate come "Interno").
 	\textbf{R5-V-O} & Obbligatorio & Le componenti web del sistema devono essere compatibili con le versioni di Chrome 151+, Edge 150+, Firefox 153+ e Safari 26+. & VE-7.3 \\ \hline
 	\textbf{R6-V-O} & Obbligatorio & Ogni richiesta di elaborazione AI deve essere indirizzata a un singolo modello LLM per l'intera durata della richiesta, poiché l'infrastruttura prevede il ricaricamento del modello ad ogni chiamata: concatenare chiamate a modelli differenti comporterebbe una perdita di efficienza. & VE-7.2 \\ \hline
 	\textbf{R7-V-O} & Obbligatorio & Il codice sorgente e la documentazione del progetto devono essere pubblicati su un repository pubblico. & Capitolato, VE-3.3, VE-5.3 \\ \hline
+
+	% ---- Vincoli di rilascio documentale (ex R2/R3/R4-Q-O, poi rinumerati con la rimozione del buco in sequenza) ----
+	\textbf{R8-V-O} & Obbligatorio & È necessario produrre il documento di Specifica Tecnica, contenente i diagrammi e la descrizione dell'architettura del software. & Capitolato \\ \hline
+	\textbf{R9-V-O} & Obbligatorio & È necessario produrre una documentazione dettagliata riguardante i test previsti ed eseguiti (Piano di Qualifica). & Capitolato \\ \hline
+	\textbf{R10-V-O} & Obbligatorio & È necessario produrre il documento "Manuale Utente", con indicazioni chiare riguardanti l'utilizzo del software lato utente. & Capitolato \\ \hline
+
+	% ---- Libertà di scelta tecnologica (in precedenza solo narrativo in §2.5, fonte orfana) ----
+	\textbf{R11-V-O} & Obbligatorio & Il capitolato non impone uno specifico framework front-end: la scelta della tecnologia di implementazione (nel caso del gruppo, Vue.js) è demandata al team di sviluppo, purché rispetti i vincoli tecnologici generali (R1-V-O). & VE-3.1 \\ \hline
 
 \end{longtable}
 
@@ -207,5 +232,8 @@ interne al team di sviluppo (indicate come "Interno").
 
 	\textbf{R1-P-O} & Obbligatorio & In condizioni di funzionamento standard (dispositivo conforme ai requisiti hardware minimi e documento di dimensioni ordinarie), il rendering dell'anteprima Markdown deve aggiornarsi in tempo reale durante la digitazione, entro 1 secondo dalla modifica del contenuto dell'editor. & Capitolato, Analisi del dominio \\ \hline
 	\textbf{R2-P-O} & Obbligatorio & A fronte di una connessione di rete stabile verso le API, il sistema deve garantire una visualizzazione continua e reattiva dello stato di caricamento per l'intera durata dell'elaborazione AI, indipendentemente dai tempi di risposta del modello, mantenendo l'indicatore di caricamento visibile per un tempo minimo di circa 2 secondi. La durata dell'elaborazione è determinata dalla risposta del modello e può essere interrotta in qualsiasi momento dall'utente tramite il meccanismo di interruzione manuale (R73-F-O). & Analisi del dominio, VE-6.1, VE-7.3 \\ \hline
-
+\textbf{R3-P-O} & Obbligatorio & Il tempo di avvio dell'applicazione, dal caricamento della pagina alla piena interattività dell'editor, deve attestarsi entro i 3 secondi in condizioni di rete standard, coerentemente con i tempi medi osservati (2-3 secondi). & Interno \\ \hline
+	\textbf{R4-P-O} & Obbligatorio & Il rendering dell'anteprima Markdown non deve degradare percettibilmente (aggiornamento entro 2 secondi) anche per note di lunghezza estesa (indicativamente oltre 10.000 caratteri). & Analisi del dominio \\ \hline
+	\textbf{R5-P-O} & Obbligatorio & Il sistema deve consentire il completamento delle richieste di elaborazione AI indipendentemente dalla loro durata, affidando all'utente, tramite l'interruzione manuale (R73-F-O), l'unico controllo effettivo sui tempi di attesa. A protezione da eventuali connessioni di rete bloccate, il sistema applica un timeout tecnico di sicurezza con soglia molto elevata (indicativamente 15 minuti), pensato per non costituire un limite di prodotto percepibile durante un utilizzo normale. & VE-7.3 \\ \hline
+	\textbf{R6-P-Op} & Opzionale & Il caricamento della lista delle note remote non deve superare i 3 secondi in condizioni di rete standard. & \hyperlink{uc153}{UC153}, Analisi del dominio \\ \hline
 \end{longtable}

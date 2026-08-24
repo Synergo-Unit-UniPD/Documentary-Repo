@@ -136,6 +136,82 @@ describe('AIController - selezione di testo per le operazioni AI', () => {
     expect(markdownEditor.getContent()).toBe('Nota esistente. testo generato')
   })
 
+  it('getLastAcceptedRange copre esattamente il testo della proposta (più LUNGA della selezione sostituita)', () => {
+    const aiModel = new AIRequestModel(mockAIService)
+    const proposal = new Proposal('PROPOSTA MOLTO PIÙ LUNGA DI PRIMA', 'rewrite')
+
+    const markdownEditor = new MarkdownContentEditor('Testo iniziale molto lungo')
+    const noteModel = new NoteModel(markdownEditor, new CommandHistory(), mockNoteService)
+    const view = new AIPanelView(aiModel)
+    const controller = new AIController(aiModel, view, noteModel)
+
+    // Selezione originaria: "iniziale" (range 6-14, 8 caratteri)
+    view.simulateSubmitRequest(new RequestedOperation('rewrite', {}, 'iniziale', new TextRange(6, 14)))
+    ;(aiModel as any).aiState = new ProposalReadyState(proposal)
+    view.simulateProposalAction(ProposalActionType.ACCEPT)
+
+    const newRange = controller.getLastAcceptedRange()
+    expect(newRange).toBeDefined()
+    // L'inizio resta lo stesso punto (6); la fine copre l'intera proposta appena
+    // inserita (più lunga della selezione originaria di 8 caratteri), non più
+    // la vecchia fine del range (14).
+    expect(newRange!.start).toBe(6)
+    expect(newRange!.end).toBe(6 + proposal.content.length)
+    expect(markdownEditor.getContent().slice(newRange!.start, newRange!.end)).toBe(proposal.content)
+  })
+
+  it('getLastAcceptedRange copre esattamente il testo della proposta (più CORTA della selezione sostituita)', () => {
+    const aiModel = new AIRequestModel(mockAIService)
+    const proposal = new Proposal('breve', 'summarize')
+
+    const markdownEditor = new MarkdownContentEditor('Testo iniziale molto lungo da riassumere')
+    const noteModel = new NoteModel(markdownEditor, new CommandHistory(), mockNoteService)
+    const view = new AIPanelView(aiModel)
+    const controller = new AIController(aiModel, view, noteModel)
+
+    // Selezione originaria: "iniziale molto lungo da riassumere" (dalla posizione 6 alla fine)
+    const selectedText = 'iniziale molto lungo da riassumere'
+    const start = 6
+    const end = start + selectedText.length
+    view.simulateSubmitRequest(new RequestedOperation('summarize', {}, selectedText, new TextRange(start, end)))
+    ;(aiModel as any).aiState = new ProposalReadyState(proposal)
+    view.simulateProposalAction(ProposalActionType.ACCEPT)
+
+    const newRange = controller.getLastAcceptedRange()
+    expect(newRange!.start).toBe(start)
+    expect(newRange!.end).toBe(start + proposal.content.length)
+    expect(markdownEditor.getContent().slice(newRange!.start, newRange!.end)).toBe('breve')
+  })
+
+  it('getLastAcceptedRange copre il testo inserito anche con range collassato (Distant Writing)', () => {
+    const aiModel = new AIRequestModel(mockAIService)
+    const proposal = new Proposal('testo generato', 'distant_writing')
+
+    const markdownEditor = new MarkdownContentEditor('Nota esistente. ')
+    const noteModel = new NoteModel(markdownEditor, new CommandHistory(), mockNoteService)
+    const view = new AIPanelView(aiModel)
+    const controller = new AIController(aiModel, view, noteModel)
+
+    const endOfDoc = markdownEditor.getContent().length
+    view.simulateSubmitRequest(new RequestedOperation('distant_writing', {}, '', new TextRange(endOfDoc, endOfDoc)))
+    ;(aiModel as any).aiState = new ProposalReadyState(proposal)
+    view.simulateProposalAction(ProposalActionType.ACCEPT)
+
+    const newRange = controller.getLastAcceptedRange()
+    expect(newRange!.start).toBe(endOfDoc)
+    expect(newRange!.end).toBe(endOfDoc + proposal.content.length)
+  })
+
+  it('getLastAcceptedRange è undefined prima di qualunque accettazione', () => {
+    const aiModel = new AIRequestModel(mockAIService)
+    const markdownEditor = new MarkdownContentEditor('Testo')
+    const noteModel = new NoteModel(markdownEditor, new CommandHistory(), mockNoteService)
+    const view = new AIPanelView(aiModel)
+    const controller = new AIController(aiModel, view, noteModel)
+
+    expect(controller.getLastAcceptedRange()).toBeUndefined()
+  })
+
   it('accettare la proposta resta annullabile con Undo (round-trip al testo originale)', () => {
     const aiModel = new AIRequestModel(mockAIService)
     const proposal = new Proposal('PROPOSTA', 'rewrite')
