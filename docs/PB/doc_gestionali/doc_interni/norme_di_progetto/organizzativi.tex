@@ -424,6 +424,14 @@ issue operative.
 \subsection{Processo di Comunicazione}
 \label{sec:comunicazione}
 
+\textit{Nota di tailoring}: lo standard ISO/IEC~12207:1995 definisce quattro
+processi organizzativi (Gestione, Infrastruttura, Miglioramento, Formazione).
+Il presente processo non corrisponde a nessuno dei quattro previsti dallo
+standard: è un'estensione deliberata, introdotta dal gruppo per normare
+esplicitamente canali e responsabilità di comunicazione che lo standard non
+tratta come processo a sé, ritenuta necessaria per la natura distribuita e
+la dimensione del gruppo (Sezione~\ref{sec:tailoring}).
+
 \subsubsection{Descrizione}
 
 Il processo di comunicazione disciplina i canali, le modalità e le responsabilità
@@ -630,9 +638,13 @@ Gli strumenti e le tecnologie tecniche adottati per il Proof of Concept includon
 \end{itemize}
 
 In fase RTB il Proof of Concept non prevede persistenza su database. L'eventuale
-adozione di PostgreSQL rimane collegata alle successive decisioni progettuali e
-sarà rivalutata nella fase PB, in base agli esiti del Proof of Concept e al
-confronto con la proponente.
+adozione di PostgreSQL è stata rivalutata nella fase PB e, a valle del
+confronto con la proponente, il gruppo ha deciso di non implementare la
+persistenza server-side in questa release (R4-V-Op, non implementato):
+la gestione dei dati si basa esclusivamente sul file system locale del
+browser, per concentrare le risorse disponibili sul consolidamento dei
+requisiti obbligatori (dettaglio in Specifica Tecnica, Sezione ``Persistenza
+dei dati'').
 
 Le decisioni definitive relative allo stack tecnologico sono riportate
 nell'Analisi dello Stato dell'Arte e potranno essere aggiornate in seguito al

@@ -25,9 +25,10 @@ i seguenti processi primari:
 \end{itemize}
 
 Le attività di codifica estesa, testing automatico, integrazione continua e
-rilascio software verranno progressivamente normate nella fase PB,
-in seguito alla stabilizzazione dell'architettura e all'avvio dello sviluppo
-del prodotto.
+rilascio software sono state normate progressivamente nella fase PB, in
+seguito alla stabilizzazione dell'architettura e all'avvio dello sviluppo
+del prodotto; sono descritte in dettaglio nelle sottosezioni seguenti e nel
+Processo di Verifica (Sezione~\ref{sec:verifica}).
 
 % ================================================================
 % FORNITURA
@@ -311,6 +312,111 @@ in seguito alla validazione preliminare delle scelte tecnologiche e architettura
 
 % ------------------------------------------------
 
+\paragraph{Documentazione prodotta in fase PB}
+
+Durante la fase PB, il gruppo aggiorna la documentazione già prodotta in RTB e ne
+produce di nuova, necessaria alla Product Baseline\textsubscript{G} e coerente con il
+completamento del Minimum Viable Product.
+
+\bigskip
+
+\begin{xltabular}{\textwidth}{
+    >{\hsize=.23\hsize\raggedright\arraybackslash}X
+    >{\hsize=.18\hsize\raggedright\arraybackslash}X
+    >{\hsize=.12\hsize\raggedright\arraybackslash}X
+    >{\hsize=.47\hsize\raggedright\arraybackslash}X
+}
+    \toprule
+    \textbf{Documento} & \textbf{Redattore} & \textbf{Uso} & \textbf{Descrizione} \\
+    \midrule
+    \endfirsthead
+
+    \toprule
+    \textbf{Documento} & \textbf{Redattore} & \textbf{Uso} & \textbf{Descrizione} \\
+    \midrule
+    \endhead
+
+    \midrule
+    \multicolumn{4}{r}{\textit{Continua nella pagina successiva}}\\
+    \endfoot
+
+    \bottomrule
+    \endlastfoot
+
+    \doclink{https://synergo-unit-unipd.github.io/Second-Brain/docs/PB/doc_gestionali/doc_esterni/piano_di_progetto/piano_di_progetto.pdf}
+    {Piano di Progetto}
+    & Amministratore
+    & Esterno
+    & Aggiornato con il consuntivo RTB, il Preventivo a Finire e la pianificazione
+    delle attività fino al completamento della PB. \\
+
+    \doclink{https://synergo-unit-unipd.github.io/Second-Brain/docs/PB/doc_gestionali/doc_esterni/piano_di_qualifica/piano_di_qualifica.pdf}
+    {Piano di Qualifica}
+    & Amministratore
+    & Esterno
+    & Aggiornato con i risultati delle verifiche e validazioni condotte sul Minimum
+    Viable Product, incluse le metriche di copertura dei test. \\
+
+    \doclink{https://synergo-unit-unipd.github.io/Second-Brain/docs/PB/doc_tecnici/doc_esterni/analisi_dei_requisiti/analisi_dei_requisiti.pdf}
+    {Analisi dei Requisiti}
+    & Analista
+    & Esterno
+    & Raffinata a seguito degli esiti del Proof of Concept e del confronto con la
+    proponente durante la RTB. \\
+
+    \doclink{https://synergo-unit-unipd.github.io/Second-Brain/docs/PB/doc_tecnici/doc_esterni/specifica_tecnica/specifica_tecnica.pdf}
+    {Specifica Tecnica}
+    & Progettista
+    & Esterno
+    & Documento tecnico introdotto in fase PB: descrive architettura, decomposizione
+    in componenti, design pattern adottati, flusso dei dati e tracciamento
+    componenti-requisiti del prodotto finale. \\
+
+    \doclink{https://synergo-unit-unipd.github.io/Second-Brain/docs/PB/doc_tecnici/doc_esterni/manuale_utente/manuale_utente.pdf}
+    {Manuale Utente}
+    & Progettista
+    & Esterno
+    & Documento introdotto in fase PB: descrive in linguaggio non tecnico
+    installazione, configurazione e utilizzo di ciascuna funzionalità del prodotto,
+    inclusa la risoluzione dei problemi più comuni. \\
+
+    Norme di Progetto
+    & Amministratore
+    & Interno
+    & Aggiornato progressivamente durante la PB (dalla versione 2.x.x) per
+    recepire i processi di sviluppo, verifica e rilascio formalizzati in questa
+    fase (Sezione~\ref{sec:tailoring}). \\
+
+    \doclink{https://synergo-unit-unipd.github.io/Second-Brain/docs/PB/doc_gestionali/doc_interni/glossario/glossario.pdf}
+    {Glossario}
+    & Amministratore
+    & Interno
+    & Ampliato con la terminologia tecnica emersa durante l'implementazione del
+    Minimum Viable Product. \\
+
+    Verbali interni
+    & Responsabile
+    & Interno
+    & Documenti che tracciano riunioni, decisioni operative, criticità e
+    retrospettive di sprint svolte durante la fase PB. \\
+
+    Verbali esterni
+    & Amministratore
+    & Esterno
+    & Documenti che formalizzano gli incontri con la proponente e i chiarimenti
+    rilevanti ai fini della Specifica Tecnica e del Manuale Utente. \\
+
+    Diari di Bordo
+    & Responsabile
+    & Esterno
+    & Slide e materiale gestionale utilizzati per il confronto periodico con il
+    committente durante la fase PB, con evidenza di avanzamento, criticità e
+    obiettivi successivi. \\
+
+\end{xltabular}
+
+% ------------------------------------------------
+
 \subsubsection{Attività del Processo di Fornitura}
 
 \paragraph{Inizializzazione}
@@ -481,7 +587,7 @@ successiva progettazione di dettaglio.
 
 \subsubsection{Implementazione del processo}
 
-Il gruppo adotta un modello organizzativo incrementale ispirato a Scrum,
+Il gruppo adotta un modello organizzativo iterativo ispirato a Scrum,
 basato su sprint settimanali con cadenza da martedì a martedì.
 
 Il workflow prevede:
@@ -495,12 +601,24 @@ Il workflow prevede:
     \item monitoraggio continuo delle attività.
 \end{itemize}
 
-La pianificazione dettagliata degli sprint, la rotazione dei ruoli e le milestone
-sono riportate nel \link{https://synergo-unit-unipd.github.io/Second-Brain/docs/PB/doc_gestionali/doc_esterni/piano_di_progetto/piano_di_progetto.pdf}{Piano di Progetto}.
+A valle delle scelte iniziali di ciascuna fase, la gestione delle attività di
+progetto segue ciclicamente, ad ogni periodo di avanzamento, il medesimo
+ordine: \textbf{consuntivo di periodo} (azioni svolte e consumi rilevati)
+$\rightarrow$ \textbf{retrospettiva} (grado di raggiungimento degli obiettivi
+attesi e ragioni presunte) $\rightarrow$ \textbf{misure correttive} (con
+aggiornamento dell'analisi dei rischi) $\rightarrow$ \textbf{miglioramento
+della pianificazione futura} (a breve e a lungo termine) $\rightarrow$
+\textbf{preventivo a finire}. È questo ciclo di controllo a governare l'avanzamento reale
+del progetto: un modello incrementale, per sua natura, avanzerebbe in
+un'unica direzione, aggiungendo senza mai rivedere o correggere quanto già
+deciso; il gruppo, al contrario, rivede esplicitamente a ogni ciclo tanto le
+stime future quanto le scelte pregresse, alla luce dei risultati e delle
+criticità emerse.
 
-Il gruppo adotta un approccio incrementale alla progettazione e allo sviluppo.
+La pianificazione dettagliata degli sprint, la rotazione dei ruoli e le
+milestone sono riportate nel \link{https://synergo-unit-unipd.github.io/Second-Brain/docs/PB/doc_gestionali/doc_esterni/piano_di_progetto/piano_di_progetto.pdf}{Piano di Progetto}.
 
-Le decisioni tecniche e architetturali vengono raffinate progressivamente sulla base di:
+Le decisioni tecniche e architetturali vengono raffinate iterativamente, secondo lo stesso ciclo, sulla base di:
 
 \begin{itemize}
     \item feedback della proponente;
@@ -704,10 +822,13 @@ Il processo di selezione prevede la collaborazione tra:
     \item Progettista: seleziona le tecnologie (attualmente individuate in Vue.js, FastAPI e Docker) che meglio rispondono alle esigenze di modularità e integrazione dei servizi AI individuate nel design.
 \end{itemize}
 
-Le decisioni architetturali definitive verranno consolidate nella fase PB. Gli ADR
-verranno introdotti quando il gruppo avrà stabilizzato il processo decisionale
-architetturale e saranno utilizzati per documentare in modo tracciabile le scelte
-rilevanti, le alternative valutate e le motivazioni della decisione finale.
+Le decisioni architetturali definitive sono state consolidate nella fase PB. Gli
+ADR sono stati introdotti a valle della stabilizzazione del processo decisionale
+architetturale e vengono utilizzati per documentare in modo tracciabile le scelte
+rilevanti, le alternative valutate e le motivazioni della decisione finale --
+ne è un esempio ADR-01, che motiva il raffinamento del comportamento
+dell'intestazione Markdown a un singolo livello (R25-F-O) rispetto alla
+formulazione originaria in fase RTB.
 
 \paragraph{Stile Architetturale (Fase PB)}
 A seguito del consolidamento delle decisioni nella fase PB, il sistema adotta un'architettura ibrida a due stili combinati, separati da un confine REST:
@@ -738,7 +859,7 @@ Per rispettare il principio \textit{Composition over Inheritance}, nessuna class
 
 \paragraph{Scopo}
 
-La codifica e test del software riguarda lo sviluppo delle unità software, dei database e delle relative procedure di test
+La codifica e test del software riguarda lo sviluppo delle unità software e delle relative procedure di test.
 
 
 Con l'avvio dello Sprint 9, a partire dal 2026-06-02, il gruppo avvia
@@ -832,12 +953,70 @@ e, se producono modifiche operative, trasformate in issue.
 \paragraph{Sviluppo del Prodotto (Fase PB)}
 Con l'ingresso nella fase PB, l'attività di codifica si estende allo sviluppo del prodotto finale (Minimum Viable Product). Per garantire uniformità e coerenza nello sviluppo collaborativo, il gruppo ha formalizzato regole ferree per la stesura del codice.
 
+\paragraph{Perimetro del MVP}
+
+A differenza del perimetro minimo del PoC, il Minimum Viable Product copre la
+totalità dei requisiti obbligatori individuati nell'Analisi dei Requisiti,
+tra cui:
+
+\begin{itemize}
+    \item editor Markdown completo (formattazione, elenchi, tabelle, link, undo/redo);
+    \item riassunto, traduzione, riscrittura e Distant Writing tramite LLM;
+    \item analisi critica secondo tutti e sei i ``Cappelli per Pensare'' di Edward de Bono;
+    \item accettazione, rifiuto e rigenerazione della proposta AI, con interruzione manuale;
+    \item salvataggio, apertura ed esportazione (PDF, HTML, JSON) della nota su file system locale, incluso il fallback per browser privi di File System Access API;
+    \item gestione strutturata degli errori di comunicazione con i servizi esterni.
+\end{itemize}
+
+I requisiti opzionali relativi alla persistenza remota e alla gestione utenti
+(R4-V-Op, R78--R86) restano fuori da questo perimetro (dettaglio nella
+\doclink{https://synergo-unit-unipd.github.io/Second-Brain/docs/PB/doc_tecnici/doc_esterni/specifica_tecnica/specifica_tecnica.pdf}{Specifica Tecnica}, sezione Tracciamento e Stato dei Requisiti).
+
+\paragraph{Tecnologie del MVP}
+
+Il MVP utilizza lo stack consolidato durante la RTB ed esteso in PB:
+
+\begin{itemize}
+    \item Vue.js 3 e TypeScript per il frontend;
+    \item CodeMirror per l'editor Markdown;
+    \item FastAPI e Python per il backend;
+    \item Docker Compose per l'esecuzione coordinata dei servizi;
+    \item due container: \texttt{frontend} e \texttt{backend}.
+\end{itemize}
+
+Il dettaglio completo delle tecnologie e delle relative motivazioni è riportato
+nella Specifica Tecnica. La struttura del MVP è collocata nella cartella
+\texttt{mvp/} della repository \texttt{Second-Brain}, distinta dalla cartella
+\texttt{poc/} che conserva il codice del Proof of Concept.
+
+\paragraph{Criteri di successo del MVP}
+
+Il MVP è considerato soddisfacente se:
+
+\begin{itemize}
+    \item soddisfa il 100\% dei requisiti obbligatori individuati nell'Analisi dei Requisiti;
+    \item supera la totalità dei test unitari, di integrazione e di sistema pianificati (Sezione~\ref{sec:verifica});
+    \item rispetta le soglie minime di code coverage definite (90\% Backend, 85\% Frontend);
+    \item la pipeline di Continuous Integration risulta verde su ogni Pull Request integrata nel main;
+    \item è accompagnato da Manuale Utente e Specifica Tecnica completi.
+\end{itemize}
+
+\paragraph{Validazione del MVP}
+
+Il MVP viene validato internamente dal Verificatore, sulla base dell'esito della
+pipeline di CI e della Mappatura Test di Sistema - Casi d'Uso (Sezione~\ref{sec:validazione}).
+Il confronto con la proponente avviene durante la Product Baseline ed è gestito
+dal Responsabile, con il supporto dei membri che hanno lavorato sugli aspetti
+tecnici e funzionali coinvolti; eventuali osservazioni della proponente sono
+riportate in verbale esterno e, se producono modifiche operative, trasformate
+in issue, secondo lo stesso schema già adottato per la validazione del PoC.
+
 \paragraph{Convenzioni di Nomenclatura (Naming)}
 Tutti i membri, nel ruolo di Programmatore, devono attenersi rigorosamente alle seguenti convenzioni:
 \begin{itemize}
     \item \textbf{Classi (TS e Python):} \texttt{PascalCase}.
     \item \textbf{Interfacce/Servizi (TS):} Nome del ruolo, senza prefisso "I" o suffissi tecnici (es. \texttt{NoteService}, non \texttt{INoteService}).
-    \item \textbf{Adapter e Repository:} Suffisso \texttt{Adapter} o \texttt{Repository} in base al pattern (es. \texttt{OpenAIAdapter}, \texttt{NoteRepository}). Un'eccezione è il pattern \texttt{Proxy} per il frontend (es. \texttt{NoteServiceProxy}).
+    \item \textbf{Adapter e Proxy:} Suffisso \texttt{Adapter} o \texttt{Proxy} in base al pattern (es. \texttt{OpenAIAdapter}, \texttt{NoteServiceProxy}).
     \item \textbf{Metodi e Variabili (TypeScript):} \texttt{camelCase}.
     \item \textbf{Moduli e Funzioni (Python):} \texttt{snake\_case} in accordo allo standard PEP8.
     \item \textbf{File di Test:} Devono avere lo stesso nome della classe testata, con suffisso \texttt{.test.ts} per il frontend e prefisso \texttt{test\_*.py} per il backend.
@@ -852,10 +1031,21 @@ Tutti i membri, nel ruolo di Programmatore, devono attenersi rigorosamente alle 
 Integrazione delle unità software nel "software item" completo e relativi test.
 
 \paragraph{Workflow Git e CI/CD}
-L'integrazione delle unità software avviene attraverso il modello di trunk-based development, nel quale le modifiche apportate ai vari moduli confluiscono nel branch, dove prima di fare la push verso il main vengono fatti i test in locale e solo una volta passati avviene il push e la PR in draft fa partire la CI; infine, a termine dello sviluppo, viene compilata la checklist e solo dopo avviene l'azzione di verifica del verificatore, che accettera solo se è tutto in verde nella pipeline. A partire dagli Sprint 12 e 13, viene avviato il setup dell'ambiente di Continuous Integration/Continuous Deployment (CI/CD) per automatizzare i processi di build e verifica.
+L'integrazione delle unità software avviene attraverso il modello di trunk-based development, nel quale le modifiche confluiscono nel branch \texttt{main} seguendo un workflow a passi fissi:
+ 
+\begin{enumerate}
+    \item lo sviluppo avviene su un branch dedicato, a partire dal quale i test vengono eseguiti in locale;
+    \item una volta che i test locali sono passati, il branch viene pushato e si apre una Pull Request in draft, che avvia automaticamente la pipeline di CI;
+    \item a termine dello sviluppo, viene compilata e spuntata la checklist della Pull Request, che viene quindi contrassegnata come pronta per la revisione (\textit{ready for review}), uscendo dallo stato di draft;
+    \item solo a quetso punto avviene l'azione di verifica da parte del Verificatore, che approva la Pull Request unicamente se la pipeline risulta interamente verde.
+\end{enumerate}
+ 
+A partire dagli Sprint 12 e 13 è stato avviato il setup dell'ambiente di Continuous Integration/Continuous Deployment (CI/CD, GitHub Actions); il workflow sopra descritto è oggi pienamente operativo e obbligatorio per ogni Pull Request (Sezione~\ref{sec:verifica}).
+\paragraph{Test Unitari (TU)}
+Ogni unità software (classe o modulo) è accompagnata da test unitari automatici che ne verificano il comportamento in isolamento, con l'ausilio di doppi di test (mock, stub) per le dipendenze esterne. I test unitari sono eseguiti tramite \texttt{pytest} (Backend) e \texttt{vitest} (Frontend), integrati nella pipeline di Continuous Integration (Sezione~\ref{sec:verifica}).
 
 \paragraph{Test di Integrazione (TI)}
-L'efficacia dell'unione dei moduli è validata tramite appositi Test di Integrazione (TI) volti a controllare la comunicazione tra le unità (es. frontend e backend), la cui pianificazione di dettaglio è prevista per la fase di Product Baseline (PB).
+L'efficacia dell'unione dei moduli è validata tramite appositi Test di Integrazione (TI) volti a controllare la comunicazione tra le unità (es. Frontend e Backend, Backend e servizio LLM esterno). A completamento della fase PB, la suite di Test di Integrazione è stata realizzata ed eseguita sistematicamente in pipeline, secondo la soglia di copertura definita nel Processo di Verifica (Sezione~\ref{sec:verifica}).
 
 % ------------------------------------------------
 
@@ -901,6 +1091,10 @@ Il test di qualifica del sistema è il test finale per dimostrare che il sistema
 
 I test di qualifica del sistema in fase RTB sono finalizzati alla validazione della Technology Baseline. Essi dimostrano che l'intera infrastruttura (interfaccia utente, logica di backend e interazione AI) funzioni correttamente secondo gli scenari d'uso principali descritti nell'Analisi dei Requisiti.
 
+\paragraph{Validazione della Product Baseline}
+
+In fase PB, i test di qualifica del sistema sono stati eseguiti sul Minimum Viable Product completo, secondo la Mappatura Test di Sistema - Casi d'Uso (Sezione~\ref{sec:validazione}), dimostrando il soddisfacimento della totalità dei requisiti obbligatori individuati nell'Analisi dei Requisiti e coprendo, oltre agli scenari applicativi principali, anche i percorsi di errore e i casi limite (validazione dimensioni tabella, annullamento utente, indisponibilità del servizio LLM).
+
 % ------------------------------------------------
 
 \subsubsection{Installazione del software}
@@ -909,9 +1103,11 @@ I test di qualifica del sistema in fase RTB sono finalizzati alla validazione de
 
 L'installazione del software è la pianificazione ed esecuzione dell'installazione nell'ambiente target.
 
-\paragraph{Manuale Tecnico (README)}
+\paragraph{Manuale Tecnico (README) e Manuale Utente}
 
-La procedura di installazione e configurazione nell'ambiente target è documentata nel file README presente nella cartella poc/ del repository. Tale documento riporta i prerequisiti necessari, la procedura di avvio tramite Docker Compose e le modalità di verifica del corretto funzionamento dell'intero sistema su host locale.
+La procedura di installazione e configurazione nell'ambiente target è documentata nel file README presente nella cartella \texttt{mvp/} del repository, ad uso di chi debba avviare o sviluppare il sistema. Tale documento riporta i prerequisiti necessari, la procedura di avvio tramite Docker Compose e le modalità di verifica del corretto funzionamento dell'intero sistema su host locale.
+
+Ad uso dell'utente finale, in fase PB è stato inoltre redatto il Manuale Utente, che descrive in linguaggio non tecnico l'installazione, la configurazione e l'utilizzo di ciascuna funzionalità del prodotto, inclusa la risoluzione dei problemi più comuni.
 
 % ------------------------------------------------
 
@@ -924,5 +1120,3 @@ Il supporto all'accettazione del software riguarda l'attività di supporto al cl
 \paragraph{Validazione con la Proponente}
 
 Il processo prevede inoltre incontri di validazione periodici con la proponente Zucchetti, i cui esiti (accordi e correzioni richieste) sono formalizzati in appositi verbali esterni per guidare l'approvazione finale del prodotto.
-
-
