@@ -119,6 +119,16 @@ La documentazione deve essere:
 \begin{itemize}
     \item \textbf{Analisi dei Requisiti}: documento tecnico esterno che formalizza
     attori, casi d'uso, requisiti, fonti e matrici di tracciabilità.
+
+    \item \textbf{Specifica Tecnica}: documento tecnico esterno, introdotto in fase
+    PB, che descrive architettura, decomposizione in componenti, design pattern
+    adottati, flusso dei dati e tracciamento componenti-requisiti del prodotto
+    finale.
+
+    \item \textbf{Manuale Utente}: documento tecnico esterno, introdotto in fase
+    PB, che descrive in linguaggio non tecnico installazione, configurazione e
+    utilizzo di ciascuna funzionalità del prodotto, inclusa la risoluzione dei
+    problemi più comuni.
 \end{itemize}
 
 % ------------------------------------------------
@@ -426,8 +436,10 @@ A partire dallo Sprint 9, la repository ufficiale del progetto assume il nome
 Essa contiene:
 
 \begin{itemize}
+    \item instruzioni per la CI
     \item documentazione di progetto;
     \item codice del Proof of Concept;
+    \item documentazione del MVP;
     \item script di automazione;
     \item configurazioni di supporto;
     \item asset condivisi;
@@ -438,17 +450,26 @@ La struttura principale della repository è:
 
 \begin{verbatim}
 Second-Brain/
++-- .github/
 +-- docs/
 +-- poc/
+|   +-- frontend/
+|   +-- backend/
++-- mvp
 |   +-- frontend/
 |   +-- backend/
 +-- scripts/
 \end{verbatim}
 
+La cartella \texttt{.github/} contiene la checklist e le instruzioni per la CI
+
 La cartella \texttt{docs/} contiene la documentazione di progetto.
 
 La cartella \texttt{poc/} contiene il codice del Proof of Concept, separando
 frontend e backend.
+
+La cartella \texttt{mvp/} contine il codice del MVP suddiviso in 
+frontend, backend e test.
 
 La cartella \texttt{scripts/} contiene gli script di automazione già adottati dal
 gruppo, inclusi quelli a supporto del Glossario e del Piano di Qualifica.
@@ -739,6 +760,8 @@ Per i commit documentali devono essere utilizzati i seguenti scope\textsubscript
     \item \texttt{veN}: Verbale esterno numero \texttt{N};
     \item \texttt{ddbN}: Diario di Bordo numero \texttt{N};
     \item \texttt{sito}: sito documentale.
+    \item \texttt{st}: Specifica tecnica.
+    \item \texttt{mu}: Manuale utente.
 \end{itemize}
 
 Lo scope \texttt{adr} indica l'Analisi dei Requisiti nel contesto dei commit
@@ -779,6 +802,22 @@ In fase PB, la \textit{Pull Request Policy} viene rafforzata:
     \item È obbligatoria l'approvazione di almeno \textbf{1 reviewer} diverso dall'autore del codice. 
     \item Il reviewer ha l'esplicito compito di verificare non solo la logica funzionale, ma anche il rigoroso rispetto delle regole di dipendenza tra gli strati architetturali.
 \end{itemize}
+
+% ------------------------------------------------
+
+\paragraph{Pull Request per branch di codice}
+
+Per i branch di codice la prassi in ordine è:
+
+\begin{itemize}
+    \item creazione del branch per lo sviluppo,
+    \item creare la PR in draft verso il main,
+    \item prima di ogni push bisogna fare i test in locale,
+    \item se si passsano i test in locale, si fa il push e la PR in draft fa partire la CI,
+    \item terminato lo sviluppo e compilata la checklist, si mette in \textit{ready for review},
+    \item il verificatore fa la review e approva solo se se la pipeline risulta interamente verde.
+\end{itemize}
+
 
 % ------------------------------------------------
 
@@ -908,6 +947,17 @@ In fase RTB e durante l'implementazione del Proof of Concept, la verifica riguar
     \item configurazioni necessarie all'esecuzione locale del PoC.
 \end{itemize}
 
+In fase PB, con l'estensione dello sviluppo al Minimum Viable Product, l'ambito della verifica si allarga a:
+
+\begin{itemize}
+    \item codice di produzione del MVP, incluso il rispetto delle convenzioni di nomenclatura (Sezione~\ref{sec:sviluppo});
+    \item esito dell'analisi statica (linting e formattazione) e dei test automatici (unitari e di integrazione);
+    \item rispetto delle soglie minime di code coverage definite (90\% Backend, 85\% Frontend);
+    \item esito della pipeline di Continuous Integration su ogni Pull Request;
+    \item Specifica Tecnica e Manuale Utente, introdotti in questa fase;
+    \item coerenza dei diagrammi UML (classi, sequenza, package) con il codice effettivamente prodotto.
+\end{itemize}
+
 % ------------------------------------------------
 
 \subsubsection{Responsabilità}
@@ -986,10 +1036,10 @@ In fase PB, il codice prodotto è soggetto ad analisi statica e testing automati
 \begin{itemize}
     \item \textbf{Analisi Statica (Linting/Formattazione):} \texttt{ruff} per il backend (Python) e la combinazione \texttt{eslint + prettier} per il frontend (TypeScript/Vue).
     \item \textbf{Testing Automatico:} \texttt{pytest} per il backend e \texttt{vitest} per il frontend.
-    \item \textbf{Code Coverage:} È fissata una soglia minima di copertura dei test pari all'\textbf{80\%}.
+    \item \textbf{Code Coverage:} sono fissate soglie minime di copertura dei test differenziate per componente: \textbf{90\%} per il Backend (\texttt{pytest-cov}), \textbf{85\%} di linee per il Frontend (\texttt{vitest}); le soglie sono verificate automaticamente in pipeline e fanno fallire la build se non rispettate.
 \end{itemize}
 Tali controlli sono automatizzati tramite pipeline di Continuous Integration. 
-Per ottimizzare i tempi, la pipeline di Continuous Integration è configurata per attivarsi esclusivamente in seguito a modifiche all'interno delle directory del codice sorgente (es. \texttt{frontend/}, \texttt{backend/}), ignorando i commit puramente documentali.
+Per ottimizzare i tempi, la pipeline di Continuous Integration è configurata per attivarsi esclusivamente in seguito a modifiche all'interno della directory del codice sorgente (\texttt{mvp/}), ignorando i commit puramente documentali.
 
 % ------------------------------------------------
 
@@ -1069,7 +1119,7 @@ Oltre ai criteri comuni, un task di sviluppo del prodotto finale si considera co
 \begin{itemize}
     \item il codice compila e non sono presenti errori rilevati dai tool di analisi statica (linting);
     \item i test di unità sono stati scritti e risultano eseguiti con successo;
-    \item la \textit{code coverage} del modulo modificato o aggiunto è $\ge$ 80\%;
+    \item la \textit{code coverage} del modulo modificato o aggiunto rispetta la soglia minima definita per il componente (90\% Backend, 85\% Frontend; Sezione~\ref{sec:verifica});
     \item la Pull Request è approvata da almeno un revisore, che ha controllato il rispetto dei layer architetturali;
     \item in caso di modifiche a interfacce condivise tra componenti, la modifica è stata supervisionata dall'architetto o referente di coerenza;
     \item la pipeline di Continuous Integration è passata con successo.
@@ -1100,6 +1150,15 @@ In fase RTB, la validazione riguarda principalmente:
     \item casi d'uso;
     \item scelte tecnologiche;
     \item perimetro del Proof of Concept.
+\end{itemize}
+
+In fase PB, con il completamento del Minimum Viable Product, la validazione riguarda:
+
+\begin{itemize}
+    \item soddisfacimento della totalità dei requisiti obbligatori (Sezione~\ref{sec:sviluppo});
+    \item corrispondenza tra funzionalità implementate e casi d'uso dell'Analisi dei Requisiti, tramite la Mappatura Test di Sistema - Casi d'Uso;
+    \item architettura e design pattern effettivamente adottati, rispetto a quanto documentato nella Specifica Tecnica;
+    \item usabilità e chiarezza del Manuale Utente per un utente privo di competenze tecniche pregresse.
 \end{itemize}
 
 % ------------------------------------------------
@@ -1315,6 +1374,16 @@ misurazione sono riportati nel Piano di Qualifica.
 
 \subsection{Processo di Gestione dei Cambiamenti}
 \label{sec:cambiamenti}
+
+\textit{Nota di tailoring}: lo standard ISO/IEC~12207:1995 non prevede un
+processo di supporto autonomo per la gestione dei cambiamenti: il controllo
+delle modifiche vi è trattato come parte del Processo di Gestione della
+Configurazione (Sezione~\ref{sec:configurazione}). Il gruppo ha scelto di
+scorporarlo in un processo a sé, estensione deliberata oltre lo standard, per
+dare visibilità e tracciabilità autonome anche ai cambiamenti che non
+riguardano direttamente elementi in configurazione (es. cambiamenti di
+processo o al way of working) e che la sola Gestione della Configurazione non
+coprirebbe.
 
 \subsubsection{Descrizione}
 

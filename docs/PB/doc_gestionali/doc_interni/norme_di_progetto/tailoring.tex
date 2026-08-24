@@ -9,18 +9,20 @@ Lo standard ISO/IEC~12207:1995 prevede la possibilità di adattare
 (\textit{tailoring}) i processi del ciclo di vita software al
 contesto specifico del progetto.
 
-Il gruppo \textit{Synergo Unit} adotta un approccio incrementale orientato al
-miglioramento continuo, introducendo progressivamente processi e pratiche in
-funzione dell'evoluzione del progetto e delle baseline\textsubscript{G} previste
-dal Regolamento del Progetto Didattico.
+Il gruppo \textit{Synergo Unit} adotta un approccio iterativo orientato al
+miglioramento continuo introducendo progressivamente processi e
+pratiche in funzione dell'evoluzione del progetto e delle baseline\textsubscript{G} previste
+dal Regolamento del Progetto Didattico. Il ciclo di controllo periodico
+(consuntivo di periodo, retrospettiva, misure correttive, aggiornamento
+della pianificazione) tramite cui il gruppo rivede sia le stime future sia
+le decisioni pregresse è descritto in dettaglio in Sezione~\ref{sec:sviluppo}.
 
 Il tailoring adottato tiene conto dei seguenti fattori contestuali:
 
 \begin{itemize}
-    \item \textbf{Baseline attuale}: PB\textsubscript{G}; il gruppo si trova nella
-    fase di sviluppo dei requisiti, delle scelte tecnologiche e della
-    documentazione tecnica e gestionale richiesta per la Requirements \& Technology
-    Baseline;
+    \item \textbf{Baseline attuale}: PB\textsubscript{G}; il gruppo ha
+    consolidato l'architettura e ha avviato lo sviluppo esteso del prodotto
+    (Minimum Viable Product) e della relativa documentazione richiesta per la Product Baseline;
 
     \item \textbf{Dimensione del gruppo}: sei membri con rotazione periodica e
     documentata dei ruoli;
@@ -29,9 +31,9 @@ Il tailoring adottato tiene conto dei seguenti fattori contestuali:
     accademico, con vincoli temporali, organizzativi ed economici definiti dal
     regolamento del corso;
 
-    \item \textbf{Approccio incrementale}: il gruppo introduce esclusivamente processi
-    effettivamente utilizzati, verificabili e coerenti con lo stato corrente del
-    progetto;
+    \item \textbf{Introduzione progressiva dei processi}: il gruppo introduce
+    esclusivamente processi effettivamente utilizzati, verificabili e coerenti
+    con lo stato corrente del progetto;
 
     \item \textbf{Principio just-in-time}: ogni nuova attività o pratica viene normata
     prima della sua applicazione operativa.
@@ -144,19 +146,7 @@ I processi precedentemente attivati rimangono operativi.
     \endlastfoot
 
     Primario
-    & Processo di Sviluppo: Analisi dei Requisiti
-    & \ref{sec:sviluppo} \\
-
-    Primario
-    & Processo di Sviluppo: Analisi dello Stato dell'Arte
-    & \ref{sec:sviluppo} \\
-
-    Primario
-    & Processo di Sviluppo: Progettazione Architetturale Preliminare
-    & \ref{sec:sviluppo} \\
-
-    Primario
-    & Processo di Sviluppo: Implementazione del Proof of Concept
+    & Processo di Sviluppo (Analisi dei Requisiti, Analisi dello Stato dell'Arte, Progettazione Architetturale Preliminare, Implementazione del Proof of Concept)
     & \ref{sec:sviluppo} \\
 
     Di supporto
@@ -193,18 +183,44 @@ I processi precedentemente attivati rimangono operativi.
 
 \subsection{Processi Attivi nella Fase PB}
 
-Con il superamento della RTB e l'ingresso nella Product Baseline, il gruppo ha consolidato l'architettura e avviato lo sviluppo esteso del prodotto (Minimum Viable Product). 
+Con il superamento della RTB e l'ingresso nella Product Baseline, il gruppo ha consolidato l'architettura e avviato lo sviluppo esteso del prodotto (Minimum Viable Product).
 
-I processi precedentemente attivati rimangono operativi, e vengono formalmente normati e introdotti i seguenti processi per supportare lo sviluppo del codice di produzione:
+I processi precedentemente attivati rimangono operativi. La seguente tabella riporta i processi formalmente normati e introdotti in questa fase per supportare lo sviluppo del codice di produzione; il dettaglio è riportato nei corrispondenti capitoli dei Processi Primari, Organizzativi e di Supporto.
 
-\begin{itemize}
-    \item codifica estesa del prodotto e definizione dell'architettura;
-    \item norme di codifica e naming conventions;
-    \item Dependency Injection;
-    \item test automatici (Unit e Integration testing);
-    \item analisi statica del codice (Linting e Formattazione);
-    \item Continuous Integration tramite GitHub Actions;
-    \item gestione rigorosa delle Pull Request.
-\end{itemize}
+\bigskip
 
-L'introduzione di questi processi si riflette nei corrispondenti capitoli dei Processi Primari, Organizzativi e di Supporto.
+\begin{xltabular}{\textwidth}{
+    >{\raggedright\arraybackslash}p{3cm}
+    >{\raggedright\arraybackslash}X
+    >{\raggedright\arraybackslash}p{3cm}
+}
+    \toprule
+    \textbf{Categoria} & \textbf{Processo} & \textbf{Sezione} \\
+    \midrule
+    \endfirsthead
+
+    \toprule
+    \textbf{Categoria} & \textbf{Processo} & \textbf{Sezione} \\
+    \midrule
+    \endhead
+
+    \midrule
+    \multicolumn{3}{r}{\textit{Continua nella pagina successiva}} \\
+    \endfoot
+
+    \bottomrule
+    \endlastfoot
+
+    Primario
+    & Processo di Sviluppo (Specifica Tecnica, Manuale Utente, codifica estesa del prodotto, definizione dell'architettura, norme di codifica e naming conventions, Dependency Injection)
+    & \ref{sec:sviluppo} \\
+
+    Di supporto
+    & Processo di Gestione della Configurazione (gestione rigorosa delle Pull Request)
+    & \ref{sec:configurazione} \\
+
+    Di supporto
+    & Processo di Verifica (test automatici Unit e Integration testing, analisi statica del codice, Continuous Integration tramite GitHub Actions)
+    & \ref{sec:verifica} \\
+
+\end{xltabular}
