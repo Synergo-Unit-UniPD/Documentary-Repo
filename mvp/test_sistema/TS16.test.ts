@@ -21,7 +21,7 @@ const DISTANT_WRITING = "distant_writing";
 
 const mockNoteService: NoteService = {
   save: vi.fn(),
-  open: vi.fn().mockResolvedValue(new Note("1", ""))
+  open: vi.fn().mockResolvedValue(new Note("1", "")),
 };
 
 function createDeferred<T>() {
@@ -37,7 +37,14 @@ function createDeferred<T>() {
 function makeMockAIService(): AIService {
   return {
     requestOperation: vi.fn(),
-    listOperations: vi.fn().mockResolvedValue(["summarize", "translate", "rewrite", DISTANT_WRITING]),
+    listOperations: vi
+      .fn()
+      .mockResolvedValue([
+        "summarize",
+        "translate",
+        "rewrite",
+        DISTANT_WRITING,
+      ]),
   };
 }
 
@@ -45,10 +52,9 @@ function makeMockAIView(): AIPanelView {
   return {
     attach: vi.fn(),
     getLastRequestedOperation: vi.fn(),
-    getLastProposalAction: vi.fn()
+    getLastProposalAction: vi.fn(),
   } as unknown as AIPanelView;
 }
-
 
 describe("Richiesta Distant Writing", () => {
   it("acquisisce la richiesta dell'utente e avvia l'elaborazione", () => {
@@ -77,7 +83,11 @@ describe("Generazione Distant Writing", () => {
     void model.requestAIOperation(DISTANT_WRITING, "prompt utente", {});
 
     expect(aiService.requestOperation).toHaveBeenCalledTimes(1);
-    expect(aiService.requestOperation).toHaveBeenCalledWith(DISTANT_WRITING, "prompt utente", {});
+    expect(aiService.requestOperation).toHaveBeenCalledWith(
+      DISTANT_WRITING,
+      "prompt utente",
+      {},
+    );
   });
 });
 
@@ -91,7 +101,11 @@ describe("Visualizzazione elaborazione Distant Writing", () => {
     const observer = { update: vi.fn() };
     model.attach(observer);
 
-    const requestPromise = model.requestAIOperation(DISTANT_WRITING, "prompt", {});
+    const requestPromise = model.requestAIOperation(
+      DISTANT_WRITING,
+      "prompt",
+      {},
+    );
 
     expect(observer.update).toHaveBeenCalledTimes(1);
     expect(model.getAIState()).toBeInstanceOf(ProcessingState);
@@ -123,7 +137,11 @@ describe("Interruzione elaborazione Distant Writing", () => {
     (aiService.requestOperation as any).mockReturnValue(deferred.promise);
 
     const model = new AIRequestModel(aiService);
-    const requestPromise = model.requestAIOperation(DISTANT_WRITING, "prompt", {});
+    const requestPromise = model.requestAIOperation(
+      DISTANT_WRITING,
+      "prompt",
+      {},
+    );
 
     model.interruptAIOperation();
     expect(model.getAIState()).toBeInstanceOf(IdleState);
@@ -159,69 +177,81 @@ describe("Accettazione proposta Distant Writing", () => {
     const aiService = makeMockAIService();
     const proposal = new Proposal("TESTO_GENERATO", DISTANT_WRITING);
     (aiService.requestOperation as any).mockResolvedValue(proposal);
- 
+
     const noteModel = new NoteModel(
       new MarkdownContentEditor("Contenuto iniziale."),
       new CommandHistory(),
-      mockNoteService
+      mockNoteService,
     );
- 
+
     const aiView = makeMockAIView();
     const model = new AIRequestModel(aiService);
     const controller = new AIController(model, aiView, noteModel);
- 
+
     const cursorPosition = 10; // dopo "Contenuto "
     const cursorRange = new TextRange(cursorPosition, cursorPosition); // range collassato = cursore, nessuna selezione
- 
+
     aiView.getLastRequestedOperation = vi.fn().mockReturnValue({
       type: DISTANT_WRITING,
       text: "prompt utente",
       params: {},
-      range: cursorRange
+      range: cursorRange,
     });
- 
+
+    // Vedi nota in TS13: la soglia minima di ~2s di ProcessingState (R2-P-O)
+    // richiede di avanzare i fake timer, non un semplice microtask flush.
+    vi.useFakeTimers();
     controller.update();
-    await Promise.resolve();
- 
+    await vi.advanceTimersByTimeAsync(2100);
+    vi.useRealTimers();
+
     aiView.getLastRequestedOperation = vi.fn().mockReturnValue(undefined);
-    aiView.getLastProposalAction = vi.fn().mockReturnValue(ProposalActionType.ACCEPT);
- 
+    aiView.getLastProposalAction = vi
+      .fn()
+      .mockReturnValue(ProposalActionType.ACCEPT);
+
     controller.update();
- 
+
     expect(noteModel.getContent()).toBe("Contenuto TESTO_GENERATOiniziale.");
     expect(model.getAIState()).toBeInstanceOf(IdleState);
   });
- 
+
   it("rete di sicurezza: se non è noto alcun range, inserisce il testo in coda al documento", async () => {
     const aiService = makeMockAIService();
     const proposal = new Proposal("TESTO_GENERATO", DISTANT_WRITING);
     (aiService.requestOperation as any).mockResolvedValue(proposal);
- 
+
     const noteModel = new NoteModel(
       new MarkdownContentEditor("Contenuto iniziale."),
       new CommandHistory(),
-      mockNoteService
+      mockNoteService,
     );
- 
+
     const aiView = makeMockAIView();
     const model = new AIRequestModel(aiService);
     const controller = new AIController(model, aiView, noteModel);
- 
+
     aiView.getLastRequestedOperation = vi.fn().mockReturnValue({
       type: DISTANT_WRITING,
       text: "prompt utente",
       params: {},
-      range: undefined
+      range: undefined,
     });
- 
+
+    // Vedi nota in TS13: la soglia minima di ~2s di ProcessingState (R2-P-O)
+    // richiede di avanzare i fake timer, non un semplice microtask flush.
+    vi.useFakeTimers();
     controller.update();
-    await Promise.resolve();
- 
+    await vi.advanceTimersByTimeAsync(2100);
+    vi.useRealTimers();
+
     aiView.getLastRequestedOperation = vi.fn().mockReturnValue(undefined);
-    aiView.getLastProposalAction = vi.fn().mockReturnValue(ProposalActionType.ACCEPT);
- 
+    aiView.getLastProposalAction = vi
+      .fn()
+      .mockReturnValue(ProposalActionType.ACCEPT);
+
     controller.update();
- 
+
     expect(noteModel.getContent()).toBe("Contenuto iniziale.TESTO_GENERATO");
     expect(model.getAIState()).toBeInstanceOf(IdleState);
   });
@@ -256,7 +286,7 @@ describe("Rigenerazione proposta Distant Writing", () => {
     const noteModel = new NoteModel(
       new MarkdownContentEditor(""),
       new CommandHistory(),
-      mockNoteService
+      mockNoteService,
     );
     const aiView = makeMockAIView();
     const model = new AIRequestModel(aiService);
@@ -267,19 +297,30 @@ describe("Rigenerazione proposta Distant Writing", () => {
       type: DISTANT_WRITING,
       text: originalPrompt,
       params: {},
-      range: undefined
+      range: undefined,
     });
+    // Vedi nota in TS13: ogni richiesta AI (anche quella di rigenerazione)
+    // attraversa ~2s reali di ProcessingState (R2-P-O) prima di ProposalReady.
+    vi.useFakeTimers();
     controller.update();
-    await Promise.resolve();
+    await vi.advanceTimersByTimeAsync(2100);
     expect((model.getAIState() as ProposalReadyState).proposal).toBe(first);
 
     aiView.getLastRequestedOperation = vi.fn().mockReturnValue(undefined);
-    aiView.getLastProposalAction = vi.fn().mockReturnValue(ProposalActionType.REGENERATE);
+    aiView.getLastProposalAction = vi
+      .fn()
+      .mockReturnValue(ProposalActionType.REGENERATE);
     controller.update();
-    await Promise.resolve();
+    await vi.advanceTimersByTimeAsync(2100);
+    vi.useRealTimers();
 
     expect(aiService.requestOperation).toHaveBeenCalledTimes(2);
-    expect(aiService.requestOperation).toHaveBeenNthCalledWith(2, DISTANT_WRITING, originalPrompt, {});
+    expect(aiService.requestOperation).toHaveBeenNthCalledWith(
+      2,
+      DISTANT_WRITING,
+      originalPrompt,
+      {},
+    );
     expect((model.getAIState() as ProposalReadyState).proposal).toBe(second);
   });
 });
@@ -287,7 +328,9 @@ describe("Rigenerazione proposta Distant Writing", () => {
 describe("Visualizzazione errore generazione Distant Writing", () => {
   it("porta lo stato a Error quando il servizio LLM fallisce", async () => {
     const aiService = makeMockAIService();
-    (aiService.requestOperation as any).mockRejectedValue(new Error("Errore LLM"));
+    (aiService.requestOperation as any).mockRejectedValue(
+      new Error("Errore LLM"),
+    );
 
     const model = new AIRequestModel(aiService);
     const observer = { update: vi.fn() };
@@ -307,7 +350,11 @@ describe("Visualizzazione errore generazione Distant Writing", () => {
     (aiService.requestOperation as any).mockReturnValue(deferred.promise);
 
     const model = new AIRequestModel(aiService);
-    const requestPromise = model.requestAIOperation(DISTANT_WRITING, "prompt", {});
+    const requestPromise = model.requestAIOperation(
+      DISTANT_WRITING,
+      "prompt",
+      {},
+    );
 
     model.interruptAIOperation();
     deferred.reject(new Error("Timeout"));
