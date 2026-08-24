@@ -1,0 +1,93 @@
+% =======================================================
+% 7. RISOLUZIONE DEI PROBLEMI E SUPPORTO
+% =======================================================
+\section{Risoluzione dei Problemi (FAQ)}
+Di seguito sono elencate le soluzioni ai problemi più comuni relativi all'installazione o all'utilizzo del sistema.
+
+\subsection{Problemi di Avvio e Configurazione}
+\begin{description}
+    \item[Porta già in uso durante l'avvio di Docker] \hfill \\
+    Le porte utilizzate di default sono la \texttt{5173} (frontend\textsubscript{G}) e la \texttt{8000} (backend\textsubscript{G}), definite in \texttt{docker-compose.yml}.
+    Se una delle due è già occupata da un altro processo sulla macchina, modificare il numero a sinistra dei due punti nella sezione
+    \texttt{ports} del servizio interessato (es. \texttt{"3000:5173"} per esporre il frontend sulla porta 3000) e riavviare con
+    \texttt{docker compose up -d --build}.
+    
+    \item[L'Intelligenza Artificiale non risponde (Errore API)] \hfill \\
+    Verificare che nel file \texttt{.env} i campi \texttt{ZUCCHETTI\_LLM\_BASE\_URL}, \texttt{ZUCCHETTI\_LLM\_API\_KEY} e
+    \texttt{ZUCCHETTI\_LLM\_MODEL} siano compilati correttamente, che vi sia connessione di rete verso il provider LLM indicato in
+    \texttt{ZUCCHETTI\_LLM\_BASE\_URL} e, se il problema persiste, consultare i log del container backend con
+    \texttt{docker compose logs backend}.
+
+    \item[All'avvio compare un messaggio "Impossibile raggiungere il server"] \hfill \\
+    All'apertura della pagina il sistema verifica automaticamente che il backend sia raggiungibile. Se compare questo avviso,
+    il container backend non è avviato o non risponde: verificare con \texttt{docker compose ps} che entrambi i container siano
+    in esecuzione e consultarne i log con \texttt{docker compose logs backend}.
+\end{description}
+
+\subsection{Gestione dei Messaggi di Errore}
+I messaggi mostrati dal sistema si distinguono in due categorie: \textbf{errori tecnici} (Tabella~\ref{tab:errori-tecnici}), che 
+segnalano un problema con un servizio esterno o un'operazione fallita, e \textbf{avvisi} (Tabella~\ref{tab:avvisi}), che guidano 
+l'utente verso l'azione corretta senza che si tratti di un vero malfunzionamento.
+
+\subsubsection{Errori Tecnici}
+\renewcommand{\arraystretch}{1.3}
+\begin{table}[H]
+\begin{tabularx}{\textwidth}{|X|X|}
+    \hline
+    \rowcolor{primarycolor!10}
+    \textbf{Messaggio Visualizzato} & \textbf{Causa e Soluzione} \\
+    \hline
+    \texttt{Il modello AI ha impiegato troppo tempo a rispondere. Riprova.} & Il provider del modello linguistico non ha risposto entro il tempo massimo consentito. Riprovare tra qualche istante; se il problema persiste, verificare lo stato del servizio LLM. \\
+    \hline
+    \texttt{Il servizio AI non è raggiungibile al momento. Controlla la connessione e riprova.} & Il backend non riesce a contattare il provider LLM (rete assente o servizio non disponibile). Verificare la connessione a internet e la correttezza di \texttt{ZUCCHETTI\_LLM\_BASE\_URL} nel file \texttt{.env}. \\
+    \hline
+    \texttt{Operazione AI non riconosciuta.} & Errore interno raro: il tipo di operazione AI richiesta non è supportato dal backend. Se compare, segnalarlo al gruppo di sviluppo (Sezione~\ref{sec:supporto-tecnico}). \\
+    \hline
+    \texttt{Errore imprevisto durante il salvataggio} / \texttt{durante l'apertura della nota} & Si è verificato un errore, generalmente legato al browser o al file system\textsubscript{G}, durante il salvataggio o l'apertura locale di una nota. Riprovare l'operazione; se il messaggio persiste, verificare i permessi di scrittura/lettura nella cartella scelta. \\
+    \hline
+    \texttt{Non è stato possibile generare il file per questo formato. Riprova.} & L'esportazione della nota (PDF, HTML o JSON) è fallita lato backend. Riprovare; se il problema persiste, verificare i log del container backend. \\
+    \hline
+    \texttt{Dimensioni tabella non valide} & È stato richiesto di creare una tabella con un numero di righe o colonne non valido (zero o mancante). Inserire valori numerici maggiori di zero. \\
+    \hline
+    \texttt{Impossibile accedere agli appunti del browser} & Il browser ha negato l'accesso agli appunti di sistema durante un'operazione di Copia o Taglia (permesso non concesso, o contesto non sicuro). Verificare i permessi del sito nelle impostazioni del browser. \\
+    \hline
+    \texttt{Impossibile leggere dagli appunti del browser (permesso negato o non supportato)} & Il browser ha negato l'accesso agli appunti durante un'operazione di Incolla. Verificare i permessi del sito nelle impostazioni del browser. \\
+    \hline
+\end{tabularx}
+\caption{Messaggi di errore tecnico}
+\label{tab:errori-tecnici}
+\end{table}
+
+\subsubsection{Avvisi}
+\renewcommand{\arraystretch}{1.3}
+\begin{table}[H]
+\begin{tabularx}{\textwidth}{|X|X|}
+    \hline
+    \rowcolor{primarycolor!10}
+    \textbf{Messaggio Visualizzato} & \textbf{Causa e Soluzione} \\
+    \hline
+    \texttt{Seleziona del testo prima di richiedere questa operazione} & È stata richiesta un'operazione AI (Riassumi, Riscrivi o Sei Cappelli per Pensare) senza aver prima selezionato una porzione di testo nell'editor. Selezionare il testo su cui si vuole operare e riprovare. \\
+    \hline
+    \texttt{Seleziona del testo da tradurre prima di continuare} & È stata confermata una richiesta di traduzione senza aver prima selezionato una porzione di testo nell'editor. Selezionare il testo da tradurre e riprovare. \\
+    \hline
+    \texttt{Seleziona del testo da copiare} & È stato premuto il pulsante Copia senza aver selezionato del testo nell'editor. \\
+    \hline
+    \texttt{Seleziona del testo da tagliare} & È stato premuto il pulsante Taglia senza aver selezionato del testo nell'editor. \\
+    \hline
+    \texttt{Il link non è valido: manca lo schema (es. "https://").} & È stato cliccato, nell'anteprima, un collegamento senza uno schema esplicito (es. scritto come \texttt{esempio.it} invece di \texttt{https://esempio.it}): il sistema non lo apre per evitare una navigazione ambigua. Correggere l'indirizzo del link includendo lo schema. \\
+    \hline
+\end{tabularx}
+\caption{Messaggi di avviso}
+\label{tab:avvisi}
+\end{table}
+
+\textbf{Nota}: a differenza delle altre funzionalità AI, Distant Writing (Sezione~\ref{sec:distant-writing}) non richiede alcuna 
+selezione di testo: genera contenuto nuovo a partire dal solo prompt inserito dall'utente.
+
+\section{Supporto Tecnico}
+\label{sec:supporto-tecnico}
+Nel caso in cui le soluzioni proposte non fossero sufficienti a ripristinare il corretto funzionamento dell'applicativo, è possibile contattare il gruppo di sviluppo:
+\begin{itemize}
+    \item \textbf{Email:} \href{mailto:synergounit20@gmail.com}{synergounit20@gmail.com}
+    \item \textbf{Segnalazione Bug\textsubscript{G}:} Inserire un'issue\textsubscript{G} dettagliata (con screenshot e descrizione dei passaggi) sulla repository ufficiale del progetto.
+\end{itemize}
