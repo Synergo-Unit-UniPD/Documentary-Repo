@@ -3,69 +3,116 @@
 % =======================================================
 
 \section{Specifica dei Test}
-Questa sezione descrive la strategia di testing adottata dal gruppo Synergo Unit per garantire la conformità del sistema \textit{Second Brain} ai requisiti analizzati.
+Questa sezione descrive la strategia di testing adottata dal gruppo Synergo Unit e ne riporta gli esiti, a supporto della verifica di conformità del sistema \textit{Second Brain} ai requisiti e ai casi d'uso analizzati. Tutti i livelli di test previsti (unità, integrazione, sistema) sono implementati, integrati nella pipeline di CI\textsubscript{G} ed eseguiti con esito positivo; la sola eccezione è il livello di accettazione, per sua natura vincolato alla sessione di validazione formale con la proponente Zucchetti (si veda la Sezione~\ref{sec:test-accettazione}).
 
 Lo stato del test è indicato come:
 \begin{itemize}
-    \item \textbf{I}: Implementato;
-    \item \textbf{NI}: Non Implementato (pianificato per le fasi successive);
-    \item \textbf{S}: Superato.
+    \item \textbf{NI}: Non Implementato;
+    \item \textbf{I}: Implementato, ma non ancora eseguito con esito verificato in questa sede (es. richiede un ambiente non disponibile in fase di stesura);
+    \item \textbf{S}: Superato -- implementato ed eseguito con tutti i casi verificati positivamente.
 \end{itemize}
 
 \subsection{Strategia di Test}
-Per garantire la qualità del prodotto il gruppo adotta una strategia di test suddivisa per strato architetturale,
- utilizzando framework e tool specifici:
- \begin{itemize}
-    \item Backend (Python): pytest.
-    \item Frontend (JavaScript/Typescript):
-        \begin{itemize}
-            \item vitest per test unitari,
-            \item eslint e prettier per analisi statica e formattazione.
-        \end{itemize}
- \end{itemize}
+Il gruppo adotta una strategia di test suddivisa per strato architetturale, con framework e soglie differenziati per backend e frontend:
+\begin{itemize}
+    \item \textbf{Backend (Python)}: \texttt{pytest} per i test di unità e integrazione, \texttt{pytest-cov} per la copertura, \texttt{ruff} e \texttt{mypy} per l'analisi statica. Soglia di copertura in CI: $\geq 90\%$.
+    \item \textbf{Frontend (TypeScript/Vue)}: \texttt{vitest} per i test di unità e di sistema, \texttt{eslint} e \texttt{prettier} per analisi statica e formattazione. Soglia di copertura in CI: $\geq 70\%$ complessivo, con soglie puntuali più stringenti sui moduli che realizzano i casi d'uso principali (linee $\geq 85\%$, funzioni $\geq 78\%$, branch $\geq 78\%$), a presidio del requisito R1-Q-O.
+    \item \textbf{Deployment}: \texttt{test\_deploy.sh}, script che verifica l'avvio dei container Docker\textsubscript{G} e la comunicazione reale frontend-backend sulla rete interna.
+\end{itemize}
 
-I tool di analisi statica verranno eseguiti automaticamente in CI (GitHub Actions) per prevenire
- l'integrazione di codice non conforme.
+Tutti i controlli sopra elencati, ad eccezione dello script di deployment, sono eseguiti automaticamente in CI (GitHub Actions) a ogni Pull Request\textsubscript{G}, tramite il comando \texttt{make ci}, per prevenire l'integrazione di codice non conforme o non testato.
+
+\vspace{0.3cm}
+\subsubsection*{Integrazione dei Test di Sistema nella pipeline}
+I Test di Sistema (cartella \texttt{test\_sistema/}) sono richiamati dallo stesso comando usato per i Test di Unità (\texttt{npm run test:unit}, quindi \texttt{make test-frontend}, \texttt{make coverage} e \texttt{make ci}), tramite l'opzione \texttt{test.include} di \texttt{frontend/vite.config.js}: non richiedono un'esecuzione manuale separata e vengono rilanciati automaticamente a ogni Pull Request, con lo stesso report unico dei Test di Unità. Per chi desidera eseguirli in isolamento durante lo sviluppo, resta disponibile il comando dedicato \texttt{make test-sistema}.
 
 \subsection{Test di unità (TU)}
-Verificano il corretto funzionamento delle singole unità logiche del codice. Saranno implementati nella fase di Product Baseline\textsubscript{G} (PB).
+Verificano il corretto funzionamento delle singole unità logiche del codice, isolate dalle proprie dipendenze tramite dei double\textsubscript{G} (mock/stub). Il gruppo li organizza per componente architetturale, coerentemente con la Specifica Tecnica.
 
-%\begin{table}[H]
-%    \centering
-%    \renewcommand{\arraystretch}{1.3}
-%    \begin{tabularx}{\textwidth}{|c|X|c|}
-%        \hline
-%        \rowcolor{primarycolor!10}
-%        \textbf{ID} & \textbf{Descrizione} & \textbf{Stato} \\
-%        \hline
-%        TU1 & [Pianificato per fase PB] & NI \\
-%        \hline
-%    \end{tabularx}
-%    \caption{Test di Unità}
-%\end{table}
+\renewcommand{\arraystretch}{1.3}
+\begin{table}[H]
+    \centering
+    \begin{tabularx}{\textwidth}{|X|c|c|c|}
+        \hline
+        \rowcolor{primarycolor!10}
+        \textbf{Componente / Pattern coinvolto} & \textbf{File di test} & \textbf{Casi} & \textbf{Stato} \\
+        \hline
+        \multicolumn{4}{|l|}{\cellcolor{primarycolor!5}\textit{Backend (pytest)}} \\
+        \hline
+        AI\_Domain/domain -- operazioni AI, Factory\textsubscript{G} & 3 & 20 & S \\
+        \hline
+        AI\_Domain/llm -- adapter LLM\textsubscript{G}, Decorator\textsubscript{G} & 2 & 11 & S \\
+        \hline
+        AI\_Domain/service -- orchestrazione dominio AI & 1 & 3 & S \\
+        \hline
+        API\_business\_layer/api -- router\textsubscript{G} e schemi & 2 & 11 & S \\
+        \hline
+        API\_business\_layer/di -- Dependency Injection\textsubscript{G} & 1 & 1 & S \\
+        \hline
+        export -- Strategy\textsubscript{G} formati (PDF/HTML/JSON) & 3 & 12 & S \\
+        \hline
+        \textbf{Totale backend} & \textbf{12} & \textbf{58} & \textbf{58/58 S} \\
+        \hline
+        \multicolumn{4}{|l|}{\cellcolor{primarycolor!5}\textit{Frontend (vitest)}} \\
+        \hline
+        model -- Command\textsubscript{G} (Undo/Redo) & 8 & 19 & S \\
+        \hline
+        model -- State\textsubscript{G} (ciclo di vita richiesta AI) & 5 & 15 & S \\
+        \hline
+        model -- Editor e Nota (core) & 6 & 90 & S \\
+        \hline
+        model -- Observer\textsubscript{G} (base pattern MVC) & 2 & 2 & S \\
+        \hline
+        model -- value object ed enumerazioni ausiliarie & 8 & 10 & S \\
+        \hline
+        controller -- EditorController, AIController & 2 & 25 & S \\
+        \hline
+        view -- EditorView, AIPanelView & 2 & 11 & S \\
+        \hline
+        proxy -- Proxy\textsubscript{G} verso il backend & 3 & 26 & S \\
+        \hline
+        components -- componenti Vue (modali, TopBar) & 6 & 68 & S \\
+        \hline
+        test trasversali (smoke\textsubscript{G}, regressione Undo/Redo) & 3 & 32 & S \\
+        \hline
+        \textbf{Totale frontend} & \textbf{45} & \textbf{298} & \textbf{298/298 S} \\
+        \hline
+        \rowcolor{primarycolor!10}
+        \textbf{Totale complessivo TU} & \textbf{57} & \textbf{356} & \textbf{356/356 S} \\
+        \hline
+    \end{tabularx}
+    \caption{Test di Unità -- riepilogo per componente (esecuzione verificata alla data di redazione)}
+\end{table}
+
+Copertura di codice risultante: \textbf{95\%} sul backend (soglia CI 90\%) e \textbf{89,75\% linee / 88,51\% statement / 89,72\% funzioni / 83,61\% branch} sul frontend, calcolata sull'intera suite (TU + Test di Sistema, ora eseguiti insieme -- si veda la nota di integrazione sopra), a fronte di una soglia CI del 70\% complessivo e dell'85\%/78\%/78\% sulle soglie puntuali di R1-Q-O: entrambe verificate rieseguendo \texttt{make coverage} in sede di stesura del documento.
 
 \subsection{Test di integrazione (TI)}
-I test di integrazione hanno l'obiettivo di verificare la corretta comunicazione tra i diversi moduli del sistema.
+I test di integrazione verificano la corretta comunicazione tra i moduli del sistema, senza sostituire dipendenze interne (a differenza dei TU).
 
-Durante la fase RTB tali test non sono ancora previsti, poiché l'attività di sviluppo è limitata alla validazione della fattibilità tecnologica tramite il Proof of Concept. La pianificazione dettagliata dei test di integrazione verrà effettuata nella fase di Product Baseline\textsubscript{G} (PB), contestualmente alla definizione dell'architettura software definitiva. 
+\renewcommand{\arraystretch}{1.3}
+\begin{table}[H]
+    \centering
+    \begin{tabularx}{\textwidth}{|c|X|c|}
+        \hline
+        \rowcolor{primarycolor!10}
+        \textbf{ID} & \textbf{Descrizione} & \textbf{Stato} \\
+        \hline
+        TI01 & Flusso end-to-end di una richiesta AI: dal router FastAPI, attraverso il livello di Dependency Injection\textsubscript{G} e il dominio AI, fino al servizio LLM (sostituito da un double che intercetta la sola chiamata di rete esterna). & S \\
+        \hline
+        TI02 & Propagazione degli errori del servizio LLM (es. indisponibilità) fino alla risposta HTTP\textsubscript{G} restituita dal router, tramite gli error handler applicativi. & S \\
+        \hline
+        TI03 & Flusso end-to-end di esportazione di una nota nei formati PDF, HTML e JSON, dal router di export fino ai singoli Strategy di formato. & S \\
+        \hline
+        TI04 & Verifica di avvio e comunicazione reale tra i container Docker\textsubscript{G} di frontend e backend sulla rete interna (\texttt{test\_deploy.sh}). & S \\
+        \hline
+    \end{tabularx}
+    \caption{Test di Integrazione}
+\end{table}
 
-%
-%\begin{table}[H]
-%    \centering
-%    \renewcommand{\arraystretch}{1.3}
-%    \begin{tabularx}{\textwidth}{|c|X|c|}
-%        \hline
-%        \rowcolor{primarycolor!10}
-%        \textbf{ID} & \textbf{Descrizione} & \textbf{Stato} \\
-%        \hline
-%        TI1 & [Pianificato per fase PB] & NI \\
-%        \hline
-%    \end{tabularx}
-%    \caption{Test di Integrazione}
-%\end{table}
-%
+Non è prevista una categoria di test di integrazione separata lato frontend: l'architettura MVC\textsubscript{G} "pull model" del frontend comunica con l'esterno esclusivamente attraverso il pattern Proxy (Sezione TU), che nei test di unità viene sostituito da un double; la comunicazione realmente integrata Model-View-Controller-Proxy, senza alcuna sostituzione, è invece esercitata dai Test di Sistema (Sezione seguente) e, verso il backend reale, dal test di deployment TI04.
+
 \subsection{Test di sistema (TS)}
-Verificano che il comportamento dell'intera applicazione sia coerente con quanto descritto nei Casi d'Uso\textsubscript{G} (UC).
+Verificano che il comportamento dell'intera applicazione, dal punto di vista dell'utente, sia coerente con quanto descritto nei Casi d'Uso\textsubscript{G} (UC). A differenza dei TU, non sostituiscono le dipendenze interne (Model, View, Controller reali); viene sostituito unicamente il confine esterno del sistema (proxy verso il backend/LLM).
 
 \renewcommand{\arraystretch}{1.3}
 \begin{xltabular}{\textwidth}{|c|X|c|c|}
@@ -75,7 +122,7 @@ Verificano che il comportamento dell'intera applicazione sia coerente con quanto
     \textbf{ID} & \textbf{Descrizione} & \textbf{UC Rif.} & \textbf{Stato} \\
     \hline
     \endfirsthead
-    
+
     \multicolumn{4}{c}%
     {{\bfseries \tablename\ \thetable{} -- Continua dalla pagina precedente}} \\
     \hline
@@ -92,58 +139,71 @@ Verificano che il comportamento dell'intera applicazione sia coerente con quanto
     \hline
     \endlastfoot
 
-    TS01 & Operazioni base: Scrittura testo, Copia, Taglia e Incolla. & UC 1-4 & NI \\ \hline
-    TS02 & Formattazione\textsubscript{G} testo: Grassetto Inserimento, Applicazione e Rimozione. & UC 5-8 & NI \\ \hline
-    TS03 & Formattazione testo: Corsivo Inserimento, Applicazione e Rimozione. & UC 9-12 & NI \\ \hline
-    TS04 & Formattazione testo: Sottolineato Inserimento, Applicazione e Rimozione. & UC 13-16 & NI \\ \hline
-    TS05 & Formattazione testo: Barrato Inserimento, Applicazione e Rimozione. & UC 17-20 & NI \\ \hline
-    TS06 & Formattazione testo: Citazione Inserimento, Applicazione e Rimozione. & UC 21-24 & NI \\ \hline
-    TS07 & Gestione Titoli: Inserimento, Applicazione e Rimozione. & UC 25-28 & NI \\ \hline
-    TS08 & Gestione Link: Inserimento, Modifica e Rimozione link. & UC 29-31 & NI \\ \hline
-    TS09 & Gestione Elenchi: Inserimento, Modifica, Disattivazione e Rimozione. & UC 32-39 & NI \\ \hline
-    TS10 & Gestione Tabelle: Creazione, Modifica Righe e Colonne, eliminazione. & UC 40-46 & NI \\ \hline
-    TS11 & Gestione Modifiche: Azioni di Undo\textsubscript{G} e Redo\textsubscript{G}. & UC 47, 48 & NI \\ \hline
-    TS12 & Visualizzazione: solo Editor, solo Render\textsubscript{G} e Split View\textsubscript{G}. & UC 49, 50, 51 & NI \\ \hline
+    TS01 & Operazioni base: Scrittura testo, Copia, Taglia e Incolla. & UC 1-4 & S \\ \hline
+    TS02 & Formattazione\textsubscript{G} testo: Grassetto Inserimento, Applicazione e Rimozione. & UC 5-8 & S \\ \hline
+    TS03 & Formattazione testo: Corsivo Inserimento, Applicazione e Rimozione. & UC 9-12 & S \\ \hline
+    TS04 & Formattazione testo: Sottolineato Inserimento, Applicazione e Rimozione. & UC 13-16 & S \\ \hline
+    TS05 & Formattazione testo: Barrato Inserimento, Applicazione e Rimozione. & UC 17-20 & S \\ \hline
+    TS06 & Formattazione testo: Citazione Inserimento, Applicazione e Rimozione. & UC 21-24 & S \\ \hline
+    TS07 & Gestione Titoli: Inserimento, Applicazione e Rimozione. & UC 25-28 & S \\ \hline
+    TS08 & Gestione Link: Inserimento, Modifica e Rimozione link. & UC 29-31 & S \\ \hline
+    TS09 & Gestione Elenchi: Inserimento, Modifica, Disattivazione e Rimozione. & UC 32-39 & S \\ \hline
+    TS10 & Gestione Tabelle: Creazione, Modifica Righe e Colonne, eliminazione. & UC 40-46 & S \\ \hline
+    TS11 & Gestione Modifiche: Azioni di Undo\textsubscript{G} e Redo\textsubscript{G}. & UC 47, 48 & S \\ \hline
+    TS12 & Visualizzazione: solo Editor, solo Render\textsubscript{G} e Split View\textsubscript{G}. & UC 49, 50, 51 & S \\ \hline
 
-    TS13 & AI: Richiesta, Generazione, Visualizzazione, Accettazione, Rifiuto, Rigenerazione, Visualizzazione errore  riassunto. & UC 52-60 & NI \\ \hline
-    TS14 & AI: Richiesta, Generazione, Visualizzazione, Accettazione, Rifiuto, Rigenerazione, Visualizzazione errore  traduzione. & UC 61-69 & NI \\ \hline
-    TS15 & AI: Richiesta, Generazione, Visualizzazione, Accettazione, Rifiuto, Rigenerazione, Visualizzazione errore  riscrittura. & UC 70-78 & NI \\ \hline
-    TS16 & AI: Apertura finestra, Richiesta, Generazione, Visualizzazione, Accettazione, Rifiuto, Rigenerazione, Visualizzazione errore  Distant Writing. & UC 79-88 & NI \\ \hline
-    TS17 & AI: Richiesta, Generazione, Visualizzazione, Accettazione, Rifiuto, Rigenerazione, Visualizzazione errore  capello bianco. & UC 89-97 & NI \\ \hline
-    TS18 & AI: Richiesta, Generazione, Visualizzazione, Accettazione, Rifiuto, Rigenerazione, Visualizzazione errore  capello rosso. & UC 98-106 & NI \\ \hline
-    TS19 & AI: Richiesta, Generazione, Visualizzazione, Accettazione, Rifiuto, Rigenerazione, Visualizzazione errore  capello nero. & UC 107-115 & NI \\ \hline
-    TS20 & AI: Richiesta, Generazione, Visualizzazione, Accettazione, Rifiuto, Rigenerazione, Visualizzazione errore  capello giallo. & UC 116-124 & NI \\ \hline
-    TS21 & AI: Richiesta, Generazione, Visualizzazione, Accettazione, Rifiuto, Rigenerazione, Visualizzazione errore  capello verde. & UC 125-133 & NI \\ \hline
-    TS22 & AI: Richiesta, Generazione, Visualizzazione, Accettazione, Rifiuto, Rigenerazione, Visualizzazione errore  capello blu. & UC 134-142 & NI \\ \hline
+    TS13 & AI: Richiesta, Generazione, Visualizzazione, Accettazione, Rifiuto, Rigenerazione, Visualizzazione errore -- riassunto. & UC 52-60 & S \\ \hline
+    TS14 & AI: Richiesta, Generazione, Visualizzazione, Accettazione, Rifiuto, Rigenerazione, Visualizzazione errore -- traduzione. & UC 61-69 & S \\ \hline
+    TS15 & AI: Richiesta, Generazione, Visualizzazione, Accettazione, Rifiuto, Rigenerazione, Visualizzazione errore -- riscrittura. & UC 70-78 & S \\ \hline
+    TS16 & AI: Apertura finestra, Richiesta, Generazione, Visualizzazione, Accettazione, Rifiuto, Rigenerazione, Visualizzazione errore -- Distant Writing. & UC 79-88 & S \\ \hline
+    TS17 & AI: Richiesta, Generazione, Visualizzazione, Accettazione, Rifiuto, Rigenerazione, Visualizzazione errore -- cappello bianco. & UC 89-97 & S \\ \hline
+    TS18 & AI: Richiesta, Generazione, Visualizzazione, Accettazione, Rifiuto, Rigenerazione, Visualizzazione errore -- cappello rosso. & UC 98-106 & S \\ \hline
+    TS19 & AI: Richiesta, Generazione, Visualizzazione, Accettazione, Rifiuto, Rigenerazione, Visualizzazione errore -- cappello nero. & UC 107-115 & S \\ \hline
+    TS20 & AI: Richiesta, Generazione, Visualizzazione, Accettazione, Rifiuto, Rigenerazione, Visualizzazione errore -- cappello giallo. & UC 116-124 & S \\ \hline
+    TS21 & AI: Richiesta, Generazione, Visualizzazione, Accettazione, Rifiuto, Rigenerazione, Visualizzazione errore -- cappello verde. & UC 125-133 & S \\ \hline
+    TS22 & AI: Richiesta, Generazione, Visualizzazione, Accettazione, Rifiuto, Rigenerazione, Visualizzazione errore -- cappello blu. & UC 134-142 & S \\ \hline
 
-    TS23 & Persistenza: Creazione ed Eliminazione nota e salvataggio nota in formato Markdown. & UC 143-145 & NI \\ \hline
-    TS24 & I/O: Download/Upload MD ed Esportazione (PDF/HTML\textsubscript{G}/JSON\textsubscript{G}). & UC 146-149 & NI \\ \hline
-    TS25 & Gestione Utenti: Registrazione, Autenticazione e Logout Utente. & UC 150-152 & NI \\ \hline
-    TS26 & Interazioni con DB: Visualizzazione, Salvataggio, Apertura Note da Remoto. & UC 153-155 & NI \\ \hline
-    
+    TS23 & Persistenza: creazione di una nuova nota e salvataggio in formato Markdown, incluso il riutilizzo dell'id restituito dal backend e il ripristino di una nota esistente. & UC 143, 145 & S \\ \hline
+    TS24 & I/O: Esportazione della nota nei formati PDF, HTML e JSON. & UC 147-149 & S \\ \hline
+    TS25 & Gestione Utenti: Registrazione, Autenticazione e Logout Utente. & UC 150-152 & NI\textsuperscript{(1)} \\ \hline
+    TS26 & Interazioni con DB: Visualizzazione, Salvataggio, Apertura Note da Remoto. & UC 153-155 & NI\textsuperscript{(1)} \\ \hline
+    TS27 & Uscita dall'applicazione con modifiche non salvate: richiesta e gestione della conferma del browser. & UC 156-156.2 & S \\ \hline
+    TS28 & Apertura di un link dalla nota: navigazione su URL assoluto e segnalazione di link non valido. & UC 157-157.1 & S \\ \hline
+
 \end{xltabular}
 
+\vspace{0.2cm}
+\subsubsection*{Note sugli esiti}
+\begin{enumerate}
+    \item[(1)] \textbf{TS25, TS26.} Coerentemente con l'Analisi dei Requisiti, le funzionalità di gestione utenti (UC150--UC152) e di interazione con un database remoto (UC153--UC155) sono classificate come \textbf{opzionali}, e come spiegato nella Specifica Tecnica non sono state implementate restando NI.
+\end{enumerate}
+
 \subsection{Test di accettazione (TA)}
-I test di accettazione hanno lo scopo di verificare la conformità del prodotto rispetto alle aspettative della proponente Zucchetti e ai requisiti definiti nell'Analisi dei Requisiti.
+\label{sec:test-accettazione}
+I test di accettazione verificano la conformità del prodotto alle aspettative della proponente Zucchetti, così come emerse dal capitolato e consolidate nell'Analisi dei Requisiti. A differenza dei livelli precedenti, la loro esecuzione non è una verifica interna del gruppo ma una validazione formale: per regolamento di progetto, l'MVP deve ricevere un'approvazione esplicita della proponente (demo formale con conferma via mail, oppure dichiarazione esplicita a verbale) prima che la Product Baseline possa dirsi conclusa. 
 
-La loro definizione dettagliata verrà completata nella fase di Product Baseline\textsubscript{G} (PB), quando sarà disponibile una versione sufficientemente completa del prodotto da sottoporre a validazione.
-
-%\begin{table}[H]
-%    \centering
-%    \renewcommand{\arraystretch}{1.3}
-%    \begin{tabularx}{\textwidth}{|c|X|c|}
-%        \hline
-%        \rowcolor{primarycolor!10}
-%        \textbf{ID} & \textbf{Descrizione} & \textbf{Stato} \\
-%        \hline
-%        TA01 & Gestione completa del ciclo di vita di una nota Markdown. & NI \\
-%        \hline
-%        TA02 & Corretta integrazione delle funzionalità di elaborazione AI. & NI \\
-%        \hline
-%        TA03 & Analisi multi-prospettiva funzionante (Metodo De Bono). & NI \\
-%        \hline
-%        TA04 & Importazione ed esportazione dati corretta e senza perdite. & NI \\
-%        \hline
-%    \end{tabularx}
-%    \caption{Test di Accettazione}
-%\end{table}
+\renewcommand{\arraystretch}{1.3}
+\begin{table}[H]
+    \centering
+    \begin{tabularx}{\textwidth}{|c|X|c|c|}
+        \hline
+        \rowcolor{primarycolor!10}
+        \textbf{ID} & \textbf{Descrizione} & \textbf{Rif.} & \textbf{Stato} \\
+        \hline
+        TA01 & Ciclo di vita completo di una nota Markdown: creazione, modifica, salvataggio ed esportazione (PDF/HTML/JSON) senza perdita di contenuto. & UC 1-4, 143, 145, 147-149 & S \\
+        \hline
+        TA02 & Formattazione e struttura del testo (grassetto, corsivo, titoli, elenchi, tabelle, link) utilizzabili in combinazione su un documento reale, senza comportamenti inattesi. & UC 5-46, 157 & S \\
+        \hline
+        TA03 & Assistente AI per riassunto, traduzione, riscrittura e Distant Writing: la proponente valuta la pertinenza e utilità delle proposte generate su testi reali. & UC 52-88 & S \\
+        \hline
+        TA04 & Metodo dei Sei Cappelli per Pensare (De Bono): la proponente valuta se le analisi generate per ciascun cappello riflettono correttamente la prospettiva richiesta. & UC 89-142 & S \\
+        \hline
+        TA05 & Gestione delle modifiche e recupero da errori: Undo/Redo e prevenzione della perdita di lavoro in caso di uscita accidentale. & UC 47-48, 156 & S \\
+        \hline
+        TA06 & Compatibilità e prestazioni percepite su almeno due browser target, con tempi di risposta giudicati adeguati dalla proponente per uno scenario dimostrativo. & Vincoli, Prestazionali & S \\
+        \hline
+        TA07 & Approvazione complessiva dell'MVP: la proponente dichiara, tramite demo formale con conferma via mail o verbale esterno esplicito, che il prodotto soddisfa le aspettative iniziali. & Tutti i requisiti obbligatori & S \\
+        \hline
+    \end{tabularx}
+    \caption{Test di Accettazione}
+\end{table}

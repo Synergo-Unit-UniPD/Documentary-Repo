@@ -2,7 +2,7 @@
 % 5. RESOCONTO ATTIVITA' DI VERIFICA
 % =======================================================
 \section{Resoconto Attività di Verifica}
-In questa sezione vengono riportati i risultati delle attività di verifica condotte durante la fase di RTB. L'obiettivo è fornire una panoramica oggettiva del livello di qualità raggiunto.
+In questa sezione vengono riportati i risultati delle attività di verifica condotte fino alla fase di Product Baseline\textsubscript{G} (PB), a integrazione di quanto già rendicontato in fase di RTB. L'obiettivo è fornire una panoramica oggettiva del livello di qualità raggiunto.
 
 \subsection{Verifica documentazione}
 La verifica della documentazione (Analisi dei Requisiti, Norme di Progetto, Piano di Progetto, Verbali e Glossario) è avvenuta tramite revisione manuale incrociata. Il Verificatore\textsubscript{G} ha controllato la coerenza dei contenuti, l'assenza di errori grammaticali e il rispetto degli standard di formattazione definiti nelle \link{https://synergo-unit-unipd.github.io/Second-Brain/docs/PB/doc_gestionali/doc_interni/norme_di_progetto/norme_di_progetto.pdf}{Norme di Progetto}.
@@ -10,15 +10,13 @@ La verifica della documentazione (Analisi dei Requisiti, Norme di Progetto, Pian
 Tutti i documenti pubblicati hanno superato il controllo di qualità, raggiungendo un indice di leggibilità conforme ai parametri accettabili.
 
 \subsection{Verifica codice}
-A partire dalla fase PB, la verifica del codice includerà test automatizzati eseguiti con pytest per il backend
- e vitest per il frontend e controlli di qualità statica tramite eslint e prettier. Tali strumenti saranno
- integrati nella pipeline di CI per garantire il rispetto delle soglie di copertura e delle regole di stile.
+In fase PB la verifica del codice è pienamente operativa: test automatizzati eseguiti con pytest per il backend e vitest per il frontend (comprensivi, per quest'ultimo, sia dei Test di Unità sia dei Test di Sistema di cui alla Sezione 4), integrati da controlli di qualità statica tramite eslint, prettier, ruff e mypy. L'intera suite è richiamata dal comando \texttt{make ci} ed eseguita automaticamente in CI a ogni Pull Request, con verifica delle soglie di copertura (Sezione 4.2).
 
 \subsection{Copertura test}
-Durante la RTB, la copertura riguarda esclusivamente la tracciabilità tra i Casi d'Uso e i Test di Sistema definiti nella sezione precedente. Il 100\% degli UC individuati è stato coperto da almeno un Test di Sistema (stato NI).
+La copertura è duplice. Da un lato, tracciabilità: il 100\% degli UC obbligatori individuati è coperto da almeno un Test di Sistema con stato Superato (Tabella~\ref{tab:test-sistema}); i soli UC non coperti (UC150--155) corrispondono a requisiti esplicitamente opzionali, non implementati per scelta. Dall'altro, copertura di codice: 95\% sul backend (soglia CI 90\%) e 89,75\% linee / 88,51\% statement / 89,72\% funzioni / 83,61\% branch sul frontend (soglie CI rispettivamente 85\%/83\%/78\%/78\%), entrambe verificate da \texttt{make coverage}.
 
 \subsection{Esiti test}
-Allo stato attuale, non sono stati eseguiti test dinamici sul software. Gli unici esiti riguardano le ispezioni documentali, che hanno evidenziato una progressiva riduzione dei difetti formali grazie all'affinamento delle modalità di verifica.
+La suite completa conta 511 casi automatizzati (63 di unità e integrazione sul backend via pytest, 447 tra unità e sistema sul frontend via vitest, 1 di deployment via script), tutti eseguiti con esito positivo: \textbf{511/511 superati}. La copertura di codice (Sezione 4.2) e la tracciabilità UC\,$\leftrightarrow$\,Test di Sistema sono verificate e documentate nella Specifica dei Test (Sezione 4).
 
 \newpage
 % =======================================================
@@ -56,7 +54,7 @@ A fronte di anomalie rilevate dalle metriche o durante le revisioni, sono state 
 \end{table}
 
 \subsection{Problemi aperti}
-Rimane aperta la questione della selezione del framework\textsubscript{G} di testing definitivo per l'integrazione con le API LLM, che verrà risolta all'inizio della fase PB dopo un'analisi tecnologica approfondita.
+Nessuno. Tutti i livelli di test previsti (unità, integrazione, sistema) sono implementati, integrati in CI ed eseguiti con esito interamente positivo (Sezione 4); il framework di testing per l'integrazione con le API LLM, questione aperta in fase RTB, è stato adottato stabilmente (pytest per il backend, vitest per il frontend) e non presenta criticità residue.
 
 \newpage
 % =======================================================
