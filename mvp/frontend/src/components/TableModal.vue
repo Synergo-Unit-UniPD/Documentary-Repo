@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 
+// Modale per l'inserimento di una nuova tabella Markdown (R36-F-O): la
+// validazione dei parametri (righe/colonne > 0) avviene qui, lato client,
+// prima ancora di costruire la TableActionRequest, così l'utente vede
+// subito l'errore senza dover passare dal MarkdownContentEditor.
 const emit = defineEmits<{
   close: []
   submit: [rowCount: number, colCount: number]
@@ -12,6 +16,9 @@ const colCount = ref(2)
 const isValid = computed(() => rowCount.value > 0 && colCount.value > 0)
 
 function submit(): void {
+  // Guardia difensiva: il pulsante è già disabilitato quando !isValid,
+  // ma si evita comunque di emettere un submit con dimensioni non valide
+  // (es. se l'utente forza l'invio da tastiera).
   if (!isValid.value) return
   emit('submit', rowCount.value, colCount.value)
 }

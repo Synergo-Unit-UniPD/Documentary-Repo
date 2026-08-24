@@ -28,21 +28,11 @@ Il prodotto è un'applicazione web accessibile tramite browser su sistemi operat
 Non è previsto supporto nativo per dispositivi mobile e non sono richiesti requisiti hardware particolari oltre a quelli necessari per l'esecuzione di un browser moderno e per la connessione ai servizi API esterni.
 
 \subsection{Vincoli generali}
-\begin{itemize}
-	\item \textbf{Vincoli Tecnologici e Architetturali}:
-        \begin{itemize}
-            \item L'applicazione deve essere basata su tecnologie web standard (HTML\textsubscript{G}, CSS, JavaScript), senza vincoli imposti sul framework\textsubscript{G} front-end adottato (VE-3.1).
-            \item L'interazione con i modelli LLM (Gemma, ChatGPT-OSS e Qwen, forniti dall'azienda proponente) deve avvenire tramite chiamate API aderenti allo standard OpenAI (VE-1.1).
-            \item Lo sviluppo richiede l'adozione di pattern architetturali robusti e duttili, atti a supportare continue revisioni incrementali.
-        \end{itemize} 
-        
-	\item \textbf{Vincoli di Qualità}: A partire dalla fase di MVP\textsubscript{G}, è obbligatorio implementare un'adeguata copertura con test automatici per la verifica sistematica dei casi d'uso\textsubscript{G} principali.
-	\item \textbf{Vincoli di Strumento e Rilascio}: 
-        \begin{itemize}
-            \item Per la modellazione UML\textsubscript{G} e i diagrammi, il team di sviluppo ha scelto di adottare internamente lo strumento \textbf{Lucidchart}. 
-            \item Per quanto riguarda la consegna, costituisce titolo preferenziale per l'azienda proponente la pubblicazione del progetto su repository\textsubscript{G} pubblici in conformità con i relativi requisiti di natura open-source.
-            \end{itemize}
-\end{itemize}
+I vincoli tecnologici, architetturali, di qualità, di strumento e di rilascio del progetto sono elencati e tracciati in modo puntuale nella Tabella~\ref{tab:req-vincolo} (Requisiti di Vincolo, Sezione~\ref{sec:req-vincolo}), che costituisce l'unica fonte di riferimento per la loro verifica.
+
+In sintesi, il progetto è vincolato da: tecnologie web standard lato client (R1-V-O), con libertà di scelta sul framework\textsubscript{G} front-end adottato (R11-V-O, nel caso del gruppo, Vue.js); interazione con i modelli LLM forniti dall'azienda proponente tramite API conformi allo standard OpenAI (R2-V-O, R3-V-O); adozione di pattern architetturali che supportino revisioni incrementali continue; pubblicazione di codice e documentazione su repository\textsubscript{G} pubblico (R7-V-O); consegna dei documenti tecnici ed esterni previsti dal capitolato (R8-V-O, R9-V-O, R10-V-O).
+
+Per la modellazione UML\textsubscript{G} e i diagrammi, il team di sviluppo ha scelto di adottare internamente lo strumento \textbf{Lucidchart}.
 
 \subsection{Assunzioni e dipendenze}
 Il corretto funzionamento delle funzionalità AI (riassunto, traduzione, riscrittura, Sei Cappelli, Distant Writing) dipende dalla disponibilità dei servizi LLM esterni configurati dall'utente tramite endpoint\textsubscript{G} API compatibile con lo standard OpenAI conseguentemente, il sistema non garantisce il funzionamento di tali funzionalità in assenza di connettività di rete o in caso di indisponibilità del servizio AI configurato.

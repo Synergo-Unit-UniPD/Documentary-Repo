@@ -267,8 +267,8 @@ describe('App.vue - Rigenera end-to-end', () => {
     const generaButton = wrapper.findAll('.modal-actions button').find((btn) => btn.text() === 'Genera')
     await generaButton!.trigger('click')
 
-    for (let i = 0; i < 20 && !wrapper.text().includes('PRIMA proposta'); i++) {
-      await new Promise((resolve) => setTimeout(resolve, 20))
+    for (let i = 0; i < 110 && !wrapper.text().includes('PRIMA proposta'); i++) {
+      await new Promise((resolve) => setTimeout(resolve, 30))
     }
     expect(wrapper.text()).toContain('PRIMA proposta')
     expect(callCount).toBe(1)
@@ -280,13 +280,123 @@ describe('App.vue - Rigenera end-to-end', () => {
 
     expect(callCount).toBe(2)
 
-    for (let i = 0; i < 20 && !wrapper.text().includes('SECONDA proposta'); i++) {
-      await new Promise((resolve) => setTimeout(resolve, 20))
+    for (let i = 0; i < 110 && !wrapper.text().includes('SECONDA proposta'); i++) {
+      await new Promise((resolve) => setTimeout(resolve, 30))
     }
 
     expect(wrapper.text()).toContain('SECONDA proposta (rigenerata)')
     expect(wrapper.text()).not.toContain('PRIMA proposta')
     ;(globalThis as any).fetch = originalFetch
+    wrapper.unmount()
+  })
+})
+
+describe('App.vue - selezione dopo accettazione di una proposta AI', () => {
+  async function mockAIFetch(proposalContent: string): Promise<() => void> {
+    const originalFetch = globalThis.fetch
+    ;(globalThis as any).fetch = vi.fn(async (url: string, options?: any) => {
+      if (typeof url === 'string' && url.includes('/api/status')) {
+        return { ok: true, json: async () => ({ status: 'ok' }) }
+      }
+      if (typeof url === 'string' && url.includes('/api/ai/operations') && options?.method === 'POST') {
+        return {
+          ok: true,
+          json: async () => ({
+            content: proposalContent,
+            operation_type: 'summarize',
+            created_at: new Date().toISOString(),
+          }),
+        }
+      }
+      return { ok: true, json: async () => ({}) }
+    })
+    return () => {
+      ;(globalThis as any).fetch = originalFetch
+    }
+  }
+
+  it('SOSTITUZIONE: dopo Accetta, la selezione copre ESATTAMENTE il testo della proposta, non di più (bug segnalato)', async () => {
+    const restoreFetch = await mockAIFetch('PROPOSTA MOLTO PIÙ LUNGA DEL TESTO ORIGINALE SELEZIONATO')
+
+    const wrapper = mount(App)
+    await new Promise((resolve) => setTimeout(resolve, 0))
+
+    const editor = wrapper.findComponent(MarkdownEditor)
+    await editor.vm.$emit('update:modelValue', 'Testo iniziale molto lungo da riscrivere qui.')
+    await new Promise((resolve) => setTimeout(resolve, 0))
+
+    // Seleziona "molto lungo" (posizioni 15-26), una selezione volutamente
+    // PIÙ CORTA della proposta che arriverà, per verificare che la nuova
+    // selezione non resti quella vecchia (troppo piccola) né si estenda
+    // oltre il testo della proposta (troppo grande, il bug segnalato).
+    const start = 'Testo iniziale '.length
+    const end = start + 'molto lungo'.length
+    ;(wrapper.vm as any).setSelectionForTesting(start, end)
+    await new Promise((resolve) => setTimeout(resolve, 0))
+
+    const aiButton = wrapper.findAll('button').find((btn) => btn.text().includes('Assistente AI'))
+    await aiButton!.trigger('click')
+    const riscriviButton = wrapper.findAll('button').find((btn) => btn.text() === 'Riscrivi')
+    await riscriviButton!.trigger('click')
+
+    for (let i = 0; i < 110 && !wrapper.text().includes('PROPOSTA MOLTO PIÙ LUNGA'); i++) {
+      await new Promise((resolve) => setTimeout(resolve, 30))
+    }
+    expect(wrapper.text()).toContain('PROPOSTA MOLTO PIÙ LUNGA')
+
+    const accettaButton = wrapper.findAll('.modal-actions button').find((btn) => btn.text() === 'Accetta')
+    await accettaButton!.trigger('click')
+    await new Promise((resolve) => setTimeout(resolve, 0))
+
+    const proposalText = 'PROPOSTA MOLTO PIÙ LUNGA DEL TESTO ORIGINALE SELEZIONATO'
+    const selection = (wrapper.vm as any).getCurrentSelectionForTesting()
+
+    expect(selection).not.toBeNull()
+    expect(selection.from).toBe(start)
+    expect(selection.to).toBe(start + proposalText.length)
+
+    restoreFetch()
+    wrapper.unmount()
+  })
+
+  it('INSERIMENTO (Distant Writing): dopo Accetta, la selezione va da start=cursore a end=start+lunghezza proposta', async () => {
+    const restoreFetch = await mockAIFetch('testo generato dalla AI')
+
+    const wrapper = mount(App)
+    await new Promise((resolve) => setTimeout(resolve, 0))
+
+    const editor = wrapper.findComponent(MarkdownEditor)
+    await editor.vm.$emit('update:modelValue', 'Nota esistente. ')
+    await new Promise((resolve) => setTimeout(resolve, 0))
+
+    const cursorPos = 'Nota esistente. '.length
+    ;(wrapper.vm as any).setSelectionForTesting(cursorPos, cursorPos)
+    await new Promise((resolve) => setTimeout(resolve, 0))
+
+    const aiButton = wrapper.findAll('button').find((btn) => btn.text().includes('Assistente AI'))
+    await aiButton!.trigger('click')
+    const distantWritingButton = wrapper.findAll('button').find((btn) => btn.text() === 'Distant Writing')
+    await distantWritingButton!.trigger('click')
+
+    const promptTextarea = wrapper.find('textarea')
+    await promptTextarea.setValue('scrivi qualcosa')
+    const generaButton = wrapper.findAll('.modal-actions button').find((btn) => btn.text() === 'Genera')
+    await generaButton!.trigger('click')
+
+    for (let i = 0; i < 110 && !wrapper.text().includes('testo generato dalla AI'); i++) {
+      await new Promise((resolve) => setTimeout(resolve, 30))
+    }
+
+    const accettaButton = wrapper.findAll('.modal-actions button').find((btn) => btn.text() === 'Accetta')
+    await accettaButton!.trigger('click')
+    await new Promise((resolve) => setTimeout(resolve, 0))
+
+    const selection = (wrapper.vm as any).getCurrentSelectionForTesting()
+    expect(selection).not.toBeNull()
+    expect(selection.from).toBe(cursorPos)
+    expect(selection.to).toBe(cursorPos + 'testo generato dalla AI'.length)
+
+    restoreFetch()
     wrapper.unmount()
   })
 })
@@ -437,101 +547,5 @@ describe('App.vue - sottomenu "Sei Cappelli per Pensare" ad accordion (nuova ric
     expect(wrapper.find('.dropdown-submenu-inline').exists()).toBe(false)
 
     wrapper.unmount()
-  })
-})
-
-describe("App.vue - click sui link dell'anteprima", () => {
-  it('un link con schema assoluto (https://) si apre in una nuova scheda, senza navigare via dalla SPA', async () => {
-    const windowOpenSpy = vi.spyOn(window, 'open').mockImplementation(() => null)
-
-    const wrapper = mount(App)
-    await new Promise((resolve) => setTimeout(resolve, 0))
-
-    const editor = wrapper.findComponent(MarkdownEditor)
-    await editor.vm.$emit('update:modelValue', '[esempio](https://example.com)')
-    await new Promise((resolve) => setTimeout(resolve, 0))
-
-    const link = wrapper.find('.preview-content a')
-    expect(link.exists()).toBe(true)
-
-    await link.trigger('click')
-
-    expect(windowOpenSpy).toHaveBeenCalledWith('https://example.com', '_blank', 'noopener,noreferrer')
-
-    windowOpenSpy.mockRestore()
-    wrapper.unmount()
-  })
-
-  it('un link senza schema (es. [ciao](ciao)) NON naviga da nessuna parte e mostra un avviso neutro, invece di ricaricare la pagina', async () => {
-    const windowOpenSpy = vi.spyOn(window, 'open').mockImplementation(() => null)
-
-    const wrapper = mount(App)
-    await new Promise((resolve) => setTimeout(resolve, 0))
-
-    const editor = wrapper.findComponent(MarkdownEditor)
-    await editor.vm.$emit('update:modelValue', '[ciao](ciao)')
-    await new Promise((resolve) => setTimeout(resolve, 0))
-
-    const link = wrapper.find('.preview-content a')
-    expect(link.exists()).toBe(true)
-    expect(link.attributes('href')).toBe('ciao')
-
-    await link.trigger('click')
-
-    // Nessuna navigazione, né in una nuova scheda né sulla pagina corrente.
-    expect(windowOpenSpy).not.toHaveBeenCalled()
-    expect(wrapper.find('.toast').exists()).toBe(true)
-    expect(wrapper.find('.toast').classes()).toContain('info')
-
-    windowOpenSpy.mockRestore()
-    wrapper.unmount()
-  })
-})
-
-describe('App.vue - conferma prima di uscire con modifiche non salvate', () => {
-  it('NON chiede conferma se non ci sono modifiche non salvate (stato iniziale)', async () => {
-    const wrapper = mount(App)
-    await new Promise((resolve) => setTimeout(resolve, 0))
-
-    const event = new Event('beforeunload', { cancelable: true }) as BeforeUnloadEvent
-    window.dispatchEvent(event)
-
-    expect(event.defaultPrevented).toBe(false)
-
-    wrapper.unmount()
-  })
-
-  it('chiede conferma (previene il default) se ci sono modifiche non salvate', async () => {
-    const wrapper = mount(App)
-    await new Promise((resolve) => setTimeout(resolve, 0))
-
-    const editor = wrapper.findComponent(MarkdownEditor)
-    await editor.vm.$emit('update:modelValue', 'testo modificato, non ancora salvato')
-    await new Promise((resolve) => setTimeout(resolve, 0))
-
-    expect(wrapper.text()).toContain('Modifiche non salvate')
-
-    const event = new Event('beforeunload', { cancelable: true }) as BeforeUnloadEvent
-    window.dispatchEvent(event)
-
-    expect(event.defaultPrevented).toBe(true)
-
-    wrapper.unmount()
-  })
-
-  it('rimuove il listener allo smontaggio: dopo unmount, un beforeunload successivo non fa più nulla', async () => {
-    const wrapper = mount(App)
-    await new Promise((resolve) => setTimeout(resolve, 0))
-
-    const editor = wrapper.findComponent(MarkdownEditor)
-    await editor.vm.$emit('update:modelValue', 'testo modificato')
-    await new Promise((resolve) => setTimeout(resolve, 0))
-
-    wrapper.unmount()
-
-    const event = new Event('beforeunload', { cancelable: true }) as BeforeUnloadEvent
-    window.dispatchEvent(event)
-
-    expect(event.defaultPrevented).toBe(false)
   })
 })

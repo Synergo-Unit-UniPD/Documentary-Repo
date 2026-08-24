@@ -21,6 +21,12 @@ export class AIController implements Observer {
   /** Memorizza l'ultima richiesta AI inviata, per poterla ripetere identica
    *  quando l'utente sceglie "Rigenera" sulla proposta ottenuta. */
   private lastRequest?: RequestedOperation
+  /** Range del testo appena inserito/sostituito con la proposta accettata,
+   *  letto da App.vue (getLastAcceptedRange) subito dopo aver invocato
+   *  l'accettazione, per riselezionare esattamente il testo inserito - non
+   *  coincide più con il range della selezione originaria non appena la
+   *  proposta ha una lunghezza diversa dal testo che sostituisce. */
+  private lastAcceptedRange?: TextRange
 
   constructor(model: AIRequestModel, view: AIPanelView, noteModel: NoteModel) {
     this.model = model
@@ -77,6 +83,8 @@ export class AIController implements Observer {
       const range = this.lastRequestRange
 
       let command: EditCommand
+      let insertedAt: number
+
       if (range) {
         // SOSTITUISCE il testo originariamente selezionato con la proposta,
         // invece di limitarsi a inserirla prima di esso. Se il range è collassato (nessuna
@@ -85,19 +93,40 @@ export class AIController implements Observer {
         const end = Math.max(start, Math.min(range.end, currentContent.length))
         const newContent = currentContent.slice(0, start) + proposal.content + currentContent.slice(end)
         command = new ReplaceContentCommand(editor, newContent)
+        insertedAt = start
       } else {
         // Rete di sicurezza: nessun range noto, inserisce in coda al documento.
-        command = new InsertTextCommand(currentContent.length, proposal.content, editor)
+        insertedAt = currentContent.length
+        command = new InsertTextCommand(insertedAt, proposal.content, editor)
       }
 
       // Step 11 & 12 & 13 & 14 & 15: executeCommand sul NoteModel
       this.noteModel.executeCommand(command)
+
+      // Il range della selezione originaria (this.lastRequestRange) non
+      // rappresenta più correttamente il testo appena inserito, non appena
+      // la proposta ha una lunghezza diversa dal testo che sostituisce:
+      // l'inizio resta lo stesso punto di inserimento, la fine si sposta
+      // esattamente della differenza di lunghezza, per continuare a coprire
+      // per intero (e soltanto) il testo della proposta appena accettata.
+      this.lastAcceptedRange = new TextRange(insertedAt, insertedAt + proposal.content.length)
     }
 
     this.lastRequestRange = undefined
     this.lastRequest = undefined
     // Step 18: acceptProposal sul model per riportarlo in Idle
     this.model.acceptProposal()
+  }
+
+  /**
+   * Range occupato dal testo inserito/sostituito dall'ultima proposta
+   * accettata, oppure undefined se non è stata accettata alcuna proposta
+   * (o non era disponibile alcuno stato ProposalReadyState valido). Letto
+   * da App.vue per riposizionare la selezione di CodeMirror subito dopo
+   * l'accettazione.
+   */
+  public getLastAcceptedRange(): TextRange | undefined {
+    return this.lastAcceptedRange
   }
 
   private onRejectProposal(): void {

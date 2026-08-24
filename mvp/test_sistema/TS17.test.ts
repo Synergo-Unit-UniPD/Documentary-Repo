@@ -22,7 +22,7 @@ const HAT_WHITE = "white";
 
 const mockNoteService: NoteService = {
   save: vi.fn(),
-  open: vi.fn().mockResolvedValue(new Note("1", ""))
+  open: vi.fn().mockResolvedValue(new Note("1", "")),
 };
 
 function createDeferred<T>() {
@@ -38,7 +38,15 @@ function createDeferred<T>() {
 function makeMockAIService(): AIService {
   return {
     requestOperation: vi.fn(),
-    listOperations: vi.fn().mockResolvedValue(["summarize", "translate", "rewrite", "distant_writing", HAT_ANALYSIS]),
+    listOperations: vi
+      .fn()
+      .mockResolvedValue([
+        "summarize",
+        "translate",
+        "rewrite",
+        "distant_writing",
+        HAT_ANALYSIS,
+      ]),
   };
 }
 
@@ -46,7 +54,7 @@ function makeMockAIView(): AIPanelView {
   return {
     attach: vi.fn(),
     getLastRequestedOperation: vi.fn(),
-    getLastProposalAction: vi.fn()
+    getLastProposalAction: vi.fn(),
   } as unknown as AIPanelView;
 }
 
@@ -59,7 +67,9 @@ describe("Richiesta analisi secondo il cappello bianco", () => {
     const model = new AIRequestModel(aiService);
     expect(model.getAIState()).toBeInstanceOf(IdleState);
 
-    void model.requestAIOperation(HAT_ANALYSIS, "testo selezionato", { hat_type: HAT_WHITE });
+    void model.requestAIOperation(HAT_ANALYSIS, "testo selezionato", {
+      hat_type: HAT_WHITE,
+    });
 
     expect(model.getAIState()).toBeInstanceOf(ProcessingState);
   });
@@ -72,12 +82,18 @@ describe("Generazione analisi secondo il cappello bianco", () => {
     (aiService.requestOperation as any).mockReturnValue(deferred.promise);
 
     const model = new AIRequestModel(aiService);
-    void model.requestAIOperation(HAT_ANALYSIS, "testo selezionato", { hat_type: HAT_WHITE });
-
-    expect(aiService.requestOperation).toHaveBeenCalledTimes(1);
-    expect(aiService.requestOperation).toHaveBeenCalledWith(HAT_ANALYSIS, "testo selezionato", {
+    void model.requestAIOperation(HAT_ANALYSIS, "testo selezionato", {
       hat_type: HAT_WHITE,
     });
+
+    expect(aiService.requestOperation).toHaveBeenCalledTimes(1);
+    expect(aiService.requestOperation).toHaveBeenCalledWith(
+      HAT_ANALYSIS,
+      "testo selezionato",
+      {
+        hat_type: HAT_WHITE,
+      },
+    );
   });
 });
 
@@ -91,7 +107,9 @@ describe("Visualizzazione elaborazione analisi secondo il cappello bianco", () =
     const observer = { update: vi.fn() };
     model.attach(observer);
 
-    const requestPromise = model.requestAIOperation(HAT_ANALYSIS, "testo", { hat_type: HAT_WHITE });
+    const requestPromise = model.requestAIOperation(HAT_ANALYSIS, "testo", {
+      hat_type: HAT_WHITE,
+    });
 
     expect(observer.update).toHaveBeenCalledTimes(1);
     expect(model.getAIState()).toBeInstanceOf(ProcessingState);
@@ -108,7 +126,9 @@ describe("Interruzione elaborazione analisi secondo il cappello bianco", () => {
     (aiService.requestOperation as any).mockReturnValue(deferred.promise);
 
     const model = new AIRequestModel(aiService);
-    void model.requestAIOperation(HAT_ANALYSIS, "testo", { hat_type: HAT_WHITE });
+    void model.requestAIOperation(HAT_ANALYSIS, "testo", {
+      hat_type: HAT_WHITE,
+    });
     expect(model.getAIState()).toBeInstanceOf(ProcessingState);
 
     model.interruptAIOperation();
@@ -122,7 +142,9 @@ describe("Interruzione elaborazione analisi secondo il cappello bianco", () => {
     (aiService.requestOperation as any).mockReturnValue(deferred.promise);
 
     const model = new AIRequestModel(aiService);
-    const requestPromise = model.requestAIOperation(HAT_ANALYSIS, "testo", { hat_type: HAT_WHITE });
+    const requestPromise = model.requestAIOperation(HAT_ANALYSIS, "testo", {
+      hat_type: HAT_WHITE,
+    });
 
     model.interruptAIOperation();
     expect(model.getAIState()).toBeInstanceOf(IdleState);
@@ -137,20 +159,25 @@ describe("Interruzione elaborazione analisi secondo il cappello bianco", () => {
 describe(" Visualizzazione proposta analisi secondo il cappello bianco", () => {
   it("porta lo stato a ProposalReady con la proposta restituita dall'LLM", async () => {
     const aiService = makeMockAIService();
-    const proposal = new Proposal("Analisi oggettiva del testo, basata su fatti e dati.", HAT_ANALYSIS);
+    const proposal = new Proposal(
+      "Analisi oggettiva del testo, basata su fatti e dati.",
+      HAT_ANALYSIS,
+    );
     (aiService.requestOperation as any).mockResolvedValue(proposal);
 
     const model = new AIRequestModel(aiService);
     const observer = { update: vi.fn() };
     model.attach(observer);
 
-    await model.requestAIOperation(HAT_ANALYSIS, "testo", { hat_type: HAT_WHITE });
+    await model.requestAIOperation(HAT_ANALYSIS, "testo", {
+      hat_type: HAT_WHITE,
+    });
 
     const state = model.getAIState();
     expect(state).toBeInstanceOf(ProposalReadyState);
     expect((state as ProposalReadyState).proposal).toBe(proposal);
     expect((state as ProposalReadyState).proposal.content).toBe(
-      "Analisi oggettiva del testo, basata su fatti e dati."
+      "Analisi oggettiva del testo, basata su fatti e dati.",
     );
     expect(observer.update).toHaveBeenCalledTimes(2);
   });
@@ -166,7 +193,7 @@ describe(" Accettazione proposta analisi secondo il cappello bianco", () => {
     const noteModel = new NoteModel(
       new MarkdownContentEditor("Questo è il testo originale"),
       new CommandHistory(),
-      mockNoteService
+      mockNoteService,
     );
 
     const aiView = makeMockAIView();
@@ -179,14 +206,20 @@ describe(" Accettazione proposta analisi secondo il cappello bianco", () => {
       type: HAT_ANALYSIS,
       text: undefined,
       params: { hat_type: HAT_WHITE },
-      range: selectionRange
+      range: selectionRange,
     });
 
+    // Vedi nota in TS13: la soglia minima di ~2s di ProcessingState (R2-P-O)
+    // richiede di avanzare i fake timer, non un semplice microtask flush.
+    vi.useFakeTimers();
     controller.update();
-    await Promise.resolve();
+    await vi.advanceTimersByTimeAsync(2100);
+    vi.useRealTimers();
 
     aiView.getLastRequestedOperation = vi.fn().mockReturnValue(undefined);
-    aiView.getLastProposalAction = vi.fn().mockReturnValue(ProposalActionType.ACCEPT);
+    aiView.getLastProposalAction = vi
+      .fn()
+      .mockReturnValue(ProposalActionType.ACCEPT);
 
     controller.update();
 
@@ -202,7 +235,9 @@ describe(" Rifiuto proposta analisi secondo il cappello bianco", () => {
     (aiService.requestOperation as any).mockResolvedValue(proposal);
 
     const model = new AIRequestModel(aiService);
-    await model.requestAIOperation(HAT_ANALYSIS, "testo", { hat_type: HAT_WHITE });
+    await model.requestAIOperation(HAT_ANALYSIS, "testo", {
+      hat_type: HAT_WHITE,
+    });
     expect(model.getAIState()).toBeInstanceOf(ProposalReadyState);
 
     model.rejectProposal();
@@ -225,7 +260,7 @@ describe(" Rigenerazione proposta analisi secondo il cappello bianco", () => {
     const noteModel = new NoteModel(
       new MarkdownContentEditor("Questo è il testo originale"),
       new CommandHistory(),
-      mockNoteService
+      mockNoteService,
     );
     const aiView = makeMockAIView();
     const model = new AIRequestModel(aiService);
@@ -238,21 +273,32 @@ describe(" Rigenerazione proposta analisi secondo il cappello bianco", () => {
       type: HAT_ANALYSIS,
       text: selectedText,
       params: { hat_type: HAT_WHITE },
-      range: selectionRange
+      range: selectionRange,
     });
+    // Vedi nota in TS13: ogni richiesta AI (anche quella di rigenerazione)
+    // attraversa ~2s reali di ProcessingState (R2-P-O) prima di ProposalReady.
+    vi.useFakeTimers();
     controller.update();
-    await Promise.resolve();
+    await vi.advanceTimersByTimeAsync(2100);
     expect((model.getAIState() as ProposalReadyState).proposal).toBe(first);
 
     aiView.getLastRequestedOperation = vi.fn().mockReturnValue(undefined);
-    aiView.getLastProposalAction = vi.fn().mockReturnValue(ProposalActionType.REGENERATE);
+    aiView.getLastProposalAction = vi
+      .fn()
+      .mockReturnValue(ProposalActionType.REGENERATE);
     controller.update();
-    await Promise.resolve();
+    await vi.advanceTimersByTimeAsync(2100);
+    vi.useRealTimers();
 
     expect(aiService.requestOperation).toHaveBeenCalledTimes(2);
-    expect(aiService.requestOperation).toHaveBeenNthCalledWith(2, HAT_ANALYSIS, selectedText, {
-      hat_type: HAT_WHITE,
-    });
+    expect(aiService.requestOperation).toHaveBeenNthCalledWith(
+      2,
+      HAT_ANALYSIS,
+      selectedText,
+      {
+        hat_type: HAT_WHITE,
+      },
+    );
     expect((model.getAIState() as ProposalReadyState).proposal).toBe(second);
 
     expect(noteModel.getContent()).toBe("Questo è il testo originale");
@@ -262,13 +308,17 @@ describe(" Rigenerazione proposta analisi secondo il cappello bianco", () => {
 describe(" Visualizzazione errore generazione analisi secondo il cappello bianco", () => {
   it("porta lo stato a Error quando il servizio LLM restituisce un errore", async () => {
     const aiService = makeMockAIService();
-    (aiService.requestOperation as any).mockRejectedValue(new Error("Servizio LLM non disponibile"));
+    (aiService.requestOperation as any).mockRejectedValue(
+      new Error("Servizio LLM non disponibile"),
+    );
 
     const model = new AIRequestModel(aiService);
     const observer = { update: vi.fn() };
     model.attach(observer);
 
-    await model.requestAIOperation(HAT_ANALYSIS, "testo", { hat_type: HAT_WHITE });
+    await model.requestAIOperation(HAT_ANALYSIS, "testo", {
+      hat_type: HAT_WHITE,
+    });
 
     const state = model.getAIState();
     expect(state).toBeInstanceOf(ErrorState);
@@ -282,7 +332,9 @@ describe(" Visualizzazione errore generazione analisi secondo il cappello bianco
     (aiService.requestOperation as any).mockReturnValue(deferred.promise);
 
     const model = new AIRequestModel(aiService);
-    const requestPromise = model.requestAIOperation(HAT_ANALYSIS, "testo", { hat_type: HAT_WHITE });
+    const requestPromise = model.requestAIOperation(HAT_ANALYSIS, "testo", {
+      hat_type: HAT_WHITE,
+    });
 
     model.interruptAIOperation();
     deferred.reject(new Error("Timeout"));
