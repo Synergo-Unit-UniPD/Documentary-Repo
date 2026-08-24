@@ -9,7 +9,7 @@ La pianificazione del progetto è articolata nelle seguenti fasi principali:
 \begin{itemize}
 \item \textbf{Candidatura\textsubscript{G} e assegnazione dell'appalto}: Marzo 2026;
 \item \textbf{Fase RTB\textsubscript{G} (Requirements and Technology Baseline)}: Aprile 2026 -- Giugno 2026;
-\item \textbf{Fase PB\textsubscript{G} (Product Baseline)}: Giugno 2026 -- Agosto 2026.
+\item \textbf{Fase PB\textsubscript{G} (Product Baseline)}: Giugno 2026 -- Settembre 2026.
 \end{itemize}
 
 \subsection{Pianificazione a lungo termine}
@@ -124,11 +124,98 @@ di Vue.js, FastAPI e Docker Compose\textsubscript{G}. L'implementazione
 successiva ha lo scopo di dimostrare la fattibilità tecnica delle tecnologie
 selezionate e dei principali flussi funzionali previsti per la RTB.
 
+\subsubsection{Attività fissate per la PB}
+\label{sec:attivita-pb}
+
+La fase PB copre il periodo Giugno -- Settembre 2026, a partire dal termine
+della Revisione RTB (2026-06-23). Rispetto alla RTB, l'obiettivo si sposta
+dalla validazione tecnologica (Technology Baseline) alla dimostrazione di un
+prodotto sostanzialmente completo (Product Baseline), tramite un Minimum
+Viable Product\textsubscript{G} (MVP) che copre la totalità dei requisiti
+obbligatori individuati nell'Analisi dei Requisiti.
+
+\paragraph{Norme di Progetto (NdP), Glossario, Piano di Progetto (PdP)}
+Aggiornati in continuo per l'intera fase PB, analogamente a quanto avvenuto in
+RTB: la NdP recepisce le convenzioni di codifica, test, CI/CD\textsubscript{G} e
+code review maturate durante l'implementazione dell'MVP; il Glossario si
+amplia con i termini tecnici emersi dalla progettazione e dallo sviluppo; il
+Piano di Progetto (il presente documento) viene portato in versione
+\textbf{v2.0.0}, con consuntivo RTB, Preventivo a Finire aggiornato e
+pianificazione estesa alla PB.\\
+Sprint di redazione: dallo Sprint successivo alla Revisione RTB fino alla
+Revisione PB.\\
+\textbf{Data prima stesura aggiornamento PB:} 2026/06/24 (Sprint 12).\\
+\textbf{Stato attuale:} in aggiornamento continuo.
+
+\paragraph{Analisi dei Requisiti (AdR) v2.x.x}
+Raffinamento dei requisiti e dei casi d'uso sulla base del PoC, dei colloqui di revisione
+RTB e del confronto con la proponente; tracciamento aggiornato verso Specifica
+Tecnica e Piano di Qualifica.\\
+Sprint di redazione: Sprint 12 -- Sprint 20.\\
+\textbf{Data prima stesura aggiornamento PB:} 2026/06/24.\\
+\textbf{Stato attuale:} aggiornata al 2026-08-24, coerente con l'MVP
+implementato.
+
+\paragraph{Piano di Qualifica (PdQ) v2.x.x}
+Aggiornamento di metriche di prodotto e processo, Specifica dei Test (unità,
+integrazione, sistema, accettazione) e cruscotto di valutazione della
+qualità.\\
+Sprint di redazione: Sprint 12 -- Sprint 20.\\
+\textbf{Data prima stesura aggiornamento PB:} 2026/06/24.\\
+\textbf{Stato attuale:} aggiornata al 2026-08-24; Test di Unità, Integrazione
+e Sistema tutti implementati, integrati in CI\textsubscript{G} e superati, come anche i 
+Test di Accettazione. Metriche, misurazioni, cruscotto e azioni di miglioramento vengono aggiornati
+periodicamente secondo quanto definito nelle Norme di Progetto, sulla base
+delle misurazioni raccolte e delle azioni correttive individuate.
+
+\paragraph{Specifica Tecnica (ST) v1.x.x}
+Descrive l'architettura logica e di deployment del prodotto, i pattern
+architetturali e di progettazione adottati (Model-View-Controller\textsubscript{G}
+"pull model", Strategy\textsubscript{G}, Factory\textsubscript{G},
+Decorator\textsubscript{G}, Proxy\textsubscript{G}), i diagrammi UML e il
+tracciamento componenti--requisiti.\\
+Sprint di redazione: in parallelo all'implementazione dell'MVP (Sprint 12 -- Sprint 20).\\
+\textbf{Data prima stesura:} 2026/06/24.\\
+\textbf{Stato attuale:} completata e coerente con l'architettura
+realizzata.
+
+\paragraph{Implementazione del Minimum Viable Product (MVP)}
+Sviluppo delle funzionalità obbligatorie previste dal capitolato: editor
+Markdown\textsubscript{G} con formattazione, gestione di link, elenchi e
+tabelle, Undo/Redo\textsubscript{G}, assistente AI (riassunto, traduzione,
+riscrittura, Distant Writing\textsubscript{G}, metodo dei Sei Cappelli per
+Pensare\textsubscript{G}), persistenza ed esportazione delle note (PDF, HTML,
+JSON), corredata da pipeline di CI (analisi statica, type check, test e
+copertura) e da suite di test automatizzati sui quattro livelli previsti
+(unità, integrazione, sistema, accettazione).\\
+Sprint di implementazione: dallo Sprint successivo alla Revisione RTB fino
+alla Revisione PB.\\
+\textbf{Stato attuale:} funzionalità obbligatorie implementate; Test di Unità,
+Integrazione e Sistema superati (511/511 casi automatizzati); pipeline CI
+verde con copertura ampiamente sopra soglia (95\% backend, $\sim$89,8\% linee
+frontend).
+
+\paragraph{Manuale Utente (MU) v1.0.0}
+Guida pratica all'uso del prodotto dal punto di vista dell'utente finale,
+redatta una volta stabilizzate le funzionalità dell'MVP.\\
+Sprint di redazione: Sprint 18 -- Sprint 20.\\
+\textbf{Data prima stesura:} 2026/08/04.\\
+\textbf{Stato attuale:} completata e coerente con l'MVP
+realizzato.
+
+\paragraph{Validazione dell'MVP con la proponente}
+Demo del prodotto alla proponente Zucchetti S.p.A. e raccolta
+dell'approvazione formale richiesta dal regolamento di progetto (mail di
+conferma o dichiarazione esplicita a verbale), propedeutica alla Revisione
+PB.\\
+\textbf{Stato attuale:} superata (\link{validazione-mvp}{Verbale di validazione}).
+
 \subsubsection{Diagramma di Gantt}
 
 Il diagramma di Gantt mostra la dislocazione temporale delle attività del
 progetto, le loro dipendenze e il parallelismo tra documenti e artefatti
-sviluppati, verificati e raffinati durante l'avanzamento del progetto.
+sviluppati, verificati e raffinati durante l'avanzamento del progetto, dalla
+fase di Candidatura fino alla Revisione PB.
 
 Le dipendenze seguono il modello output--input: un'attività può iniziare solo
 quando le attività da cui dipende hanno prodotto un output sufficiente.
@@ -144,8 +231,8 @@ La struttura delle attività principali è la seguente:
 \resizebox{\linewidth}{!}{%
 \begin{ganttchart}[
     time slot format=isodate,
-    x unit=0.12cm,
-    y unit chart=0.4cm,
+    x unit=0.09cm,
+    y unit chart=0.35cm,
     vgrid,
     hgrid,
     bar height=0.45,
@@ -158,7 +245,7 @@ La struttura delle attività principali è la seguente:
     bar/.append style={fill=gray!20},
     group/.append style={fill=gray!35},
     milestone/.append style={fill=black}
-]{2026-03-13}{2026-06-23}
+]{2026-03-13}{2026-09-10}
 
 \gantttitlecalendar{year, month=name} \\
 
@@ -220,8 +307,52 @@ La struttura delle attività principali è la seguente:
 \ganttlink{validazione}{msrtb}
 \ganttlink{pocimpl}{msrtb}
 
+% ============================================================
+% FASE PB
+% ============================================================
+\ganttgroup{Fase PB}{2026-06-24}{2026-09-10} \\
+
+\ganttbar[name=ndppb]{Norme di Progetto (PB)}{2026-06-24}{2026-09-10} \\
+\ganttbar[name=glosspb]{Glossario (PB)}{2026-06-24}{2026-09-10} \\
+\ganttbar[name=pdppb]{Piano di Progetto (PB)}{2026-06-24}{2026-09-10} \\
+\ganttbar[name=adrpb]{Analisi dei Requisiti (PB)}{2026-06-24}{2026-08-24} \\
+\ganttbar[name=st]{Specifica Tecnica}{2026-08-06}{2026-08-24} \\
+\ganttbar[name=mvpimpl]{Implementazione MVP}{2026-08-14}{2026-08-21} \\
+\ganttbar[name=pdqpb]{Piano di Qualifica (PB)}{2026-06-24}{2026-09-10} \\
+\ganttbar[name=mu]{Manuale Utente}{2026-08-22}{2026-08-24} \\
+\ganttmilestone[name=valmvp]{Validazione MVP (proponente)}{2026-09-01} \\
+
+% ============================================================
+% DIPENDENZE PB
+% ============================================================
+\ganttlink{msrtb}{ndppb}
+\ganttlink{msrtb}{glosspb}
+\ganttlink{msrtb}{pdppb}
+\ganttlink{msrtb}{adrpb}
+\ganttlink{msrtb}{st}
+\ganttlink{msrtb}{mvpimpl}
+\ganttlink{msrtb}{pdqpb}
+
+\ganttlink[link type=s-s]{st}{mvpimpl}
+\ganttlink[link type=f-s]{mvpimpl}{mu}
+\ganttlink[link type=f-s]{mvpimpl}{valmvp}
+
+% ============================================================
+% MILESTONE FINALE PB
+% ============================================================
+\ganttmilestone[name=mspb]{Revisione PB}{2026-09-10} \\
+\ganttlink{ndppb}{mspb}
+\ganttlink{glosspb}{mspb}
+\ganttlink{pdppb}{mspb}
+\ganttlink{adrpb}{mspb}
+\ganttlink{st}{mspb}
+\ganttlink{pdqpb}{mspb}
+\ganttlink{mu}{mspb}
+\ganttlink{valmvp}{mspb}
+
 \end{ganttchart}%
 }
-\caption{Diagramma di Gantt della fase CC e RTB}
+\caption{Diagramma di Gantt della fase CC, RTB e PB}
 \end{figure}
+
 \end{landscape}

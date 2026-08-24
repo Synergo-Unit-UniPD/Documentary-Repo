@@ -2622,3 +2622,140 @@ Azioni correttive emerse:
     \item \textbf{Gestione del periodo feriale (RO5):} Consapevoli del rallentamento dei rapporti con la proponente in quanto attualmente in ferie, il gruppo ha concordato di procedere a compartimenti stagni. Le parti in attesa di risposta verranno isolate momentaneamente per non generare colli di bottiglia bloccanti sul flusso principale di lavoro.
     \item \textbf{Gestione Repository (RT3):} Al fine di evitare sparizioni di documenti (PDF del PdP) o la persistenza di rami di sviluppo vecchi, il team farà massima attenzione agli aggiornamenti e alla regolarità dei \textit{push} in repo per limitare i conflitti in unione.
 \end{itemize}
+
+% ── Sprint 19 ─────────────────────────────────────────────────
+\subsection{Sprint 19 -- 11/08/2026 -- 18/08/2026}
+\label{sec:sprint19}
+
+\subsubsection{Ruoli assegnati}
+\begin{itemize}
+    \item Sofia De Blasi: Programmatore
+    \item Francesco Marcon: Progettista
+    \item Roberto Mariano Doroftei: Programmatore
+    \item Armando Moda Scarati: Amministratore
+    \item Anton Ricardo Rupi: Responsabile
+    \item Filippo Idiometri: Verificatore
+\end{itemize}
+
+\subsubsection{Obiettivi}
+\begin{itemize}
+    \item \textbf{Manuale Utente:} inizio della stesura del manuale utente.
+    \item \textbf{Codifica MVP:} Completamento dell'MVP con gli ultimi feat frontend.
+    \item \textbf{Testing:} Completamento test infrastrutturali, backend e di sistema.
+\end{itemize}
+
+\subsubsection{Preventivo}
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|X|c|c|r|}
+        \hline
+        \textbf{Membro} & \textbf{Ruolo} & \textbf{Ore prev.} & \textbf{Costo prev.} \\
+        \hline
+        Sofia De Blasi       & PR & 5,50 & 82{,}50~\euro \\
+        Francesco Marcon     & PJ & 2,33 & 58{,}33~\euro \\
+        Roberto M. Doroftei  & PR & 2,00 & 30{,}00~\euro \\
+        Armando M. Scarati   & AM & 2,00 & 40{,}00~\euro \\
+        Anton Ricardo Rupi   & RE & 1,50 & 45{,}00~\euro \\
+        Filippo Idiometri    & VE & 2,50 & 37{,}50~\euro \\
+        \hline
+        \textbf{Totale}      &    & \textbf{15,83} & \textbf{293{,}33~\euro} \\
+        \hline
+    \end{tabularx}
+    \caption{Tabella Preventivo Sprint 19} 
+\end{table}
+
+\subsubsection{Rischi Previsti}
+\begin{itemize}
+    \item \textbf{RO5 (Comunicazione rallentata):} Rallentamento nei rapporti con l'azienda proponente a causa della disponibilità limitata nel periodo feriale di agosto.
+    \item \textbf{RO1 (Organizzazioen dei membri):} Difficoltà di organizzazione per riunirsi con tutti i membri del team allo stesso tempo.
+\end{itemize}
+
+\subsubsection{Consuntivo}
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|X|c|c|c|c|c|r|}
+        \hline
+        \textbf{Membro} & \textbf{Ruolo} & \textbf{Ore prev.} &
+        \textbf{Ore eff.} & \textbf{$\Delta$ ore} &
+        \textbf{Costo eff.} & \textbf{$\Delta$ costo} \\
+        \hline
+        Sofia De Blasi       & PR & 5,50 & 5,50 & {\color{green}(0,00)}  & 82{,}50~\euro & {\color{green}(0{,}00~\euro)} \\
+        Francesco Marcon     & PJ & 2,33 & 2,33 & {\color{green}(0,00)} & 58{,}33~\euro  & {\color{green}(0{,}00~\euro)} \\
+        Roberto M. Doroftei  & PR & 2,00 & 3,17 & {\color{red}(+1,17)}  & 47{,}50~\euro & {\color{red}(+17{,}50~\euro)} \\
+        Armando M. Scarati   & AM & 2,00 & 2,25 & {\color{red}(+0,25)} & 45{,}00~\euro & {\color{red}(+5{,}50~\euro)} \\
+        Anton Ricardo Rupi   & RE & 1,50 & 0,67 & {\color{green}(-0,83)} & 20{,}00~\euro & {\color{green}(-25{,}00~\euro)} \\
+        Filippo Idiometri    & VE & 2,50 & 2,50 & {\color{green}(0,00)} & 37{,}50~\euro & {\color{green}(0{,}00~\euro)} \\
+        \hline
+        \textbf{Totale} & & \textbf{15,83} & \textbf{16,42} & {\color{red}(+0,58)} & \textbf{290{,}83~\euro} & {\color{green}(-2{,}50~\euro)} \\
+        \hline
+    \end{tabularx}
+    \caption{Tabella Consuntivo Sprint 19}
+\end{table}
+
+\subsubsection{Prospetto risorse residue per ruolo}
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|X|c|c|r|}
+        \hline
+        \textbf{Ruolo} & \textbf{Ore Residue} & \textbf{Costo Orario} &
+        \textbf{Costo Totale Residuo} \\
+        \hline
+        Responsabile   & 23,33 & 30~\euro & 700{,}00~\euro \\
+        Amministratore & -43,83 & 20~\euro & -876{,}67~\euro \\
+        Analista       & 54,67 & 25~\euro & 1.366{,}67~\euro \\
+        Progettista    & 98,17 & 25~\euro & 2.454{,}17~\euro \\
+        Programmatore  & 42,00 & 15~\euro & 630{,}00~\euro \\
+        Verificatore   & 51,17 & 15~\euro & 767{,}50~\euro \\
+        \hline
+        \textbf{Totale Residuo} & \textbf{225,50} & &
+        \textbf{5.041{,}67~\euro} \\
+        \hline
+    \end{tabularx}
+    \caption{Tabella Risorse Residue per Ruolo dopo Sprint 19}
+\end{table}
+
+\subsubsection{Prospetto ore residue per membro}
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|X|c|c|c|c|c|c|c|}
+        \hline
+        \textbf{Membro} & \textbf{Re} & \textbf{Am} & \textbf{An} &
+        \textbf{Pj} & \textbf{Pr} & \textbf{Ve} & \textbf{Totale} \\
+        \hline
+        Sofia De Blasi       &  5,67 & -17,67 &  -2,00 &  5,00 & 5,00 & 12,08 & \textbf{8,08} \\
+        Francesco Marcon     &  3,92 & -10,33 &  15,75 & 16,67 & -0,33 & 12,17 & \textbf{37,83} \\
+        Roberto M. Doroftei  &  1,42 &  -3,33 &  14,17 & 17,00 & 12,83 &  7,33 & \textbf{49,42} \\
+        Armando Moda Scarati &  3,08 &  -5,17 &   5,67 & 21,00 &  4,50 & 10,33 & \textbf{39,42} \\
+        Anton Ricardo Rupi   &  4,25 &  -8,33 &  13,83 & 22,00 &  9,00 & -1,75 & \textbf{39,00} \\
+        Filippo Idiometri    &  5,00 &   1,00 &   7,25 & 16,50 & 11,00 & 11,00 & \textbf{51,75} \\
+        \hline
+        \textbf{Totale} &
+        \textbf{23,33} & \textbf{-43,83} & \textbf{54,67} &
+        \textbf{99,17} & \textbf{42,00} & \textbf{51,17} &
+        \textbf{225,50} \\
+        \hline
+    \end{tabularx}
+    \begin{minipage}{\textwidth}
+        \smallskip
+        \footnotesize\textit{Legenda: RE=Responsabile, AM=Amministratore,
+        AN=Analista, PJ=Progettista, PR=Programmatore, VE=Verificatore.}
+    \end{minipage}
+    \caption{Tabella Risorse Residue per Membro dopo Sprint 19}
+\end{table}
+
+\subsubsection{Sprint Review}
+Attività svolte e output prodotti:
+\begin{itemize}
+    \item \textbf{Problemi tecnici:} Per via di un problema di GitHub verso la fine si è creato un leggeto ritardo per le ultime modifiche.
+    \item \textbf{Approvazione MVP:} Completato ed approvato l' MVP sia backend che frontend e compreso di test.
+\end{itemize}
+
+\subsubsection{Sprint Retrospective}
+Azioni correttive emerse:
+\begin{itemize}
+    \item \textbf{Gestione del periodo feriale (RO5):} Per via del periodo e dei vari impegni personali, che causano spesso la mancanza alle riunioni di qualche membro, cerchiamo di essere tutti aggiornati sul lavoro svolto per sapere lo sviluppo del progetto e buona comunicazioni tra i membri per compensare le assenze.
+\end{itemize}
