@@ -21,9 +21,7 @@ Il degrado prestazionale sotto queste soglie non è stato misurato sistematicame
 \begin{itemize}
 	\item \textbf{Browser}: come vincolato da R5-V-O, il sistema deve essere eseguito su Chrome 151+, Edge 150+, Firefox 153+ o Safari 26+.
 	\item \textbf{Sistema operativo}: nessun vincolo diretto oltre alla disponibilità di uno dei browser sopra indicati; l'applicazione è stata verificata su Windows, macOS e Linux.
-	\item \textbf{Dipendenza da API browser-specifiche}: le funzionalità di salvataggio e apertura locale della nota (R75-F-O, R76-F-O) si appoggiano alla \textit{File System Access API} del browser (\texttt{showSaveFilePicker}, \texttt{showOpenFilePicker}, Sezione~\ref{sec:arch-frontend}). Il supporto a questa API varia tra i browser elencati in R5-V-O: è nativo su Chrome ed Edge, mentre su Firefox e Safari il supporto è storicamente parziale o assente nelle rispettive versioni correnti. 
-    
-    %\textbf{Questo punto necessita di verifica esplicita da parte del gruppo} (es. tramite test cross-browser nel Piano di Qualifica) per accertare la piena compatibilità con R5-V-O e la coerenza con R13-Q-D (assenza di dipendenze da funzionalità non standard dei browser); in assenza di tale verifica, si raccomanda di documentarne l'esito nella prossima revisione di questo documento.
+	\item \textbf{Dipendenza da API browser-specifiche}: le funzionalità di salvataggio e apertura locale della nota (R75-F-O, R76-F-O) si appoggiano preferibilmente alla \textit{File System Access API} del browser (\texttt{showSaveFilePicker}, \texttt{showOpenFilePicker}, Sezione~\ref{sec:arch-frontend}), nativa su Chrome ed Edge. Su Firefox e Safari, dove questa API non è disponibile, \texttt{NoteServiceProxy} rileva l'assenza a runtime e ricade su un fallback equivalente basato su API standard (download tramite \texttt{Blob}/\texttt{<a download>} per il salvataggio, \texttt{<input type="file">} per l'apertura), garantendo così la compatibilità con l'intero parco browser richiesto da R5-V-O senza violare R13-Q-D (nessuna dipendenza da funzionalità non standard esposta al resto del sistema, dato che il contratto \texttt{NoteService} resta invariato in entrambi i casi).
 \end{itemize}
 
 \subsection{Network}
@@ -33,4 +31,4 @@ Il degrado prestazionale sotto queste soglie non è stato misurato sistematicame
 	\item \textbf{Persistenza remota (opzionale, non implementata)}: qualora in futuro venisse realizzato il modulo opzionale di persistenza remota (R4-V-Op), andrebbe definito un requisito di rete dedicato per il caricamento della lista delle note (R6-P-Op); allo stato attuale non è applicabile.
 \end{itemize}
 
-\FloatBarrier
+\FloatBarrier

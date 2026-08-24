@@ -50,13 +50,13 @@ Di seguito sono illustrati i design pattern adottati per risolvere problematiche
 
 \subsubsection{Decorator}
 \patternTable{
-	Al servizio di completamento LLM vanno aggiunte, in modo componibile e senza modificarne l'implementazione, funzionalità trasversali come il logging delle richieste/risposte e il caching dei risultati.
+	Al servizio di completamento LLM va aggiunta, in modo componibile e senza modificarne l'implementazione, la funzionalità trasversale di logging delle richieste/risposte, mantenendo la possibilità di comporre in futuro ulteriori funzionalità analoghe (es. caching) senza toccare \texttt{AIService}.
 }{
-	\texttt{LLMServiceDecorator} è una classe astratta che realizza \texttt{LLMService} e mantiene un riferimento a un'istanza \texttt{wrapped: LLMService}; i decorator concreti (\texttt{CachingLLMAdapter}, \texttt{LoggingLLMAdapter}) ne arricchiscono il comportamento prima/dopo aver delegato la chiamata.
+	\texttt{LLMServiceDecorator} è una classe astratta che realizza \texttt{LLMService} e mantiene un riferimento a un'istanza \texttt{wrapped: LLMService}; il decorator concreto attualmente implementato (\texttt{LoggingLLMAdapter}) ne arricchisce il comportamento prima/dopo aver delegato la chiamata.
 }{
-	La catena effettiva, visibile nel diagramma di sequenza ``Richiesta AI (tratto REST→LLM)'', è \texttt{CachingLLMAdapter} $\rightarrow$ \texttt{LoggingLLMAdapter} $\rightarrow$ \texttt{OpenAIAdapter} (il target concreto), componibile e configurabile all'avvio dell'applicazione senza toccare \texttt{AIService}.
+	La catena effettiva, visibile nel diagramma di sequenza ``Richiesta AI (tratto REST→LLM)'', è \texttt{LoggingLLMAdapter} $\rightarrow$ \texttt{OpenAIAdapter} (il target concreto), componibile e configurabile all'avvio dell'applicazione senza toccare \texttt{AIService}.
 }{
-	Le funzionalità trasversali (caching, logging) possono essere aggiunte, rimosse o riordinate componendo la catena in fase di configurazione\textsubscript{G}, senza modificare \texttt{OpenAIAdapter} né \texttt{AIService}, rispettando il Single Responsibility Principle per ciascun anello.
+	Ulteriori funzionalità trasversali (es. un futuro livello di caching) potrebbero essere aggiunte componendo la catena in fase di configurazione\textsubscript{G}, senza modificare \texttt{OpenAIAdapter} né \texttt{AIService}, rispettando il Single Responsibility Principle per ciascun anello.
 }
 
 \subsubsection{Adapter\textsubscript{G}}
@@ -74,9 +74,9 @@ Di seguito sono illustrati i design pattern adottati per risolvere problematiche
 \patternTable{
 	Il Frontend deve invocare le funzionalità di note-taking e AI esposte dal Backend come se fossero locali, senza spargere nel codice applicativo i dettagli di trasporto (HTTP, base URL, serializzazione).
 }{
-	Le interfacce \texttt{NoteService} e \texttt{AIService} (lato Frontend) definiscono le operazioni disponibili; le rispettive implementazioni Proxy le realizzano incapsulando la comunicazione con, rispettivamente, il file system locale e il Backend REST.
+	Le interfacce \texttt{NoteService}, \texttt{AIService} ed \texttt{ExportService} (lato Frontend) definiscono le operazioni disponibili; le rispettive implementazioni Proxy le realizzano incapsulando la comunicazione con, rispettivamente, il file system locale (o il suo fallback) e il Backend REST.
 }{
-	\texttt{NoteModel} dipende solo dall'interfaccia \texttt{NoteService}, \texttt{AIRequestModel} solo dall'interfaccia \texttt{AIService}: nessuna delle due classi di Model conosce se l'implementazione sia locale o remota, facilitando anche il testing tramite implementazioni fittizie. È importante notare che si tratta di un'omonimia intenzionale con la classe concreta \texttt{AIService} del Backend (Sezione~\ref{sec:arch-backend}): le due entità vivono a runtime in linguaggi indipendenti e non condividono alcun codice, collegate solo dal contratto REST esposto da \texttt{AIRouter}.
+	\texttt{NoteModel} dipende solo dalle interfacce \texttt{NoteService} ed \texttt{ExportService}, \texttt{AIRequestModel} solo dall'interfaccia \texttt{AIService}: nessuna delle classi di Model conosce se l'implementazione sia locale o remota, facilitando anche il testing tramite implementazioni fittizie. È importante notare che si tratta di un'omonimia intenzionale con la classe concreta \texttt{AIService} del Backend (Sezione~\ref{sec:arch-backend}): le due entità vivono a runtime in linguaggi indipendenti e non condividono alcun codice, collegate solo dal contratto REST esposto da \texttt{AIRouter}.
 }{
 	Il Model rimane completamente ignaro se l'operazione richiesta sia eseguita in locale o tramite rete, semplificando il testing (sostituzione con implementazioni fittizie) e isolando ogni futura evoluzione del trasporto dal resto del Frontend.
 }
@@ -107,13 +107,13 @@ Di seguito sono illustrati i design pattern adottati per risolvere problematiche
 
 \subsubsection{Command}
 \patternTable{
-	Le modifiche al testo della nota (formattazione, tabelle, elenchi, link, inserimento) devono poter essere annullate e ripetute in modo uniforme (R43-F-O, R44-F-O), senza che \texttt{NoteModel} conosca i dettagli di ciascuna operazione di editing.
+	Le modifiche al testo della nota (formattazione, tabelle, elenchi, link, inserimento, sostituzione) devono poter essere annullate e ripetute in modo uniforme (R43-F-O, R44-F-O), senza che \texttt{NoteModel} conosca i dettagli di ciascuna operazione di editing.
 }{
-	Un'interfaccia \texttt{EditCommand} definisce \texttt{execute()}/\texttt{undo()}; ogni tipo di modifica la implementa incapsulando lo stato necessario per l'annullamento. Una \texttt{CommandHistory} mantiene due pile (undo/redo).
+	Un'interfaccia \texttt{EditCommand} definisce \texttt{execute()}/\texttt{undo()}; ogni tipo di modifica la implementa incapsulando lo stato necessario per l'annullamento. Oltre ai comandi specifici per formattazione, tabelle, elenchi e link, \texttt{ReplaceContentCommand} è un comando generico che sostituisce l'intero contenuto con uno nuovo, mantenendo lo snapshot precedente per l'undo. Una \texttt{CommandHistory} mantiene due pile (undo/redo).
 }{
-	Il metodo \texttt{executeCommand(c)} di \texttt{NoteModel} delega a \texttt{CommandHistory}, che esegue e archivia il comando; l'accettazione di una proposta AI riusa lo stesso meccanismo, inserendo il testo generato tramite un \texttt{InsertTextCommand} -- lo stesso comando usato per l'inserimento manuale di testo (diagramma di sequenza ``Accetta proposta AI'').
+	Il metodo \texttt{executeCommand(c)} di \texttt{NoteModel} delega a \texttt{CommandHistory}, che esegue e archivia il comando. \texttt{ReplaceContentCommand} è riusato in tre contesti distinti: per raggruppare in un'unica voce di history le sequenze di digitazione libera, per Taglia/Incolla, e per l'accettazione di una proposta AI, dove sostituisce il testo originariamente selezionato con il contenuto generato (diagramma di sequenza ``Accetta proposta AI''); solo nel caso limite in cui il range della selezione originaria non sia più disponibile (rete di sicurezza), l'accettazione ricade su \texttt{InsertTextCommand}, che inserisce il testo in coda al documento invece di sostituirlo.
 }{
-	Uniforma undo/redo per qualsiasi tipo di modifica testuale, manuale o generata dall'AI, attraverso un'unica interfaccia, evitando di duplicare la logica di annullamento tra editing manuale e accettazione delle proposte AI.
+	Uniforma undo/redo per qualsiasi tipo di modifica testuale, manuale o generata dall'AI, attraverso un'unica interfaccia, evitando di duplicare la logica di annullamento tra editing manuale, appunti e accettazione delle proposte AI.
 }
 
 \subsubsection{Observer\textsubscript{G}}
@@ -136,4 +136,4 @@ Di seguito sono illustrati i design pattern adottati per risolvere problematiche
 	\texttt{AIRouter} ed \texttt{ExportRouter} dipendono da \texttt{DIProviders} per ottenere le proprie collaborazioni a runtime, invece di istanziarle staticamente.
 }{
 	Rende i router testabili in isolamento iniettando implementazioni fittizie di \texttt{AIService} o degli esportatori, e permette di sostituire la configurazione concreta (es. provider LLM) senza modificare il codice dei router.
-}
+}

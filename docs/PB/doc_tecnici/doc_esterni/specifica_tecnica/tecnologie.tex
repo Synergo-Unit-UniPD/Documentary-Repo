@@ -21,9 +21,10 @@ Le tecnologie adottate sono state selezionate secondo i criteri motivati in dett
 	\hline
 	\textbf{\link{https://fastapi.tiangolo.com/tutorial/dependencies/}{FastAPI}} & 0.136.3 & Framework Backend per API REST asincrone; espone i router \texttt{AIRouter} ed \texttt{ExportRouter} (Sezione~\ref{sec:interfaccia-api}). \\
 	\hline
+	Node.js & 22.x & Funge da runtime di esecuzione essenziale per il server di sviluppo (Vite) e la build del codice TypeScript/Vue.js lato frontend. \\
+	\hline
 \end{tabularx}
 \end{center}
-
 \subsection{Librerie Frontend}
 \renewcommand{\arraystretch}{1.3}
 \begin{center}
@@ -64,6 +65,8 @@ Le tecnologie adottate sono state selezionate secondo i criteri motivati in dett
 	Uvicorn & 0.49.0 & Server ASGI su cui viene eseguito il Backend FastAPI. \\
 	\hline
 	python-dotenv & 1.2.2 & Caricamento delle variabili d'ambiente (\texttt{ZUCCHETTI\_LLM\_BASE\_URL}, \texttt{ZUCCHETTI\_LLM\_API\_KEY}) da file \texttt{.env}, per non includere credenziali nel codice sorgente, coerentemente con la gestione lato Backend richiesta da R8-Q-O. \\
+	\hline
+	markdown-it-py & 3.0.0 & libreria di terze parti utilizzata per effettuare il parsing del testo Markdown e generare l'output HTML omogeneo condiviso dai componenti di esportazione HTML e PDF. \\
 	\hline
 \end{tabularx}
 \end{center}
