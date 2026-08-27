@@ -18,6 +18,7 @@ Branch Protection Rules
 Brainstorming
 Burndown Chart
 Budget
+Budget Variance
 Browser Compatibility
 Candidatura
 Casi d'uso
@@ -25,6 +26,7 @@ Cerimonie
 CI/CD
 Clipboard
 Change Request
+CodeMirror
 Contingenza
 Consuntivo
 Continuous Integration / Continuous Deployment

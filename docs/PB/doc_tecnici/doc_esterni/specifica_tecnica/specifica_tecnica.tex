@@ -15,11 +15,12 @@
 }
 
 \usepackage{placeins}
+\usepackage{seqsplit}
 
 \pagestyle{fancy}
 \fancyhf{} 
 \fancyhead[L]{\textcolor{primarycolor}{\textbf{Synergo Unit}}}
-\fancyhead[R]{Specifica Tecnica v1.0.0 - 2026-08-10}
+\fancyhead[R]{Specifica Tecnica v1.1.0 - 2026-08-24}
 \fancyfoot[C]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
@@ -58,8 +59,8 @@
 	\input{architettura.tex}
 	\newpage
 	
-	%\input{decomposizione.tex}
-	%\newpage
+	\input{decomposizione.tex}
+	\newpage
 	
 	\input{interfaccia_api.tex}
 	\newpage

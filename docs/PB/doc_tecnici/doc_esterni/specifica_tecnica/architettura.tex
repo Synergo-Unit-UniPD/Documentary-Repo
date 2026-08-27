@@ -61,11 +61,31 @@ L'orchestrazione tra View e Model è affidata a due Controller distinti, coerent
 \subsubsection{Gestione dello Stato e dell'Editor}
 Il \texttt{NoteModel} mantiene lo stato osservabile della nota corrente (contenuto, identificativo, flag di modifica non salvata) e delega la manipolazione testuale a un \texttt{MarkdownContentEditor}. Ogni modifica (formattazione, tabelle, elenchi, link, inserimento di testo) è incapsulata in un comando (Sezione~\ref{sec:design-pattern}) eseguito tramite \texttt{NoteModel.executeCommand()}, che aggiorna una \texttt{CommandHistory} a due pile per supportare Undo\textsubscript{G}/Redo\textsubscript{G} (R43-F-O, R44-F-O) in modo uniforme per tutte le operazioni di editing. 
 
-Il salvataggio e l'apertura della nota (R75-F-O, R76-F-O) sono delegati tramite l'interfaccia \texttt{NoteService} a un'implementazione basata sul File System locale, così da non vincolare il Model a un meccanismo di persistenza specifico; la scelta tra creazione di un nuovo file (\texttt{showSaveFilePicker}) e sovrascrittura di un file già aperto è gestita internamente al \texttt{NoteModel} in base alla presenza di un identificativo di nota.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{markdown_frontend_pt1.png}
+	\caption{Diagramma delle classi: \texttt{MarkdownContentEditor} e la famiglia di comandi di editing (pattern Command).}
+	\label{fig:class-frontend-editor}
+\end{figure}
+
+\FloatBarrier
+Il salvataggio e l'apertura della nota (R75-F-O, R76-F-O) sono delegati tramite l'interfaccia \texttt{NoteService} a un'implementazione basata sul File System locale, così da non vincolare il Model a un meccanismo di persistenza specifico; la scelta tra creazione di un nuovo file (\texttt{showSaveFilePicker}) e sovrascrittura di un file già aperto è gestita internamente al \texttt{NoteServiceProxy}, che mantiene l'associazione tra identificativo di nota e handle di file ottenuto al primo salvataggio: \texttt{NoteModel} resta ignaro di questo dettaglio, coerentemente con l'incapsulamento garantito dal pattern Proxy\textsubscript{G} (Sezione~\ref{sec:design-pattern}).
+
+La File System Access API (\texttt{showSaveFilePicker}, \texttt{showOpenFilePicker}) non è supportata nativamente da tutti i browser richiesti da R5-V-O: su Firefox e Safari, \texttt{NoteServiceProxy} rileva l'assenza dell'API a runtime e ricade su un fallback basato su API standard equivalenti: il download del file tramite \texttt{Blob} ed un elemento \texttt{<a download>} per il salvataggio, un elemento \texttt{<input type="file">} nascosto per l'apertura; mantenendo verso \texttt{NoteModel} lo stesso contratto \texttt{NoteService}, che quindi non deve conoscere questa differenza (R13-Q-D).
+
+L'esportazione della nota (R77-F-O) segue lo stesso principio di indirezione: \texttt{NoteModel} espone \texttt{exportContent(format)}, che delega a un'istanza di \texttt{ExportService} (Proxy) iniettata opzionalmente nel costruttore, mantenendo coerente il pattern di Dependency Injection già adottato per \texttt{NoteService} e \texttt{AIService} invece di far dipendere \texttt{App.vue} direttamente dal Proxy di esportazione.
 
 \subsubsection{Gestione Interazioni AI (Widget/Pannello AI)}
 L'\texttt{AIRequestModel} mantiene lo stato della richiesta AI corrente come un tipo dato algebrico (union discriminata TypeScript) con quattro varianti: \texttt{IdleState}, \texttt{ProcessingState}, \texttt{ProposalReadyState} (con la \texttt{Proposal} generata) ed \texttt{ErrorState}. Abbiamo preferito un'unione discriminata\textsubscript{G} al pattern State GoF, che avrebbe introdotto una gerarchia di classi senza incapsulare alcun comportamento reale: le varianti (\texttt{IdleState}, \texttt{ProcessingState}, \texttt{ProposalReadyState}, \texttt{ErrorState}) sono semplici contenitori di dati privi di metodi polimorfici, mentre la logica di transizione resta centralizzata in \texttt{AIRequestModel}.
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{mvc_frontend_pt2.png}
+	\caption{Diagramma delle classi: architettura MVC pull del Frontend (editing e interazioni AI) e rappresentazione dello stato di \texttt{AIRequestModel} come union discriminata.}
+	\label{fig:class-frontend-mvc}
+\end{figure}
+
+\FloatBarrier
 Il ciclo di vita di una richiesta AI attraversa tre fasi distinte, ciascuna illustrata da un diagramma di sequenza dedicato in Sezione~6: 
 \begin{enumerate}
 	\item l'utente avvia la richiesta e riceve un riscontro visivo immediato (stato \texttt{Processing}, R72-F-O) con l'opzione di interruzione manuale (R73-F-O); 
@@ -75,13 +95,13 @@ Il ciclo di vita di una richiesta AI attraversa tre fasi distinte, ciascuna illu
 
 L'utente può quindi accettare, rifiutare o rigenerare la proposta (R69--R71): l'accettazione riusa lo stesso meccanismo di comando dell'editing manuale, inserendo il testo proposto tramite un comando eseguito su \texttt{NoteModel} (pattern Command\textsubscript{G}). 
 
-Le richieste verso il Backend sono mediate dall'interfaccia \texttt{AIService}, la cui implementazione concreta (Proxy) incapsula i dettagli della chiamata REST.
+Le richieste verso il Backend sono mediate dall'interfaccia \texttt{AIService}, la cui implementazione concreta (Proxy) incapsula i dettagli della chiamata REST. La Figura~\ref{fig:class-frontend-proxy} riassume, insieme, le tre interfacce Proxy verso il Backend introdotte in questa sezione (\texttt{NoteService}, \texttt{ExportService}, \texttt{AIService}), con le rispettive implementazioni concrete.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{frontend_core.png}
-	\caption{Diagramma delle classi del Frontend (Model, View, Controller, Proxy).}
-	\label{fig:class-frontend}
+	\includegraphics[width=\textwidth]{services_frontend_pt3.png}
+	\caption{Diagramma delle classi: interfacce Proxy verso i servizi Backend (\texttt{NoteService}, \texttt{ExportService}, \texttt{AIService}) e relative implementazioni.}
+	\label{fig:class-frontend-proxy}
 \end{figure}
 
 %Ciascuna classe View è avvolta da un componente Vue.js omonimo (\texttt{EditorView.vue}, \texttt{AIPanelView.vue}), responsabile\textsubscript{G} unicamente del binding tra lo stato esposto dalla View (metodi \texttt{getLast\ldots()}) e il template, e dell'inoltro degli eventi utente tramite i metodi \texttt{simulate\ldots()}; questi componenti non contengono logica applicativa propria, in linea con quanto descritto in apertura di sezione.
@@ -91,14 +111,14 @@ Le richieste verso il Backend sono mediate dall'interfaccia \texttt{AIService}, 
 \label{sec:arch-backend}
 Il Backend funge da orchestratore centrale e da strato di astrazione verso i provider LLM esterni. È organizzato secondo un'architettura a livelli, articolata in due livelli principali:
 \begin{enumerate}
-	\item \textbf{Livello di Presentazione} (package \texttt{backend\_API\_business\_layer}): router REST, DTO, Dependency Injection;
+	\item \textbf{Livello di Presentazione} (package \texttt{API\_business\_layer}): router REST, DTO, Dependency Injection;
 	\item \textbf{Livello di Business Logic} (package \texttt{AI\_Domain}): logica di costruzione dei prompt e di integrazione con il servizio LLM esterno, indipendente dal framework web.
 \end{enumerate}
 A questi si affianca il package \texttt{Export}, che non fa parte della catena di elaborazione delle richieste AI, bensì implementa in modo isolato e autosufficiente la conversione della nota nei formati richiesti, riusando lo stesso principio di separazione delle responsabilità senza costituire un ulteriore livello architetturale.
 
 La \textbf{scomposizione a livelli} riflette la scala contenuta del sistema garantendo una separazione sufficiente a mantenere il dominio AI indipendente sia dal framework HTTP che dal provider LLM concreto.
 
-La scelta tra un'architettura Esagonale\textsubscript{G} e una a Layer è stata oggetto di un confronto esplicito con il referente aziendale (Zucchetti, verbale del 30/07/2026, decisione VE-8.1): sono stati messi a confronto un'architettura Esagonale, più pulita e flessibile rispetto a possibili evoluzioni future ma a fronte di una maggiore complessità realizzativa, e un'architettura a Layer\textsubscript{G}, più naturale per applicazioni di questo tipo e meno onerosa da realizzare quando non sono previste evoluzioni architetturali significative. Non essendo previste, per \textit{Second Brain}, estensioni quali la persistenza remota o l'integrazione con provider LLM multipli all'interno della stessa richiesta (R4-V-Op, R6-V-O), è stata adottata l'architettura a Layer, riservando comunque, tramite la separazione tra Presentazione e Business Logic già descritta, un margine di evoluzione verso un'architettura più disaccoppiata qualora emergessero nuovi requisiti.
+La scelta tra un'architettura Esagonale\textsubscript{G} e una a Layer è stata oggetto di un confronto esplicito con il referente aziendale (\link{https://synergo-unit-unipd.github.io/Second-Brain/docs/PB/doc_gestionali/verb_esterni/verb_est_2026_07_30/verb_est_2026_07_30_firmato.pdf}{Verbale del 30/07/2026}, decisione VE-8.1): sono stati messi a confronto un'architettura Esagonale, più pulita e flessibile rispetto a possibili evoluzioni future ma a fronte di una maggiore complessità realizzativa, e un'architettura a Layer\textsubscript{G}, più naturale per applicazioni di questo tipo e meno onerosa da realizzare quando non sono previste evoluzioni architetturali significative. Non essendo previste, per \textit{Second Brain}, estensioni quali la persistenza remota o l'integrazione con provider LLM multipli all'interno della stessa richiesta (R4-V-Op, R6-V-O), è stata adottata l'architettura a Layer, riservando comunque, tramite la separazione tra Presentazione e Business Logic già descritta, un margine di evoluzione verso un'architettura più disaccoppiata qualora emergessero nuovi requisiti.
 
 \begin{figure}[H]
 	\centering
@@ -108,7 +128,7 @@ La scelta tra un'architettura Esagonale\textsubscript{G} e una a Layer è stata 
 \end{figure}
 
 \subsubsection{Livello di Presentazione}
-I router FastAPI (\texttt{AIRouter}, \texttt{ExportRouter}) ricevono le richieste dal client, le validano tramite i DTO di \texttt{api/schemas} (\texttt{AIOperationRequest}, \texttt{ExportRequest}) e delegano l'elaborazione ai servizi applicativi, ottenuti tramite Dependency Injection (\texttt{DIProviders}). Un gestore di errori centralizzato (\texttt{ErrorHandlers}) traduce le eccezioni di dominio (\texttt{AIDomainError}, \texttt{ExportError}) in risposte HTTP coerenti (Sezione~\ref{sec:gestione-errori}). I router non contengono logica di dominio: traducono richieste HTTP in chiamate al livello di Business Logic e le risposte in schemi Pydantic.
+I router FastAPI (\texttt{AIRouter}, \texttt{ExportRouter}\footnote{Nomi informali usati in questo documento per riferirsi rispettivamente al router definito in \texttt{api/ai\_router.py} e a quello in \texttt{api/export\_router.py}: nel codice sono variabili modulo (\texttt{router = APIRouter(...)}), non classi. Allo stesso modo, \texttt{DIProviders} indica le funzioni fabbrica del modulo \texttt{di/providers.py} (\texttt{get\_ai\_service()}, \texttt{get\_exporter(format)}), ed \texttt{ErrorHandlers} le funzioni di gestione errori del modulo \texttt{api/error\_handlers.py} (\texttt{handle\_ai\_domain\_error()}, \texttt{handle\_export\_error()}).}) ricevono le richieste dal client, le validano tramite i DTO di \texttt{api/schemas} (\texttt{AIOperationRequest}, \texttt{ExportRequest}) e delegano l'elaborazione ai servizi applicativi, ottenuti tramite Dependency Injection (\texttt{DIProviders}). Un gestore di errori centralizzato (\texttt{ErrorHandlers}) traduce le eccezioni di dominio (\texttt{AIDomainError}, \texttt{ExportError}) in risposte HTTP coerenti (Sezione~\ref{sec:gestione-errori}). I router non contengono logica di dominio: traducono richieste HTTP in chiamate al livello di Business Logic e le risposte in schemi Pydantic.
 
 \begin{figure}[H]
 	\centering
@@ -120,7 +140,7 @@ I router FastAPI (\texttt{AIRouter}, \texttt{ExportRouter}) ricevono le richiest
 \subsubsection{Livello di Business Logic (Core LLM)}
 L'\texttt{AIService} è il motore centrale del dominio AI: riceve il tipo di operazione richiesta (riassunto, traduzione, riscrittura, Distant Writing, o una delle sei prospettive dei ``Cappelli di De Bono''), la risolve tramite un'\texttt{AIOperationFactory} auto-registrante, e ne invoca \texttt{build\_prompt()} in modo polimorfico. Ogni operazione costruisce il proprio \texttt{Prompt} tramite un \texttt{PromptBuilder} fluente, isolando la logica specifica di ciascuna trasformazione testuale (Sezione~\ref{sec:design-pattern}, pattern Strategy\textsubscript{G}, Builder\textsubscript{G} e Simple Factory\textsubscript{G}). 
 
-Il pacchetto \texttt{AI\_Domain/llm}, incluso nello stesso diagramma, maschera le specificità del provider LLM concreto dietro l'interfaccia \texttt{LLMService}: una catena di decorator (\texttt{CachingLLMAdapter}, \texttt{LoggingLLMAdapter}) aggiunge funzionalità trasversali di caching e logging senza modificare l'implementazione di base; l'ultimo anello della catena è l'\texttt{OpenAIAdapter}, verso l'API compatibile con lo standard OpenAI (R2-V-O, R3-V-O).
+Il pacchetto \texttt{AI\_Domain/llm}, incluso nello stesso diagramma, maschera le specificità del provider LLM concreto dietro l'interfaccia \texttt{LLMService}: un decorator concreto (\texttt{LoggingLLMAdapter}) aggiunge la funzionalità trasversale di logging senza modificare l'implementazione di base; la classe astratta \texttt{LLMServiceDecorator} da cui deriva è pensata per accogliere eventuali ulteriori decorator (es. un futuro livello di caching) componibili nella stessa catena, senza impatti su \texttt{AIService}. L'ultimo anello della catena è l'\texttt{OpenAIAdapter}, verso l'API compatibile con lo standard OpenAI (R2-V-O, R3-V-O).
 
 \begin{figure}[H]
 	\centering
@@ -132,7 +152,7 @@ Il pacchetto \texttt{AI\_Domain/llm}, incluso nello stesso diagramma, maschera l
 \FloatBarrier
 
 \subsubsection{Componente di Esportazione (Export)}
-La conversione della nota nei formati di esportazione richiesti (PDF, HTML, JSON)(R77-F-O) è isolata nel package \texttt{Export}, strutturato attorno al pattern Template Method\textsubscript{G} (Sezione~\ref{sec:design-pattern}): la classe astratta \texttt{Exporter} fissa i passi comuni dell'esportazione (\texttt{export()}, \texttt{prepare\_content()}) mentre delega alle sottoclassi (\texttt{PdfExporter}, \texttt{HtmlExporter}, \texttt{JsonExporter}) solo la conversione nel formato finale (\texttt{convert\_format()}). \texttt{DIProviders.get\_exporter(format)} risolve l'esportatore concreto in base al formato richiesto da \texttt{ExportRouter}, senza che \texttt{Export} debba conoscere né il livello di Presentazione né quello di Business Logic.
+La conversione della nota nei formati di esportazione richiesti (PDF, HTML, JSON)(R77-F-O) è isolata nel package \texttt{Export}, strutturato attorno al pattern Template Method\textsubscript{G} (Sezione~\ref{sec:design-pattern}): la classe astratta \texttt{Exporter} fissa i passi comuni dell'esportazione (\texttt{export()}, \texttt{\_prepare\_content()}) mentre delega alle sottoclassi (\texttt{PdfExporter}, \texttt{HtmlExporter}, \texttt{JsonExporter}) solo la conversione nel formato finale (\texttt{\_convert\_format()}). \texttt{DIProviders.get\_exporter(format)} risolve l'esportatore concreto in base al formato richiesto da \texttt{ExportRouter}, senza che \texttt{Export} debba conoscere né il livello di Presentazione né quello di Business Logic.
 
 \begin{figure}[H]
 	\centering

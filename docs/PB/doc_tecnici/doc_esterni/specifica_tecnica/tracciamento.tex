@@ -1,5 +1,5 @@
 % =======================================================
-% 7. TRACCIAMENTO E STATO DEI REQUISITI
+% 8. TRACCIAMENTO E STATO DEI REQUISITI
 % =======================================================
 \section{Tracciamento e Stato dei Requisiti}
 \label{sec:tracciamento}
@@ -39,17 +39,27 @@ Al fine di garantire che l'architettura progettata e le tecnologie scelte soddis
 	\texttt{AIRequestModel},\newline \texttt{AIPanelView},\newline \texttt{AIController} & Accettazione/rifiuto/rigenerazione della proposta, interruzione manuale, stato di avanzamento continuo & R69--R74 \\ \hline
 	\texttt{NoteModel},\newline \texttt{NoteService}/\newline\texttt{NoteServiceProxy} & Salvataggio e caricamento della nota in formato Markdown dal file system locale & R75-F-O, R76-F-O \\ \hline
 	\texttt{ExportRouter},\newline esportatori per formato (Template Method) & Esportazione della nota in PDF, HTML e JSON & R77-F-O \\ \hline
-	Suite di test\newline automatici, pipeline CI & Copertura di test, documentazione tecnica e di qualifica & R1-Q-O -- R9-Q-D \\ \hline
-	Architettura\newline Client-Server,\newline adapter LLM & Esecuzione via browser, standard API OpenAI, modelli Gemma/ChatGPT-OSS/Qwen & R1-V-O -- R7-V-O \\ \hline
-	Rendering reattivo\newline Vue.js, stato\newline \texttt{AIRequestState} & Aggiornamento anteprima entro 1s, indicatore di caricamento continuo & R1-P-O, R2-P-O \\ \hline
+	\texttt{App.vue} & Richiesta di conferma prima di chiudere/navigare fuori dall'applicazione con modifiche non salvate; apertura dei link dell'anteprima in una nuova scheda o segnalazione di URL non valido & R87-F-O, R88-F-O \\ \hline
+	Suite di test\newline automatici, pipeline CI & Copertura di test ($\geq$80\%\ sui moduli principali), test di integrazione con i servizi LLM, gestione non bloccante degli errori & R1-Q-O, R2-Q-O, R3-Q-O, R10-Q-O, R11-Q-O \\ \hline
+	python-dotenv,\newline \texttt{OpenAIAdapter} & Gestione delle credenziali di accesso al servizio LLM esclusivamente lato Backend, mai esposte al client o nei log & R8-Q-O \\ \hline
+	Architettura\newline Client-Server,\newline adapter LLM & Esecuzione via browser, standard API OpenAI, singolo modello LLM per richiesta, repository pubblico & R1-V-O, R2-V-O, R3-V-O, R5-V-O, R6-V-O, R7-V-O \\ \hline
+	Scelta libera del\newline framework Frontend & Vue.js adottato senza vincolo imposto dal capitolato & R11-V-O \\ \hline
+	Docker Compose,\newline Dockerfile & Consegna come archivio distribuibile con configurazione Docker, senza deploy su infrastruttura server esterna & R12-V-O \\ \hline
+	Rendering reattivo\newline Vue.js, stato\newline \texttt{AIRequestState} & Aggiornamento anteprima entro 1s (anche per note estese), tempo di avvio dell'applicazione, indicatore di caricamento continuo & R1-P-O, R2-P-O, R3-P-O, R4-P-O \\ \hline
 \end{xltabular}
 
 I requisiti opzionali R4-V-Op e R78--R86 (persistenza remota, gestione utenti) non compaiono in questa tabella poiché il gruppo ha deciso di non implementarli in questa fase (si veda Sezione~7.2 per lo stato dettagliato e la motivazione): non esiste quindi alcun componente architetturale a cui tracciarli.
 
-\subsection{Stato di Soddisfacimento dei Requisiti}
-La tabella seguente riassume, per macro-gruppo, lo stato di implementazione dei requisiti funzionali, di qualità, di vincolo e prestazionali rispetto all'architettura descritta in questo documento. I gruppi ricalcano la struttura di \link{link_analisi_requisiti}{Analisi dei Requisiti}, Sezione 4; il numero di requisiti obbligatori (90), desiderabili (2) e opzionali (12) è riepilogato nello stesso documento, Sezione 6 -- Riepilogo.
+\begin{minipage}{\textwidth}
+    \small 
+    \vspace{0.2cm} 
+    \textit{Nota:} R8-V-O, R9-V-O e R10-V-O (obbligo di produrre rispettivamente Specifica Tecnica, Piano di Qualifica e Manuale Utente) sono requisiti di natura documentale, soddisfatti dall'esistenza dei documenti stessi: non è quindi individuabile un componente architetturale a cui tracciarli, e non compaiono nella tabella precedente.
+\end{minipage}
 
-I requisiti opzionali relativi alla persistenza remota e alla gestione utenti (R4-V-Op, R7-Q-Op, R8-Q-Op, R78--R86) sono stati valutati e volutamente esclusi dallo scope\textsubscript{G} della release corrente: il gruppo ha scelto di concentrare le risorse disponibili sul consolidamento e sulla qualità dei requisiti obbligatori, rimandando un'eventuale implementazione a fasi successive del progetto qualora il tempo residuo lo consenta. Sono pertanto riportati con stato \textit{Non implementato}.
+\subsection{Stato di Soddisfacimento dei Requisiti}
+La tabella seguente riassume, per macro-gruppo, lo stato di implementazione dei requisiti funzionali, di qualità, di vincolo e prestazionali rispetto all'architettura descritta in questo documento. I gruppi ricalcano la struttura di \link{https://synergo-unit-unipd.github.io/Second-Brain/docs/PB/doc_tecnici/doc_esterni/analisi_dei_requisiti/analisi_dei_requisiti.pdf}{Analisi dei Requisiti}, Sezione 4; il numero di requisiti obbligatori (100), desiderabili (5) e opzionali (15) è riepilogato nello stesso documento, Sezione 6 -- Riepilogo.
+
+I requisiti opzionali relativi alla persistenza remota e alla gestione utenti (R4-V-Op, R7-Q-Op, R8-Q-Op, R78--R86) sono stati valutati e volutamente esclusi dallo scope\textsubscript{G} della release corrente: il gruppo ha scelto di concentrare le risorse disponibili sul consolidamento e sulla qualità dei requisiti obbligatori. Sono pertanto riportati con stato \textit{Non implementato}.
 
 \renewcommand{\arraystretch}{1.3}
 \begin{xltabular}{\textwidth}{|>{\centering\arraybackslash}p{2.6cm}|X|c|c|}
@@ -94,13 +104,25 @@ I requisiti opzionali relativi alla persistenza remota e alla gestione utenti (R
 	R74 & Visualizzazione della proposta AI in un modale dedicato. & Obbligatorio & Soddisfatto \\ \hline
 	R75, R76 & Salvataggio e caricamento della nota in formato Markdown su file system locale. & Obbligatorio & Soddisfatto \\ \hline
 	R77 & Esportazione della nota in PDF, HTML e JSON. & Obbligatorio & Soddisfatto \\ \hline
+	R87, R88 & Conferma prima di uscire con modifiche non salvate; apertura dei link dell'anteprima (nuova scheda o segnalazione URL non valido). & Obbligatorio & Soddisfatto \\ \hline
 	R78--R86 & Creazione/eliminazione nota, registrazione/autenticazione utente, gestione note remote. & Opzionale & Non implementato \\ \hline
-	R1-Q-O -- R6-Q-O & Copertura di test, documentazione tecnica, versionamento Git, test di integrazione con i servizi LLM. & Obbligatorio & Soddisfatto \\ \hline
-	R7-Q-Op, R8-Q-Op & Test di integrazione e autenticazione del modulo opzionale di persistenza remota. & Opzionale & Non implementato \\ \hline
-	R9-Q-D & Adozione di una licenza open source permissiva. & Desiderabile & Soddisfatto \\ \hline
-	R1-V-O -- R3-V-O & Esecuzione via browser standard e interazione con i modelli LLM tramite API compatibile OpenAI. & Obbligatorio & Soddisfatto \\ \hline
+	R1-Q-O, R2-Q-O, R3-Q-O & Copertura di test ($\geq$80\% sui moduli principali), versionamento Git, test di integrazione con i servizi LLM. & Obbligatorio & Soddisfatto \\ \hline
+	R8-Q-O, R10-Q-O, R11-Q-O & Gestione delle credenziali LLM esclusivamente lato Backend; continuità dell'editing locale e gestione non bloccante degli errori in caso di indisponibilità dei servizi esterni. & Obbligatorio & Soddisfatto \\ \hline
+	R4-Q-Op, R5-Q-Op, R9-Q-Op & Test di integrazione, autenticazione e hashing delle password del modulo opzionale di persistenza remota. & Opzionale & Non implementato \\ \hline
+	R6-Q-D & Adozione di una licenza open source permissiva. & Desiderabile & Soddisfatto \\ \hline
+	R7-Q-D & Criteri minimi di usabilità dell'editor (contrasto, leggibilità, focus da tastiera). & Desiderabile & Soddisfatto \\ \hline
+	R12-Q-D & Architettura modulare che consenta la sostituzione del provider LLM senza impatti significativi. & Desiderabile & Soddisfatto \\ \hline
+	R13-Q-D & Assenza di dipendenza da funzionalità non standard dei browser. & Desiderabile & Soddisfatto \\ \hline
+	R1-V-O -- R3-V-O, R5-V-O -- R7-V-O & Esecuzione via browser standard, interazione con i modelli LLM tramite API compatibile OpenAI, singolo modello per richiesta, repository pubblico. & Obbligatorio & Soddisfatto \\ \hline
+	R8-V-O -- R10-V-O & Produzione di Specifica Tecnica, Piano di Qualifica e Manuale Utente. & Obbligatorio & Soddisfatto \\ \hline
+	R11-V-O & Libertà di scelta del framework Frontend (Vue.js). & Obbligatorio & Soddisfatto \\ \hline
+	R12-V-O & Consegna come archivio Docker distribuibile, senza deploy su infrastruttura server esterna. & Obbligatorio & Soddisfatto \\ \hline
 	R4-V-Op & Persistenza remota tramite un database server-side. & Opzionale & Non implementato \\ \hline
-	R5-V-O -- R7-V-O & Compatibilità browser, singolo modello LLM per richiesta, repository pubblico. & Obbligatorio & Soddisfatto \\ \hline
+	R13-V-Op & Predisposizione per il deploy su server esterno, in aggiunta all'archivio Docker. & Opzionale & Non implementato \\ \hline
 	R1-P-O & Aggiornamento dell'anteprima Markdown entro 1 secondo dalla modifica. & Obbligatorio & Soddisfatto \\ \hline
 	R2-P-O & Visualizzazione continua e reattiva dello stato di caricamento durante l'elaborazione AI. & Obbligatorio & Soddisfatto \\ \hline
+	R3-P-O & Tempo di avvio dell'applicazione entro 3 secondi in condizioni di rete standard. & Obbligatorio & Soddisfatto \\ \hline
+	R4-P-O & Rendering dell'anteprima senza degrado percettibile anche per note estese ($>$10.000 caratteri). & Obbligatorio & Soddisfatto \\ \hline
+	R5-P-O & Timeout di sicurezza per le richieste AI (soglia elevata, non percepibile in condizioni normali); unico controllo effettivo sui tempi affidato all'interruzione manuale (R73-F-O). & Obbligatorio & Soddisfatto \\ \hline
+	R6-P-Op & Caricamento della lista delle note remote entro 3 secondi. & Opzionale & Non implementato \\ \hline
 \end{xltabular}

@@ -7,12 +7,29 @@ Le tecnologie adottate sono state selezionate secondo i criteri motivati in dett
 
 \subsection{Linguaggi, runtime e framework\textsubscript{G}}
 \renewcommand{\arraystretch}{1.3}
-\begin{center}
-\begin{tabularx}{\textwidth}{|l|l|X|}
+\begin{xltabular}{\textwidth}{|l|l|X|}
+	\caption{Linguaggi, runtime e framework} \label{tab:linguaggi} \\
 	\hline
 	\rowcolor{primarycolor!10}
 	\textbf{Tecnologia} & \textbf{Versione} & \textbf{Descrizione} \\
 	\hline
+	\endfirsthead
+
+	\multicolumn{3}{c}{{\bfseries \tablename\ \thetable{} -- Continua dalla pagina precedente}} \\
+	\hline
+	\rowcolor{primarycolor!10}
+	\textbf{Tecnologia} & \textbf{Versione} & \textbf{Descrizione} \\
+	\hline
+	\endhead
+
+	\hline
+	\multicolumn{3}{|r|}{{Continua nella pagina successiva...}} \\
+	\hline
+	\endfoot
+
+	\hline
+	\endlastfoot
+
 	TypeScript & 6.0.x & Linguaggio principale del Frontend; la tipizzazione statica riduce gli errori di integrazione con le interfacce dei payload AI. \\
 	\hline
 	\textbf{\link{https://vuejs.org/guide/essentials/reactivity-fundamentals.html}{Vue.js}} & 3.5.x & Framework a componenti del Frontend, scelto per la progressività e la bassa curva di apprendimento (Sezione 2 di \link{https://github.com/Synergo-Unit-UniPD/Second-Brain/blob/main/docs/RTB/doc_gestionali/doc_interni/analisi_stato_arte/analisi_stato_arte.pdf}{Analisi dello Stato dell'Arte}). \\
@@ -21,40 +38,76 @@ Le tecnologie adottate sono state selezionate secondo i criteri motivati in dett
 	\hline
 	\textbf{\link{https://fastapi.tiangolo.com/tutorial/dependencies/}{FastAPI}} & 0.136.3 & Framework Backend per API REST asincrone; espone i router \texttt{AIRouter} ed \texttt{ExportRouter} (Sezione~\ref{sec:interfaccia-api}). \\
 	\hline
-\end{tabularx}
-\end{center}
+	Node.js & 22.x & Funge da runtime di esecuzione essenziale per il server di sviluppo (Vite) e la build del codice TypeScript/Vue.js lato frontend. \\
+	\hline
+\end{xltabular}
 
 \subsection{Librerie Frontend}
 \renewcommand{\arraystretch}{1.3}
-\begin{center}
-\begin{tabularx}{\textwidth}{|l|l|X|}
+\begin{xltabular}{\textwidth}{|p{6cm}|l|X|}
+	\caption{Librerie Frontend} \label{tab:librerie-frontend} \\
 	\hline
 	\rowcolor{primarycolor!10}
 	\textbf{Libreria} & \textbf{Versione} & \textbf{Descrizione} \\
 	\hline
-	Pinia & 3.0.4 & Libreria di gestione dello stato globale dell'applicazione Vue.js. \\
+	\endfirsthead
+
+	\multicolumn{3}{c}{{\bfseries \tablename\ \thetable{} -- Continua dalla pagina precedente}} \\
 	\hline
-	vue-router & 5.1.0 & Libreria di routing lato client tra le viste dell'applicazione. \\
+	\rowcolor{primarycolor!10}
+	\textbf{Libreria} & \textbf{Versione} & \textbf{Descrizione} \\
 	\hline
-	\textbf{\link{https://codemirror.net/docs/guide/}{CodeMirror}} & 6.0.2 & Componente editor di testo integrato nel Frontend (Sezione 2 di \link{https://github.com/Synergo-Unit-UniPD/Second-Brain/blob/main/docs/RTB/doc_gestionali/doc_interni/analisi_stato_arte/analisi_stato_arte.pdf}{Analisi dello Stato dell'Arte}). \\
+	\endhead
+
+	\hline
+	\multicolumn{3}{|r|}{{Continua nella pagina successiva...}} \\
+	\hline
+	\endfoot
+
+	\hline
+	\endlastfoot
+
+	\textbf{\link{https://codemirror.net/docs/guide/}{CodeMirror}} & 6.0.2 & Componente editor di testo integrato nel Frontend (Sezione 2 di \link{https://github.com/Synergo-Unit-UniPD/Second-Brain/blob/main/docs/RTB/doc_gestionali/doc_interni/analisi_stato_arte/analisi_stato_arte.pdf}{Analisi dello Stato dell'Arte}); il nucleo (\texttt{codemirror}) è integrato da un insieme di pacchetti \texttt{@codemirror/*} ufficiali per le funzionalità specifiche richieste (riga sotto). \\
+	\hline
+	@codemirror/state, @codemirror/view, @codemirror/commands & 6.x & Stato dell'editor, rendering e comandi base (selezione, cronologia nativa del browser) su cui si innesta la gestione applicativa di Undo/Redo (Sezione~\ref{sec:design-pattern}, pattern Command). \\
+	\hline
+	@codemirror/lang-markdown, @codemirror/language-data & 6.x & Riconoscimento della sintassi Markdown e evidenziazione del testo nell'editor. \\
+	\hline
+	@codemirror/theme-one-dark & 6.x & Tema visivo dell'editor. \\
 	\hline
 	vue-codemirror6 & 1.5.2 & Binding Vue.js per l'integrazione di CodeMirror come componente reattivo. \\
 	\hline
 	marked & 18.0.4 & Conversione del contenuto Markdown della nota in HTML per l'anteprima. \\
 	\hline
-	DOMPurify & 3.4.8 & Sanitizzazione dell'HTML generato da \texttt{marked} prima del rendering, a protezione da XSS. \\
+	DOMPurify & 3.2.7 & Sanitizzazione dell'HTML generato da \texttt{marked} prima del rendering, a protezione da XSS. \\
 	\hline
-\end{tabularx}
-\end{center}
+\end{xltabular}
 
 \subsection{Librerie Backend}
 \renewcommand{\arraystretch}{1.3}
-\begin{center}
-\begin{tabularx}{\textwidth}{|l|l|X|}
+\begin{xltabular}{\textwidth}{|l|l|X|}
+	\caption{Librerie Backend} \label{tab:librerie-backend} \\
 	\hline
 	\rowcolor{primarycolor!10}
 	\textbf{Libreria} & \textbf{Versione} & \textbf{Descrizione} \\
 	\hline
+	\endfirsthead
+
+	\multicolumn{3}{c}{{\bfseries \tablename\ \thetable{} -- Continua dalla pagina precedente}} \\
+	\hline
+	\rowcolor{primarycolor!10}
+	\textbf{Libreria} & \textbf{Versione} & \textbf{Descrizione} \\
+	\hline
+	\endhead
+
+	\hline
+	\multicolumn{3}{|r|}{{Continua nella pagina successiva...}} \\
+	\hline
+	\endfoot
+
+	\hline
+	\endlastfoot
+
 	Pydantic & 2.13.4 & Validazione\textsubscript{G} dei dati e definizione tipizzata dei DTO\textsubscript{G} delle operazioni AI (\texttt{AIOperationRequest}, \texttt{AIOperationResponse}, \texttt{ExportRequest}; Sezione~\ref{sec:interfaccia-api}), integrata nativamente in FastAPI. \\
 	\hline
 	openai & 2.41.0 & Client ufficiale per l'API compatibile con lo standard OpenAI (R2-V-O, R3-V-O); configurato con \texttt{base\_url} verso l'endpoint\textsubscript{G} fornito dall'azienda proponente. \\
@@ -65,50 +118,107 @@ Le tecnologie adottate sono state selezionate secondo i criteri motivati in dett
 	\hline
 	python-dotenv & 1.2.2 & Caricamento delle variabili d'ambiente (\texttt{ZUCCHETTI\_LLM\_BASE\_URL}, \texttt{ZUCCHETTI\_LLM\_API\_KEY}) da file \texttt{.env}, per non includere credenziali nel codice sorgente, coerentemente con la gestione lato Backend richiesta da R8-Q-O. \\
 	\hline
-\end{tabularx}
-\end{center}
+	markdown-it-py & 3.0.0 & Libreria di terze parti utilizzata per effettuare il parsing del testo Markdown e generare l'output HTML omogeneo condiviso dai componenti di esportazione HTML e PDF. \\
+	\hline
+	mdit-py-plugins & 0.6.1 & Estensioni a \texttt{markdown-it-py} (es. tabelle) necessarie per coprire la sintassi Markdown supportata dall'editor in fase di esportazione. \\
+	\hline
+	linkify-it-py & 2.1.0 & Riconoscimento automatico dei link nel testo durante il parsing Markdown, dipendenza di \texttt{markdown-it-py}. \\
+	\hline
+	xhtml2pdf & 0.2.17 & Conversione dell'HTML prodotto da \texttt{markdown-it-py} in un documento PDF (R77-F-O); usata esclusivamente da \texttt{PdfExporter}. \\
+	\hline
+\end{xltabular}
 
 \subsection{Persistenza dei dati}
 \label{sec:persistenza}
-Il gruppo ha scelto di non implementare alcun sistema di persistenza server-side in questa fase: 
+Il gruppo ha scelto di non implementare alcun sistema di persistenza server-side: 
 la gestione dei dati si basa esclusivamente sul file system locale del browser (salvataggio, apertura ed 
 esportazione della nota, R75--R77), che copre i requisiti obbligatori del capitolato. 
 
 La persistenza remota delle note e la gestione di utenti autenticati sono funzionalità opzionali (R4-V-Op, R78--R86) che il gruppo ha deciso di non realizzare, per concentrare le risorse disponibili sul consolidamento dei requisiti obbligatori; non è pertanto presente alcun database nello stack tecnologico\textsubscript{G} né nell'architettura di deployment (Sezione~\ref{sec:arch-deployment}). Lo stato di questi requisiti opzionali è riportato in dettaglio in Sezione~\ref{sec:tracciamento}.
 
 \subsection{Testing}
+\label{sec:testing}
 \renewcommand{\arraystretch}{1.3}
-\begin{center}
-\begin{tabularx}{\textwidth}{|l|X|}
-	\hline
-	\rowcolor{primarycolor!10}
-	\textbf{Framework} & \textbf{Descrizione} \\
-	\hline
-	Vitest & Framework di test per il Frontend TypeScript/Vue.js. \\
-	\hline
-	pytest & Framework di test per il Backend Python. \\
-	\hline
-\end{tabularx}
-\end{center}
-
-\subsection{Infrastruttura e strumenti di sviluppo}
-\renewcommand{\arraystretch}{1.3}
-\begin{center}
-\begin{tabularx}{\textwidth}{|l|X|}
+\begin{xltabular}{\textwidth}{|l|X|}
+	\caption{Strumenti di Testing} \label{tab:testing} \\
 	\hline
 	\rowcolor{primarycolor!10}
 	\textbf{Strumento} & \textbf{Descrizione} \\
 	\hline
-	\textbf{\link{https://docs.docker.com/compose/}{Docker Compose}} & Orchestrazione dei container \texttt{frontend} e \texttt{backend} (Sezione~\ref{sec:arch-deployment}). Il server di sviluppo Vite del container \texttt{frontend} inoltra le richieste verso \texttt{/api} al container \texttt{backend} (\texttt{http://backend:8000}); non è presente un reverse proxy\textsubscript{G} dedicato (es. Nginx) in questa fase. \\
+	\endfirsthead
+
+	\multicolumn{2}{c}{{\bfseries \tablename\ \thetable{} -- Continua dalla pagina precedente}} \\
+	\hline
+	\rowcolor{primarycolor!10}
+	\textbf{Strumento} & \textbf{Descrizione} \\
+	\hline
+	\endhead
+
+	\hline
+	\multicolumn{2}{|r|}{{Continua nella pagina successiva...}} \\
+	\hline
+	\endfoot
+
+	\hline
+	\endlastfoot
+
+	Vitest & Framework di test per il Frontend TypeScript/Vue.js; esegue sia i Test di Unità (\texttt{frontend/src/**}) che i Test di Sistema (\texttt{test\_sistema/}), integrati nella stessa esecuzione tramite \texttt{test.include} di \texttt{vite.config.js} (\link{https://synergo-unit-unipd.github.io/Second-Brain/docs/PB/doc_gestionali/doc_interni/piano_qualifica/piano_qualifica.pdf}{Piano di Qualifica}, Sezione 4). \\
+	\hline
+	@vue/test-utils & Libreria per il montaggio e l'interazione programmatica con i componenti Vue.js nei test, sia di unità che di sistema. \\
+	\hline
+	pytest, pytest-asyncio & Framework di test per il Backend Python; \texttt{pytest-asyncio} abilita il test degli endpoint asincroni di FastAPI. \\
+	\hline
+	pytest-cov, @vitest/coverage-v8 & Calcolo della copertura di codice rispettivamente per Backend e Frontend, con soglie minime verificate in CI\textsubscript{G} ($\sim$95\% su Backend, soglia 90\%; $\sim$90\% linee su Frontend, soglia 85\%). \\
+	\hline
+\end{xltabular}
+Il dettaglio della strategia di test per livello (unità, integrazione, sistema, accettazione) è descritto nel \link{https://synergo-unit-unipd.github.io/Second-Brain/docs/PB/doc_gestionali/doc_interni/piano_qualifica/piano_qualifica.pdf}{Piano di Qualifica}, Sezione 4.
+
+\subsection{Infrastruttura e strumenti di sviluppo}
+\label{sec:infrastruttura}
+\renewcommand{\arraystretch}{1.3}
+\begin{xltabular}{\textwidth}{|l|X|}
+	\caption{Infrastruttura e strumenti di sviluppo} \label{tab:infrastruttura} \\
+	\hline
+	\rowcolor{primarycolor!10}
+	\textbf{Strumento} & \textbf{Descrizione} \\
+	\hline
+	\endfirsthead
+
+	\multicolumn{2}{c}{{\bfseries \tablename\ \thetable{} -- Continua dalla pagina precedente}} \\
+	\hline
+	\rowcolor{primarycolor!10}
+	\textbf{Strumento} & \textbf{Descrizione} \\
+	\hline
+	\endhead
+
+	\hline
+	\multicolumn{2}{|r|}{{Continua nella pagina successiva...}} \\
+	\hline
+	\endfoot
+
+	\hline
+	\endlastfoot
+
+	\textbf{\link{https://docs.docker.com/compose/}{Docker Compose}} & Orchestrazione dei container \texttt{frontend} e \texttt{backend} (Sezione~\ref{sec:arch-deployment}). Il server di sviluppo Vite del container \texttt{frontend} inoltra le richieste verso \texttt{/api} al container \texttt{backend} (\texttt{http://backend:8000}). \\
 	\hline
 	Git e GitHub & Versionamento del codice e gestione collaborativa del repository\textsubscript{G}, con tracciamento delle attività tramite issue\textsubscript{G} (requisito R2-Q-O). \\
 	\hline
 	GitHub Actions\textsubscript{G} & Automazione di build, esecuzione dei test e controlli di qualità a ogni push/pull request\textsubscript{G} (requisito R1-Q-O). \\
 	\hline
+	ruff & Linter\textsubscript{G} e formatter\textsubscript{G} per il codice Backend Python (\texttt{ruff check}, \texttt{ruff format}). \\
+	\hline
+	mypy & Type checker statico per il Backend Python. \\
+	\hline
+	eslint, con oxlint & Linter per il codice Frontend TypeScript/Vue.js; oxlint esegue un primo passaggio più rapido sugli stessi file, integrato nella stessa pipeline. \\
+	\hline
+	prettier & Formatter per il codice Frontend (TypeScript, Vue, CSS). \\
+	\hline
+	vue-tsc & Type checker statico per componenti Vue.js e codice TypeScript del Frontend. \\
+	\hline
 	StarUML & Modellazione UML\textsubscript{G} e produzione dei diagrammi architetturali. \\
 	\hline
-\end{tabularx}
-\end{center}
+\end{xltabular}
+Tutti gli strumenti di analisi statica e i framework di test (Sezione~\ref{sec:testing}) sono richiamati da un comando unico, \texttt{make ci}, nell'ordine: analisi statica $\rightarrow$ type check $\rightarrow$ test $\rightarrow$ copertura, per Backend e Frontend in parallelo. Un'analisi statica fallita blocca l'esecuzione dei test corrispondenti, per un riscontro più rapido. Lo stesso comando viene eseguito automaticamente da GitHub Actions a ogni Pull Request.
 
 \subsection{Motivazioni delle scelte tecnologiche}
 \label{sec:motivazioni-tecnologie}

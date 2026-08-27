@@ -1,5 +1,5 @@
 % =======================================================
-% 4. INTERFACCIA API E COMUNICAZIONE
+% 5. INTERFACCIA API E COMUNICAZIONE
 % =======================================================
 \section{Interfaccia API e Comunicazione}
 \label{sec:interfaccia-api}
@@ -16,9 +16,9 @@ La comunicazione relativa alle operazioni di Intelligenza Artificiale (riassunto
 	\textbf{DTO} & \textbf{Campo} & \textbf{Descrizione} \\
 	\midrule
 	\multirow{3}{*}{\texttt{AIOperationRequest}}
-	 & \texttt{type} & Tipo di operazione richiesta (es. \texttt{summarize}, \texttt{translate}, \texttt{rewrite}, \texttt{distant\_writing}, \texttt{hat\_white}, \dots), risolto dinamicamente da \texttt{AIOperationFactory}. \\
+	 & \texttt{type} & Tipo di operazione richiesta (es. \texttt{summarize}, \texttt{translate}, \texttt{rewrite}, \texttt{distant\_writing}, \texttt{hat\_analysis}), risolto dinamicamente da \texttt{AIOperationFactory}. Le sei prospettive dei Cappelli di De Bono condividono un unico \texttt{type} (\texttt{hat\_analysis}): il cappello specifico è indicato nel campo \texttt{params.hat\_type} (es. \texttt{white}, \texttt{red}), non nel \texttt{type} stesso. \\
 	 & \texttt{text} & Testo selezionato dall'utente su cui operare (contesto). \\
-	 & \texttt{params} & Parametri aggiuntivi specifici dell'operazione (es. lingua di destinazione per la traduzione, prompt utente per il Distant Writing). \\
+	 & \texttt{params} & Parametri aggiuntivi specifici dell'operazione (es. \texttt{target\_language} per la traduzione, \texttt{hat\_type} per l'analisi critica, \texttt{user\_prompt} per il Distant Writing). \\
 	\midrule
 	\multirow{3}{*}{\texttt{AIOperationResponse}}
 	 & \texttt{content} & Testo generato dall'LLM, restituito come proposta. \\
