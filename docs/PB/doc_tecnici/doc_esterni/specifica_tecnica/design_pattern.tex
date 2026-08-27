@@ -7,8 +7,7 @@ Di seguito sono illustrati i design pattern adottati per risolvere problematiche
 
 \newcommand{\patternTable}[4]{%
 	\renewcommand{\arraystretch}{1.3}
-	\begin{center}
-	\begin{tabularx}{\textwidth}{l X}
+	\begin{xltabular}{\textwidth}{l X}
 		\toprule
 		\textbf{Problema risolto} & #1 \\
 		\midrule
@@ -18,8 +17,7 @@ Di seguito sono illustrati i design pattern adottati per risolvere problematiche
 		\midrule
 		\textbf{Vantaggi} & #4 \\
 		\bottomrule
-	\end{tabularx}
-	\end{center}
+	\end{xltabular}
 }
 
 \subsection{Pattern Creazionali}
@@ -65,7 +63,7 @@ Di seguito sono illustrati i design pattern adottati per risolvere problematiche
 }{
 	\texttt{OpenAIAdapter} realizza \texttt{LLMService} e incapsula i dettagli di connessione al provider (\texttt{api\_key}, \texttt{model}, \texttt{base\_url}), traducendo \texttt{complete(prompt)} in una richiesta HTTP verso il servizio LLM e gestendo le eccezioni specifiche (\texttt{LLMUnavailableError} se il provider fallisce, \texttt{LLMTimeoutError} se va in timeout).
 }{
-	Grazie a \texttt{base\_url} configurabile, l'adapter permette di puntare indifferentemente ai modelli Gemma, ChatGPT-OSS o Qwen messi a disposizione dall'azienda proponente, senza modifiche al resto del sistema. È al tempo stesso il concrete component su cui si applica la catena di Decorator descritta sopra.
+	Grazie a \texttt{base\_url} configurabile, l'adapter permette di puntare indifferentemente ai modelli Gemma, ChatGPT-OSS o Qwen messi a disposizione dall'azienda proponente, senza modifiche al resto del sistema. L'infrastruttura attuale prevede l'utilizzo iniziale del modello \texttt{gemma4:12b}, con possibile ampliamento dei permessi di accesso al modello \texttt{Qwen3.6-35B-A3B} qualora necessario (R3-V-O): il passaggio tra i due richiede solo l'aggiornamento della configurazione dell'adapter, senza impatti sul resto del sistema. È al tempo stesso il concrete component su cui si applica la catena di Decorator descritta sopra.
 }{
 	Isola \texttt{AIService} dai dettagli di uno specifico provider LLM, rendendo possibile sostituire modello o provider (Gemma, ChatGPT-OSS, Qwen) agendo solo sulla configurazione, senza impatti sul resto del dominio applicativo.
 }
