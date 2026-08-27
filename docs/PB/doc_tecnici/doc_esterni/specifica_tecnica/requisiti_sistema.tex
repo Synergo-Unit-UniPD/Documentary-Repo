@@ -1,5 +1,5 @@
 % =======================================================
-% 8. REQUISITI DI SISTEMA
+% 9. REQUISITI DI SISTEMA
 % =======================================================
 \section{Requisiti di Sistema}
 \label{sec:requisiti-sistema}
@@ -27,7 +27,7 @@ Il degrado prestazionale sotto queste soglie non è stato misurato sistematicame
 \subsection{Network}
 \begin{itemize}
 	\item \textbf{Editing locale}: le funzionalità di scrittura, formattazione e cronologia delle modifiche (R1--R47) non richiedono connettività di rete, essendo interamente gestite lato client (R10-Q-O).
-	\item \textbf{Operazioni AI}: richiedono una connessione di rete attiva tra Frontend e Backend e tra Backend e servizio LLM esterno; la comunicazione avviene su protocollo HTTPS (Sezione~\ref{sec:arch-backend}). Non è imposto un requisito esplicito di banda minima, ma il sistema applica un timeout massimo indicativo di 5 minuti per richiesta (R5-P-O), oltre il quale l'elaborazione viene interrotta con notifica di errore.
+	\item \textbf{Operazioni AI}: richiedono una connessione di rete attiva tra Frontend e Backend e tra Backend e servizio LLM esterno; la comunicazione avviene su protocollo HTTPS (Sezione~\ref{sec:arch-backend}). Non è imposto un requisito esplicito di banda minima. Coerentemente con R5-P-O, il sistema non impone un limite di prodotto percepibile sulla durata delle richieste AI, affidando all'utente -- tramite l'interruzione manuale (R73-F-O) -- l'unico controllo effettivo sui tempi di attesa; a protezione da connessioni di rete bloccate è comunque applicato un timeout tecnico di sicurezza con soglia elevata (indicativamente 15 minuti), pensato per non essere raggiunto in condizioni di utilizzo normale.
 	\item \textbf{Persistenza remota (opzionale, non implementata)}: qualora in futuro venisse realizzato il modulo opzionale di persistenza remota (R4-V-Op), andrebbe definito un requisito di rete dedicato per il caricamento della lista delle note (R6-P-Op); allo stato attuale non è applicabile.
 \end{itemize}
 
