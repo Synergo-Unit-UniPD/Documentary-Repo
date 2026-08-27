@@ -41,6 +41,7 @@
 \begin{itemize}[leftmargin=*]
       \item \textbf{Budget at Completion (BAC):} Budget totale pianificato per 
       l'intero progetto.
+      \item \textbf{Budget Variance (BV):} Scostamento tra il costo consuntivato e quello preventivato per il lavoro svolto entro una certa data; sinonimo di Cost Variance (CV), utilizzato in alcuni documenti di fase RTB.
       \item \textbf{Backlog:} Lista ordinata per priorità di tutte le attività, funzionalità
       e requisiti da realizzare nel corso del progetto. Nel contesto del gruppo viene
       gestita tramite GitHub Project e aggiornata ad ogni Sprint
@@ -87,6 +88,7 @@ browser target su cui il sistema è verificato o testato.
       \item \textbf{Casi d'uso:} Tecnica di modellazione che descrive le funzionalità del sistema tramite una "visione esterna" (come percepite dall'attore), ignorandone l'implementazione. A livello tecnico è definito come un insieme di scenari (sequenze di azioni che includono uno scenario principale e possibili scenari alternativi o di errore) che condividono lo stesso scopo finale per l'utente.
       \item  \textbf{CI/CD (Continuous Integration / Continuous Deployment):} Pratica di sviluppo software che prevede l’integrazione frequente del codice in un repository condiviso e la sua automazione di build, test e distribuzione.
       \item \textbf{Ciclo Di Vita Documentale:} Sequenza di stati attraversati da un documento dalla creazione al rilascio. Nel gruppo si articola in: In Stesura, In Verifica, Verificato, Approvato e Rilasciato.      \item \textbf{Code Coverage:} Metrica che misura la percentuale di codice sorgente eseguita durante l’esecuzione dei test automatici.
+      \item \textbf{CodeMirror:} Libreria open source per l'implementazione di editor di testo all'interno del browser, utilizzata come componente centrale dell'editor Markdown del Frontend, integrata da un insieme di pacchetti ufficiali per le funzionalità specifiche richieste (sintassi Markdown, tema, gestione dello stato).
       \item \textbf{Client-Server:} Pattern architetturale che separa un'applicazione in due componenti distinti -- il client, che gestisce l'interfaccia utente, e il server, che espone servizi e logica applicativa -- comunicanti tramite un protocollo di rete. Adottato come architettura generale del sistema per separare la gestione dell'editor (Frontend) dall'orchestrazione delle chiamate LLM (Backend).
       \item \textbf{Colli di bottiglia:} Fase o componente di un processo che rallenta l'efficienza complessiva, limitando la capacità operativa del team o del sistema.
       \item \textbf{Command:} Design pattern comportamentale che incapsula una richiesta come oggetto, permettendo di parametrizzare, accodare o annullare operazioni in modo uniforme. Nel progetto è utilizzato per implementare Undo/Redo delle modifiche testuali, incluse quelle generate dall'AI.
@@ -143,6 +145,7 @@ browser target su cui il sistema è verificato o testato.
       codice.
       \item \textbf{Dependency Injection (DI):} Pattern creazionale che implementa l'Inversion of Control fornendo le dipendenze di un componente dall'esterno (tipicamente tramite costruttore), invece di farle creare al componente stesso. Nel progetto è utilizzato sia lato Backend (tramite il meccanismo nativo di FastAPI) sia lato Frontend, dove è stato introdotto autonomamente dal gruppo in assenza di supporto nativo di Vue.js.
       \item \textbf{Deployment:} Processo di rilascio e distribuzione di un’applicazione in un ambiente di esecuzione.
+      \item \textbf{Deployment Automatizzato:} Distribuzione di un'applicazione eseguita senza intervento manuale, tramite strumenti di orchestrazione e configurazione predefinita. Nel progetto è realizzato tramite Docker Compose, che avvia ed orchestra i container Frontend e Backend a partire da una configurazione dichiarativa.
       \item \textbf{Diario Di Bordo:} Momento di rendicontazione periodica al committente
       in cui il gruppo espone il rapporto tra costi sostenuti e avanzamento
       conseguito, comunicando le difficoltà riscontrate. Si svolge secondo il
@@ -557,6 +560,7 @@ browser target su cui il sistema è verificato o testato.
 \addcontentsline{toc}{subsection}{T}
 \subsection*{T}
 \begin{itemize}[leftmargin=*]
+      \item \textbf{T-y.z:} Codice identificativo delle slide del corso di Ingegneria del Software citate come riferimento informativo nei documenti di progetto. \texttt{y} è il numero progressivo della lezione e \texttt{z} l'eventuale numero di slide o sezione all'interno di essa.
       \item \textbf{Tailoring:} Processo di adattamento di uno standard (nel caso del
             gruppo: ISO/IEC 12207:1995) al contesto specifico del progetto, mediante
             la selezione motivata dei processi da attivare e l'esclusione giustificata

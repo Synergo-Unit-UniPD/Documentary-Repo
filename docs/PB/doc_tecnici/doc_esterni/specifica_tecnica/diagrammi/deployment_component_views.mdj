@@ -2498,11 +2498,11 @@
 							},
 							"font": "Arial;13;0",
 							"parentStyle": false,
-							"left": 160,
+							"left": 152,
 							"top": 448,
 							"width": 108,
 							"height": 38,
-							"text": "Node 20, porta 5173"
+							"text": "Node 22, porta 5173"
 						},
 						{
 							"_type": "UMLNoteLinkView",
@@ -2519,7 +2519,7 @@
 								"$ref": "AAAAAAGf4L8XJW2ECLo="
 							},
 							"lineStyle": 1,
-							"points": "273:380;228:447"
+							"points": "271:380;221:447"
 						},
 						{
 							"_type": "UMLNoteView",
@@ -3317,7 +3317,7 @@
 									"parentStyle": true,
 									"left": 179,
 									"top": 469,
-									"width": 78.05078125,
+									"width": 70.40185546875,
 									"height": 13,
 									"text": "Second Brain"
 								},
