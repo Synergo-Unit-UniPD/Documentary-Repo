@@ -152,7 +152,7 @@ L'analisi statica (lint/format/type-check) è un gate: se fallisce, i test non p
 ## Soglie di coverage attuali
 
 - **Backend**: soglia 90% — attuale ~95%
-- **Frontend**: soglia 85% linee, 83% statement, 78% funzioni, 78% branch — attuale ~89,8% linee, ~88,5% statement, ~89,7% funzioni, ~83,6% branch (calcolata su Test di Unità e Test di Sistema insieme, eseguiti dallo stesso comando)
+- **Frontend**: soglia 85% linee, 83% statement, 78% funzioni, 78% branch — attuale ~89,8% linee, ~88,5% statement, ~89,7% funzioni, ~83,76% branch (calcolata su Test di Unità e Test di Sistema insieme, eseguiti dallo stesso comando)
 
 Le soglie hanno un margine rispetto alla copertura reale: l'obiettivo è che la CI fallisca se la copertura *peggiora* in modo significativo, non che debba essere aggiornata a ogni piccola modifica. Sono state alzate gradualmente durante la revisione del codice (vedi `frontend/vite.config.js` per i valori sorgente e il dettaglio dei moduli esclusi).
 
