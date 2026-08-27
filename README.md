@@ -18,10 +18,13 @@ https://synergo-unit-unipd.github.io/Second-Brain/
 Second-Brain/
 ├── assets/
 ├── docs/
+├── mvp/
 ├── poc/
 ├── scripts/
 └── README.md
 ```
+
+`mvp/` contiene il prodotto sviluppato in fase PB (Frontend Vue 3, Backend FastAPI, test, Docker Compose, CI — vedi [`mvp/README.md`](mvp/README.md) per il dettaglio). `poc/` contiene il Proof of Concept della fase RTB, artefatto "usa e getta" a livello architetturale, mantenuto come riferimento storico ma non più attivo: per lo sviluppo, il testing e l'esecuzione del prodotto si fa riferimento esclusivamente a `mvp/`.
 
 ## Team di sviluppo
 

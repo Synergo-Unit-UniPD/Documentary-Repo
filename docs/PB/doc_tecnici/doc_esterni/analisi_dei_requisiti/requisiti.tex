@@ -55,7 +55,7 @@ interne al team di sviluppo (indicate come "Interno").
 	\textbf{R24-F-O} & Obbligatorio & Il sistema deve permettere la rimozione della formattazione citazione da una porzione di testo selezionata. & \hyperlink{uc24}{UC24}, Capitolato \\ \hline
 
 	% ---- Elementi strutturali ----
-	\textbf{R25-F-O} & Obbligatorio & Il sistema deve permettere l'inserimento di intestazioni Markdown (livelli H1--H6) per il testo digitato successivamente. & \hyperlink{uc25}{UC25}, Capitolato, VE-5.1 \\ \hline
+	\textbf{R25-F-O} & Obbligatorio & Il sistema deve permettere l'inserimento di un' intestazione Markdown (livello H1) per il testo digitato successivamente. & \hyperlink{uc25}{UC25}, Capitolato, VE-5.1 \\ \hline
 	\textbf{R26-F-O} & Obbligatorio & Il sistema deve permettere l'applicazione della formattazione intestazione a una riga di testo già selezionata. & \hyperlink{uc26}{UC26}, Capitolato, VE-5.1 \\ \hline
 	\textbf{R27-F-O} & Obbligatorio & Il sistema deve permettere la disattivazione della formattazione intestazione durante la digitazione. & \hyperlink{uc27}{UC27}, Capitolato \\ \hline
 	\textbf{R28-F-O} & Obbligatorio & Il sistema deve permettere la rimozione della formattazione intestazione da una riga di testo selezionata, ripristinando il testo normale. & \hyperlink{uc28}{UC28}, Capitolato \\ \hline
@@ -210,8 +210,10 @@ interne al team di sviluppo (indicate come "Interno").
 	\textbf{R9-V-O} & Obbligatorio & È necessario produrre una documentazione dettagliata riguardante i test previsti ed eseguiti (Piano di Qualifica). & Capitolato \\ \hline
 	\textbf{R10-V-O} & Obbligatorio & È necessario produrre il documento "Manuale Utente", con indicazioni chiare riguardanti l'utilizzo del software lato utente. & Capitolato \\ \hline
 
-	% ---- Libertà di scelta tecnologica (in precedenza solo narrativo in §2.5, fonte orfana) ----
+	% ---- Libertà di scelta tecnologica ----
 	\textbf{R11-V-O} & Obbligatorio & Il capitolato non impone uno specifico framework front-end: la scelta della tecnologia di implementazione (nel caso del gruppo, Vue.js) è demandata al team di sviluppo, purché rispetti i vincoli tecnologici generali (R1-V-O). & VE-3.1 \\ \hline
+	\textbf{R12-V-O} & Obbligatorio & Il sistema deve essere consegnato come archivio distribuibile (.zip) contenente la configurazione Docker (Dockerfile/Docker Compose) necessaria alla sua esecuzione tramite container, senza richiedere il deploy su un'infrastruttura server esterna. & VE-9.1 \\ \hline
+	\textbf{R13-V-Op} & Opzionale & Il sistema può essere predisposto, in aggiunta alla modalità di distribuzione via archivio Docker, per il deploy su un server esterno. & VE-9.1 \\ \hline
 
 \end{longtable}
 

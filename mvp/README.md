@@ -22,6 +22,17 @@ La pipeline CI (`.github/workflows/ci.yml`, alla radice del repository) si attiv
 
 ## Avvio rapido (Docker)
 
+### Al primo avvio
+Crea un file `mvp/.env` con le credenziali del modello LLM fornite dalla proponente (vedi `ZUCCHETTI_LLM_*` in `backend/config.py`):
+
+```bash
+ZUCCHETTI_LLM_BASE_URL=<indirizzo fornito dalla proponente>
+ZUCCHETTI_LLM_API_KEY=<chiave fornita dalla proponente>
+ZUCCHETTI_LLM_MODEL=gemma4:12b
+```
+
+### Avvio
+
 ```bash
 cd mvp
 docker compose up -d --build
@@ -29,7 +40,7 @@ docker compose up -d --build
 
 Frontend: http://localhost:5173 — Backend: http://localhost:8000
 
-Configura `mvp/.env` con le credenziali del modello LLM prima di avviare (vedi `ZUCCHETTI_LLM_*` in `backend/config.py`).
+Negli avvii successivi al primo non serve ripetere `--build` né ricreare `.env`: basta `docker compose up -d` dalla cartella `mvp/`. Usa di nuovo `--build` solo dopo aver aggiornato le dipendenze (`package.json`/`requirements.txt`) o il Dockerfile.
 
 **Nota per lo sviluppo tramite Docker**: entrambi i container montano il codice sorgente locale come volume e ricaricano automaticamente ad ogni modifica (`--reload` per il backend, server di sviluppo Vite per il frontend) — sono pensati per lo sviluppo, non per un'immagine di produzione.
 
@@ -152,7 +163,7 @@ L'analisi statica (lint/format/type-check) è un gate: se fallisce, i test non p
 ## Soglie di coverage attuali
 
 - **Backend**: soglia 90% — attuale ~95%
-- **Frontend**: soglia 85% linee, 83% statement, 78% funzioni, 78% branch — attuale ~89,8% linee, ~88,5% statement, ~89,7% funzioni, ~83,6% branch (calcolata su Test di Unità e Test di Sistema insieme, eseguiti dallo stesso comando)
+- **Frontend**: soglia 85% linee, 83% statement, 78% funzioni, 78% branch — attuale ~89,8% linee, ~88,5% statement, ~89,7% funzioni, ~83,76% branch (calcolata su Test di Unità e Test di Sistema insieme, eseguiti dallo stesso comando)
 
 Le soglie hanno un margine rispetto alla copertura reale: l'obiettivo è che la CI fallisca se la copertura *peggiora* in modo significativo, non che debba essere aggiornata a ogni piccola modifica. Sono state alzate gradualmente durante la revisione del codice (vedi `frontend/vite.config.js` per i valori sorgente e il dettaglio dei moduli esclusi).
 
