@@ -11,7 +11,7 @@ Il suo scopo è fornire una stima aggiornata del costo complessivo del progetto,
 \subsection{Analisi scostamenti}
 
 Il monitoraggio delle ore residue per ruolo, aggiornato al termine dello
-Sprint 19, evidenzia una distribuzione non uniforme degli scostamenti rispetto
+Sprint 20, evidenzia una distribuzione non uniforme degli scostamenti rispetto
 alla preventivazione iniziale:
 
 \begin{table}[H]
@@ -21,44 +21,42 @@ alla preventivazione iniziale:
 \toprule
 \textbf{Ruolo} & \textbf{Ore residue} & \textbf{Costo residuo} \\
 \midrule
-Responsabile   & 23{,}33 & 700{,}00~\euro \\
-Amministratore & \color{red}{-43{,}83} & \color{red}{-876{,}67~\euro} \\
+Responsabile   & 20{,}75 & 622{,}50~\euro \\
+Amministratore & \color{red}{-46{,}67} & \color{red}{-933{,}33~\euro} \\
 Analista       & 54{,}67 & 1.366{,}67~\euro \\
-Progettista    & 98{,}17 & 2.454{,}17~\euro \\
-Programmatore  & 42{,}00 & 630{,}00~\euro \\
-Verificatore   & 51{,}17 & 767{,}50~\euro \\
+Progettista    & 88{,}67 & 2.216{,}67~\euro \\
+Programmatore  & 39{,}00 & 585{,}00~\euro \\
+Verificatore   & 47{,}50 & 712{,}50~\euro \\
 \midrule
-\textbf{Totale} & \textbf{225{,}51} & \textbf{5.041{,}67~\euro} \\
+\textbf{Totale} & \textbf{203{,}92} & \textbf{4.570{,}00~\euro} \\
 \bottomrule
 \end{tabular}
-\caption{Ore e costo residuo per ruolo dopo lo Sprint 19}
+\caption{Ore e costo residuo per ruolo dopo lo Sprint 20}
 \end{table}
 
-Il ruolo di Amministratore\textsubscript{G} è l'unico a presentare un residuo
-negativo (-43,83 ore, pari a -876,67~\euro): il gruppo ha impiegato più ore di
-quelle preventivate per mantenere aggiornati gli strumenti di gestione, la
-documentazione di progetto, il tracciamento delle attività e i consuntivi di
-sprint. Questo scostamento, già rilevato in fase RTB\textsubscript{G} (Sez.
-RR/RO6 dell'Analisi dei Rischi), è di origine prevalentemente RTB: nel periodo
-di implementazione dell'MVP (Sprint 12 -- Sprint 19), la somma dei
-$\Delta$~ore di Amministratore sui singoli sprint è pari a -0,01 ore, cioè
-sostanzialmente nulla. Il deficit non si è quindi aggravato durante la PB, ma
-nemmeno riassorbito: resta un debito ereditato dalla RTB, non un problema
-ricorrente della fase corrente.
+Il ruolo di Amministratore\textsubscript{G} resta l'unico a presentare un
+residuo negativo (-46,67 ore, pari a -933,33~\euro), in lieve peggioramento
+rispetto alle -43,83 ore rilevate a fine Sprint 19. Questo scostamento,
+già rilevato in fase RTB\textsubscript{G} (Sez. RR/RO6 dell'Analisi dei
+Rischi), resta di origine prevalentemente RTB: nel periodo di implementazione
+dell'MVP (Sprint 12 -- Sprint 20), la somma dei $\Delta$~ore di
+Amministratore sui singoli sprint è pari a -0,18 ore, sostanzialmente
+invariata rispetto al -0,01 ore rilevato a fine Sprint 19. Il lieve
+peggioramento è dovuto al $\Delta$ di -0,17 ore registrato dall'Amministratore
+nello Sprint 20 stesso, imputabile al carico documentale gestionale (PdP,
+PdQ, Norme di Progetto) tipico della fase pre-consegna PB.
 
-Nello stesso periodo (Sprint 12 -- Sprint 19) emergono due scostamenti minori
-e coerenti con la natura della fase: Progettista e Programmatore registrano
-entrambi un $\Delta$ cumulato di +1,00 ora sugli otto sprint, riconducibile
-all'intensificarsi delle attività di progettazione architetturale e codifica
-dell'MVP; Verificatore registra un $\Delta$ cumulato di +0,16 ore, segno che
-il carico aggiuntivo dovuto all'introduzione della suite di test automatizzati
-e della pipeline di CI\textsubscript{G} è stato assorbito senza scostamenti
-significativi. Analista e Responsabile risultano invece sostanzialmente in
-linea con il preventivo nello stesso periodo ($\Delta$ cumulato pari a 0,00
-ore per entrambi), poiché le attività di analisi si sono consolidate dopo la
-validazione RTB dell'Analisi dei Requisiti.
+Nello stesso periodo (Sprint 12 -- Sprint 20) il ruolo di Progettista
+registra un $\Delta$ cumulato di +1,50 ore (in aumento rispetto a +1,00 ore
+a fine Sprint 19), per via del $\Delta$ di +0,50 ore rilevato nello Sprint 20
+sul ruolo di Progettista, riconducibile all'aggiornamento della specifica
+tecnica e alla revisione dell'AdR. Il ruolo di Responsabile passa da un
+$\Delta$ cumulato nullo a +0,25 ore, per lo stesso motivo riscontrato nello
+Sprint 20. I ruoli di Programmatore e Verificatore restano invariati
+rispettivamente a +1,00 e +0,16 ore, così come il ruolo di Analista, non
+assegnato nello Sprint 20, che resta a 0,00 ore.
 
-Il residuo complessivo (225,51 ore, pari a 5.041,67~\euro) resta ampiamente
+Il residuo complessivo (203,92 ore, pari a 4.570,00~\euro) resta ampiamente
 positivo: il deficit di Amministratore viene compensato dai residui positivi
 degli altri ruoli, in particolare Progettista e Analista, senza che ciò
 comporti un superamento del budget economico complessivo preventivato in fase
@@ -73,24 +71,25 @@ iniziale. In particolare:
 \begin{itemize}
     \item il debito di ore di Amministratore ereditato dalla RTB\textsubscript{G}
     non è stato ricostituito durante la PB (delta netto sostanzialmente nullo
-    su Sprint 12 -- Sprint 19), grazie a una più attenta pianificazione delle
+    su Sprint 12 -- Sprint 20), grazie a una più attenta pianificazione delle
     attività amministrative in sede di Sprint Planning\textsubscript{G};
     \item le ore residue del ruolo di Analista, resesi disponibili dal
     consolidamento dell'Analisi dei Requisiti dopo la validazione RTB, sono
     state impiegate nella pianificazione delle attività rimanenti, con
     particolare attenzione alla verifica e all'aggiornamento della
     documentazione tecnica per la PB (Specifica Tecnica, Manuale Utente);
-    \item i lievi sovraccarichi di Progettista e Programmatore, coerenti con
-    l'intensità delle attività di progettazione e codifica dell'MVP\textsubscript{G},
+    \item i lievi sovraccarichi di Progettista e Responsabile registrati
+    nello Sprint 20, coerenti con l'intensità delle attività di
+    aggiornamento della documentazione tecnica in vista della consegna PB,
     sono stati assorbiti dal residuo positivo accumulato su questi ruoli
-    (rispettivamente 98,17 e 42,00 ore residue a fine Sprint 19) senza
+    (rispettivamente 88,67 e 20,75 ore residue a fine Sprint 20) senza
     necessità di ulteriori interventi correttivi.
 \end{itemize}
 
 Per gli sprint rimanenti fino alla Revisione PB (2026-09-10), il gruppo
 continua a monitorare le ore residue per ruolo al termine di ogni sprint,
 confermando il budget iniziale come vincolo massimo non superabile. Il
-residuo disponibile (225,51 ore, 5.041,67~\euro) è ritenuto sufficiente per
+residuo disponibile (203,92 ore, 4.570,00~\euro) è ritenuto sufficiente per
 completare le attività pianificate: redazione finale della documentazione
 di PB, eventuali correzioni emerse dalla Validazione MVP\textsubscript{G} con
 la proponente e preparazione della Revisione PB, senza necessità di
@@ -101,7 +100,7 @@ retrospettive e recepiti nel Preventivo a Finire, aggiornando la stima delle
 risorse residue senza modificare il perimetro economico complessivo del progetto.
 
 Le azioni correttive adottate durante la PB, confermate efficaci dai dati di
-Sprint 12 -- Sprint 19, sono:
+Sprint 12 -- Sprint 20, sono:
 \begin{itemize}
     \item maggiore attenzione alla pianificazione delle attività amministrative e
     di gestione durante lo Sprint Planning, evitando che vengano considerate
@@ -128,13 +127,13 @@ complessivo.
 \textbf{Voce} & \textbf{Importo} \\
 \midrule
 Budget iniziale preventivato  & 11.665{,}00~\euro \\
-Costo sostenuto finora        & 6.623{,}32~\euro \\
-Costo stimato per completare  & 5.041{,}68~\euro \\
+Costo sostenuto finora        & 7.094{,}99~\euro \\
+Costo stimato per completare  & 4.570{,}00~\euro \\
 \midrule
-\textbf{Nuovo totale stimato} & \textbf{11.665{,}00~\euro} \\
+\textbf{Nuovo totale stimato} & \textbf{11.664{,}99~\euro} \\
 \bottomrule
 \end{tabular}
-\caption{Quadro economico aggiornato del Preventivo a Finire dopo lo Sprint 19}
+\caption{Quadro economico aggiornato del Preventivo a Finire dopo lo Sprint 20}
 \end{table}
 
-Al termine dello Sprint 19 risultano sostenuti 6.623{,}32~\euro, pari a circa il 56{,}8\% del budget complessivo preventivato. Le risorse residue, pari a 5.041{,}68~\euro, sono ritenute sufficienti per completare le attività pianificate senza superare il costo massimo accettato in fase di candidatura.
+Al termine dello Sprint 20 risultano sostenuti 7.094{,}99~\euro, pari a circa il 60{,}8\% del budget complessivo preventivato. Le risorse residue, pari a 4.570{,}00~\euro, sono ritenute sufficienti per completare le attività pianificate senza superare il costo massimo accettato in fase di candidatura.
