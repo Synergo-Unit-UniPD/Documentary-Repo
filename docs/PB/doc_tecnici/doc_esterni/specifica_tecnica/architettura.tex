@@ -111,7 +111,7 @@ Le richieste verso il Backend sono mediate dall'interfaccia \texttt{AIService}, 
 \label{sec:arch-backend}
 Il Backend funge da orchestratore centrale e da strato di astrazione verso i provider LLM esterni. È organizzato secondo un'architettura a livelli, articolata in due livelli principali:
 \begin{enumerate}
-	\item \textbf{Livello di Presentazione} (package \texttt{API\_business\_layer}): router REST, DTO, Dependency Injection;
+	\item \textbf{Livello di Presentazione} (package \texttt{presentation\_layer}): router REST, DTO, Dependency Injection;
 	\item \textbf{Livello di Business Logic} (package \texttt{AI\_Domain}): logica di costruzione dei prompt e di integrazione con il servizio LLM esterno, indipendente dal framework web.
 \end{enumerate}
 A questi si affianca il package \texttt{Export}, che non fa parte della catena di elaborazione delle richieste AI, bensì implementa in modo isolato e autosufficiente la conversione della nota nei formati richiesti, riusando lo stesso principio di separazione delle responsabilità senza costituire un ulteriore livello architetturale.
@@ -134,7 +134,7 @@ I router FastAPI (\texttt{AIRouter}, \texttt{ExportRouter}\footnote{Nomi informa
 	\centering
 	\includegraphics[width=0.85\textwidth]{backend_presentation_layer.png}
 	\caption{Diagramma delle classi del livello di Presentazione e DI del Backend.}
-	\label{fig:class-business-layer}
+	\label{fig:class-presentation-layer}
 \end{figure}
 
 \subsubsection{Livello di Business Logic (Core LLM)}
