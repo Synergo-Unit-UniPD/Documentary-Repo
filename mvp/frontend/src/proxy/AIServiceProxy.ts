@@ -57,7 +57,7 @@ export class AIServiceProxy implements AIService {
 
   /**
    * Il backend restituisce sempre {error, message} in caso di errore (vedi
-   * API_business_layer/api/error_handlers.py): qui lo traduciamo in un
+   * presentation_layer/api/error_handlers.py): qui lo traduciamo in un
    * messaggio adatto all'utente finale invece di mostrare il JSON grezzo.
    * Se il corpo non è nel formato atteso (es. un errore di un livello di rete
    * intermedio, non del nostro backend), ricade sul testo grezzo della
