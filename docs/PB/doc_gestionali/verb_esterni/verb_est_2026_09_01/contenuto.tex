@@ -1,0 +1,196 @@
+% --- 1. INFORMAZIONI GENERALI ---
+\section{Informazioni Generali}
+\begin{itemize}
+	\item \textbf{Azienda Coinvolta:} Zucchetti
+	\item \textbf{Mezzo di Comunicazione:} Google Meet
+	\item \textbf{Data:} 2026-09-01
+	\item \textbf{Orario di inizio:} 15:00
+	\item \textbf{Orario di fine:} 16:00
+\end{itemize}
+
+Il presente verbale documenta l'incontro, svoltosi tramite Google Meet, tra il gruppo Synergo Unit e il referente dell'azienda Zucchetti. Durante la riunione è stata condotta la validazione formale del Minimum Viable Product\textsubscript{G} (MVP) tramite l'esecuzione dei Test di Accettazione\textsubscript{G} (TA) definiti nel \link{https://synergo-unit-unipd.github.io/Second-Brain/docs/PB/doc_gestionali/doc_esterni/piano_di_qualifica/piano_di_qualifica.pdf}{Piano di Qualifica}, propedeutici alla conclusione della Product Baseline\textsubscript{G} (PB).
+
+\vspace{0.5cm}
+\textbf{Referenti Azienda:}
+\begin{table}[ht]
+	\centering
+	\renewcommand{\arraystretch}{1.2}
+	\begin{tabularx}{\textwidth}{X l}
+		\toprule
+		\textbf{Nome e Cognome} & \textbf{Ruolo\textsubscript{G}} \\
+		\midrule
+		Gregorio Piccoli & Referente Principale \\
+		\bottomrule
+	\end{tabularx}
+\end{table}
+
+% --- 2. AMBITO DELLA VALIDAZIONE ---
+\section{Ambito della Validazione}
+Il gruppo ha sottoposto alla proponente l'esecuzione dei seguenti Test di Accettazione, così come definiti nel Piano di Qualifica (Sez.~\ref{sec:test-accettazione}):
+
+\begin{enumerate}
+	\item TA01 -- Ciclo di vita completo di una nota Markdown
+	\item TA02 -- Formattazione e struttura del testo
+	\item TA03 -- Assistente AI per riassunto, traduzione, riscrittura e Distant Writing
+	\item TA04 -- Metodo dei Sei Cappelli per Pensare (De Bono)
+	\item TA05 -- Gestione delle modifiche e recupero da errori
+	\item TA06 -- Compatibilità e prestazioni percepite
+	\item TA07 -- Approvazione complessiva dell'MVP
+\end{enumerate}
+
+% --- 3. RESOCONTO ---
+\section{Resoconto}
+
+Il gruppo ha condotto una demo live dell'MVP, guidando il referente attraverso ciascuno dei sette Test di Accettazione nell'ordine previsto dal Piano di Qualifica. Dall'esecuzione sono emerse le seguenti considerazioni:
+
+\begin{itemize}
+	\item \textbf{TA01--TA02 (ciclo di vita della nota e formattazione):} il referente ha verificato in prima persona la creazione, modifica, salvataggio ed esportazione di una nota in tutti i formati previsti (PDF/HTML/JSON), senza rilevare perdita di contenuto o comportamenti inattesi nella combinazione di più elementi di formattazione sullo stesso documento.
+
+	\item \textbf{TA03--TA04 (funzionalità AI):} il referente ha valutato pertinenti e utili le proposte generate dall'assistente AI su testi reali forniti a titolo dimostrativo, per tutte le operazioni previste (riassunto, traduzione, riscrittura, Distant Writing) e per l'analisi secondo il metodo dei Sei Cappelli, confermando che le proposte riflettono correttamente la prospettiva richiesta per ciascun cappello.
+
+	\item \textbf{TA05 (Undo/Redo e recupero da errori):} verificato il corretto funzionamento del meccanismo di Undo/Redo e l'assenza di perdita di lavoro in caso di uscita accidentale dall'applicazione.
+
+	\item \textbf{TA06 (compatibilità e prestazioni percepite):} la demo è stata condotta su due browser target; il referente ha giudicato adeguati i tempi di risposta osservati per lo scenario dimostrativo, senza rilevare criticità di compatibilità.
+
+	\item \textbf{TA07 (approvazione complessiva):} al termine della demo, il referente ha dichiarato a verbale che l'MVP soddisfa le aspettative iniziali della proponente, così come emerse dal capitolato e consolidate nell'Analisi dei Requisiti.
+\end{itemize}
+
+Di seguito la tabella riassuntiva dei Test di Accettazione eseguiti, con il relativo esito:
+
+\renewcommand{\arraystretch}{1.3}
+\begin{table}[H]
+    \centering
+    \begin{tabularx}{\textwidth}{|c|X|c|c|}
+        \hline
+        \rowcolor{primarycolor!10}
+        \textbf{ID} & \textbf{Descrizione} & \textbf{Rif.} & \textbf{Stato} \\
+        \hline
+        TA01 & Ciclo di vita completo di una nota Markdown: creazione, modifica, salvataggio ed esportazione (PDF/HTML/JSON) senza perdita di contenuto. & UC 1-4, 143, 145, 147-149 & S \\
+        \hline
+        TA02 & Formattazione e struttura del testo (grassetto, corsivo, titoli, elenchi, tabelle, link) utilizzabili in combinazione su un documento reale, senza comportamenti inattesi. & UC 5-46, 157 & S \\
+        \hline
+        TA03 & Assistente AI per riassunto, traduzione, riscrittura e Distant Writing: la proponente valuta la pertinenza e utilità delle proposte generate su testi reali. & UC 52-88 & S \\
+        \hline
+        TA04 & Metodo dei Sei Cappelli per Pensare (De Bono): la proponente valuta se le analisi generate per ciascun cappello riflettono correttamente la prospettiva richiesta. & UC 89-142 & S \\
+        \hline
+        TA05 & Gestione delle modifiche e recupero da errori: Undo/Redo e prevenzione della perdita di lavoro in caso di uscita accidentale. & UC 47-48, 156 & S \\
+        \hline
+        TA06 & Compatibilità e prestazioni percepite su almeno due browser target, con tempi di risposta giudicati adeguati dalla proponente per uno scenario dimostrativo. & Vincoli, Prestazionali & S \\
+        \hline
+        TA07 & Approvazione complessiva dell'MVP: la proponente dichiara, tramite demo formale con conferma via mail o verbale esterno esplicito, che il prodotto soddisfa le aspettative iniziali. & Tutti i requisiti obbligatori & S \\
+        \hline
+    \end{tabularx}
+    \caption{Test di Accettazione -- Esito}
+    \label{sec:test-accettazione}
+\end{table}
+
+Tutti e sette i Test di Accettazione risultano \textbf{Superati (S)}. Non sono emerse non conformità né richieste di modifica da parte della proponente.
+
+\newpage
+% --- 4. DECISIONI FORMALI ---
+\section{Decisioni Formali}
+Nella seguente tabella sono tracciate le decisioni adottate a seguito
+della validazione svolta.
+
+\renewcommand{\arraystretch}{1.3}
+\vspace{-0.3cm}
+\noindent
+\begin{longtable}{c p{12cm}}
+	\toprule
+	\textbf{Codice} & \textbf{Decisione} \\
+	\midrule
+	\endfirsthead
+
+	\toprule
+	\textbf{Codice} & \textbf{Decisione} \\
+	\midrule
+	\endhead
+
+	\midrule
+	\multicolumn{2}{r}{\textit{Continua nella pagina successiva}} \\
+	\midrule
+	\endfoot
+
+	\bottomrule
+	\endlastfoot
+
+	\textbf{VE-9.1}
+		& Approvazione formale dell'MVP da parte della proponente, a seguito del superamento di tutti i Test di Accettazione previsti (TA01--TA07). \\[4pt]
+
+	\textbf{VE-9.2}
+		& Chiusura del Test di Accettazione come condizione soddisfatta per la conclusione della Product Baseline. \\[4pt]
+
+	\textbf{VE-9.3}
+		& Nessuna non conformità rilevata; nessuna azione correttiva richiesta dalla proponente. \\[4pt]
+\end{longtable}
+
+\newpage
+% --- 5. AZIONI (TODO) ---
+\section{Azioni da Svolgere (To-Do)}
+
+Le seguenti attività sono state individuate come conseguenza
+delle decisioni adottate durante la riunione.
+
+\renewcommand{\arraystretch}{1.3}
+\begin{longtable}{c c p{5cm} p{3cm} l}
+	\toprule
+	\textbf{Codice} & \textbf{Rif. Decisione} & \textbf{Descrizione Task\textsubscript{G}} & \textbf{Assegnatario} & \textbf{Scadenza} \\
+	\midrule
+	\endfirsthead
+
+	\toprule
+	\textbf{Codice} & \textbf{Rif. Decisione} & \textbf{Descrizione Task} & \textbf{Assegnatario} & \textbf{Scadenza} \\
+	\midrule
+	\endhead
+
+	\midrule
+	\multicolumn{5}{r}{\textit{Continua nella pagina successiva}} \\
+	\midrule
+	\endfoot
+
+	\bottomrule
+	\endlastfoot
+
+	\ghissue{396}
+		& VE-9.2
+		& Redazione e invio della lettera di richiesta Revisione PB
+		& Armando M. Scarati
+		& 2026-09-02 \\[4pt]
+
+	\ghissue{403}
+		& VE-9.2
+		& Finalizzazione della documentazione di PB (Specifica Tecnica, Manuale Utente, Piano di Qualifica) con esito del TA
+		& A. Ricardo Rupi
+		& 2026-09-02 \\[4pt]
+
+\end{longtable}
+
+% --- 6. FIRME ---
+\section*{Approvazione e Firme}
+Con le seguenti firme, i rappresentanti approvano formalmente il contenuto
+del presente verbale e le decisioni adottate.
+
+\vspace{2.5cm}
+
+\noindent
+\begin{minipage}[c]{0.45\textwidth}
+	\begin{center}
+		\rule{6cm}{0.4pt} \\
+		\vspace{0.2cm}
+		\textbf{Per il Gruppo Synergo Unit} \\
+		Francesco Marcon \\
+		\textit{Responsabile\textsubscript{G} di Progetto}
+	\end{center}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.45\textwidth}
+	\begin{center}
+		\rule{6cm}{0.4pt} \\
+		\vspace{0.2cm}
+		\textbf{Per l'Azienda Zucchetti} \\
+		Gregorio Piccoli \\
+		\textit{Referente Aziendale}
+	\end{center}
+\end{minipage}
+
+\vspace{2cm}
