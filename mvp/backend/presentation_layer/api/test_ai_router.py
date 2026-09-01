@@ -6,7 +6,7 @@ from fastapi.testclient import TestClient
 import main
 from AI_Domain.domain.errors import LLMTimeoutError, LLMUnavailableError, UnknownOperationError
 from AI_Domain.domain.value_objects import Proposal
-from API_business_layer.di.providers import get_ai_service
+from presentation_layer.di.providers import get_ai_service
 
 
 class _FakeAIService:

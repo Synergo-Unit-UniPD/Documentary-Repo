@@ -2,8 +2,8 @@ from unittest.mock import AsyncMock, patch
 
 import pytest
 
-import API_business_layer.di.providers as providers_module
-from API_business_layer.di.providers import get_ai_service
+import presentation_layer.di.providers as providers_module
+from presentation_layer.di.providers import get_ai_service
 from config import Settings
 
 
