@@ -1,9 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from API_business_layer.api.ai_router import router as ai_router
-from API_business_layer.api.error_handlers import handle_ai_domain_error, handle_export_error
-from API_business_layer.api.export_router import router as export_router
+from presentation_layer.api.ai_router import router as ai_router
+from presentation_layer.api.error_handlers import handle_ai_domain_error, handle_export_error
+from presentation_layer.api.export_router import router as export_router
 from config import settings
 from AI_Domain.domain.errors import AIDomainError
 from export.exceptions import ExportError
