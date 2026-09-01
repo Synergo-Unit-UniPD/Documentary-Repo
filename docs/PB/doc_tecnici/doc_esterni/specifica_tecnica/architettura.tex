@@ -26,8 +26,8 @@ Questa scelta di deployment corrisponde a un'\textbf{architettura a due moduli d
 
 È stata preferita tale architettura piuttosto che:
 \begin{itemize}
-	\item un \textbf{monolite unico indifferenziato}, perchè avrebbe accoppiato il deploy del Frontend (statico) a quello del Backend (con dipendenze verso servizi LLM esterni), impedendo aggiornamenti o riavvii indipendenti dei due componenti;
-	\item una \textbf{scomposizione a microservizi} (es. un servizio per ciascuna operazione AI) perchè non sarebbe giustificata dalla scala del sistema, che espone un dominio applicativo singolo e un volume di richieste limitato, inoltre, introdurrebbe complessità di orchestrazione (service discovery, API gateway) senza benefici concreti, tanto più in assenza di persistenza (Sezione~2.4).
+	\item un \textbf{monolite unico indifferenziato}, perché avrebbe accoppiato il deploy del Frontend (statico) a quello del Backend (con dipendenze verso servizi LLM esterni), impedendo aggiornamenti o riavvii indipendenti dei due componenti;
+	\item una \textbf{scomposizione a microservizi} (es. un servizio per ciascuna operazione AI) perché non sarebbe giustificata dalla scala del sistema, che espone un dominio applicativo singolo e un volume di richieste limitato, inoltre, introdurrebbe complessità di orchestrazione (service discovery, API gateway) senza benefici concreti, tanto più in assenza di persistenza (Sezione~2.4).
 \end{itemize}
 
  La granularità scelta consente comunque deploy e scalabilità indipendenti dei due componenti, preservando la possibilità di un'evoluzione più granulare qualora emergessero nuovi requisiti.

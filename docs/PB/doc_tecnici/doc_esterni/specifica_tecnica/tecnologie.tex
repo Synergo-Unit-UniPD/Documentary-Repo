@@ -32,11 +32,11 @@ Le tecnologie adottate sono state selezionate secondo i criteri motivati in dett
 
 	TypeScript & 6.0.x & Linguaggio principale del Frontend; la tipizzazione statica riduce gli errori di integrazione con le interfacce dei payload AI. \\
 	\hline
-	\textbf{\link{https://vuejs.org/guide/essentials/reactivity-fundamentals.html}{Vue.js}} & 3.5.x & Framework a componenti del Frontend, scelto per la progressività e la bassa curva di apprendimento (Sezione 2 di \link{https://github.com/Synergo-Unit-UniPD/Second-Brain/blob/main/docs/RTB/doc_gestionali/doc_interni/analisi_stato_arte/analisi_stato_arte.pdf}{Analisi dello Stato dell'Arte}). \\
+	\textbf{\link{https://vuejs.org/guide/essentials/reactivity-fundamentals.html}{Vue.js}} (\textit{Ultimo accesso: 2026-08-18}) & 3.5.x & Framework a componenti del Frontend, scelto per la progressività e la bassa curva di apprendimento (Sezione 2 di \link{https://github.com/Synergo-Unit-UniPD/Second-Brain/blob/main/docs/RTB/doc_gestionali/doc_interni/analisi_stato_arte/analisi_stato_arte.pdf}{Analisi dello Stato dell'Arte}). \\
 	\hline
-	Python & 3.11 & Linguaggio del Backend, scelto per la maturità del suo ecosistema nell'integrazione con strumenti di intelligenza artificiale e NLP per per la pregressa conoscenza da parte di alcuni membri del gruppo. \\
+	Python & 3.11 & Linguaggio del Backend, scelto per la maturità del suo ecosistema nell'integrazione con strumenti di intelligenza artificiale e NLP e per la pregressa conoscenza da parte di alcuni membri del gruppo. \\
 	\hline
-	\textbf{\link{https://fastapi.tiangolo.com/tutorial/dependencies/}{FastAPI}} & 0.136.3 & Framework Backend per API REST asincrone; espone i router \texttt{AIRouter} ed \texttt{ExportRouter} (Sezione~\ref{sec:interfaccia-api}). \\
+	\textbf{\link{https://fastapi.tiangolo.com/tutorial/dependencies/}{FastAPI}} (\textit{Ultimo accesso: 2026-08-20}) & 0.136.3 & Framework Backend per API REST asincrone; espone i router \texttt{AIRouter} ed \texttt{ExportRouter} (Sezione~\ref{sec:interfaccia-api}). \\
 	\hline
 	Node.js & 22.x & Funge da runtime di esecuzione essenziale per il server di sviluppo (Vite) e la build del codice TypeScript/Vue.js lato frontend. \\
 	\hline
@@ -67,7 +67,7 @@ Le tecnologie adottate sono state selezionate secondo i criteri motivati in dett
 	\hline
 	\endlastfoot
 
-	\textbf{\link{https://codemirror.net/docs/guide/}{CodeMirror}} & 6.0.2 & Componente editor di testo integrato nel Frontend (Sezione 2 di \link{https://github.com/Synergo-Unit-UniPD/Second-Brain/blob/main/docs/RTB/doc_gestionali/doc_interni/analisi_stato_arte/analisi_stato_arte.pdf}{Analisi dello Stato dell'Arte}); il nucleo (\texttt{codemirror}) è integrato da un insieme di pacchetti \texttt{@codemirror/*} ufficiali per le funzionalità specifiche richieste (riga sotto). \\
+	\textbf{\link{https://codemirror.net/docs/guide/}{CodeMirror}} (\textit{Ultimo accesso: 2026-08-18}) & 6.0.2 & Componente editor di testo integrato nel Frontend (Sezione 2 di \link{https://github.com/Synergo-Unit-UniPD/Second-Brain/blob/main/docs/RTB/doc_gestionali/doc_interni/analisi_stato_arte/analisi_stato_arte.pdf}{Analisi dello Stato dell'Arte}); il nucleo (\texttt{codemirror}) è integrato da un insieme di pacchetti \texttt{@codemirror/*} ufficiali per le funzionalità specifiche richieste (riga sotto). \\
 	\hline
 	@codemirror/state, @codemirror/view, @codemirror/commands & 6.x & Stato dell'editor, rendering e comandi base (selezione, cronologia nativa del browser) su cui si innesta la gestione applicativa di Undo/Redo (Sezione~\ref{sec:design-pattern}, pattern Command). \\
 	\hline
@@ -199,7 +199,7 @@ Il dettaglio della strategia di test per livello (unità, integrazione, sistema,
 	\hline
 	\endlastfoot
 
-	\textbf{\link{https://docs.docker.com/compose/}{Docker Compose}} & Orchestrazione dei container \texttt{frontend} e \texttt{backend} (Sezione~\ref{sec:arch-deployment}). Il server di sviluppo Vite del container \texttt{frontend} inoltra le richieste verso \texttt{/api} al container \texttt{backend} (\texttt{http://backend:8000}). \\
+	\textbf{\link{https://docs.docker.com/compose/}{Docker Compose}} (\textit{Ultimo accesso: 2026-08-16}) & Orchestrazione dei container \texttt{frontend} e \texttt{backend} (Sezione~\ref{sec:arch-deployment}). Il server di sviluppo Vite del container \texttt{frontend} inoltra le richieste verso \texttt{/api} al container \texttt{backend} (\texttt{http://backend:8000}). \\
 	\hline
 	Git e GitHub & Versionamento del codice e gestione collaborativa del repository\textsubscript{G}, con tracciamento delle attività tramite issue\textsubscript{G} (requisito R2-Q-O). \\
 	\hline
