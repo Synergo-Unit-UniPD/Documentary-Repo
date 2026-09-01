@@ -1,7 +1,7 @@
 {
 	"_type": "Project",
 	"_id": "AAAAAAFF+h6SjaM2Hec=",
-	"name": "backend_API_business_layer",
+	"name": "backend_presentation_layer",
 	"ownedElements": [
 		{
 			"_type": "UMLModel",
@@ -9,7 +9,7 @@
 			"_parent": {
 				"$ref": "AAAAAAFF+h6SjaM2Hec="
 			},
-			"name": "backend_API_business_layer",
+			"name": "backend_presentation_layer",
 			"ownedElements": [
 				{
 					"_type": "UMLClassDiagram",
@@ -3736,7 +3736,7 @@
 													"width": 372.033203125,
 													"height": 13,
 													"underline": true,
-													"text": "+handle_ai_domain_error(exc: AIDomainError): JSONResponse",
+													"text": "+handle_ai_domain_error(exc: AIDomainError, request: Request): JSONResponse",
 													"horizontalAlignment": 0
 												},
 												{
@@ -3755,7 +3755,7 @@
 													"width": 372.033203125,
 													"height": 13,
 													"underline": true,
-													"text": "+handle_export_error(exc: ExportError): JSONResponse",
+													"text": "+handle_export_error(exc: ExportError, request: Request): JSONResponse",
 													"horizontalAlignment": 0
 												}
 											],
@@ -3763,7 +3763,7 @@
 											"parentStyle": true,
 											"left": 176,
 											"top": 456,
-											"width": 382.033203125,
+											"width": 441.72314453125,
 											"height": 38
 										},
 										{

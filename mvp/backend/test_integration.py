@@ -14,7 +14,7 @@ from AI_Domain.domain.operation_factory import AIOperationFactory
 from AI_Domain.domain.value_objects import Prompt
 from AI_Domain.llm.llm_service import LLMService
 from AI_Domain.service import AIService
-from API_business_layer.di.providers import get_ai_service
+from presentation_layer.di.providers import get_ai_service
 
 
 class _StubLLMService(LLMService):

@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends
 
 from .schemas import AIOperationRequest, AIOperationResponse
-from API_business_layer.di.providers import get_ai_service
+from presentation_layer.di.providers import get_ai_service
 from AI_Domain.service import AIService
 
 router = APIRouter(prefix="/api/ai", tags=["ai"])

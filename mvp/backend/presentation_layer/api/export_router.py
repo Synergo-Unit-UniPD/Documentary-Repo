@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException, Response
 
 from .schemas import ExportRequest
-from API_business_layer.di.providers import get_exporter
+from presentation_layer.di.providers import get_exporter
 
 router = APIRouter(prefix="/api/export", tags=["export"])
 
