@@ -23,6 +23,18 @@ i seguenti processi di supporto:
     \item gestione delle non conformità;
 \end{itemize}
 
+\textit{Nota di tailoring sui processi non adottati come autonomi}: lo
+standard ISO/IEC~12207:1995 prevede inoltre, tra i processi di supporto, il
+Processo di Riesame Congiunto (\textit{Joint Review}, punto 6.6) e il
+Processo di Audit (punto 6.7). Il gruppo ha scelto di non normarli come
+processi autonomi, ritenendo che il loro intento sia già coperto da pratiche
+già normate altrove: la revisione periodica dello stato e dei prodotti di
+un'attività (propria del Riesame Congiunto) è svolta tramite la Sprint
+Review e la revisione delle Pull Request (Processo di Gestione della
+Configurazione, Sezione~\ref{sec:configurazione}); la verifica di conformità
+a requisiti, piani e contratto (propria dell'Audit) è svolta dal
+Verificatore in sede di Pull Request e nelle revisioni con la proponente.
+
 % ================================================================
 % DOCUMENTAZIONE
 % ================================================================
@@ -813,9 +825,9 @@ Per i branch di codice la prassi in ordine è:
     \item creazione del branch per lo sviluppo,
     \item creare la PR in draft verso il main,
     \item prima di ogni push bisogna fare i test in locale,
-    \item se si passsano i test in locale, si fa il push e la PR in draft fa partire la CI,
+    \item se si passano i test in locale, si fa il push e la PR in draft fa partire la CI,
     \item terminato lo sviluppo e compilata la checklist, si mette in \textit{ready for review},
-    \item il verificatore fa la review e approva solo se se la pipeline risulta interamente verde.
+    \item il verificatore fa la review e approva solo se la pipeline risulta interamente verde.
 \end{itemize}
 
 
@@ -1454,6 +1466,17 @@ Ogni cambiamento segue la seguente procedura:
 
 \subsection{Processo di Gestione delle Non Conformità}
 \label{sec:non-conformita}
+
+\textit{Nota di tailoring}: come per il Processo di Gestione dei Cambiamenti
+(Sezione~\ref{sec:cambiamenti}), lo standard ISO/IEC~12207:1995 non prevede un
+processo di supporto autonomo per la gestione delle non conformità: la
+individuazione, l'analisi e la risoluzione dei problemi (comprese le non
+conformità) vi sono trattate nel Processo di Risoluzione dei Problemi
+(\textit{Problem Resolution Process}, punto 6.8). Il gruppo ha scelto di
+scorporarne la gestione in un processo a sé, estensione deliberata oltre lo
+standard, per dare visibilità e tracciabilità autonome alle non conformità
+rilevate durante verifica, review e retrospettiva, distinguendole dai
+problemi tecnici generici.
 
 \subsubsection{Descrizione}
 
