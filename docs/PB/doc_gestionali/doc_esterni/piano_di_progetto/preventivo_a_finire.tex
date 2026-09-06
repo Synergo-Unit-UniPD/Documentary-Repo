@@ -68,13 +68,13 @@ di esecuzione durante la PB.
 
 I ruoli di Analista e Progettista, entrambi con tariffa oraria di 25~\euro/h,
 sono stati preventivati con un numero di ore superiore a quanto
-effettivamente necessario per le attività assegnate: a fine Sprint 20
+effettivamente necessario per le attività assegnate: a fine Sprint 21
 presentano un residuo positivo rispettivamente di 54,67 ore (1.366,67~\euro)
 e 88,67 ore (2.216,67~\euro), il residuo più consistente tra tutti i ruoli.
 Il ruolo di Amministratore, con tariffa oraria inferiore (20~\euro/h), è
 stato invece preventivato con ore insufficienti rispetto al carico reale di
 gestione documentale e strumenti di progetto, risultando nell'unico residuo
-negativo (-46,67 ore, -933,33~\euro).
+negativo (-55,00 ore, -1.100,00~\euro).
 
 Poiché il costo economico di uno scostamento dipende dal prodotto tra ore e
 tariffa oraria, lo sforamento in ore dell'Amministratore pesa relativamente
@@ -90,7 +90,10 @@ Questa analisi conferma che il vincolo economico complessivo non è a
 rischio nonostante lo scostamento negativo su un singolo ruolo, e che la
 causa del disallineamento è da ricondursi a una calibrazione non ottimale
 delle ore per ruolo in fase di preventivazione iniziale, piuttosto che a un
-sovra- o sotto-impiego di risorse durante la PB.
+sovra- o sotto-impiego di risorse durante la PB. L'ulteriore peggioramento
+del deficit di Amministratore durante lo Sprint 21 (-8,33 ore aggiuntive)
+è stato assorbito senza compromettere il budget complessivo, grazie ai
+consistenti surplus degli altri ruoli.
 
 \subsection{Ripianificazione}
 
@@ -100,26 +103,27 @@ mantenendo invariato il vincolo economico complessivo definito nel preventivo
 iniziale. In particolare:
 \begin{itemize}
     \item il debito di ore di Amministratore ereditato dalla RTB\textsubscript{G}
-    non è stato ricostituito durante la PB (delta netto sostanzialmente nullo
-    su Sprint 12 -- Sprint 20), grazie a una più attenta pianificazione delle
-    attività amministrative in sede di Sprint Planning\textsubscript{G};
+    non è stato ricostituito durante la PB. Il delta netto complessivo su Sprint 12 -- Sprint 21
+    rimane comunque contenuto (-0,18 ore), confermando l'efficacia della
+    pianificazione delle attività amministrative in sede di Sprint
+    Planning\textsubscript{G};
     \item le ore residue del ruolo di Analista, resesi disponibili dal
     consolidamento dell'Analisi dei Requisiti dopo la validazione RTB, sono
     state impiegate nella pianificazione delle attività rimanenti, con
     particolare attenzione alla verifica e all'aggiornamento della
     documentazione tecnica per la PB (Specifica Tecnica, Manuale Utente);
     \item i lievi sovraccarichi di Progettista e Responsabile registrati
-    nello Sprint 20, coerenti con l'intensità delle attività di
+    negli Sprint 20 e 21, coerenti con l'intensità delle attività di
     aggiornamento della documentazione tecnica in vista della consegna PB,
     sono stati assorbiti dal residuo positivo accumulato su questi ruoli
-    (rispettivamente 88,67 e 20,75 ore residue a fine Sprint 20) senza
+    (rispettivamente 88,67 e 18,58 ore residue a fine Sprint 21) senza
     necessità di ulteriori interventi correttivi.
 \end{itemize}
 
 Per gli sprint rimanenti fino alla Revisione PB (2026-09-10), il gruppo
 continua a monitorare le ore residue per ruolo al termine di ogni sprint,
 confermando il budget iniziale come vincolo massimo non superabile. Il
-residuo disponibile (203,92 ore, 4.570,00~\euro) è ritenuto sufficiente per
+residuo disponibile (190,92 ore, 4.300,83~\euro) è ritenuto sufficiente per
 completare le attività pianificate: redazione finale della documentazione
 di PB, eventuali correzioni emerse dalla Validazione MVP\textsubscript{G} con
 la proponente e preparazione della Revisione PB, senza necessità di
@@ -130,7 +134,7 @@ retrospettive e recepiti nel Preventivo a Finire, aggiornando la stima delle
 risorse residue senza modificare il perimetro economico complessivo del progetto.
 
 Le azioni correttive adottate durante la PB, confermate efficaci dai dati di
-Sprint 12 -- Sprint 20, sono:
+Sprint 12 -- Sprint 21, sono:
 \begin{itemize}
     \item maggiore attenzione alla pianificazione delle attività amministrative e
     di gestione durante lo Sprint Planning, evitando che vengano considerate
@@ -142,10 +146,9 @@ Sprint 12 -- Sprint 20, sono:
 \end{itemize}
 
 Tali azioni risultano coerenti con le strategie di mitigazione definite nel
-Piano di Progetto e hanno permesso di stabilizzare lo scostamento di
-Amministratore durante la PB, pur senza riassorbire il debito ereditato dalla
-RTB, preservando in ogni caso il rispetto delle scadenze e del budget
-complessivo.
+Piano di Progetto e hanno permesso di gestire lo scostamento di
+Amministratore durante la PB, preservando in ogni caso il rispetto delle
+scadenze e del budget complessivo.
 
 \subsection{Quadro economico aggiornato}
 
@@ -166,7 +169,7 @@ Costo stimato per completare  & 4.300{,}83~\euro \\
 \caption{Quadro economico aggiornato del Preventivo a Finire dopo lo Sprint 21}
 \end{table}
 
-Al termine dello Sprint 21 risultano sostenuti 7.354{,}16~\euro, pari a circa il 63,1\% del budget complessivo preventivato.
+Al termine dello Sprint 21,ovvero lo sprint finale, risultano sostenuti 7.354{,}16~\euro, pari a circa il 63,1\% del budget complessivo preventivato.
 Questo quantitativo di budget rimanente è dato dal fatto che, all'inizio del progetto, il gruppo ha deciso di concentrare le ore sui 
 ruoli di analista e progettista. Nel corso del progetto il gruppo ha compreso che alcune task che sembravano appartenere a questi ruoli erano 
 più adatte al ruolo di amministratore il quale infatti risulta con un residuo negativo di -55 ore.
